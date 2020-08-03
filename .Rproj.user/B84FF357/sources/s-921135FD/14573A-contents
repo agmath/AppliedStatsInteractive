@@ -10,7 +10,7 @@ Imports:
     learnr,
     openintro,
     ggplot2,
-    dplyr
+    dplyr,
     statsr,
     stringr
 Remotes:
