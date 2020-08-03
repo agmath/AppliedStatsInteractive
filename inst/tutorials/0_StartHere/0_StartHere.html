@@ -140,12 +140,20 @@ $(document).ready(function () {
 </div>
 <div id="section-section-4" class="section level3">
 <h3></h3>
-<p>If you have any questions/comments or wish to report any errors, please email <a href="mailto:a.gilbert1@snhu.edu">Adam Gilbert (<em>a.gilbert1@snhu.edu</em>)</a>. These workbooks are publicly available on <a href="https://github.com/agmath/SNHUmat241interactive">GitHub</a> and are available to run locally via an R package which can be installed as follows:</p>
+<p>If you have any questions/comments or wish to report any errors, please email <a href="mailto:a.gilbert1@snhu.edu">Adam Gilbert (<em>a.gilbert1@snhu.edu</em>)</a>. These workbooks are publicly available on <a href="https://github.com/agmath/AppliedStatsInteractive">GitHub</a> and are available to run locally via an R package as follows:</p>
 <pre class="r"><code>#You&#39;ll need the devtools library to install a package from GitHub
 install.packages(&quot;devtools&quot;)
 #Now, install the package containing the interactive workbooks
-remotes::install_github(&quot;agmath/SNHUmat241interactive&quot;)</code></pre>
-
+remotes::install_github(&quot;agmath/AppliedStatsInteractive&quot;)</code></pre>
+</div>
+<div id="section-section-5" class="section level3">
+<h3></h3>
+<p>Once you’ve installed the package, you should be able to run the tutorials by calling: <code>learnr::run_tutorial("NOTEBOOK_NAME", package = "AppliedStatsInteractive")</code>. For example, running the following command will access the first tutorial workbook.</p>
+<pre class="r"><code>learnr::run_tutorial(&quot;1_IntroToData&quot;, package = &quot;AppliedStatsInteractive&quot;)</code></pre>
+</div>
+<div id="section-section-6" class="section level3">
+<h3></h3>
+Whether you are an instructor, student, or self-paced-learner, I wish you good fortune as you embark on your statistics journey. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(dplyr)
 library(ggplot2)
