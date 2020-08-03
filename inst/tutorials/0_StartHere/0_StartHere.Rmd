@@ -1,0 +1,53 @@
+---
+title: "Topic 0: Start Here (an Introduction)"
+tutorial:
+  id: "StartHere.Topic0.AppliedStats"
+  version: 1.0
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(ggplot2)
+library(learnr)
+library(gradethis)
+```
+
+
+## Welcome
+
+###
+
+This is a series of workbooks appropriate for use with any introductory-level applied statistics class at the high school or university level. 
+
+###
+
+Very limited mathematics background is assumed -- if you can answer the following two questions, you have the necessary mathematics background:
+
++ Find $z$ if 
+$$\displaystyle{z = \frac{54 - 50}{8/\sqrt{16}}}$$
++ Find $x$ if 
+$$\displaystyle{2 = \frac{x - 50}{8/\sqrt{16}}}$$
+
+###
+
+Each workbook introduces statistics content and allows the user to interact with embedded R code blocks to complete example problems or to experiment with the ideas presented. For all but the workbooks which are designated as *labs*, users can complete all of the tasks without using R -- it is typically possible to enter only answers obtained in the code blocks, so using a calculator and/or distribution tables is possible. That is, even if your course does not utilize R, you may find these workbooks helpful.
+
+###
+
+If you've found these workbooks, I hope that you find them helpful. These workbooks are adapted versions of my course notes from MAT240 Introduction to Applied Statistics and MAT241 Modern Statistics with Software at Southern New Hampshire University. Much of the content comes from [OpenIntro.org](http://www.openintro.org) and the [4th edition of OpenIntro Statistics](https://leanpub.com/openintro-statistics) which is open source and freely available. In addition to the free resources available at OpenIntro.org, I've developed a freely available online homework supplement to the OpenIntro Statistics textbook at [MyOpenMath](www.myopenmath.com). The workbook on Data Visualization is adapted from Chapter 3 of [Grolemund and Wickham's *R for Data Science*](https://r4ds.had.co.nz/), which is an excellent addition to the library of any aspiring data scientist.
+
+### 
+
+If you have any questions/comments or wish to report any errors, please email [Adam Gilbert (*a.gilbert1@snhu.edu*)](mailto:a.gilbert1@snhu.edu). These workbooks are publicly available on [GitHub](https://github.com/agmath/SNHUmat241interactive) and are available to run locally via an R package which can be installed as follows:
+
+```{r install, echo = TRUE, eval = FALSE}
+#You'll need the devtools library to install a package from GitHub
+install.packages("devtools")
+#Now, install the package containing the interactive workbooks
+remotes::install_github("agmath/SNHUmat241interactive")
+```

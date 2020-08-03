@@ -1,0 +1,10 @@
+name: 4_dataviz
+title:
+username:
+account: agmath
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2621542
+bundleId: 3447541
+url: https://agmath.shinyapps.io/4_dataviz/
+when: 1595968882.56216

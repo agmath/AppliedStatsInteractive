@@ -1,0 +1,17 @@
+Package: SNHUmat241interactive
+Type: Package
+Title: Interactive Tutorials for a First Course in Applied Statistics
+Version: 0.1.0
+Author: Adam Gilbert
+Maintainer: The package maintainer: <agilbertmath@gmail.com>
+Description: This package deploys interactive tutorials for MAT241 Modern Statistics with Software at Southern New Hampshire University.
+Imports:
+    gradethis,
+    learnr,
+    openintro,
+    tidyverse
+Remotes:
+    rstudio-education/gradethis
+License: CC-BY-SA-4.0
+Encoding: UTF-8
+LazyData: true

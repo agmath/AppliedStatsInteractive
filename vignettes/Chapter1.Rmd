@@ -1,0 +1,104 @@
+---
+title: "Chapter 1: An Introduction to Data"
+tutorial:
+  id: "IntroData.SNHU.ISRS"
+  version: 1.0
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    
+runtime: shiny_prerendered
+---
+
+```{r global-options, include=FALSE}
+#knitr::opts_chunk$set(eval = FALSE)
+library(MASS)
+library(tidyverse)
+library(learnr)
+library(gradethis)
+library(openintro)
+
+houses <- read.csv("https://raw.githubusercontent.com/NikhilKumarMutyala/Linear-Regression-from-scartch-on-KC-House-Dataset/master/kc_house_data.csv")
+houses$exterior <- sample(c("brick", "vinyl siding", "shingles", "NA"), size = nrow(houses), prob = c(0.15, 0.7, 0.12, 0.03), replace = TRUE)
+houses$month <- sample(1:12, size = nrow(houses), replace = TRUE)
+housesSubset <- houses[ , c(1, 23, 3, 6, 7, 9, 22)]
+
+knitr::opts_chunk$set(exercise.checker = gradethis::grade_learnr)
+```
+
+# An Introduction to Data
+
+Throughout Chapter 1 of our textbook the authors reference the `email50` dataset. You'll have an opportunity to explore a new dataset concerning real estate from King County, WA throughout this interactive document. The `homes` data is shown below in a convenient form where the rows of data represent *records* (sometimes called **observations**), and the columns represent **variables** (sometimes called **features**). We'll see later in our course that such data is called *tidy*.
+
+```{r showData, exercise = FALSE}
+head(housesSubset[sample(1:nrow(housesSubset), size = nrow(housesSubset), replace = FALSE), ])
+```
+
+You can see the first six rows of the dataset above. A simplified *data dictionary* (a map of column names and explanations) appears below.
+
++ `id` provides the property identification number.
++ `month` gives the month that the property was listed for sale.
++ `price` is the listing price of the property in US dollars (\$).
++ `sqft_living` gives the finished square footage of the home.
++ `sqft_lot` gives the square footage of the property (land).
++ `waterfront` indicates whether the property is waterfront.
++ `exterior` provides a description of the exterior covering of the home.
+
+## Variable Types
+
+Variables which take on numerical values <u>and</u> for which measures such as the mean, median, or standard deviation are meaningful are referred to as **numerical**. Non-numerical variables which serve to group data into categories are called **categorical** (eg. the color of a car or an area code prefix for a telephone number). It is possible for data to be neither numerical nor categorical -- for example, a **unique identifier** is a non-numeric variable which is unique to each record. A timestamp may be an example of a unique identifier -- all is not lost, however, with a bit of pre-processing we sometimes extract useful information from these columns.
+
+Answer the following using your knowledge of the dataset and variable types.
+
+```{r id-vars-numerical, echo = FALSE}
+quiz(
+question_checkbox(
+"Check off each of the variables from the email dataset which are numerical",
+answer("id", message = "are we able to take a meaningful average of these values?"),
+answer("month", message = "is an average meaningful here?"),
+answer("price", correct = TRUE),
+answer("sqft_living", correct = TRUE),
+answer("sqft_lot", correct = TRUE),
+answer("waterfront"),
+answer("exterior"),
+allow_retry = TRUE,
+try_again = "Be sure to select all of them! There are three."
+),
+
+question_checkbox(
+"Check off each of the variables from the email dataset which are categorical",
+answer("id", message = "are we able to take a meaningful average of these values?"),
+answer("month", correct = TRUE),
+answer("price"),
+answer("sqft_living"),
+answer("sqft_lot"),
+answer("waterfront", correct = TRUE),
+answer("exterior", correct = TRUE),
+allow_retry = TRUE,
+try_again = "Be sure to select all of them!"
+),
+
+question_checkbox(
+"Check off each of the variables from the email dataset which are unique identifiers.",
+answer("id", correct = TRUE),
+answer("month"),
+answer("price"),
+answer("sqft_living"),
+answer("sqft_lot"),
+answer("waterfront"),
+answer("exterior"),
+allow_retry = TRUE,
+try_again = "There's just one here!"
+)
+
+)
+```
+
+The **levels** of a variable are the different (unique) values that the variable takes on. For example, a dataset on student might include a variable called `ClassYear` with the levels *Freshmen*, *Sophomore*, *Junion*, *Senior*. Numerical variables also have levels -- usually there are lots of levels corresponding to a numerical variable, but if there are too few, we may be better off considering the corresponding variable to be categorical (imagine a dataset which includes a column for `Year`, but only the years 2008 and 2017 are included).
+
+## Working with numerical data
+
+Getting back to the `homes` dataset, let's consider the `sqft_living` variable. 
+
+## Working with categorical data
+
