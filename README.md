@@ -2,7 +2,7 @@
  
 This is an R package which deploys interactive notebooks to accompany an introductory course in applied statistics. The notebooks follow the freely available [OpenIntro Statistics (4Ed)](http://www.openintro.org/os) textbook and supplementary resources. 
 
-You can install this r-package by running the following command in R (which requires the `devtools` package): `remotes::install_github("agmath/AppliedStatsInteractive")`
+You can install this package by running the following command in R (which requires the `devtools` package as a prereqisite): `remotes::install_github("agmath/AppliedStatsInteractive")`
 
 Once the package has been installed you can run the individual notebooks using commands of the following structure: `learnr::run_tutorial(NOTEBOOK_NAME, package = "AppliedStatsInteractive")`
 
