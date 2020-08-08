@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "746846473",
+    "hash" : "0",
     "id" : "2FF7B058",
     "lastKnownWriteTime" : 1596913031,
     "last_content_update" : 1596913031385,
     "path" : "~/GitHub/AppliedStatsInteractive/inst/tutorials/14_ChiSquare/14_ChiSquare.Rmd",
     "project_path" : "inst/tutorials/14_ChiSquare/14_ChiSquare.Rmd",
     "properties" : {
-        "cursorPosition" : "209,20",
-        "scrollLine" : "201"
+        "cursorPosition" : "143,0",
+        "scrollLine" : "138"
     },
     "read_only" : false,
     "read_only_alternatives" : [
