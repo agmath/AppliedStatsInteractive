@@ -33,7 +33,9 @@ BRFSSsim$DrugUse[BRFSSsim$IncomeLevel == "HighIncome"] <- sample(c("no", "yes"),
 
 tableSim <- table(BRFSSsim$DrugUse, BRFSSsim$IncomeLevel)
 
-observedInd <- c(tableSim[1, 4], tableSim[1,2], tableSim[1,3], tableSim[1,1], tableSim[2,4], tableSim[2,2], tableSim[2,3], tableSim[2,1])
+#observedInd <- c(tableSim[1, 4], tableSim[1,2], tableSim[1,3], tableSim[1,1], tableSim[2,4], tableSim[2,2], tableSim[2,3], tableSim[2,1])
+
+observedInd <- c(341, 752, 796, 221, 78, 153, 116, 43)
 ```
 
 ## Topic 14: Chi-Squared Tests for Goodness of Fit and Independence
@@ -240,9 +242,9 @@ Use the code block below to compute the $p$-value associated with this test. Rem
 
 ```
 
-```{r compute-p-hint}
-1 - pchisq(q, df)
-```
+<div id = "compute-p-hint">
+`1 - pchisq(q, df)`
+</div>
 
 ```{r compute-p-check}
 grade_result(
@@ -493,9 +495,9 @@ Use the code block below to compute the $p$-value associated with this test.
 
 ```
 
-```{r compute-p-indep-hint}
-1 - pchisq(q, df)
-```
+<div id = "compute-p-indep-hint">
+`1 - pchisq(q, df)`
+</div>
 
 ```{r compute-p-indep-check}
 grade_result(
