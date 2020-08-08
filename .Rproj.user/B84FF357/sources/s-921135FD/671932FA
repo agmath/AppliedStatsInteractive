@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1596908120807.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "671932FA",
+    "lastKnownWriteTime" : 1595968850,
+    "last_content_update" : 1595968850,
+    "path" : "~/GitHub/AppliedStatsInteractive/inst/tutorials/4_DataViz/4_DataViz.rmd",
+    "project_path" : "inst/tutorials/4_DataViz/4_DataViz.rmd",
+    "properties" : {
+        "cursorPosition" : "23,125",
+        "scrollLine" : "8"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

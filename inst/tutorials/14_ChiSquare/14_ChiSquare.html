@@ -120,7 +120,7 @@ $(document).ready(function () {
 <h2>Topic 14: Chi-Squared Tests for Goodness of Fit and Independence</h2>
 <div id="section-section" class="section level3">
 <h3></h3>
-<p>In this workbook, we consider methods two new methods for testing claims corresponding to categorical data with possibly more than two levels. Our first method is called the <span class="math inline">\(\chi^2\)</span> (Chi-Squared) Test for Goodnedd of Fit and can be used for testing whether a sample gives evidence to suggest that an assumed discrete distribution is not an appropriate model for a categorical variable. The second is called the <span class="math inline">\(\chi^2\)</span> Test for Independence, and can be used for testing whether two categorical variables are independent of one-another. You’ll be exposed to some examples and some video explanations before being asked to try examples on your own.</p>
+<p>In this workbook, we consider methods two new methods for testing claims corresponding to categorical data with possibly more than two levels. Our first method is called the <span class="math inline">\(\chi^2\)</span> (Chi-Squared) Test for Goodness of Fit and can be used for testing whether a sample gives evidence to suggest that an assumed discrete distribution is not an appropriate model for a categorical variable. The second is called the <span class="math inline">\(\chi^2\)</span> Test for Independence, and can be used for testing whether two categorical variables are independent of one-another. You’ll be exposed to some examples and some video explanations before being asked to try examples on your own.</p>
 </div>
 <div id="section-section-1" class="section level3">
 <h3></h3>
@@ -322,8 +322,8 @@ Use the code block below to enter the degrees of freedom for the <span class="ma
 </div></p>
 </div>
 </div>
-<div id="section-tests-for-independence" class="section level2">
-<h2>Tests for Independence</h2>
+<div id="section-tests-of-independence" class="section level2">
+<h2>Tests of Independence</h2>
 <div id="section-section-18" class="section level3">
 <h3></h3>
 <p>We consider an application in which we are interested in determining whether level of household income (<code>IncomeLevel</code>) and <code>DrugUse</code> by adolescents are independent. In our application we will consider a simulated dataset based off of metrics from the <a href="https://www.cdc.gov/brfss/questionnaires/index.htm"><em>2019 Behavioral Risk Factor Surveillance System</em></a>. The simulated data is stored for you in a data frame called <code>BRFSSsim</code>.</p>
@@ -338,18 +338,14 @@ Use the code block below to enter the degrees of freedom for the <span class="ma
 </div>
 <div id="section-section-20" class="section level3">
 <h3></h3>
-<p>Recap Dr. Çedinkaya-Rundel’s discussion here.</p>
+<p>We now return to our simulated BRFSS data. Each row of the simulated dataset is meant to represent a response from a single adolescent in the USA. Recall that we are interested in determining whether there is evidence to suggest an association between the sociological variables <code>IncomeLevel</code> and <code>DrugUse</code>. The variable <code>IncomeLevel</code> measures level of household income, with the observed values <em>poverty</em>, <em>lowIncome</em>, <em>middleIncome</em>, and <em>highIncome</em>. The variable <code>drugUse</code> denotes whether the individual reports using any illicit drug in the past year, as a <em>yes</em> or <em>no</em> response.</p>
+<p>We suspect the following marginal distributions: within the US, approximately 16% of households fall below the poverty line, approximately 38% can be classified as low income, about 35% as middle income, and the remaining 11% as high income. Additionally, approximately 14% of adolescents are estimated to have used illicit drugs in any given year. Since we have these assumed percentages, we’ll use them in computing our expected counts rather than taking the product of the row and column totals and dividing by 2500 as Dr. Çetinkay-Rundel suggested in the video.</p>
 </div>
 <div id="section-section-21" class="section level3">
 <h3></h3>
-<p>We now return to our simulated BRFSS data. Each row of the simulated dataset is meant to represent a response from a single adolescent in the USA. Recall that we are interested in determining whether there is evidence to suggest an association between the sociological variables <code>IncomeLevel</code> and <code>DrugUse</code>. The variable <code>IncomeLevel</code> measures level of household income, with the observed values <em>poverty</em>, <em>lowIncome</em>, <em>middleIncome</em>, and <em>highIncome</em>. The variable <code>drugUse</code> denotes whether the individual reports using any illicit drug in the past year, as a <em>yes</em> or <em>no</em> response.</p>
-<p>We suspect the following marginal distributions: within the US, approximately 16% of households fall below the poverty line, approximately 38% can be classified as low income, about 35% as middle income, and the remaining 11% as high income. Additionally, approximately 14% of adolescents are estimated to have used illicit drugs in any given year.</p>
-</div>
-<div id="section-section-22" class="section level3">
-<h3></h3>
 <p>Assume that the results in the <code>BRFSSsim</code> dataset are collected by a researcher wishing to determine whether adolescent drug use and household income are independent of one another.</p>
 </div>
-<div id="section-section-23" class="section level3">
+<div id="section-section-22" class="section level3">
 <h3></h3>
 <p><div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
 <div data-label="test-indep-initial-qs-1" class="tutorial-question panel-body">
@@ -374,7 +370,7 @@ Use the code block below to enter the degrees of freedom for the <span class="ma
 </div>
 </div></p>
 </div>
-<div id="section-section-24" class="section level3">
+<div id="section-section-23" class="section level3">
 <h3></h3>
 <div class="panel panel-default">
 <div data-label="hypotheses" class="tutorial-question panel-body">
@@ -385,7 +381,7 @@ Use the code block below to enter the degrees of freedom for the <span class="ma
 </div>
 </div>
 </div>
-<div id="section-section-25" class="section level3">
+<div id="section-section-24" class="section level3">
 <h3></h3>
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the poverty and drug use group:
 <div class="tutorial-exercise" data-label="poverty-drug-use" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -400,7 +396,7 @@ Under the assumption of the null hypothesis, compute the expected number of the 
 Remember from basic probability that two events, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(\mathbb{P}\left[A \text{ and } B\right] = \mathbb{P}\left[A\right]\cdot \mathbb{P}\left[B\right]\)</span>. Apply the same logic here.
 </div>
 </div>
-<div id="section-section-26" class="section level3">
+<div id="section-section-25" class="section level3">
 <h3></h3>
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the low income and drug use group:
 <div class="tutorial-exercise" data-label="lowInc-drug-use" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -412,7 +408,7 @@ Under the assumption of the null hypothesis, compute the expected number of the 
 )</code></pre>
 </div>
 </div>
-<div id="section-section-27" class="section level3">
+<div id="section-section-26" class="section level3">
 <h3></h3>
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the middle income and drug use group:
 <div class="tutorial-exercise" data-label="middleInc-drug-use" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -424,7 +420,7 @@ Under the assumption of the null hypothesis, compute the expected number of the 
 )</code></pre>
 </div>
 </div>
-<div id="section-section-28" class="section level3">
+<div id="section-section-27" class="section level3">
 <h3></h3>
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the high income and drug use group:
 <div class="tutorial-exercise" data-label="highInc-drug-use" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -436,7 +432,7 @@ Under the assumption of the null hypothesis, compute the expected number of the 
 )</code></pre>
 </div>
 </div>
-<div id="section-section-29" class="section level3">
+<div id="section-section-28" class="section level3">
 <h3></h3>
 Okay, you’ve completed half of the two-way table. I’ll fill in the rest in the <em>Expected Results</em> table below. The second table you see holds the actual <em>Observed Results</em>:
 <div class="row">
@@ -582,11 +578,11 @@ Okay, you’ve completed half of the two-way table. I’ll fill in the rest in t
 </div>
 </div>
 </div>
-<div id="section-section-30" class="section level3">
+<div id="section-section-29" class="section level3">
 <h3></h3>
 <p>In the video, Dr. Çetinkaya-Rundel reiterates that we can compute the <span class="math inline">\(\chi^2\)</span> test statistic using a formula analogous to the one we used for <span class="math inline">\(\chi^2\)</span> Goodness of Fit. We have <span class="math display">\[\displaystyle{\chi^2 = \sum_{i = 1}^{k}{\frac{\left(\text{observed} - \text{expected}\right)^2}{\text{expected}}}}\]</span> where <span class="math inline">\(k\)</span> represents the number of cells in the variable-comparison tables. That is, <span class="math inline">\(k\)</span> is given by the product of the number of levels underneath each of the categorical variables, so here we have <span class="math inline">\(k = 8\)</span>.</p>
 </div>
-<div id="section-section-31" class="section level3">
+<div id="section-section-30" class="section level3">
 <h3></h3>
 Use the code block below to compute the <span class="math inline">\(\chi^2\)</span> test statistic. Look back to our earlier application if you need a refresher!
 <div class="tutorial-exercise" data-label="chi-sq-ind" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -599,7 +595,7 @@ grade_result(
 )</code></pre>
 </div>
 </div>
-<div id="section-section-32" class="section level3">
+<div id="section-section-31" class="section level3">
 <h3></h3>
 Compute or input the degrees of freedom associated with this test for independence.
 <div class="tutorial-exercise" data-label="df-ind" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -614,11 +610,11 @@ Compute or input the degrees of freedom associated with this test for independen
 Remember that, in the video, Dr. Çetinkaya-Rundel mentions that the degrees of freedom can be calculated as <span class="math inline">\(df = \left(k-1\right)\cdot\left(\ell - 1\right)\)</span> where <span class="math inline">\(k\)</span> and <span class="math inline">\(\ell\)</span> are the numbers of levels underneath each of the individual categorical variables involved in the test.
 </div>
 </div>
-<div id="section-section-33" class="section level3">
+<div id="section-section-32" class="section level3">
 <h3></h3>
 <p>Now that we’ve computed the test statistic and degrees of freedom associated with our test, we can compute the <span class="math inline">\(p\)</span>-value. Remember that the <span class="math inline">\(p\)</span>-value associated with a <span class="math inline">\(\chi^2\)</span> test for independence can be computed with the <code>pchisq()</code> function as was utilized before.</p>
 </div>
-<div id="section-section-34" class="section level3">
+<div id="section-section-33" class="section level3">
 <h3></h3>
 Use the code block below to compute the <span class="math inline">\(p\)</span>-value associated with this test.
 <div class="tutorial-exercise" data-label="compute-p-indep" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -633,7 +629,7 @@ Use the code block below to compute the <span class="math inline">\(p\)</span>-v
 )</code></pre>
 </div>
 </div>
-<div id="section-section-35" class="section level3">
+<div id="section-section-34" class="section level3">
 <h3></h3>
 <p>Assume the test was to be conducted at the <span class="math inline">\(\alpha = 0.05\)</span> level of significance. Answer the following to determine the results of the test. <div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
 <div data-label="chisq-indep-conclusion-1" class="tutorial-question panel-body">
@@ -667,6 +663,19 @@ library(gradethis)
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
 
 #knitr::opts_chunk$set(eval = FALSE)
+
+set.seed(241)
+
+incomeLevel <- sample(c("Poverty", "LowIncome", "MiddleIncome", "HighIncome"), size = 2500, replace = TRUE, prob = c(0.16, 0.38, 0.35, 0.11))
+BRFSSsim <- data.frame("IncomeLevel" = incomeLevel, "DrugUse" = rep(NA, length(incomeLevel)))
+BRFSSsim$DrugUse[BRFSSsim$IncomeLevel == "Poverty"] <- sample(c("no", "yes"), size = length(incomeLevel[incomeLevel == "Poverty"]), replace = TRUE, prob = c(0.8, 0.2))
+BRFSSsim$DrugUse[BRFSSsim$IncomeLevel == "LowIncome"] <- sample(c("no", "yes"), size = length(incomeLevel[incomeLevel == "LowIncome"]), replace = TRUE, prob = c(0.84, 0.16))
+BRFSSsim$DrugUse[BRFSSsim$IncomeLevel == "MiddleIncome"] <- sample(c("no", "yes"), size = length(incomeLevel[incomeLevel == "MiddleIncome"]), replace = TRUE, prob = c(0.88, 0.12))
+BRFSSsim$DrugUse[BRFSSsim$IncomeLevel == "HighIncome"] <- sample(c("no", "yes"), size = length(incomeLevel[incomeLevel == "HighIncome"]), replace = TRUE, prob = c(0.82, 0.18))
+
+tableSim <- table(BRFSSsim$DrugUse, BRFSSsim$IncomeLevel)
+
+observedInd <- c(tableSim[1, 4], tableSim[1,2], tableSim[1,3], tableSim[1,1], tableSim[2,4], tableSim[2,2], tableSim[2,3], tableSim[2,1])
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">

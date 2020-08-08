@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1596910211215.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2360415145",
+    "id" : "2FF7B058",
+    "lastKnownWriteTime" : 1596911943,
+    "last_content_update" : 1596911943717,
+    "path" : "~/GitHub/AppliedStatsInteractive/inst/tutorials/14_ChiSquare/14_ChiSquare.Rmd",
+    "project_path" : "inst/tutorials/14_ChiSquare/14_ChiSquare.Rmd",
+    "properties" : {
+        "cursorPosition" : "295,572",
+        "scrollLine" : "292"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
