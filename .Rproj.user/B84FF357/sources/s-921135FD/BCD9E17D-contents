@@ -1,0 +1,30 @@
+---
+title: "Topic x: Reproducible Example"
+tutorial:
+  id: "Reprex.TopicX.AppliedStats"
+version: 1.0
+output:
+  learnr::tutorial:
+  progressive: TRUE
+
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+#knitr::opts_chunk$set(eval = FALSE)
+#library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(learnr)
+library(gradethis)
+
+tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+
+boundary1 <- round(runif(1, 0.75, 2), 2)
+```
+
+The boundary is `r boundary1`
+
+```{r test, exercise =TRUE, exercise.eval = FALSE}
+paste0("The boundary is:", boundary1, sep = " ")
+````

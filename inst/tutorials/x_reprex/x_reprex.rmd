@@ -1,0 +1,51 @@
+---
+title: "Topic x: Reproducible Example"
+tutorial:
+  id: "Reprex.TopicX.AppliedStats"
+version: 1.0
+output:
+  learnr::tutorial:
+  progressive: TRUE
+
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+#knitr::opts_chunk$set(eval = FALSE)
+#library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(learnr)
+library(gradethis)
+
+tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+
+boundary1 <- round(runif(1, 0.75, 2), 2)
+```
+
+```{r prelim, echo = FALSE, eval = TRUE}
+boundary2 <- round(runif(1, 0.75, 2), 2)
+boundary3 <- round(runif(1, 0.75, 2), 2)
+boundary4 <- round(runif(1, 0.75, 2), 2)
+```
+
+The boundary is `r boundary1`
+
+```{r test1, exercise =TRUE, exercise.eval = FALSE}
+paste0("The boundary is:", boundary1, sep = " ")
+````
+
+The second boundary is `r boundary2`
+```{r test2, exercise =TRUE, exercise.eval = FALSE, exercise.setup = "prelim"}
+paste0("The boundary is:", boundary2, sep = " ")
+````
+
+The second boundary is `r boundary3`
+```{r test3, exercise =TRUE, exercise.eval = FALSE, exercise.setup = "prelim"}
+paste0("The boundary is:", boundary3, sep = " ")
+````
+
+The fourth boundary is `r boundary4`
+```{r test4, exercise =TRUE, exercise.eval = FALSE, exercise.setup = "prelim"}
+paste0("The boundary is:", boundary4, sep = " ")
+````

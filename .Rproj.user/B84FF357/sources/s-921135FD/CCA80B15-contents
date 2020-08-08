@@ -1,0 +1,412 @@
+---
+title: "Topic 11: Hypothesis Tests and Confidence Intervals for Categorical Data"
+tutorial:
+  id: "HTandCIprop.Topic11.AppliedStats"
+  version: 1.0
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+#knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(ggplot2)
+library(learnr)
+library(gradethis)
+
+
+tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+
+#knitr::opts_chunk$set(eval = FALSE)
+```
+
+## Topic 11: Hypothesis Testing and Confidence Intervals for Categorical Data
+
+In this workbook, we continue our exploration of statistical inference. We'll cover the basic hypothesis testing framework in addition to discussing the confidence intervals you were exposed to in Workbook 10 more formally.
+
+###
+
+We'll motivate this workbook by watching three videos from Dr. David Diez of OpenIntro.org. After each of the videos, you'll walk through a hands-on application of the video content to a new scenario.
+
+###
+
+Our first video discusses *variability in point estimates*. It is likely that some of the content will sound pretty familiar to you since we've were working with the idea of point estimates and variability in the last workbook. Watch the video below, and then we'll engage with the ideas Dr. Diez discusses by walking through an example together.
+
+<center> <iframe width="560" height="315" src="https://www.youtube.com/embed/oLW_uzkPZGA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+
+###
+
+**An Example:** A June 2020 Pew Research survey revealed that [74% of Americans support offering a path to citizenship](https://www.pewresearch.org/fact-tank/2018/06/18/americans-broadly-support-legal-status-for-immigrants-brought-to-the-u-s-illegally-as-children-2/) for undocumented immigrants who were brought to the US illegally as children -- often referred to as [DREAMers](https://www.adl.org/education/educator-resources/lesson-plans/what-is-the-dream-act-and-who-are-the-dreamers). 
+
+###
+
+We've discussed the impossibility of a true census, so the Pew study did not poll every single American to get their estimate. Instead, they surveyed 9,654 US adults between the dates of June 4 and June 10, 2020. You can [find out more about the study logistics here](https://www.pewresearch.org/wp-content/uploads/2020/06/W68-topline_DACA.pdf). This means that the 74% from the article is the proportion of individuals from the study who were in favor of a path to citizenship for the DREAMers.
+
+###
+
+Answer the questions below to check your understanding of some of our terminology.
+```{r dreamers-q1, echo = FALSE}
+quiz(
+  question_checkbox(
+    "The 74% from the Pew Research article is a/an",
+    answer("sample statistic.", correct = TRUE),
+    answer("population parameter."),
+    answer("point estimate.", correct = TRUE),
+    answer("observation."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "There are two correct choices. Identify them both.",
+    correct = "Good work. We often use sample statistic and point estimate interchangeably. A sample statistic serves as a point estimate for the corresponding population parameter."
+  ),
+  question_radio(
+    "What is the parameter of interest here?",
+    answer("The true proportion of American adults who are in favor of a citizenship option for DREAMers", correct = TRUE),
+    answer("The sample proportion of American adults who are in favor of a citizenship option for DREAMers"),
+    answer("74% of American adults"),
+    answer("All DREAMers"),
+    answer("All American adults"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "According to the methodology document, the 9,654 participants were a random sample which is representative of the population of American adults. If the study were to be completed again with a new set of 9,654 participants we would expect",
+    answer("A similar but slightly different result.", correct = TRUE),
+    answer("Exactly the same result."),
+    answer("A completely different result."),
+    answer("It is impossible to determine."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+The code below is set to simulate a random sample of 9,654 individuals for which there is a 74% chance the individual is in support of a path to citizenship for DREAMers and a 26% chance that the individual is not. This code should look somewhat familiar to you, as you did something similar in Workbook 7, where you simulated shots from a basketball player. Run the code in the block a few times to see the results of the simulation.
+```{r sim-dream-support, echo = FALSE, exercise = TRUE}
+samp <- sample(c("Support Citizenship", "Do Not Support Citizenship"), size = 9654, prob = c(0.74, 0.26), replace = TRUE)
+table(samp)
+
+paste0("The proportion supporting the Citizenship option is: ", table(samp)[2]/9654)
+
+paste0("This is a sampling error of: ", table(samp)[2]/9654 - 0.74)
+```
+
+###
+
+By running the code block above multiple times, you've probably seen that most of the samples resulted in a sample proportion which was well-within one percentage point (0.01) of the assumed proportion $p = 0.74$.
+
+In the video Dr. Diez discusses how we can use the *Central Limit Theorem* to quantify how much variability we should see in the point estimate from one sample to the next. In the case of a single proportion, the Central Limit Theorem states the following:
+
+###
+
+<i>**Central Limit Theorem:**</i> When observations are independent and the sample size is sufficiently large, the sample proportion $\hat{p}$ will tend to follow a normal distribution with $\mu = p$ (the true population proportion) and standard error $\displaystyle{S_E = \sqrt{\frac{p\left(1-p\right)}{n}}}$.
+
+###
+
+Use the code block below to answer the questions that follow.
+```{r clt-prop-sandbox, echo = FALSE, exercise = TRUE}
+
+```
+
+```{r clt-prop, echo = FALSE}
+quiz(
+  question_checkbox(
+    "The sample size is sufficiently large, if the *success-failure* condition is satisfied. What is the success-failure condition?",
+    answer("There should be at least an expected 10 observations in each group (here: in favor/not in favor).", correct = TRUE),
+    answer("If the population proportion is $p$ and the sample size is $n$, then $n\\cdot p\\geq 10$ and $n\\cdot\\left(1 - p\\right)\\geq 10$.", correct = TRUE),
+    answer("There should be a possibility that we succeed but also that we fail."),
+    answer("There must be at least one success and one failure."),
+    answer("Failure is an option."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE,
+    incorrect = "There are two again."
+  ),
+  question_radio(
+    "Is the success-failure condition satisfied for the Pew study with 9,654 participants?",
+    answer("Yes. We should expect that there are at least 10 participants in favor of a path to citizenship and at least 10 participants who oppose it.", correct = TRUE),
+    answer("No. We cannot expect at least 10 participants to be in favor of a path to citizenship."),
+    answer("No. We cannot expect at least 10 participants to oppose a path to citizenship."),
+    answer("No. We cannot expect at least 10 participants in either group."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Would the success-failure condition be satisfied for a small study with only 35 participants?",
+    answer("Yes. We should expect that there are at least 10 participants in favor of a path to citizenship and at least 10 participants who oppose it."),
+    answer("No. We cannot expect at least 10 participants to be in favor of a path to citizenship."),
+    answer("No. We cannot expect at least 10 participants to oppose a path to citizenship.", correct = TRUE),
+    answer("No. We cannot expect at least 10 participants in either group."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "What will be the shape of the sampling distribution for samples of size 9,654?",
+    answer("Approximately normal", correct = TRUE),
+    answer("Skewed left"),
+    answer("Skewed right"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Which of the following is expected to be the spread of the sampling distribution? Recall that the spread of the sampling distribution is measured by the standard error.",
+    answer("Approximately 0.0045", correct = TRUE),
+    answer("Approximately 0.00002"),
+    answer("Approximately 0.74"),
+    answer("Approximately 0.26"),
+    answer("Approximately 0.1924"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+Good work -- notice that the standard error is about half of a percentage point (close to $0.005$). Doubling this estimate closely matches what we observed about the sampling error using our simulations. This brings us to our next topic -- *confidence intervals*.
+
+## Intro to Confidence Intervals
+
+You'll start again with a video from Dr. Diez. Once you've watched it, we'll continue with our example about the 2020 Pew Research study on the proportion of American adults who are in favor of a citizenship option for the DREAMers.
+
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/A6_W8qY8zJo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+
+###
+
+As Dr. Diez mentions, a confidence interval can be used to capture a population parameter with some degree of certaintly. In general, we construct a confidence interval using the following formula:
+$$\displaystyle{\left(\tt{point~estimate}\right)\pm \left(\tt{critical~value}\right)\cdot S_E}$$
+where the
+
++ $\tt{point~estimate}$ comes from the sample data
++ $\tt{critical-value}$ is related to the level of confidence
++ $S_E$ is the standard error, which measures the spread of the sampling distribution
+
+###
+
+Recall that we've been working with a 2020 Pew Research study which included 9,654 participants. The study resulted in 74% of participants being in favor of a path to citizenship for the DREAMers, and we computed the standard error to be approximately $0.0045$.
+
+###
+
+If we are sure that a sampling distribution is well-modeled by a normal distribution, we have the following critical values associated with several common levels of confidence.
+
++ The critical value for a 90% confidence interval is 1.65
++ The critical value for a 95% confidence interval is 1.96
++ The critical value for a 98% confidence interval is 2.33
++ The critical value for a 99% confidence interval is 2.58
+
+###
+
+Use what you learned in the video and your knowledge of the Pew Research study to answer the following questions.
+```{r build-ci-questions, echo = FALSE}
+quiz(
+  question_radio(
+    "The *point estimate* for our confidence interval is",
+    answer("0.74", correct = TRUE),
+    answer("74"),
+    answer("7,144"),
+    answer("9,654"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "The standard error ($S_E$) is",
+    answer("0.0045", correct = TRUE),
+    answer("0.5"),
+    answer("0.74"),
+    answer("9,653"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "The appropriate critical value to use for a 98% confidence interval is",
+    answer("0.74"),
+    answer("1.65"),
+    answer("1.96"),
+    answer("2.33", correct = TRUE),
+    answer("2.58"),
+    allow_retry = TRUE
+  ),
+  question_checkbox(
+    "Which of the following are the bounds for a 98% confidence interval?",
+    answer("0.7295", correct = TRUE),
+    answer("0.7312"),
+    answer("0.74"),
+    answer("0.7489"),
+    answer("0.7505", correct = TRUE),
+    allow_retry = TRUE
+  ),
+  question_radio(
+    "Which of the following is the correct interpretation of the confidence interval?",
+    answer("We are 98% confident that the true population proportion of American adults supporting a path to citizenship for the DREAMers is between the *lower bound* and the *upper bound*.", correct = TRUE),
+    answer("The true population proportion of American adults supporting a path to citizenship for the DREAMers is between the *lower bound* and the *upper bound*."),
+    answer("The probability that the true population proportion of American adults supporting a path to citizenship for the DREAMers is between the *lower bound* and the *upper bound* is 98%."),
+    answer("We are 98% confident that the sample proportion of American adults supporting a path to citizenship for the DREAMers is between the *lower bound* and the *upper bound*."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Without computing the bounds, a 90% confidence interval would be",
+    answer("Wider than the 98% confidence interval."),
+    answer("More narrow than the 98% confidence interval.", correct = TRUE),
+    answer("Exactly the same as the 98% confidence interval"),
+    answer("It is impossible to tell without computing the bounds."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+### 
+
+So far, so good! There's one more topic to go. Sometimes we'll want to test a claim about a population parameter rather than build a confidence interval for it. Inferential statistics provides a formal framework called the *hypothesis test* for evaluating statistical claims such as.
+
++ Is a population mean or proportion larger/smaller/different than some proposed value?
++ Do the population means or proportions different across multiple groups?
+
+## Intro to Hypothesis Testing
+
+Here's one more video from Shannon McLintock (also of Openintro.org) introducing the notion of the hypothesis test.
+
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/NVbPE1_Cbx8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+
+##
+
+A [2018 poll and story from NPR](https://www.npr.org/2018/02/06/583402634/npr-poll-2-in-3-support-legal-status-for-dreamers-majority-oppose-building-a-wal) reported that 65% of Americans supported a path to citizenship for DREAMers. Does the new poll from Pew Research provide evidence that support to a pathway to citizenship for dreamers has grown over the past two years? Use an $\alpha = 0.05$ level of significance.
+
+###
+
+Use what you learned from Dr. McClintock in the video about hypothesis testing to answer the following questions and complete the hypothesis test. You can use the code block below for any calculations you need to make.
+```{r ht-questions-sandbox, echo = FALSE, exercise = TRUE}
+
+```
+
+```{r ht-questions, echo = FALSE}
+quiz(
+  question_radio(
+    "Which of the following are the hypotheses used to test this claim?",
+    answer("$\\begin{array}{ll} H_0: & p = 0.65\\ H_a: p > 0.65\\end{array}$", correct = TRUE),
+    answer("$\\begin{array}{ll} H_0: & p = 0.65\\ H_a: p < 0.65\\end{array}$"),
+    answer("$\\begin{array}{ll} H_0: & p = 0.65\\ H_a: p \\neq 0.65\\end{array}$"),
+    answer("$\\begin{array}{ll} H_0: & p = 0.74\\ H_a: p > 0.74\\end{array}$"),
+    answer("$\\begin{array}{ll} H_0: & p = 0.74\\ H_a: p < 0.74\\end{array}$"),
+    answer("$\\begin{array}{ll} H_0: & p = 0.74\\ H_a: p \\neq 0.74\\end{array}$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "What is the level of significance for the test?",
+    answer("$\\alpha = 0.1$"),
+    answer("$\\alpha = 0.05$", correct = TRUE),
+    answer("$\\alpha = 0.02$"),
+    answer("$\\alpha = 0.01$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "What is the point estimate?",
+    answer("$\\hat{p} = 0.65$"),
+    answer("$\\hat{p} = 0.74$", correct = TRUE),
+    answer("$\\hat{p} = 0.5$"),
+    answer("$\\hat{p} = 0.09$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "What is the null value?",
+    answer("$p = 0.65$", correct = TRUE),
+    answer("$p = 0.74$"),
+    answer("$p = 0.5$"),
+    answer("$p = 0.09$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "In this case we can compute the standard error as: $S_E = \\sqrt{\\frac{p\\left(1 - p\\right)}{n}}$. Which of the following is the standard error? (round to four decimal places)",
+    answer("$S_E = 0.0049$", correct = TRUE),
+    answer("$S_E = 0.0045$"),
+    answer("$S_E = 0.0042$"),
+    answer("$S_E = 0.0052$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Recall from the video that we can compute the test statistic as $\\tt{test~statistic} = \\frac{\\left(\\tt{point~estimate}\\right) - \\left(\\tt{null~value}\\right)}{S_E}$. Which of the following is the test statistic? (round to two decimal places)",
+    answer("$z = 20$"),
+    answer("$z = 18.37$", correct = TRUE),
+    answer("$z = 1.65$"),
+    answer("$z = 2.33$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Use the `pnorm()` function to compute the $p$-value associated with this test.",
+    answer("$p\\text{-vaue} = 0$"),
+    answer("$p\\text{-value}\\approx 0$", correct = TRUE),
+    answer("$p\\text{-value} = 1$"),
+    answer("$p\\text{-value} = 0.05$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Which of the following is the conclusion of the hypothesis test?",
+    answer("The $p$-value is less than $\\alpha$ so we reject the null hypothesis and accept the alternative.", correct = TRUE),
+    answer("The $p$-value is less than $\\alpha$ so we accept the null hypothesis."),
+    answer("The $p$-value is at least as large as $\\alpha$ so we reject the null hypothesis and accept the alternative."),
+    answer("The $p$-value is at least as large as $\\alpha$ so we accept the null hypothesis."),
+    answer("The $p$-value is at least as large as $\\alpha$ so we do not have enough evidence to reject the null hypothesis."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Which of the following is the result of the hypothesis test in context?",
+    answer("We have evidence to suggest that the proportion of American adults in favor of a path to citizenship has increased since 2018.", correct = TRUE),
+    answer("We do not have evidence to suggest that the proportion of American adults in favor of a path to citizenship has increased since 2018."),
+    answer("We have evidence to suggest that the proportion of American adults in favor of a path to citizenship has stayed the same since 2018."),
+    answer("We do not have evidence to suggest that the proportion of American adults in favor of a path to citizenship has stayed the same since 2018."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+## Summary
+
+As a recap, this workbook covered the following main points and ideas:
+
++ *Sample statistics* provide a *point estimate* for their corresponding *population parameters*.
+  + A sample mean provides an estimate of a population mean.
+  + A sample proportion provides an estimate of a population proportion.
+  + Any sample metric can propvide an estimate for the corresponding population metric.
++ Sample statistics provide reasonable point estimates only when the sample used is representative of the population we wish to generalize to.
++ Each sample taken will result in a different sample statistic, and therefore a different point estimate for the population parameter. 
+  + Much of statistics is focused on quantifying the variability in these point estimates.
+  
+###
+  
++ A *confidence interval* is used to capture a population parameter with some desired degree of confidence. We compute the bounds for a confidence interval with the expression below.
+$$\left(\tt{point~estimate}\right)\pm\left(\tt{critical~value}\right)\cdot S_E$$
+  + The $\tt{point~estimate}$ is an estimate from a sample -- that is, the point estimate is a sample statistic.
+  + The $\tt{critical~value}$ depends on the desired level of confidence and the distribution being used to model the sampling distribution.
+  + The $\tt{standard~error}$ ($S_E$) quantifies the variability in the point estimate (expected variation due to different samples being taken).
+  + The interpretation of a confidence interval is that "We are XX% confident that the true $\tt{population~parameter}$ lies between $\tt{lower~bound}$ and $\tt{upper~bound}$".
+
+###
+  
++ A *hypothesis test* provides a formal framework for testing claims about a population parameter across one or more populations.
+  + We begin with two hypotheses -- the null hypothesis ($H_0$), and the alternative hypothesis ($H_a$). The null hypothesis is a statement assuming the "status quo" while the alternative hypothesis is the claim to be tested.
+  + We set a level of significance, denoted by $\alpha$, which determines how unlikely our sample must be in order for us to favor the alternative hypothesis over the null hypothesis.
+  + We use our sample data and null hypothesis to compute a test statistic:
+  $$\displaystyle{\tt{test~statistic} = \frac{\left(\tt{point~estimate}\right) - \left(\tt{null~value}\right)}{S_E}}$$
+    + The $\tt{point~estimate}$ is an estimate from a sample -- that is, the point estimate is a sample statistic.
+    + The $\tt{null~value}$ is the assumed value of the population parameter from the null hypothesis.
+    + The $\tt{standard~error}$ ($S_E$) quantifies the variability in the point estimate (expected variation due to different samples being taken).
+  + Once we have a test statistic, we use it to compute a $p$-value which will be compared to the level of significance, $\alpha$.
+    + The $p$ value measures the probability that we would observe a sample at least as favorable to the alternative hypothesis as our observed sample, under the assumption that the null hypothesis is true.
+    + A $p$-value smaller than the $\alpha$ threshold results in the conclusion that our sample was so unlikely that we claim it as evidence that the null hypothesis is false.
+
+###
+
+As a final item, here's a [link to a document](www/StdErrorDecisionTree.pdf){target="_blank"} that we'll make heavy use of for the remainder of our class. The document probably looks intimidating right now, but look at the bottom-right corner. There's our confidence interval formula! Similarly, on the lower left is the general formula for a test statistic. For now, know that you aren't expected to know what almost anything on this document means yet. It will all be explained soon enough.

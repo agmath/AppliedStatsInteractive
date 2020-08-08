@@ -34,13 +34,19 @@ This is the first of a series of interactive workbooks you'll use to engage cont
 
 ## An Introduction to Data
 
+###
+
 Throughout Chapter 1 of our textbook the authors reference the `email50` dataset. In this workbook you'll encounter two new datasets -- one concerning real estate from King County, WA (`houses`) and another containing prices and attributes of almost 54,000 diamonds (`diamonds`). The `homes` data is shown below in a convenient form where the rows of data represent *records* (sometimes called **observations**), and the columns represent **variables** (sometimes called **features**). We'll see later in our course that such data is called *tidy*.
+
+###
 
 ```{r showData, exercise = FALSE, echo = FALSE}
 head(housesSubset[sample(1:nrow(housesSubset), size = nrow(housesSubset), replace = FALSE), ])
 ```
 
 You can see the first six rows of the dataset above. A simplified *data dictionary* (a map of column names and explanations) appears below.
+
+###
 
 + `id` provides the property identification number.
 + `month` gives the month that the property was listed for sale.
@@ -50,9 +56,14 @@ You can see the first six rows of the dataset above. A simplified *data dictiona
 + `waterfront` indicates whether the property is waterfront.
 + `exterior` provides a description of the exterior covering of the home.
 
-### Variable Types
+
+## Variable Types
+
+###
 
 Variables which take on numerical values <u>and</u> for which measures such as the mean, median, or standard deviation are meaningful are referred to as **numerical**. Non-numerical variables which serve to group data into categories are called **categorical** (eg. the color of a car or an area code prefix for a telephone number). It is possible for data to be neither numerical nor categorical -- for example, a **unique identifier** is a non-numeric variable which is unique to each record. A timestamp may be an example of a unique identifier -- all is not lost, however, with a bit of pre-processing we sometimes extract useful information from these columns.
+
+###
 
 Answer the following using your knowledge of the dataset and variable types.
 
@@ -100,17 +111,25 @@ try_again = "There's just one here!"
 )
 ```
 
+###
+
 The **levels** of a variable are the different (unique) values that the variable takes on. For example, a dataset on student might include a variable called `ClassYear` with the levels *Freshmen*, *Sophomore*, *Junion*, *Senior*. Numerical variables also have levels -- usually there are lots of levels corresponding to a numerical variable, but if there are too few, we may be better off considering the corresponding variable to be categorical. For example, if we had a dataset that included a `Year` variable, but the only observed levels in the dataset are 2008 and 2017, we may be better off thinking about `Year` as a categorical variable than as a numerical one.
 
 ## Relationships between variables
 
+###
+
 **Association, Independence, Correlation:** Two variables are *associated* with one another if a change in levels of one is generally accompanied by change in the other. That is, larger values of one variable are accompanied by larger (or smaller) values in the other. Think – does knowing something about one of the variables give me any information about the other? If two variables are not associated, then we might say that they are *independent* of one another. Lastly, *correlation* is a way to formally measure the strength of a <u>LINEAR</u> association between two variables. Look at the plots considering characteristics of various diamonds below.
+
+###
 
 ```{r plots-associations-num, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
 ggplot(data=diamonds) + geom_point(mapping = aes(x = carat, y = price), color = "blue", alpha = .15) + labs(title = "Price by Carat", x = "Carat", y = "Price")
 ggplot(data=diamonds) + geom_point(mapping = aes(x = carat, y = depth), color = "blue", alpha = .15) + labs(title = "Carat by Depth", x = "Depth", y = "Carat")
 ggplot(data=diamonds) + geom_point(mapping = aes(x = x, y = y), color = "blue", alpha = .15) + labs(title = "Length by Width", x = "Length (mm)", y = "Width (mm)")
 ```
+
+###
 
 Use the plots above to answer the following questions.
 
@@ -143,7 +162,11 @@ allow_retry = TRUE
 )
 ```
 
+###
+
 Since both of the variables in each of the plots above are numerical, we can describe the direction of the association. Notice that there is a *positive* association in both of the plots you identified above, since an increase in one of the variables is generally accompanied by an increase in the other. If two numerical variables are associated but an increase in one is generally accompanied by a decrease in the other, we say that the association is *negative*. For those familiar with lines and slopes, the direction of the association corresponds to the sign on the slope of a line of "best fit" (which we will discuss at the end of our course).
+
+###
 
 We can also identify whether an association exists between variables when one or more are categorical. Consider the plots below which refer back to our `houses` dataset from earlier.
 
@@ -154,6 +177,8 @@ ggplot(data=housesSubset) + geom_boxplot(mapping = aes(x = waterfront, y = price
 ggplot(data=housesSubset) + geom_bar(mapping = aes(x = waterfront, fill = exterior), position = "fill") + labs(title = "Exterior Covering and Waterfront", x = "Waterfront") + theme(legend.position = "below")
 ```
 
+###
+
 ```{r plots-associations-questions-cat, echo = FALSE}
 question_checkbox(
 "One of the plots above shows an association between the corresponding variables. Which one is it?",
@@ -163,20 +188,34 @@ allow_retry = TRUE
 )
 ```
 
+###
+
 Did you get the previous question right on the first try? Think about why the answer is as this workbook indicates and ask a question if you need more clarification.
 
+###
+
 **Major Questions In Statistics**: Given groups with different characteristics (differing levels) regarding variable *X*, do they differ with respect to variable *Y*?
+
+###
 
 We'll find that we can't just answer these questions by looking at plots involving some sample data. Why not?
 
 ## Data collection principles
 
+###
+
 **Population vesus Sample**: In statistics, we almost always want to apply generalizations from a small sample to a large population -- you might think of this as a sort of *stereotyping*. The trick here is that for our assertions (generalizations) to be valid, our sample must be *representative of* our population.
+
+###
 
 <center> **Critical:** *Results based off of a sample may only be generalized to a population for which that sample is representative.* </center>
 <br/>
 
+###
+
 **Sampling Strategies**: There are many sampling techniques. We will focus on census, simple random sample, stratified sample, and convenience sample. 
+
+###
 
   * If we could sample every object in a population we would be taking a *census*. While census would give us certainty in an answer to a statistical question, it is infeasible to conduct a census due to non-response and fluid populations.
 
@@ -192,6 +231,8 @@ ggplot(data = pop) + geom_point(mapping = aes(x = x, y = y), size = 2, color = "
 </center>
 <br/>
 
+###
+
   * The *simple random sample* is the GOLD STANDARD in statistics. We randomly select some significant number of individuals from the entire population and record variables from them. The advantage here is that we are likely to attain a sample of results that are representative of the entire population.
 <center>
 ```{r echo = FALSE, eval = TRUE, fig.width=3.5, fig.height=2.75}
@@ -201,19 +242,36 @@ ggplot(data = pop) + geom_point(mapping = aes(x = x, y = y, color = samp), size 
 ```
 </center>
 
+###
+
   * The *stratified sample* is used to ensure that we include representatives of all groups within our sample. Stratified sampling is particularly useful in cases where the population is segmented (that is, there are clear groups which may potentially have different responses)
   <center> ![](images/stratified.png)</center>
+
+###
+
   * The *cluster sample* is used when we can argue that there are many small "populations" that are truly representative of the larger population. The clustering method is typically used to reduce costs (financial or otherwise).
   <center> ![](images/cluster.png)</center>
+  
+###
+
   * A variation on clustering is called the *two-stage* sample. With this method, observations are first clustered and clusters are chosen at random. Second, within each of the chosen clusters a simple random sample is taken. Notice that this method occurs in two stages, as in the name.
+
+###
+
   * The *convenience sample* is the most typically used sampling method. Unfortunalely, it is also the worst. When researchers sample from individuals they have "easy access" to, they are conducting a convenience sample. There are always hidden biases in these samples. Do a quick Google search for "FDR versus Alf Landon Sampling Error" to see a very famous example here. In addition, much of the error in predicting the 2016 presidential election may be attributable to convenience sampling.
 
 ## Experimental Design
 
+###
+
 **Experiment versus Observational Study**: Beyond just sampling, there are multiple methods for collecting data. We can just *observe* what happens naturally, without manipulating any conditions, or we can run an *experiment*, where we manipulate one or more conditions, utilizing a control and treatment group(s). The advantage to an experiment is that we can infer cause and effect relationships (this is extremely important in medical studies), but in observational studies we can only discuss an association between variables.
+
+###
 
 **Predictor versus Response Variables**: Typically in statistics we will identify a question (whose answer corresponds to a response variable) with respect to a population. We will take a representative sample of that population. From that sample we will collect observed responses as well as observations on other variables (maybe gender, age, political affiliation, etc). 
 The non-response variables are called *predictor variables*. In general, predictor variables are quantities which we expecte *might effect* the response variable.
+
+###
 
 There's lots more to learn about experimental design, but it is beyond the scope of our course. You should read pages 32 through 35 of [OpenIntro Statistics, 4Ed](https://www.openintro.org/book/os/) as a starting point.
 

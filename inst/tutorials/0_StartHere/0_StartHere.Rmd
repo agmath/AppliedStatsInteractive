@@ -39,7 +39,7 @@ Each workbook introduces statistics content and allows the user to interact with
 
 ###
 
-If you've found these workbooks, I hope that you find them helpful. These workbooks are adapted versions of my course notes from MAT240 Introduction to Applied Statistics and MAT241 Modern Statistics with Software at Southern New Hampshire University. Much of the content comes from [OpenIntro.org](http://www.openintro.org) and the [4th edition of OpenIntro Statistics](https://leanpub.com/openintro-statistics) which is open source and freely available. In addition to the free resources available at OpenIntro.org, I've developed a freely available online homework supplement to the OpenIntro Statistics textbook at [MyOpenMath](www.myopenmath.com). The workbook on Data Visualization is adapted from Chapter 3 of [Grolemund and Wickham's *R for Data Science*](https://r4ds.had.co.nz/), which is an excellent addition to the library of any aspiring data scientist.
+If you've found these workbooks, I truly hope that you find them helpful. These workbooks are adapted versions of my course notes from introductory statistics courses for first-year students at my current university. Much of the content is supplementary to [OpenIntro.org](http://www.openintro.org) and the [4th edition of OpenIntro Statistics](https://leanpub.com/openintro-statistics) which is open source and freely available. In addition to the free resources available at OpenIntro.org, I've developed a freely available online homework supplement to the OpenIntro Statistics textbook at [MyOpenMath](www.myopenmath.com) -- instructions for gaining access are available from OpenIntro.org. While most of the content does leverage content found at the OpenIntro site and text, the workbook on Data Visualization is adapted from Chapter 3 of [Grolemund and Wickham's *R for Data Science*](https://r4ds.had.co.nz/), which is an excellent addition to the library of any aspiring data scientist. If you have not found it already, please check it out.
 
 ### 
 
@@ -72,7 +72,7 @@ If you are considering whether to use these notebooks as part of a course or sel
 
   + Depending on the date which you or students install the `AppliedStatsInteractive` package, the individual installing at a later date may notice additional features. For example, I am working on creating/curating, and embedding more video instruction.
   
-+ If you are accessing these notebooks from a web-browser via the Amazon EC2 instance, know that they are hosted on a *free-tiered* server. This means that you may encounter poor performance or that the notebooks may become unavailable if usage surpasses the free time allotment in a particular month. It is better to run these notebooks via the R package.
++ If you are accessing these notebooks from a web-browser via the Amazon EC2 instance, know that they are hosted on a *free-tiered* server. This means that you may encounter poor performance or that the notebooks may become unavailable if usage surpasses the free compute time allotment in a particular month. It is better to run these notebooks via the R package.
   
   + You can install R by going to [CRAN](https://cran.r-project.org/), choosing the appropriate OS, and following the installer instructions.
   + While not necessary for running these notebooks, you may want to obtain RStudio which is a convenient IDE for interfacing with the R language. You can get it from the [RStudio website](https://rstudio.com/products/rstudio/download/). Again, choose the appropriate OS and follow the installer instructions.
@@ -82,4 +82,4 @@ If you are considering whether to use these notebooks as part of a course or sel
 
 ###
 
-Whether you are an instructor, student, or self-paced-learner, I wish you good fortune as you embark on your statistics journey.
+Whether you are an instructor, student, or self-paced-learner, I hope you enjoy your statistics journey.
