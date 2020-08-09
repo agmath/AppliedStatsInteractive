@@ -116,14 +116,15 @@ $(document).ready(function () {
 
 <div class="topics">
 
-<div id="section-topic-6-the-normal-distribution" class="section level1">
-<h1>Topic 6: The Normal Distribution</h1>
+<div id="section-topic-6-the-normal-distribution" class="section level2">
+<h2>Topic 6: The Normal Distribution</h2>
 <div id="section-section" class="section level3">
 <h3></h3>
-<p>Throughout this workbook we’ll investigate the probability distribution that is most central to statistics: the normal distribution. If we are confident that our data are nearly normal, that opens the door to many powerful statistical methods. We’ll start by estimating probabilities using the normal distribution as a model and then we’ll move on to an application using some real estate data and explore the impacts of assuming the normal model in two different scenarios.</p>
+<p>Throughout this workbook we’ll investigate the probability distribution that is most central to our study of statistics: the normal distribution. If we are confident that our data are nearly normal, that opens the door to many powerful statistical methods. This workbook gives you practice in working with normally distributed data.</p>
 </div>
 <div id="section-section-1" class="section level3">
 <h3></h3>
+</div>
 </div>
 <div id="section-objectives" class="section level2">
 <h2>Objectives</h2>
@@ -222,15 +223,16 @@ $(document).ready(function () {
 </div>
 <div id="section-standardization-and-z-scores" class="section level2">
 <h2>Standardization and <span class="math inline">\(z\)</span>-scores</h2>
-<p><strong>Scenario:</strong> Two students, Bob and Sally, are trying to compare how well they did on a college entrance exam. The difficulty comes in that Bob took the SAT which is known to follow an approximate normal distribution with a mean score of 1068 and a standard deviation of 210 while Sally took the ACT which is also follows an approximately normal distribution with a mean score of 20.8 and a standard deviation of 5.8. If Bob scored a 1400 on the SAT and Sally scored a 31 on the ACT, who scored relatively higher?</p>
+<p><strong>Scenario:</strong> Two students, Bob and Sally, are trying to compare how well they did on a college entrance exam. The difficulty comes in that Bob took the SAT which is known to follow an approximate normal distribution with a mean score of 1068 and a standard deviation of 210 while Sally took the ACT which also follows an approximately normal distribution but with a mean score of 20.8 and a standard deviation of 5.8. If Bob scored a 1400 on the SAT and Sally scored a 31 on the ACT, who scored relatively higher?</p>
 <p>How do we answer this question? We’ll see two methods.</p>
 <div id="section-section-11" class="section level3">
 <h3></h3>
 <p><strong>Method 1:</strong> We can standardize the test scores so that they have comparable units.</p>
 <ul>
-<li><strong>Definition:</strong> An observation’s <span class="math inline">\(z\)</span>-score is the number of standard deviations it falls above or below the mean. If an observation <span class="math inline">\(x\)</span> comes from a nearly normal population with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> then we compute <span class="math inline">\(z\)</span>-score associated with <span class="math inline">\(x\)</span> as follows:</li>
+<li><strong>Definition:</strong> If an observation <span class="math inline">\(x\)</span> comes from a nearly normal population with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> then we compute <span class="math inline">\(z\)</span>-score associated with <span class="math inline">\(x\)</span> as follows:</li>
 </ul>
 <p><span class="math display">\[\displaystyle{z = \frac{x - \mu}{\sigma}}\]</span></p>
+<p>An observation’s <span class="math inline">\(z\)</span>-score is simply the number of standard deviations it falls above or below the mean.</p>
 </div>
 <div id="section-section-12" class="section level3">
 <h3></h3>
@@ -331,7 +333,7 @@ $(document).ready(function () {
 </div>
 <div id="section-section-18" class="section level3">
 <h3></h3>
-<p>We’ll make good use of this second method for a while, but don’t forget about standardization and <span class="math inline">\(z\)</span>-scores. We’ll need that later on! For now, let’s move on to practicing with fiding probabilities from a normal distribution using R’s <code>pnorm()</code> function.</p>
+<p>We’ll make good use of this second method for a while, but don’t forget about standardization and <span class="math inline">\(z\)</span>-scores. We’ll need that strategy quite often later in our course! For now, let’s move on to practicing with finding probabilities from a normal distribution using R’s <code>pnorm()</code> function.</p>
 </div>
 </div>
 <div id="section-computing-probability-from-a-normal-distribution" class="section level2">
@@ -503,6 +505,11 @@ $(document).ready(function () {
 <pre class="text"><code>qnorm(0.95, 1068, 210)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="find-percentile-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>grade_result(
+  pass_if(~ (abs(.result - qnorm(0.9, 20.8, 5.8)) &lt; 0.1))
+)</code></pre>
+</div>
 </div>
 </div>
 <div id="section-practice-with-the-normal-and-binomial-distributions" class="section level2">
@@ -669,7 +676,7 @@ $(document).ready(function () {
 <ul>
 <li><p>A normal distribution is approximately bell-shaped and can be described by its mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>.</p></li>
 <li><p>As a shorthand, we often write <span class="math inline">\(N\left(\mu, \sigma\right)\)</span> to mean the normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>.</p></li>
-<li><p>The <em>Empirical Rule</em> states that, if data is normally distributed we expect:</p>
+<li><p>The <em>Empirical Rule</em> is a “rule of thumb” that states that, if data is normally distributed we expect:</p>
 <ul>
 <li>Approximately 67% of observations fall within one standard deviation of the mean.</li>
 <li>Approximately 95% of observations fall within two standard deviations of the mean.</li>
@@ -919,7 +926,6 @@ output$`tutorial-exercise-GRE-VR-percent-above-output` <- renderUI({
 <!--/html_preserve--></li>
 </ul></li>
 </ul>
-</div>
 </div>
 
 </div> <!-- topics -->

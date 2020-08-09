@@ -116,11 +116,11 @@ $(document).ready(function () {
 
 <div class="topics">
 
-<div id="section-descriptive-statistics-for-numerical-and-categorical-data" class="section level1">
-<h1>Descriptive Statistics for Numerical and Categorical Data</h1>
+<div id="section-descriptive-statistics-for-numerical-and-categorical-data" class="section level2">
+<h2>Descriptive Statistics for Numerical and Categorical Data</h2>
 <div id="section-section" class="section level3">
 <h3></h3>
-<p><strong>Workbook Objectives:</strong> This workbook covers the following objectives (<strong>edit these!</strong>)</p>
+<p><strong>Workbook Objectives:</strong> This workbook covers the following objectives.</p>
 <ul>
 <li>Compute and discuss appropriate summaries for both numerical and categorical data</li>
 <li>Regarding numerical variables, discuss the difference between mean and median as well as standard deviation and inter-quartile range. Identify when each measure is appropriate.</li>
@@ -132,6 +132,7 @@ $(document).ready(function () {
 <li>A variable is <em>categorical</em> if it serves to sort observations into different groups (categories).</li>
 <li>The unique values which a variable takes are called the <em>levels</em> of that variable.</li>
 </ul>
+</div>
 </div>
 <div id="section-summarizing-numerical-quantitative-data" class="section level2">
 <h2>Summarizing Numerical (Quantitative) Data</h2>
@@ -174,7 +175,7 @@ $(document).ready(function () {
 </div>
 <div id="section-section-3" class="section level3">
 <h3></h3>
-<p>In <code>R</code> we can easily compute the means and medians for our samples or for the entire dataset! Remember from our first workbook that the <code>$</code> operator can be used to access an entire column of a data frame. I’ve stored the samples in a data frame called <em>samples</em>. <code>R</code> includes a function <code>mean()</code> for computing the mean of a list of numbers and a function <code>median()</code> for computing the median. This means that we could compute the mean of <code>Sample_Two</code> using <code>mean(samples$Sample_Two)</code>.</p>
+<p>In <code>R</code> we can easily compute the means and medians for our samples or for the entire dataset! Remember from our most recent workbook that the <code>$</code> operator can be used to access an entire column of a data frame. I’ve stored the samples in a data frame called <em>samples</em>. <code>R</code> includes a function <code>mean()</code> for computing the mean of a list of numbers and a function <code>median()</code> for computing the median. This means that we could compute the mean of <code>Sample_Two</code> using <code>mean(samples$Sample_Two)</code>.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Use the code block below so that it computes the mean of <code>Sample_Three</code> using the <code>$</code> operator to access the <code>Sample_Three</code> column of the <code>samples</code> data frame.
 <div class="tutorial-exercise" data-label="mean-samp-three" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -313,10 +314,11 @@ median(c(0, 15, 25, 35, 50))</code></pre>
 </div>
 <div id="section-section-11" class="section level3">
 <h3></h3>
-<p>In <code>R</code> we can easily compute the standard deviation with the function <code>sd()</code>, and IQR with the function <code>quantiles()</code> for our samples or for the entire dataset! Recall that our diamond samples are stored in a data frame called <code>samples</code>. The code block below is preset to compute the standard deviation and IQR for <code>Sample_One</code>. Note that in the <code>quantiles()</code> function the <code>0.25</code> identifies the 25th percentile (<span class="math inline">\(Q1\)</span>) and the <code>0.75</code> identifies the 75th percentile (<span class="math inline">\(Q3\)</span>). Run the code to find the standard deviation, Q1, and Q2 for <code>Sample_One</code>. Once you’ve done that, edit the existing code to compute these metrics for the other two samples.</p>
+<p>In <code>R</code> we can easily compute the standard deviation with the function <code>sd()</code>, and IQR with the function <code>quantiles()</code> for our samples or for the entire dataset! Recall that our diamond samples are stored in a data frame called <code>samples</code>. The code block below is preset to compute the standard deviation, Q1, Q3, and IQR for <code>Sample_One</code>. Note that in the <code>quantiles()</code> function the <code>0.25</code> identifies the 25th percentile (<span class="math inline">\(Q1\)</span>) and the <code>0.75</code> identifies the 75th percentile (<span class="math inline">\(Q3\)</span>). Run the code to find the standard deviation, Q1, and Q2 for <code>Sample_One</code>. Once you’ve done that, edit the existing code to compute these metrics for the other two samples.</p>
 <div class="tutorial-exercise" data-label="compute-sd-iqr" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>sd(samples$Sample_One)
-quantile(samples$Sample_One, c(0.25, 0.75))</code></pre>
+quantile(samples$Sample_One, c(0.25, 0.75))
+IQR(samples$Sample_One)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
 </div>
@@ -338,6 +340,8 @@ quantile(samples$Sample_One, c(0.25, 0.75))</code></pre>
 </div>
 <div id="section-summarizing-categorical-qualitative-factor-data" class="section level2">
 <h2>Summarizing Categorical (Qualitative, Factor) Data</h2>
+<div id="section-section-14" class="section level3">
+<h3></h3>
 Categorical data is best summarized using a frequency table. That is, we use a table that lists how <em>frequent</em> each observation occured in the dataset. For example, consider the samples of diamond <em>cuts</em> below:
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -350,7 +354,8 @@ We can use <code>R</code>’s <code>table()</code> function to construct frequen
 table(cut.samples$Sample_One)/nrow(cut.samples)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
-<div id="section-section-14" class="section level3">
+</div>
+<div id="section-section-15" class="section level3">
 <h3></h3>
 <p>Below, we can see the distributions of diamond <code>cut</code> from <code>Sample_Two</code> (left) and from our entire population (right) below. Even with a sample of 8 diamonds, we gain some insight as to the most and least common diamond cuts. You may also notice that the frequency and relative frequency plots look identical aside from the scale on the vertical axis – this will be the case in general.</p>
 <p><img src="3_DescriptiveNumCat_files/figure-html/unnamed-chunk-3-1.png" width="384" /><img src="3_DescriptiveNumCat_files/figure-html/unnamed-chunk-3-2.png" width="384" /><img src="3_DescriptiveNumCat_files/figure-html/unnamed-chunk-3-3.png" width="384" /><img src="3_DescriptiveNumCat_files/figure-html/unnamed-chunk-3-4.png" width="384" /></p>
@@ -371,7 +376,8 @@ table(cut.samples$Sample_One)/nrow(cut.samples)</code></pre>
 <li>Compute the <strong>mean</strong>: <code>mean(&lt;data&gt;)</code></li>
 <li>Compute the <strong>median</strong>: <code>median(&lt;data&gt;)</code></li>
 <li>Compute the <strong>standard deviation</strong>: <code>sd(&lt;data&gt;)</code></li>
-<li>Compute the boundaries for the <strong>interquartile range</strong>: <code>quantile(&lt;data&gt;, c(0.25, 0.75))</code></li>
+<li>Compute the <strong>boundaries for the interquartile range</strong>: <code>quantile(&lt;data&gt;, c(0.25, 0.75))</code></li>
+<li>Compute the <strong>interquartile range</strong>: <code>IQR(&lt;data&gt;)</code></li>
 <li>Compute general <strong>percentiles</strong>: <code>quantile(&lt;data&gt;, c(p1, p2,...))</code></li>
 <li>Build a <strong>frequency table</strong>: <code>table(&lt;data&gt;)</code> 
 <script type="application/shiny-prerendered" data-context="server-start">
@@ -487,7 +493,6 @@ output$`tutorial-exercise-summarize-cut-output` <- renderUI({
 </script>
 <!--/html_preserve--></li>
 </ul>
-</div>
 </div>
 
 </div> <!-- topics -->

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1597012644987.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2293418382",
+    "id" : "7AFCA49F",
+    "lastKnownWriteTime" : 1597014165,
+    "last_content_update" : 1597014165874,
+    "path" : "~/GitHub/AppliedStatsInteractive/inst/tutorials/12_InferencePractice/12_InferencePractice.Rmd",
+    "project_path" : "inst/tutorials/12_InferencePractice/12_InferencePractice.Rmd",
+    "properties" : {
+        "cursorPosition" : "497,118",
+        "scrollLine" : "485"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
