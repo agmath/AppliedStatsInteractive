@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1597174143681.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "433002110",
+    "id" : "F392288B",
+    "lastKnownWriteTime" : 1597174705,
+    "last_content_update" : 1597174705327,
+    "path" : "~/GitHub/AppliedStatsInteractive/inst/tutorials/3_DescriptiveNumCat/3_DescriptiveNumCat.Rmd",
+    "project_path" : "inst/tutorials/3_DescriptiveNumCat/3_DescriptiveNumCat.Rmd",
+    "properties" : {
+        "cursorPosition" : "310,0",
+        "scrollLine" : "296"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

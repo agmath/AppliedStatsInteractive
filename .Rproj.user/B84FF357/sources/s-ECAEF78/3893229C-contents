@@ -1,0 +1,403 @@
+---
+title: "Gradethis demo"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+# editor_options:
+#   preview: viewer
+description: "Learn how to use gradethis to provide automated, personalized, formative feedback to student answers in learnr tutorials."
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+
+tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Welcome
+
+###
+
+The `gradethis` package provides three ways to autocheck student code in [learnr](https://rstudio.github.io/learnr/) tutorials. You can use:
+
+1. `grade_result()` to check that the student's code returns a correct _result_.
+1. `grade_conditions()` to check that the student's code returns a _result_ that satisfies a complete set of conditions. This is akin to unit testing the result.
+1. `grade_code()` to check that the student's _code_ exactly matches the solution code.
+
+You can also use gradethis to create your own customized checking code.
+
+### Syntax
+
+In each case, you grade an exercise by passing a `gradethis` function to the `-check` code chunk associated with the exercise. This code chunk will share the same label root as the exercise code chunk, but the root will be suffixed with `-check`. 
+
+See the [learnr documentation](https://rstudio.github.io/learnr/exercises.html) to learn more about code chunks in learnr tutorials.
+
+### 
+
+Here is how an example exercise and `-check` chunk would appear in a learnr document.
+
+````markdown
+`r ''````{r exercise_1, exercise = TRUE}
+x + 1
+```
+
+`r ''````{r exercise_1-check}
+grade_result(
+  pass_if(~ identical(.result, 2), "Good job!")
+)
+```
+````
+
+### Goal
+
+`gradethis` functions are designed to provide formative feedback to the student. When a student clicks "Submit Answer" in his or her learnr tutorial, the `gradethis` function immediately performs three tasks. It:
+
+1. Displays whether or not the answer is correct
+1. Returns an instructional message customized to the student's submission
+1. Offers dynamically generated encouragement
+
+`gradethis` does not itself calculate a final grade for the student. 
+
+### Setup
+
+To use `gradethis` functions within a [learnr](https://rstudio.github.io/learnr/) tutorial, you must set the `exercise.checker` tutorial option to `gradethis::grade_learnr` in the tutorial's `setup` chunk. This is how it will look in the learnr R Markdown file:
+
+````markdown
+`r ''````{r setup}
+tutorial_options(exercise.checker = gradethis::grade_learnr)
+```
+````
+
+You can also see this in the first code chunk of the .Rmd file associated with this tutorial.
+
+### 
+
+The remainder of this document looks at how to use individual `gradethis` functions.
+
+## `grade_result()`
+
+###
+
+`grade_result()` checks whether or not the student's code returns the correct result. It matches the result against one or more conditions and returns the message (and correct/incorrect status) associated with the first matched condition.
+
+Here is an example of `grade_result()` in use.
+
+* Calculate the average number of weeks in a month.
+
+```{r grade_res, exercise = TRUE}
+
+```
+
+```{r grade_res-check}
+grade_result(
+  pass_if(~ identical(.result, 365.25 / 12 / 7), "There are 4.348214 weeks on average in a month."),
+  fail_if(~ identical(.result, 365 / 7 / 12), "Did you assume the average year has 365 days? Due to leap years, the average year actually has 365.25 days."),
+  fail_if(~ identical(.result, 52 / 12), "Did you assume that the average year has 52 weeks? It is actually has a little more because 52 * 7 is only 364 days."),
+  fail_if(~ identical(.result, 4), "Close, but four is the average number of whole weeks in a month."),
+  fail_if(~ TRUE, "Not quite. Consider that there are 365.25 days in an average year, 12 months in a year, and 7 days in a week.")
+)
+```
+
+
+### 
+
+And here is the code behind the example.
+
+````markdown
+`r ''````{r grade_result, exercise = TRUE}
+
+```
+
+`r ''````{r grade_result-check}
+grade_result(
+  pass_if(~ identical(.result, 365.25 / 12 / 7), "There are 4.348214 weeks on average in a month."),
+  fail_if(~ identical(.result, 365 / 7 / 12), "Did you assume the average year has 365 days? Due to leap years, the average year actually has 365.25 days."),
+  fail_if(~ identical(.result, 52 / 12), "Did you assume that the average year has 52 weeks? It is actually has a little more because 52 * 7 is only 364 days."),
+  fail_if(~ identical(.result, 4), "Close, but four is the average number of whole weeks in a month."),
+  fail_if(~ TRUE, "Not quite. Consider that there are 365.25 days in an average year, 12 months in a year, and 7 days in a week.")
+)
+```
+````
+
+### Syntax
+
+`grade_result()` should contain a sequence of `fail_if()` and `pass_if()` functions.
+
+Each `fail_if()` and `pass_if()` function should contain:
+
+1. A logical test prefixed by a `~` 
+1. A character string to display if the logical test evaluates to true
+
+Use `.result` to refer to the student's answer within the logical tests.
+
+### Execution
+
+`grade_result()` will evaluate the `_if` functions in order, replacing `.result` with the student's result as it does. 
+
+`grade_result()` will stop and return the message of the first `_if` function whose condition evaluates to true. If that function is: 
+
+* `pass_if()`, the exercise will be marked correct 
+* `fail_if()`, the exercise will be marked wrong
+
+Order matters! `grade_result()` will not continue to evaluate `_if()` functions after one returns a message.
+
+### Choose the best grading function for you
+
+`grade_result()` will mark a result correct if it passes a _single_ `pass_if()` statement (without first triggering a `fail_if()`). 
+
+If you would like to ensure that a result satisfies _every_ `pass_if` statement use `grade_conditions()`.
+
+### 
+
+`grade_result()` will not check the students code. Nor will `grade_result()` know if the student directly typed the correct result into the exercise box.
+
+If you want to check the code the student used to get a result, use `grade_code()`
+
+###
+
+See `?grade_result` for more information.
+
+## `grade_conditions()`
+
+### 
+
+`grade_conditions()` is similar to `grade_result()`, but it requires a result to pass _every_ `pass_if()` function contained in its function body. This method is analogous to creating unit tests that all need to pass.
+
+Here is an example of `grade_condition()` in use:
+
+Please make a function in the exercise space below, but do not assign the function to an object.  The function should:
+
+* Take a single `x` argument
+* Add the integer `1` to the `x` value.
+
+Then click Submit Answer.
+
+```{r grade_cond, exercise = TRUE}
+function(x) {
+  # solution is x + 1L
+  x + 1
+}
+```
+
+```{r grade_cond-check}
+grade_conditions(
+  pass_if(~ .result(3) == 4),
+  pass_if(~ identical(.result(0), 1)),
+  pass_if(~ identical(sapply(1:10, .result), 2:11)),
+  pass_if(~ sapply(1:10, .result) == 2:11),
+  pass_if(~ all.equal(sapply(1:10, .result), 2:11)),
+  pass_if(~ checkmate::test_function(.result, args = c("x")))
+)
+```
+
+### 
+
+And here is the code behind the example.
+
+````markdown
+`r ''````{r grade_conditions, exercise = TRUE}
+function(x) {
+  # solution is x + 1L
+  x + 1
+}
+```
+
+`r ''````{r grade_conditions-check}
+grade_conditions(
+  pass_if(~ .result(3) == 4),
+  pass_if(~ identical(.result(0), 1)),
+  pass_if(~ identical(sapply(1:10, .result), 2:11)),
+  pass_if(~ sapply(1:10, .result) == 2:11),
+  pass_if(~ all.equal(sapply(1:10, .result), 2:11)),
+  pass_if(~ checkmate::test_function(.result, args = c("x")))
+)
+```
+````
+
+### Syntax
+
+`grade_conditions()` takes a set of `pass_if()` functions. Each `pass_if()` function should contain:
+
+1. a logical test prefixed by a `~` 
+
+Use `.result` to refer to the student's answer within the logical tests.
+
+### Evaluation
+
+`grade_conditions()` will mark a result as correct only if passes every `pass_if()` statement. This is especially useful for grading function definitions.
+
+### 
+
+See `?grade_conditions` for more information.
+
+## `grade_code()`
+
+### 
+
+`grade_code()` to checks whether the student code matches the solution code. If the code does not match, `grade_code()` will tell the student exactly where their code begins to diverge from the solution and how to get back on track. Here's an example:
+
+* Take the square root of the log of 2. Then click Submit Answer.
+
+```{r grade_code, exercise = TRUE}
+
+```
+
+```{r grade_code-solution}
+sqrt(log(2))
+```
+
+```{r grade_code-check}
+grade_code("Good job. Don't worry, things will soon get harder.")
+```
+
+### 
+
+And here is the code behind the example.
+
+````markdown
+`r ''````{r grade_code, exercise = TRUE}
+sqrt(exp(3))
+```
+
+`r ''````{r grade_code-solution}
+sqrt(log(2))
+```
+
+`r ''````{r grade_code-check}
+grade_code("Good job. Don't worry, things will soon get harder.")
+```
+````
+
+### Syntax
+
+`grade_code()` requires a model solution to compare student code to. Supply this solution in a learnr `-solution` chunk, i.e. a chunk whose label is the label of the exercise it is associated with followed by `-solution`: 
+
+````markdown
+`r ''````{r grade_code-solution}
+sqrt(log(2))
+```
+````
+
+### 
+
+`grade_code()` will compare the last expression in the student submission to the last expression in the solution chunk.
+
+Teachers will usually pass `grade_code()` a character string to display to the student if their code successfully matches the solutiuon, e.g.
+
+```r
+grade_code("Good job. Don't worry, things will soon get harder.")
+```
+
+### Execution
+
+`grade_code()` does not check the result of the student's code. 
+
+Instead, `grade_code()` parses the student code into a call tree. As it does, it standardizes argument names and accounts for the presence of pipes (`%>%`). 
+
+`grade_code()` then does the same for the solution code. 
+
+Finally, `grade_code()` recursively walks the two call trees. 
+
+### 
+
+`grade_code()` stops and returns a message if the student code:
+
+1. **contains malformed code** that would cause an error if passed to `match.call()`
+1. **contains a different element** than the solution
+1. **contains an extra element** that is not in the solution
+1. **is missing an element** that appears in the solution
+
+If none of the above occurs, `grade_code()` marks the answer as correct.
+
+### Feedback
+
+`grade_code()` attempts to supply helpful feedback that makes sense to the student without giving away the solution. To do this, `grade_code()` messages take the form of 
+
+> "I expected X, where you wrote Y. Please try again." 
+
+Here Y may be an argument or function call that appears at the beginning, end, or middle of the student code. 
+
+`grade_code()` will catch mistakes one at a time in the order that they appear in the students code. This lets the student iteratively improve their code.
+
+### 
+
+See `?grade_code` for more information.
+
+
+## Custom Checking Code
+
+### 
+
+`gradethis` can accept any checking method that returns a `gradethis::graded` object.
+
+The example below returns a correct/incorrect answer with 50/50 probability.
+
+
+````markdown
+`r ''````{r custom, exercise = TRUE}
+"Flip a coin"
+```
+
+`r ''````{r custom-check}
+fifty_fifty_checker <- function(
+  correct = "Correct!",
+  incorrect = "May the odds be ever in your favor!",
+  ...,
+  user
+) {
+  is_correct <- (runif(1) < 0.5)
+  gradethis::graded(
+    correct = is_correct,
+    message = ifelse(is_correct, correct, incorrect)
+  )
+}
+fifty_fifty_checker()
+```
+````
+
+### Syntax
+
+The custom checking function should return the output of `gradethis::graded()`. `graded()` takes two arguments:
+
+1. `correct` - `TRUE` is the answer is correct, `FALSE` otherwise
+1. `message` - an optional character string to display to the student
+
+### Evaluation
+
+To use the custom checking function, place it in a nexercises `-check` chunk, as you would place `grade_result()`, `grade_conditions()`, or `grade_code()`.
+
+### Try it!
+
+---------------------------
+
+Are you feeling lucky?
+
+If you are, click Submit Answer.
+
+```{r custom, exercise = TRUE}
+"Flip a coin"
+```
+
+```{r custom-check}
+fifty_fifty_checker <- function(
+  correct = "Correct!",
+  incorrect = "May the odds be ever in your favor!",
+  ...,
+  user
+) {
+  is_correct <- (runif(1) < 0.5)
+  gradethis::graded(
+    correct = is_correct,
+    message = ifelse(is_correct, correct, incorrect)
+  )
+}
+fifty_fifty_checker()
+```
+
+### 
+
+See `?graded` for more information.
