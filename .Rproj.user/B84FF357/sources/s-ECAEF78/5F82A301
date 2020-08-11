@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1597171915455.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "604709195",
+    "id" : "5F82A301",
+    "lastKnownWriteTime" : 1597171930,
+    "last_content_update" : 1597171930131,
+    "path" : "~/GitHub/AppliedStatsInteractive/inst/tutorials/19_LinearRegression/19_LinearRegressionLab.Rmd",
+    "project_path" : "inst/tutorials/19_LinearRegression/19_LinearRegressionLab.Rmd",
+    "properties" : {
+        "cursorPosition" : "135,0",
+        "scrollLine" : "128"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -276,11 +276,6 @@ Use the code block below to compute the point estimate for average sentence leng
   pass_if(~ (abs(.result - mean(SDNYdrug$SentenceMonths)) &lt; 0.01))
 )</code></pre>
 </div>
-<div class="tutorial-exercise-support" data-label="sentencing-ci-2-hint" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>#&lt;div id = &quot;sentencing-ci-2-hint&quot;&gt;
-#Remember that you can use the `$` operator to access a column of a dataframe, and R has a `mean()` function which can be used to compute the mean of a numerical column. 
-#&lt;/div&gt;</code></pre>
-</div>
 </div>
 <div id="section-section-18" class="section level3">
 <h3></h3>
@@ -303,11 +298,6 @@ Use the code block below to compute the standard error
 <pre class="text"><code>grade_result(
   pass_if(~ (abs(.result - (sd(SDNYdrug$SentenceMonths)/nrow(SDNYdrug))) &lt; 0.0005))
 )</code></pre>
-</div>
-<div class="tutorial-exercise-support" data-label="sentencing-ci-4-hint" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>#&lt;div id = &quot;sentencing-ci-4-hint&quot;&gt;
-#Remember that R can compute the standard deviation of a set of numeric values with the `sd()` function. You might also find the `nrow()` function useful, since it can return the number of rows in a dataframe.
-#&lt;/div&gt;</code></pre>
 </div>
 </div>
 <div id="section-section-20" class="section level3">
@@ -504,9 +494,6 @@ Find the number of white offenders sentenced in our dataset.
 <pre class="text"><code>grade_result(
   pass_if(~ (.result == length(whiteSentences)))
 )</code></pre>
-</div>
-<div class="tutorial-exercise-support" data-label="sentencing-ht-9-hint" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>#&lt;div id = &quot;sentencing-ht-9-hint&quot;&gt; The object `whiteSentences` is a vector not a dataframe, so running `nrow(whiteSentences)` will throw an error. Try running `length(whiteSentences)` instead.&lt;/div&gt;</code></pre>
 </div>
 Find the number of non-white offenders sentenced in our dataset.
 <div class="tutorial-exercise" data-label="sentencing-ht-10" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
