@@ -17,7 +17,7 @@ The available notebooks are as follows:
 + 7_DiscreteDistributionsLab
 + 8_NormalDistributionLab
 + 9_FoundationsForInference
-+ 10_IntroToInferenceLab
++ 10_IntroInferenceLab
 + 11_HTandCIprop
 + 12_InferencePractice
 + 13_InferenceCategoricalLab
