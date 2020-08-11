@@ -1,0 +1,87 @@
+---
+title: "Topic 0: Start Here (an Introduction)"
+tutorial:
+  id: "StartHere.Topic0.AppliedStats"
+  version: 1.0
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(ggplot2)
+library(learnr)
+library(gradethis)
+```
+
+
+## Welcome
+
+###
+
+This is a series of workbooks appropriate for use with any introductory-level applied statistics class at the high school or university level. 
+
+###
+
+Very limited mathematics background is assumed -- if you can answer the following two questions, you have the necessary mathematics background:
+
++ Find $z$ if 
+$$\displaystyle{z = \frac{54 - 50}{8/\sqrt{16}}}$$
++ Find $x$ if 
+$$\displaystyle{2 = \frac{x - 50}{8/\sqrt{16}}}$$
+
+###
+
+Each workbook introduces statistics content and allows the user to interact with embedded R code blocks to complete example problems or to experiment with the ideas presented. For all but the workbooks which are designated as *labs*, users can complete all of the tasks without using R -- it is typically possible to enter only answers obtained in the code blocks, so using a calculator and/or distribution tables is possible. That is, even if your course does not utilize R, you may find these workbooks to be of use.
+
+###
+
+If you've found these workbooks, I truly hope that you find them helpful. These workbooks are adapted versions of my course notes from introductory statistics courses for first-year students at my current university. Much of the content is supplementary to [OpenIntro.org](http://www.openintro.org) and the [4th edition of OpenIntro Statistics](https://leanpub.com/openintro-statistics) which is open source and freely available. In addition to the free resources available at OpenIntro.org, I've developed a freely available online homework supplement to the OpenIntro Statistics textbook at [MyOpenMath](www.myopenmath.com) -- instructions for gaining access are available from OpenIntro.org. While most of the content does leverage content found at the OpenIntro site and text, the workbook on Data Visualization is adapted from Chapter 3 of [Grolemund and Wickham's *R for Data Science*](https://r4ds.had.co.nz/), which is an excellent addition to the library of any aspiring data scientist. If you have not found it already, please check it out.
+
+### 
+
+If you have any questions/comments or wish to report any errors, please email [Adam Gilbert (*a.gilbert1@snhu.edu*)](mailto:a.gilbert1@snhu.edu). These workbooks are publicly available on [GitHub](https://github.com/agmath/AppliedStatsInteractive) and are available to run locally via an R package as follows:
+
+```{r install, echo = TRUE, eval = FALSE}
+#You'll need the devtools library to install a package from GitHub
+install.packages("devtools")
+#Now, install the package containing the interactive workbooks
+remotes::install_github("agmath/AppliedStatsInteractive")
+```
+
+###
+
+Once you've installed the package, you should be able to run the tutorials by calling: `learnr::run_tutorial("NOTEBOOK_NAME", package = "AppliedStatsInteractive")`. For example, running the following command will access the first tutorial workbook.
+
+```{r run_tutorial, echo = TRUE, eval = FALSE}
+learnr::run_tutorial("1_IntroToData", package = "AppliedStatsInteractive")
+```
+
+## What should I know before using these?
+
+###
+
+If you are considering whether to use these notebooks as part of a course or self-study, there are a few things you should know.
+
++ It is my intention that these notebooks always remain freely available and open source.
+
++ Although these notebooks are currently in a usable format, they are still being improved. Be sure to check GitHub for the latest changes and release notes. 
+
+  + Depending on the date which you or students install the `AppliedStatsInteractive` package, the individual installing at a later date may notice additional features. For example, I am working on creating/curating, and embedding more video instruction.
+
++ There is currently no gradebook or submission tracking attached to these workbooks. Users are allowed to retry each question and application as many times as they need in order to arrive at a correct answer. I do hope to build a version of these workbooks which track student performance in the future., but the best current use of these workbooks is for initial content delivery or practice. If you are looking for an online homework system to supplement these workbooks, check out my course template at [MyOpenMath](https://www.myopenmath.com) -- the template course you are looking for is titled `146 OpenIntro Statistics: Diez/Barr/Cetinkaya-Rundel`.
+  
++ If you are accessing these notebooks from a web-browser via the Amazon EC2 instance, know that they are hosted on a *free-tiered* server. This means that you may encounter poor performance or that the notebooks may become unavailable if usage surpasses the free compute time allotment in a particular month. It is better to run these notebooks via the R package.
+  
+  + You can install R by going to [CRAN](https://cran.r-project.org/), choosing the appropriate OS, and following the installer instructions.
+  + While not necessary for running these notebooks, you may want to obtain RStudio which is a convenient IDE for interfacing with the R language. You can get it from the [RStudio website](https://rstudio.com/products/rstudio/download/). Again, choose the appropriate OS and follow the installer instructions.
+  + Open RStudio, and in the console, run `install.packages("devtools")`
+  + After `devtools` is unpacked, run `remotes::install_github("agmath/AppliedStatsInteractive")`
+  + At this point, you should be able to run the notebooks as follows: `learnr::run_tutorial(NOTEBOOK_NAME, package = "AppliedStatsInteractive")` -- see the ReadMe file at the [GitHub repo](https://github.com/agmath/AppliedStatsInteractive) for a list of notebook names. 
+
+###
+
+Whether you are an instructor, student, or self-paced-learner, I hope you enjoy your statistics journey.

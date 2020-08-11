@@ -12,7 +12,8 @@ Imports:
     ggplot2,
     dplyr,
     statsr,
-    stringr
+    stringr,
+    BHH2
 Remotes:
     rstudio-education/gradethis
 License: CC-BY-SA-4.0

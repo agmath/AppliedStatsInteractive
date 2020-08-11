@@ -120,7 +120,7 @@ $(document).ready(function () {
 <h2>Topic 14: Chi-Squared Tests for Goodness of Fit and Independence</h2>
 <div id="section-section" class="section level3">
 <h3></h3>
-<p>In this workbook, we consider methods two new methods for testing claims corresponding to categorical data with possibly more than two levels. Our first method is called the <span class="math inline">\(\chi^2\)</span> (Chi-Squared) Test for Goodness of Fit and can be used for testing whether a sample gives evidence to suggest that an assumed discrete distribution is not an appropriate model for a categorical variable. The second is called the <span class="math inline">\(\chi^2\)</span> Test for Independence, and can be used for testing whether two categorical variables are independent of one-another. You’ll be exposed to some examples and some video explanations before being asked to try examples on your own.</p>
+<p>In this workbook, we consider methods two new methods for testing claims corresponding to categorical data with possibly more than two levels. Our first method is called the <span class="math inline">\(\chi^2\)</span> (Chi-Squared) Test for Goodness of Fit and can be used for testing whether a sample gives evidence to suggest that an assumed discrete distribution is not an appropriate model for a categorical variable. The second is called the <span class="math inline">\(\chi^2\)</span> Test of Independence, and can be used for testing whether two categorical variables are not independent of one-another. You’ll be exposed to some examples and some video explanations before being asked to try examples on your own.</p>
 </div>
 <div id="section-section-1" class="section level3">
 <h3></h3>
@@ -128,7 +128,7 @@ $(document).ready(function () {
 </div>
 <div id="section-section-2" class="section level3">
 <h3></h3>
-<p>Say that the researcher took a random sample of 1000 inmates in State Penitentiaries across the state of New Hampshire and observed the following results. In the sample, 130 inmates were white, 584 were black, and 243 were hispanic, and 43 were of another race. The researcher wants to determine whether this sample of inmates refutes the notion that the state prison population in New Hampshire is reflective of the State’s breakdown of population by race. We know that a new random sample of 1000 inmates would provide results different than these, so how do we determine whether we have a statistically significant result?</p>
+<p>Say that the researcher took a random sample of 1000 inmates in State Penitentiaries across the state of New Hampshire and observed the following results. In the sample, 130 inmates were white, 584 were black, 243 were hispanic, and 43 were of another race. The researcher wants to determine whether this sample of inmates refutes the notion that the state prison population in New Hampshire is reflective of the State’s breakdown of population by race. We know that a new random sample of 1000 inmates would provide results different than these, so how do we determine whether we have a statistically significant result?</p>
 </div>
 <div id="section-section-3" class="section level3">
 <h3></h3>
@@ -326,7 +326,7 @@ Use the code block below to enter the degrees of freedom for the <span class="ma
 <h2>Tests of Independence</h2>
 <div id="section-section-18" class="section level3">
 <h3></h3>
-<p>We consider an application in which we are interested in determining whether level of household income (<code>IncomeLevel</code>) and <code>DrugUse</code> by adolescents are independent. In our application we will consider a simulated dataset based off of metrics from the <a href="https://www.cdc.gov/brfss/questionnaires/index.htm"><em>2019 Behavioral Risk Factor Surveillance System</em></a>. The simulated data is stored for you in a data frame called <code>BRFSSsim</code>.</p>
+<p>Okay, now that you’ve completed a test for Goodness of Fit, let’s consider another application of the <span class="math inline">\(\chi^2\)</span>-distribution. We will work through an application in which we are interested in determining whether level of household income (<code>IncomeLevel</code>) and <code>DrugUse</code> by adolescents are independent. In our scenario we will consider a simulated dataset based off of metrics from the <a href="https://www.cdc.gov/brfss/questionnaires/index.htm"><em>2019 Behavioral Risk Factor Surveillance System</em></a>. The simulated data is stored for you in a data frame called <code>BRFSSsim</code>.</p>
 </div>
 <div id="section-section-19" class="section level3">
 <h3></h3>
@@ -339,7 +339,7 @@ Use the code block below to enter the degrees of freedom for the <span class="ma
 <div id="section-section-20" class="section level3">
 <h3></h3>
 <p>We now return to our simulated BRFSS data. Each row of the simulated dataset is meant to represent a response from a single adolescent in the USA. Recall that we are interested in determining whether there is evidence to suggest an association between the sociological variables <code>IncomeLevel</code> and <code>DrugUse</code>. The variable <code>IncomeLevel</code> measures level of household income, with the observed values <em>poverty</em>, <em>lowIncome</em>, <em>middleIncome</em>, and <em>highIncome</em>. The variable <code>drugUse</code> denotes whether the individual reports using any illicit drug in the past year, as a <em>yes</em> or <em>no</em> response.</p>
-<p>We suspect the following marginal distributions: within the US, approximately 16% of households fall below the poverty line, approximately 38% can be classified as low income, about 35% as middle income, and the remaining 11% as high income. Additionally, approximately 14% of adolescents are estimated to have used illicit drugs in any given year. Since we have these assumed percentages, we’ll use them in computing our expected counts rather than taking the product of the row and column totals and dividing by 2500 as Dr. Çetinkay-Rundel suggested in the video.</p>
+<p>We suspect the following marginal distributions: within the US, approximately 16% of households fall below the poverty line, approximately 38% can be classified as low income, about 35% as middle income, and the remaining 11% as high income. Additionally, approximately 14% of adolescents are estimated to have used illicit drugs in any given year. Since we have these assumed percentages, we’ll use them in computing our expected counts rather than taking the product of the row and column totals and dividing by 2500 as Dr. Çetinkaya-Rundel suggested in the video.</p>
 </div>
 <div id="section-section-21" class="section level3">
 <h3></h3>
@@ -650,7 +650,7 @@ Use the code block below to compute the <span class="math inline">\(p\)</span>-v
 </div>
 <div id="section-summary" class="section level2">
 <h2>Summary</h2>
-<p>Good work. Through this workbook you considered scenarios in which you wished to test claimes involving a) a single categorical variable with more than two levels, and b) multiple categorical variables for which at least one variable has more than two levels. In both scenarios you utilized a <span class="math inline">\(\chi^2\)</span> distribution and test statistic. Hopefully you noted that the <span class="math inline">\(\chi^2\)</span> statistic measures deviation from expectation, similarly to our test statistics for other tests.</p>
+<p>Good work. Through this workbook you considered scenarios in which you wished to test claims involving a) a single categorical variable with more than two levels, and b) multiple categorical variables for which at least one variable has more than two levels. In both scenarios you utilized a <span class="math inline">\(\chi^2\)</span> distribution and test statistic. Hopefully you noted that the <span class="math inline">\(\chi^2\)</span> statistic measures deviation from expectation, similarly to our test statistics for other tests.</p>
 At this point, you have the ability to test claims involving a single proportion, comparisons of proportions across two populations, to determine whether a population follows an assumed distribution for a categorical variable, and to determine whether two catgorical variables are independent of one another within a given population. We’ll continue our journey through inferential statistics, but switch to numerical data now. Keep up the great work! 
 <script type="application/shiny-prerendered" data-context="server-start">
 #knitr::opts_chunk$set(eval = FALSE)
