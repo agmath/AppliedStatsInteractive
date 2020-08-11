@@ -93,7 +93,7 @@ mean(samples$Sample_Three)
 ```
 
 ```{r mean_samp_three-check}
-grade_code(correct = "mean(samples$Sample_Three)")
+grade_code()
 ```
 
 ###

@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "433002110",
+    "hash" : "2503796200",
     "id" : "F392288B",
-    "lastKnownWriteTime" : 1597174705,
-    "last_content_update" : 1597174705327,
+    "lastKnownWriteTime" : 1597175312,
+    "last_content_update" : 1597175313017,
     "path" : "~/GitHub/AppliedStatsInteractive/inst/tutorials/3_DescriptiveNumCat/3_DescriptiveNumCat.Rmd",
     "project_path" : "inst/tutorials/3_DescriptiveNumCat/3_DescriptiveNumCat.Rmd",
     "properties" : {
-        "cursorPosition" : "310,0",
-        "scrollLine" : "296"
+        "cursorPosition" : "95,11",
+        "scrollLine" : "88"
     },
     "read_only" : false,
     "read_only_alternatives" : [
