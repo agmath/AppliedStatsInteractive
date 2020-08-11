@@ -134,7 +134,9 @@ Use the code block below to draw a histogram of the distribution of the `score` 
 
 ```
 
-<div id = "hist-scores-hint"> `ggplot(data = evals) + geom_?(mapping = aes(x = ?))`</div>
+```{r hist-scores-hint}
+#<div id = "hist-scores-hint"> `ggplot(data = evals) + geom_?(mapping = aes(x = ?))`</div>
+```
 
 ```{r describe-scores, echo = FALSE}
 quiz(
@@ -172,8 +174,6 @@ The fundamental phenomenon suggested by the Gelman and Hill study is that better
 ```{r bty-score, exercise = TRUE}
 
 ```
-
-<div id = "bty-score-hint"> `ggplot(data = evals) + geom_point(?)`</div>
 
 ```{r bty-score-solution}
 ggplot(data = evals) + geom_point(mapping = aes(x = bty_avg, y = score))
@@ -243,7 +243,9 @@ Use the code block below to add the line to your plot by adding a layer with `ge
 
 ```
 
-<div id = "add-abline-hint"> `ggplot(data = evals) + geom_point(?) + geom_abline(slope = ?, intercept = ?)`</div>
+```{r add-abline-hint}
+#<div id = "add-abline-hint"> `ggplot(data = evals) + geom_point(?) + geom_abline(slope = ?, intercept = ?)`</div>
+```
 
 ###
 
