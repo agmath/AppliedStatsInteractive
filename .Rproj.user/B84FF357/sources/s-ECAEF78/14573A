@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3082535425",
+    "hash" : "2259646863",
     "id" : "14573A",
-    "lastKnownWriteTime" : 1597191849,
-    "last_content_update" : 1597191849732,
+    "lastKnownWriteTime" : 1597195826,
+    "last_content_update" : 1597195826367,
     "path" : "~/GitHub/AppliedStatsInteractive/DESCRIPTION",
     "project_path" : "DESCRIPTION",
     "properties" : {
-        "cursorPosition" : "17,32",
-        "scrollLine" : "4"
+        "cursorPosition" : "13,11",
+        "scrollLine" : "2"
     },
     "read_only" : false,
     "read_only_alternatives" : [

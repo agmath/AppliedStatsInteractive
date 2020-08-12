@@ -17,6 +17,7 @@ library(dplyr)
 library(ggplot2)
 library(learnr)
 library(gradethis)
+library(oilabs)
 
 load("www/bdims.RData")
 

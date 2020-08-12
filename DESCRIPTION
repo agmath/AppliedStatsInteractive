@@ -11,12 +11,9 @@ Imports:
     openintro,
     ggplot2,
     dplyr,
-    statsr,
-    stringr,
-    BHH2
+    stringr
 Remotes:
-    rstudio-education/gradethis,
-    andrewpbray/oilabs
+    rstudio-education/gradethis
 License: CC-BY-SA-4.0
 Encoding: UTF-8
 LazyData: true

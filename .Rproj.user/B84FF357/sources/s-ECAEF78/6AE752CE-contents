@@ -1,0 +1,191 @@
+---
+title: "Topic 18: Inference for Comparing Many Group Means (ANOVA)"
+tutorial:
+  id: "ANOVA.Topic18.AppliedStats"
+  version: 1.0
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+#knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(ggplot2)
+library(learnr)
+library(gradethis)
+
+tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+
+#knitr::opts_chunk$set(eval = FALSE)
+```
+
+## ANalysis Of VAriance (ANOVA)
+
+In this workbook, we consider a method for comparing means from multiple groups. We will use a very famous dataset which contains measurements on several varieties of iris (a type of flower). The flowers are classified as *setosa*, *versicolor*, and *virginica*. You can see a photo of each below. In this workbook we will try to identify whether the iris dataset provides significant evidence to suggest a difference in the average petal widths across the three varieties.
+
+###
+
+<center>
+<img src="images/iris.png" alt="drawing" width="75%"/>
+</center>
+
+###
+
+Notice that none of the tools we've been exposed to can be applied directly to help us answer this question. Our hypothesis testing strategies have been limited to comparing one or two populations. We could apply three separate *one-versus-one* tests (versicolor versus setosa, versicolor versus virginica, and setosa versus virginica), but notice that the probability of an erroneous conclusion explodes. For example, at a 5% level of significance, the probability of making at least one Type I error (an incorrect conclusion of a significant difference) with three comparisons is now $1 - \left(0.95^3\right) \approx 14.26\%$. While it is possible to adjust the level of significance for the individual tests to correct for this, a better option is to conduct an ANalysis Of VAriance -- an ANOVA test.
+
+###
+
+Watch the video below from Dr. Mine &Ccedil;etinkaya-Rundel introducing ANOVA.
+
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/W36DMVJ4Ibo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+
+###
+
+Dr. &Ccedil;etinkaya-Rundel's explanation in the video went through all of the nitty gritty details of ANOVA. You'll answer a few questions to help you think about what Dr. &Ccedil;etinkaya-Rundel was discussing and hopefully better understand the mechanics of ANOVA. What you really need to remember, however, is that 
+
++ ANOVA can be used to test whether there is evidence of a significant difference in means across multiple (three or more) populations. 
++ Test statistics resulting from ANOVA do not follow the normal or $T$-distribution, they follow an $F$-distribution instead.
++ The $p$-value resulting from an $F$-distribution is the area from our computed $F$-statistic and into the upper tail of the $F$-distribution. 
+  
+  + The interpretation of the $p$-value is exactly as it was for our earlier hypothesis tests -- the probability of observing a sample at least as extreme as ours under the assumption that the null hypothesis is true.
+  
+###
+
+Let's answer a few questions. You can use the code block below to explore the `iris` dataset as you answer the questions that follow.
+
+```{r quiz-anova-playground, exercise = TRUE}
+
+```
+
+```{r quiz-anova, echo = FALSE}
+quiz(
+  question_radio(
+    "Which of the following are the hypotheses associated with our test to determine whether the `iris` data provides significant evidence of a difference in average petal widths across the three varieties of iris?",
+    answer("$\\begin{array}{ll} H_0: & \\mu_{\\text{setosa}} = \\mu_{\\text{versicolor}} = \\mu_{\\text{virginica}}\\\\ H_a: & \\text{At least one of the varieties has a different average petal width than the others.}\\end{array}$", correct = TRUE),
+    answer("$\\begin{array}{ll} H_0: & \\mu_{\\text{setosa}} = \\mu_{\\text{versicolor}} = \\mu_{\\text{virginica}}\\\\ H_a: & \\text{All of the varieties have different average petal widths than the others.}\\end{array}$"),
+    answer("$\\begin{array}{ll} H_0: & \\mu_{\\text{setosa}} = \\mu_{\\text{versicolor}} = \\mu_{\\text{virginica}}\\\\ H_a: & \\mu_{\\text{setosa}} \\neq \\mu_{\\text{versicolor}} \\neq \\mu_{\\text{virginica}}\\end{array}$"),
+    answer("$\\begin{array}{ll} H_0: & \\mu_{\\text{setosa}} = \\mu_{\\text{versicolor}} = \\mu_{\\text{virginica}} = 0\\\\ H_a: & \\mu_{\\text{setosa}} \\neq \\mu_{\\text{versicolor}} \\neq \\mu_{\\text{virginica}} \\neq 0\\end{array}$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "How many *groups* are involved in this hypothesis test?",
+    answer("3", correct = TRUE),
+    answer("2"),
+    answer("1"),
+    answer("4"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "How many *degrees of freedom* due to groups do we have?",
+    answer("2", correct = TRUE),
+    answer("3"),
+    answer("1"),
+    answer("4"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Use the code block above to determine how many observations we have in our `iris` dataset. Use this information to determine the *total degrees of freedom*.",
+    answer("149", correct = TRUE),
+    answer("150"),
+    answer("100"),
+    answer("99"),
+    answer("3"),
+    answer("2"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+Good work so far. Were you confident about your responses on the previous questions? If not, be sure to ask a question!
+
+In her video, Dr. &Ccedil;etinkaya-Rundel mentions that the computations associated with an ANOVA test are tedious and prone to errors. For this reason, we typically utilize software to run ANOVA test -- this is exactly what you'll do now.
+
+###
+
+We can run an ANOVA test to compare multiple group means using R's `aov()` function. We'll pass the function a single argument in the form of a formula. Store the result of running `aov(iris$Petal.Width ~ iris$Species)` in an object called `ANOVAtable` and then view the results of the ANOVA test by running `summary()` on this object. Use the results to answer the questions that follow.
+
+```{r run-anova, exercise = TRUE}
+
+```
+
+```{r anova-test-interp, echo = FALSE}
+quiz(
+  question_radio(
+    "How are the `Mean Sq` values related to the other values in the ANOVA table?",
+    answer("The `Mean Sq` value is obtained by dividing the `Sum Sq` (sum of squared deviations) by the `Df` (degrees of freedom).", correct = TRUE),
+    answer("The `Mean Sq` value is the `F value` divided by the `Sum Sq` (sum of squared deviations)."),
+    answer("The `Mean Sq` value is unrelated to the other values in the ANOVA table and are just output by the software as meaningful values."),
+    answer("The `Mean Sq` values are related to the product between the `F value` and the `p value`"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "What is the test statistic associated with the ANOVA test?",
+    answer("960", correct = TRUE),
+    answer("2e-16"),
+    answer("40.21"),
+    answer("2 and 147"),
+    answer("There is no test statistic associated with an ANOVA test."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "What is the p-value associate with the ANOVA test?",
+    answer("0.05"),
+    answer("0.10"),
+    answer("0.04"),
+    answer("A number smaller than 0.0000000000000002", correct = TRUE),
+    answer("-14"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "What is the conclusion associated with the ANOVA test?",
+    answer("The p-value is less than the level of significance, so we reject the null hypothesis and accept the alternative.", correct = TRUE),
+    answer("The p-value is less than the level of significance, so we fail to reject the null hypothesis."),
+    answer("The p-value is less than the level of signficance, so we accept the null hypothesis."),
+    answer("The p-value is at least as large as the level of significance, so we fail to reject the null hypothesis."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "What is the conclusion interpreted in the context of our original question?",
+    answer("The iris data provides significant evidence to suggest that the average petal width is not the same across all three varieties of iris.", correct = TRUE),
+    answer("The iris data provides signficant evidence to suggest that the average petal width is the same across all three varieties of iris."),
+    answer("The iris data does not provide significant evidence to suggest that the average petal width differs in at least one of the varieties."),
+    answer("The iris data provides significant evidence to suggest that all three varieties of iris have different average petal widths."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+Notice that the result of the ANOVA test suggested that *at least one of the varieties has a different population mean than the other two varieties*. Unfortunately ANOVA doesn't tell us which one. There are methods which can be used to determine which groups have means that differ from one another but those are beyond the scope of this workbook. Interested individuals should look up the *Tukey Test* and *Bonferroni Correction*.
+
+###
+
+Use the code block below to construct side-by-side boxplots of petal width across each of the varieties of iris. Can you identify from the boxplot which of the varieties have different average petal widths? Note that you will not be able to do this in general.
+
+```{r boxplot, exercise = TRUE}
+
+```
+
+## Summary
+
+Good work. Through this workbook you developed the ability to conduct a hypothesis test which compares many group means (more than two). 
+
++ ANOVA tests can be used to determine whether significant evidence exists to suggest that at least one group has a mean which differs from another group. 
++ We saw that ANOVA tests use the F-distribution and are typically conducted via software but that the mechanics of hypothesis testing remain the same. 
++ We also saw that we can conduct ANOVA tests in R using the `aov()` function.
++ Remember that ANOVA can indicate that at least one group mean significantly differs from another, but we need further analysis to determine which group means differ significantly.
