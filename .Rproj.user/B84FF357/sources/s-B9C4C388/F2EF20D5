@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1597255143165.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2083895817",
+    "id" : "F2EF20D5",
+    "lastKnownWriteTime" : 1597255468,
+    "last_content_update" : 1597255468105,
+    "path" : "~/GitHub/AppliedStatsInteractive/inst/tutorials/10_IntroInferenceLab/10_IntroInferenceLab.Rmd",
+    "project_path" : "inst/tutorials/10_IntroInferenceLab/10_IntroInferenceLab.Rmd",
+    "properties" : {
+        "cursorPosition" : "21,0",
+        "scrollLine" : "8"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
