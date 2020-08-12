@@ -7,13 +7,13 @@
     "folds" : "",
     "hash" : "0",
     "id" : "A911F685",
-    "lastKnownWriteTime" : 1597238603,
-    "last_content_update" : 1597238603199,
+    "lastKnownWriteTime" : 1597238120,
+    "last_content_update" : 1597238120411,
     "path" : "~/GitHub/AppliedStatsInteractive/inst/tutorials/3_DescriptiveNumCat/3_DescriptiveNumCat.Rmd",
     "project_path" : "inst/tutorials/3_DescriptiveNumCat/3_DescriptiveNumCat.Rmd",
     "properties" : {
-        "cursorPosition" : "4,14",
-        "scrollLine" : "0"
+        "cursorPosition" : "309,46",
+        "scrollLine" : "293"
     },
     "read_only" : false,
     "read_only_alternatives" : [

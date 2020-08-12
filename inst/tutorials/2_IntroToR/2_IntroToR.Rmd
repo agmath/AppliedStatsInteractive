@@ -77,7 +77,7 @@ print("Hello World!")
 
 ###
 
-Did you print `Hello World!` exactly? If not, try it again -- look at the solution if you need to.
+Did you print ``Hello World!` exactly? If not, try it again -- look at the solution if you need to.
 
 ## An R Primer
 
