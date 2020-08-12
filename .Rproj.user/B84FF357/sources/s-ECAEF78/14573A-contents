@@ -15,7 +15,7 @@ Imports:
     stringr,
     BHH2
 Remotes:
-    rstudio-education/gradethis
+    rstudio-education/gradethis,
     andrewpbray/oilabs
 License: CC-BY-SA-4.0
 Encoding: UTF-8
