@@ -1,0 +1,40 @@
+---
+title: "Topic X: A Reproducible Example"
+tutorial:
+  id: "ReproducibleExample.TopicX.AppliedStats"
+  version: 1.0
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+#knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(ggplot2)
+library(learnr)
+library(gradethis)
+
+tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+```
+
+## Exercise chunks not rendering in package deployment
+
+Test to determine cause of exercises failing to render in external deployments (from `remotes::install_github("agmath/AppliedStatsInteractive")`.
+
+```{r testEx, exercise = TRUE}
+
+```
+
+Now an exercise with a solution check. Type 4 in the code block below and submit answer.
+```{r testEx2, exercise = TRUE}
+
+```
+
+```{r testEx2-check}
+grade_result(
+  pass_if(~ (.result == 4))
+)
+```
