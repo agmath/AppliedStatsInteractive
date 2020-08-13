@@ -243,6 +243,9 @@ Make a side-by-side boxplot of <code>habit</code> and <code>weight</code>. What 
 <div class="tutorial-exercise-support" data-label="plot-habit-weight-solution" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>ggplot(data = nc) + geom_boxplot(mapping = aes(x = habit, y = weight))</code></pre>
 </div>
+<div class="tutorial-exercise-support" data-label="plot-habit-weight-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>grade_code()</code></pre>
+</div>
 </div>
 <div id="section-section-5" class="section level3">
 <h3></h3>
@@ -320,6 +323,9 @@ The initial <code>inference()</code> example code appears below. Think about the
 </div>
 <div class="tutorial-exercise-support" data-label="first-inference-run-solution" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>inference(y = nc$weight, x = nc$habit, est = &quot;mean&quot;, type = &quot;ci&quot;, method = &quot;theoretical&quot;)</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="first-inference-run-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>grade_code()</code></pre>
 </div>
 </div>
 <div id="section-section-12" class="section level3">

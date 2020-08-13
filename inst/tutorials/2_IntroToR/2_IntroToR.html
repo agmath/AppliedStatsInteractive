@@ -173,15 +173,14 @@ Try editing the following chunk to execute <code>2 + 3</code> rather than <code>
 <div class="tutorial-exercise-support" data-label="HelloWorld-solution" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>print(&quot;Hello World!&quot;)</code></pre>
 </div>
-<div id="section-section-2" class="section level3">
-<h3></h3>
-<p>Did you print `<code>Hello World!</code> exactly? If not, try it again – look at the solution if you need to.</p>
+<div class="tutorial-exercise-support" data-label="HelloWorld-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>grade_code()</code></pre>
 </div>
 </div>
 <div id="section-an-r-primer" class="section level2">
 <h2>An R Primer</h2>
-<p>The following subsections constitute a primer for working in R. You’ll be exposed to R as a simple calculator and also as a tool for interfacing with data frames. Think of data frames (sometimes called data matrices or data arrays) as tables of data, just like Excel Spreadsheets. We’ll start by just working with R as a calculator though, which you’ve actually already done in this workbook when you changed the code cell to evaluate <code>2 + 3</code> instead of <code>2 + 2</code>.</p>
-<div id="section-section-3" class="section level3">
+<p>The following subsections constitute a primer for working in R. You’ll be exposed to R as a simple calculator and also as a tool for interfacing with data frames. Think of data frames (sometimes called data matrices or data arrays) as tables of data, just like Excel Spreadsheets. We’ll start by working with R as a calculator though, which you’ve actually done already in this workbook – when you changed the code cell to evaluate <code>2 + 3</code> instead of <code>2 + 2</code>.</p>
+<div id="section-section-2" class="section level3">
 <h3></h3>
 </div>
 <div id="section-r-can-be-used-as-a-calculator" class="section level3">
@@ -196,7 +195,7 @@ Use the code block below to experiment.
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
 </div>
-<div id="section-section-4" class="section level3">
+<div id="section-section-3" class="section level3">
 <h3></h3>
 <p>Use the code block below to evaluate the expression <code>4^3 - 16</code>.</p>
 <div class="tutorial-exercise" data-label="arithmeticExercise" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -211,7 +210,7 @@ Use the code block below to experiment.
 )</code></pre>
 </div>
 </div>
-<div id="section-section-5" class="section level3">
+<div id="section-section-4" class="section level3">
 <h3></h3>
 <p>R has built in functions to handle operations like the square root (<code>sqrt()</code>), logarithm (<code>log()</code>), etc. Google is your friend here – if you need to carry out an operation, do a quick internet search to discover how you can call it in R.</p>
 <p>We can also piece together more complicated expressions in R by making use of parentheses <code>()</code> for grouping. Beware that none of the other brackets (square brackets or curly braces) may be used for grouping since they have special meaning in R – we’ll see them in action later in our course. For now, use the code block below to evaluate <span class="math inline">\(\displaystyle{\frac{54 - 50}{8/\sqrt{20}}}\)</span>.</p>
@@ -227,7 +226,7 @@ Use the code block below to experiment.
 )</code></pre>
 </div>
 </div>
-<div id="section-section-6" class="section level3">
+<div id="section-section-5" class="section level3">
 <h3></h3>
 <p>Add parentheses to the expression below so that it evaluates to <code>1</code>.</p>
 <div class="tutorial-exercise" data-label="parensExercise" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -238,10 +237,15 @@ Use the code block below to experiment.
 <div class="tutorial-exercise-support" data-label="parensExercise-solution" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>(8 - 6)/2 + 5*(3*4 - 12)</code></pre>
 </div>
+<div class="tutorial-exercise-support" data-label="parensExercise-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>grade_result(
+  pass_if(~ (.result == 1))
+)</code></pre>
 </div>
-<div id="section-section-7" class="section level3">
+</div>
+<div id="section-section-6" class="section level3">
 <h3></h3>
-<p>Were you able to get the code to evaluate to 1?</p>
+<p>Were you able to get the code to evaluate to 1 just by introducing parentheses? If not, check the solution code for a possible answer.</p>
 </div>
 <div id="section-defining-objects-in-r" class="section level3">
 <h3>Defining Objects in R</h3>
@@ -253,12 +257,11 @@ Use the code block below to experiment.
 <div class="tutorial-exercise-support" data-label="redefine-solution" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>x &lt;- -22</code></pre>
 </div>
+<div class="tutorial-exercise-support" data-label="redefine-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>grade_code()</code></pre>
 </div>
-<div id="section-section-8" class="section level3">
-<h3></h3>
-<p>Check the solution to see if you got it right!</p>
 </div>
-<div id="section-section-9" class="section level3">
+<div id="section-section-7" class="section level3">
 <h3></h3>
 <p>Use the code block below to store the value <code>-3</code> in the container <code>y</code> and then compute the quantity <code>x*y - y</code>.</p>
 <div class="tutorial-exercise-support" data-label="defineAndCompute-setup" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -271,9 +274,11 @@ Use the code block below to experiment.
 <pre class="text"><code>y &lt;- -3
 x*y - y</code></pre>
 </div>
-<p>Did your execution result in 69? Check the solution to see if you got it right?</p>
+<div class="tutorial-exercise-support" data-label="defineAndCompute-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>grade_code()</code></pre>
 </div>
-<div id="section-section-10" class="section level3">
+</div>
+<div id="section-section-8" class="section level3">
 <h3></h3>
 <p>In R, it is helpful to think of objects as either vectors (lists of objects) or data frames (tables), because that’s how R treats its objects. We can create an object called <code>numVec</code> which is a vector of six numerical values (1, 8, -2, 2, -99, 43) using <code>numVec &lt;- c(1, 8, -2, 2, -99, 43)</code>. Any time we wish to reference or provide a list of items in R, we use the <code>c()</code> operator to <em>combine</em> those items. Once we have a vector, we can operate with it.</p>
 <pre class="r"><code>numVec &lt;- c(1, 8, -2, 2, -99, 43)
@@ -284,7 +289,7 @@ numVec + c(1, 1, 1, 0, -2, 4)</code></pre>
 <pre class="r"><code>2*numVec</code></pre>
 <pre><code>## [1]    2   16   -4    4 -198   86</code></pre>
 </div>
-<div id="section-section-11" class="section level3">
+<div id="section-section-9" class="section level3">
 <h3></h3>
 <p>Notice that we can add two vectors of the same length to one another and the addition is completed coordinatewise. We can also add a single value to a vector and that single value is <em>recycled</em> and added to each component of the vector (each of the values). The same works for multiplication or division (and subtraction too). While this behavior may seem convenient (and it is), it does require that we be aware of a few possible pitfalls. If we try to add two vectors that do not have the same length, R will indeed perform the operation but will warn us if the shorter vector is not <em>recycled</em> a full number of times while the operation is completed. If the recycling works without issue, then R does not report a warning to us. This can be problematic, because typically we don’t want to add vectors of different sizes – we need to pay close attention.</p>
 <pre class="r"><code>numVec1 &lt;- c(1, 2, 9, 7, 3, 4)
@@ -308,10 +313,10 @@ numVec1 + numVec2</code></pre>
 {"columns":[{"label":["carat"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cut"],"name":[2],"type":["ord"],"align":["right"]},{"label":["color"],"name":[3],"type":["ord"],"align":["right"]},{"label":["clarity"],"name":[4],"type":["ord"],"align":["right"]},{"label":["depth"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["table"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["price"],"name":[7],"type":["int"],"align":["right"]},{"label":["x"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["y"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["z"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.23","2":"Ideal","3":"E","4":"SI2","5":"61.5","6":"55","7":"326","8":"3.95","9":"3.98","10":"2.43"},{"1":"0.21","2":"Premium","3":"E","4":"SI1","5":"59.8","6":"61","7":"326","8":"3.89","9":"3.84","10":"2.31"},{"1":"0.23","2":"Good","3":"E","4":"VS1","5":"56.9","6":"65","7":"327","8":"4.05","9":"4.07","10":"2.31"},{"1":"0.29","2":"Premium","3":"I","4":"VS2","5":"62.4","6":"58","7":"334","8":"4.20","9":"4.23","10":"2.63"},{"1":"0.31","2":"Good","3":"J","4":"SI2","5":"63.3","6":"58","7":"335","8":"4.34","9":"4.35","10":"2.75"},{"1":"0.24","2":"Very Good","3":"J","4":"VVS2","5":"62.8","6":"57","7":"336","8":"3.94","9":"3.96","10":"2.48"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div id="section-section-12" class="section level3">
+<div id="section-section-10" class="section level3">
 <h3></h3>
 <p>We can call a column of a dataframe in several different ways. For example, <code>diamonds$cut</code>, <code>diamonds[ , "cut"]</code>, and <code>diamonds[ , 3]</code> all access the <code>cut</code> column of the <code>diamonds</code> data frame but the first method returns a vector of values while the two methods making use of brackets return a data frame. Alter the code below so that you access the <code>carat</code> column as a vector instead of the <code>cut</code> column as a vector.</p>
-<div class="tutorial-exercise" data-label="column-access" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<div class="tutorial-exercise" data-label="columnAccess" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>diamonds$cut</code></pre>
 <pre><code>    [1] Ideal     Premium   Good      Premium   Good      Very Good Very Good
     [8] Very Good Fair      Very Good Good      Ideal     Premium   Ideal    
@@ -8022,15 +8027,27 @@ numVec1 + numVec2</code></pre>
 Levels: Fair &lt; Good &lt; Very Good &lt; Premium &lt; Ideal</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
-<div class="tutorial-exercise-support" data-label="column-access-solution" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<div class="tutorial-exercise-support" data-label="columnAccess-solution" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>diamonds$carat</code></pre>
 </div>
-<p>Click the <code>solution</code> button to see if your code matches!</p>
+<div class="tutorial-exercise-support" data-label="columnAccess-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>grade_code()</code></pre>
+</div>
 </div>
 </div>
 <div id="section-summary" class="section level2">
 <h2>Summary</h2>
-Okay, that’s enough for now. We’ll learn much more as we move through the subsequent workbooks and labs. 
+<p>Okay, that’s enough of an introduction for now. Here’s a quick recap.</p>
+<ul>
+<li><p>R can be used as a simple calculator – in the same way as any hand-held calculator you’ve used in your previous coursework.</p></li>
+<li><p>When doing multiplication in R, we must include the asterisk (<code>*</code>), otherwise R will throw an error. For example, <code>5(4)</code> results in an error stating that you asked R to apply a non-function to the value 4, but <code>5*(4)</code> results in 20, as expected.</p></li>
+<li><p>The real advantage with R comes in interacting with large datasets (called data frames).</p>
+<ul>
+<li>A <em>data frame</em> is just like a single sheet of an Excel or Google Sheets file.</li>
+<li>A data frame has rows and columns, and we can access columns of a data frame in multiple ways. The most common is with the <code>$</code> operator, which returns the column as a vector (an ordered list of values).</li>
+</ul></li>
+</ul>
+We’ll learn more about R as we progress through these workbooks. Remember, you are <strong>not</strong> expected to have a programming background as a prerequisite – stumbling a bit with the coding is to be expected. 
 <script type="application/shiny-prerendered" data-context="server-start">
 #knitr::opts_chunk$set(eval = FALSE)
 library(dplyr)
@@ -8108,9 +8125,9 @@ output$`tutorial-exercise-defineAndCompute-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-column-access-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-column-access-code-editor`)), session)
-output$`tutorial-exercise-column-access-output` <- renderUI({
-  `tutorial-exercise-column-access-result`()
+`tutorial-exercise-columnAccess-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-columnAccess-code-editor`)), session)
+output$`tutorial-exercise-columnAccess-output` <- renderUI({
+  `tutorial-exercise-columnAccess-result`()
 })
 </script>
  <!--html_preserve-->

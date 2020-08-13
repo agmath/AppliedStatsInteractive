@@ -182,12 +182,11 @@ $(document).ready(function () {
 <div class="tutorial-exercise-support" data-label="meanSampThree-solution" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>mean(samples$Sample_Three)</code></pre>
 </div>
+<div class="tutorial-exercise-support" data-label="meanSampThree-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>grade_code()</code></pre>
+</div>
 </div>
 <div id="section-section-4" class="section level3">
-<h3></h3>
-<p>Check the solution button to see if your code matches!</p>
-</div>
-<div id="section-section-5" class="section level3">
 <h3></h3>
 <ol start="3" style="list-style-type: decimal">
 <li>Use the <code>median()</code> function and the code block below to compute the median of each of the samples and then answer the question that follows.
@@ -204,7 +203,7 @@ $(document).ready(function () {
 </div>
 </div>
 </div>
-<div id="section-section-6" class="section level3">
+<div id="section-section-5" class="section level3">
 <h3></h3>
 <ol start="4" style="list-style-type: decimal">
 <li>In our first workbook we saw that we can use sample data to make generalizations about populations for which the sample is representative. Answer the following questions with this in mind. <div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
@@ -227,22 +226,23 @@ $(document).ready(function () {
 <div id="section-aside-defining-my-own-data" class="section level3">
 <h3>Aside: Defining my own data</h3>
 <p>For data which is not already known to <code>R</code> (ie. data which is not part of a data frame), we can still use <code>R</code> to quickly perform compuations. Consider the distributions of doors knocked on by two political campaign workers last week (Monday - Friday): <span class="math inline">\(\begin{array}{lcl} \text{Worker A} &amp; : &amp; 23,~24,~25,~26,~27\\ \text{Worker B:} &amp; : &amp; 0,~15,~25,~35,~50\end{array}\)</span>. We do this below with the help of the <code>c()</code> function in <code>R</code>, which can be used to create lists of values.</p>
-<p>The following code block finds the mean and median for <code>Worker A</code> – execute the code block to find the mean and median. Once you’ve done this for <code>Worker A</code>, adapt the code so that it finds the mean and median for <code>Worker B</code>.</p>
+<p>The following code block finds the mean and median for <code>Worker A</code> – execute the code block to find the mean and median. Once you’ve done this for <code>Worker A</code>, add two lines to the bottom of the code block so that it also finds the mean and median for <code>Worker B</code>.</p>
 <div class="tutorial-exercise" data-label="myData" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>mean(c(23, 24, 25, 26, 27))
 median(c(23, 24, 25, 26, 27))</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
 <div class="tutorial-exercise-support" data-label="myData-solution" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>mean(c(0, 15, 25, 35, 50))
+<pre class="text"><code>mean(c(23, 24, 25, 26, 27))
+median(c(23, 24, 25, 26, 27))
+mean(c(0, 15, 25, 35, 50))
 median(c(0, 15, 25, 35, 50))</code></pre>
 </div>
+<div class="tutorial-exercise-support" data-label="myData-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>grade_code()</code></pre>
 </div>
-<div id="section-section-7" class="section level3">
-<h3></h3>
-<p>Click the solution button to see if you got it!</p>
 </div>
-<div id="section-section-8" class="section level3">
+<div id="section-section-6" class="section level3">
 <h3></h3>
 <ol start="5" style="list-style-type: decimal">
 <li>Use your explorations of the means and medians for the poll workers to answer the following question. <div class="panel panel-default">
@@ -259,12 +259,12 @@ median(c(0, 15, 25, 35, 50))</code></pre>
 <div id="section-measuring-spread" class="section level2">
 <h2>Measuring Spread</h2>
 <p><strong>Measures of Variability</strong>: Clearly, the center of a dataset doesn’t tell the entire story. Our two political workers’ clearly have very different door-knocking strategies but both have a mean (and median) of <span class="math inline">\(25\)</span> doors per day. We should also measure the <em>spread</em> of data.</p>
-<div id="section-section-9" class="section level3">
+<div id="section-section-7" class="section level3">
 <h3></h3>
 <p>The <em>standard deviation</em> of a set of observations is denoted by <span class="math inline">\(s\)</span> (or <span class="math inline">\(\sigma\)</span> in the case of population-level data) and is computed as follows: <span class="math display">\[s = \sqrt{\frac{\displaystyle{\sum_{i=1}^{n}{\left(x_i-\bar{x}\right)^2}}}{n-1}}\]</span></p>
 <p>We should also note that if you are certain that you are working with population-level data, then the denominator used to compute the standard deviation should be changed to <span class="math inline">\(N\)</span> (the population size). We can do this because there is no uncertainty in estimating the population standard deviation if we have records from every element of the population.</p>
 </div>
-<div id="section-section-10" class="section level3">
+<div id="section-section-8" class="section level3">
 <h3></h3>
 <p><strong>Explaining the Standard Deviation Formula</strong>: The standard deviation seeks to measure an *“average” deviation" from the mean.</p>
 <ul>
@@ -276,7 +276,7 @@ median(c(0, 15, 25, 35, 50))</code></pre>
 <li>Since we squared the deviations before computing the “average”, the units of measure are no longer comparable to the original units that the variable was measured in – the units are square units now. This is why we see the large square root as the last piece of the formula – taking the square root brings us back to the original units.</li>
 </ul>
 </div>
-<div id="section-section-11" class="section level3">
+<div id="section-section-9" class="section level3">
 <h3></h3>
 <p>The <em>inter-quartile range</em> (IQR) of a set of observations measures the spread of the “middle-50-percent” of the observations. The IQR is the distance between <span class="math inline">\(Q1\)</span> (the 25th percentile) and <span class="math inline">\(Q3\)</span> (the 75th percentile). * The median of a set of observations splits the set into two halves: an upper half and a lower half. The median of the lower half is called the <em>first quartile</em> (<span class="math inline">\(Q_1\)</span>) while the median of the upper half is called the <em>third quartile</em> (<span class="math inline">\(Q_3\)</span>). The interquartile range is the distance between <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>. That is, <span class="math display">\[IQR = Q_3-Q_1\]</span></p>
 <ol start="6" style="list-style-type: decimal">
@@ -297,7 +297,7 @@ median(c(0, 15, 25, 35, 50))</code></pre>
 </div></li>
 </ol>
 </div>
-<div id="section-section-12" class="section level3">
+<div id="section-section-10" class="section level3">
 <h3></h3>
 <p>The two plots below are a histogram (left) and a boxplot (right), each showing the distribution of <code>carat</code>-weights for the diamonds in our population.</p>
 <p><img src="3_DescriptiveNumCat_files/figure-html/printPlots-1.png" width="432" /><img src="3_DescriptiveNumCat_files/figure-html/printPlots-2.png" width="432" /></p>
@@ -311,7 +311,11 @@ median(c(0, 15, 25, 35, 50))</code></pre>
 </ul></li>
 </ul>
 </div>
-<div id="section-section-13" class="section level3">
+<div id="section-section-11" class="section level3">
+<h3></h3>
+<p><strong>A Note on Skew:</strong> It is common to refer to data as <em>skewed</em> if the presence of outliers cause the mean and median to disagree with one another on the location of the “center” of our data. In this case, we say that the data is <em>skewed in the direction that those outliers have pulled the mean</em>. For example, we would say that the <code>carat</code> weight data (from above) is <em>skewed right</em>.</p>
+</div>
+<div id="section-section-12" class="section level3">
 <h3></h3>
 <p>In <code>R</code> we can easily compute the standard deviation with the function <code>sd()</code>, and IQR with the function <code>quantiles()</code> for our samples or for the entire dataset! Recall that our diamond samples are stored in a data frame called <code>samples</code>. The code block below is preset to compute the standard deviation, Q1, Q3, and IQR for <code>Sample_One</code>. Note that in the <code>quantiles()</code> function the <code>0.25</code> identifies the 25th percentile (<span class="math inline">\(Q1\)</span>) and the <code>0.75</code> identifies the 75th percentile (<span class="math inline">\(Q3\)</span>). Run the code to find the standard deviation, Q1, and Q2 for <code>Sample_One</code>. Once you’ve done that, edit the existing code to compute these metrics for the other two samples.</p>
 <div class="tutorial-exercise" data-label="computeSdIqr" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -321,11 +325,11 @@ IQR(samples$Sample_One)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
 </div>
-<div id="section-section-14" class="section level3">
+<div id="section-section-13" class="section level3">
 <h3></h3>
-<p><strong>Remark</strong>: Our third sample of diamond carat sizes contained an extreme outlier. The presence of this outlier drastically impacted the computed mean and standard deviation, but didn’t have much (if any) effect on the median or <span class="math inline">\(IQR\)</span>. Because of this, we say that the median and <span class="math inline">\(IQR\)</span> are <em>robust</em> statistics in the presence of outliers.</p>
+<p><strong>Remark</strong>: Our third sample of diamond carat sizes contained an outlier. The presence of this outlier drastically impacted the computed mean and standard deviation, but didn’t have much (if any) effect on the median or <span class="math inline">\(IQR\)</span>. Because of this, we say that the median and <span class="math inline">\(IQR\)</span> are <em>robust</em> statistics in the presence of outliers.</p>
 </div>
-<div id="section-section-15" class="section level3">
+<div id="section-section-14" class="section level3">
 <h3></h3>
 <p>In <code>R</code> we can also easily explore these measures of spread for our campaign workers from earlier. Recall their door-knocking data: <span class="math inline">\(\begin{array}{lcl} \text{Worker A} &amp; : &amp; 23,~24,~25,~26,~27\\ \text{Worker B:} &amp; : &amp; 0,~15,~25,~35,~50\end{array}\)</span></p>
 <p>Use the code blocks below to find the standard deviation and IQR for the doors visited by the campaign workers.</p>
@@ -336,7 +340,7 @@ IQR(samples$Sample_One)</code></pre>
 </div>
 <div id="section-summarizing-categorical-qualitative-factor-data" class="section level2">
 <h2>Summarizing Categorical (Qualitative, Factor) Data</h2>
-<div id="section-section-16" class="section level3">
+<div id="section-section-15" class="section level3">
 <h3></h3>
 Categorical data is best summarized using a frequency table. That is, we use a table that lists how <em>frequent</em> each observation occured in the dataset. For example, consider the samples of diamond <em>cuts</em> below:
 <div data-pagedtable="false">
@@ -351,7 +355,7 @@ table(cut.samples$Sample_One)/nrow(cut.samples)</code></pre>
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
 </div>
-<div id="section-section-17" class="section level3">
+<div id="section-section-16" class="section level3">
 <h3></h3>
 <p>Below, we can see the distributions of diamond <code>cut</code> from <code>Sample_Two</code> (left) and from our entire population (right) below. Even with a sample of 8 diamonds, we gain some insight as to the most and least common diamond cuts. You may also notice that the frequency and relative frequency plots look identical aside from the scale on the vertical axis – this will be the case in general.</p>
 <p><img src="3_DescriptiveNumCat_files/figure-html/printCutPlots-1.png" width="384" /><img src="3_DescriptiveNumCat_files/figure-html/printCutPlots-2.png" width="384" /><img src="3_DescriptiveNumCat_files/figure-html/printCutPlots-3.png" width="384" /><img src="3_DescriptiveNumCat_files/figure-html/printCutPlots-4.png" width="384" /></p>

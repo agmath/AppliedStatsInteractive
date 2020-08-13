@@ -97,9 +97,9 @@ area <- ames$Gr.Liv.Area
 price <- ames$SalePrice
 ```
 
-###
-
-Check the solution code -- were you right?
+```{r assign-check}
+grade_code()
+```
 
 ## Initial Exploration
 
@@ -403,9 +403,9 @@ for(i in 1:100){
 sample_means_small
 ```
 
-###
-
-Does your loop look like the code from the solution block?
+```{r small-loop-check}
+grade_code()
+```
 
 ###
 
@@ -544,9 +544,9 @@ Use the code block below to take a single sample of size 60 of areas from houses
 samp <- sample(area, 60)
 ```
 
-###
-
-Did you take the sample in the same way that I did? Check the solution code.
+```{r samp60-check}
+grade_code()
+```
 
 ###
 
