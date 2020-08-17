@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "148767622",
+    "hash" : "0",
     "id" : "170CD7A8",
     "lastKnownWriteTime" : 1597669936,
     "last_content_update" : 1597669936216,
     "path" : "~/GitHub/AppliedStatsInteractive/inst/tutorials/10_IntroInferenceLab/10_IntroInferenceLab.Rmd",
     "project_path" : "inst/tutorials/10_IntroInferenceLab/10_IntroInferenceLab.Rmd",
     "properties" : {
-        "cursorPosition" : "17,18",
-        "scrollLine" : "0"
+        "cursorPosition" : "44,7",
+        "scrollLine" : "36"
     },
     "read_only" : false,
     "read_only_alternatives" : [
