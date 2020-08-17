@@ -16,7 +16,6 @@ library(dplyr)
 library(ggplot2)
 library(learnr)
 library(gradethis)
-library(oilabs)
 
 load("www/ames.RData")
 set.seed(241)
