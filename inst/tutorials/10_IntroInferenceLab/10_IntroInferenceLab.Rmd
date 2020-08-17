@@ -16,6 +16,7 @@ library(dplyr)
 library(ggplot2)
 library(learnr)
 library(gradethis)
+library(oilabs)
 
 load("www/ames.RData")
 set.seed(241)
@@ -24,6 +25,34 @@ area <- ames$Gr.Liv.Area
 price <- ames$SalePrice
 
 samp <- sample(area, 60)
+
+plot_ci <- function(lo, hi, m) {
+  par(mar=c(2, 1, 1, 1), mgp=c(2.7, 0.7, 0))
+  k <- length(lo)
+  ci.max <- max(rowSums(matrix(c(-1*lo,hi),ncol=2)))
+  
+  xR <- m + ci.max*c(-1, 1)
+  yR <- c(0, 41*k/40)
+  
+  plot(xR, yR, type='n', xlab='', ylab='', axes=FALSE)
+  abline(v=m, lty=2, col='#00000088')
+  axis(1, at=m, paste("mu = ",round(m,4)), cex.axis=1.15)
+  #axis(2)
+  for(i in 1:k){
+    x <- mean(c(hi[i],lo[i]))
+    ci <- c(lo[i],hi[i])
+    if((m < hi[i] & m > lo[i])==FALSE){
+      col <- "#F05133"
+      points(x, i, cex=1.4, col=col)
+      #		  points(x, i, pch=20, cex=1.2, col=col)
+      lines(ci, rep(i, 2), col=col, lwd=5)
+    } else{
+      col <- 1
+      points(x, i, pch=20, cex=1.2, col=col)
+      lines(ci, rep(i, 2), col=col)
+    }
+  }
+}
 
 
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
@@ -615,18 +644,18 @@ Here is the rough outline:
 
 +   Obtain a random sample.
 +   Calculate and store the sample's mean and standard deviation.
-+   Repeat steps (1) and (2) 100 times.
++   Repeat steps (1) and (2) fifty times.
 +   Use these stored statistics to calculate many confidence intervals.
 
 ###
 
 Read the code below -- does it make sense to you? What do you think the result will be? You've used everything in the code block below during this workbook, except for the custom `plot_ci()` function. Once you think you know what will result, run the code block and see if you were right.
 ```{r lots-of-ci, exercise = TRUE}
-samp_mean <- rep(NA, 100)
-samp_sd <- rep(NA, 100)
+samp_mean <- rep(NA, 50)
+samp_sd <- rep(NA, 50)
 n <- 60
 
-for(i in 1:100){
+for(i in 1:50){
   samp <- sample(area, n) # obtain a sample of size n = 60 from the population
   samp_mean[i] <- mean(samp)    # save sample mean in ith element of samp_mean
   samp_sd[i] <- sd(samp)        # save sample sd in ith element of samp_sd
