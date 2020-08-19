@@ -126,7 +126,7 @@ quiz(
 question_checkbox(
   "Which of the following are the correct hypotheses associated with this test?",
   answer("$\\begin{array}{ll} H_0: & p_{\\text{white}} = 0.898,~p_{\\text{black}} = 0.018,~p_{\\text{hispanic}} = 0.040,~p_{\\text{other}} = 0.044\\\\ H_a: & \\text{The distribution is different}\\end{array}$", correct = TRUE),
-  answer("$\\begin{array}{ll} H_0: & \\text{The racial demographics of the state prison population in New Hampshire match the racial demographics of the State.}\\\\ H_a: & \\text{The distribution is different}\\end{array}$", correct = TRUE),
+  answer("$\\begin{array}{ll} H_0: & \\text{The racial demographics of the NH state prison population match the racial demographics of the State.}\\\\ H_a: & \\text{The distribution is different}\\end{array}$", correct = TRUE),
   answer("$\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}}\\\\ H_a: & \\text{The distribution is different.}\\end{array}$"),
   answer("$\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}} = p_{\\text{hispanic}} = p_{\\text{other}} = 0.043\\\\ H_a: & \\text{The distribution is different.}\\end{array}$"),
   answer("$\\begin{array}{ll} H_0: & \\text{The distribution is uniform.}\\\\ H_a: & \\text{The distribution is different}\\end{array}$"),

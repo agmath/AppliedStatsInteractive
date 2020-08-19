@@ -192,7 +192,7 @@ We should also note that if you are certain that you are working with population
 
 ###
   
-**Explaining the Standard Deviation Formula**: The standard deviation seeks to measure an *"average" deviation" from the mean.
+**Explaining the Standard Deviation Formula**: The standard deviation seeks to measure an "average deviation" from the mean.
 
 * If we don't look too closely at the formula, we can see the summation symbol $\left(\sum\right)$ as well as division (by just about the number of values we've added up). That's almost like an average!
 * What are we averaging? The quantity $\left(x - \bar{x}\right)$ denotes an observed value's deviation from the mean. We shouldn't average these values though, since the mean sits in *center* of the data and we would have deviations above the mean (positive) "cancelling out" deviations below the mean (negative).

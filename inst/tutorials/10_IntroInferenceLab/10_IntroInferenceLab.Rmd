@@ -238,7 +238,7 @@ ggplot() +
 
 ###
 
-If we're interested in estimating the average living area in homes in Ames using the sample, our best single guess is the sample mean. Run the code block below and use the result to answer the question that follows.
+If we're interested in estimating the average living area of homes in Ames using the sample, our best single guess is the sample mean. Run the code block below and use the result to answer the question that follows.
 ```{r mean-samp1, exercise = TRUE}
 samp <- sample(area, 50)
 mean(samp)
@@ -299,7 +299,7 @@ ggplot() +
 
 ###
 
-If you would like to adjust the bin width of your histogram to show a different level of detail, you can do so by changing the `bins` argument.
+If you would like to adjust the bin width of your histogram to show a different level of detail, you can do so by changing the `bins` argument. Notice the extra `bins` argument in the call to `geom_histogram()` below. Run the code to see the difference in the two plots.
 
 ```{r hist-breaks, exercise = TRUE}
 sample_means50 <- rep(NA, 5000)

@@ -126,7 +126,7 @@ $(document).ready(function () {
 <h3></h3>
 As a reminder, we have the <a href="www/StdErrorDecisionTree.pdf" target="_blank"><em>standard errror decision tree</em></a> which you’ll continue to make use of. In case you need a refresher on the tree, you can find my walkthrough video below:
 <center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XzxE_ORMM54" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XzxE_ORMM54?start=16" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 </center>
 </div>
@@ -149,7 +149,7 @@ As a reminder, we have the <a href="www/StdErrorDecisionTree.pdf" target="_blank
 <h2>What does the <span class="math inline">\(t\)</span>-distribution look like?</h2>
 <div id="section-section-3" class="section level3">
 <h3></h3>
-<p>So we’ve identified some scenarios for which we should utilize a <span class="math inline">\(t\)</span>-distribution instead or the normal (<span class="math inline">\(z\)</span>) distribution – the simple rule of thumb that I’ve given you is that <strong>any time we use a sample standard deviation as a proxy for the population standard deviation in the standard error estimate, we should utilize the <span class="math inline">\(t\)</span>-distribution</strong>.</p>
+<p>So we’ve identified some scenarios for which we should utilize a <span class="math inline">\(t\)</span>-distribution instead of the normal (<span class="math inline">\(z\)</span>) distribution – the simple rule of thumb that I’ve given you is that <strong>any time we use a sample standard deviation as a proxy for the population standard deviation in the standard error estimate, we should utilize the <span class="math inline">\(t\)</span>-distribution</strong>.</p>
 </div>
 <div id="section-section-4" class="section level3">
 <h3></h3>
@@ -249,7 +249,7 @@ As a reminder, we have the <a href="www/StdErrorDecisionTree.pdf" target="_blank
 </div>
 <div id="section-applications-to-criminal-sentencing" class="section level2">
 <h2>Applications to Criminal Sentencing</h2>
-<p>We’ll work with a <a href="https://github.com/drs22Col/FedSentencing">dataset on Federal Sentencing from the Southern District of New York State</a>. A subset of the data, consisting only of drug-related changes, has been loaded for you as <code>SDNYdrug</code>.</p>
+<p>We’ll work with a <a href="https://github.com/drs22Col/FedSentencing">dataset on Federal Sentencing from the Southern District of New York State</a>. A subset of the data, consisting only of drug-related charges, has been loaded for you as <code>SDNYdrug</code>.</p>
 <div id="section-section-15" class="section level3">
 <h3></h3>
 <p><strong>Question 1:</strong> Compute a 95% confidence interval for the average sentence length for a drug-related charge in the Southern District of New York State.</p>
@@ -386,7 +386,7 @@ And use the code block below to compute the upper bound for the 95% confidence i
 </div>
 <div id="section-section-28" class="section level3">
 <h3></h3>
-<p><strong>Question 2:</strong> Conduct a hypothesis test at the <span class="math inline">\(\alpha = 0.10\)</span> level of significance to determine whether the dataset provides significant evidence to suggest that the average sentence length for white offenders and average sentence length for non-white offenders differs for drug-related cases in the Southern District of New York State.</p>
+<p><strong>Question 2:</strong> Conduct a hypothesis test at the <span class="math inline">\(\alpha = 0.10\)</span> level of significance to determine whether the sample data provides significant evidence to suggest that the average sentence length for white offenders and average sentence length for non-white offenders differs for drug-related cases in the Southern District of New York State.</p>
 </div>
 <div id="section-section-29" class="section level3">
 <h3></h3>
@@ -494,6 +494,9 @@ Find the number of white offenders sentenced in our dataset.
 <pre class="text"><code>grade_result(
   pass_if(~ (.result == length(whiteSentences)))
 )</code></pre>
+</div>
+<div id="section-sentencing-ht-9-hint">
+Since <code>whiteSentences</code> and <code>nonWhiteSentences</code> are vectors of sentence lengths rather than full data frames, the <code>nrow()</code> function won’t work on them. Try using the <code>length()</code> function instead.
 </div>
 Find the number of non-white offenders sentenced in our dataset.
 <div class="tutorial-exercise" data-label="sentencing-ht-10" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -643,7 +646,7 @@ Compute the p-value
 </div>
 <div id="section-summary" class="section level2">
 <h2>Summary</h2>
-Wow – good work through all of that! I hope you found the application to sentence lengths in the SDNY to be interesting and eye-opening. It is important to note that the scenarios you worked through in this workbook were much more lengthy than a typical “problem” in our course will be. The approaches to these problems were really drawn out, step-by-step, to help you identify the necessary steps for computing a confidence interval or conducting a hypothesis test with numerical data. Your next workbook will provide you an opportunity to practice with a mixture of inference tasks dealing with both numerical and categorical data. You’ll become more comfortable with the content and applying our statistical techniques as you work through more and more problems. 
+Wow – good work through all of that! I hope you found the application to sentence lengths in the SDNY to be interesting and eye-opening. The approaches to these problems were really drawn out, step-by-step, to help you identify the necessary steps for computing a confidence interval or conducting a hypothesis test with numerical data. Think about each individual step you were asked to complete and how that step relates to the larger process of completing the inference task. Doing this will help you become a better independent problem solver. Your next workbook will provide you an opportunity to practice with a mixture of inference tasks dealing with both numerical and categorical data. You’ll become more comfortable with the content and applying our statistical techniques as you work through more and more problems. 
 <script type="application/shiny-prerendered" data-context="server-start">
 #knitr::opts_chunk$set(eval = FALSE)
 library(dplyr)

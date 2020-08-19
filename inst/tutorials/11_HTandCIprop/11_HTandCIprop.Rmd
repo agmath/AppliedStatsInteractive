@@ -39,7 +39,7 @@ Our first video discusses *variability in point estimates*. It is likely that so
 
 ###
 
-**An Example:** A June 2020 Pew Research survey revealed that [74% of Americans support offering a path to citizenship](https://www.pewresearch.org/fact-tank/2018/06/18/americans-broadly-support-legal-status-for-immigrants-brought-to-the-u-s-illegally-as-children-2/) for undocumented immigrants who were brought to the US illegally as children -- often referred to as [DREAMers](https://www.adl.org/education/educator-resources/lesson-plans/what-is-the-dream-act-and-who-are-the-dreamers). 
+**An Example:** A June 2020 Pew Research survey revealed that [74% of Americans support offering a path to citizenship](https://www.pewresearch.org/fact-tank/2020/06/17/americans-broadly-support-legal-status-for-immigrants-brought-to-the-u-s-illegally-as-children/) for undocumented immigrants who were brought to the US illegally as children -- often referred to as [DREAMers](https://www.adl.org/education/educator-resources/lesson-plans/what-is-the-dream-act-and-who-are-the-dreamers). 
 
 ###
 
@@ -201,7 +201,12 @@ If we are sure that a sampling distribution is well-modeled by a normal distribu
 
 ###
 
-Use what you learned in the video and your knowledge of the Pew Research study to answer the following questions.
+Use what you learned in the video and your knowledge of the Pew Research study to answer the following questions. You can use the code block to make any necessary computations.
+
+```{r build-ci-code-block, exercise = TRUE}
+
+```
+
 ```{r build-ci-questions, echo = FALSE}
 quiz(
   question_radio(
@@ -263,7 +268,7 @@ quiz(
 
 ### 
 
-So far, so good! There's one more topic to go. Sometimes we'll want to test a claim about a population parameter rather than build a confidence interval for it. Inferential statistics provides a formal framework called the *hypothesis test* for evaluating statistical claims such as.
+So far, so good! There's one more topic to go. Sometimes we'll want to test a claim about a population parameter rather than build a confidence interval for it. Inferential statistics provides a formal framework called the *hypothesis test* for evaluating statistical claims such as
 
 + Is a population mean or proportion larger/smaller/different than some proposed value?
 + Do the population means or proportions different across multiple groups?

@@ -374,7 +374,7 @@ Great! But the problem now is that we've lost the idea that there are more autom
 mosaicplot(mpg$trans2 ~ mpg$drv, main = "Transmission and Drive Types")
 ```
 
-The advantage to the mosaic plot is that it contains all of the information from the two separate plots above, but it is all combined into one plot! We've build a visualization that manages to convey that the proportion of manual vehicles in our dataset outweighs the proportion of automatics, and we can also compare the distribution of drive types within each of these two classes. Notice, however, that the syntax for the mosaic plot is not like the `ggplot()` syntax we've been experimenting with throughout this workbook.
+The advantage to the mosaic plot is that it contains all of the information from the two separate plots above, but it is all combined into one plot! We've built a visualization that manages to convey that the proportion of manual vehicles in our dataset outweighs the proportion of automatics, and we can also compare the distribution of drive types within each of these two classes. Notice, however, that the syntax for the mosaic plot is not like the `ggplot()` syntax we've been experimenting with throughout this workbook.
 
 ## Summary
 

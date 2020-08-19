@@ -53,7 +53,7 @@ In this workbook, we continue our exploration of statistical inference. Through 
 ###
 
 As a reminder, we have the [*standard errror decision tree*](www/StdErrorDecisionTree.pdf){target="_blank"} which you'll continue to make use of. In case you need a refresher on the tree, you can find my walkthrough video below:
-<center><iframe width="560" height="315" src="https://www.youtube.com/embed/XzxE_ORMM54" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/XzxE_ORMM54?start=16" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
 
 ###
 
@@ -75,7 +75,7 @@ While you were watching my walkthrough video you probably noticed that the side 
 
 ###
 
-So we've identified some scenarios for which we should utilize a $t$-distribution instead or the normal ($z$) distribution -- the simple rule of thumb that I've given you is that **any time we use a sample standard deviation as a proxy for the population standard deviation in the standard error estimate, we should utilize the $t$-distribution**. 
+So we've identified some scenarios for which we should utilize a $t$-distribution instead of the normal ($z$) distribution -- the simple rule of thumb that I've given you is that **any time we use a sample standard deviation as a proxy for the population standard deviation in the standard error estimate, we should utilize the $t$-distribution**. 
 
 ###
 
@@ -182,7 +182,7 @@ Okay, good -- now that you've had some practice working with the $t$-distributio
 
 ## Applications to Criminal Sentencing
 
-We'll work with a [dataset on Federal Sentencing from the Southern District of New York State](https://github.com/drs22Col/FedSentencing). A subset of the data, consisting only of drug-related changes, has been loaded for you as `SDNYdrug`.
+We'll work with a [dataset on Federal Sentencing from the Southern District of New York State](https://github.com/drs22Col/FedSentencing). A subset of the data, consisting only of drug-related charges, has been loaded for you as `SDNYdrug`.
 
 ###
 
@@ -346,7 +346,7 @@ question_radio(
 
 ###
 
-**Question 2:** Conduct a hypothesis test at the $\alpha = 0.10$ level of significance to determine whether the dataset provides significant evidence to suggest that the average sentence length for white offenders and average sentence length for non-white offenders differs for drug-related cases in the Southern District of New York State.
+**Question 2:** Conduct a hypothesis test at the $\alpha = 0.10$ level of significance to determine whether the sample data provides significant evidence to suggest that the average sentence length for white offenders and average sentence length for non-white offenders differs for drug-related cases in the Southern District of New York State.
 
 ###
 
@@ -480,6 +480,8 @@ grade_result(
   pass_if(~ (.result == length(whiteSentences)))
 )
 ```
+
+<div id = "sentencing-ht-9-hint"> Since `whiteSentences` and `nonWhiteSentences` are vectors of sentence lengths rather than full data frames, the `nrow()` function won't work on them. Try using the `length()` function instead.</div>
 
 Find the number of non-white offenders sentenced in our dataset.
 ```{r sentencing-ht-10, exercise = TRUE}
@@ -657,4 +659,4 @@ quiz(
 
 ## Summary
 
-Wow -- good work through all of that! I hope you found the application to sentence lengths in the SDNY to be interesting and eye-opening. It is important to note that the scenarios you worked through in this workbook were much more lengthy than a typical "problem" in our course will be. The approaches to these problems were really drawn out, step-by-step, to help you identify the necessary steps for computing a confidence interval or conducting a hypothesis test with numerical data. Your next workbook will provide you an opportunity to practice with a mixture of inference tasks dealing with both numerical and categorical data. You'll become more comfortable with the content and applying our statistical techniques as you work through more and more problems.
+Wow -- good work through all of that! I hope you found the application to sentence lengths in the SDNY to be interesting and eye-opening. The approaches to these problems were really drawn out, step-by-step, to help you identify the necessary steps for computing a confidence interval or conducting a hypothesis test with numerical data. Think about each individual step you were asked to complete and how that step relates to the larger process of completing the inference task. Doing this will help you become a better independent problem solver. Your next workbook will provide you an opportunity to practice with a mixture of inference tasks dealing with both numerical and categorical data. You'll become more comfortable with the content and applying our statistical techniques as you work through more and more problems.

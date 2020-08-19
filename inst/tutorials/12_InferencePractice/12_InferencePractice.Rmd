@@ -35,13 +35,13 @@ From this point on you'll make heavy use of the [*Standard Error Decision Tree*]
 
 ###
 
-<center><iframe width="560" height="315" src="https://www.youtube.com/embed/XzxE_ORMM54" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fs" allowfullscreen></iframe></center>
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/XzxE_ORMM54?start=16" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fs" allowfullscreen></iframe></center>
 
 ###
 
-## Problems with Walkthroughs
+## Practice Problems
 
-The two problems in this section [will eventually] have attached video walkthroughs -- try answering the question parts before watching the corresponding walkthrough video. If you run into trouble, hit play on the video and see if you can identify the answers from my walkthrough. Be sure to mark down any questions you have. As a reminder, click below for detailed versions of the general strategies for inference tasks.
+This section contains two practice problems. Be sure to mark down any questions you have or trouble that you run into. You might even check back with Workbook 11 to see the videos from Dr. Diez, Dr. &Ccedil;etinkaya-Rundell, and Dr. McClintock which contained discussions and approached problems similar to these. As a reminder, the links below will take you to detailed versions of the general strategies for inference tasks.
 
   + [General Strategy for Conducting a Hypothesis Test](www/HTgeneral.pdf)
   + [General Strategy for Computing a Confidence Interval](www/CIgeneral.pdf)
@@ -49,8 +49,6 @@ The two problems in this section [will eventually] have attached video walkthrou
 ###
 
 **Try It 1a:** The result of a poll was that 48% of 331 randomly sampled Americans who decide not to go to college do so because they cannot afford it. Calculate a 90% confidence interval for the proportion of Americans who decide not to go to college because they cannot afford it, and interpret the result in context.
-
-<center>**In Case of Emergency Hit Play** [NEED TO CREATE VIDEO]</center>
 
 Use the code block below to execute any necessary computation.
 ```{r try-it-1a-code-block, exercise = TRUE}
@@ -219,8 +217,6 @@ question_radio(
 
 **Try It 1b:** Consider the same scenario. Suppose we wanted the margin of error for the 90% confidence level to be about 1.5%. How large of a sample would you recommend?
 
-<center>**In Case of Emergency Hit Play** [NEED TO CREATE VIDEO]</center>
-
 Use the code block below to execute any necessary computation.
 ```{r try-it-1b-code-block, exercise = TRUE}
 
@@ -317,8 +313,6 @@ question_radio(
 ###
 
 **Try It 2:** A USA Today/Gallup poll conducted between 2010 and 2011 asked a group of unemployed and underemployed Americans if they have had major problems in their relationships with their spouse or another close family member as a result of not having a job (if unemployed) or not having a full-time job (if underemployed). 27% of the 1,145 unemployed respondents and 25% of the 675 underemployed respondents said they had major problems in relationships as a result of their employment status. Conduct a test to determine whether an association exists between the presence of relationship problems and whether an individual is unemployed or underemployed. Use the $\alpha = 0.05$ level of significance.
-
-<center>INSERT WALKTHROUGH VIDEO</center>
 
 Use the code block below to carry out any necessary computations.
 ```{r try-it-2-questions-codeblock, exercise = TRUE}

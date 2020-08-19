@@ -131,6 +131,8 @@ ggplot() + geom_bar(mapping = aes(x = kobe_streak))
 grade_code()
 ```
 
+<div id = "plot-streak-kobe-hint"> Since `kobe_streak` is a vector rather than a data frame, we should leave the `data` argument out of the call to `ggplot()`. That is, your code should start with `ggplot() +` </div>
+
 ###
 
 Note that instead of making a histogram, we chose to make a bar plot from a table of the streak data. A bar plot is preferable here since our variable is discrete -- counts -- instead of continuous.

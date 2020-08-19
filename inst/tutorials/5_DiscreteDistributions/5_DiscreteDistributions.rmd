@@ -37,7 +37,7 @@ Throughout this workbook you'll be introduced to the notion of probability and w
 + Define, discuss, and interpret the probability of an event as its likelihood.
 + Apply fundamental counting principles and the notion of independence to compute the probability associated with the occurrence of a sequence of events.
 + Use the definition of binomial experiments to identify scenarios to which the binomial distribution can be applied and then apply the binomial distribution to find probabilities associated with specified outcomes. 
-+ Given a binomial experiment, compute the expected number of successful outcomes as well as the standard deviation for number of successes and use these values to describe a set of outcomes which would be considered *unlikely*.
++ Given a binomial experiment, compute the expected number of successful outcomes as well as the standard deviation for number of successes.
 
 ## Basic Probability
 

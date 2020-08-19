@@ -107,7 +107,7 @@ quiz(
 
 Good work so far. Were you confident about your responses on the previous questions? If not, be sure to ask a question!
 
-In her video, Dr. &Ccedil;etinkaya-Rundel mentions that the computations associated with an ANOVA test are tedious and prone to errors. For this reason, we typically utilize software to run ANOVA test -- this is exactly what you'll do now.
+In her video, Dr. &Ccedil;etinkaya-Rundel mentions that the computations associated with an ANOVA test are tedious and prone to errors. For this reason, we typically utilize software to run ANOVA tests -- this is exactly what you'll do now.
 
 ###
 
