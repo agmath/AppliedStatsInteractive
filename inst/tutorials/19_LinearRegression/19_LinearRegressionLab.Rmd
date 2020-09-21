@@ -221,7 +221,7 @@ quiz(
     random_answer_order = TRUE
   ),
   question_radio(
-    "What is the approximate valye of the `intercept` associated with the linear model we created?",
+    "What is the approximate value of the `intercept` associated with the linear model we created?",
     answer("0"),
     answer("0.067"),
     answer("3.88", correct = TRUE),

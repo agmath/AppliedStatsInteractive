@@ -175,7 +175,7 @@ quiz(
     "Are the conditions for inference satisfied?",
     answer("Yes, the group sizes are large enough to overcome any skew in the population distributions.", correct = TRUE),
     answer("No, the groups are too small."),
-    answer("No, the group sizes are imbalances."),
+    answer("No, the group sizes are imbalanced."),
     answer("No, there is skew in the data."),
     allow_retry = TRUE,
     random_answer_order = TRUE

@@ -1,9 +1,9 @@
 {
-    "path" : "~/GitHub/AppliedStatsInteractive/inst/tutorials/10_IntroInferenceLab",
-    "sortOrder" : [
+    "path": "~/GitHub/AppliedStatsInteractive/inst/tutorials/10_IntroInferenceLab",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }

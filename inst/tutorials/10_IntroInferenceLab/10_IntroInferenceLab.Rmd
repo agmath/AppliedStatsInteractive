@@ -415,7 +415,7 @@ The `for` loop allows us to not just run the code 5,000 times, but to neatly pac
 
 ###
 
-To make sure you understand what you've done in this loop, try building and running a smaller version in the code block below. Initialize a vector of 100 zeros called `sample_means_small`.  Run a loop that takes a sample of size 50 from `area` and stores the sample mean in `sample_means_small`, but only iterate from 1 to 100.  Print the output to your screen (type `sample_means_small` into the console and press enter). 
+To make sure you understand what you've done in this loop, try building and running a smaller version in the code block below. Initialize a vector of 100 zeros called `sample_means_small`.  Run a loop that takes a sample of size 50 from `area` and stores the sample mean in `sample_means_small`, but only iterate from 1 to 100.  Print the output to your screen by including a line `sample_means_small` after the loop concludes. 
 ```{r small-loop, exercise = TRUE}
 
 ```

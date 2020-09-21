@@ -122,6 +122,10 @@ quiz(
 )
 ```
 
+###
+
+You may have been frustrated or surprised by the answers to these questions (in particular, that female heights are approximately normally distributed). It is difficult to assess normality directly from a histogram -- let's dig a bit deeper.
+
 ## Using the normal model
 
 ###

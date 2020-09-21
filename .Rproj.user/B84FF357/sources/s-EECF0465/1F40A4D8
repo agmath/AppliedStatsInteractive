@@ -1,0 +1,24 @@
+{
+    "id": "1F40A4D8",
+    "path": "~/GitHub/AppliedStatsInteractive/inst/tutorials/5_DiscreteDistributions/5_DiscreteDistributions.rmd",
+    "project_path": "inst/tutorials/5_DiscreteDistributions/5_DiscreteDistributions.rmd",
+    "type": "r_markdown",
+    "hash": "3327702611",
+    "contents": "",
+    "dirty": false,
+    "created": 1600696750266.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "cursorPosition": "272,55",
+        "scrollLine": "268"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1600696888,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1600696888690,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -103,7 +103,7 @@ In the video Dr. Diez discusses how we can use the *Central Limit Theorem* to qu
 
 ###
 
-<i>**Central Limit Theorem:**</i> When observations are independent and the sample size is sufficiently large, the sample proportion $\hat{p}$ will tend to follow a normal distribution with $\mu = p$ (the true population proportion) and standard error $\displaystyle{S_E = \sqrt{\frac{p\left(1-p\right)}{n}}}$. That is $\displaystyle{\hat{p} \sim N\left(\mu = p, ~S_E = \sqrt{\frac{p\left(1-p\right)}{n}}\right)}$).
+<i>**Central Limit Theorem:**</i> When observations are independent and the sample size is sufficiently large, the sample proportion $\hat{p}$ will tend to follow a normal distribution with $\mu = p$ (the true population proportion) and standard error $\displaystyle{S_E = \sqrt{\frac{p\left(1-p\right)}{n}}}$. That is $\displaystyle{\hat{p} \sim N\left(\mu = p, ~S_E = \sqrt{\frac{p\left(1-p\right)}{n}}\right)}$.
 
 ###
 
@@ -275,7 +275,7 @@ So far, so good! There's one more topic to go. Sometimes we'll want to test a cl
 
 ## Intro to Hypothesis Testing
 
-Here's one more video from Shannon McLintock (also of Openintro.org) introducing the notion of the hypothesis test.
+Here's one more video from Dr. Shannon McLintock (also of Openintro.org) introducing the notion of the hypothesis test.
 
 <center><iframe width="560" height="315" src="https://www.youtube.com/embed/NVbPE1_Cbx8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
 
@@ -350,7 +350,7 @@ quiz(
   ),
   question_radio(
     "Use the `pnorm()` function to compute the $p$-value associated with this test.",
-    answer("$p\\text{-vaue} = 0$"),
+    answer("$p\\text{-vaue} = 0$", message = "For our tests, even if a p-value of 0 is reported by software, this just means that the p-value is very small (less than the set precision value)."),
     answer("$p\\text{-value}\\approx 0$", correct = TRUE),
     answer("$p\\text{-value} = 1$"),
     answer("$p\\text{-value} = 0.05$"),
