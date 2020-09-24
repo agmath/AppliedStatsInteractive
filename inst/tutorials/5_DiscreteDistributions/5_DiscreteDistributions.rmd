@@ -215,7 +215,7 @@ So in the last question, none of the choices were correct -- but why? There are 
 + The probability of <u>exactly</u> $k$ successes is given by
 <center> $\displaystyle{\mathbb{P}\left[X = k\right] = \binom{n}{k}\cdot p^k\left(1 - p\right)^{n-k} \approx \tt{dbinom(k, n, p)}}$</center>
 + The probability of <u>at most</u> $k$ successes is given by
-<center> $\displaystyle{\mathbb{P}\left[X \leq k\right] = \sum_{i=1}^{k}{\binom{n}{i}\cdot p^i\left(1 - p\right)^{n-i}} \approx \tt{pbinom(k, n, p)}}$</center>
+<center> $\displaystyle{\mathbb{P}\left[X \leq k\right] = \sum_{i=0}^{k}{\binom{n}{i}\cdot p^i\left(1 - p\right)^{n-i}} \approx \tt{pbinom(k, n, p)}}$</center>
 
 In the equations above, $\binom{n}{k} = \frac{n!}{k!\left(n-k\right)!}$ counts the number of ways to arrange the $k$ successes amongst the $n$ trials. That being said, the `R` functionality, `dbinom()` and `pbinom()` allow us to bypass the messy formulas -- but you'll still need to know what these functions do in order to use them correctly!
 
