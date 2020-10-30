@@ -128,7 +128,7 @@ $(document).ready(function () {
 </div>
 <div id="section-section-2" class="section level3">
 <h3></h3>
-<p>Say that the researcher took a random sample of 1000 inmates in State Penitentiaries across the state of New Hampshire and observed the following results. In the sample, 130 inmates were white, 584 were black, 243 were hispanic, and 43 were of another race. The researcher wants to determine whether this sample of inmates refutes the notion that the state prison population in New Hampshire is reflective of the State’s breakdown of population by race. We know that a new random sample of 1000 inmates would provide results different than these, so how do we determine whether we have a statistically significant result?</p>
+<p>Say that the researcher took a random sample of 100 inmates in State Penitentiaries across the state of New Hampshire and observed the following results. In the sample, 81 inmates were white, 8 were black, 5 were hispanic, and 6 were of another race. The researcher wants to determine whether this sample of inmates refutes the notion that the state prison population in New Hampshire is reflective of the State’s breakdown of population by race. We know that a new random sample of 100 inmates would provide results different than these, so how do we determine whether we have a statistically significant result?</p>
 </div>
 <div id="section-section-3" class="section level3">
 <h3></h3>
@@ -156,7 +156,7 @@ $(document).ready(function () {
 </div>
 <div id="section-section-7" class="section level3">
 <h3></h3>
-<p>Okay, let’s get back to our application to racial representation in the New Hampshire state prison population. As a reminder, we’ve discovered that New Hampshire is estimated to be 89.8% white, 1.8% black, 4.0% hispanic, and 4.4% of other races in 2019. Additionally, we have a sample of 1000 inmates from state prisons in New Hampshire and observed the following: 130 inmates were white, 584 were black, and 243 were hispanic, and 43 were of another race. We want to know if this sample provides evidence to suggest that the state prison population in New Hampshire does not reflect the racial demographics of the State.</p>
+<p>Okay, let’s get back to our application to racial representation in the New Hampshire state prison population. As a reminder, we’ve discovered that New Hampshire is estimated to be 89.8% white, 1.8% black, 4.0% hispanic, and 4.4% of other races in 2019. Additionally, we have a sample of 100 inmates from state prisons in New Hampshire and observed the following: 81 inmates were white, 8 were black, and 5 were hispanic, and 6 were of another race. We want to know if this sample provides evidence to suggest that the state prison population in New Hampshire does not reflect the racial demographics of the State.</p>
 </div>
 <div id="section-section-8" class="section level3">
 <h3></h3>
@@ -204,49 +204,49 @@ $(document).ready(function () {
 <div id="section-section-10" class="section level3">
 <h3></h3>
 <p>Use the following code blocks to input or calculate the expected counts for each race.</p>
-Compute the number of prisoners out of the 1000 who are expected to be <em>white</em>.
+Compute the number of prisoners out of the 100 who are expected to be <em>white</em>.
 <div class="tutorial-exercise" data-label="exp-white" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
 <div class="tutorial-exercise-support" data-label="exp-white-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>grade_result(
-  pass_if(~ .result == (1000*0.898))
+  pass_if(~ .result == (100*0.898))
 )</code></pre>
 </div>
 </div>
 <div id="section-section-11" class="section level3">
 <h3></h3>
-Compute the number of prisoners out of the 1000 who are expected to be <em>black</em>.
+Compute the number of prisoners out of the 100 who are expected to be <em>black</em>.
 <div class="tutorial-exercise" data-label="exp-black" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
 <div class="tutorial-exercise-support" data-label="exp-black-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>grade_result(
-  pass_if(~ .result == (1000*0.018))
+  pass_if(~ .result == (100*0.018))
 )</code></pre>
 </div>
 </div>
 <div id="section-section-12" class="section level3">
 <h3></h3>
-Compute the number of prisoners out of the 1000 who are expected to be <em>hispanic</em>.
+Compute the number of prisoners out of the 100 who are expected to be <em>hispanic</em>.
 <div class="tutorial-exercise" data-label="exp-hispanic" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
 <div class="tutorial-exercise-support" data-label="exp-hispanic-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>grade_result(
-  pass_if(~ .result == (1000*0.040))
+  pass_if(~ .result == (100*0.040))
 )</code></pre>
 </div>
 </div>
 <div id="section-section-13" class="section level3">
 <h3></h3>
-Compute the number of prisoners out of the 1000 who are expected to be of other races.
+Compute the number of prisoners out of the 100 who are expected to be of other races.
 <div class="tutorial-exercise" data-label="exp-other" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
 <div class="tutorial-exercise-support" data-label="exp-other-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>grade_result(
-  pass_if(~ .result == (1000*0.044))
+  pass_if(~ .result == (100*0.044))
 )</code></pre>
 </div>
 </div>
@@ -256,7 +256,7 @@ Compute the number of prisoners out of the 1000 who are expected to be of other 
 Use the code block below to enter or compute the <span class="math inline">\(\chi^2\)</span> test statistic. The code block has been pre-populated to get you started with computing the test statistic.
 <div class="tutorial-exercise" data-label="test-stat" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>#Define the observed values
-observed &lt;- c(130, 584, 243, 43)
+observed &lt;- c(81, 8, 5, 6)
 #Define the expected values -- you should input these, be sure to use the same order as in the &quot;observed&quot; vector.
 expected &lt;- c()
 
@@ -264,8 +264,8 @@ expected &lt;- c()
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":60,"exercise.checker":["function (label = NULL, solution_code = NULL, user_code = NULL, ","    check_code = NULL, envir_result = NULL, evaluate_result = NULL, ","    envir_prep = NULL, last_value = NULL, ...) ","{","    if (is.null(user_code)) {","        return(list(message = \"I didn't receive your code. Did you write any?\", ","            correct = FALSE, type = \"error\", location = \"append\"))","    }","    else {","        user_code <- parse(text = user_code)","        if (length(user_code) == 0) {","            return(list(message = \"I didn't receive your code. Did you write any?\", ","                correct = FALSE, type = \"error\", location = \"append\"))","        }","    }","    if (!is.null(solution_code)) {","        solution_code <- parse(text = solution_code)","        if (length(solution_code) == 0) {","            return(list(message = \"No solution is provided for this exercise.\", ","                correct = TRUE, type = \"info\", location = \"append\"))","        }","    }","    had_error_checking <- FALSE","    checked_result <- tryCatch({","        parsed_check_code <- parse(text = check_code)","        if (length(parsed_check_code) > 1) {","            for (i in 1:(length(parsed_check_code) - 1)) {","                eval(parsed_check_code[[i]], envir_prep)","            }","        }","        grading_code <- rlang::call_standardise(parsed_check_code[[length(parsed_check_code)]], ","            envir_prep)","        grader_args <- list(user_quo = rlang::as_quosure(user_code[[length(user_code)]], ","            envir_result))","        if (!is.null(solution_code)) {","            grader_args$solution_quo <- rlang::as_quosure(solution_code[[length(solution_code)]], ","                envir_prep)","        }","        learnr_args <- list(...)","        learnr_args$label <- label","        learnr_args$solution_code <- solution_code","        learnr_args$user_code <- user_code","        learnr_args$check_code <- check_code","        learnr_args$envir_result <- envir_result","        learnr_args$evaluate_result <- evaluate_result","        learnr_args$envir_prep <- envir_prep","        learnr_args$last_value <- last_value","        grading_code$grader_args <- grader_args","        grading_code$learnr_args <- learnr_args","        envir_prep$ans <- grader_args$user","        eval(grading_code, envir_prep)","    }, error = function(e) {","        message(\"\", e)","        had_error_checking <<- TRUE","        graded(correct = FALSE, message = \"Error occured while checking the submission\")","    })","    if (!checkmate::test_class(checked_result, \"grader_graded\")) {","        stop(\"`grade_learnr` should receive a `graded` value from every `-check` chunk\")","    }","    message_type <- if (had_error_checking) {","        \"warning\"","    }","    else {","        if (checked_result$correct) {","            \"success\"","        }","        else {","            \"error\"","        }","    }","    ret <- list(message = checked_result$message, correct = checked_result$correct, ","        type = message_type, location = \"append\")","    ret","}"]}</script>
 </div>
 <div class="tutorial-exercise-support" data-label="test-stat-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>observed &lt;- c(130, 584, 243, 43)
-expected &lt;- c(898, 18, 40, 44)
+<pre class="text"><code>observed &lt;- c(81, 8, 5, 6)
+expected &lt;- c(89.8, 1.8, 4, 4.4)
 
 grade_result(
   pass_if(~ (abs(.result - sum((observed - expected)^2/expected)) &lt; 0.01))
@@ -292,7 +292,7 @@ Use the code block below to enter the degrees of freedom for the <span class="ma
 </div>
 <div class="tutorial-exercise-support" data-label="compute-p-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>grade_result(
-  pass_if(~ (abs(.result - (1 - pchisq(19484.62, df = 4 - 1))) &lt; 0.0001))
+  pass_if(~ (abs(.result - (1 - pchisq(23.04973, df = 4 - 1))) &lt; 0.0001))
 )</code></pre>
 </div>
 </div>
@@ -314,14 +314,21 @@ Use the code block below to enter the degrees of freedom for the <span class="ma
 </div>
 </div></p>
 </div>
+<div id="section-section-18" class="section level3">
+<h3></h3>
+<p><em>(This application was based on 2019 data from the <a href="http://www.census.gov">US Census Bureau</a> and <a href="https://www.sentencingproject.org/">The Sentencing Project</a>)</em></p>
+</div>
+<div id="section-section-19" class="section level3">
+<h3></h3>
+</div>
 </div>
 <div id="section-tests-of-independence" class="section level2">
 <h2>Tests of Independence</h2>
-<div id="section-section-18" class="section level3">
+<div id="section-section-20" class="section level3">
 <h3></h3>
 <p>Okay, now that you’ve completed a test for Goodness of Fit, let’s consider another application of the <span class="math inline">\(\chi^2\)</span>-distribution. We will work through an application in which we are interested in determining whether level of household income (<code>IncomeLevel</code>) and <code>DrugUse</code> by adolescents are independent. In our scenario we will consider a simulated dataset based off of metrics from the <a href="https://www.cdc.gov/brfss/questionnaires/index.htm"><em>2019 Behavioral Risk Factor Surveillance System</em></a>. The simulated data is stored for you in a data frame called <code>BRFSSsim</code>.</p>
 </div>
-<div id="section-section-19" class="section level3">
+<div id="section-section-21" class="section level3">
 <h3></h3>
 <p>Let’s see Dr. Çetinkaya-Rundel for an introduction.</p>
 <center>
@@ -329,16 +336,16 @@ Use the code block below to enter the degrees of freedom for the <span class="ma
 </iframe>
 </center>
 </div>
-<div id="section-section-20" class="section level3">
+<div id="section-section-22" class="section level3">
 <h3></h3>
 <p>We now return to our simulated BRFSS data. Each row of the simulated dataset is meant to represent a response from a single adolescent in the USA. Recall that we are interested in determining whether there is evidence to suggest an association between the sociological variables <code>IncomeLevel</code> and <code>DrugUse</code>. The variable <code>IncomeLevel</code> measures level of household income, with the observed values <em>poverty</em>, <em>lowIncome</em>, <em>middleIncome</em>, and <em>highIncome</em>. The variable <code>drugUse</code> denotes whether the individual reports using any illicit drug in the past year, as a <em>yes</em> or <em>no</em> response.</p>
 <p>We suspect the following marginal distributions: within the US, approximately 16% of households fall below the poverty line, approximately 38% can be classified as low income, about 35% as middle income, and the remaining 11% as high income. Additionally, approximately 14% of adolescents are estimated to have used illicit drugs in any given year. Since we have these assumed percentages, we’ll use them in computing our expected counts rather than taking the product of the row and column totals and dividing by 2500 as Dr. Çetinkaya-Rundel suggested in the video.</p>
 </div>
-<div id="section-section-21" class="section level3">
+<div id="section-section-23" class="section level3">
 <h3></h3>
 <p>Assume that the results in the <code>BRFSSsim</code> dataset are collected by a researcher wishing to determine whether adolescent drug use and household income are independent of one another.</p>
 </div>
-<div id="section-section-22" class="section level3">
+<div id="section-section-24" class="section level3">
 <h3></h3>
 <p><div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
 <div data-label="test-indep-initial-qs-1" class="tutorial-question panel-body">
@@ -363,7 +370,7 @@ Use the code block below to enter the degrees of freedom for the <span class="ma
 </div>
 </div></p>
 </div>
-<div id="section-section-23" class="section level3">
+<div id="section-section-25" class="section level3">
 <h3></h3>
 <div class="panel panel-default">
 <div data-label="hypotheses" class="tutorial-question panel-body">
@@ -374,7 +381,7 @@ Use the code block below to enter the degrees of freedom for the <span class="ma
 </div>
 </div>
 </div>
-<div id="section-section-24" class="section level3">
+<div id="section-section-26" class="section level3">
 <h3></h3>
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the poverty and drug use group:
 <div class="tutorial-exercise" data-label="poverty-drug-use" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -386,7 +393,7 @@ Under the assumption of the null hypothesis, compute the expected number of the 
 )</code></pre>
 </div>
 </div>
-<div id="section-section-25" class="section level3">
+<div id="section-section-27" class="section level3">
 <h3></h3>
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the low income and drug use group:
 <div class="tutorial-exercise" data-label="lowInc-drug-use" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -398,7 +405,7 @@ Under the assumption of the null hypothesis, compute the expected number of the 
 )</code></pre>
 </div>
 </div>
-<div id="section-section-26" class="section level3">
+<div id="section-section-28" class="section level3">
 <h3></h3>
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the middle income and drug use group:
 <div class="tutorial-exercise" data-label="middleInc-drug-use" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -410,7 +417,7 @@ Under the assumption of the null hypothesis, compute the expected number of the 
 )</code></pre>
 </div>
 </div>
-<div id="section-section-27" class="section level3">
+<div id="section-section-29" class="section level3">
 <h3></h3>
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the high income and drug use group:
 <div class="tutorial-exercise" data-label="highInc-drug-use" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -422,7 +429,7 @@ Under the assumption of the null hypothesis, compute the expected number of the 
 )</code></pre>
 </div>
 </div>
-<div id="section-section-28" class="section level3">
+<div id="section-section-30" class="section level3">
 <h3></h3>
 Okay, you’ve completed half of the two-way table. I’ll fill in the rest in the <em>Expected Results</em> table below. The second table you see holds the actual <em>Observed Results</em>:
 <div class="row">
@@ -568,11 +575,11 @@ Okay, you’ve completed half of the two-way table. I’ll fill in the rest in t
 </div>
 </div>
 </div>
-<div id="section-section-29" class="section level3">
+<div id="section-section-31" class="section level3">
 <h3></h3>
 <p>In the video, Dr. Çetinkaya-Rundel reiterates that we can compute the <span class="math inline">\(\chi^2\)</span> test statistic using a formula analogous to the one we used for <span class="math inline">\(\chi^2\)</span> Goodness of Fit. We have <span class="math display">\[\displaystyle{\chi^2 = \sum_{i = 1}^{k}{\frac{\left(\text{observed} - \text{expected}\right)^2}{\text{expected}}}}\]</span> where <span class="math inline">\(k\)</span> represents the number of cells in the variable-comparison tables. That is, <span class="math inline">\(k\)</span> is given by the product of the number of levels underneath each of the categorical variables, so here we have <span class="math inline">\(k = 8\)</span>.</p>
 </div>
-<div id="section-section-30" class="section level3">
+<div id="section-section-32" class="section level3">
 <h3></h3>
 Use the code block below to compute the <span class="math inline">\(\chi^2\)</span> test statistic. Look back to our earlier application if you need a refresher!
 <div class="tutorial-exercise" data-label="chi-sq-ind" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -585,7 +592,7 @@ grade_result(
 )</code></pre>
 </div>
 </div>
-<div id="section-section-31" class="section level3">
+<div id="section-section-33" class="section level3">
 <h3></h3>
 Compute or input the degrees of freedom associated with this test for independence.
 <div class="tutorial-exercise" data-label="df-ind" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -597,11 +604,11 @@ Compute or input the degrees of freedom associated with this test for independen
 )</code></pre>
 </div>
 </div>
-<div id="section-section-32" class="section level3">
+<div id="section-section-34" class="section level3">
 <h3></h3>
 <p>Now that we’ve computed the test statistic and degrees of freedom associated with our test, we can compute the <span class="math inline">\(p\)</span>-value. Remember that the <span class="math inline">\(p\)</span>-value associated with a <span class="math inline">\(\chi^2\)</span> test for independence can be computed with the <code>pchisq()</code> function as was utilized before.</p>
 </div>
-<div id="section-section-33" class="section level3">
+<div id="section-section-35" class="section level3">
 <h3></h3>
 Use the code block below to compute the <span class="math inline">\(p\)</span>-value associated with this test.
 <div class="tutorial-exercise" data-label="compute-p-indep" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -613,7 +620,7 @@ Use the code block below to compute the <span class="math inline">\(p\)</span>-v
 )</code></pre>
 </div>
 </div>
-<div id="section-section-34" class="section level3">
+<div id="section-section-36" class="section level3">
 <h3></h3>
 <p>Assume the test was to be conducted at the <span class="math inline">\(\alpha = 0.05\)</span> level of significance. Answer the following to determine the results of the test. <div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
 <div data-label="chisq-indep-conclusion-1" class="tutorial-question panel-body">
@@ -691,7 +698,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "hypotheses-gof",     question = structure("Which of the following are the correct hypotheses associated with this test?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_127b136",         option = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = 0.898,~p_{\\text{black}} = 0.018,~p_{\\text{hispanic}} = 0.040,~p_{\\text{other}} = 0.044\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         value = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = 0.898,~p_{\\text{black}} = 0.018,~p_{\\text{hispanic}} = 0.040,~p_{\\text{other}} = 0.044\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         label = structure("\\(\\begin{array}{ll} H_0: & p_{\\text{white}} = 0.898,~p_{\\text{black}} = 0.018,~p_{\\text{hispanic}} = 0.040,~p_{\\text{other}} = 0.044\\\\ H_a: & \\text{The distribution is different}\\end{array}\\)", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_767105b",         option = "$\\begin{array}{ll} H_0: & \\text{The racial demographics of the state prison population in New Hampshire match the racial demographics of the State.}\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         value = "$\\begin{array}{ll} H_0: & \\text{The racial demographics of the state prison population in New Hampshire match the racial demographics of the State.}\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         label = structure("\\(\\begin{array}{ll} H_0: & \\text{The racial demographics of the state prison population in New Hampshire match the racial demographics of the State.}\\\\ H_a: & \\text{The distribution is different}\\end{array}\\)", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_500b38a",         option = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}}\\\\ H_a: & \\text{The distribution is different.}\\end{array}$",         value = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}}\\\\ H_a: & \\text{The distribution is different.}\\end{array}$",         label = structure("\\(\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}}\\\\ H_a: & \\text{The distribution is different.}\\end{array}\\)", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_85840ab",         option = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}} = p_{\\text{hispanic}} = p_{\\text{other}} = 0.043\\\\ H_a: & \\text{The distribution is different.}\\end{array}$",         value = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}} = p_{\\text{hispanic}} = p_{\\text{other}} = 0.043\\\\ H_a: & \\text{The distribution is different.}\\end{array}$",         label = structure("\\(\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}} = p_{\\text{hispanic}} = p_{\\text{other}} = 0.043\\\\ H_a: & \\text{The distribution is different.}\\end{array}\\)", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a64a34f",         option = "$\\begin{array}{ll} H_0: & \\text{The distribution is uniform.}\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         value = "$\\begin{array}{ll} H_0: & \\text{The distribution is uniform.}\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         label = structure("\\(\\begin{array}{ll} H_0: & \\text{The distribution is uniform.}\\\\ H_a: & \\text{The distribution is different}\\end{array}\\)", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "hypotheses-gof-answer", question = "hypotheses-gof"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich of the following are the correct hypotheses associated with this test?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = TRUE, allow_retry = TRUE,     seed = 412632265.807853, options = list()), class = c("learnr_checkbox", "tutorial_question")))
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "hypotheses-gof",     question = structure("Which of the following are the correct hypotheses associated with this test?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_127b136",         option = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = 0.898,~p_{\\text{black}} = 0.018,~p_{\\text{hispanic}} = 0.040,~p_{\\text{other}} = 0.044\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         value = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = 0.898,~p_{\\text{black}} = 0.018,~p_{\\text{hispanic}} = 0.040,~p_{\\text{other}} = 0.044\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         label = structure("\\(\\begin{array}{ll} H_0: & p_{\\text{white}} = 0.898,~p_{\\text{black}} = 0.018,~p_{\\text{hispanic}} = 0.040,~p_{\\text{other}} = 0.044\\\\ H_a: & \\text{The distribution is different}\\end{array}\\)", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_767105b",         option = "$\\begin{array}{ll} H_0: & \\text{The racial demographics of the NH state prison population match the racial demographics of the State.}\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         value = "$\\begin{array}{ll} H_0: & \\text{The racial demographics of the NH state prison population match the racial demographics of the State.}\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         label = structure("\\(\\begin{array}{ll} H_0: & \\text{The racial demographics of the NH state prison population match the racial demographics of the State.}\\\\ H_a: & \\text{The distribution is different}\\end{array}\\)", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_500b38a",         option = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}}\\\\ H_a: & \\text{The distribution is different.}\\end{array}$",         value = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}}\\\\ H_a: & \\text{The distribution is different.}\\end{array}$",         label = structure("\\(\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}}\\\\ H_a: & \\text{The distribution is different.}\\end{array}\\)", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_85840ab",         option = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}} = p_{\\text{hispanic}} = p_{\\text{other}} = 0.043\\\\ H_a: & \\text{The distribution is different.}\\end{array}$",         value = "$\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}} = p_{\\text{hispanic}} = p_{\\text{other}} = 0.043\\\\ H_a: & \\text{The distribution is different.}\\end{array}$",         label = structure("\\(\\begin{array}{ll} H_0: & p_{\\text{white}} = p_{\\text{black}} = p_{\\text{hispanic}} = p_{\\text{other}} = 0.043\\\\ H_a: & \\text{The distribution is different.}\\end{array}\\)", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a64a34f",         option = "$\\begin{array}{ll} H_0: & \\text{The distribution is uniform.}\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         value = "$\\begin{array}{ll} H_0: & \\text{The distribution is uniform.}\\\\ H_a: & \\text{The distribution is different}\\end{array}$",         label = structure("\\(\\begin{array}{ll} H_0: & \\text{The distribution is uniform.}\\\\ H_a: & \\text{The distribution is different}\\end{array}\\)", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "hypotheses-gof-answer", question = "hypotheses-gof"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich of the following are the correct hypotheses associated with this test?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = TRUE, allow_retry = TRUE,     seed = 412632265.807853, options = list()), class = c("learnr_checkbox", "tutorial_question")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">

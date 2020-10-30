@@ -293,7 +293,7 @@ quiz(
     random_answer_order = TRUE
   ),
   question_radio(
-    "Which of the following is the $z$-score corresponding to Sally? (round to two decimal places)",
+    "Which of the following is the percentile corresponding to Sally? (round to two decimal places)",
     answer("0.9431"),
     answer("0.0569"),
     answer("0.4431"),
@@ -638,14 +638,14 @@ grade_result(
 )
 ```
 
-+ Find the probability that more than `r floor(0.7*chickPoxSampSize)` but less than `r floor(0.9*chickPoxSampSize)` adults in your sample of size `r chickPoxSampSize` will have had chicken pox.
++ Find the probability that more than `r floor(0.8*chickPoxSampSize)` but less than `r floor(0.9*chickPoxSampSize)` adults in your sample of size `r chickPoxSampSize` will have had chicken pox.
 ```{r chick-pox-prob-between, exercise = TRUE}
 
 ```
 
 ```{r chick-pox-prob-between-check}
 grade_result(
-  pass_if(~ (abs(.result - ( pbinom((floor(0.9*chickPoxSampSize) - 1), chickPoxSampSize, 0.9) - pbinom(floor(0.7*chickPoxSampSize), chickPoxSampSize, 0.9))) < 0.001))
+  pass_if(~ (abs(.result - ( pbinom((floor(0.9*chickPoxSampSize) - 1), chickPoxSampSize, 0.9) - pbinom(floor(0.8*chickPoxSampSize), chickPoxSampSize, 0.9))) < 0.0001))
 )
 ```
 
