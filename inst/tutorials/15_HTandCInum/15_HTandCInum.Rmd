@@ -239,7 +239,7 @@ Use the code block below to compute the standard error
 
 ```{r sentencing-ci-4-check}
 grade_result(
-  pass_if(~ (abs(.result - (sd(SDNYdrug$SentenceMonths)/nrow(SDNYdrug))) < 0.0005))
+  pass_if(~ (abs(.result - (sd(SDNYdrug$SentenceMonths)/sqrt(nrow(SDNYdrug)))) < 0.0005))
 )
 ```
 
@@ -299,7 +299,7 @@ Use the code block below to compute the lower bound for the 95% confidence inter
 
 ```{r sentencing-ci-8-check}
 grade_result(
-  pass_if(~ (abs(.result - (mean(SDNYdrug$SentenceMonths) - ((qt(0.975, nrow(SDNYdrug) - 1))*(sd(SDNYdrug$SentenceMonths)/nrow(SDNYdrug))))) < 0.01))
+  pass_if(~ (abs(.result - (mean(SDNYdrug$SentenceMonths) - ((qt(0.975, nrow(SDNYdrug) - 1))*(sd(SDNYdrug$SentenceMonths)/sqrt(nrow(SDNYdrug)))))) < 0.01))
 )
 ```
 
@@ -312,7 +312,7 @@ And use the code block below to compute the upper bound for the 95% confidence i
 
 ```{r sentencing-ci-9-check}
 grade_result(
-  pass_if(~ (abs(.result - (mean(SDNYdrug$SentenceMonths) + ((qt(0.975, nrow(SDNYdrug) - 1))*(sd(SDNYdrug$SentenceMonths)/nrow(SDNYdrug))))) < 0.01))
+  pass_if(~ (abs(.result - (mean(SDNYdrug$SentenceMonths) + ((qt(0.975, nrow(SDNYdrug) - 1))*(sd(SDNYdrug$SentenceMonths)/sqrt(nrow(SDNYdrug)))))) < 0.01))
 )
 ```
 

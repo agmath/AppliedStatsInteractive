@@ -296,7 +296,7 @@ Use the code block below to compute the standard error
 </div>
 <div class="tutorial-exercise-support" data-label="sentencing-ci-4-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>grade_result(
-  pass_if(~ (abs(.result - (sd(SDNYdrug$SentenceMonths)/nrow(SDNYdrug))) &lt; 0.0005))
+  pass_if(~ (abs(.result - (sd(SDNYdrug$SentenceMonths)/sqrt(nrow(SDNYdrug)))) &lt; 0.0005))
 )</code></pre>
 </div>
 </div>
@@ -346,7 +346,7 @@ Use the code block below to compute the lower bound for the 95% confidence inter
 </div>
 <div class="tutorial-exercise-support" data-label="sentencing-ci-8-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>grade_result(
-  pass_if(~ (abs(.result - (mean(SDNYdrug$SentenceMonths) - ((qt(0.975, nrow(SDNYdrug) - 1))*(sd(SDNYdrug$SentenceMonths)/nrow(SDNYdrug))))) &lt; 0.01))
+  pass_if(~ (abs(.result - (mean(SDNYdrug$SentenceMonths) - ((qt(0.975, nrow(SDNYdrug) - 1))*(sd(SDNYdrug$SentenceMonths)/sqrt(nrow(SDNYdrug)))))) &lt; 0.01))
 )</code></pre>
 </div>
 </div>
@@ -358,7 +358,7 @@ And use the code block below to compute the upper bound for the 95% confidence i
 </div>
 <div class="tutorial-exercise-support" data-label="sentencing-ci-9-check" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>grade_result(
-  pass_if(~ (abs(.result - (mean(SDNYdrug$SentenceMonths) + ((qt(0.975, nrow(SDNYdrug) - 1))*(sd(SDNYdrug$SentenceMonths)/nrow(SDNYdrug))))) &lt; 0.01))
+  pass_if(~ (abs(.result - (mean(SDNYdrug$SentenceMonths) + ((qt(0.975, nrow(SDNYdrug) - 1))*(sd(SDNYdrug$SentenceMonths)/sqrt(nrow(SDNYdrug)))))) &lt; 0.01))
 )</code></pre>
 </div>
 </div>

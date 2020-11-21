@@ -50,7 +50,7 @@ Consider a sociologist who is interested in better understanding incarceration r
 
 ###
 
-Say that the researcher took a random sample of 100 inmates in State Penitentiaries across the state of New Hampshire and observed the following results. In the sample, 81 inmates were white, 8 were black, 5 were hispanic, and 6 were of another race. The researcher wants to determine whether this sample of inmates refutes the notion that the state prison population in New Hampshire is reflective of the State's breakdown of population by race. We know that a new random sample of 100 inmates would provide results different than these, so how do we determine whether we have a statistically significant result?
+Say that the researcher took a random sample of 300 inmates in State Penitentiaries across the state of New Hampshire and observed the following results. In the sample, 243 inmates were white, 24 were black, 15 were hispanic, and 18 were of another race. The researcher wants to determine whether this sample of inmates refutes the notion that the state prison population in New Hampshire is reflective of the State's breakdown of population by race. We know that a new random sample of 300 inmates would provide results different than these, so how do we determine whether we have a statistically significant result?
 
 ###
 
@@ -75,7 +75,7 @@ Running a $\chi^2$ test for goodness of fit involves the following assumptions:
 
 ###
 
-Okay, let's get back to our application to racial representation in the New Hampshire state prison population. As a reminder, we've discovered that New Hampshire is estimated to be 89.8% white, 1.8% black, 4.0% hispanic, and 4.4% of other races in 2019. Additionally, we have a sample of 100 inmates from state prisons in New Hampshire and observed the following: 81 inmates were white, 8 were black, and 5 were hispanic, and 6 were of another race. We want to know if this sample provides evidence to suggest that the state prison population in New Hampshire does not reflect the racial demographics of the State.
+Okay, let's get back to our application to racial representation in the New Hampshire state prison population. As a reminder, we've discovered that New Hampshire is estimated to be 89.8% white, 1.8% black, 4.0% hispanic, and 4.4% of other races in 2019. Additionally, we have a sample of 300 inmates from state prisons in New Hampshire and observed the following: 243 inmates were white, 24 were black, and 15 were hispanic, and 18 were of another race. We want to know if this sample provides evidence to suggest that the state prison population in New Hampshire does not reflect the racial demographics of the State.
 
 ###
 
@@ -139,53 +139,53 @@ question_checkbox(
 
 Use the following code blocks to input or calculate the expected counts for each race.
 
-Compute the number of prisoners out of the 100 who are expected to be *white*.
+Compute the number of prisoners out of the 300 who are expected to be *white*.
 ```{r exp-white, exercise = TRUE}
 
 ```
 
 ```{r exp-white-check}
 grade_result(
-  pass_if(~ .result == (100*0.898))
+  pass_if(~ .result == (300*0.898))
 )
 ```
 
 ###
 
-Compute the number of prisoners out of the 100 who are expected to be *black*.
+Compute the number of prisoners out of the 300 who are expected to be *black*.
 ```{r exp-black, exercise = TRUE}
 
 ```
 
 ```{r exp-black-check}
 grade_result(
-  pass_if(~ .result == (100*0.018))
+  pass_if(~ .result == (300*0.018))
 )
 ```
 
 ###
 
-Compute the number of prisoners out of the 100 who are expected to be *hispanic*.
+Compute the number of prisoners out of the 300 who are expected to be *hispanic*.
 ```{r exp-hispanic, exercise = TRUE}
 
 ```
 
 ```{r exp-hispanic-check}
 grade_result(
-  pass_if(~ .result == (100*0.040))
+  pass_if(~ .result == (300*0.040))
 )
 ```
 
 ###
 
-Compute the number of prisoners out of the 100 who are expected to be of other races.
+Compute the number of prisoners out of the 300 who are expected to be of other races.
 ```{r exp-other, exercise = TRUE}
 
 ```
 
 ```{r exp-other-check}
 grade_result(
-  pass_if(~ .result == (100*0.044))
+  pass_if(~ .result == (300*0.044))
 )
 ```
 
@@ -198,7 +198,7 @@ where $k$ denotes the number of groups.
 Use the code block below to enter or compute the $\chi^2$ test statistic. The code block has been pre-populated to get you started with computing the test statistic.
 ```{r test-stat, exercise = TRUE, exercise.eval = FALSE}
 #Define the observed values
-observed <- c(81, 8, 5, 6)
+observed <- c(243, 24, 15, 18)
 #Define the expected values -- you should input these, be sure to use the same order as in the "observed" vector.
 expected <- c()
 
@@ -207,8 +207,8 @@ expected <- c()
 ```
 
 ```{r test-stat-check}
-observed <- c(81, 8, 5, 6)
-expected <- c(89.8, 1.8, 4, 4.4)
+observed <- c(243, 24, 15, 18)
+expected <- c(269.4, 5.4, 12, 13.2)
 
 grade_result(
   pass_if(~ (abs(.result - sum((observed - expected)^2/expected)) < 0.01))
@@ -238,7 +238,7 @@ Use the code block below to compute the $p$-value associated with this test. Rem
 
 ```{r compute-p-check}
 grade_result(
-  pass_if(~ (abs(.result - (1 - pchisq(23.04973, df = 4 - 1))) < 0.0001))
+  pass_if(~ (abs(.result - (1 - pchisq(69.15, df = 4 - 1))) < 0.0001))
 )
 ```
 
