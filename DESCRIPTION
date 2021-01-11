@@ -13,7 +13,7 @@ Imports:
     dplyr,
     stringr
 Remotes:
-    rstudio-education/gradethis
+    rstudio-education/gradethis,
     rstudio/learnr
 License: CC-BY-SA-4.0
 Encoding: UTF-8
