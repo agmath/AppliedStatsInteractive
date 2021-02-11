@@ -326,11 +326,11 @@ Use `calc_streak` function in the code block below to compute the streak lengths
 
 ```
 
-```{r sim-streak-solution, exercise.setup = "compare-basket-setup"}
+```{r sim-streak-solution}
 sim_streak <- calc_streak(sim_basket)
 ```
 
-```{r sim-streak-check, exercise.setup = "compare-basket-setup"}
+```{r sim-streak-check}
 grade_code()
 ```
 
