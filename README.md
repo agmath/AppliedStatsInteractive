@@ -4,7 +4,7 @@ This is an R package which deploys interactive notebooks to accompany an introdu
 
 You can install this package by running the following command in R (which requires the `devtools` package as a prereqisite): `remotes::install_github("agmath/AppliedStatsInteractive")`
 
-Once the package has been installed you can run the individual notebooks using commands of the following structure: `learnr::run_tutorial(NOTEBOOK_NAME, package = "AppliedStatsInteractive")`
+Once the package has been installed you can run the individual notebooks by navigating to the `Tutorials` tab in RStudio's top-right pane. You'll just need to click the *Start Tutorial?* button to render and work through the corresponding interactive notebook. If you prefer to work from a web browser, you can access the tutorials using commands of the following structure: `learnr::run_tutorial(NOTEBOOK_NAME, package = "AppliedStatsInteractive")`
 
 The available notebooks are as follows:
 + 0_StartHere
@@ -32,4 +32,4 @@ The notebook named 4_DataViz is an adaptation of the data visualization chapter 
 
 ## A Note on Rendering Workbooks
 
-Multiple calls to `learnr::run_tutorial()` in a single R session cause rendering errors in the notebooks -- exercises are not rendered correctly. This can be avoided by either restarting R `Ctrl+Shift+F10` or by closing RStudio and re-opening before rendering a second workbook. If you already attempted to render the notebook and experiences the rendering error, you should use your file manager to navigate to the folder containing the workbook and delete the associated *html* file. Calling `learnr::run_tutorial()` now will re-build the html file. I will update this section when a better workaround is discovered.
+(**Note:** *This is a non-issue if running workbooks from the tutorials pane*). Multiple calls to `learnr::run_tutorial()` in a single R session cause rendering errors in the notebooks -- exercises are not rendered correctly. This can be avoided by either restarting R `Ctrl+Shift+F10` or by closing RStudio and re-opening before rendering a second workbook. If you already attempted to render the notebook and experiences the rendering error, you should use your file manager to navigate to the folder containing the workbook and delete the associated *html* file. You can identify the location of the files on your machine by running `find.package("AppliedStatsInteractive")`. Calling `learnr::run_tutorial()` now will re-build the html file. I will update this section when a better workaround is discovered.
