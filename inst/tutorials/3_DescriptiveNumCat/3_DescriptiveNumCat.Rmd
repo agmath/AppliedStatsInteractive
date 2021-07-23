@@ -61,7 +61,7 @@ cut.samples <- data.frame(Sample_One = diamonds$cut[sample(1:nrow(diamonds), 8, 
 
 ###
 
-  * The **median** is the *middle value* for a set of observations. To compute the median, list the numbers in ascending order and find the number or number(s) in the middle of the list. In the case that there is a single middle number, that is the median. In the case where there are two middle numbers, we take the average of the two.
+  * The **median** is the *middle value* for a set of observations. To compute the median, list the numbers in ascending order and find the number or number(s) in the middle of the list. In the case that there is a single middle number, that is the median. In the case where there are two middle numbers, we take the *mean* of those two.
 
 **Example**: The following are three random samples of carat values from the *diamonds* dataset.
 ```{r printSamplesDf, echo = FALSE, eval = TRUE}
@@ -181,7 +181,7 @@ question_checkbox(
 
 ## Measuring Spread
 
-**Measures of Variability**: Clearly, the center of a dataset doesn't tell the entire story. Our two political workers' clearly have very different door-knocking strategies but both have a mean (and median) of $25$ doors per day. We should also measure the *spread* of data.
+**Measures of Variability**: Clearly, the center of a dataset doesn't tell the entire story. Our two political pollsters obviously have very different door-knocking strategies but both have a mean (and median) of $25$ doors per day. We should also measure the *spread* of data.
 
 ###
 
@@ -201,7 +201,7 @@ We should also note that if you are certain that you are working with population
 
 ###
 
-The *inter-quartile range* (IQR) of a set of observations measures the spread of the "middle-50-percent" of the observations. The IQR is the distance between $Q1$ (the 25th percentile) and $Q3$ (the 75th percentile).
+The *inter-quartile range* (IQR) of a set of observations measures the spread of the "middle-50-percent" of the observations. The IQR is the distance between $Q1$ (the 25th percentile) and $Q3$ (the 75th percentile).  
   * The median of a set of observations splits the set into two halves: an upper half and a lower half. The median of the lower half is called the *first quartile* ($Q_1$) while the median of the upper half is called the *third quartile* ($Q_3$). The interquartile range is the distance between $Q_1$ and $Q_3$. That is,
 $$IQR = Q_3-Q_1$$
 
@@ -232,14 +232,15 @@ The two plots below are a histogram (left) and a boxplot (right), each showing t
 
 ```{r printPlots, echo = FALSE, eval = TRUE, fig.width = 4.5, fig.height = 2.5, message = FALSE, warning = FALSE, results = FALSE}
 ggplot(data = diamonds) + geom_histogram(mapping = aes(x = carat)) + geom_vline(xintercept = mean(diamonds$carat), color = "purple", lwd = 1.75)
-ggplot(data = diamonds) + geom_boxplot(mapping = aes(y = carat)) + coord_flip()
+ggplot(data = diamonds) + geom_boxplot(mapping = aes(y = carat)) + geom_vline(xintercept = mean(diamonds$carat), color = "purple", lwd = 1.75, alpha = 0.5) + coord_flip()
 ```
 
 * The histogram does a nice job showing the true *shape* of the data, but does not always do a good job showing the presence of outliers. The purple line has been added to the histogram to show the true mean carat weight.
 * The boxplot doesn't show the detailed shape that the histogram does, but it does a great job showing the IQR, median, and any outliers present. 
-  * The lone dots in the boxplot show any outliers (extending more than 1.5 times the IQR from $Q1$ or $Q3$).
+  * The lone dots in the boxplot show any outliers (extending more than 1.5 times the IQR, the distance from $Q1$ to $Q3$).
   * The box in the boxplot shows the IQR -- the left edge of the box is at $Q1$ and the right edge of the box is at $Q3$.
   * The line through the middle of the box denotes the location of the median.
+  * I've added a faded purple line to our boxplot, showing the location of the mean carat weight. We can really see the impact of those outliers on the mean here.
   
 ###
 
@@ -247,7 +248,7 @@ ggplot(data = diamonds) + geom_boxplot(mapping = aes(y = carat)) + coord_flip()
 
 ###
 
-In `R` we can easily compute the standard deviation with the function `sd()`, and IQR with the function `quantiles()` for our samples or for the entire dataset! Recall that our diamond samples are stored in a data frame called `samples`. The code block below is preset to compute the standard deviation, Q1, Q3, and IQR for `Sample_One`. Note that in the `quantiles()` function the `0.25` identifies the 25th percentile ($Q1$) and the `0.75` identifies the 75th percentile ($Q3$). Run the code to find the standard deviation, Q1, and Q2 for `Sample_One`. Once you've done that, edit the existing code to compute these metrics for the other two samples.
+In `R` we can easily compute the standard deviation with the function `sd()`, and IQR with the function `quantiles()` or `IQR()`, for our samples or for the entire dataset! Recall that our diamond samples are stored in a data frame called `samples`. The code block below is preset to compute the standard deviation, Q1, Q3, and IQR for `Sample_One`. Note that in the `quantiles()` function the `0.25` identifies the 25th percentile ($Q1$) and the `0.75` identifies the 75th percentile ($Q3$). Run the code to find the standard deviation, Q1, Q3, and the interquartile range for `Sample_One`. Once you've done that, edit the existing code to compute these metrics for the other two samples.
 
 ```{r computeSdIqr, exercise = TRUE, exercise.eval = FALSE}
 sd(samples$Sample_One)
@@ -286,7 +287,7 @@ table(cut.samples$Sample_One)/nrow(cut.samples)
 
 ###
 
-Below, we can see the distributions of diamond `cut` from `Sample_Two` (left) and from our entire population (right) below. Even with a sample of 8 diamonds, we gain some insight as to the most and least common diamond cuts. You may also notice that the frequency and relative frequency plots look identical aside from the scale on the vertical axis -- this will be the case in general.
+Below, we can see the distributions of diamond `cut` from `Sample_Two` (left) and from our entire population (right) below. Even with a sample of 8 diamonds, we gain "some" insight as to the most and least common diamond cuts. You may also notice that the frequency and relative frequency plots look identical aside from the scale on the vertical axis -- this will be the case in general.
   
 ```{r printCutPlots, echo = FALSE, eval = TRUE, fig.width = 4, fig.height = 2.5, warning = FALSE, message = FALSE, results = FALSE}
 ggplot(data = cut.samples) + geom_bar(mapping = aes(x = Sample_Three)) + labs(title = "Distribution of cut type in Diamonds (samp)", x = "Cut Type")
@@ -294,7 +295,25 @@ ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut)) + labs(title = "Distr
 ggplot(data = cut.samples) + geom_bar(mapping = aes(x = Sample_Three, y = (..count..)/sum(..count..))) + ylab("proportion") + labs(title = "Distribution of cut type in Diamonds (samp)", x = "Cut Type")
 ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, y = (..count..)/sum(..count..))) + ylab("proportion") + labs(title = "Distribution of cut type in Diamonds (pop)", x = "Cut Type")
 ```
-  
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
+```
+
 ## Summary
     
 **Summary**: Here's a quick summary of the most important ideas from this workbook.
@@ -314,3 +333,4 @@ ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, y = (..count..)/sum(..
 * Compute the **interquartile range**: `IQR(<data>)`
 * Compute general **percentiles**: `quantile(<data>, c(p1, p2,...))`
 * Build a **frequency table**: `table(<data>)`
+* Build a **relative frequency table**: `table(<data>)/nrow(<dataframe>)` or `table(<data>)/len(<data>)`

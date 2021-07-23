@@ -33,6 +33,15 @@ The previous two workbooks discussed probability distributions. In this seventh 
 
 ###
 
+<div id="license">
+This is a derivative of a product of OpenIntro that is released under a 
+[Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
+The original lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel
+from a lab written by Mark Hansen of UCLA Statistics.
+</div>
+
+###
+
 ## Kobe Bryant and the *Hot Hand*
 
 Basketball players who make several baskets in succession are often described as having a *hot hand*. Fans and players have long believed in the *hot hand* phenomenon, which refutes the assumption that each shot is independent of the next. However, a 1985 paper by Gilovich, Vallone, and Tversky collected evidence that contradicted this belief and showed that successive shots are indeed independent events ([http://psych.cornell.edu/sites/default/files/Gilo.Vallone.Tversky.pdf](http://psych.cornell.edu/sites/default/files/Gilo.Vallone.Tversky.pdf)). This paper started a great controversy that continues to this day, as you can see by Googling *hot hand basketball*.
@@ -356,8 +365,27 @@ Okay, now you've got everything you need in order to help you discover whether t
 
 ```
 
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
+```
+
+<br/>
 <div id="license">
-This is a derivative of a product of OpenIntro that is released under a 
+This lab is a derivative of a product of OpenIntro that is released under a 
 [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
 The original lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel
 from a lab written by Mark Hansen of UCLA Statistics.

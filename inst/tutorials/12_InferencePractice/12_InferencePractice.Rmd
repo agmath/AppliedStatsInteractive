@@ -37,8 +37,6 @@ From this point on you'll make heavy use of the [*Standard Error Decision Tree*]
 
 <center><iframe width="560" height="315" src="https://www.youtube.com/embed/XzxE_ORMM54?start=16" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fs" allowfullscreen></iframe></center>
 
-###
-
 ## Practice Problems
 
 This section contains two practice problems. Be sure to mark down any questions you have or trouble that you run into. You might even check back with Workbook 11 to see the videos from Dr. Diez, Dr. &Ccedil;etinkaya-Rundell, and Dr. McClintock which contained discussions and approached problems similar to these. As a reminder, the links below will take you to detailed versions of the general strategies for inference tasks.
@@ -119,7 +117,7 @@ question_radio(
   "The distribution to be used is",
   answer("Normal", correct = TRUE),
   answer("t-distribution with $df = n - 1$"),
-  answer("t-distribution with $df = n_1 + n_2 - 2$"),
+  answer("t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$"),
   answer("t-distribution with $df = n_{\\text{diff}} - 1$"),
   answer("We should not use either the normal- or t- distributions"),
   allow_retry = TRUE,
@@ -426,7 +424,7 @@ Use the code block below to compute the test statistic.
 
 ```{r try-it-2-question-8-check}
 grade_result(
-  pass_if(~ abs(.result - 0.9434) < 0.005)
+  pass_if(~ abs(.result - 0.9428954) < 0.005)
 )
 ```
 
@@ -437,7 +435,7 @@ question_radio(
   "The distribution to be used is",
   answer("Normal", correct = TRUE),
   answer("t-distribution with $df = n - 1$"),
-  answer("t-distribution with $df = n_1 + n_2 - 2$"),
+  answer("t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$"),
   answer("t-distribution with $df = n_{\\text{diff}} - 1$"),
   answer("We should not use either the normal- or t- distributions"),
   allow_retry = TRUE,
@@ -490,3 +488,21 @@ question_radio(
 ###
 
 Good work through these first two problems -- remember to ask questions about any parts which you are still unsure of.
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
+```

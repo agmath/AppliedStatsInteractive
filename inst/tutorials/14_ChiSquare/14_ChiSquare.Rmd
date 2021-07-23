@@ -46,7 +46,7 @@ In this workbook, we consider methods two new methods for testing claims corresp
 
 ###
 
-Consider a sociologist who is interested in better understanding incarceration rates in the state of New Hampshire. The researcher is interested in determining whether minority populations are disproportionately represented in State Pentitentiaries. Using the most recent estimates from the [United States Census Bureau](https://www.census.gov/quickfacts/NH), we see that the population of New Hampshire has the following racial breakdown as of 2019: white (89.8%), black (1.8%), hispanic (4.0%), other (4.4%). A reasonable expectation is that the incarcerated population in New Hampshire should roughly reflect this same distribution. 
+Consider a sociologist who is interested in better understanding incarceration rates in the state of New Hampshire. The researcher is interested in determining whether minority populations are disproportionately represented in State Pentitentiaries. Using estimates from the [United States Census Bureau](https://www.census.gov/quickfacts/NH), we see that the population of New Hampshire has the following racial breakdown as of 2019: white (89.8%), black (1.8%), hispanic (4.0%), other (4.4%). A reasonable expectation is that the incarcerated population in New Hampshire should roughly reflect this same distribution. 
 
 ###
 
@@ -64,7 +64,7 @@ Dr. &Ccedil;etinkaya-Rundel discussed an example of racial bias in jury selectio
 
 ###
 
-In the video, we saw that a $\chi^2$ test statistic does not follow a normal distribution -- instead, the test statistic involved in a Goodness of Fit Test follows what is called a $\chi^2$-distribution. Although we are working with a new distribution, the principles of the test statistic and corresponding probability distribution remain the samle. The test statistic is a metric for how far away our sample falls from the expected result and the $p$-value is the tail area -- representing the probability of observing a sample at least as extreme as ours, under the assumption that the null hypothesis is true. Since the $\chi^2$ test statistic is always non-negative, we will be interested in the *upper tail*.
+In the video, we saw that a $\chi^2$ test statistic does not follow a normal distribution -- instead, the test statistic involved in a Goodness of Fit Test follows what is called a $\chi^2$-distribution. Although we are working with a new distribution, the principles of the test statistic and corresponding probability distribution remain the samle. The test statistic is a metric for how far away our sample falls from the expected result (assuming the null hypothesis) and the $p$-value is the tail area -- representing the probability of observing a sample at least as extreme as ours (again, assuming that the null hypothesis is true). Since the $\chi^2$ test statistic is always non-negative, we will be interested in the *upper tail*.
 
 ###
 
@@ -273,9 +273,6 @@ quiz(
 
 *(This application was based on 2019 data from the [US Census Bureau](http://www.census.gov) and [The Sentencing Project](https://www.sentencingproject.org/))*
 
-###
-
-
 ## Tests of Independence
 
 ###
@@ -291,6 +288,8 @@ Let's see Dr. &Ccedil;etinkaya-Rundel for an introduction.
 ###
 
 We now return to our simulated BRFSS data. Each row of the simulated dataset is meant to represent a response from a single adolescent in the USA. Recall that we are interested in determining whether there is evidence to suggest an association between the sociological variables `IncomeLevel` and `DrugUse`. The variable `IncomeLevel` measures level of household income, with the observed values *poverty*, *lowIncome*, *middleIncome*, and *highIncome*. The variable `drugUse` denotes whether the individual reports using any illicit drug in the past year, as a *yes* or *no* response. 
+
+###
 
 We suspect the following marginal distributions: within the US, approximately 16% of households fall below the poverty line, approximately 38% can be classified as low income, about 35% as middle income, and the remaining 11% as high income. Additionally, approximately 14% of adolescents are estimated to have used illicit drugs in any given year. Since we have these assumed percentages, we'll use them in computing our expected counts rather than taking the product of the row and column totals and dividing by 2500 as Dr. &Ccedil;etinkaya-Rundel suggested in the video.
 
@@ -421,6 +420,7 @@ Okay, you've completed half of the two-way table. I'll fill in the rest in the *
 </tr>
 </table>
 </center>
+<br/>
 </div>
 <div class = "md-col-5">
 <center>
@@ -477,6 +477,10 @@ grade_result(
 )
 ```
 
+<div id="df-ind-hint">
+**Hint:** For a $\chi^2$ test of independence we take the product between one less than the number of levels of each variable. That is, if variable one has $M$ levels and variable two has $P$ levels then the degrees of freedom is $\left(M-1\right)\left(P-1\right)$.
+</div>
+
 ###
 
 Now that we've computed the test statistic and degrees of freedom associated with our test, we can compute the $p$-value. Remember that the $p$-value associated with a $\chi^2$ test for independence can be computed with the `pchisq()` function as was utilized before.
@@ -518,6 +522,24 @@ quiz(
   allow_retry = TRUE,
   random_answer_order = TRUE
   )
+)
+```
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
 )
 ```
 

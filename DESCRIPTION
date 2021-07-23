@@ -1,10 +1,10 @@
 Package: AppliedStatsInteractive
 Type: Package
 Title: Interactive Tutorials for a First Course in Applied Statistics
-Version: 0.1.1
+Version: 0.1.2
 Author: Adam Gilbert
 Maintainer: The package maintainer: <agilbertmath@gmail.com>
-Description: This package deploys interactive tutorials for a first course in applied statistics.
+Description: This package deploys interactive tutorials for a first course in applied statistics. It follows the OpenIntro Statistics textbook and includes several resources adapted from that project.
 Imports:
     gradethis,
     learnr,
@@ -14,7 +14,8 @@ Imports:
     stringr
 Remotes:
     rstudio-education/gradethis,
-    rstudio/learnr
+    rstudio/learnr,
+    rundel/learnrhash
 License: CC-BY-SA-4.0
 Encoding: UTF-8
 LazyData: true

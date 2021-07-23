@@ -48,7 +48,7 @@ nonWhiteSentences <- SDNYdrug$SentenceMonths[SDNYdrug$Race == "Non-White"]
 
 ###
 
-In this workbook, we continue our exploration of statistical inference. Through the past few workbooks you became more comfortable with hypothesis testing and confidence intervals associated with categorical variables; here we extend to numerical variables. First you'll be reminded of the normal distribution and be formally introduced to the family of $t$-distributions. After that, we'll work on an application to sentencing data from the Southern District of the State of New York.
+In this workbook, we continue our exploration of statistical inference. Through the past few workbooks you became more comfortable with hypothesis testing and confidence intervals associated with categorical variables; here we extend to numerical variables. First you'll be reminded of the normal distribution and be formally introduced to the family of $t$-distributions. After that, we'll work on a pair of applications to sentencing data from the Southern District of the State of New York.
 
 ###
 
@@ -91,7 +91,7 @@ ggplot() + geom_line(mapping = aes(x = seq(-3.5, 3.5, length.out = 200), y = dno
 
 ###
 
-Notice that all three of the distributions are bell-shaped, but that the $t$-distributions have **fatter tails** than the normal distribution does. Also, notice that the $t$-distribution with 12 degrees of freedom is more similar to the normal distribution than the $t$-distribution with 3 degrees of freedom.
+Notice that all three of the distributions are bell-shaped, but that the $t$-distributions have **fatter tails** than the normal distribution does. Also, notice that the $t$-distribution with 12 degrees of freedom is more similar to the normal distribution than the $t$-distribution with 3 degrees of freedom. As degrees of freedom increase, our $t$-distribution becomes closer and closer to the normal distribution.
 
 ## Using the $t$-distribution(s)
 
@@ -105,14 +105,14 @@ When we introduced the normal distribution, we identified two helper functions:
     
   + The function `qnorm(p, mean, sd)` can be used to find the boundary value such that the probability of a randomly selected observation falling below that observation is `p`. That is, `qnorm(p, mean, sd)` finds the $p^{th}$ percentile in the normal distribution having the `mean` and `sd` indicated.
 
-    + We've simple said that the `qnorm()` function can be use to find the cutoff value for which the area to the <u>left</u> underneath a normal distribution is `p`.
+    + We've simply said that the `qnorm()` function can be used to find the cutoff value for which the area to the <u>left</u>, underneath a normal distribution, is `p`.
 
 ###
 
 We have analogous functions for the $t$-distribution. 
 
   + The function `pt(q, df)` can be used to find the probability of falling to the left of the boundary value `q` in a $t$-distribution with `df` degrees of freedom.
-  + The function `qt(p, df)` can be used to find the cutoff value for which the area to the <u>left</u> of that cutoff in a $t$-distribution with `df` degrees of freedom is `p`.
+  + The function `qt(p, df)` can be used to find the cutoff value for which the area to the <u>left</u> of that cutoff, in a $t$-distribution with `df` degrees of freedom, is `p`.
   
 ###
 
@@ -120,7 +120,7 @@ Notice that our functions for the $t$-distribution do not have parameters for th
   
 ###
 
-Let's start with some practice using the `pt()` and `qt()` functions.
+Let's start with some practice using the `pt()` and `qt()` functions. Don't forget to draw your pictures -- you are much more likely find incorrect answers if you omit this step.
 
 **Question 1:** Use the code block below to find $\mathbb{P}\left[t < \right.$ `r boundary1` $\left.\right]$ in a $t$-distribution with `r df1` degrees of freedom.
 
@@ -182,13 +182,13 @@ Okay, good -- now that you've had some practice working with the $t$-distributio
 
 ## Applications to Criminal Sentencing
 
-We'll work with a [dataset on Federal Sentencing from the Southern District of New York State](https://github.com/drs22Col/FedSentencing). A subset of the data, consisting only of drug-related charges, has been loaded for you as `SDNYdrug`.
+###
+
+We'll work with a [dataset on Federal Sentencing from the Southern District of New York State](https://github.com/drs22Col/FedSentencing){target="_blank"}. A subset of the data, consisting only of drug-related charges, has been loaded for you as `SDNYdrug`.
 
 ###
 
 **Question 1:** Compute a 95% confidence interval for the average sentence length for a drug-related charge in the Southern District of New York State.
-
-###
 
 ```{r sentencing-ci-1, echo = FALSE}
 question_radio(
@@ -214,6 +214,10 @@ grade_result(
   pass_if(~ (abs(.result - mean(SDNYdrug$SentenceMonths)) < 0.01))
 )
 ```
+
+<div id="sentencing-ci-2-hint">
+The variable `SentenceMonths` is a column within the `SDNYdrug` data frame. Remember that you can access columns in a data frame with the `$` operator.
+</div>
 
 ###
 
@@ -243,6 +247,10 @@ grade_result(
 )
 ```
 
+<div id = "sentencing-ci-4-hint">
+Remember that you can compute the standard deviation in R with the `sd()` function. Additionally, you can find the number of rows in a data frame by passing the name of the data frame to R's `nrow()` function. The `sqrt()` function will also be useful to you.
+</div>
+
 ###
 
 ```{r sentencing-ci-5, echo = FALSE}
@@ -250,7 +258,7 @@ question_radio(
   "The distribution to be used is",
   answer("Normal"),
   answer("t-distribution with $df = n - 1$", correct = TRUE),
-  answer("t-distribution with $df = n_1 + n_2 - 2$"),
+  answer("t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$"),
   answer("t-distribution with $df = n_{\\text{diff}} - 1$"),
   answer("We should not use either the normal- or t- distributions"),
   allow_retry = TRUE,
@@ -285,6 +293,10 @@ grade_result(
   pass_if(~ (abs(.result - qt(0.975, df = nrow(SDNYdrug) - 1)) < 0.005))
 )
 ```
+
+<div id = "sentencing-ci-7-hint">
+Did you try using 1.96? Remember that we can't use the normal distribution here. You can find the critical value you need by making use of the `qt()` function.
+</div>
 
 ###
 
@@ -458,7 +470,7 @@ quiz(
     "Which distribution does the test statistic follow for this hypothesis test?",
     answer("The normal distribution"),
     answer("The $t$-distribution with $n-1$ degrees of freedom."),
-    answer("The $t$-distribution with $n_1 + n_2 - 2$ degrees of freedom.", correct = TRUE),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom.", correct = TRUE),
     answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
     allow_retry = TRUE,
     random_answer_order = TRUE
@@ -483,6 +495,8 @@ grade_result(
 
 <div id = "sentencing-ht-9-hint"> Since `whiteSentences` and `nonWhiteSentences` are vectors of sentence lengths rather than full data frames, the `nrow()` function won't work on them. Try using the `length()` function instead.</div>
 
+###
+
 Find the number of non-white offenders sentenced in our dataset.
 ```{r sentencing-ht-10, exercise = TRUE}
 
@@ -493,8 +507,6 @@ grade_result(
   pass_if(~ (.result == length(nonWhiteSentences)))
 )
 ```
-
-###
 
 Compute the average sentence length in months for the white offenders.
 ```{r sentencing-ht-11, exercise = TRUE}
@@ -611,6 +623,19 @@ grade_result(
 
 ###
 
+Compute the degrees of freedom for this test.
+```{r sentencing-ht-18_5, exercise = TRUE}
+
+```
+
+```{r sentencing-ht-18_5-check}
+grade_result(
+  pass_if(~ (.result - (min(length(whiteSentences), length(nonWhiteSentences)) - 1)) == 0)
+)
+```
+
+###
+
 Compute the p-value
 ```{r sentencing-ht-19, exercise = TRUE}
 
@@ -618,7 +643,7 @@ Compute the p-value
 
 ```{r sentencing-ht-19-check}
 grade_result(
-  pass_if(~ (abs(.result - (2*(1 - pt(abs(((mean(whiteSentences) - mean(nonWhiteSentences)) - 0)/((sqrt((sd(whiteSentences)^2/length(whiteSentences)) + (sd(nonWhiteSentences)^2/length(nonWhiteSentences)))))), df = (length(whiteSentences) + length(nonWhiteSentences) - 2))))) < 0.01))
+  pass_if(~ (abs(.result - (2*(1 - pt(abs(((mean(whiteSentences) - mean(nonWhiteSentences)) - 0)/((sqrt((sd(whiteSentences)^2/length(whiteSentences)) + (sd(nonWhiteSentences)^2/length(nonWhiteSentences)))))), df = min(length(whiteSentences) - 1, length(nonWhiteSentences) - 1))))) < 0.01))
 )
 ```
 
@@ -654,6 +679,24 @@ quiz(
     answer("We have found evidence to support the hypothesis that racial bias exists in the courts across all case types."),
     answer("We have found evidence to suggest that racial minorities receive more lengthy sentences in drug-related cases in the Southern District of New York State.")
   )
+)
+```
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
 )
 ```
 

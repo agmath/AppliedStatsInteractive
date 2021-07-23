@@ -35,7 +35,15 @@ tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_le
 
 ## Assessing and Exploring the Normality Assumption
 
-In this workbook we'll continue our investigation into the probability distribution that is most central to statistics: the normal distribution. Here we'll use the graphical tools of R to assess the normality of our data and also learn how to generate random numbers from a normal distribution. In addition, we'll uncover the importance of the normality assumption -- we will see a scenario in which the approximate normality assumption is satisfied and another where it is not. 
+In this workbook we'll continue our investigation into the probability distribution that is most central to statistics: the normal distribution. Here we'll use the graphical tools of R to assess the normality of our data and also learn how to generate random numbers from a normal distribution. In addition, we'll uncover the importance of the normality assumption -- we will see a scenario in which the approximate normality assumption is satisfied and another where it is not.
+
+###
+
+<div id="license">
+This is a derivative of a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel from a lab written by Mark Hansen of UCLA Statistics.
+</div>
+
+###
 
 ## The Data
 
@@ -165,7 +173,7 @@ Notice how convenient `ggplot`'s layered plotting syntax makes adding multiple o
 
 ###
 
-**Question:** Based on the plots you built, are you more or less comfortable with the assumption that the heights data follow a nearly normal distribution?
+**Question:** Based on the plots you built, are you more (or less) comfortable with the assumption that the heights data follow a nearly normal distribution?
 
 ###
 
@@ -282,6 +290,25 @@ Notice that your probability estimated using the normal distribution is only hal
 
 ###
 
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
+```
+<br/>
+
 <div id="license">
-This is a derivative of a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel from a lab written by Mark Hansen of UCLA Statistics.
+This lab is a derivative of a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel from a lab written by Mark Hansen of UCLA Statistics.
 </div>

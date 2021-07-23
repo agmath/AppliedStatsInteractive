@@ -25,7 +25,7 @@ tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_le
 
 ###
 
-In this workbook, you'll have an opportunity to practice a set of problems. Through this workbook you will still be provided with a set of guided questions for each problem. Think about the guiding questions and steps necessary to complete each task. On the associated homework problems you'll need to come up with these steps on your own. This workbook should prepare you for that.
+In this workbook, you'll have an opportunity to practice a set of problems. I'm still providing you with a set of guided questions for each problem. Think about the guiding questions and steps necessary to complete each task so that you will be prepared to approach similar problems on your own, without this scaffolding. On the associated homework problems you'll need to come up with these steps on your own. This workbook should prepare you for that.
 
 ###
 
@@ -33,7 +33,7 @@ For convenience, here is the [*standard errror decision tree*](www/StdErrorDecis
 
 ## Problem 1
 
-**Problem 1:** The distribution of the number of eggs laid by a certain species of hen during their breeding period is 35 eggs with a standard deviation of 18.2. Suppose a group of researchers randomly samples 45 hens of this species, counts the number of eggs laid during their breeding period, and records a sample mean of 37 eggs. Find the probability of observing a sample of 45 hens whose mean number of eggs laid during the breeding period is at least 37. (In case of emergency, [see worked solution here](www/SampleInferenceProbSol.pdf))
+**Problem 1:** The distribution of the number of eggs laid by a certain species of hen during their breeding period is 35 eggs with a standard deviation of 18.2. Suppose a group of researchers randomly samples 45 hens of this species, counts the number of eggs laid during their breeding period, and records a sample mean of 37 eggs. Find the probability of observing a sample of 45 hens whose mean number of eggs laid during the breeding period is at least 37. (In case of emergency, [see worked solution here](www/SampleInferenceProbSol.pdf){target="_blank"})
 
 ```{r prob1-1, echo = FALSE}
 question_radio(
@@ -91,7 +91,7 @@ quiz(
     "Which distribution best describes the sampling distribution?",
     answer("A normal distribution", correct = TRUE),
     answer("A $t$-distribution with $n - 1$ degrees of freedom."),
-    answer("A $t$-distribution with $n_1 + n_2 - 2$ degrees of freedom."),
+    answer("A $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
     answer("A $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
     allow_retry = TRUE,
     random_answer_order = TRUE
@@ -122,7 +122,7 @@ $\begin{array}{|c|c|c|} \hline & \text{Men} & \text{Women} \\ \hline
 s & 4.5 & 6.2 \\ \hline \end{array}$
 </center>
 
-Conduct a hypothesis test to determine whether there is evidence to suggest that the men on Death Row are, on average, younger than women on Death Row. (In case of emergency, [see worked solution here](www/SampleInferenceDeathRow.pdf))
+Conduct a hypothesis test to determine whether there is evidence to suggest that the men on Death Row are, on average, younger than women on Death Row. (In case of emergency, [see worked solution here](www/SampleInferenceDeathRow.pdf){target="_blank"})
 
 ###
 
@@ -237,7 +237,7 @@ quiz(
     "Which distribution does the test statistic follow for this hypothesis test?",
     answer("The normal distribution"),
     answer("The $t$-distribution with $n - 1$ degrees of freedom."),
-    answer("The $t$-distribution with $n_1 + n_2 - 2$ degrees of freedom.", correct = TRUE),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom.", correct = TRUE),
     answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
     allow_retry = TRUE,
     random_answer_order = TRUE
@@ -306,7 +306,7 @@ Use the code block below to compute the $p$-value associated with this test.
 
 ```{r prob2-13-check}
 grade_result(
-  pass_if(~ (abs(.result - (1 - pt(((5 - 0)/sqrt((4.5^2/14) + (6.2^2/9))), df = 14 + 9 - 2))) < 0.0005))
+  pass_if(~ (abs(.result - (1 - pt(((5 - 0)/sqrt((4.5^2/14) + (6.2^2/9))), df = 8))) < 0.0005))
 )
 ```
 
@@ -340,7 +340,7 @@ quiz(
 
 ## Problem 3
 
-**Problem 3:** A recent random sample of 30 customers who switched to a car insurance company boasting that new customers save an average of \$534 per year resulted in an average savings of \$525 with a standard deviation of \$40. Find a 90% confidence interval for the true mean savings of customers switching to this company. (In case of emergency, [see worked solution here](www/SampleInferenceCarInsurance.pdf))
+**Problem 3:** A recent random sample of 30 customers who switched to a car insurance company boasting that new customers save an average of \$534 per year resulted in an average savings of \$525 with a standard deviation of \$40. Find a 90% confidence interval for the true mean savings of customers switching to this company. (In case of emergency, [see worked solution here](www/SampleInferenceCarInsurance.pdf){target="_blank"})
 
 ###
 
@@ -427,7 +427,7 @@ quiz(
     "Which distribution should be used to identify the critical value?",
     answer("The normal distribution"),
     answer("The $t$-distribution with $n - 1$ degrees of freedom.", correct = TRUE),
-    answer("The $t$-distribution with $n_1 + n_2 - 2$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
     answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
     allow_retry = TRUE,
     random_answer_order = TRUE
@@ -516,7 +516,7 @@ question_radio(
 
 ## Problem 4
 
-**Problem 4:** In January 2011, The Marist Poll published a report stating that 66% of adults nationally think licensed drivers should be required to retake their road test once they reach 65 years of age. In that same year, 200 random citizens of New Hampshire were asked whether they were in favor of an additional road test for drivers at 65 years of age, 118 responded that they were in favor. Construct a 95% confidence interval for the true proportion of New Hampshirites who are in favor of this proposal. (In case of emergency, [see worked solution here](www/SampleInferenceMaristPoll.pdf) -- you're on your own from here on out though!)
+**Problem 4:** In January 2011, The Marist Poll published a report stating that 66% of adults nationally think licensed drivers should be required to retake their road test once they reach 65 years of age. In that same year, 200 random citizens of New Hampshire were asked whether they were in favor of an additional road test for drivers at 65 years of age, 118 responded that they were in favor. Construct a 95% confidence interval for the true proportion of New Hampshirites who are in favor of this proposal. (In case of emergency, [see worked solution here](www/SampleInferenceMaristPoll.pdf){target="_blank"} -- you're on your own from here on out though!)
 
 ###
 
@@ -591,7 +591,7 @@ quiz(
     "Which distribution should be used to identify the critical value?",
     answer("The normal distribution", correct = TRUE),
     answer("The $t$-distribution with $n - 1$ degrees of freedom."),
-    answer("The $t$-distribution with $n_1 + n_2 - 2$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
     answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
     allow_retry = TRUE,
     random_answer_order = TRUE
@@ -680,7 +680,7 @@ question_radio(
 
 ## Problem 5
 
-**Problem5:** A pollster working for Pete Buttigieg is interested in identifying the proportion of registered democrats planning to vote in the NH primary for whom Mayor Pete is their first OR second choice candidate. If the pollster wants to estimate this proportion to within one percentage-point and at 95% confidence, how many voters should the pollster include in a sample if data from a focus group suggests that the proportion is near 42%?
+**Problem 5:** A pollster working for Pete Buttigieg is interested in identifying the proportion of registered democrats planning to vote in the NH primary for whom Mayor Pete is their first OR second choice candidate. If the pollster wants to estimate this proportion to within one percentage-point and at 95% confidence, how many voters should the pollster include in a sample if data from a focus group suggests that the proportion is near 42%?
 
 ###
 
@@ -844,7 +844,7 @@ quiz(
     "Which distribution should be used to identify the critical value?",
     answer("The normal distribution", correct = TRUE),
     answer("The $t$-distribution with $n - 1$ degrees of freedom."),
-    answer("The $t$-distribution with $n_1 + n_2 - 2$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
     answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
     allow_retry = TRUE,
     random_answer_order = TRUE
@@ -1032,7 +1032,7 @@ quiz(
     "Which distribution does the test statistic follow for this hypothesis test?",
     answer("The normal distribution", correct = TRUE),
     answer("The $t$-distribution with $n - 1$ degrees of freedom."),
-    answer("The $t$-distribution with $n_1 + n_2 - 2$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
     answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
     allow_retry = TRUE,
     random_answer_order = TRUE
@@ -1238,7 +1238,7 @@ quiz(
     "Which distribution does the test statistic follow for this hypothesis test?",
     answer("The normal distribution"),
     answer("The $t$-distribution with $n - 1$ degrees of freedom.", correct = TRUE),
-    answer("The $t$-distribution with $n_1 + n_2 - 2$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
     answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
     allow_retry = TRUE,
     random_answer_order = TRUE
@@ -1516,7 +1516,7 @@ quiz(
     "Which distribution does the test statistic follow for this hypothesis test?",
     answer("The normal distribution", correct = TRUE),
     answer("The $t$-distribution with $n - 1$ degrees of freedom."),
-    answer("The $t$-distribution with $n_1 + n_2 - 2$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
     answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
     allow_retry = TRUE,
     random_answer_order = TRUE
@@ -1619,7 +1619,7 @@ quiz(
 
 ## Problem 11
 
-**Problem 11:** Is there strong evidence of global warming? Let's consider a small scale example, comparing how temperatures have changed in the US from 1968 to 2008. The daily high temperature reading on January 1 was collected in 1968 and 2008 for 51 randomly selected locations in the continental US. Then the difference between the two readings (temperature in 2008 - temperature in 1968) was calculated for each of the 51 different locations. The average of these 51 values was 1.1 degrees with a standard deviation of 4.9 degrees. We are interested in determining whether these data provide strong evidence of temperature warming in the continental US. Conduct a hypothesis test to determine whether there is significant evidence for an increase in average temperature between 1968 and 2008.
+**Problem 11:** Is there strong evidence of global warming? Let's consider a small scale example on just a single metric, comparing how temperatures have changed in the US from 1968 to 2008. The daily high temperature reading on January 1 was collected in 1968 and 2008 for 51 randomly selected locations in the continental US. Then the difference between the two readings (temperature in 2008 - temperature in 1968) was calculated for each of the 51 different locations. The average of these 51 values was 1.1 degrees with a standard deviation of 4.9 degrees. We are interested in determining whether these data provide strong evidence of temperature warming in the continental US. Conduct a hypothesis test to determine whether there is significant evidence for an increase in average temperature between 1968 and 2008.
 
 ###
 
@@ -1734,7 +1734,7 @@ quiz(
     "Which distribution does the test statistic follow for this hypothesis test?",
     answer("The normal distribution"),
     answer("The $t$-distribution with $n - 1$ degrees of freedom."),
-    answer("The $t$-distribution with $n_1 + n_2 - 2$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
     answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom.", correct = TRUE),
     allow_retry = TRUE,
     random_answer_order = TRUE
@@ -1924,7 +1924,7 @@ quiz(
     "Which distribution should be used to identify the critical value?",
     answer("The normal distribution"),
     answer("The $t$-distribution with $n - 1$ degrees of freedom.", correct = TRUE),
-    answer("The $t$-distribution with $n_1 + n_2 - 2$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
     answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
     allow_retry = TRUE,
     random_answer_order = TRUE
@@ -2002,11 +2002,29 @@ grade_result(
 ```{r prob12-12, echo = FALSE}
 question_radio(
   "The interpretations of the values you identified are:",
-  answer("We are 90% confident that the true average gas price at Irving stations in Manchester, NH is between the lower bound and upper bounds calculated.", correct = TRUE),
-  answer("90% of gas stations in Manchester, NH have gas prices between the lower and upper bounds computed."),
-  answer("We are 90% confident that the average gas price at Irving stations in NH falls between the lower and upper bounds calculated", message = "Remember that results from a sample may only be generalized to a population for which that sample is representative."),
-  answer("There is a 90% chance that the true average gas price at Irving stations in Manchester, NH falls between the lower and upper bounds calculated."),
+  answer("We are 90% confident that the true average gas price at Irving stations in Manchester, NH is between the lower bound and upper bound calculated.", correct = TRUE),
+  answer("90% of gas stations in Manchester, NH have gas prices between the lower and upper bound computed."),
+  answer("We are 90% confident that the average gas price at Irving stations in NH falls between the lower and upper bound calculated", message = "Remember that results from a sample may only be generalized to a population for which that sample is representative."),
+  answer("There is a 90% chance that the true average gas price at Irving stations in Manchester, NH falls between the lower and upper bound calculated."),
   allow_retry = TRUE,
   random_answer_order = TRUE
+)
+```
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
 )
 ```

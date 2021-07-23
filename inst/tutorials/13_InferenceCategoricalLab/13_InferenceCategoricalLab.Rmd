@@ -34,9 +34,14 @@ In August of 2012, news outlets ranging from the [Washington Post](http://www.wa
 
 ###
 
+<div id="license">
+This is a derivative of a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). The oiginal lab was written for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel.</div>
+
+###
+
 ## The survey
 
-You can find the press-release for the WIN-Gallup International poll on the Global Index of Religion and Atheism to our Brightspace [here]("www/ReligiosityAndAtheism.pdf"){target=_"blank"}. Please take a moment to review the report then address the following questions.
+You can find the press-release for the WIN-Gallup International poll on the Global Index of Religion and Atheism [here](www/Religiosity_and_Atheism.pdf){target=_"blank"}. Please take a moment to review the report then address the following questions.
 
 ```{r questions-report, echo = FALSE}
 quiz(
@@ -93,6 +98,8 @@ question_radio(
 
 To investigate the link between these two ways of organizing this data, take a look at the estimated proportion of atheists in the United States. Towards the bottom of Table 6, we see that this is 5%. We should be able to come to the same number using the `atheism` data.
 
+###
+
 Run the command in the code block below (be sure to understand what the code is doing since you'll be asked to do some similar things later in the workbook), create a new dataframe called `us12` that contains only the rows in `atheism` associated with respondents to the 2012 survey from the United States. Next, calculate the proportion of atheist responses. Does it agree with the percentage in Table 6? If not, why?
 
 ```{r us-atheism, exercise = TRUE}
@@ -100,13 +107,11 @@ us12 <- atheism[atheism$nationality %in% "United States" & atheism$year %in% "20
 table(us12$response)/nrow(us12)
 ```
 
-###
-
 ## Inference on proportions
 
 ###
 
-As you noted previously, Table 6 provides *statistics*, that is, calculations made from the sample of 51,927 people. What we'd like, though, is insight into the population *parameters*. You answer the question, "What proportion of people in your sample reported being atheists?" with a statistic; while the question "What proportion of people on earth would report being atheists" is answered with an estimate of the parameter.
+As you noted previously, Table 6 provides *statistics*, that is, calculations made from the sample of 51,927 people. What we'd like, though, is insight into the population *parameters*. You answer the question, "What proportion of people *in your sample* reported being atheists?" with a statistic; while the question "What proportion of people *on earth* would report being atheists" is answered with an estimate of the parameter.
 
 ###
 
@@ -114,7 +119,7 @@ You'll use what you've learned about inferential tools for estimating population
 
 ###
 
-As long as the conditions for inference are reasonably well satisfied, we can either calculate the standard error and construct the interval by hand, or allow the `inference` function to do it for us. We note that the `inference()` function is part of the `statsr` package for R and has been loaded for you here.
+As long as the conditions for inference are reasonably well satisfied, we can either calculate the standard error and construct the confidence interval by hand or allow the `inference` function to do it for us. We note that the `inference()` function is part of the `statsr` package for R, which has been installed and loaded for you here.
 
 Run the following code block to construct a confidence interval for the proportion of atheists in the US in 2012.
 
@@ -129,11 +134,11 @@ inference(y = us12$response, est = "proportion", type = "ci", method = "theoreti
 
 ###
 
-Let's pause for a moment to go through the arguments of this function. The first argument is `y`, which is the response variable that we are interested in: `us12$response`. The next argument, `est`, is the parameter we're interested in: `"proportin"` (other options are `"mean"`, or `"median"`.) Next we decide on the `type` of inference we want: a hypothesis test (`"ht"`) or a confidence interval (`"ci"`). When performing a hypothesis test, we also need to supply the `null` value and `alternative` hypothesis but we're building a confidence interval here -- we can optionally set the `clevel` parameter but the default is a 95% confidence interval (`clevel = 0.95`). The `method` parameter chooses the method of inference: `"theoretical"` or `"simulation"` based -- our course is using a theoretical framework. Finally, since the goal is to construct an interval estimate for a proportion, it's necessary to specify what constitutes a "success", which here is a response of `"atheist"`.
+Let's pause for a moment to go through the arguments of this function. The first argument is `y`, which is the response variable that we are interested in: `us12$response`. The next argument, `est`, is the parameter we're interested in: `"proportion"` (other options are `"mean"`, or `"median"`.) Next we decide on the `type` of inference we want: a hypothesis test (`"ht"`) or a confidence interval (`"ci"`). When performing a hypothesis test, we also need to supply the `null` value and `alternative` hypothesis but we're building a confidence interval here so we omit those values -- we can optionally set the `clevel` parameter but the default is a 95% confidence interval (`clevel = 0.95`). The `method` parameter chooses the method of inference: `"theoretical"` or `"simulation"` based -- our course is using a theoretical framework, so we will always use that option. Finally, since the goal is to construct an interval estimate for a proportion, it's necessary to specify which level constitutes a "success"; here that is a response of `"atheist"`.
 
 ###
 
-Although formal confidence intervals and hypothesis tests don't show up in the WINN-Gallup report, suggestions of inference appear at the bottom of page 6: "In general, the error margin for surveys of this kind is $\pm$ 3-5% at 95% confidence".
+Although formal confidence intervals and hypothesis tests don't show up in the WINN-Gallup report, suggestions of inference appear at the bottom of page 6: "In general, the error margin for surveys of this kind is $\pm$ 3-5% at 95% confidence". We will check the validity of this claim later on.
 
 Use the code block below to help you answer the question that follows.
 ```{r interp-inference-moe-code-block, exercise = TRUE}
@@ -170,7 +175,7 @@ Think back to the formula for the standard error: $SE = \sqrt{p(1-p)/n}$. This i
 
 ###
 
-The code block below is pre-populated with the code necessary to make a vector `p` that is a sequence from 0 to 1 with each number separated by 0.01. The code then create a vector of the margin of error (`me`) associated with each of these values of `p` using the familiar approximate formula ($ME = 2 \times SE$) -- note that we could also use the critical values associated with any confidence level we would like instead of 2 -- you might try this and see what happens! Lastly, we plot the two vectors against each other to reveal their relationship.
+The code block below is pre-populated with the code necessary to make a vector `p` that is a sequence from 0 to 1 with each number separated by 0.01. The code then creates a vector of the margin of error (`me`) associated with each of these values of `p` using the familiar approximate formula ($ME = 2 \times SE$) -- note that we could also use the critical values associated with any confidence level we would like instead of 2 -- you might try this and see what happens! Lastly, we plot the two vectors against each other to reveal their relationship.
 
 ```{r me-plot, exercise = TRUE, exercise.eval = FALSE}
 n <- 1000
@@ -204,7 +209,7 @@ quiz(
 
 ###
 
-We now know that both sample size and the population parameter impact the margin of error. Often times pollsters will have requirements for the margin of error for an estimate (for example, we may be interested in estimating a President's net favorability rating to within plus or minus three percentage points), so they can use this information and any intuition they may have about the location of the population proportion to estimate how much data they need to collect in order to satisfy their requirements on the margin of error. We can estimate required sample size using the formula below, which is just a rearrangement of the formula for margin of error ($M_E$):
+We now know that both sample size and the population parameter impact the margin of error. Often times pollsters will have requirements for the margin of error for an estimate (for example, we may be interested in estimating a President's net favorability rating to within plus or minus three percentage points), so they can use this information and any intuition they may have about an approximate value of the population proportion to estimate how much data they need to collect in order to satisfy their requirements on the margin of error. We can estimate required sample size using the formula below, which is just a rearrangement of the formula for margin of error ($M_E$):
 $$n \geq \left(\frac{Z_{\alpha/2}}{M_E}\right)^2\cdot p\left(1 - p\right)$$
 In the formula above:
 
@@ -220,7 +225,7 @@ The textbook emphasizes that you must always check conditions before making infe
 
 ###
 
-The short answer is: nothing. You could argue that we would be fine with 9 or that we really should be using 11. What is the "best" value for such a rule of thumb is, at least to some degree, arbitrary. However, when $np$ and $n(1-p)$ reaches 10 the sampling distribution is sufficiently normal to use confidence intervals and hypothesis tests that are based on that approximation.
+The short answer is: nothing. You could argue that we would be fine with 9 or that we really should be using 11. The "best" value for such a rule of thumb is, at least to some degree, arbitrary. However, when $np$ and $n(1-p)$ both reach 10 the sampling distribution is sufficiently normal to use confidence intervals and hypothesis tests that are based on that approximation.
 
 ###
 
@@ -242,7 +247,7 @@ ggplot() + geom_histogram(mapping = aes(x = p_hats)) + labs(title = "p = 0.1, n 
 
 ###
 
-These commands build up the sampling distribution of $\hat{p}$ using the familiar `for` loop. You can read the sampling procedure for the first line of code inside the `for` loop as, "take a sample of size $n$ with replacement from the choices of atheist and non-atheist with probabilities $p$ and $1 - p$,respectively." The second line in the loop says, "calculate the proportion of atheists in this sample and record this value." The loop allows us to repeat this process 5,000 times to build a good representation of the sampling distribution.
+These commands build up the sampling distribution of $\hat{p}$ using the familiar `for` loop. You can read the sampling procedure for the first line of code inside the `for` loop as, "take a sample of size $n$ with replacement from the choices of atheist and non-atheist with probabilities $p$ and $1 - p$,respectively." The second line in the loop says, "calculate the proportion of atheists in this sample and record this value." The loop allows us to repeat this process 5,000 times to build an approximation of the sampling distribution.
 
 Use the code block below to repeat the simulation we just ran but with `n = 400` and `p = 0.1`. Be sure to plot your result and compare it to your original simulation. What impact did lowering the number of observations have?
 ```{r p-dist-400-10, exercise = TRUE}
@@ -278,7 +283,7 @@ question_radio(
 
 ## On your own
 
-The question of atheism was asked by WIN-Gallup International in a similar survey that was conducted in 2005. (We assume here that sample sizes have remained the same.) Table 4 on page 12 of the report summarizes survey results from 2005 and 2012 for 39 countries. Try answering the following questions on your own.
+The question of atheism was asked by WIN-Gallup International in a similar survey that was conducted in 2005. (We assume here that sample sizes have remained the same.) Table 4 on page 12 of the report summarizes survey results from 2005 and 2012 for 39 countries. Try answering the following questions on your own. The code blocks are necessary for answering some of the questions, but are not needed for all.
 
 1. Answer the following two questions using the `inference` function. As always, write out the hypotheses for any tests you conduct and outline the status of the conditions for inference.
 
@@ -298,7 +303,23 @@ The question of atheism was asked by WIN-Gallup International in a similar surve
 
 ```
 
-###
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
+```
 
 ## Summary
 
@@ -307,4 +328,4 @@ Good work. I hope that this workbook has helped make inferential techniques a bi
 ###
 
 <div id="license">
-This is a derivative of a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). The oiginal lab was written for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel.</div>
+This is lab a derivative of a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). The oiginal lab was written for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel.</div>

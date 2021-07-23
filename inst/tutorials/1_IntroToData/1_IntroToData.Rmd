@@ -268,12 +268,30 @@ ggplot(data = pop) + geom_point(mapping = aes(x = x, y = y, color = samp), size 
 
 ###
 
-**Predictor versus Response Variables**: Typically in statistics we will identify a question (whose answer corresponds to a response variable) with respect to a population. We will take a representative sample of that population. From that sample we will collect observed responses as well as observations on other variables (maybe gender, age, political affiliation, etc). 
-The non-response variables are called *predictor variables*. In general, predictor variables are quantities which we expect *may effect* the response variable.
+**Predictor versus Response Variables**: Typically in statistics we will identify a question (whose answer corresponds to a response variable) with respect to a population. We will take a representative sample of that population. From that sample we will collect observed responses as well as observations on other variables (maybe age, level of formal education, political affiliation, etc). 
+The non-response variables are called *predictor variables*. In general, predictor variables are quantities which we expect *may be associated with* the response variable.
 
 ###
 
 There's lots more to learn about experimental design, but it is beyond the scope of our course. You should read pages 32 through 35 of [OpenIntro Statistics, 4Ed](https://www.openintro.org/book/os/) as a starting point.
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
+```
 
 ## Summary
 

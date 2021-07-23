@@ -34,7 +34,7 @@ In this workbook, we consider a method for comparing means from multiple groups.
 
 ###
 
-Notice that none of the tools we've been exposed to can be applied directly to help us answer this question. Our hypothesis testing strategies have been limited to comparing one or two populations. We could apply three separate *one-versus-one* tests (versicolor versus setosa, versicolor versus virginica, and setosa versus virginica), but notice that the probability of an erroneous conclusion explodes. For example, at a 5% level of significance, the probability of making at least one Type I error (an incorrect conclusion of a significant difference) with three comparisons is now $1 - \left(0.95^3\right) \approx 14.26\%$. While it is possible to adjust the level of significance for the individual tests to correct for this, a better option is to conduct an ANalysis Of VAriance -- an ANOVA test.
+Notice that none of the tools we've been exposed to can be applied directly to help us answer this question. Our hypothesis testing strategies have been limited to comparing numerical measures across one or two populations, but not more. We could apply three separate *one-versus-one* tests (versicolor versus setosa, versicolor versus virginica, and setosa versus virginica), but notice that the probability of an erroneous conclusion explodes. For example, at a 5% level of significance, the probability of making at least one Type I error (an incorrect conclusion of a significant difference) with three comparisons is now $1 - \left(0.95^3\right) \approx 14.26\%$. While it is possible to adjust the level of significance for the individual tests to correct for this, a better option is to conduct an ANalysis Of VAriance -- an ANOVA test.
 
 ###
 
@@ -179,6 +179,24 @@ Use the code block below to construct side-by-side boxplots of petal width acros
 
 ```{r boxplot, exercise = TRUE}
 
+```
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
 ```
 
 ## Summary

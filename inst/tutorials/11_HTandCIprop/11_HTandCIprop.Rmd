@@ -29,7 +29,7 @@ In this workbook, we continue our exploration of statistical inference. We'll co
 
 ###
 
-We'll motivate this workbook by watching three videos from Dr. David Diez of OpenIntro.org. After each of the videos, you'll walk through a hands-on application of the video content to a new scenario.
+We'll motivate this workbook by watching three videos from volunteers at OpenIntro.org. The first two will be from Dr. David Diez, a data scientist at YouTube and the last will be from Dr. Shannon McLintock who is a member of the statistics faculty at Cal Poly. After each of the videos, you'll walk through a hands-on application of the video content to a new scenario.
 
 ###
 
@@ -43,7 +43,7 @@ Our first video discusses *variability in point estimates*. It is likely that so
 
 ###
 
-We've discussed the impossibility of a true census, so the Pew study did not poll every single American to get their estimate. Instead, they surveyed 9,654 US adults between the dates of June 4 and June 10, 2020. You can [find out more about the study logistics here](https://www.pewresearch.org/wp-content/uploads/2020/06/W68-topline_DACA.pdf). This means that the 74% from the article is the proportion of individuals from the study who were in favor of a path to citizenship for the DREAMers.
+We've discussed the impossibility of a true census, so the Pew study did not poll every single American to get their estimate. Instead, they surveyed 9,654 US adults between the dates of June 4 and June 10, 2020. You can [find out more about the study logistics here](https://www.pewresearch.org/wp-content/uploads/2020/06/W68-topline_DACA.pdf). This means that the 74% from the article is the proportion of individuals *from the study* who were in favor of a path to citizenship for the DREAMers.
 
 ###
 
@@ -115,7 +115,7 @@ Use the code block below to answer the questions that follow.
 ```{r clt-prop, echo = FALSE}
 quiz(
   question_checkbox(
-    "The sample size is sufficiently large, if the *success-failure* condition is satisfied. What is the success-failure condition?",
+    "The sample size is sufficiently large if the *success-failure* condition is satisfied. What is the success-failure condition?",
     answer("There should be at least an expected 10 observations in each group (here: in favor/not in favor).", correct = TRUE),
     answer("If the population proportion is $p$ and the sample size is $n$, then $n\\cdot p\\geq 10$ and $n\\cdot\\left(1 - p\\right)\\geq 10$.", correct = TRUE),
     answer("There should be a possibility that we succeed but also that we fail."),
@@ -194,10 +194,10 @@ Recall that we've been working with a 2020 Pew Research study which included 9,6
 
 If we are sure that a sampling distribution is well-modeled by a normal distribution, we have the following critical values associated with several common levels of confidence.
 
-+ The critical value for a 90% confidence interval is 1.65
-+ The critical value for a 95% confidence interval is 1.96
-+ The critical value for a 98% confidence interval is 2.33
-+ The critical value for a 99% confidence interval is 2.58
++ The critical value for a 90% confidence interval is approximately 1.65
++ The critical value for a 95% confidence interval is approximately 1.96
++ The critical value for a 98% confidence interval is approximately 2.33
++ The critical value for a 99% confidence interval is approximately 2.58
 
 ###
 
@@ -333,7 +333,7 @@ quiz(
   question_radio(
     "In this case we can compute the standard error as: $S_E = \\sqrt{\\frac{p\\left(1 - p\\right)}{n}}$. Which of the following is the standard error? (round to four decimal places)",
     answer("$S_E = 0.0049$", correct = TRUE),
-    answer("$S_E = 0.0045$"),
+    answer("$S_E = 0.0045$", message = "We are assuming a true proportion here. We should use that one in computing our standard error, instead of using our sample statistic."),
     answer("$S_E = 0.0042$"),
     answer("$S_E = 0.0052$"),
     allow_retry = TRUE,
@@ -376,6 +376,24 @@ quiz(
     allow_retry = TRUE,
     random_answer_order = TRUE
   )
+)
+```
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
 )
 ```
 

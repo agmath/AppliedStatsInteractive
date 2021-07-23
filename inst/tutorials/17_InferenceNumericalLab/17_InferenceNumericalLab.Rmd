@@ -31,6 +31,12 @@ In this workbook, we consider multiple variables measured on a random sample of 
 
 ###
 
+<div id="license">
+This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted for OpenIntro by Mine &Ccedil;etinkaya-Rundel from a lab written by the faculty and TAs of UCLA Statistics.
+</div>
+
+###
+
 In the `nc` dataset we have observations on 13 different variables, some categorical and some 
 numerical. The meaning of each variable is as follows.
 
@@ -266,6 +272,26 @@ Since you've worked through this workbook, you should now feel prepared to answe
 
 ```
 
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
+```
+
+<br/>
+
 <div id="license">
-This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted for OpenIntro by Mine &Ccedil;etinkaya-Rundel from a lab written by the faculty and TAs of UCLA Statistics.
+This lab is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted for OpenIntro by Mine &Ccedil;etinkaya-Rundel from a lab written by the faculty and TAs of UCLA Statistics.
 </div>

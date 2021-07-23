@@ -33,6 +33,12 @@ In this workbook, we consider an advanced technique for building a statistical m
 
 ###
 
+<div id="license">
+This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted from a lab written by Mine &Ccedil;etinkaya-Rundel and Andrew Bray.
+</div>
+
+###
+
 Another way of phrasing this is that our inference applications seek to answer the question, "*within our population of interest, is there an association between the variable $X$ and the variable $Y$?*". If both variables $X$ and $Y$ are numerical, then we develop a new statistical inference technique called linear regression.
 
 ## An Introduction to Linear Regression
@@ -425,6 +431,26 @@ If you liked this lab, it is just a taste of a truly powerful statistical techni
 
 ###
 
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
+```
+
+<br/>
+
 <div id="license">
-This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted from a lab written by Mine &Ccedil;etinkaya-Rundel and Andrew Bray.
+This lab is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted from a lab written by Mine &Ccedil;etinkaya-Rundel and Andrew Bray.
 </div>

@@ -26,7 +26,7 @@ data <- data.frame("FuelType" = c("F1", "F1", "F1", "F2", "F2", "F2"), "EngineBr
 
 ## Topic 4: Data Visualization
 
-Through this workbook you'll learn techniques for data visualization. You'll think about how the type of plot chosen impacts what information is conveyed. Choosing the wrong plot type can result in at-best a useless plot, and at-worst a plot which is misleading. Think about the *types* (numerical, categorical) of variables you are working with and how they dictate which plot type should be utilized -- for example, a scatterplot is not appropriate in every scenario!
+Through this workbook you'll learn techniques for data visualization. You'll think about how the type of plot chosen impacts what information is conveyed (or lost). Choosing the wrong plot type can result in a useless plot (at best) or even a plot which is misleading. Think about the *types* (numerical, categorical) of variables you are working with and how they dictate which plot type should be utilized -- for example, a scatterplot is not appropriate in every scenario!
 
 ###
 
@@ -254,7 +254,7 @@ grade_code()
 
 ###
 
-Consider the variables for vehicle class (`class`) and drive type (`drv`). 
+Consider the variables for vehicle class (`class`) and drive type (`drv`) as you answer the following questions. 
 
 ```{r plot-class-drv-basics, echo = FALSE}
 quiz(
@@ -348,18 +348,23 @@ question_radio(
 
 We've seen plots for categorical variables earlier in this workbook. Let's revisit a barplot with fill, similar to the one we constructed between `class` and `drv` earlier and check two alternative plots which give different insights. We'll explore the transmission variable (I've stored a more usable version of the `trans` variable as `trans2`) and the drive variable (`drv`).
 
-From the plot below we can tell that there are about twice as many vehicles in our dataset with automatic transmissions as there are with manual transmissions. The problem is that it is difficult to compare the proportions of drive types within each of these classes. We can fix this by using the position argument. Outside of `aes()` but still within `mapping()` add an argument `position = "fill"` to the pre-built plot -- you'll need to include a comma after `aes()` since commas separate arguments. Think about what is gained and lost in this new plot.
-
-```{r trans-drv-plot-setup}
-mpg$trans2 <- str_sub(mpg$trans, 1, -5) #We create a copy of the transmission column but only include either 'auto' or 'manual'
+```{r engineer-trans2, echo = TRUE, eval = TRUE}
+mpg_with_trans <- mpg
+mpg_with_trans$trans2 <- str_sub(mpg_with_trans$trans, 1, -5)
 ```
 
+We'll switch to using the `mpg_with_trans` data frame for the rest of this notebook.
+
+###
+
+From the plot below we can tell that there are about twice as many vehicles in our dataset with automatic transmissions as there are with manual transmissions. The problem is that it is difficult to compare the proportions of drive types within each of these classes. We can fix this by using the position argument. Outside of `aes()` but still within `mapping()` add an argument `position = "fill"` to the pre-built plot -- you'll need to include a comma after `aes()` since commas separate arguments. Think about what is gained and lost in this new plot.
+
 ```{r trans-drv-plot, exercise = TRUE, exercise.eval = TRUE}
-ggplot(data = mpg) + geom_bar(mapping = aes(x = trans2, fill = drv))
+ggplot(data = mpg_with_trans) + geom_bar(mapping = aes(x = trans2, fill = drv))
 ```
 
 ```{r trans-drv-plot-solution}
-ggplot(data = mpg) + geom_bar(mapping = aes(x = trans2, fill = drv), position = "fill")
+ggplot(data = mpg_with_trans) + geom_bar(mapping = aes(x = trans2, fill = drv), position = "fill")
 ```
 
 ```{r trans-drv-plot-check}
@@ -371,10 +376,28 @@ grade_code()
 Great! But the problem now is that we've lost the idea that there are more automatic vehicles than there are manual vehicles in this dataset. As a third option, we can consider a mosaic plot.
 
 ```{r echo = TRUE, eval = TRUE}
-mosaicplot(mpg$trans2 ~ mpg$drv, main = "Transmission and Drive Types")
+mosaicplot(mpg_with_trans$trans2 ~ mpg_with_trans$drv, main = "Transmission and Drive Types")
 ```
 
 The advantage to the mosaic plot is that it contains all of the information from the two separate plots above, but it is all combined into one plot! We've built a visualization that manages to convey that the proportion of manual vehicles in our dataset outweighs the proportion of automatics, and we can also compare the distribution of drive types within each of these two classes. Notice, however, that the syntax for the mosaic plot is not like the `ggplot()` syntax we've been experimenting with throughout this workbook.
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
+```
 
 ## Summary
 

@@ -61,9 +61,21 @@ tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_le
 
 ## Intro to Inference Lab
 
+###
+
 In this workbook, we investigate the ways in which the statistics from a random sample of data can serve as point estimates for population parameters. This workbook builds off of the content from Topic 9, where we were exposed to the *Sampling Distribution* and the *Central Limit Theorem*. Here we will work to become more familiar with these two ideas and how we can use the sampling distribution to make claims about population-level data.
 
+###
+
+<div id="license">
+This is a derivative of a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel from a lab written by Mark Hansen of UCLA Statistics.
+</div>
+
+###
+
 ## The data
+
+###
 
 We consider real estate data from the city of Ames, Iowa. The details of every real estate transaction in Ames is recorded by the City Assessor's office. Our particular focus for this lab will be a dataset containing all residential home sales in Ames between 2006 and 2010. This collection represents our population of interest. While we typically don't have access to population-level data, this will allow us to see the Central Limit Theorem in action and to see how close our estimates come to the true population means.
 
@@ -299,7 +311,7 @@ ggplot() +
 
 ###
 
-If you would like to adjust the bin width of your histogram to show a different level of detail, you can do so by changing the `bins` argument. Notice the extra `bins` argument in the call to `geom_histogram()` below. Run the code to see the difference in the two plots.
+You may have noticed a warning message about using 30 bins. If you would like to adjust the bin width of your histogram to show a different level of detail, you can do so by changing the `bins` argument. Notice the extra `bins` argument in the call to `geom_histogram()` below. Run the code to see the difference in the two plots.
 
 ```{r hist-breaks, exercise = TRUE}
 sample_means50 <- rep(NA, 5000)
@@ -318,7 +330,7 @@ ggplot() +
 
 ###
 
-We used R to take 5,000 samples of size 50 from the population, calculate the mean of each sample, and store each result in a vector called `sample_means50`. Don't worry if you don't understand the code yet -- we'll review it shortly. But first, answer a couple of questions.
+In our previous code blocks, we used R to take 5,000 samples of size 50 from the population, calculate the mean of each sample, and store each result in a vector called `sample_means50`. Don't worry if you don't understand the code yet -- we'll review it shortly. But first, answer a couple of questions.
 
 ```{r samp-means-50-questions, echo = FALSE}
 quiz(
@@ -557,11 +569,15 @@ quiz(
 
 ## Confidence intervals
 
+###
+
 Based on a sample, what can we infer about the population? Based only on a single sample, the best estimate of the average living area of houses sold in Ames would be the sample mean, usually denoted as $\bar{x}$ (here we've been calling it `sample_mean`). That serves as a good *point estimate* but it would be useful to also communicate how uncertain we are of that estimate. This can be captured by using a *confidence interval*.
 
 ###
 
 We can calculate a 95% confidence interval for a sample mean by adding and subtracting 1.96 standard errors to the point estimate (See Section 4.2.3 of our book if you are unfamiliar with this formula). If you remember our discussion on the *Empirical Rule*, then you recall that we said approximately 95% of observations fall within two standard deviations (standard errors) of the mean -- the 1.96 here is a more accurate value. Essentially the 1.96 comes from the idea that a 95% confidence interval has an error of 5%, which is distributed equally to the two tails of a normal distribution. 
+
+###
 
 Use the code block below to take a single sample of size 60 of areas from houses in Ames. Call it `samp`.
 ```{r samp60, exercise = TRUE}
@@ -608,7 +624,7 @@ met for this to be true? (check all the requirements)",
     "Which of the following is the correct interpretation of the 95% confidence interval?",
     answer("We are 95% confident that the true population mean square footage of living area for houses sold in Ames, Iowa between 2006 and 2010 is between the lower and upper bound.", correct = TRUE),
     answer("There is a 95% chance that the true population mean square footage of living area for houses sold in Ames, Iowa between 2006 and 2010 is between the lower and upper bound."),
-    answer("We are 95% confident that the sample mean square footage of living area for houses sold in Ames, Iowa between 2006 and 2010 is between the lower and upper bound."),
+    answer("We are 95% confident that the sample mean square footage of living area for houses sold in Ames, Iowa between 2006 and 2010 is between the lower and upper bound.", message = "Aren't you 100% certain of this?"),
     allow_retry = TRUE,
     random_answer_order = TRUE
   )
@@ -635,7 +651,7 @@ question_radio(
 )
 ```
 
-####
+###
 
 Using $\tt{R}$, we're going to recreate many samples to learn more about how sample means and confidence intervals vary from one sample to another.
 
@@ -675,6 +691,26 @@ Run the code above multiple times. Do your results change? What do the red highl
 Good work through this activity. I hope it has made the Central Limit Theorem and Sampling Distributions a bit more intuitive to you. We'll do more with confidence intervals in the second half of our course. If you are interested in doing more, go back through this workbook using the `price` data.
 
 ###
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
+```
+
+<br/>
 
 <div id="license">
 This is a derivative of a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel from a lab written by Mark Hansen of UCLA Statistics.

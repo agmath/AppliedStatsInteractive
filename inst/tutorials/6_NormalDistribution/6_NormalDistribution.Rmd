@@ -46,13 +46,11 @@ chickPoxSampSize <- sample(50:150, size = 1)
 
 Throughout this workbook we'll investigate the probability distribution that is most central to our study of statistics: the normal distribution.  If we are confident that our data are nearly normal, that opens the door to many powerful statistical methods. This workbook gives you practice in working with normally distributed data.
 
-###
-
 ## Objectives
 
 **Workbook Objectives:** After completing this workbook you should be able to:
 
-+ Compute probabilities of events modeled by a normal distribution.
++ Compute probabilities of events well-modeled by a normal distribution.
 + Given a variable $X$ which follows an assumed normal distribution, compute and interpret various percentile thresholds for $X$.
 + Identify scenarios to which the normal or binomial distributions can be applied, and use them to answer various probability-related questions.
 
@@ -107,7 +105,7 @@ ggplot(NULL, aes(c(-3, 3))) +
 
 ###
 
-+ The distribution is symmetric.
++ The distribution is symmetric. In symbols, $\mathb{P}\left[X\leq \mu - k\right] = \mathbb{P}\left[X \geq \mu + k\right]$ for any $k$.
 
 <center>
 ```{r shade-norm-symmetric, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width = 3, fig.height = 3}
@@ -623,7 +621,7 @@ grade_result(
 
 ```{r chick-pox-prob-atmost-check}
 grade_result(
-  pass_if(~ (abs(.result - (pbinom(floor(0.75*chickPoxSampSize), chickPoxSampSize, 0.9))) < 0.001))
+  pass_if(~ (abs(.result - (pbinom(floor(0.75*chickPoxSampSize), chickPoxSampSize, 0.9))) < 0.00005))
 )
 ```
 
@@ -634,7 +632,7 @@ grade_result(
 
 ```{r chick-pox-prob-atleast-check}
 grade_result(
-  pass_if(~ (abs(.result - ( 1 - pbinom((floor(0.95*chickPoxSampSize) - 1), chickPoxSampSize, 0.9))) < 0.001))
+  pass_if(~ (abs(.result - ( 1 - pbinom((floor(0.95*chickPoxSampSize) - 1), chickPoxSampSize, 0.9))) < 0.0001))
 )
 ```
 
@@ -649,7 +647,7 @@ grade_result(
 )
 ```
 
-**Practice Problem 2:** Sphia took the Graduate Record Examination (GRE) and scored 160 on the Verbal Reasoning section and 157 on the Quantitative Reasoning section. The mean score on the Verbal Reasoning section for all test takers was 151 with a standard deviation of 7, and the mean score for the Quantitative Reasoning section for all test takers was 153 with a standard deviation of 7.67. Suppose we can assume that both score distributions are nearly normal.
+**Practice Problem 2:** Sophia took the Graduate Record Examination (GRE) and scored 160 on the Verbal Reasoning section and 157 on the Quantitative Reasoning section. The mean score on the Verbal Reasoning section for all test takers was 151 with a standard deviation of 7, and the mean score for the Quantitative Reasoning section for all test takers was 153 with a standard deviation of 7.67. Suppose we can assume that both score distributions are nearly normal.
 
 + Use the code block below to compute Sophia's $z$-score on the Quantitative Reasoning exam.
 ```{r z-score-QR, exercise = TRUE}
@@ -704,6 +702,24 @@ grade_result(
 ```{r GRE-VR-percent-above-check}
 grade_result(
   pass_if(~ (abs(.result - (1 - pnorm(160, 151, 7))) < 0.001))
+)
+```
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
 )
 ```
 

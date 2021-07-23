@@ -36,12 +36,12 @@ Throughout this workbook you'll be introduced to the notion of probability and w
 
 + Define, discuss, and interpret the probability of an event as its likelihood.
 + Apply fundamental counting principles and the notion of independence to compute the probability associated with the occurrence of a sequence of events.
-+ Use the definition of binomial experiments to identify scenarios to which the binomial distribution can be applied and then apply the binomial distribution to find probabilities associated with specified outcomes. 
++ Use the definition of binomial experiments to identify scenarios to which the binomial distribution can be applied and then actually apply the distribution to find probabilities associated with specified outcomes. 
 + Given a binomial experiment, compute the expected number of successful outcomes as well as the standard deviation for number of successes.
 
 ## Basic Probability
 
-**Definition of Probability:** For a given random process, the probability of an event $A$ is the proportion of time we would observe outcome $A$ if the random process were repeated an infinite number of times.
+**Definition of Probability (*frequentist*):** For a given random process, the probability of an event $A$ is the proportion of time we would observe outcome $A$ if the random process were repeated an infinite number of times.
 
 ###
 
@@ -184,12 +184,12 @@ quiz(
   ),
   question_radio(
     "What is the probability that you get exactly two questions right?",
-    answer("0"),
     answer("0.04"),
     answer("0.08"),
-    answer("0.1"),
+    answer("0.256", message = "You assumed something here -- what was it?"),
     answer("0.2"),
     answer("0.4"),
+    answer("0.64", message = "Hmmm, what about the other two questions?"),
     answer("None of these", correct = TRUE),
     allow_retry = TRUE
   )
@@ -205,7 +205,7 @@ So in the last question, none of the choices were correct -- but why? There are 
 **Binomial Experiments:** A binomial experiment satisfies each of the following three criteria:
 
 + There are $n$ repeated trials.
-+ Each trial has two possible outcomes (usually called success and failure for convenience)
++ Each trial has two possible outcomes (usually called *success* and *failure* for convenience)
 + The trials are independent of one another. That is, for each trial, the probability of success is $p$ (which remains constant).
 
 ###
@@ -237,7 +237,7 @@ grade_result(
 
 ###
 
-Good work. Now you'll get to try a few more problems! As you work through the next set of questions, you may want to check out [this example and solution](www/BinomialExample.pdf){target="_blank"}. Note that in that document, I mention that drawing a simple picture for each problem will help you decide which function(s) you might use and whether you might need to make multiple computations.
+Good work. Now you'll get to try a few more problems! As you work through the next set of questions, you may want to check out [this example and solution](www/BinomialExample.pdf){target="_blank"}. Note that in that document, I mention that drawing a simple picture for each problem will help you decide which function(s) you might use and whether you might need to make multiple computations. This is a really important strategy that will help you in developing a strategy to solve each problem.
 
 **Practice:** For each of the following, consider a scenario in which a random sample of 18 students is asked (in private) whether they've failed to hand in at least one assignment this semester. We assume that about 34% of students fail to hand in at least one assignment.
 
@@ -320,6 +320,24 @@ grade_result(
 
 Be sure to write down what questions you had as you worked through these problems and to have a teacher, colleague, or tutor help clarify things for you.
 
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+)
+```
+
 ## Summary
 
 Up to this point you've been exposed to basic probability, binomial experiments, and using the binomial distribution. Here's a quick recap.
@@ -329,9 +347,10 @@ Up to this point you've been exposed to basic probability, binomial experiments,
 + A binomial experiment satisfies each of the following
   + The experiment consists of $n$ repeated trials
   + Each trial has two possible outcomes
-  + The trials are independent on one another
+  + The trials are independent of one another
 + If $X$ denotes the number of successes resulting from a binomial experiment with $n$ trials and probability of success on a single trial equal to $p$, then
   + $\mathbb{P}\left[X = k\right] \approx \tt{dbinom(k, n, p)}$
   + $\mathbb{P}\left[X\leq k\right] \approx \tt{pbinom(k, n, p)}$
+  + Drawing a picture is a crucial step along the way to solving a probability problem. The two functions above are enough to compute the probability of any type of outcome associated with a binomial experiment -- the trick is in finding how to put these tools to use -- drawing a picture will guide you.
   + The expected value of $X$ (expected number of successes) is given by $\mathbb{E}\left[X\right] = n\cdot p$
   + The standard deviation of $X$ (standard deviation of number of successes) is given by $s_X = \sqrt{n\cdot p\left(1 - p\right)}$

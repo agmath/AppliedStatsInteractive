@@ -24,17 +24,21 @@ tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_le
 
 ## Foundations for Inference
 
-In this workbook we'll begin investigating the true power of statistics -- using sample data to make accurate claims about a population (even when we don't have access to the entire population). We'll start by exploring the connection between a *Population Distribution* and the distribution of sample means, often called the *Sampling Distribution*. We'll do this through a series of simple, interactive code blocks which you'll run and use to answer questions.
+In this workbook we'll begin investigating the true power of statistics -- using sample data to make accurate claims about a population (even when we don't have access to the entire population). We start by exploring the connection between a *Population Distribution* and the distribution of sample means, often called the *Sampling Distribution*. We'll do this through a series of simple, interactive code blocks which you will run and use to answer questions.
 
 ## Exploring the connection between population and sampling distributions
 
 Start by viewing the following following video from the New York Times.
 
+###
+
 <center><iframe width="560" height="315" src="https://www.youtube.com/embed/jvoxEYmQHNM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
 
 ###
 
-So the video claimed that the sampling distribution can help us answer questions about the population. This is really important because, as we mentioned in our first Workbook, Census is almost always impossible. Use the code blocks below to explore the connection between the population and the sampling distribution for various different populations.
+So the video claimed that the sampling distribution can help us answer questions about the population. This is really important because, as we mentioned in our first Workbook, Census is almost always impossible. Use the code blocks below to explore the connection between the population and the sampling distribution for various different populations. Note that you do not need to understand all of the code contained in the code blocks -- you should focus, instead, on the pictures resulting each time you run the code. In general, you are invited to change the first few lines of code in each block, and you are not expected to look at the remaining code.
+
+### A Normally Distributed Population
 
 **Normally Distributed Population:** Work with the following code block to explore the connection between the population distribution and sampling distribution when the population follows a normal distribution. Use your explorations to answer the questions that follow.
 ```{r norm-pop-samp-dist, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4}
@@ -129,6 +133,14 @@ quiz(
 
 ###
 
+**Recap:** Okay, so if a population distribution is approximately normal, then the sampling distribution is also nearly normal -- what's the big deal? The real takeaway here is that, if it reasonable to assume that data are being sampled from a population which is approximately normal, then our sample statistics provide reliable estimates for their corresponding population parameters (here, the mean). In particular, the size of our sample helps us quantify how *close* to the true population mean we might expect our sample mean to be. This is critical if we are to make population-level claims from sample-level data. Okay, so what if we can't assume that the population we are interested in follows a "nearly"-normal distribution? Do you believe in "magic"? (Disclaimer: There is actually no magic, or trickery, involved in what you are about to see -- just rock-solid mathematics. Get ready to have your mind blown!)
+
+### A Unifromly Distributed Population
+
+A population is said to be uniformly distributed between some minimum value `A` and a maximum value `B` if all values between `A` and `B` are equally likely to be observed when a random element of the population is observed.
+
+###
+
 **Uniformly Distributed Population:** Work with the following code block to explore the connection between the population distribution and sampling distribution when the population follows a uniform distribution. You'll notice in the plot on the left, that assuming a normal distribution for the population is an extremely poor choice. Use your explorations to answer the questions that follow.
 ```{r uniform-pop-samp-dist, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4}
 #Define the minimum value (feel free to change)
@@ -216,6 +228,16 @@ quiz(
   )
 )
 ```
+
+###
+
+### The Impact of Skew on the Sampling Distribution
+
+We've seen that the sampling distribution is nearly normal for any sample size, as long as the population is nearly normally distributed. We've also seen that the sampling distribution is nearly normal for samples of size at least two (2) if our population is uniformly distributed. What if we move in a very different direction? That is, let's consider a distribution in which the population is extremely skewed -- what happens to the sampling distribution now?
+
+###
+
+We've encountered *skew* in our course already, and we know that it has the effect of moving the *mean* away from the center of our distribution (data). This witchcraft (read: mathematics) certainly cannot apply in the face of skewed distributions, can it?
 
 ###
 
@@ -349,7 +371,21 @@ quiz(
 )
 ```
 
+### Recap
+
+Okay, so in all of these cases, the *mean* of the sampling distribution falls close to the *mean* of the population distribution -- we're done, right? Unfortunately, no -- the important part of all of this has to do with the *spread* of the sampling distribution. 
+
+### 
+
+We've been working backwards here -- we've assumed that we know the distribution of the population, and we've taken many thousands of samples from that population in order to construct the sampling distributions. This is exactly opposite of the scenario in which statistics and its methods are useful. 
+
+###
+
+In statistics, we don't know the population distribution -- and, we certainly don't have the ability to collect thousands of samples-worth of data. We generally collect one sample, of a fixed size, and now we want to make a claim about an unknown population. Luckily, from the experiments we've run (and from the mathematics which has been *proven* to work), we know that our sample mean falls "near" our population mean, and we can describe what we mean by "near" since it is related to the size of our sample. This is the *magic* that makes statistics work! We'll formalize it next.
+
 ## The Central Limit Theorem
+
+###
 
 What you just discovered through the last section and corresponding questions is what statisticians call the *Central Limit Theorem*. It is what was discussed in the *CreatureCast* video at the beginning of this workbook. This is one of the most important theorems in all of statistics and it is what will allow us to make and test claims about populations for the remainder of our course.
 
@@ -359,13 +395,13 @@ What you just discovered through the last section and corresponding questions is
 
 ###
 
-For now we'll focus on one particular application of the Central Limit Theorem to a single population. Consider $X\sim N\left(\mu,\sigma\right)$, then the Central Limit Theorem states that the distribution of samples means is as follows: $\displaystyle{\bar{X}_n\sim N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$.
+For now we'll focus on one particular application of the Central Limit Theorem to a single population. Consider $X\sim N\left(\mu,\sigma\right)$, then the Central Limit Theorem states that the distribution of sample means is as follows: $\displaystyle{\bar{X}_n\sim N\left(\mu, S_E = \sigma/\sqrt{n}\right)}$.
 
 ###
 
 Try the following problem.
 
-**Sample Problem:** Suppose you have 46 square foot wall which you want to cover with spraypaint. The brand of spraypaint you plan to use is known to have an average coverage of 10 square feet per can with a standard deviation of 1.5 square feet. Use the code block below to answer the questions that follow.
+**Sample Problem:** Suppose you have 46 square foot wall which you want to cover with spray paint. The brand of spray paint you plan to use is known to have coverage which is approximately normal, with an average coverage of 10 square feet per can and a standard deviation of 1.5 square feet. Use the code block below to answer the questions that follow.
 ```{r spraypaint-sandbox, exercise = TRUE}
 
 ```
@@ -410,6 +446,24 @@ quiz(
     allow_retry = TRUE,
     random_answer_order = TRUE
   )
+)
+```
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If you have completed this tutorial and are happy with all of your",
+    "solutions, please click the button below to generate your hash and",
+    "submit it using the the corresponding BrightSpace Quiz:",
+    shiny::tags$br()
+  ), 
+  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
 )
 ```
 
