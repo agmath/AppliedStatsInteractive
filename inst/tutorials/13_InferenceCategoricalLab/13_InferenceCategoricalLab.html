@@ -378,7 +378,8 @@ Re-run the experiment one last time, but with <code>n = 400</code> and <code>p =
 <div>
 If you have completed this tutorial and are happy with all of your
 solutions, please click the button below to generate your hash and
-submit it using the the corresponding BrightSpace Quiz:
+submit it using the the corresponding Google Form from this week's
+BrightSpace Announcement:
 <br/>
 </div>
 <div class="row" style="padding-bottom: 0.5em;">
@@ -602,7 +603,7 @@ output$`tutorial-exercise-on-your-own-3-output` <- renderUI({
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnrhash::encoder_logic()
+learnrhash::encoder_logic(strip_output = TRUE)
 </script>
  <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">

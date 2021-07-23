@@ -72,7 +72,7 @@ If you are considering whether to use these notebooks as part of a course or sel
 
   + Depending on the date which you or students install the `AppliedStatsInteractive` package, the individual installing at a later date may notice additional features. For example, I am working on creating/curating, and embedding more video instruction.
 
-+ The `learnrhash` package provides some ability for student progress tracking through these workbooks. At the end of each workbook there is a subsection called *Submit*, which includes a button for students to generate a `hash` code which represents their completed notebook. They can submit these hash codes using a form (some of the completed notebooks result in hashes that are too large to be accommodated by a Google Form, which I will work on fixing) -- I've set up quizzes in my LMS so that students can just paste their hash and I can download a csv file containing the hashes from all of my students. Once you have the csv with the hashes, you can read it into R and use `learnrhash` functionality to reconstruct the student work. See the `learnrhash` documentation [here](https://github.com/rundel/learnrhash).
++ The `learnrhash` package provides some ability for student progress tracking through these workbooks. At the end of each workbook there is a subsection called *Submit*, which includes a button for students to generate a `hash` code which represents their completed notebook. They can submit these hash codes using a web-based form such as Google Forms. Once you have the csv with the hashes, you can read it into R and use `learnrhash` functionality to reconstruct the student work. See the `learnrhash` documentation [here](https://github.com/rundel/learnrhash).
 
 ###
 
