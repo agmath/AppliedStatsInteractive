@@ -11,7 +11,8 @@ Imports:
     openintro,
     ggplot2,
     dplyr,
-    stringr
+    stringr,
+    tidyr
 Remotes:
     rstudio-education/gradethis,
     rstudio/learnr,
