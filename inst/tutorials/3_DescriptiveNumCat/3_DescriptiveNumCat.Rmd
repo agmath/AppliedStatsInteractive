@@ -63,6 +63,8 @@ cut.samples <- data.frame(Sample_One = diamonds$cut[sample(1:nrow(diamonds), 8, 
 
   * The **median** is the *middle value* for a set of observations. To compute the median, list the numbers in ascending order and find the number or number(s) in the middle of the list. In the case that there is a single middle number, that is the median. In the case where there are two middle numbers, we take the *mean* of those two.
 
+###
+
 **Example**: The following are three random samples of carat values from the *diamonds* dataset.
 ```{r printSamplesDf, echo = FALSE, eval = TRUE}
 samples
@@ -232,7 +234,7 @@ The two plots below are a histogram (left) and a boxplot (right), each showing t
 
 ```{r printPlots, echo = FALSE, eval = TRUE, fig.width = 4.5, fig.height = 2.5, message = FALSE, warning = FALSE, results = FALSE}
 ggplot(data = diamonds) + geom_histogram(mapping = aes(x = carat)) + geom_vline(xintercept = mean(diamonds$carat), color = "purple", lwd = 1.75)
-ggplot(data = diamonds) + geom_boxplot(mapping = aes(y = carat)) + geom_vline(xintercept = mean(diamonds$carat), color = "purple", lwd = 1.75, alpha = 0.5) + coord_flip()
+ggplot(data = diamonds) + geom_boxplot(mapping = aes(y = carat)) + geom_hline(yintercept = mean(diamonds$carat), color = "purple", lwd = 1.75, alpha = 0.5) + coord_flip()
 ```
 
 * The histogram does a nice job showing the true *shape* of the data, but does not always do a good job showing the presence of outliers. The purple line has been added to the histogram to show the true mean carat weight.
