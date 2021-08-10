@@ -53,7 +53,7 @@ In this workbook, we continue our exploration of statistical inference. Through 
 ###
 
 As a reminder, we have the [*standard errror decision tree*](www/StdErrorDecisionTree.pdf){target="_blank"} which you'll continue to make use of. In case you need a refresher on the tree, you can find my walkthrough video below:
-<center><iframe width="560" height="315" src="https://www.youtube.com/embed/XzxE_ORMM54?start=16" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/5bAylfMIArg?start=16" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
 
 ###
 
