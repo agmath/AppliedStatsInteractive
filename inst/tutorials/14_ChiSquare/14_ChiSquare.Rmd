@@ -338,8 +338,8 @@ quiz(
 ```{r hypotheses, echo = FALSE}
 question_radio(
   "The hypotheses associated with the researcher's test are:",
-  answer("$\\begin{array}{ll} H_0: \\text{Household income and drug use are independent of one another.} \\\\ H_a: \\text{Household income and druge use are dependent.}\\end{array}$", correct = TRUE),
-  answer("$\\begin{array}{ll} H_0: \\text{Household income and drug use are dependent.} \\\\ H_a: \\text{Household income and druge use are independent of one another.}\\end{array}$"),
+  answer("$\\begin{array}{ll} H_0: \\text{Household income and drug use are independent of one another.} \\\\ H_a: \\text{Household income and drug use are dependent.}\\end{array}$", correct = TRUE),
+  answer("$\\begin{array}{ll} H_0: \\text{Household income and drug use are dependent.} \\\\ H_a: \\text{Household income and drug use are independent of one another.}\\end{array}$"),
   answer("$\\begin{array}{ll} H_0: p_{\\text{household income}} = p_{\\text{drug use}} \\\\ H_a: p_{\\text{household income}} \\neq p_{\\text{drug use}}\\end{array}$"),
 answer("$\\begin{array}{ll} H_0: \\mu_{\\text{household income}} = \\mu_{\\text{drug use}} \\\\ H_a: \\mu_{\\text{household income}} \\neq \\mu_{\\text{drug use}}\\end{array}$"),
 allow_retry = TRUE,
