@@ -42,7 +42,7 @@ observedInd <- c(341, 752, 796, 221, 78, 153, 116, 43)
 
 ###
 
-In this workbook, we consider methods two new methods for testing claims corresponding to categorical data with possibly more than two levels. Our first method is called the $\chi^2$ (Chi-Squared) Test for Goodness of Fit and can be used for testing whether a sample gives evidence to suggest that an assumed discrete distribution is not an appropriate model for a categorical variable. The second is called the $\chi^2$ Test of Independence, and can be used for testing whether two categorical variables are not independent of one-another. You'll be exposed to some examples and some video explanations before being asked to try examples on your own.
+In this workbook, we consider two new methods for testing claims corresponding to categorical data with possibly more than two levels. Our first method is called the $\chi^2$ (Chi-Squared) Test for Goodness of Fit and can be used for testing whether a sample gives evidence to suggest that an assumed discrete distribution is not an appropriate model for a categorical variable. The second is called the $\chi^2$ Test of Independence, and can be used for testing whether two categorical variables are not independent of one-another. You'll be exposed to some examples and some video explanations before being asked to try examples on your own.
 
 ###
 
