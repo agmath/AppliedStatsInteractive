@@ -42,7 +42,7 @@ observedInd <- c(341, 752, 796, 221, 78, 153, 116, 43)
 
 ###
 
-In this workbook, we consider methods two new methods for testing claims corresponding to categorical data with possibly more than two levels. Our first method is called the $\chi^2$ (Chi-Squared) Test for Goodness of Fit and can be used for testing whether a sample gives evidence to suggest that an assumed discrete distribution is not an appropriate model for a categorical variable. The second is called the $\chi^2$ Test of Independence, and can be used for testing whether two categorical variables are not independent of one-another. You'll be exposed to some examples and some video explanations before being asked to try examples on your own.
+In this workbook, we consider two new methods for testing claims corresponding to categorical data with possibly more than two levels. Our first method is called the $\chi^2$ (Chi-Squared) Test for Goodness of Fit and can be used for testing whether a sample gives evidence to suggest that an assumed discrete distribution is not an appropriate model for a categorical variable. The second is called the $\chi^2$ Test of Independence, and can be used for testing whether two categorical variables are not independent of one-another. You'll be exposed to some examples and some video explanations before being asked to try examples on your own.
 
 ###
 
@@ -458,9 +458,13 @@ Use the code block below to compute the $\chi^2$ test statistic. Look back to ou
 ```
 
 ```{r chi-sq-ind-check}
-expected <- c(344, 817, 752.5, 236.5, 56, 133, 122.5, 38.5)
+#expected <- c(344, 817, 752.5, 236.5, 56, 133, 122.5, 38.5)
+#grade_result(
+  #pass_if(~ (abs(.result - sum((observedInd - expected)^2/expected)) < #0.05))
+#)
+
 grade_result(
-  pass_if(~ (abs(.result - sum((observedInd - expected)^2/expected)) < 0.05))
+  pass_if(~ (abs(.result - 21.24924) < 0.05))
 )
 ```
 
@@ -493,8 +497,12 @@ Use the code block below to compute the $p$-value associated with this test.
 ```
 
 ```{r compute-p-indep-check}
+#grade_result(
+  #pass_if(~ (abs(.result - (1 - pchisq(sum((observedInd - c(344, 817, 752.5, 236.5, 56, 133, 122.5, 38.5))^2/c(344, 817, 752.5, 236.5, 56, 133, 122.5, 38.5)), df = (4 - 1)*(2 - 1)))) < 0.0001))
+#)
+
 grade_result(
-  pass_if(~ (abs(.result - (1 - pchisq(sum((observedInd - c(344, 817, 752.5, 236.5, 56, 133, 122.5, 38.5))^2/c(344, 817, 752.5, 236.5, 56, 133, 122.5, 38.5)), df = (4 - 1)*(2 - 1)))) < 0.0001))
+  pass_if(~ (abs(.result - (1 - pchisq(21.24924)))) < 0.001)
 )
 ```
 
