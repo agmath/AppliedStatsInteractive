@@ -6,6 +6,7 @@ tutorial:
 output: 
   learnr::tutorial:
     progressive: TRUE
+    allow_skip: TRUE
     
 runtime: shiny_prerendered
 ---
@@ -25,9 +26,9 @@ diamonds <- data.frame(diamonds)
 diamonds$region <- sample(c(1,2,3,4,5), prob = c( 0.11, .02 , 0.65, 0.20, .02), nrow(diamonds), replace = TRUE)
 diamonds$region <- as.factor(diamonds$region)
 
-samples <- data.frame(Sample_One = diamonds$carat[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Two = diamonds$carat[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Three = c(diamonds$carat[sample(1:nrow(diamonds), 7, replace = FALSE)], 5))
+samples <- data.frame(Sample_One = diamonds$carat[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Two = diamonds$carat[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Three = c(diamonds$carat[sample(1:nrow(diamonds), 7, replace = FALSE)], 10))
 
-cut.samples <- data.frame(Sample_One = diamonds$cut[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Two = diamonds$cut[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Three = diamonds$cut[sample(1:nrow(diamonds), 8, replace = FALSE)])
+cutSamples <- data.frame(Sample_One = diamonds$cut[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Two = diamonds$cut[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Three = diamonds$cut[sample(1:nrow(diamonds), 8, replace = FALSE)])
 ```
 
 ## Descriptive Statistics for Numerical and Categorical Data
@@ -83,24 +84,32 @@ grade_result(
 
 ###
 
-In `R` we can easily compute the means and medians for our samples or for the entire dataset! Remember from our most recent workbook that the `$` operator can be used to access an entire column of a data frame. I've stored the samples in a data frame called *samples*. `R` includes a function `mean()` for computing the mean of a list of numbers and a function `median()` for computing the median. This means that we could compute the mean of `Sample_Two` using `mean(samples$Sample_Two)`.
+In `R` we can easily compute the means and medians for our samples or for the entire dataset! Remember from our most recent workbook that the `$` operator can be used to access an entire column of a data frame. I've stored the samples in a data frame called *samples*. `R` includes a function `mean()` for computing the mean of a list of numbers and a function `median()` for computing the median. The following methods both compute the `mean()` of `Sample_Two`.
 
-2. Use the code block below so that it computes the mean of `Sample_Three` using the `$` operator to access the `Sample_Three` column of the `samples` data frame.
+```{r example-mean-sampleTwo, echo = TRUE, eval = TRUE}
+mean(samples$Sample_Two)
+
+samples %>%
+  summarize(avg_carat_wt = mean(Sample_Two))
+```
+
+While the second method involves more typing, it is much more readable. Getting used to using the pipe operator will allow us to chain data manipulation operations together, resulting in very readable analyses.
+
+2. Use the code block below so that it computes the mean of `Sample_Three`. You may use whichever method you prefer here.
 ```{r meanSampThree, exercise = TRUE}
 
 ```
 
-```{r meanSampThree-solution}
-mean(samples$Sample_Three)
-```
-
 ```{r meanSampThree-check}
-grade_code()
+grade_result(
+  pass_if(~ abs(.result - mean(samples$Sample_Three)) < 0.005)
+)
 ```
 
 ###
 
 3. Use the `median()` function and the code block below to compute the median of each of the samples and then answer the question that follows.
+
 ```{r findMedians, exercise = TRUE}
 
 ```
@@ -250,12 +259,14 @@ ggplot(data = diamonds) + geom_boxplot(mapping = aes(y = carat)) + geom_hline(yi
 
 ###
 
-In `R` we can easily compute the standard deviation with the function `sd()`, and IQR with the function `quantiles()` or `IQR()`, for our samples or for the entire dataset! Recall that our diamond samples are stored in a data frame called `samples`. The code block below is preset to compute the standard deviation, Q1, Q3, and IQR for `Sample_One`. Note that in the `quantiles()` function the `0.25` identifies the 25th percentile ($Q1$) and the `0.75` identifies the 75th percentile ($Q3$). Run the code to find the standard deviation, Q1, Q3, and the interquartile range for `Sample_One`. Once you've done that, edit the existing code to compute these metrics for the other two samples.
+In `R` we can easily compute the standard deviation with the function `sd()`, and IQR with the function `quantiles()` or `IQR()`, for our samples or for the entire dataset! Recall that our diamond samples are stored in a data frame called `samples`. The code block below is preset to compute the standard deviation and both the first and third quantiles for each cample. Note that in the `quantiles()` function the `0.25` identifies the 25th percentile ($Q1$) and the `0.75` identifies the 75th percentile ($Q3$). Add the necessary code to find the interquartile range for each of the samples.
 
 ```{r computeSdIqr, exercise = TRUE, exercise.eval = FALSE}
-sd(samples$Sample_One)
-quantile(samples$Sample_One, c(0.25, 0.75))
-IQR(samples$Sample_One)
+samples %>%
+  summarize_all(sd)
+
+samples %>%
+  summarize_all(quantile, probs = c(0.25, 0.75))
 ```
 
 ###
@@ -272,31 +283,52 @@ Use the code blocks below to find the standard deviation and IQR for the doors v
 
 ```
 
+<div id="sdIqrCampaign-hint">
+**Hint:** You'll need to define the lists of values using the `c()` operator here. Your list of values can be dropped directly into the `sd()` or `IQR()` functions -- the use of the pipe is not necessary.
+</div>
+
 ## Summarizing Categorical (Qualitative, Factor) Data
   
 ###
 
 Categorical data is best summarized using a frequency table. That is, we use a table that lists how *frequent* each observation occured in the dataset. For example, consider the samples of diamond *cuts* below:
 ```{r sampleCuts, echo = FALSE, eval = TRUE}
-cut.samples
+cutSamples
 ```
 
-We can use `R`'s `table()` function to construct frequency and relative frequency tables for a sample or our entire set of observations. The following code chunk is preset to compute a frequency and relative frequency table for `Sample_One`. Adapt the code to provide summaries for `Sample_Two` and `Sample_Three`.
+We can pipe our data frame into the `count()` function with the column we'd like to obtain counts for in order to construct a frequency table. To obtain a relative frequency table, we can use the `mutate()` function to create a new column in our resulting data frame -- below, we've named the column `relative_frequency` and have computed its values by taking the computed counts (`n`) and dividing by the total count (`sum(n)`). The following code chunk is preset to compute a frequency and relative frequency table for `Sample_One`. Adapt the code to provide summaries for `Sample_Two` and `Sample_Three`.
 ```{r summarizeCut, exercise = TRUE, exercise.eval = FALSE}
-table(cut.samples$Sample_One)
-table(cut.samples$Sample_One)/nrow(cut.samples)
+cutSamples %>%
+  count(Sample_One)
+
+cutSamples %>%
+  count(Sample_One) %>%
+  mutate(relative_frequency = n / sum(n))
 ```
+
+###
+
+Note that we could have achieved the same objectives using the following code as well.
+
+```{r base-summarizeCut, echo = TRUE, eval = TRUE}
+table(cutSamples$Sample_One)
+table(cutSamples$Sample_One)/nrow(cutSamples)
+```
+
+This code requires a bit less typing, but it is less flexible and also less readable.
 
 ###
 
 Below, we can see the distributions of diamond `cut` from `Sample_Two` (left) and from our entire population (right) below. Even with a sample of 8 diamonds, we gain "some" insight as to the most and least common diamond cuts. You may also notice that the frequency and relative frequency plots look identical aside from the scale on the vertical axis -- this will be the case in general.
   
 ```{r printCutPlots, echo = FALSE, eval = TRUE, fig.width = 4, fig.height = 2.5, warning = FALSE, message = FALSE, results = FALSE}
-ggplot(data = cut.samples) + geom_bar(mapping = aes(x = Sample_Three)) + labs(title = "Distribution of cut type in Diamonds (samp)", x = "Cut Type")
+ggplot(data = cutSamples) + geom_bar(mapping = aes(x = Sample_Three)) + labs(title = "Distribution of cut type in Diamonds (samp)", x = "Cut Type")
 ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut)) + labs(title = "Distribution of cut type in Diamonds (pop)", x = "Cut Type")
-ggplot(data = cut.samples) + geom_bar(mapping = aes(x = Sample_Three, y = (..count..)/sum(..count..))) + ylab("proportion") + labs(title = "Distribution of cut type in Diamonds (samp)", x = "Cut Type")
+ggplot(data = cutSamples) + geom_bar(mapping = aes(x = Sample_Three, y = (..count..)/sum(..count..))) + ylab("proportion") + labs(title = "Distribution of cut type in Diamonds (samp)", x = "Cut Type")
 ggplot(data = diamonds) + geom_bar(mapping = aes(x = cut, y = (..count..)/sum(..count..))) + ylab("proportion") + labs(title = "Distribution of cut type in Diamonds (pop)", x = "Cut Type")
 ```
+
+We'll see how to create plots like these in the next notebook.
 
 ## Submit
 
@@ -307,13 +339,8 @@ learnrhash::encoder_logic(strip_output = TRUE)
 ```{r encode, echo=FALSE}
 learnrhash::encoder_ui(
   ui_before = shiny::div(
-    "If you have completed this tutorial and are happy with all of your",
-    "solutions, please click the button below to generate your hash and",
-    "submit it using the the corresponding Google Form from this week's",
-    "BrightSpace Announcement:",
-    shiny::tags$br()
-  ), 
-  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+    "If your instructor is asking you to submit evidence of your completed notebook using a hash code, you may generate that code below. Use the clipboard icon to ensure that you are copying the entire hash."
+  )
 )
 ```
 
@@ -329,11 +356,67 @@ learnrhash::encoder_ui(
 
 **R Commands Introduced**: The following commands in `R` were introduced here.
 
-* Compute the **mean**: `mean(<data>)`
-* Compute the **median**: `median(<data>)`
-* Compute the **standard deviation**: `sd(<data>)`
-* Compute the **boundaries for the interquartile range**: `quantile(<data>, c(0.25, 0.75))`
-* Compute the **interquartile range**: `IQR(<data>)`
-* Compute general **percentiles**: `quantile(<data>, c(p1, p2,...))`
-* Build a **frequency table**: `table(<data>)`
-* Build a **relative frequency table**: `table(<data>)/nrow(<dataframe>)` or `table(<data>)/len(<data>)`
+* Compute the **mean**:
+```{r mean-code-sample, echo = TRUE, eval = FALSE}
+data_frame_name %>%
+  summarize(avg_column_name = mean(column_name))
+#or
+mean(data_frame_name$column_name)
+```
+
+* Compute the **median**:
+```{r median-code-sample, echo = TRUE, eval = FALSE}
+data_frame_name %>%
+  summarize(median_column_name = median(column_name))
+#or
+median(data_frame_name$column_name)
+```
+
+* Compute the **standard deviation**:
+```{r sd-code-sample, echo = TRUE, eval = FALSE}
+data_frame_name %>%
+  summarize(sd_column_name = sd(column_name))
+#or
+sd(data_frame_name$column_name)
+```
+
+* Compute the **boundaries for the interquartile range**:
+```{r quantile-code-sample, echo = TRUE, eval = FALSE}
+data_frame_name %>%
+  summarize(quantile_column_name = quantile(column_name, probs = c(0.25, 0.75)))
+#or
+quantile(data_frame_name, probs = c(0.25, 0.75))
+```
+
+* Compute the **interquartile range**:
+```{r iqr-code-sample, echo = TRUE, eval = FALSE}
+data_frame_name %>%
+  summarize(IQR_column_name = IQR(column_name))
+#or
+IQR(data_frame_name$column_name)
+```
+
+* Compute general **percentiles**:
+```{r percentile-code-sample, echo = TRUE, eval = FALSE}
+data_frame_name %>%
+  summarize(percentile_column_name = quantile(column_name, probs = c(p1, p2, ...)))
+#or
+quantile(data_frame_name$column_name, probs = c(p1, p2, ...))
+```
+
+* Build a **frequency table**:
+```{r freq-table-code-sample, echo = TRUE, eval = FALSE}
+data_frame_name %>%
+  count(column_name)
+#or
+table(data_frame_name$column_name)
+```
+
+* Build a **relative frequency table**:
+```{r rel-freq-table-code-sample, echo = TRUE, eval = FALSE}
+data_frame_name %>%
+  count(column_name) %>%
+  mutate(relative_frequency = n / sum(n))
+#or
+table(data_frame_name$column_name) / nrow(data_frame_name)
+```

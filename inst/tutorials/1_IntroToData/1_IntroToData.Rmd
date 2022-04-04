@@ -6,6 +6,7 @@ tutorial:
 output: 
   learnr::tutorial:
     progressive: TRUE
+    allow_skip: TRUE
     
 runtime: shiny_prerendered
 ---
@@ -113,7 +114,7 @@ try_again = "There's just one here!"
 
 ###
 
-The **levels** of a variable are the different (unique) values that the variable takes on. For example, a dataset on students might include a variable called `ClassYear` with the levels *Freshman*, *Sophomore*, *Junior*, *Senior*. Numerical variables also have levels -- usually there are lots of levels corresponding to a numerical variable, but if there are too few, we may be better off considering the corresponding variable to be categorical. For example, if we had a dataset that included a `Year` variable, but the only observed levels in the dataset are 2008 and 2017, we may be better off thinking about `Year` as a categorical variable than as a numerical one.
+The **levels** of a variable are the different (unique) values that the variable takes on. For example, a dataset on students might include a variable called `ClassYear` with the levels *Freshman*, *Sophomore*, *Junior*, *Senior*. Numerical variables also have levels -- usually there are lots of levels corresponding to a numerical variable, but if there are too few, we may be better off considering the corresponding variable to be categorical. For example, if we had a dataset that included a `Year` variable, but its only observed levels in the dataset are 2008 and 2017, we may be better off thinking about `Year` as a categorical variable than as a numerical one.
 
 ## Relationships between variables
 
@@ -180,7 +181,7 @@ ggplot(data=housesSubset) + geom_bar(mapping = aes(x = waterfront, fill = exteri
 ###
 
 ```{r plots-associations-questions-cat, echo = FALSE}
-question_checkbox(
+question_radio(
 "One of the plots above shows an association between the corresponding variables. Which one is it?",
 answer("Price by Waterfront", correct = TRUE),
 answer("Exterior Covering and Waterfront"),
@@ -194,7 +195,7 @@ Did you get the previous question right on the first try? Think about why the an
 
 ###
 
-**Major Questions In Statistics**: Given groups with different characteristics (differing levels) regarding variable *X*, do they differ with respect to variable *Y*?
+**Major Questions In Statistics**: Given groups with different characteristics (differing levels) regarding variable *X*, do they differ with respect to variable *Y*? For example, we might ask *is the average listing price of a waterfront home greater than the average listing price of a home which is not on the waterfront in King County, WA*. In this example, *X* is whether or not the home is on the waterfront and *Y* is the listing price of the home.
 
 ###
 
@@ -204,7 +205,7 @@ We'll find that we can't just answer these questions by looking at plots involvi
 
 ###
 
-**Population vesus Sample**: In statistics, we almost always want to apply generalizations from a small sample to a large population -- you might think of this as a sort of *stereotyping*. The trick here is that for our assertions (generalizations) to be valid, our sample must be *representative of* our population.
+**Population versus Sample**: In statistics, we almost always want to apply generalizations from a small sample to a large population -- you might think of this as a sort of *stereotyping*. The trick here is that for our assertions (generalizations) to be valid, our sample must be *representative of* our population.
 
 ###
 
@@ -217,7 +218,7 @@ We'll find that we can't just answer these questions by looking at plots involvi
 
 ###
 
-  * If we could sample every object in a population we would be taking a *census*. While census would give us certainty in an answer to a statistical question, it is infeasible to conduct a census due to non-response and fluid populations.
+  * If we could sample every object in a population we would be taking a *census*. While census would give us certainty in an answer to a statistical question, it is not feasible to conduct a census due to phenomenon such as non-response and fluid populations.
 
 <center>
 ```{r echo = FALSE, eval = TRUE, fig.width=3.5, fig.height=2.75}
@@ -233,12 +234,15 @@ ggplot(data = pop) + geom_point(mapping = aes(x = x, y = y), size = 2, color = "
 
 ###
 
-  * The *simple random sample* is the GOLD STANDARD in statistics. We randomly select some "large enough" number of individuals from the entire population and record variables from them. The advantage here is that we are likely to attain a sample of results that are representative of the entire population.
+  * The *simple random sample* is the GOLD STANDARD in statistics. We randomly select some "large enough" number of individual items from the entire population and take measurements on our variables of interest. The advantage of the simple random sample is that we are likely to attain a sample of results that are representative of the entire population.
 <center>
 ```{r echo = FALSE, eval = TRUE, fig.width=3.5, fig.height=2.75}
 pop$samp <- sample(0:1, 100, prob = c(0.9,0.10), replace = TRUE)
 pop$samp <- as.factor(pop$samp)
-ggplot(data = pop) + geom_point(mapping = aes(x = x, y = y, color = samp), size = 2, alpha = 0.8) + scale_color_manual(values = c("blue", "orange")) + guides(color = FALSE) + labs(title = "Simple Random Sample")
+ggplot(data = pop) + 
+  geom_point(mapping = aes(x = x, y = y, color = samp), size = 2, alpha = 0.8, show_legend = FALSE) +
+  scale_color_manual(values = c("blue", "orange")) +
+  labs(title = "Simple Random Sample")
 ```
 </center>
 
@@ -258,7 +262,7 @@ ggplot(data = pop) + geom_point(mapping = aes(x = x, y = y, color = samp), size 
 
 ###
 
-  * The *convenience sample* is the most commonly used sampling method. Unfortunately, it is also the worst. When researchers sample from individuals they have "easy access" to, they are conducting a convenience sample. There are always hidden biases in these samples. Do a quick Google search for "FDR versus Alf Landon Sampling Error" to see a very famous example here. In addition, much of the error in predicting the results of the 2016 presidential election may be attributable to convenience sampling.
+  * The *convenience sample* is the most commonly used sampling method. Unfortunately, it is also the worst. When researchers sample from individuals they have "easy access" to, they are conducting a convenience sample. There are always hidden biases in these samples. [Here's a famous example](https://youtu.be/JwZo28RKdvU) in which the Literary Digest incorrectly predicted a landslide victory for Alf Landon over FDR in the 1936 US Presidential Election. In addition, much of the error in predicting the results of the 2016 presidential election may be attributable to convenience sampling.
 
 ## Experimental Design
 
@@ -268,8 +272,7 @@ ggplot(data = pop) + geom_point(mapping = aes(x = x, y = y, color = samp), size 
 
 ###
 
-**Predictor versus Response Variables**: Typically in statistics we will identify a question (whose answer corresponds to a response variable) with respect to a population. We will take a representative sample of that population. From that sample we will collect observed responses as well as observations on other variables (maybe age, level of formal education, political affiliation, etc). 
-The non-response variables are called *predictor variables*. In general, predictor variables are quantities which we expect *may be associated with* the response variable.
+**Predictor versus Response Variables**: Typically in statistics we will identify a question (a claim about a response variable) with respect to a population. We will take a representative sample of that population and collect observed responses as well as observations on other variables (perhaps age, level of formal education, political affiliation, etc). These additional variables are called *predictor variables*. In general, predictor variables are quantities which we expect *may be associated with* the response variable.
 
 ###
 
@@ -284,13 +287,7 @@ learnrhash::encoder_logic(strip_output = TRUE)
 ```{r encode, echo=FALSE}
 learnrhash::encoder_ui(
   ui_before = shiny::div(
-    "If you have completed this tutorial and are happy with all of your",
-    "solutions, please click the button below to generate your hash and",
-    "submit it using the the corresponding Google Form from this week's",
-    "BrightSpace Announcement:",
-    shiny::tags$br()
-  ), 
-  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+    "If your instructor is asking you to submit evidence of your completed notebook using a hash code, you may generate that code below. Use the clipboard icon to ensure that you are copying the entire hash.")
 )
 ```
 
@@ -299,7 +296,7 @@ learnrhash::encoder_ui(
 **Summary**: Here's a quick summary of the most important ideas from this first notebook.
 
   * Data is stored in a table called a data frame. The rows of the data frame are observations and the columns are collected variables.
-  * Data is either numerical or categorical -- to determine type, ask "is the average of these observations meaningful?"
-  * Two variables are associated if a change in one has predictive value about a change in the other.
+  * Within this introductory course, data is either numerical or categorical -- to determine type, ask "is the average of these observations meaningful?"
+  * Two variables are associated if a change in one has some (even limited) predictive value about a change in the other.
   * There are many ways data can be collected, but in order to produce meaningful results we must use random sampling.
   * Results from a sample can be generalized only to a population for which that sample is representative.
