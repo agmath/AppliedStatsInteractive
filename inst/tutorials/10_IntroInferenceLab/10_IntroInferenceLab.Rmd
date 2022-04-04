@@ -6,6 +6,7 @@ tutorial:
 output: 
   learnr::tutorial:
     progressive: TRUE
+    allow_skip: TRUE
     
 runtime: shiny_prerendered
 ---
@@ -16,6 +17,7 @@ library(dplyr)
 library(ggplot2)
 library(learnr)
 library(gradethis)
+library(skimr)
 
 load("www/ames.RData")
 set.seed(241)
@@ -128,13 +130,16 @@ quiz(
 
 We see that there are quite a few variables in the data set, enough to do a very in-depth analysis. For this lab, we'll restrict our attention to just two of the variables: the above ground living area of the house in square feet (`Gr.Liv.Area`) and the sale price (`SalePrice`).  To save some effort throughout the lab, we'll create two variables with short names that represent these two variables. The code block below is pre-set to define the `area` vector -- add a second line which creates the `price` vector.
 ```{r assign, exercise = TRUE}
-area <- ames$Gr.Liv.Area
+area <- ames %>%
+  select(Gr.Liv.Area)
 
 ```
 
 ```{r assign-solution}
-area <- ames$Gr.Liv.Area
-price <- ames$SalePrice
+area <- ames %>%
+  select(Gr.Liv.Area)
+price <- ames %>%
+  select(SalePrice)
 ```
 
 ```{r assign-check}
@@ -595,7 +600,8 @@ grade_code()
 ###
 
 Run the code below to construct the confidence interval.
-```{r ci, eval=FALSE, exercise = TRUE}
+
+```{r ci, exercise = TRUE, exercise.setup = "samp60"}
 sample_mean <- mean(samp)
 se <- sd(samp) / sqrt(60)
 lower <- sample_mean - 1.96 * se
@@ -701,14 +707,9 @@ learnrhash::encoder_logic(strip_output = TRUE)
 ```{r encode, echo=FALSE}
 learnrhash::encoder_ui(
   ui_before = shiny::div(
-    "If you have completed this tutorial and are happy with all of your",
-    "solutions, please click the button below to generate your hash and",
-    "submit it using the the corresponding Google Form from this week's",
-    "BrightSpace Announcement:",
-    shiny::tags$br()
-  ), 
-  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
-)
+    "If your instructor is asking you to submit evidence of your completed notebook using a hash code, you may generate that code below. Use the clipboard icon to ensure that you are copying the entire hash."
+    )
+  )
 ```
 
 <br/>

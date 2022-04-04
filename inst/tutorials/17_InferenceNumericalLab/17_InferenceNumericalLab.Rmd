@@ -17,6 +17,7 @@ library(dplyr)
 library(ggplot2)
 library(learnr)
 library(gradethis)
+library(skimr)
 
 load("www/nc.RData")
 
@@ -89,7 +90,7 @@ quiz(
 
 ###
 
-As a first step in the analysis, we should consider summaries of the data. This can be done using the `summary` command. Call summary on the `nc` data set below and view the output.
+As a first step in the analysis, we should consider summaries of the data. This can be done using base-R's `summary()` command or using `skim()` from the `skimr` package. Call one of these functions on the `nc` data set below and use the output to help you answer the questions that follow.
 
 ```{r nc-summary, exercise = TRUE}
 
@@ -141,20 +142,32 @@ grade_code()
 
 ###
 
-The box plots show how the medians of the two distributions compare, but we can also compare the means of the distributions using the following function to split the `weight` variable into the `habit` groups, then take the mean of each using the `mean` function. Consider the following code, guess what the result will look like, then run the code to see if you were right. What does the output tell you?
+The box plots show how the medians of the two distributions compare, but we can also compare the means of the distributions. We can use `dplyr`'s `group_by()` to group our data according to the `habit` variable, and then `summarize()` the `weight` variable using the `mean()`. Consider the following code, guess what the result will look like, then run the code to see if you were right. What does the output tell you?
 ```{r by-means, exercise = TRUE}
-by(nc$weight, nc$habit, mean)
+nc %>%
+  group_by(habit) %>%
+  summarize(avg_birth_weight = mean(weight))
 ```
 
 ###
 
-There is an observed difference, but is this difference statistically significant? In order to answer this question we will conduct a hypothesis test.
+There is an observed difference in average birth weights, but is this difference statistically significant? In order to answer this question we will conduct a hypothesis test.
 
 ## Inference
 
-Check if the conditions necessary for inference are satisfied. Note that you will need to obtain sample sizes to check the conditions. You can compute the group size using the same `by` command above but replacing `mean` with `length` in the code you just ran (for reference, it was `by(nc$weight, nc$habit, mean)`. Use the code block below to help you answer the questions that follow.
+Check if the conditions necessary for inference are satisfied. Note that you will need to obtain sample sizes to check the conditions. You can compute the group size by simply using the `count()` function.
+
 ```{r check-inference-conditions-habit, exercise = TRUE}
 
+```
+
+```{r check-inference-conditions-habit-solution}
+nc %>%
+  count(habit)
+```
+
+```{r check-inference-conditions-habit-check}
+grade_code()
 ```
 
 ```{r inference-habit-conditions-questions, echo = FALSE}
@@ -281,14 +294,9 @@ learnrhash::encoder_logic(strip_output = TRUE)
 ```{r encode, echo=FALSE}
 learnrhash::encoder_ui(
   ui_before = shiny::div(
-    "If you have completed this tutorial and are happy with all of your",
-    "solutions, please click the button below to generate your hash and",
-    "submit it using the the corresponding Google Form from this week's",
-    "BrightSpace Announcement:",
-    shiny::tags$br()
-  ), 
-  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
-)
+    "If your instructor is asking you to submit evidence of your completed notebook using a hash code, you may generate that code below. Use the clipboard icon to ensure that you are copying the entire hash."
+    )
+  )
 ```
 
 <br/>

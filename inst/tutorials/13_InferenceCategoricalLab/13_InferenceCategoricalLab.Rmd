@@ -6,6 +6,7 @@ tutorial:
 output: 
   learnr::tutorial:
     progressive: TRUE
+    allow_skip: TRUE
     
 runtime: shiny_prerendered
 ---
@@ -103,15 +104,19 @@ To investigate the link between these two ways of organizing this data, take a l
 Run the command in the code block below (be sure to understand what the code is doing since you'll be asked to do some similar things later in the workbook), create a new dataframe called `us12` that contains only the rows in `atheism` associated with respondents to the 2012 survey from the United States. Next, calculate the proportion of atheist responses. Does it agree with the percentage in Table 6? If not, why?
 
 ```{r us-atheism, exercise = TRUE}
-us12 <- atheism[atheism$nationality %in% "United States" & atheism$year %in% "2012", ]
-table(us12$response)/nrow(us12)
+us12 <- atheism %>%
+  filter(nationality == "United States", year == 2012)
+
+us12 %>%
+  count(response) %>%
+  mutate(relative_frequency = n / sum(n))
 ```
 
 ## Inference on proportions
 
 ###
 
-As you noted previously, Table 6 provides *statistics*, that is, calculations made from the sample of 51,927 people. What we'd like, though, is insight into the population *parameters*. You answer the question, "What proportion of people *in your sample* reported being atheists?" with a statistic; while the question "What proportion of people *on earth* would report being atheists" is answered with an estimate of the parameter.
+As you noted previously, Table 6 provides *statistics*, that is, calculations made from the sample of 51,927 people. We'd like insight into the population *parameters* instead. You answer the question, "What proportion of people *in your sample* reported being atheists?" with a statistic; while the question "What proportion of people *on Earth* would report being atheists?" is answered with an estimate of the parameter.
 
 ###
 
@@ -124,7 +129,8 @@ As long as the conditions for inference are reasonably well satisfied, we can ei
 Run the following code block to construct a confidence interval for the proportion of atheists in the US in 2012.
 
 ```{r us-atheism-ci-setup}
-us12 <- atheism[atheism$nationality %in% "United States" & atheism$year %in% "2012", ]
+us12 <- atheism %>%
+  filter(nationality == "United States", year == 2012)
 ```
 
 ```{r us-atheism-ci, exercise = TRUE}
@@ -312,14 +318,9 @@ learnrhash::encoder_logic(strip_output = TRUE)
 ```{r encode, echo=FALSE}
 learnrhash::encoder_ui(
   ui_before = shiny::div(
-    "If you have completed this tutorial and are happy with all of your",
-    "solutions, please click the button below to generate your hash and",
-    "submit it using the the corresponding Google Form from this week's",
-    "BrightSpace Announcement:",
-    shiny::tags$br()
-  ), 
-  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
-)
+    "If your instructor is asking you to submit evidence of your completed notebook using a hash code, you may generate that code below. Use the clipboard icon to ensure that you are copying the entire hash."
+    )
+  )
 ```
 
 ## Summary

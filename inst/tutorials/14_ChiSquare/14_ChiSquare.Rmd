@@ -6,6 +6,7 @@ tutorial:
 output: 
   learnr::tutorial:
     progressive: TRUE
+    allow_skip: TRUE
     
 runtime: shiny_prerendered
 ---
@@ -542,18 +543,13 @@ learnrhash::encoder_logic(strip_output = TRUE)
 ```{r encode, echo=FALSE}
 learnrhash::encoder_ui(
   ui_before = shiny::div(
-    "If you have completed this tutorial and are happy with all of your",
-    "solutions, please click the button below to generate your hash and",
-    "submit it using the the corresponding Google Form from this week's",
-    "BrightSpace Announcement:",
-    shiny::tags$br()
-  ), 
-  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
-)
+    "If your instructor is asking you to submit evidence of your completed notebook using a hash code, you may generate that code below. Use the clipboard icon to ensure that you are copying the entire hash."
+    )
+  )
 ```
 
 ## Summary
 
 Good work. Through this workbook you considered scenarios in which you wished to test claims involving a) a single categorical variable with more than two levels, and b) multiple categorical variables for which at least one variable has more than two levels. In both scenarios you utilized a $\chi^2$ distribution and test statistic. Hopefully you noted that the $\chi^2$ statistic measures deviation from expectation, similarly to our test statistics for other tests.
 
-At this point, you have the ability to test claims involving a single proportion, comparisons of proportions across two populations, to determine whether a population follows an assumed distribution for a categorical variable, and to determine whether two catgorical variables are independent of one another within a given population. We'll continue our journey through inferential statistics, but switch to numerical data now. Keep up the great work!
+At this point, you have the ability to test claims involving a single proportion, comparisons of proportions across two populations, to determine whether a population follows an assumed distribution for a categorical variable, and to determine whether two categorical variables are independent of one another within a given population. We'll continue our journey through inferential statistics, but switch to numerical data now. Keep up the great work!

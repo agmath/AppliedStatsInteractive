@@ -14,7 +14,7 @@
 <meta name="allow-skip" content="true" />
 <meta name="learnr-version-prerender" content="0.10.1.9020" />
 
-<title>Topic 13: Inference for Categorical Data</title>
+<title>Topic 8: Normal Distribution Lab</title>
 
 <!-- header-includes START -->
 <!-- HEAD_CONTENT -->
@@ -108,262 +108,244 @@ if (window.hljs) {
 
 <div class="topics">
 
-<div id="section-inference-for-categorical-data-lab" class="section level2">
-<h2>Inference for Categorical Data (Lab)</h2>
+<div id="section-assessing-and-exploring-the-normality-assumption" class="section level2">
+<h2>Assessing and Exploring the Normality Assumption</h2>
+<p>In this workbook we’ll continue our investigation into the probability distribution that is most central to statistics: the normal distribution. Here we’ll use the graphical tools of R to assess the normality of our data and also learn how to generate random numbers from a normal distribution. In addition, we’ll uncover the importance of the normality assumption – we will see a scenario in which the approximate normality assumption is satisfied and another where it is not.</p>
 <div id="section-section" class="section level3">
 <h3></h3>
-<p>In August of 2012, news outlets ranging from the <a href="http://www.washingtonpost.com/national/on-faith/poll-shows-atheism-on-the-rise-in-the-us/2012/08/13/90020fd6-e57d-11e1-9739-eef99c5fb285_story.html">Washington Post</a> to the <a href="http://www.huffingtonpost.com/2012/08/14/atheism-rise-religiosity-decline-in-america_n_1777031.html">Huffington Post</a> ran a story about the rise of atheism in America. The source for the story was a poll that asked people, “Irrespective of whether you attend a place of worship or not, would you say you are a religious person, not a religious person or a convinced atheist?” This type of question, which asks people to classify themselves in one way or another, is common in polling and generates categorical data. In this workbook we take a look at the atheism survey and explore what’s at play when making inference about population proportions using categorical data.</p>
+<div id="section-license">
+<p>This is a derivative of a product of OpenIntro that is released under a <a href="http://creativecommons.org/licenses/by-sa/3.0">Creative Commons Attribution-ShareAlike 3.0 Unported</a>. This lab was adapted for OpenIntro by Andrew Bray and Mine Çetinkaya-Rundel from a lab written by Mark Hansen of UCLA Statistics.</p>
+</div>
 </div>
 <div id="section-section-1" class="section level3">
 <h3></h3>
-<div id="section-license">
-This is a derivative of a product of OpenIntro that is released under a <a href="http://creativecommons.org/licenses/by-sa/3.0">Creative Commons Attribution-ShareAlike 3.0 Unported</a>. The oiginal lab was written for OpenIntro by Andrew Bray and Mine Çetinkaya-Rundel.
 </div>
 </div>
+<div id="section-the-data" class="section level2">
+<h2>The Data</h2>
 <div id="section-section-2" class="section level3">
 <h3></h3>
-</div>
-</div>
-<div id="section-the-survey" class="section level2">
-<h2>The survey</h2>
-<p>You can find the press-release for the WIN-Gallup International poll on the Global Index of Religion and Atheism <a href="www/Religiosity_and_Atheism.pdf" target="_&quot;blank&quot;">here</a>. Please take a moment to review the report then address the following questions.</p>
-<p><div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div></p>
-<div class="panel panel-default">
-<div data-label="questions-report-1" class="tutorial-question panel-body">
-<div id="questions-report-1-answer_container" class="shiny-html-output"></div>
-<div id="questions-report-1-message_container" class="shiny-html-output"></div>
-<div id="questions-report-1-action_button_container" class="shiny-html-output"></div>
-<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
-</div>
-</div>
-<div class="panel panel-default">
-<div data-label="questions-report-2" class="tutorial-question panel-body">
-<div id="questions-report-2-answer_container" class="shiny-html-output"></div>
-<div id="questions-report-2-message_container" class="shiny-html-output"></div>
-<div id="questions-report-2-action_button_container" class="shiny-html-output"></div>
-<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
-</div>
-</div>
-<div class="panel panel-default">
-<div data-label="questions-report-3" class="tutorial-question panel-body">
-<div id="questions-report-3-answer_container" class="shiny-html-output"></div>
-<div id="questions-report-3-message_container" class="shiny-html-output"></div>
-<div id="questions-report-3-action_button_container" class="shiny-html-output"></div>
-<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
-</div>
+<p>Through this workbook we’ll be working with measurements of body dimensions. The data is stored in a data frame called <code>bdims</code>. The <code>bdims</code> data set contains measurements from 247 men and 260 women, most of whom were considered healthy young adults.</p>
 </div>
 <div id="section-section-3" class="section level3">
 <h3></h3>
-<p>Turn your attention to Table 6 (pages 14 and 15) in the Religiosity and Atheism poll documentation, which reports the sample size and response percentages for all 57 countries. While this is a useful format to summarize the data, we will base our analysis on the original data set of individual responses to the survey. These original responses are loaded into this workbook for you in a data frame named <code>atheism</code>.</p>
-<div class="tutorial-exercise" data-label="table-v-df-code-block" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+Use the <code>head()</code> function to take a quick peek at the first few rows of the data.
+<div class="tutorial-exercise" data-label="head-data" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-<div class="panel panel-default">
-<div data-label="table-v-df" class="tutorial-question panel-body">
-<div id="table-v-df-answer_container" class="shiny-html-output"></div>
-<div id="table-v-df-message_container" class="shiny-html-output"></div>
-<div id="table-v-df-action_button_container" class="shiny-html-output"></div>
-<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
-</div>
+<div class="tutorial-exercise-support" data-label="head-data-solution" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>head(bdims)</code></pre>
 </div>
 </div>
 <div id="section-section-4" class="section level3">
 <h3></h3>
-<p>To investigate the link between these two ways of organizing this data, take a look at the estimated proportion of atheists in the United States. Towards the bottom of Table 6, we see that this is 5%. We should be able to come to the same number using the <code>atheism</code> data.</p>
+<p>You’ll see that for every observation we have 25 measurements, many of which are either diameters or girths. A key to the variable names can be found at <a href="http://www.openintro.org/stat/data/bdims.php">http://www.openintro.org/stat/data/bdims.php</a>, but we’ll be focusing on just three columns to get started: weight in kg (<code>wgt</code>), height in cm (<code>hgt</code>), and <code>sex</code> (<code>1</code> indicates male, <code>0</code> indicates female).</p>
 </div>
 <div id="section-section-5" class="section level3">
 <h3></h3>
-<p>Run the command in the code block below (be sure to understand what the code is doing since you’ll be asked to do some similar things later in the workbook), create a new dataframe called <code>us12</code> that contains only the rows in <code>atheism</code> associated with respondents to the 2012 survey from the United States. Next, calculate the proportion of atheist responses. Does it agree with the percentage in Table 6? If not, why?</p>
-<div class="tutorial-exercise" data-label="us-atheism" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>us12 &lt;- atheism %&gt;%
-  filter(nationality == &quot;United States&quot;, year == 2012)
-
-us12 %&gt;%
-  count(response) %&gt;%
-  mutate(relative_frequency = n / sum(n))</code></pre>
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+<p>Since males and females tend to have different body dimensions, it will be useful to create two additional data sets: one with only men and another with only women. In the <code>bdims</code> dataset females are denoted by a 0 in the <code>sex</code> column while males are denoted by a 1 (R chooses labels for levels of unordered factor variables according to alphabetical order).</p>
 </div>
-</div>
-</div>
-<div id="section-inference-on-proportions" class="section level2">
-<h2>Inference on proportions</h2>
 <div id="section-section-6" class="section level3">
 <h3></h3>
-<p>As you noted previously, Table 6 provides <em>statistics</em>, that is, calculations made from the sample of 51,927 people. We’d like insight into the population <em>parameters</em> instead. You answer the question, “What proportion of people <em>in your sample</em> reported being atheists?” with a statistic; while the question “What proportion of people <em>on Earth</em> would report being atheists?” is answered with an estimate of the parameter.</p>
+The code block below is set up to create a dataset <code>mdims</code> consisting of only males. First the <code>bdims</code> data is passed to the filter function where we keep only those observations which correspond to males, and then the result is stored in the <code>mdims</code> object. Add a second line to create a dataset of only females called <code>fdims</code>.
+<div class="tutorial-exercise" data-label="subset-mf" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>mdims &lt;- bdims %&gt;% filter(sex == 1)</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="subset-mf-solution" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>mdims &lt;- bdims %&gt;% filter(sex == 1)
+fdims &lt;- bdims %&gt;% filter(sex == 0)</code></pre>
+</div>
 </div>
 <div id="section-section-7" class="section level3">
 <h3></h3>
-<p>You’ll use what you’ve learned about inferential tools for estimating population proportions in the previous workbook to answer questions related to the WIN-Gallup poll. Additionally, you’ll explore how the population proportion can impact the margin of error for a confidence interval.</p>
-</div>
-<div id="section-section-8" class="section level3">
-<h3></h3>
-<p>As long as the conditions for inference are reasonably well satisfied, we can either calculate the standard error and construct the confidence interval by hand or allow the <code>inference</code> function to do it for us. We note that the <code>inference()</code> function is part of the <code>statsr</code> package for R, which has been installed and loaded for you here.</p>
-<p>Run the following code block to construct a confidence interval for the proportion of atheists in the US in 2012.</p>
-<div class="tutorial-exercise" data-label="us-atheism-ci" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>inference(y = us12$response, est = &quot;proportion&quot;, type = &quot;ci&quot;, method = &quot;theoretical&quot;, 
-          success = &quot;atheist&quot;)</code></pre>
+<p>Use the code block below to make a histogram of men’s heights and a histogram of women’s heights. How would you compare the various aspects of the two distributions? Check back on the data visualization workbook if you need a refresher on plotting.</p>
+<div class="tutorial-exercise" data-label="plot-hgt-hists" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<p><div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div></p>
+<div class="panel panel-default">
+<div data-label="distribution-quests-1" class="tutorial-question panel-body">
+<div id="distribution-quests-1-answer_container" class="shiny-html-output"></div>
+<div id="distribution-quests-1-message_container" class="shiny-html-output"></div>
+<div id="distribution-quests-1-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
 </div>
-<div id="section-section-9" class="section level3">
-<h3></h3>
-<p>Let’s pause for a moment to go through the arguments of this function. The first argument is <code>y</code>, which is the response variable that we are interested in: <code>us12$response</code>. The next argument, <code>est</code>, is the parameter we’re interested in: <code>"proportion"</code> (other options are <code>"mean"</code>, or <code>"median"</code>.) Next we decide on the <code>type</code> of inference we want: a hypothesis test (<code>"ht"</code>) or a confidence interval (<code>"ci"</code>). When performing a hypothesis test, we also need to supply the <code>null</code> value and <code>alternative</code> hypothesis but we’re building a confidence interval here so we omit those values – we can optionally set the <code>clevel</code> parameter but the default is a 95% confidence interval (<code>clevel = 0.95</code>). The <code>method</code> parameter chooses the method of inference: <code>"theoretical"</code> or <code>"simulation"</code> based – our course is using a theoretical framework, so we will always use that option. Finally, since the goal is to construct an interval estimate for a proportion, it’s necessary to specify which level constitutes a “success”; here that is a response of <code>"atheist"</code>.</p>
-</div>
-<div id="section-section-10" class="section level3">
-<h3></h3>
-<p>Although formal confidence intervals and hypothesis tests don’t show up in the WINN-Gallup report, suggestions of inference appear at the bottom of page 6: “In general, the error margin for surveys of this kind is <span class="math inline">\(\pm\)</span> 3-5% at 95% confidence”. We will check the validity of this claim later on.</p>
-Use the code block below to help you answer the question that follows.
-<div class="tutorial-exercise" data-label="interp-inference-moe-code-block" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 <div class="panel panel-default">
-<div data-label="interp-inference-moe" class="tutorial-question panel-body">
-<div id="interp-inference-moe-answer_container" class="shiny-html-output"></div>
-<div id="interp-inference-moe-message_container" class="shiny-html-output"></div>
-<div id="interp-inference-moe-action_button_container" class="shiny-html-output"></div>
+<div data-label="distribution-quests-2" class="tutorial-question panel-body">
+<div id="distribution-quests-2-answer_container" class="shiny-html-output"></div>
+<div id="distribution-quests-2-message_container" class="shiny-html-output"></div>
+<div id="distribution-quests-2-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div>
+<div class="panel panel-default">
+<div data-label="distribution-quests-3" class="tutorial-question panel-body">
+<div id="distribution-quests-3-answer_container" class="shiny-html-output"></div>
+<div id="distribution-quests-3-message_container" class="shiny-html-output"></div>
+<div id="distribution-quests-3-action_button_container" class="shiny-html-output"></div>
 <script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
 </div>
 </div>
 </div>
-<div id="section-section-11" class="section level3">
+<div id="section-section-8" class="section level3">
 <h3></h3>
-Using the code block below and your <code>inference</code> function, calculate confidence intervals for the proportion of atheists in 2012 in two other countries of your choice, and report the associated margins of error. Be sure to note whether the conditions for inference are met. It may be helpful to create new data sets for each of the two countries first, and then use these data sets in the <code>inference</code> function to construct the confidence intervals.
-<div class="tutorial-exercise" data-label="use-inference" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<p>You may have been frustrated or surprised by the answers to these questions (in particular, that female heights are approximately normally distributed). It is difficult to assess normality directly from a histogram – let’s dig a bit deeper.</p>
+</div>
+</div>
+<div id="section-using-the-normal-model" class="section level2">
+<h2>Using the normal model</h2>
+<div id="section-section-9" class="section level3">
+<h3></h3>
+<p>In your description of the distributions, did you use words like <em>bell-shaped</em> or <em>normal</em>? It’s tempting to say so when faced with a unimodal symmetric distribution. That being said, we just <em>eyeballed it</em> to answer those previous questions. Below we will explore two methods for assessing how closely our data follows a normal distribution.</p>
+</div>
+<div id="section-section-10" class="section level3">
+<h3></h3>
+<p>To see how accurate that description is, we can plot a normal distribution curve on top of a histogram to see how closely the data follow a normal distribution. This normal curve should have the same mean and standard deviation as the data. The code block that follows is preset to do this for the distribution of male heights. Explanations of the code appear below:</p>
+<ul>
+<li><p>Compute the mean and standard deviation for male heights</p></li>
+<li><p>Plot the relative histogram of male heights (this is what <code>y = ..density..</code> does)</p></li>
+<li><p>Plot a normal distribution with the same mean and standard deviation as the male heights have (this is what <code>geom_line()</code> is doing).</p>
+<ul>
+<li><span class="math inline">\(x\)</span> is a set of 200 evenly spaced points between 140 and 200.</li>
+<li><span class="math inline">\(y\)</span> is the height of the normal curve with the appropriate mean and standard deviation at each of the <span class="math inline">\(x\)</span>-values.</li>
+</ul></li>
+<li><p>Add a title and descriptive axis labels to the plot.</p></li>
+</ul>
+Run the code below to see the normal curve laid on top of the male heights. Once you’ve done that, adapt the code to plot the distribution of female heights as well as the corresponding normal curve on top of the distribution. Don’t forget to update the plot title!
+<div class="tutorial-exercise" data-label="hist-hgt-plus-normal" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>mhgtmean &lt;- mean(mdims$hgt)
+mhgtsd &lt;- sd(mdims$hgt)
+
+ggplot() + 
+  geom_histogram(data = mdims, mapping = aes(x = hgt, y = ..density..)) + 
+  geom_line(mapping = aes(x = seq(140, 200, length.out = 200), 
+                          y = dnorm(seq(140, 200, length.out = 200), 
+                                    mean = mhgtmean, sd = mhgtsd)),
+            color = &quot;blue&quot;, lwd = 1.25) +
+  labs(title = &quot;Distribution of Male Heights&quot;, x = &quot;Height (cm)&quot;, y = &quot;Proportion&quot;)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
+<div id="section-section-11" class="section level3">
+<h3></h3>
+<p>Notice how convenient <code>ggplot</code>’s layered plotting syntax makes adding multiple objects (the histogram and density curve) to the same plot.</p>
 </div>
-<div id="section-how-does-the-proportion-affect-the-margin-of-error" class="section level2">
-<h2>How does the proportion affect the margin of error?</h2>
-<p>Imagine you’ve set out to survey 1000 people on two questions: are you female? and are you left-handed? Since both of these sample proportions were calculated from the same sample size, they should have the same margin of error, right? Not so fast! While the margin of error does change with sample size, it is also affected by the proportion.</p>
 <div id="section-section-12" class="section level3">
 <h3></h3>
-<p>Think back to the formula for the standard error: <span class="math inline">\(SE = \sqrt{p(1-p)/n}\)</span>. This is then used in the formula for the margin of error for a 95% confidence interval: <span class="math inline">\(ME = 1.96\times SE = 1.96\times\sqrt{p(1-p)/n}\)</span>. Since the population proportion <span class="math inline">\(p\)</span> is in this <span class="math inline">\(ME\)</span> formula, it should make sense that the margin of error is in some way dependent on the population proportion. We can visualize this relationship by creating a plot of <span class="math inline">\(ME\)</span> vs. <span class="math inline">\(p\)</span>, which is exactly what you’ll do through these next few activities.</p>
+<p><strong>Question:</strong> Based on the plots you built, are you more (or less) comfortable with the assumption that the heights data follow a nearly normal distribution?</p>
 </div>
 <div id="section-section-13" class="section level3">
 <h3></h3>
-<p>The code block below is pre-populated with the code necessary to make a vector <code>p</code> that is a sequence from 0 to 1 with each number separated by 0.01. The code then creates a vector of the margin of error (<code>me</code>) associated with each of these values of <code>p</code> using the familiar approximate formula (<span class="math inline">\(ME = 2 \times SE\)</span>) – note that we could also use the critical values associated with any confidence level we would like instead of 2 – you might try this and see what happens! Lastly, we plot the two vectors against each other to reveal their relationship.</p>
-<div class="tutorial-exercise" data-label="me-plot" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>n &lt;- 1000
-p &lt;- seq(0, 1, 0.01)
-me &lt;- 2 * sqrt(p * (1 - p)/n)
-ggplot() + geom_point(mapping = aes(x = p, y = me)) + labs(title = &quot;Margin of Error and Population Proportion&quot;, y = &quot;Margin of Error&quot;, x = &quot;Population Proportion&quot;)</code></pre>
+Eyeballing the shape of the histogram is one way to determine if the data appear to be nearly normally distributed, but it can be frustrating to decide just how close the histogram is to the curve. An alternative approach involves constructing a normal probability plot, also called a normal Q-Q plot for “quantile-quantile”. Execute the code block below to produce a Q-Q plot for female heights.
+<div class="tutorial-exercise" data-label="qq" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>qqnorm(fdims$hgt)
+qqline(fdims$hgt)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
 <div id="section-section-14" class="section level3">
 <h3></h3>
-<p><div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div></p>
-<div class="panel panel-default">
-<div data-label="p-and-me-questions-1" class="tutorial-question panel-body">
-<div id="p-and-me-questions-1-answer_container" class="shiny-html-output"></div>
-<div id="p-and-me-questions-1-message_container" class="shiny-html-output"></div>
-<div id="p-and-me-questions-1-action_button_container" class="shiny-html-output"></div>
-<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
-</div>
-</div>
-<div class="panel panel-default">
-<div data-label="p-and-me-questions-2" class="tutorial-question panel-body">
-<div id="p-and-me-questions-2-answer_container" class="shiny-html-output"></div>
-<div id="p-and-me-questions-2-message_container" class="shiny-html-output"></div>
-<div id="p-and-me-questions-2-action_button_container" class="shiny-html-output"></div>
-<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
-</div>
-</div>
+<p>A data set that is nearly normal will result in a normal probability plot where the points closely follow the line. Any deviations from normality leads to deviations of these points from the line. The plot for female heights shows points that tend to follow the line but with some errant points towards the tails. We’re left with the same problem that we encountered with the histogram above: how close is close enough?</p>
 </div>
 <div id="section-section-15" class="section level3">
 <h3></h3>
-<p>We now know that both sample size and the population parameter impact the margin of error. Often times pollsters will have requirements for the margin of error for an estimate (for example, we may be interested in estimating a President’s net favorability rating to within plus or minus three percentage points), so they can use this information and any intuition they may have about an approximate value of the population proportion to estimate how much data they need to collect in order to satisfy their requirements on the margin of error. We can estimate required sample size using the formula below, which is just a rearrangement of the formula for margin of error (<span class="math inline">\(M_E\)</span>): <span class="math display">\[n \geq \left(\frac{Z_{\alpha/2}}{M_E}\right)^2\cdot p\left(1 - p\right)\]</span> In the formula above:</p>
-<ul>
-<li><span class="math inline">\(Z_{\alpha/2}\)</span> is the critical value associated with the desired confidence level</li>
-<li><span class="math inline">\(M_E\)</span> is the desired margin of error</li>
-<li><span class="math inline">\(p\)</span> is an estimate for the population proportion made by using any intuition the pollster has – if there is no viable intuition then we use <span class="math inline">\(p=0.5\)</span>, a worst case scenario (as you identified earlier).</li>
-</ul>
-<p>You won’t use this formula right now, but you’ll need it to answer one of the questions at the end of this workbook.</p>
-</div>
-</div>
-<div id="section-success-failure-condition" class="section level2">
-<h2>Success-failure condition</h2>
-<p>The textbook emphasizes that you must always check conditions before making inference. For inference on proportions, the sample proportion can be assumed to be nearly normal if it is based upon a random sample of independent observations and if both <span class="math inline">\(np \geq 10\)</span> and <span class="math inline">\(n(1 - p) \geq 10\)</span>. This rule of thumb is easy enough to follow, but it makes one wonder: what’s so special about the number 10?</p>
-<div id="section-section-16" class="section level3">
-<h3></h3>
-<p>The short answer is: nothing. You could argue that we would be fine with 9 or that we really should be using 11. The “best” value for such a rule of thumb is, at least to some degree, arbitrary. However, when <span class="math inline">\(np\)</span> and <span class="math inline">\(n(1-p)\)</span> both reach 10 the sampling distribution is sufficiently normal to use confidence intervals and hypothesis tests that are based on that approximation.</p>
-</div>
-<div id="section-section-17" class="section level3">
-<h3></h3>
-<p>We can investigate the interplay between <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> and the shape of the sampling distribution by using simulations. To start off, we simulate the process of drawing 5000 samples of size 1040 from a population with a true atheist proportion of 0.1. For each of the 5000 samples we compute <span class="math inline">\(\hat{p}\)</span> and then plot a histogram to visualize their distribution.</p>
-Use the code block below to carry out this experiment.
-<div class="tutorial-exercise" data-label="sim-np" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>p &lt;- 0.1
-n &lt;- 1040
-p_hats &lt;- rep(0, 5000)
+A useful way to address this question is to rephrase it as: what do normal probability plots look like for data that I <em>know</em> came from a normal distribution? We can answer this by simulating data from a normal distribution using <code>rnorm</code> (which will draw random values from a normal distribution). Execute the code below to draw a random sample of 260 random heights from the assumed normal distribution of female heights. A histogram will be plotted for convenience – feel free to run the code block multiple times to see what happens.
+<div class="tutorial-exercise" data-label="sim-norm" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>sim_norm &lt;- rnorm(n = length(fdims$hgt), mean = fhgtmean, sd = fhgtsd)
 
-for(i in 1:5000){
-  samp &lt;- sample(c(&quot;atheist&quot;, &quot;non_atheist&quot;), n, replace = TRUE, prob = c(p, 1-p))
-  p_hats[i] &lt;- sum(samp == &quot;atheist&quot;)/n
-}
-
-ggplot() + geom_histogram(mapping = aes(x = p_hats)) + labs(title = &quot;p = 0.1, n = 1040&quot;, x = &quot;Estimates for p&quot;) + xlim(c(0, 0.18))</code></pre>
+ggplot() + geom_histogram(mapping = aes(x = sim_norm))</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
+<div id="section-section-16" class="section level3">
+<h3></h3>
+<p>In the <code>rnorm()</code> function above, the first argument indicates how many numbers you’d like to generate, which we specify to be the same number of heights in the <code>fdims</code> data set using the <code>length</code> function. The last two arguments determine the mean and standard deviation of the normal distribution from which the simulated sample will be generated. We can take a look at the shape of our simulated data set, <code>sim_norm</code>, as well as its normal probability plot.</p>
+</div>
+<div id="section-section-17" class="section level3">
+<h3></h3>
+<p>Use the code block below to take a random sample of heights (you can copy and paste the <code>sim_norm</code> line from the code block above) and make a normal probability plot of the simulated data from the truely normal distribution.</p>
+<div class="tutorial-exercise" data-label="sim-norm-qq-plot" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<p>Do all of the points fall exactly on the line? How does this plot compare to the probability plot for the real data?</p>
+</div>
 <div id="section-section-18" class="section level3">
 <h3></h3>
-<p>These commands build up the sampling distribution of <span class="math inline">\(\hat{p}\)</span> using the familiar <code>for</code> loop. You can read the sampling procedure for the first line of code inside the <code>for</code> loop as, “take a sample of size <span class="math inline">\(n\)</span> with replacement from the choices of atheist and non-atheist with probabilities <span class="math inline">\(p\)</span> and <span class="math inline">\(1 - p\)</span>,respectively.” The second line in the loop says, “calculate the proportion of atheists in this sample and record this value.” The loop allows us to repeat this process 5,000 times to build an approximation of the sampling distribution.</p>
-Use the code block below to repeat the simulation we just ran but with <code>n = 400</code> and <code>p = 0.1</code>. Be sure to plot your result and compare it to your original simulation. What impact did lowering the number of observations have?
-<div class="tutorial-exercise" data-label="p-dist-400-10" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+Even better than comparing the original plot to a single plot generated from a normal distribution is to compare it to many more plots using the following function. The following code block is pre-populated with a custom-built function that will create eight different Q-Q plots from simulated normal data and will also produce the Q-Q plot corresponding to our true female heights data. Run the code block to see the result.
+<div class="tutorial-exercise" data-label="qqnormsim" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>qqnormsim(fdims$hgt)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
 <div id="section-section-19" class="section level3">
 <h3></h3>
-Now re-run the experiment again, but with <code>n = 1040</code> and <code>p = 0.02</code>. Again, think about the impact that a smaller population proportion has on the distribution of estimates for the population proportion.
-<div class="tutorial-exercise" data-label="p-dist-1040-02" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div>
+<p>Does the normal probability plot for <code>fdims$hgt</code> look similar to the plots created for the simulated data? That is, do plots “provide evidence” that the female heights are nearly normal?</p>
 </div>
 <div id="section-section-20" class="section level3">
 <h3></h3>
-Re-run the experiment one last time, but with <code>n = 400</code> and <code>p = 0.02</code>. Compare each of your resulting distributions. How does this connect back to the assumptions for inference with categorical data?
-<div class="tutorial-exercise" data-label="p-dist-400-02" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+Use the <code>qqnormsim()</code> function and the code block below to determine whether or not female weights (<code>wgt</code>) appear to come from a normal distribution.
+<div class="tutorial-exercise" data-label="fwght-normal" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-</div>
-<div id="section-section-21" class="section level3">
-<h3></h3>
 <div class="panel panel-default">
-<div data-label="question-assumptions" class="tutorial-question panel-body">
-<div id="question-assumptions-answer_container" class="shiny-html-output"></div>
-<div id="question-assumptions-message_container" class="shiny-html-output"></div>
-<div id="question-assumptions-action_button_container" class="shiny-html-output"></div>
+<div data-label="weights-question" class="tutorial-question panel-body">
+<div id="weights-question-answer_container" class="shiny-html-output"></div>
+<div id="weights-question-message_container" class="shiny-html-output"></div>
+<div id="weights-question-action_button_container" class="shiny-html-output"></div>
 <script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
 </div>
 </div>
 </div>
 </div>
-<div id="section-on-your-own" class="section level2">
-<h2>On your own</h2>
-<p>The question of atheism was asked by WIN-Gallup International in a similar survey that was conducted in 2005. (We assume here that sample sizes have remained the same.) Table 4 on page 12 of the report summarizes survey results from 2005 and 2012 for 39 countries. Try answering the following questions on your own. The code blocks are necessary for answering some of the questions, but are not needed for all.</p>
-<ol style="list-style-type: decimal">
-<li>Answer the following two questions using the <code>inference</code> function. As always, write out the hypotheses for any tests you conduct and outline the status of the conditions for inference.</li>
-</ol>
-<ul>
-<li>Is there convincing evidence that Spain has seen a change in its atheism index between 2005 and 2012? <em>Hint:</em> Create new data sets for respondents from Spain in 2005 and 2012 (look back at how we created <code>us12</code> earlier in this workbook). Form confidence intervals for the true proportion of athiests in both years, and determine whether they overlap.</li>
-<li>Is there convincing evidence that the United States has seen a change in its atheism index between 2005 and 2012?
-<div class="tutorial-exercise" data-label="on-your-own-1" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<div id="section-the-impact-of-assumptions" class="section level2">
+<h2>The impact of assumptions</h2>
+<div id="section-section-21" class="section level3">
+<h3></h3>
+<p>Okay, so now you have a slew of tools to judge whether or not a variable is normally distributed. Why should we care?</p>
+<p>It turns out that statisticians know a lot about the normal distribution. Once we decide that a random variable is approximately normal, we can answer all sorts of questions about that variable related to probability. That being said, our conclusions will only be reliable if the assumption we make about the normal model is a reasonable one. We saw that the distribution of female heights was approximately normal, but that the distribution of female weights deviated away from a normal distribution. We’ll ask a probability question about each of these variables and see how close our approximated probabilities are to the true empirical probabilities.</p>
+</div>
+<div id="section-section-22" class="section level3">
+<h3></h3>
+<strong>Question 1:</strong> What is the probability that a randomly chosen young adult female is taller than 6 feet (about 182 cm)? Use the code block below to answer this question assuming that female heights are normally distributed. That is, use the <code>pnorm()</code> function we were introduced to in the previous workbook. (The study that published this data set is clear to point out that the sample was not random and therefore inference to a general population is not suggested. We do so here only as an exercise.)
+<div class="tutorial-exercise" data-label="prob-height-norm" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+<div id="section-section-23" class="section level3">
+<h3></h3>
+Assuming a normal distribution has allowed us to calculate a theoretical probability. If we want to calculate the probability empirically, we simply need to determine how many observations fall above 182 then divide this number by the total sample size. Execute the code block below to do this. Compare the theoretical probability estimate to the empirical probability – are they similar?
+<div class="tutorial-exercise" data-label="hgt-emp-probability" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>sum(fdims$hgt &gt; 182) / length(fdims$hgt)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div></li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>If in fact there has been no change in the atheism index in the countries listed in Table 4, in how many of those countries would you expect to detect a change (at a significance level of 0.05) simply by chance? <em>Hint:</em> Look in the textbook index under Type 1 error.
-<div class="tutorial-exercise" data-label="on-your-own-2" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+</div>
+</div>
+<div id="section-section-24" class="section level3">
+<h3></h3>
+<p>Although the probabilities are not exactly the same, they are reasonably close. The closer that your distribution is to being normal, the more accurate the theoretical probabilities will be.</p>
+</div>
+<div id="section-section-25" class="section level3">
+<h3></h3>
+<strong>Question 2:</strong> What is the probability that a randomly chosen young adult female weighs more than 80kg? Use the code block below to answer this question making the assumption that female weights are normally distributed (recall that we said this assumption was not a good one).
+<div class="tutorial-exercise" data-label="wgt-norm-prob" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div></li>
-<li>Suppose you’re hired by the local government to estimate the proportion of residents that attend a religious service on a weekly basis. According to the guidelines, the estimate must have a margin of error no greater than 1% with 95% confidence. You have no idea what to expect for <span class="math inline">\(p\)</span>. How many people would you have to sample to ensure that you are within the guidelines? <em>Hint:</em> Refer to your plot of the relationship between <span class="math inline">\(p\)</span> and margin of error. Do not use the data set to answer this question.
-<div class="tutorial-exercise" data-label="on-your-own-3" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+</div>
+</div>
+<div id="section-section-26" class="section level3">
+<h3></h3>
+Compute the empirical probability that a randomly chosen young adult female weighs more than 80kg. Model your approach after the way we did this for heights earlier. Compare the empirical and theoretical probabilities. What can you say?
+<div class="tutorial-exercise" data-label="wgt-emp-prob" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div></li>
-</ol>
+</div>
+</div>
+<div id="section-section-27" class="section level3">
+<h3></h3>
+<p>Notice that your probability estimated using the normal distribution is only half of what the empirical probability is. Since the assumption of approximate normality was far from satisfied with the distribution of weights, the probabilities we estimate from an assumed normal distribution connot be trusted as true approximations for probabilities associated with these weights. If we are to use the normal model then we must be sure that the assumption of approximate normality is satisfied!</p>
+</div>
+<div id="section-section-28" class="section level3">
+<h3></h3>
+</div>
 </div>
 <div id="section-submit" class="section level2">
 <h2>Submit</h2>
@@ -429,34 +411,36 @@ Re-run the experiment one last time, but with <code>n = 400</code> and <code>p =
         document.execCommand('copy');
       });</script>
 </div>
-</div>
-<div id="section-summary" class="section level2">
-<h2>Summary</h2>
-<p>Good work. I hope that this workbook has helped make inferential techniques a bit more intuitive for you. In particular, I hope that you better understand the connection between the margin of error and a confidence interval as well as the dependence of standard error on sample size and population proportion.</p>
-<div id="section-section-22" class="section level3">
-<h3></h3>
+<p><br/></p>
 <div id="section-license">
-This is lab a derivative of a product of OpenIntro that is released under a <a href="http://creativecommons.org/licenses/by-sa/3.0">Creative Commons Attribution-ShareAlike 3.0 Unported</a>. The oiginal lab was written for OpenIntro by Andrew Bray and Mine Çetinkaya-Rundel.
+<p>This lab is a derivative of a product of OpenIntro that is released under a <a href="http://creativecommons.org/licenses/by-sa/3.0">Creative Commons Attribution-ShareAlike 3.0 Unported</a>. This lab was adapted for OpenIntro by Andrew Bray and Mine Çetinkaya-Rundel from a lab written by Mark Hansen of UCLA Statistics.</p>
 </div>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 #knitr::opts_chunk$set(eval = FALSE)
 #library(tidyverse)
-library(ggplot2)
 library(dplyr)
+library(ggplot2)
 library(learnr)
 library(gradethis)
 
+load("www/bdims.RData")
+
+mdims <- bdims %>% filter(sex == 1)
+fdims <- bdims %>% filter(sex == 0)
+
+mhgtmean <- mean(mdims$hgt)
+mhgtsd <- sd(mdims$hgt)
+fhgtmean <- mean(fdims$hgt)
+fhgtsd <- sd(fdims$hgt)
 
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
-
-load("www/atheism.RData")
 
 #knitr::opts_chunk$set(eval = FALSE)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::register_http_handlers(session, metadata = list(id = "InferenceCategoricalLab.Topic13.AppliedStats", version = 1))
+learnr:::register_http_handlers(session, metadata = list(id = "NormalDistributionLab.Topic8.AppliedStats", version = 1))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
@@ -474,129 +458,34 @@ session$onSessionEnded(function() {
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "questions-report-1", 
-    question = structure("In the first paragraph, several key findings are reported. Do these percentages appear to be <em>sample statistics<\u002fem> (derived from the data sample) or <em>population parameters<\u002fem>?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_49b09ef", 
-        option = "sample statistics", value = "sample statistics", 
-        label = structure("sample statistics", html = TRUE, class = c("html", 
-        "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8deaf64", 
-        option = "population parameters", value = "population parameters", 
-        label = structure("population parameters", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_68c1fcc", 
-        option = "There is a mix of both", value = "There is a mix of both", 
-        label = structure("There is a mix of both", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
-    "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
-    "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
-    "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), message = NULL, post_message = NULL), ids = list(
-        answer = "questions-report-1-answer", question = "questions-report-1"), 
-    loading = structure("<strong>Loading:<\u002fstrong> \nIn the first paragraph, several key findings are reported. Do these percentages appear to be <em>sample statistics<\u002fem> (derived from the data sample) or <em>population parameters<\u002fem>?\n<br/><br/><br/>", html = TRUE, class = c("html", 
-    "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1203706145.93948, options = list()), class = c("learnr_radio", 
-"tutorial_question")), session = session)
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "questions-report-2", 
-    question = structure("The title of the report is <em>Global Index of Religiosity and Atheism<\u002fem>. To generalize the report&#39;s findings to the global human population, what must we assume about the sampling method?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_8c5b324", 
-        option = "The sample must be random and representative of the global community", 
-        value = "The sample must be random and representative of the global community", 
-        label = structure("The sample must be random and representative of the global community", html = TRUE, class = c("html", 
-        "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4b11db8", 
-        option = "The sample must contain at least 10% of the global population", 
-        value = "The sample must contain at least 10% of the global population", 
-        label = structure("The sample must contain at least 10% of the global population", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9f5876b", 
-        option = "The sample should include people of all religions, so samples should be taken near a diverse set of places of worship", 
-        value = "The sample should include people of all religions, so samples should be taken near a diverse set of places of worship", 
-        label = structure("The sample should include people of all religions, so samples should be taken near a diverse set of places of worship", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9050634", 
-        option = "The survey should be done on the phone to make sure that respondents understand the question being asked", 
-        value = "The survey should be done on the phone to make sure that respondents understand the question being asked", 
-        label = structure("The survey should be done on the phone to make sure that respondents understand the question being asked", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
-    "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
-    "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
-    "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), message = NULL, post_message = NULL), ids = list(
-        answer = "questions-report-2-answer", question = "questions-report-2"), 
-    loading = structure("<strong>Loading:<\u002fstrong> \nThe title of the report is <em>Global Index of Religiosity and Atheism<\u002fem>. To generalize the report&#39;s findings to the global human population, what must we assume about the sampling method?\n<br/><br/><br/>", html = TRUE, class = c("html", 
-    "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1846291685.14025, options = list()), class = c("learnr_radio", 
-"tutorial_question")), session = session)
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "questions-report-3", 
-    question = structure("Do you expect that the required assumption was satisfied? What are the implications of this?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_272b1e2", 
-        option = "No. The study results can only be extended to countries and regions for which the sample data is representative.", 
-        value = "No. The study results can only be extended to countries and regions for which the sample data is representative.", 
-        label = structure("No. The study results can only be extended to countries and regions for which the sample data is representative.", html = TRUE, class = c("html", 
-        "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fa57b76", 
-        option = "Yes. The study included a very large number of respondents.", 
-        value = "Yes. The study included a very large number of respondents.", 
-        label = structure("Yes. The study included a very large number of respondents.", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5273187", 
-        option = "Yes. Win-Gallup is a reputable polling organization.", 
-        value = "Yes. Win-Gallup is a reputable polling organization.", 
-        label = structure("Yes. Win-Gallup is a reputable polling organization.", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_51565d3", 
-        option = "No. In order to apply results to the global community the pollsters would need to conduct a census.", 
-        value = "No. In order to apply results to the global community the pollsters would need to conduct a census.", 
-        label = structure("No. In order to apply results to the global community the pollsters would need to conduct a census.", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
-    "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
-    "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
-    "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), message = NULL, post_message = NULL), ids = list(
-        answer = "questions-report-3-answer", question = "questions-report-3"), 
-    loading = structure("<strong>Loading:<\u002fstrong> \nDo you expect that the required assumption was satisfied? What are the implications of this?\n<br/><br/><br/>", html = TRUE, class = c("html", 
-    "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 589658625.225419, options = list()), class = c("learnr_radio", 
-"tutorial_question")), session = session)
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-table-v-df-code-block-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-table-v-df-code-block-code-editor`)), session)
-output$`tutorial-exercise-table-v-df-code-block-output` <- renderUI({
-  `tutorial-exercise-table-v-df-code-block-result`()
+`tutorial-exercise-head-data-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-head-data-code-editor`)), session)
+output$`tutorial-exercise-head-data-output` <- renderUI({
+  `tutorial-exercise-head-data-result`()
 })
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "table-v-df-code-block", code = "", 
-        opts = list(label = "\"table-v-df-code-block\"", exercise = "TRUE"), 
-        engine = "r")), code_check = NULL, error_check = NULL, 
-    check = NULL, solution = NULL, test_cases = NULL, options = list(
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "head-data", code = "", opts = list(label = "\"head-data\"", 
+        exercise = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = structure("grade_code()", chunk_opts = list(
+        label = "head-data-check")), solution = structure("head(bdims)", chunk_opts = list(
+        label = "head-data-solution")), test_cases = NULL, options = list(
         eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
         tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
         highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "13_InferenceCategoricalLab_cache/html/", 
+        strip.white = TRUE, cache = 0, cache.path = "08_NormalDistributionLab_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -607,69 +496,42 @@ learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr:
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "table-v-df-code-block", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "table-v-df-code-block, exercise = TRUE", 
+        label = "head-data", exercise = TRUE, code = "", out.width.px = 624, 
+        out.height.px = 384, params.src = "head-data, exercise = TRUE", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "table-v-df", question = structure("What does each row of Table 6 correspond to? What does each row of <code>atheism<\u002fcode> correspond to?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_b2fc539", 
-    option = "Each row of Table 6 contains the summarized responses by country while each row of `atheism` contains the response of an individual respondent.", 
-    value = "Each row of Table 6 contains the summarized responses by country while each row of `atheism` contains the response of an individual respondent.", 
-    label = structure("Each row of Table 6 contains the summarized responses by country while each row of <code>atheism<\u002fcode> contains the response of an individual respondent.", html = TRUE, class = c("html", 
-    "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3bd0d8b", 
-    option = "Each row of both Table 6 and the `atheism` data frame contain the response of an individual respondent.", 
-    value = "Each row of both Table 6 and the `atheism` data frame contain the response of an individual respondent.", 
-    label = structure("Each row of both Table 6 and the <code>atheism<\u002fcode> data frame contain the response of an individual respondent.", html = TRUE, class = c("html", 
-    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_5bae819", 
-    option = "Each row of both Table 6 and the `atheism` data frame contain the summarized responses by country.", 
-    value = "Each row of both Table 6 and the `atheism` data frame contain the summarized responses by country.", 
-    label = structure("Each row of both Table 6 and the <code>atheism<\u002fcode> data frame contain the summarized responses by country.", html = TRUE, class = c("html", 
-    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_da6a07d", 
-    option = "Each row of Table 6 contains the response of an individual respondent while each row of `atheism` contains the summarized responses by country.", 
-    value = "Each row of Table 6 contains the response of an individual respondent while each row of `atheism` contains the summarized responses by country.", 
-    label = structure("Each row of Table 6 contains the response of an individual respondent while each row of <code>atheism<\u002fcode> contains the summarized responses by country.", html = TRUE, class = c("html", 
-    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
-"character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
-"character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
-"character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
-"character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
-"character")), message = NULL, post_message = NULL), ids = list(
-    answer = "table-v-df-answer", question = "table-v-df"), loading = structure("<strong>Loading:<\u002fstrong> \nWhat does each row of Table 6 correspond to? What does each row of <code>atheism<\u002fcode> correspond to?\n<br/><br/><br/>", html = TRUE, class = c("html", 
-"character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 999819668.034423, options = list()), class = c("learnr_radio", 
-"tutorial_question")), session = session)
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-us-atheism-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-us-atheism-code-editor`)), session)
-output$`tutorial-exercise-us-atheism-output` <- renderUI({
-  `tutorial-exercise-us-atheism-result`()
+`tutorial-exercise-subset-mf-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-subset-mf-code-editor`)), session)
+output$`tutorial-exercise-subset-mf-output` <- renderUI({
+  `tutorial-exercise-subset-mf-result`()
 })
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "us-atheism", code = "us12 <- atheism %>%\n  filter(nationality == \"United States\", year == 2012)\n\nus12 %>%\n  count(response) %>%\n  mutate(relative_frequency = n / sum(n))", 
-        opts = list(label = "\"us-atheism\"", exercise = "TRUE"), 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "subset-mf", code = "mdims <- bdims %>% filter(sex == 1)\n", 
+        opts = list(label = "\"subset-mf\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
-    check = NULL, solution = NULL, test_cases = NULL, options = list(
+    check = structure("grade_code()", chunk_opts = list(label = "subset-mf-check")), 
+    solution = structure(c("mdims <- bdims %>% filter(sex == 1)", 
+    "fdims <- bdims %>% filter(sex == 0)"), chunk_opts = list(
+        label = "subset-mf-solution")), test_cases = NULL, options = list(
         eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
         tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
         highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "13_InferenceCategoricalLab_cache/html/", 
+        strip.white = TRUE, cache = 0, cache.path = "08_NormalDistributionLab_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -680,151 +542,279 @@ learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr:
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "us-atheism", exercise = TRUE, code = c("us12 <- atheism %>%", 
-        "  filter(nationality == \"United States\", year == 2012)", 
-        "", "us12 %>%", "  count(response) %>%", "  mutate(relative_frequency = n / sum(n))"
-        ), out.width.px = 624, out.height.px = 384, params.src = "us-atheism, exercise = TRUE", 
+        label = "subset-mf", exercise = TRUE, code = c("mdims <- bdims %>% filter(sex == 1)", 
+        ""), out.width.px = 624, out.height.px = 384, params.src = "subset-mf, exercise = TRUE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-us-atheism-ci-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-us-atheism-ci-code-editor`)), session)
-output$`tutorial-exercise-us-atheism-ci-output` <- renderUI({
-  `tutorial-exercise-us-atheism-ci-result`()
+`tutorial-exercise-plot-hgt-hists-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-plot-hgt-hists-code-editor`)), session)
+output$`tutorial-exercise-plot-hgt-hists-output` <- renderUI({
+  `tutorial-exercise-plot-hgt-hists-result`()
 })
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = "us12 <- atheism %>%\n  filter(nationality == \"United States\", year == 2012)", 
-    chunks = list(list(label = "us-atheism-ci-setup", code = "us12 <- atheism %>%\n  filter(nationality == \"United States\", year == 2012)", 
-        opts = list(label = "\"us-atheism-ci-setup\""), engine = "r"), 
-        list(label = "us-atheism-ci", code = "inference(y = us12$response, est = \"proportion\", type = \"ci\", method = \"theoretical\", \n          success = \"atheist\")", 
-            opts = list(label = "\"us-atheism-ci\"", exercise = "TRUE"), 
-            engine = "r")), code_check = NULL, error_check = NULL, 
-    check = NULL, solution = NULL, test_cases = NULL, options = list(
-        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
-        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
-        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "13_InferenceCategoricalLab_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
-        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "us-atheism-ci", exercise = TRUE, code = c("inference(y = us12$response, est = \"proportion\", type = \"ci\", method = \"theoretical\", ", 
-        "          success = \"atheist\")"), out.width.px = 624, 
-        out.height.px = 384, params.src = "us-atheism-ci, exercise = TRUE", 
-        fig.num = 0, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-interp-inference-moe-code-block-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-interp-inference-moe-code-block-code-editor`)), session)
-output$`tutorial-exercise-interp-inference-moe-code-block-output` <- renderUI({
-  `tutorial-exercise-interp-inference-moe-code-block-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "interp-inference-moe-code-block", 
-        code = "", opts = list(label = "\"interp-inference-moe-code-block\"", 
-            exercise = "TRUE"), engine = "r")), code_check = NULL, 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "plot-hgt-hists", code = "", opts = list(label = "\"plot-hgt-hists\"", 
+        exercise = "TRUE", message = "FALSE", warning = "FALSE", 
+        fig.width = "4", fig.height = "4"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, test_cases = NULL, 
     options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "13_InferenceCategoricalLab_cache/html/", 
+        cache.path = "08_NormalDistributionLab_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
-        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
+        fig.width = 4, fig.height = 4, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 384, out.height = NULL, out.extra = NULL, 
         fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        aniopts = "controls,loop", warning = FALSE, error = FALSE, 
+        message = FALSE, render = NULL, ref.label = NULL, child = NULL, 
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "interp-inference-moe-code-block", exercise = TRUE, 
-        code = "", out.width.px = 624, out.height.px = 384, params.src = "interp-inference-moe-code-block, exercise = TRUE", 
+        label = "plot-hgt-hists", exercise = TRUE, code = "", 
+        out.width.px = 384, out.height.px = 384, params.src = "plot-hgt-hists, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "interp-inference-moe", 
-    question = structure("Based on the R output, what is the margin of error for the estimate of the proportion of the proportion of atheists in US in 2012?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_221c945", 
-        option = "0.0135", value = "0.0135", label = structure("0.0135", html = TRUE, class = c("html", 
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "distribution-quests-1", 
+    question = structure("Which group is taller on average?", html = TRUE, class = c("html", 
+    "character")), answers = list(structure(list(id = "lnr_ans_939eef7", 
+        option = "Males", value = "Males", label = structure("Males", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_40c0e1b", 
-        option = "0.0499", value = "0.0499", label = structure("0.0499", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_84d7316", 
+        option = "Females", value = "Females", label = structure("Females", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7202f33", 
-        option = "0.0069", value = "0.0069", label = structure("0.0069", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = structure("Oops. The margin of error is the product of the standard error and critical value.", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ae3152d", 
+        option = "It is impossible to tell", value = "It is impossible to tell", 
+        label = structure("It is impossible to tell", html = TRUE, class = c("html", 
+        "character")), correct = FALSE, message = structure("There are short and tall people in both distributions, but the average height of one group is larger than the average height of the other group", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c141de", 
-        option = "0.0364", value = "0.0364", label = structure("0.0364", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_37caf4", 
-        option = "0.0634", value = "0.0634", label = structure("0.0634", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
     "character")), message = NULL, post_message = NULL), ids = list(
-        answer = "interp-inference-moe-answer", question = "interp-inference-moe"), 
-    loading = structure("<strong>Loading:<\u002fstrong> \nBased on the R output, what is the margin of error for the estimate of the proportion of the proportion of atheists in US in 2012?\n<br/><br/><br/>", html = TRUE, class = c("html", 
+        answer = "distribution-quests-1-answer", question = "distribution-quests-1"), 
+    loading = structure("<strong>Loading:<\u002fstrong> \nWhich group is taller on average?\n<br/><br/><br/>", html = TRUE, class = c("html", 
     "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1410913090.34299, options = list()), class = c("learnr_radio", 
+    seed = 2000053792.56865, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-use-inference-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-use-inference-code-editor`)), session)
-output$`tutorial-exercise-use-inference-output` <- renderUI({
-  `tutorial-exercise-use-inference-result`()
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "distribution-quests-2", 
+    question = structure("Would it be fair to say that the distribution of male heights is approximately normal?", html = TRUE, class = c("html", 
+    "character")), answers = list(structure(list(id = "lnr_ans_940cbcd", 
+        option = "Yes. The distribution of male heights follows an approximate bell curve.", 
+        value = "Yes. The distribution of male heights follows an approximate bell curve.", 
+        label = structure("Yes. The distribution of male heights follows an approximate bell curve.", html = TRUE, class = c("html", 
+        "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3f325f3", 
+        option = "No. The distribution is skewed left.", value = "No. The distribution is skewed left.", 
+        label = structure("No. The distribution is skewed left.", html = TRUE, class = c("html", 
+        "character")), correct = FALSE, message = structure("No real-world data is exactly normally distributed, but if the data is <em>close enough<\u002fem>, using the normal model is permissible.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8bed29d", 
+        option = "No. The distribution is skewed right.", value = "No. The distribution is skewed right.", 
+        label = structure("No. The distribution is skewed right.", html = TRUE, class = c("html", 
+        "character")), correct = FALSE, message = structure("No real-world data is exactly normally distributed, but if the data is <em>close enough<\u002fem>, using the normal model is permissible.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f65cdce", 
+        option = "No. The distribution is symmetric but is multimodal", 
+        value = "No. The distribution is symmetric but is multimodal", 
+        label = structure("No. The distribution is symmetric but is multimodal", html = TRUE, class = c("html", 
+        "character")), correct = FALSE, message = structure("No real-world data is exactly normally distributed, but if the data is <em>close enough<\u002fem>, using the normal model is permissible.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
+    "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
+    "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
+    "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
+    "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
+    "character")), message = NULL, post_message = NULL), ids = list(
+        answer = "distribution-quests-2-answer", question = "distribution-quests-2"), 
+    loading = structure("<strong>Loading:<\u002fstrong> \nWould it be fair to say that the distribution of male heights is approximately normal?\n<br/><br/><br/>", html = TRUE, class = c("html", 
+    "character")), random_answer_order = TRUE, allow_retry = TRUE, 
+    seed = 203888445.905057, options = list()), class = c("learnr_radio", 
+"tutorial_question")), session = session)
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "distribution-quests-3", 
+    question = structure("Would it be fair to say that the distribution of female heights is approximately normal?", html = TRUE, class = c("html", 
+    "character")), answers = list(structure(list(id = "lnr_ans_d538ec", 
+        option = "Yes. The distribution of female heights follows an approximate bell curve.", 
+        value = "Yes. The distribution of female heights follows an approximate bell curve.", 
+        label = structure("Yes. The distribution of female heights follows an approximate bell curve.", html = TRUE, class = c("html", 
+        "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8bde058", 
+        option = "No. The distribution is skewed left.", value = "No. The distribution is skewed left.", 
+        label = structure("No. The distribution is skewed left.", html = TRUE, class = c("html", 
+        "character")), correct = FALSE, message = structure("No real-world data is exactly normally distributed, but if the data is <em>close enough<\u002fem>, using the normal model is permissible.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4625302", 
+        option = "No. The distribution is skewed right.", value = "No. The distribution is skewed right.", 
+        label = structure("No. The distribution is skewed right.", html = TRUE, class = c("html", 
+        "character")), correct = FALSE, message = structure("No real-world data is exactly normally distributed, but if the data is <em>close enough<\u002fem>, using the normal model is permissible.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a4ff7de", 
+        option = "No. The distribution is symmetric but is multimodal", 
+        value = "No. The distribution is symmetric but is multimodal", 
+        label = structure("No. The distribution is symmetric but is multimodal", html = TRUE, class = c("html", 
+        "character")), correct = FALSE, message = structure("No real-world data is exactly normally distributed, but if the data is <em>close enough<\u002fem>, using the normal model is permissible.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
+    "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
+    "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
+    "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
+    "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
+    "character")), message = NULL, post_message = NULL), ids = list(
+        answer = "distribution-quests-3-answer", question = "distribution-quests-3"), 
+    loading = structure("<strong>Loading:<\u002fstrong> \nWould it be fair to say that the distribution of female heights is approximately normal?\n<br/><br/><br/>", html = TRUE, class = c("html", 
+    "character")), random_answer_order = TRUE, allow_retry = TRUE, 
+    seed = 1349854597.37142, options = list()), class = c("learnr_radio", 
+"tutorial_question")), session = session)
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-hist-hgt-plus-normal-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-hist-hgt-plus-normal-code-editor`)), session)
+output$`tutorial-exercise-hist-hgt-plus-normal-output` <- renderUI({
+  `tutorial-exercise-hist-hgt-plus-normal-result`()
 })
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "use-inference", code = "", opts = list(
-        label = "\"use-inference\"", exercise = "TRUE"), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
-    test_cases = NULL, options = list(eval = FALSE, echo = TRUE, 
-        results = "markup", tidy = FALSE, tidy.opts = NULL, collapse = FALSE, 
-        prompt = FALSE, comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "13_InferenceCategoricalLab_cache/html/", 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "hist-hgt-plus-normal", code = "mhgtmean <- mean(mdims$hgt)\nmhgtsd <- sd(mdims$hgt)\n\nggplot() + \n  geom_histogram(data = mdims, mapping = aes(x = hgt, y = ..density..)) + \n  geom_line(mapping = aes(x = seq(140, 200, length.out = 200), \n                          y = dnorm(seq(140, 200, length.out = 200), \n                                    mean = mhgtmean, sd = mhgtsd)),\n            color = \"blue\", lwd = 1.25) +\n  labs(title = \"Distribution of Male Heights\", x = \"Height (cm)\", y = \"Proportion\")", 
+        opts = list(label = "\"hist-hgt-plus-normal\"", exercise = "TRUE", 
+            exercise.eval = "FALSE", warning = "FALSE", message = "FALSE"), 
+        engine = "r")), code_check = NULL, error_check = NULL, 
+    check = NULL, solution = NULL, test_cases = NULL, options = list(
+        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "08_NormalDistributionLab_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
+        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = FALSE, error = FALSE, 
+        message = FALSE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "hist-hgt-plus-normal", exercise = TRUE, exercise.eval = FALSE, 
+        code = c("mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+        "", "ggplot() + ", "  geom_histogram(data = mdims, mapping = aes(x = hgt, y = ..density..)) + ", 
+        "  geom_line(mapping = aes(x = seq(140, 200, length.out = 200), ", 
+        "                          y = dnorm(seq(140, 200, length.out = 200), ", 
+        "                                    mean = mhgtmean, sd = mhgtsd)),", 
+        "            color = \"blue\", lwd = 1.25) +", "  labs(title = \"Distribution of Male Heights\", x = \"Height (cm)\", y = \"Proportion\")"
+        ), out.width.px = 624, out.height.px = 384, params.src = "hist-hgt-plus-normal, exercise = TRUE, exercise.eval = FALSE, warning = FALSE, message = FALSE", 
+        fig.num = 0, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-qq-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-qq-code-editor`)), session)
+output$`tutorial-exercise-qq-output` <- renderUI({
+  `tutorial-exercise-qq-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "qq", code = "qqnorm(fdims$hgt)\nqqline(fdims$hgt)", 
+        opts = list(label = "\"qq\"", exercise = "TRUE", message = "FALSE", 
+            results = "FALSE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, test_cases = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "hide", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "08_NormalDistributionLab_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
+        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = FALSE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "qq", exercise = TRUE, code = c("qqnorm(fdims$hgt)", 
+        "qqline(fdims$hgt)"), out.width.px = 624, out.height.px = 384, 
+        params.src = "qq, exercise = TRUE, message = FALSE, results = FALSE", 
+        fig.num = 0, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-sim-norm-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-sim-norm-code-editor`)), session)
+output$`tutorial-exercise-sim-norm-output` <- renderUI({
+  `tutorial-exercise-sim-norm-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "sim-norm", code = "sim_norm <- rnorm(n = length(fdims$hgt), mean = fhgtmean, sd = fhgtsd)\n\nggplot() + geom_histogram(mapping = aes(x = sim_norm))", 
+        opts = list(label = "\"sim-norm\"", exercise = "TRUE"), 
+        engine = "r")), code_check = NULL, error_check = NULL, 
+    check = NULL, solution = NULL, test_cases = NULL, options = list(
+        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "08_NormalDistributionLab_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -835,36 +825,40 @@ learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr:
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "use-inference", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "use-inference, exercise = TRUE", 
-        fig.num = 0L, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
+        label = "sim-norm", exercise = TRUE, code = c("sim_norm <- rnorm(n = length(fdims$hgt), mean = fhgtmean, sd = fhgtsd)", 
+        "", "ggplot() + geom_histogram(mapping = aes(x = sim_norm))"
+        ), out.width.px = 624, out.height.px = 384, params.src = "sim-norm, exercise = TRUE", 
+        fig.num = 0, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-me-plot-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-me-plot-code-editor`)), session)
-output$`tutorial-exercise-me-plot-output` <- renderUI({
-  `tutorial-exercise-me-plot-result`()
+`tutorial-exercise-sim-norm-qq-plot-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-sim-norm-qq-plot-code-editor`)), session)
+output$`tutorial-exercise-sim-norm-qq-plot-output` <- renderUI({
+  `tutorial-exercise-sim-norm-qq-plot-result`()
 })
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "me-plot", code = "n <- 1000\np <- seq(0, 1, 0.01)\nme <- 2 * sqrt(p * (1 - p)/n)\nggplot() + geom_point(mapping = aes(x = p, y = me)) + labs(title = \"Margin of Error and Population Proportion\", y = \"Margin of Error\", x = \"Population Proportion\")", 
-        opts = list(label = "\"me-plot\"", exercise = "TRUE", 
-            exercise.eval = "FALSE"), engine = "r")), code_check = NULL, 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "sim-norm-qq-plot", code = "", opts = list(label = "\"sim-norm-qq-plot\"", 
+        exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, test_cases = NULL, 
     options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "13_InferenceCategoricalLab_cache/html/", 
+        cache.path = "08_NormalDistributionLab_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -875,102 +869,42 @@ learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr:
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "me-plot", exercise = TRUE, exercise.eval = FALSE, 
-        code = c("n <- 1000", "p <- seq(0, 1, 0.01)", "me <- 2 * sqrt(p * (1 - p)/n)", 
-        "ggplot() + geom_point(mapping = aes(x = p, y = me)) + labs(title = \"Margin of Error and Population Proportion\", y = \"Margin of Error\", x = \"Population Proportion\")"
-        ), out.width.px = 624, out.height.px = 384, params.src = "me-plot, exercise = TRUE, exercise.eval = FALSE", 
-        fig.num = 0, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
+        label = "sim-norm-qq-plot", exercise = TRUE, code = "", 
+        out.width.px = 624, out.height.px = 384, params.src = "sim-norm-qq-plot, exercise = TRUE", 
+        fig.num = 0L, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "p-and-me-questions-1", 
-    question = structure("Describe the relationship between the population proportion, \\(p\\), and margin of error.", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_1ffb988", 
-        option = "The margin of error is small if the population proportion is near 0 or 1 but is largest for values near 0.5", 
-        value = "The margin of error is small if the population proportion is near 0 or 1 but is largest for values near 0.5", 
-        label = structure("The margin of error is small if the population proportion is near 0 or 1 but is largest for values near 0.5", html = TRUE, class = c("html", 
-        "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7678b5d", 
-        option = "The margin of error is larger for larger values of the population proportion.", 
-        value = "The margin of error is larger for larger values of the population proportion.", 
-        label = structure("The margin of error is larger for larger values of the population proportion.", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_aec8165", 
-        option = "The margin of error is smaller for larger values of the population proportion.", 
-        value = "The margin of error is smaller for larger values of the population proportion.", 
-        label = structure("The margin of error is smaller for larger values of the population proportion.", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f660214", 
-        option = "There is no meaningful relationship between the population proportion and margin of error.", 
-        value = "There is no meaningful relationship between the population proportion and margin of error.", 
-        label = structure("There is no meaningful relationship between the population proportion and margin of error.", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
-    "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
-    "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
-    "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), message = NULL, post_message = NULL), ids = list(
-        answer = "p-and-me-questions-1-answer", question = "p-and-me-questions-1"), 
-    loading = structure("<strong>Loading:<\u002fstrong> \nDescribe the relationship between the population proportion, \\(p\\), and margin of error.\n<br/><br/><br/>", html = TRUE, class = c("html", 
-    "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1019422151.02529, options = list()), class = c("learnr_radio", 
-"tutorial_question")), session = session)
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "p-and-me-questions-2", 
-    question = structure("Which of the following are implications of your answer above?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_358fe76", 
-        option = "Margins of error, and therefore confidence intervals, will be widest when the population proportion to be captured is close to 0.5", 
-        value = "Margins of error, and therefore confidence intervals, will be widest when the population proportion to be captured is close to 0.5", 
-        label = structure("Margins of error, and therefore confidence intervals, will be widest when the population proportion to be captured is close to 0.5", html = TRUE, class = c("html", 
-        "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_65e4ae0", 
-        option = "In order to estimate a population proportion to within a desired margin of error, larger sample sizes will be needed if the true population proportion is near 0.5.", 
-        value = "In order to estimate a population proportion to within a desired margin of error, larger sample sizes will be needed if the true population proportion is near 0.5.", 
-        label = structure("In order to estimate a population proportion to within a desired margin of error, larger sample sizes will be needed if the true population proportion is near 0.5.", html = TRUE, class = c("html", 
-        "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
-    "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
-    "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
-    "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
-    "character")), message = NULL, post_message = NULL), ids = list(
-        answer = "p-and-me-questions-2-answer", question = "p-and-me-questions-2"), 
-    loading = structure("<strong>Loading:<\u002fstrong> \nWhich of the following are implications of your answer above?\n<br/><br/><br/>", html = TRUE, class = c("html", 
-    "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 25742045.9880129, options = list()), class = c("learnr_checkbox", 
-"tutorial_question")), session = session)
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-sim-np-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-sim-np-code-editor`)), session)
-output$`tutorial-exercise-sim-np-output` <- renderUI({
-  `tutorial-exercise-sim-np-result`()
+`tutorial-exercise-qqnormsim-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-qqnormsim-code-editor`)), session)
+output$`tutorial-exercise-qqnormsim-output` <- renderUI({
+  `tutorial-exercise-qqnormsim-result`()
 })
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "sim-np", code = "p <- 0.1\nn <- 1040\np_hats <- rep(0, 5000)\n\nfor(i in 1:5000){\n  samp <- sample(c(\"atheist\", \"non_atheist\"), n, replace = TRUE, prob = c(p, 1-p))\n  p_hats[i] <- sum(samp == \"atheist\")/n\n}\n\nggplot() + geom_histogram(mapping = aes(x = p_hats)) + labs(title = \"p = 0.1, n = 1040\", x = \"Estimates for p\") + xlim(c(0, 0.18))", 
-        opts = list(label = "\"sim-np\"", exercise = "TRUE", 
-            exercise.eval = "FALSE"), engine = "r")), code_check = NULL, 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "qqnormsim", code = "qqnormsim(fdims$hgt)", 
+        opts = list(label = "\"qqnormsim\"", exercise = "TRUE", 
+            fig.height = "8"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, test_cases = NULL, 
     options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "13_InferenceCategoricalLab_cache/html/", 
+        cache.path = "08_NormalDistributionLab_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
+        fig.width = 6.5, fig.height = 8, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
         fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
         fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
@@ -979,41 +913,41 @@ learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr:
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "sim-np", exercise = TRUE, exercise.eval = FALSE, 
-        code = c("p <- 0.1", "n <- 1040", "p_hats <- rep(0, 5000)", 
-        "", "for(i in 1:5000){", "  samp <- sample(c(\"atheist\", \"non_atheist\"), n, replace = TRUE, prob = c(p, 1-p))", 
-        "  p_hats[i] <- sum(samp == \"atheist\")/n", "}", "", 
-        "ggplot() + geom_histogram(mapping = aes(x = p_hats)) + labs(title = \"p = 0.1, n = 1040\", x = \"Estimates for p\") + xlim(c(0, 0.18))"
-        ), out.width.px = 624, out.height.px = 384, params.src = "sim-np, exercise = TRUE, exercise.eval = FALSE", 
+        label = "qqnormsim", exercise = TRUE, code = "qqnormsim(fdims$hgt)", 
+        out.width.px = 624, out.height.px = 768, params.src = "qqnormsim, exercise = TRUE, fig.height = 8", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-p-dist-400-10-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-p-dist-400-10-code-editor`)), session)
-output$`tutorial-exercise-p-dist-400-10-output` <- renderUI({
-  `tutorial-exercise-p-dist-400-10-result`()
+`tutorial-exercise-fwght-normal-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-fwght-normal-code-editor`)), session)
+output$`tutorial-exercise-fwght-normal-output` <- renderUI({
+  `tutorial-exercise-fwght-normal-result`()
 })
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "p-dist-400-10", code = "", opts = list(
-        label = "\"p-dist-400-10\"", exercise = "TRUE"), engine = "r")), 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "fwght-normal", code = "", opts = list(label = "\"fwght-normal\"", 
+        exercise = "TRUE", fig.height = "8"), engine = "r")), 
     code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
     test_cases = NULL, options = list(eval = FALSE, echo = TRUE, 
         results = "markup", tidy = FALSE, tidy.opts = NULL, collapse = FALSE, 
         prompt = FALSE, comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "13_InferenceCategoricalLab_cache/html/", 
+        cache.path = "08_NormalDistributionLab_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
+        fig.width = 6.5, fig.height = 8, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
         fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
         fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
@@ -1022,144 +956,67 @@ learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr:
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "p-dist-400-10", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "p-dist-400-10, exercise = TRUE", 
+        label = "fwght-normal", exercise = TRUE, code = "", out.width.px = 624, 
+        out.height.px = 768, params.src = "fwght-normal, exercise = TRUE, fig.height = 8", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-p-dist-1040-02-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-p-dist-1040-02-code-editor`)), session)
-output$`tutorial-exercise-p-dist-1040-02-output` <- renderUI({
-  `tutorial-exercise-p-dist-1040-02-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "p-dist-1040-02", code = "", opts = list(
-        label = "\"p-dist-1040-02\"", exercise = "TRUE"), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
-    test_cases = NULL, options = list(eval = FALSE, echo = TRUE, 
-        results = "markup", tidy = FALSE, tidy.opts = NULL, collapse = FALSE, 
-        prompt = FALSE, comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "13_InferenceCategoricalLab_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
-        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "p-dist-1040-02", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "p-dist-1040-02, exercise = TRUE", 
-        fig.num = 0L, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-p-dist-400-02-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-p-dist-400-02-code-editor`)), session)
-output$`tutorial-exercise-p-dist-400-02-output` <- renderUI({
-  `tutorial-exercise-p-dist-400-02-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "p-dist-400-02", code = "", opts = list(
-        label = "\"p-dist-400-02\"", exercise = "TRUE"), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
-    test_cases = NULL, options = list(eval = FALSE, echo = TRUE, 
-        results = "markup", tidy = FALSE, tidy.opts = NULL, collapse = FALSE, 
-        prompt = FALSE, comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "13_InferenceCategoricalLab_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
-        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "p-dist-400-02", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "p-dist-400-02, exercise = TRUE", 
-        fig.num = 0L, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "question-assumptions", 
-    question = structure("If you refer to Table 6 again in the WIN-Gallup report, you&#39;ll find that Australia has a sample proportion of 0.1 on a sample size of 1040, and that Ecuador has a sample proportion of 0.02 on 400 subjects. Let&#39;s suppose for this exercise that these point estimates are actually the truth. Then given the shape of their respective sampling distributions, do you think it is sensible to proceed with inference and report margin of errors, as the reports does?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_929006c", 
-        option = "The report should not proceed with inference on Ecuador since the success-failure condition is not satisfied. The report can safely proceed with inference on Australia though.", 
-        value = "The report should not proceed with inference on Ecuador since the success-failure condition is not satisfied. The report can safely proceed with inference on Australia though.", 
-        label = structure("The report should not proceed with inference on Ecuador since the success-failure condition is not satisfied. The report can safely proceed with inference on Australia though.", html = TRUE, class = c("html", 
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "weights-question", 
+    question = structure("Does the distribution of female weights seem to be approximately normal?", html = TRUE, class = c("html", 
+    "character")), answers = list(structure(list(id = "lnr_ans_be5c4f0", 
+        option = "Yes, the Q-Q plot for the weight data looks similar to the Q-Q plots for the simulated data from the known normal distribution.", 
+        value = "Yes, the Q-Q plot for the weight data looks similar to the Q-Q plots for the simulated data from the known normal distribution.", 
+        label = structure("Yes, the Q-Q plot for the weight data looks similar to the Q-Q plots for the simulated data from the known normal distribution.", html = TRUE, class = c("html", 
+        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fa00367", 
+        option = "No, the Q-Q plot for the weight data differs from the Q-Q plots for the simulated data from the known normal distribution.", 
+        value = "No, the Q-Q plot for the weight data differs from the Q-Q plots for the simulated data from the known normal distribution.", 
+        label = structure("No, the Q-Q plot for the weight data differs from the Q-Q plots for the simulated data from the known normal distribution.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3c53505", 
-        option = "The report can proceed with inference on all countries. Since there were over 50,000 responses, the success-failure condition is satisfied.", 
-        value = "The report can proceed with inference on all countries. Since there were over 50,000 responses, the success-failure condition is satisfied.", 
-        label = structure("The report can proceed with inference on all countries. Since there were over 50,000 responses, the success-failure condition is satisfied.", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_af58744", 
-        option = "The report should not proceed with inference on either Ecuador or Australia, since the success-failure condition may not be satisfied for either country.", 
-        value = "The report should not proceed with inference on either Ecuador or Australia, since the success-failure condition may not be satisfied for either country.", 
-        label = structure("The report should not proceed with inference on either Ecuador or Australia, since the success-failure condition may not be satisfied for either country.", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
     "character")), message = NULL, post_message = NULL), ids = list(
-        answer = "question-assumptions-answer", question = "question-assumptions"), 
-    loading = structure("<strong>Loading:<\u002fstrong> \nIf you refer to Table 6 again in the WIN-Gallup report, you&#39;ll find that Australia has a sample proportion of 0.1 on a sample size of 1040, and that Ecuador has a sample proportion of 0.02 on 400 subjects. Let&#39;s suppose for this exercise that these point estimates are actually the truth. Then given the shape of their respective sampling distributions, do you think it is sensible to proceed with inference and report margin of errors, as the reports does?\n<br/><br/><br/>", html = TRUE, class = c("html", 
+        answer = "weights-question-answer", question = "weights-question"), 
+    loading = structure("<strong>Loading:<\u002fstrong> \nDoes the distribution of female weights seem to be approximately normal?\n<br/><br/><br/>", html = TRUE, class = c("html", 
     "character")), random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1548711809.77882, options = list()), class = c("learnr_radio", 
+    seed = 827611877.614613, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-on-your-own-1-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-on-your-own-1-code-editor`)), session)
-output$`tutorial-exercise-on-your-own-1-output` <- renderUI({
-  `tutorial-exercise-on-your-own-1-result`()
+`tutorial-exercise-prob-height-norm-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-prob-height-norm-code-editor`)), session)
+output$`tutorial-exercise-prob-height-norm-output` <- renderUI({
+  `tutorial-exercise-prob-height-norm-result`()
 })
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "on-your-own-1", code = "", opts = list(
-        label = "\"on-your-own-1\"", exercise = "TRUE"), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
-    test_cases = NULL, options = list(eval = FALSE, echo = TRUE, 
-        results = "markup", tidy = FALSE, tidy.opts = NULL, collapse = FALSE, 
-        prompt = FALSE, comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "13_InferenceCategoricalLab_cache/html/", 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "prob-height-norm", code = "", opts = list(label = "\"prob-height-norm\"", 
+        exercise = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = structure(c("grade_result(", 
+    "  pass_if(~ (abs(.result - (1 - pnorm(182, fhgtmean, fhgtsd))) < 0.001))", 
+    ")"), chunk_opts = list(label = "prob-height-norm-check")), 
+    solution = NULL, test_cases = NULL, options = list(eval = FALSE, 
+        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
+        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
+        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
+        cache = 0, cache.path = "08_NormalDistributionLab_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1170,35 +1027,39 @@ learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr:
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "on-your-own-1", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "on-your-own-1, exercise = TRUE", 
+        label = "prob-height-norm", exercise = TRUE, code = "", 
+        out.width.px = 624, out.height.px = 384, params.src = "prob-height-norm, exercise = TRUE", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-on-your-own-2-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-on-your-own-2-code-editor`)), session)
-output$`tutorial-exercise-on-your-own-2-output` <- renderUI({
-  `tutorial-exercise-on-your-own-2-result`()
+`tutorial-exercise-hgt-emp-probability-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-hgt-emp-probability-code-editor`)), session)
+output$`tutorial-exercise-hgt-emp-probability-output` <- renderUI({
+  `tutorial-exercise-hgt-emp-probability-result`()
 })
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "on-your-own-2", code = "", opts = list(
-        label = "\"on-your-own-2\"", exercise = "TRUE"), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
-    test_cases = NULL, options = list(eval = FALSE, echo = TRUE, 
-        results = "markup", tidy = FALSE, tidy.opts = NULL, collapse = FALSE, 
-        prompt = FALSE, comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "13_InferenceCategoricalLab_cache/html/", 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "hgt-emp-probability", code = "sum(fdims$hgt > 182) / length(fdims$hgt)", 
+        opts = list(label = "\"hgt-emp-probability\"", exercise = "TRUE"), 
+        engine = "r")), code_check = NULL, error_check = NULL, 
+    check = NULL, solution = NULL, test_cases = NULL, options = list(
+        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "08_NormalDistributionLab_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1209,35 +1070,82 @@ learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr:
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "on-your-own-2", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "on-your-own-2, exercise = TRUE", 
+        label = "hgt-emp-probability", exercise = TRUE, code = "sum(fdims$hgt > 182) / length(fdims$hgt)", 
+        out.width.px = 624, out.height.px = 384, params.src = "hgt-emp-probability, exercise = TRUE", 
+        fig.num = 0, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-wgt-norm-prob-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-wgt-norm-prob-code-editor`)), session)
+output$`tutorial-exercise-wgt-norm-prob-output` <- renderUI({
+  `tutorial-exercise-wgt-norm-prob-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "wgt-norm-prob", code = "", opts = list(label = "\"wgt-norm-prob\"", 
+        exercise = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, test_cases = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "08_NormalDistributionLab_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
+        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "wgt-norm-prob", exercise = TRUE, code = "", 
+        out.width.px = 624, out.height.px = 384, params.src = "wgt-norm-prob, exercise = TRUE", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-on-your-own-3-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-on-your-own-3-code-editor`)), session)
-output$`tutorial-exercise-on-your-own-3-output` <- renderUI({
-  `tutorial-exercise-on-your-own-3-result`()
+`tutorial-exercise-wgt-emp-prob-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-wgt-emp-prob-code-editor`)), session)
+output$`tutorial-exercise-wgt-emp-prob-output` <- renderUI({
+  `tutorial-exercise-wgt-emp-prob-result`()
 })
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
-"#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "on-your-own-3", code = "", opts = list(
-        label = "\"on-your-own-3\"", exercise = "TRUE"), engine = "r")), 
-    code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
-    test_cases = NULL, options = list(eval = FALSE, echo = TRUE, 
-        results = "markup", tidy = FALSE, tidy.opts = NULL, collapse = FALSE, 
-        prompt = FALSE, comment = NA, highlight = FALSE, size = "normalsize", 
+"#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
+"library(learnr)", "library(gradethis)", "", "load(\"www/bdims.RData\")", 
+"", "mdims <- bdims %>% filter(sex == 1)", "fdims <- bdims %>% filter(sex == 0)", 
+"", "mhgtmean <- mean(mdims$hgt)", "mhgtsd <- sd(mdims$hgt)", 
+"fhgtmean <- mean(fdims$hgt)", "fhgtsd <- sd(fdims$hgt)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "wgt-emp-prob", code = "", opts = list(label = "\"wgt-emp-prob\"", 
+        exercise = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, test_cases = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "13_InferenceCategoricalLab_cache/html/", 
+        cache.path = "08_NormalDistributionLab_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "13_InferenceCategoricalLab_files/figure-html/", 
+        fig.show = "asis", fig.align = "default", fig.path = "08_NormalDistributionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1248,8 +1156,8 @@ learnr:::store_exercise_cache(structure(list(global_setup = structure(c("#knitr:
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "on-your-own-3", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "on-your-own-3, exercise = TRUE", 
+        label = "wgt-emp-prob", exercise = TRUE, code = "", out.width.px = 624, 
+        out.height.px = 384, params.src = "wgt-emp-prob, exercise = TRUE", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r"), class = "tutorial_exercise"))
 </script>
  
@@ -1267,7 +1175,6 @@ learnrhash::encoder_logic(strip_output = TRUE)
 </script>
 <!--/html_preserve-->
 </div>
-</div>
 
 </div> <!-- topics -->
 
@@ -1278,7 +1185,7 @@ learnrhash::encoder_logic(strip_output = TRUE)
 
 <!-- begin doc-metadata -->
 <div id="doc-metadata">
-<h2 class="title toc-ignore" style="display:none;">Topic 13: Inference for Categorical Data</h2>
+<h2 class="title toc-ignore" style="display:none;">Topic 8: Normal Distribution Lab</h2>
 </div>
 <!-- end doc-metadata -->
 
