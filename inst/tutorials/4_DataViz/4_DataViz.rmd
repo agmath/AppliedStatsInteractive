@@ -6,6 +6,7 @@ tutorial:
 output: 
   learnr::tutorial:
     progressive: TRUE
+    allow_skip: TRUE
     
 runtime: shiny_prerendered
 ---
@@ -18,6 +19,8 @@ library(ggplot2)
 library(stringr)
 library(learnr)
 library(gradethis)
+library(skimr)
+library(ggmosaic)
 
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
 
@@ -35,9 +38,13 @@ Through this workbook you'll learn techniques for data visualization. You'll thi
 **Workbook Objectives:** After completing this workbook you should be able to:
 
 + Read a plot, describe any interesting features, and accurately convey the *story* being told by the plot.
-+ Identify and utilize the most appropriate plot types for your scenario by identifying the types of variables you are working with.
++ Identify and utilize the most appropriate plot types for your scenario by considering the *types* of variables you are working with.
 + Utilize color, size, and shape to show additional dimensions of data in a plot, but also recognize that adding more information to a plot negatively impacts our ability to read the graphic. 
-+ Use your newfound knowledge of data visualization to generate informative plots which uncover a compelling (and truthful) story about the relationships that exist between variables.
++ Use your new found knowledge of data visualization to generate informative plots which uncover a compelling (and truthful) story about the relationships that exist between variables.
+
+###
+
+Note, much of this notebook is inspired by [Chapter 3 of R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) by Hadley Wickham and Garrett Grolemund. This is a great freely-available resource. Please check it out.
 
 ###
 
@@ -59,17 +66,21 @@ In this workbook we explore `ggplot2` and think about graphics in terms of their
 **A Note on Plots:** Choosing an appropriate plot is extremely important in data visualization. Some plots don't make sense for certain variable types. For example, a scatterplot in the case of two-categorical predictors is quite a silly choice -- the only thing this plot tells us is that every combination of fuel type and engine brand exists in our dataset. We have no idea which combinations are most or least popular. 
 
 ```{r echo = FALSE, eval = TRUE, fig.width = 2.25, fig.height = 2.25}
-ggplot(data = data) + geom_point(mapping = aes(x = FuelType, y = EngineBrand), size = 2) + ylab("Engine Brand") + xlab("Fuel Type")
+data %>% 
+  ggplot() + 
+  geom_point(mapping = aes(x = FuelType, y = EngineBrand), size = 2) + 
+  labs(y = "Engine Brand", 
+       x = "Fuel Type")
 ```
 
 ###
 
 The following are some recommended [basic] plots types under certain scenarios:
 
-  + A single numerical variable: A histogram, boxplot, violinplot
+  + A single numerical variable: A histogram, boxplot, or density
   + A single categorical variable: A bar plot
-  + Numerical versus Numerical: a scatterplot, heatmap
-  + Numerical versus categorical: side-by-side boxplots, side-by-side violinplots, stacked or overlayed histograms
+  + Numerical versus Numerical: A scatterplot, heatmap
+  + Numerical versus categorical: side-by-side boxplots, stacked or overlayed densities, stacked or overlayed histograms
   + Categorical versus categorical: barplot with fill color, mosaic plot, heatmap
 
 ```{r need-for-spread, echo = FALSE}
@@ -108,7 +119,7 @@ Notice that when you execute a line of code which just calls the name of a data 
 
 ###
 
-**Some Basic Exploratory Functions:** It is useful to know more about your dataset when you first start working with data. R has a few exploratory functions which you should know about: `names(mpg)` prints out a list of names of your data frame's columns, `head(mpg)` will show you the first six rows of the `mpg` dataset, `dim(mpg)` will show you the number of rows and columns in the dataset, and `glimpse(mpg)` will show you information about how R is treating the columns (`int` and `num` denote numerical values while `chr` and `fct` represent character strings and categorical variables respectively). Use the code block below to try each of these functions and use the output to answer the following questions:
+**Some Basic Exploratory Functions:** It is useful to know more about your dataset when you first start working with data. R has a few exploratory functions which you should know about: `names(mpg)` prints out a list of names of your data frame's columns, `head(mpg)` will show you the first six rows of the `mpg` dataset, `dim(mpg)` will show you the number of rows and columns in the dataset, and `glimpse(mpg)` will show you information about how R is treating the columns (`int` and `num` denote numerical values while `chr` and `fct` represent character strings and categorical variables respectively). You might also try `skim(mpg)`, which comes from the `skimr` package. The `skim()` function provides lots of high-level information about your dataset from just a single function call. Use the code block below to try each of these functions and use the output to answer the following questions:
 
 ```{r explore-mpg-dataframe, exercise = TRUE}
 
@@ -143,6 +154,7 @@ quiz(
     answer("displ", correct = TRUE),
     answer("cyl", correct = TRUE),
     answer("trans"),
+    answer("year", correct = TRUE),
     answer("drv"),
     answer("cty", correct = TRUE),
     answer("hwy", correct = TRUE),
@@ -167,7 +179,9 @@ Were you able to obtain the information you were looking for? Be sure to ask a q
 
 The code below creates a plot of highway miles per gallon (`hwy`) against engine displacement `displ` (a measure of the size of an engine).
 ```{r echo=TRUE, eval=TRUE, message = FALSE, warning = FALSE, results = FALSE}
-ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+mpg %>% 
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
 Use the plot above to answer the following questions.
@@ -207,10 +221,14 @@ quiz(
 
 **A Note on Plotting Structure:** Using `ggplot()` to create plots in R is daunting at first, but with practice you will notice the structure is very consistent and convenient!
 
-+ Our plot consists of at least two pieces (subject and verb), `ggplot(data = mpg)` tells `ggplot` that the subject of our plot is the data contained in the `mpg` table, while the `geom_point()` verb tells `ggplot` that we want our data displayed as points (a scatterplot). The `aes()` inside of `geom_point()` tells `ggplot` some of the adjectives for each individual observation -- here, just the location!
-+ In general a simple plot takes the form below -- (where the objects in all caps are replaced by your data frame, desired geometry type, and aesthetic mappings).
++ Our plot consists of at least two pieces (subject and verb), `mpg %>% ggplot()` tells `ggplot` that the subject of our plot is the data contained in the `mpg` table, while the `geom_point()` verb tells `ggplot` that we want our data displayed as points (a scatterplot). The `aes()` inside of `geom_point()` tells `ggplot` some of the adjectives for each individual observation -- here, just the location!
++ In general a simple plot takes the form below -- (where the objects in "all caps" are replaced by your data frame, desired geometry type, and aesthetic mappings).
 
-<center> `ggplot(data = DATA) + geom_TYPE(mapping = aes(MAPPINGS))` </center>
+```{r sample-plot-code1, echo = TRUE, eval = FALSE}
+DATA %>%
+  ggplot() + 
+  geom_TYPE(mapping = aes(MAPPINGS))
+```
 
 ###
 
@@ -221,7 +239,9 @@ Use the code block below to make a scatterplot of average city miles per gallon 
 ```
 
 ```{r plot-displ-cty-solution}
-ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = cty))
+mpg %>%
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = cty))
 ```
 
 ```{r plot-displ-cty-check}
@@ -230,10 +250,20 @@ grade_code()
 
 ###
 
-Now make a scatterplot of average highway miles per gallon (`hwy`) exlained by number of cylinders (`cyl`).
+Now make a scatterplot of average highway miles per gallon (`hwy`) explained by number of cylinders (`cyl`).
 
 ```{r plot-hwy-cyl, exercise = TRUE}
 
+```
+
+```{r plot-hwy-cyl-solution}
+mpg %>%
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+```{r plot-hwy-cyl-check}
+grade_code()
 ```
 
 ###
@@ -245,7 +275,9 @@ Notice that this plot isn't very useful because the cylinders variable takes on 
 ```
 
 ```{r boxplot-hwy-cyl-solution}
-ggplot(data = mpg) + geom_boxplot(mapping = aes(x = cyl, y = hwy, group = cyl))
+mpg %>%
+  ggplot() + 
+  geom_boxplot(mapping = aes(x = cyl, y = hwy, group = cyl))
 ```
 
 ```{r boxplot-hwy-cyl-check}
@@ -287,7 +319,9 @@ Use the code block below to make a useful plot of `class` using `geom_bar()` wit
 ```
 
 ```{r barplot-class-drv-solution}
-ggplot(data = mpg) + geom_bar(mapping = aes(x = class, fill = drv))
+mpg %>%
+  ggplot() + 
+  geom_bar(mapping = aes(x = class, fill = drv))
 ```
 
 ```{r barplot-class-drv-check}
@@ -303,11 +337,15 @@ grade_code()
 Let's go back to our original plot of `hwy` versus `displ`. Maybe we want to color the points in the scatterplot according to the class of the vehicle. Add a third asthetic, `color = class` to the code below and re-run the plot.
 
 ```{r hwy-displ-class-plot, exercise = TRUE, exercise.eval = TRUE}
-ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy))
+mpg %>%
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
 ```{r hwy-displ-class-plot-solution}
-ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
+mpg %>% 
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
 
 ```{r hwy-displ-class-plot-check}
@@ -319,11 +357,16 @@ grade_code()
 There's a lot going on here, and it is hard to read. Try copying the above plotting command, but appending `facet_wrap(~ class, nrow = 2)` as a new layer to the plot -- notice that plot layers are added with the `+` symbol. Again, think about the resulting plot and how it compares to your previous colored plot.
 
 ```{r facet-wrapped-plot, exercise = TRUE}
-ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class))
+mpg %>% 
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
 
 ```{r facet-wrapped-plot-solution}
-ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy, color = class)) + facet_wrap(~ class, nrow = 2)
+mpg %>% 
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class)) + 
+  facet_wrap(~ class, nrow = 2)
 ```
 
 ```{r facet-wrapped-plot-check}
@@ -346,25 +389,73 @@ question_radio(
 
 ## Categorical Variables
 
-We've seen plots for categorical variables earlier in this workbook. Let's revisit a barplot with fill, similar to the one we constructed between `class` and `drv` earlier and check two alternative plots which give different insights. We'll explore the transmission variable (I've stored a more usable version of the `trans` variable as `trans2`) and the drive variable (`drv`).
+We've seen plots for categorical variables earlier in this workbook. Let's revisit a barplot with fill, similar to the one we constructed between `class` and `drv` earlier and check two alternative plots which give different insights. We'll explore the manual versus automatic transmissions.
 
-```{r engineer-trans2, echo = TRUE, eval = TRUE}
-mpg_with_trans <- mpg
-mpg_with_trans$trans2 <- str_sub(mpg_with_trans$trans, 1, -5)
+```{r transmission-table, echo = TRUE, eval = TRUE}
+mpg %>%
+  count(trans)
 ```
 
-We'll switch to using the `mpg_with_trans` data frame for the rest of this notebook.
+Unfortunately the `trans` variable contains more detailed transmission information than what we are after. Omitting the last four characters from levels in the `trans` column would leave us with the information we want. We can do that using the `str_sub()` function -- this function *subsets a string*. The first argument is the name of the column whose strings we want to subset, the second argument is the position of the first character we'd like to keep and the third argument is the position of the final character we'd like to keep. Using a negative number here is shorthand for "from the end". That is, we'd like to keep all of the characters starting with the first and stopping five characters from the end of the string.
+
+```{r engineer-trans2, echo = TRUE, eval = TRUE}
+mpg %>%
+  mutate(trans2 = str_sub(trans, 1, -5)) %>%
+  ggplot() + 
+  geom_bar(mapping = aes(x = trans2)) +
+  labs(x = "Transmission Type", 
+       y = "Count",
+       title = "Distribution of Transmission Types")
+```
 
 ###
 
-From the plot below we can tell that there are about twice as many vehicles in our dataset with automatic transmissions as there are with manual transmissions. The problem is that it is difficult to compare the proportions of drive types within each of these classes. We can fix this by using the position argument. Outside of `aes()` but still within `mapping()` add an argument `position = "fill"` to the pre-built plot -- you'll need to include a comma after `aes()` since commas separate arguments. Think about what is gained and lost in this new plot.
+From the plot above we can tell that there are about twice as many vehicles in our dataset with automatic transmissions as there are with manual transmissions. Create a similar plot below, which fills the bars by the `drv` variable.
+
+```{r trans2-fill-class, exercise = TRUE}
+
+```
+
+```{r trans2-fill-class-solution, exercise = TRUE}
+mpg %>%
+  mutate(trans2 = str_sub(trans, 1, -5)) %>%
+  ggplot() + 
+  geom_bar(mapping = aes(x = trans2, fill = drv)) +
+  labs(x = "Transmission Type", 
+       y = "Count",
+       title = "Distribution of Transmission Types")
+```
+
+```{r trans2-fill-class-check}
+grade_code()
+```
+
+<div id="trans2-fill-class-hint">
+Start with the code above but add a `fill` argument to the `mapping` in the `geom_bar()` plot layer. Note that we need to re-engineer the `trans2` variable since we never saved a new copy of the data frame with this variable in it. That is, we temporarily created that variable just for the plot above. 
+</div>
+
+###
+
+The problem now is the difficulty in comparing the proportions of drive types within each of these classes. We can fix this by using the position argument. Outside of `aes()` but still within `mapping()` add an argument `position = "fill"` to the pre-built plot -- you'll need to include a comma after `aes()` since commas separate arguments. Think about what is gained and lost in this new plot.
 
 ```{r trans-drv-plot, exercise = TRUE, exercise.eval = TRUE}
-ggplot(data = mpg_with_trans) + geom_bar(mapping = aes(x = trans2, fill = drv))
+mpg %>%
+  mutate(trans2 = str_sub(trans, 1, -5)) %>%
+  ggplot() + 
+  geom_bar(mapping = aes(x = trans2, fill = drv)) +
+  labs(x = "Transmission Type", 
+       y = "Count",
+       title = "Distribution of Transmission Types")
 ```
 
 ```{r trans-drv-plot-solution}
-ggplot(data = mpg_with_trans) + geom_bar(mapping = aes(x = trans2, fill = drv), position = "fill")
+mpg %>%
+  mutate(trans2 = str_sub(trans, 1, -5)) %>%
+  ggplot() + 
+  geom_bar(mapping = aes(x = trans2, fill = drv), position = "fill") +
+  labs(x = "Transmission Type", 
+       y = "Count",
+       title = "Distribution of Transmission Types")
 ```
 
 ```{r trans-drv-plot-check}
@@ -376,10 +467,16 @@ grade_code()
 Great! But the problem now is that we've lost the idea that there are more automatic vehicles than there are manual vehicles in this dataset. As a third option, we can consider a mosaic plot.
 
 ```{r echo = TRUE, eval = TRUE}
-mosaicplot(mpg_with_trans$trans2 ~ mpg_with_trans$drv, main = "Transmission and Drive Types")
+mpg %>%
+  mutate(trans2 = str_sub(trans, 1, -5)) %>%
+  ggplot() + 
+  geom_mosaic(mapping = aes(x = product(trans2), fill = drv)) +
+  labs(x = "Transmission Type", 
+       y = "Drive Type",
+       title = "")
 ```
 
-The advantage to the mosaic plot is that it contains all of the information from the two separate plots above, but it is all combined into one plot! We've built a visualization that manages to convey that the proportion of manual vehicles in our dataset outweighs the proportion of automatics, and we can also compare the distribution of drive types within each of these two classes. Notice, however, that the syntax for the mosaic plot is not like the `ggplot()` syntax we've been experimenting with throughout this workbook.
+The advantage to the mosaic plot is that it contains all of the information from the two separate plots above, but it is all combined into one plot! We've built a visualization that manages to convey that the proportion of manual vehicles in our dataset outweighs the proportion of automatics, and we can also compare the distribution of drive types within each of these two classes.
 
 ## Submit
 
@@ -390,13 +487,8 @@ learnrhash::encoder_logic(strip_output = TRUE)
 ```{r encode, echo=FALSE}
 learnrhash::encoder_ui(
   ui_before = shiny::div(
-    "If you have completed this tutorial and are happy with all of your",
-    "solutions, please click the button below to generate your hash and",
-    "submit it using the the corresponding Google Form from this week's",
-    "BrightSpace Announcement:",
-    shiny::tags$br()
-  ), 
-  ui_after = shiny::tags$a(href = "https://learn.snhu.edu", "BrightSpace")
+  "If your instructor is asking you to submit evidence of your completed notebook using a hash code, you may generate that code below. Use the clipboard icon to ensure that you are copying the entire hash."
+  )
 )
 ```
 
@@ -404,7 +496,7 @@ learnrhash::encoder_ui(
 
 ###
 
-Congratulations! You made it through a first discussion on data visualization. You should know, however, that this is just the "tip of the iceberg" -- there's much more to learn. I've already suggested the Data Visualization chapter of Hadley Wickham's *R for Data Science*, but he also has an entire book devoted to the `ggplot2` package in R -- check it out if you are interested in learning more!
+Congratulations! You made it through a first discussion on data visualization. You should know, however, that this is just the "tip of the iceberg" -- there's much more to learn. I've already suggested the Data Visualization chapter of Hadley Wickham's *R for Data Science*, but he also has an entire book devoted to the `ggplot2` package in R -- check it out if you are interested in learning more! Additionally, you might follow `#TidyTuesday` on Twitter to see (and maybe even participate in) a social community on data visualization. 
 
 ###
 
@@ -412,9 +504,16 @@ In this workbook you learned the following:
 
 + Variable types dictate the kinds of plots which can be used to create effective visuals. Always consider your variable types!
 + Plotting with `ggplot()` follows a *grammar of graphics* and layered plotting structure, with "`+`" separating each plot layer. The structure of a `ggplot` is as follows:
-<center> `ggplot(data = DATA) + geom_TYPE(mapping = aes(MAPPINGS))`</center>
+```{r sample-ggplot-code, echo = TRUE, eval = FALSE}
+data_frame_name %>% 
+  ggplot() + 
+  geom_TYPE(mapping = aes(MAPPINGS))
+```
+
+  + Note that the `MAPPINGS` you need are determined by the geometry `TYPE` you are using.
+
 + There are entire courses devoted to data visualization. You've had a crash course here but there is much more to be learned. Check out the two Wickham books, use the `ggplot2` [documentation](https://ggplot2.tidyverse.org/reference/), or check out [this cheatsheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf) for more inspiration!
 
 ###
 
-**A final note:** These interactive workbooks allow me to hide some of the setup requirements from you so that we can focus on the task at hand -- in this workbook, plotting. When you make the switch to using a standalone R instance you'll need to install and load libraries to expand R's functionality. You can do this with the `install.packages()` and `library()` functions. You would need the `ggplot2` or `tidyverse` libraries to run the code for this workbook in a local R session.
+**A final note:** These interactive workbooks allow me to hide some of the setup requirements from you so that we can focus on the task at hand -- in this workbook, plotting. When you make the switch to using a standalone R instance you'll need to install and load libraries to expand R's functionality. You can do this with the `install.packages()` and `library()` functions. You would need the `ggplot2` or `tidyverse` libraries as well as `skimr` and `ggmosaic` to run the code for this workbook in a local R session.

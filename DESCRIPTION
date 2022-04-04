@@ -12,11 +12,13 @@ Imports:
     ggplot2,
     dplyr,
     stringr,
-    tidyr
+    tidyr,
+    skimr,
+    ggmosaic
 Remotes:
     rstudio-education/gradethis,
     rstudio/learnr,
-    github::rundel/learnrhash
+    rundel/learnrhash
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
