@@ -4,6 +4,19 @@ This is an R package which deploys interactive notebooks to accompany an introdu
 
 You can install this package by running the following command in R (which requires the `devtools` package as a prereqisite): `remotes::install_github("agmath/AppliedStatsInteractive")`
 
+## Most-Recent Updates
+
+I've finally renamed the folers and files so that the topic notebooks appear in the appropriate order within the Tutorials pane.
+
+I've set the notebooks to allow skipping of questions. This should prevent the notebooks from forcing you to execute every code cell before moving from one section to the next.
+
+I've edited the instructions associated with generating the hash code for submission at the end of each notebook. These instructions are now more flexible -- suggesting that students "generate the hash code *if* their instructor is requesting they do so". Additionally, I've removed the institution-specific link which directs students to Southern New Hampshire University's BrightSpace instance.
+
+**Significant Change:** As of April 4, 2022 I've begun updating the notebooks to discuss use of the pipe (`%>%`) operator and more `dplyr` functionality. For example, the most recent update suggests using `diamonds %>% summarize(mean(cut))` rather than `mean(diamonds$cut)` to compute the mean of the `cut` column from the `diamonds` data frame. While this requires a bit more typing, it results in more flexible code and greater readability. 
+
+Prior to pushing these updates, I created a branch in this repository labeled *old*. If you prefer the notebooks as they were, without making use of (or mentioning) the pipe operator, you can install the package from that branch. You'll do so by running `remotes::install_github("agmath/AppliedStatsInteractive@old")`
+
+
 ## Grading Functionality
 
 I've updated the package to include functionality from Colin Rundel's `learnrhash` package. This allows students to generate a hash code, which encodes their completed notebook -- students can then paste this hash code into a web-form (such as Google Forms) and then the instructor can reproduce and assess the student's work using `learnrhash` and the student's hash code. See more about this functionality from the [`learnrhash` repo](https://github.com/rundel/learnrhash). Some users will need to install `learnrhash` manually in order for the notebooks to run -- you can do this with `remotes::install_github("rundel/learnrhash")`. I am working on a fix for this issue.
