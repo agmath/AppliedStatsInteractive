@@ -12,7 +12,7 @@ I've set the notebooks to allow skipping of questions. This should prevent the n
 
 I've edited the instructions associated with generating the hash code for submission at the end of each notebook. These instructions are now more flexible -- suggesting that students "generate the hash code *if* their instructor is requesting they do so". Additionally, I've removed the institution-specific link which directs students to Southern New Hampshire University's BrightSpace instance.
 
-**Significant Change:** As of April 4, 2022 I've begun updating the notebooks to discuss use of the pipe (`%>%`) operator and more `dplyr` functionality. For example, the most recent update suggests using `diamonds %>% summarize(mean(cut))` rather than `mean(diamonds$cut)` to compute the mean of the `cut` column from the `diamonds` data frame. While this requires a bit more typing, it results in more flexible code and greater readability. 
+**Significant Change:** As of April 4, 2022 I've begun updating the notebooks to discuss use of the pipe (`%>%`) operator and more `dplyr` functionality. For example, the most recent update suggests using `diamonds %>% summarize(avg_carat_wt = mean(carat))` rather than `mean(diamonds$carat)` to compute the mean of the `carat` column from the `diamonds` data frame. While this requires a bit more typing, it results in more flexible code and greater readability. 
 
 Prior to pushing these updates, I created a branch in this repository labeled *old*. If you prefer the notebooks as they were, without making use of (or mentioning) the pipe operator, you can install the package from that branch. You'll do so by running `remotes::install_github("agmath/AppliedStatsInteractive@old")`
 
