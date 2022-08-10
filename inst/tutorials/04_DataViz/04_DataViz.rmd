@@ -416,7 +416,7 @@ From the plot above we can tell that there are about twice as many vehicles in o
 
 ```
 
-```{r trans2-fill-class-solution, exercise = TRUE}
+```{r trans2-fill-class-solution}
 mpg %>%
   mutate(trans2 = str_sub(trans, 1, -5)) %>%
   ggplot() + 
