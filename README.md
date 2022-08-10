@@ -12,7 +12,7 @@ I've set the notebooks to allow skipping of questions. This should prevent the n
 
 I've edited the instructions associated with generating the hash code for submission at the end of each notebook. These instructions are now more flexible -- suggesting that students "generate the hash code *if* their instructor is requesting they do so". Additionally, I've removed the institution-specific link which directs students to Southern New Hampshire University's BrightSpace instance.
 
-**Significant Change:** As of April 4, 2022 I've begun updating the notebooks to discuss use of the pipe (`%>%`) operator and more `dplyr` functionality. For example, the most recent update suggests using `diamonds %>% summarize(mean(cut))` rather than `mean(diamonds$cut)` to compute the mean of the `cut` column from the `diamonds` data frame. While this requires a bit more typing, it results in more flexible code and greater readability. 
+**Significant Change:** As of April 4, 2022 I've begun updating the notebooks to discuss use of the pipe (`%>%`) operator and more `dplyr` functionality. For example, the most recent update suggests using `diamonds %>% summarize(avg_carat_wt = mean(carat))` rather than `mean(diamonds$carat)` to compute the mean of the `carat` column from the `diamonds` data frame. While this requires a bit more typing, it results in more flexible code and greater readability. 
 
 Prior to pushing these updates, I created a branch in this repository labeled *old*. If you prefer the notebooks as they were, without making use of (or mentioning) the pipe operator, you can install the package from that branch. You'll do so by running `remotes::install_github("agmath/AppliedStatsInteractive@old")`
 
@@ -23,7 +23,7 @@ I've updated the package to include functionality from Colin Rundel's `learnrhas
 
 ## Running Tutorials
 
-Once the package has been installed you can run the individual notebooks by navigating to the `Tutorials` tab in RStudio's top-right pane. You'll just need to click the *Start Tutorial?* button to render and work through the corresponding interactive notebook. If you get an error stating that `learnrhash` must be installed, you can install it manually using `remotes::install_github("rundel/learnrhash")` -- R will report an error saying that `learnrhash` is not available for your version of R if you allow R to try installing the package on its own. If you prefer to run the tutorials from a web browser rather than RStudio's Tutorials pane, you can access the tutorials using commands of the following structure: `learnr::run_tutorial(NOTEBOOK_NAME, package = "AppliedStatsInteractive")`
+Once the package has been installed you can run the individual notebooks by navigating to the `Tutorials` tab in RStudio's top-right pane. You'll just need to click the *Start Tutorial?* button to render and work through the corresponding interactive notebook. If you get an error stating that `learnrhash` must be installed, you can install it manually using `remotes::install_github("rundel/learnrhash")` -- once `learnrhash` is installed, hit the *StartTutorial?* buttton again. If you prefer to run the tutorials from a web browser rather than RStudio's Tutorials pane, you can access the tutorials using commands of the following structure: `learnr::run_tutorial(NOTEBOOK_NAME, package = "AppliedStatsInteractive")`
 
 The available notebooks are as follows:
 + 0_StartHere
