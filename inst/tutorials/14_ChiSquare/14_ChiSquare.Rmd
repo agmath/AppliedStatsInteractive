@@ -503,7 +503,7 @@ Use the code block below to compute the $p$-value associated with this test.
 #)
 
 grade_result(
-  pass_if(~ (abs(.result - (1 - pchisq(21.24924)))) < 0.001)
+  pass_if(~ (abs(.result - (1 - pchisq(21.24924, 3)))) < 0.001)
 )
 ```
 
