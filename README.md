@@ -6,6 +6,12 @@ You can install this package by running the following command in R (which requir
 
 ## Most-Recent Updates
 
+**Notebook Grading Update/Resources:** I've developed a few resources useful for grading students on these notebooks. You should be able to copy all of the files to your own Google Drive and use them for your classes. There are three files in this [Google Drive Folder](https://drive.google.com/drive/folders/1zj2yvJyRFgXmwaqWGkUkbIRXTwj3Jpip?usp=sharing), described as follows:
+
++ `Hash Code Submission Form` -- a Google Form for collecting student hash codes generated at the end of each notebook. 
++ `Hash Code Submission Form (Responses)` -- a Google Sheet collecting responses from the form above.
++ `grading_script.r` -- an R Script to automatically consume student hash codes from the Google Sheet above and build an `overall_grades` data frame, containing one row per student and calculated grades using weightings supplied by the user. Lines 5 - 29 provide instructions for using the grading script.
+
 I've finally renamed the folers and files so that the topic notebooks appear in the appropriate order within the Tutorials pane.
 
 I've set the notebooks to allow skipping of questions. This should prevent the notebooks from forcing you to execute every code cell before moving from one section to the next.
