@@ -2,7 +2,7 @@
  
 This is an R package which deploys interactive notebooks to accompany an introductory course in applied statistics. The notebooks follow the freely available [OpenIntro Statistics (4Ed)](http://www.openintro.org/os) textbook and supplementary resources. 
 
-You can install this package by running the following command in R (which requires the `devtools` package as a prereqisite): `remotes::install_github("agmath/AppliedStatsInteractive")`
+You can install this package by running the following command in R (which requires the `devtools` package as a prereqisite): `remotes::install_github("agmath/AppliedStatsInteractive")`. You can also simply *use* the tutorials by creating a free [Posit.cloud](https://posit.cloud/) account and copying [this workspace](https://posit.cloud/content/6230957) with the notebooks and required packages pre-loaded. Copying the Posit.cloud workspace is the way I have my students access these notebooks in my own classes. Once logged in, click on the `Tutorial` tab in the top-right pane of RStudio and then click the `Start Tutorial` button next to the notebook you'd like to run.
 
 ## Most-Recent Updates
 
