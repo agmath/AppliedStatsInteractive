@@ -240,9 +240,10 @@ ggplot(data = pop) + geom_point(mapping = aes(x = x, y = y), size = 2, color = "
 pop$samp <- sample(0:1, 100, prob = c(0.9,0.10), replace = TRUE)
 pop$samp <- as.factor(pop$samp)
 ggplot(data = pop) + 
-  geom_point(mapping = aes(x = x, y = y, color = samp), size = 2, alpha = 0.8, show_legend = FALSE) +
+  geom_point(mapping = aes(x = x, y = y, color = samp), size = 2, alpha = 0.8) +
   scale_color_manual(values = c("blue", "orange")) +
-  labs(title = "Simple Random Sample")
+  labs(title = "Simple Random Sample") +
+  theme(legend.position = "None")
 ```
 </center>
 
@@ -276,7 +277,7 @@ ggplot(data = pop) +
 
 ###
 
-There's lots more to learn about experimental design, but it is beyond the scope of our course. You should read pages 32 through 35 of [OpenIntro Statistics, 4Ed](https://www.openintro.org/book/os/) as a starting point.
+There's lots more to learn about experimental design, but it is beyond the scope of this notebook. You should read pages 32 through 35 of [OpenIntro Statistics, 4Ed](https://www.openintro.org/book/os/) as a starting point.
 
 ## Submit
 
