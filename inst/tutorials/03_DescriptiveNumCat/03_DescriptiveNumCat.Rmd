@@ -262,11 +262,21 @@ ggplot(data = diamonds) + geom_boxplot(mapping = aes(y = carat)) + geom_hline(yi
 In `R` we can easily compute the standard deviation with the function `sd()`, and IQR with the function `quantiles()` or `IQR()`, for our samples or for the entire dataset! Recall that our diamond samples are stored in a data frame called `samples`. The code block below is preset to compute the standard deviation and both the first and third quantiles for each cample. Note that in the `quantiles()` function the `0.25` identifies the 25th percentile ($Q1$) and the `0.75` identifies the 75th percentile ($Q3$). Add the necessary code to find the interquartile range for each of the samples.
 
 ```{r computeSdIqr, exercise = TRUE, exercise.eval = FALSE}
+print("Standard Deviations:")
 samples %>%
   summarize_all(sd)
 
+print("IQRs:")
 samples %>%
-  summarize_all(quantile, probs = c(0.25, 0.75))
+  summarize_all(IQR)
+
+print("Quartile I (25th Percentile):")
+samples %>%
+  summarize_all(quantile, probs = 0.25)
+
+print("Quartile II (75th Percentile):")
+samples %>%
+  summarize_all(quantile, probs = 0.75)
 ```
 
 ###
