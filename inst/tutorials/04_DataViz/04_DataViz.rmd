@@ -3,6 +3,7 @@ title: "Topic 4: Data Visualization and a Grammar of Graphics"
 tutorial:
   id: "DataViz.Topic4.AppliedStats"
   version: 1.0
+  description: "An introduction to data visualization in `ggplot2`, partially modeled after Chapter 3 for R for Data Science by Wickham and Grolemund."
 output: 
   learnr::tutorial:
     progressive: TRUE
