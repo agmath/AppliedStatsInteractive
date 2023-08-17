@@ -261,7 +261,7 @@ Use the code block below to add the line to your plot by adding a layer with `ge
 
 ```{r practical-predictor, echo = FALSE}
 question_radio(
-  "From the plot, doeas it seem that average beauty score is a *practically* significant predictor of overall instructor evaluation score?",
+  "From the plot, does it seem that average beauty score is a *practically* significant predictor of overall instructor evaluation score?",
   answer("No. We should not expect that the model using `bty_avg` to predict overall evaluation score will yield accurate pedictions of these scores.", correct = TRUE),
   answer("Yes. There is no difference between statistical and practical significance."),
   answer("Yes. Students give better scores to instructors who are better looking."),
