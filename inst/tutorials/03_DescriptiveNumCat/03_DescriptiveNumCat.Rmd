@@ -77,6 +77,25 @@ samples
 
 ```
 
+```{r meanSampleOne-hint-1}
+#manually add up the carat values in Sample One, 
+#and then divide by the total number of diamonds
+#in the sample.
+
+```
+
+```{r meanSampleOne-hint-2}
+#fill in the blanks
+(___ + ___ + ___ + ___ + ___ + ___ + ___ + ___)/___
+
+```
+
+```{r meanSampleOne-hint-3}
+#fill in the blanks
+(0.41 + 1.01 + 1.22 + 1.02 + 0.30 + 0.30 + 1.00 + 1.17)/8
+
+```
+
 ```{r meanSampleOne-check}
 grade_result(
   pass_if(~ (abs(.result - mean(samples$Sample_One)) < 0.005))
@@ -85,7 +104,7 @@ grade_result(
 
 ###
 
-In `R` we can easily compute the means and medians for our samples or for the entire dataset! Remember from our most recent workbook that the `$` operator can be used to access an entire column of a data frame. I've stored the samples in a data frame called *samples*. `R` includes a function `mean()` for computing the mean of a list of numbers and a function `median()` for computing the median. The following methods both compute the `mean()` of `Sample_Two`.
+In `R` we can easily compute the means and medians for our samples or for the entire data set! You might remember from our most recent workbook that the `$` operator can be used to access an entire column of a data frame. I've stored the samples in a data frame called *samples*. `R` includes a function `mean()` for computing the mean of a list of numbers and a function `median()` for computing the median. The following methods both compute the `mean()` of `Sample_Two`.
 
 ```{r example-mean-sampleTwo, echo = TRUE, eval = TRUE}
 mean(samples$Sample_Two)
@@ -101,6 +120,14 @@ While the second method involves more typing, it is much more readable. Getting 
 
 ```
 
+```{r meanSampThree-hint-1}
+#Start with the code below (I copied it from our 
+#earlier code chunk) and update it to compute 
+#the mean of Sample_Three
+samples %>%
+  summarize(avg_carat_wt = mean(Sample_Two))
+```
+
 ```{r meanSampThree-check}
 grade_result(
   pass_if(~ abs(.result - mean(samples$Sample_Three)) < 0.005)
@@ -113,6 +140,24 @@ grade_result(
 
 ```{r findMedians, exercise = TRUE}
 
+```
+
+```{r findMedians-hint-1}
+#Start with the copied code again, and update it
+#to compute the median instead of the mean.
+samples %>%
+  summarize(avg_carat_wt = mean(Sample_Two))
+```
+
+```{r findMedians-hint-2}
+#Power move! The summarize() function can compute 
+#multiple summary statistics at once. Update the 
+#code below to compute all three medians at once.
+samples %>%
+  summarize(
+    avg_carat_wt_samp1 = mean(Sample_One),
+    avg_carat_wt_samp2 = mean(Sample_Two),
+    avg_carat_wt_samp3 = mean(Sample_Three))
 ```
 
 ```{r meanVsMedian, echo = FALSE}
@@ -165,6 +210,22 @@ The following code block finds the mean and median for `Worker A` -- execute the
 mean(c(23, 24, 25, 26, 27))
 median(c(23, 24, 25, 26, 27))
 
+```
+
+```{r myData-hint-1}
+#Copy and paste the two existing lines and 
+#replace the data inside of c() to reflect 
+#Worker B in the last two lines.
+mean(c(23, 24, 25, 26, 27))
+median(c(23, 24, 25, 26, 27))
+```
+
+```{r myData-hint-2}
+#Fill in the blanks with Worker B's data.
+mean(c(23, 24, 25, 26, 27))
+median(c(23, 24, 25, 26, 27))
+mean(c(___, ___, ___, ___, ___))
+median(c(___, ___, ___, ___, ___))
 ```
 
 ```{r myData-solution}
@@ -294,9 +355,54 @@ Use the code blocks below to find the standard deviation and IQR for the doors v
 
 ```
 
-<div id="sdIqrCampaign-hint">
-**Hint:** You'll need to define the lists of values using the `c()` operator here. Your list of values can be dropped directly into the `sd()` or `IQR()` functions -- the use of the pipe is not necessary.
-</div>
+```{r sdIqrCampaign-hint-1}
+#Use the c() function when defining your 
+#door-knocking data.
+
+```
+
+```{r sdIqrCampaign-hint-2}
+#Remembering how to store values in 
+#variables will save some typing.
+
+```
+
+```{r sdIqrCampaign-hint-3}
+#Fill in the blanks
+worker_a <- c(___)
+worker_b <- c(___)
+
+```
+
+```{r sdIqrCampaign-hint-4}
+worker_a <- c(23, 24, 25, 26, 27)
+worker_b <- c(0, 15, 25, 35, 50)
+#Now use R functionality to compute 
+#the summary statistics
+
+```
+
+```{r sdIqrCampaign-hint-5}
+worker_a <- c(23, 24, 25, 26, 27)
+worker_b <- c(0, 15, 25, 35, 50)
+
+#Fill in the blanks
+sd(___)
+IQR(___)
+sd(___)
+IQR(___)
+```
+
+```{r sdIqrCampaign-solution}
+worker_a <- c(23, 24, 25, 26, 27)
+worker_b <- c(0, 15, 25, 35, 50)
+
+#Fill in the blanks
+sd(worker_a)
+IQR(worker_a)
+sd(worker_b)
+IQR(worker_b)
+```
 
 ## Summarizing Categorical (Qualitative, Factor) Data
   
