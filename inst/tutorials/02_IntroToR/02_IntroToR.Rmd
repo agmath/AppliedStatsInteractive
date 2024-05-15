@@ -95,7 +95,8 @@ You can (and will) use R to perform basic calculation tasks. You will not need t
 Use the code block below to experiment.
 ```{r simpleOperations, exercise = TRUE, exercise.eval = TRUE}
 
-#As you've seen, we can use R to add, subtract, multiply, and divide
+#As you've seen, we can use R to add, subtract,
+#multiply, and divide
 
 1 + 1  - (5*2) + (8/4) 
 ```
@@ -128,6 +129,24 @@ We can also piece together more complicated expressions in R by making use of pa
 
 ```
 
+```{r testStatEval-hint-1}
+#replace each blank with an appropriate 
+#value or expression
+(___)/(___)
+```
+
+```{r testStatEval-hint-2}
+#replace each blank with an appropriate 
+#value or expression
+(___ - ___)/(___/___)
+```
+
+```{r testStatEval-hint-3}
+#replace each blank with an appropriate 
+#value or expression
+(___ - ___)/(___/sqrt(___))
+```
+
 ```{r testStatEval-solution}
 (54 - 50)/(8/sqrt(20))
 ```
@@ -146,6 +165,18 @@ Add parentheses to the expression below so that it evaluates to `1`.
 
 8 - 6 / 2 + 5*3*4 - 12
 
+```
+
+```{r parensExercise-hint-1}
+#start by grouping the 8 - 6
+(8 - 6)/2 + 5*3*4 - 12
+```
+
+```{r parensExercise-hint-2}
+#notice (8 - 6)/2 is 1; can you add another set 
+#of parentheses to "zero-out" all but this first 
+#term?
+(8 - 6)/2 + 5*3*4 - 12
 ```
 
 ```{r parensExercise-solution}
@@ -185,6 +216,17 @@ x <- -22
 ```
 
 ```{r defineAndCompute, exercise = TRUE}
+
+```
+
+```{r defineAndCompute-hint-1}
+#x is already defined, start by defining y as -3
+
+```
+
+```{r defineAndCompute-hint-2}
+y <- -3
+#now compute x*y - y below
 
 ```
 
@@ -232,9 +274,15 @@ head(diamonds)
 
 ###
 
-We can call a column of a dataframe in several different ways. For example, `diamonds$cut`, `diamonds[ , "cut"]`, `diamonds[ , 3]`, and `diamonds %>% select(cut)` all access the `cut` column of the `diamonds` data frame but the first method returns a vector of values while the others return a data frame. The last option makes use of a special operator (`%>%`), called the *pipe*. We'll see that pipes make data manipulation really convenient. Alter the code below so that you access the `carat` column instead of the `cut`. Be sure to use the pipe.
+We can call a column of a dataframe in several different ways. For example, `diamonds$cut`, `diamonds[ , "cut"]`, `diamonds[ , 3]`, and `diamonds %>% select(cut)` all access the `cut` column of the `diamonds` data frame but the first method returns a vector of values while the others return a data frame. The last option makes use of a special operator (`%>%`), called the *pipe*. We'll see that pipes make data manipulation really convenient. Explore each method of selecting a column in the code cell below. After you are done exploring and comparing the results, alter the original code so that you access the `carat` column instead of the `cut` and return the result as a data frame. Be sure to use the pipe.
 
 ```{r columnAccess, exercise = TRUE, exercise.eval = TRUE}
+diamonds %>%
+  select(cut)
+```
+
+```{r columnAccess-hint-1}
+#replace cut with carat inside of select()
 diamonds %>%
   select(cut)
 ```
