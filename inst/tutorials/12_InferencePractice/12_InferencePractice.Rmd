@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "In this notebook, we are introduced to a decision tree document for determining how to compute the standard error component of a confidence interval or test statistic. We are also provided with a general framework for approaching hypothesis testing or confidence interval applications. We then practice with a pair of scaffolded examples."
 ---
 
 ```{r setup, include=FALSE}

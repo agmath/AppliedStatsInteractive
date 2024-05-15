@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "This notebook provides and introduction to the Central Limit Theorem. We'll see the Central Limit Theorem in action through several simulations which construct the sampling distribution. We'll have opportunities to change parameters of the population distribution and also to change the size of the samples being drawn. The goal is to discover connections between population parameters, sample size, and the resulting sampling distribution."
 ---
 
 ```{r setup, include=FALSE}

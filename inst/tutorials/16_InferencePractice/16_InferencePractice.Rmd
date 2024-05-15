@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "No new content is introduced in this notebook. The notebook simply contains twelve practice problems involving inference on mean(s), inference on proportion(s), or estimating sample sizes. If you are using this notebook on a free-tiered Posit.Cloud account, stopping and restarting this notebook results in a crash due to RAM overflow. I am working on a fix."
 ---
 
 ```{r setup, include=FALSE}

@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "In this lab, we learn how to simulate data and compare simulated data to observed data in order to informally test a hypothesis. This notebook is built off of a Lab constructed by Andrew Bray and Mine Cetinkaya-Rundel for OpenIntro.org."
 ---
 
 ```{r setup, include=FALSE}

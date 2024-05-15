@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "This notebook introduces Chi-Squared tests for Goodness of Fit and test for Independence. Data used in this notebook is simulated, but is based on the US Census Bureau, The Sentencing Project, and the 2019 Behavioral Risk Factor Surveillance System. Links are available within the notebook."
 ---
 
 ```{r setup, include=FALSE}

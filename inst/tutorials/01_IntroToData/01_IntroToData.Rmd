@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "An introduction to data, variable types (numeric and categorical variables), and strategies for data collection."
 ---
 
 ```{r global-options, include=FALSE}

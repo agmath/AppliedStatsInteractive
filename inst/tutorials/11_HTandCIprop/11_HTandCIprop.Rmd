@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "This notebook formally introduces confidence intervals and hypothesis tests as tools for statistical inference. We work through two motivating problems -- one confidence interval and one hypothesis test."
 ---
 
 ```{r setup, include=FALSE}

@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "This notebook introduces Analysis of Variance (ANOVA) for comparisons of multiple group means."
 ---
 
 ```{r setup, include=FALSE}

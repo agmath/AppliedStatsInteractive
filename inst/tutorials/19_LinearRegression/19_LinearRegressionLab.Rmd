@@ -1,5 +1,5 @@
 ---
-title: "Topic 19: Linear Regression"
+title: "Topic 19: Linear Regression Lab"
 tutorial:
   id: "LinearRegressionLab.Topic19.AppliedStats"
   version: 1.0
@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "This lab notebook introduces simple and multiple linear regression. Data used is from a study done on student course evaluations at the University of Texas at Austin. Similar to other labs in this series, it has been adapted from a lab written by Andrew Bray and Mine Cetinkaya-Rundel for OpenIntro.org."
 ---
 
 ```{r setup, include=FALSE}

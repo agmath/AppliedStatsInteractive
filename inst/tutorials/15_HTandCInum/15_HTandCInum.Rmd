@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "This notebook introduces techniques for inference on a single population mean or comparison between two population means. The t-distributions are introduced, and some historical context is provided along with justification for when and why a t-distribution should be utilized in place of a normal distribution."
 ---
 
 ```{r setup, include=FALSE}

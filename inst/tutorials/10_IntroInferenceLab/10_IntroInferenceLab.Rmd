@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "In this introduction to inference lab, we'll dig deeper into the Central Limit Theorem. We'll collect samples from a population and see how the sample statistics collected may allow us to estimate population parameters. We'll see connections between sample size and level of uncertainty, and we'll introduce the notion of the Confidence Interval."
 ---
 
 ```{r setup, include=FALSE}

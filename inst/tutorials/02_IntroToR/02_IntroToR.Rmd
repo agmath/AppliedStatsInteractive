@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "A first introduction to the R language for data analysis. Learn about calculation, variables, scalars, vectors, data frames and how to work with each in R."
 ---
 
 ```{r setup, include=FALSE}

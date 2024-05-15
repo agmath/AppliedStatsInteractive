@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "We build off of what we learned in the Topic 1 and Topic 2 notebooks and learn how to use R to analyse numeric and categorical data. We discuss and implement measures of central tendancy and spread (including inquiry into robustness in the presence of outliers) for numerical data, and measures of frequency for cateogical data."
 ---
 
 ```{r setup, include=FALSE}

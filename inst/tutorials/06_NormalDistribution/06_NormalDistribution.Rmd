@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "An introduction to working with normally distributed data. This notebook covers the calculation of probabilities and percentiles. It also introduces the notion of the z-score."
 ---
 
 ```{r setup, include=FALSE}

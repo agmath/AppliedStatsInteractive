@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "In this lab, we examine height and weight data. We explore what is meant by the near-normality assumption, a variety of methods for assessing near-normality, and what the consequences can be when this assumption is violated."
 ---
 
 ```{r setup, include=FALSE}

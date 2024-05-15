@@ -1,5 +1,5 @@
 ---
-title: "Topic 13: Inference for Categorical Data"
+title: "Topic 13: Inference for Categorical Data Lab"
 tutorial:
   id: "InferenceCategoricalLab.Topic13.AppliedStats"
   version: 1.0
@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "In this lab, we work with survey data from a 2012 WIN-Gallup poll on the global rise of atheism. The `inference()` function from the `{statsr}` package is introduced."
 ---
 
 ```{r setup, include=FALSE}

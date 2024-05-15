@@ -9,6 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
+description: "An introduction to discrete probability, including basic probability through counting outcomes, and calculating probabilities associated with outcomes of binomial experiments using the binomial distribution."
 ---
 
 ```{r setup, include=FALSE}

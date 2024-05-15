@@ -1,5 +1,5 @@
 ---
-title: "Topic 17: Inference for Numerical Data"
+title: "Topic 17: Inference for Numerical Data Lab"
 tutorial:
   id: "InferenceNumericalLab.Topic17.AppliedStats"
   version: 1.0
@@ -8,6 +8,7 @@ output:
     progressive: TRUE
     
 runtime: shiny_prerendered
+description: "This lab looks at data on 1,000 pregnancies in North Carolina from 2004. This lab was also adapted from a lab written by Andrew Bray and Mine Cetinkaya-Rundel for OpenIntro.org. The notebook brings back the `inference()` function from the `{statsr}` package that was first introduced in the Topic 13 notebook."
 ---
 
 ```{r setup, include=FALSE}

@@ -8,6 +8,7 @@ output:
     progressive: TRUE
     
 runtime: shiny_prerendered
+description: "Start here if you are an instructor or self-study student trying to decide whether these notebooks are right for you."
 ---
 
 ```{r setup, include=FALSE}
