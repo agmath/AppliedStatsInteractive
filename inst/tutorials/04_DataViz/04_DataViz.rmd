@@ -9,7 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
-description: "An introduction to the grammar of graphics, plotting strategies, and using ggplot. This notebook loosely follows Chapter 3 of Wikham and Grolemund's R for Data Science text."
+description: "An introduction to the grammar of graphics, plotting strategies, and using ggplot. This notebook loosely follows Chapter 3 of Wickham and Grolemund's R for Data Science text."
 ---
 
 ```{r setup, include=FALSE}
@@ -120,10 +120,51 @@ Notice that when you execute a line of code which just calls the name of a data 
 
 ###
 
-**Some Basic Exploratory Functions:** It is useful to know more about your dataset when you first start working with data. R has a few exploratory functions which you should know about: `names(mpg)` prints out a list of names of your data frame's columns, `head(mpg)` will show you the first six rows of the `mpg` dataset, `dim(mpg)` will show you the number of rows and columns in the dataset, and `glimpse(mpg)` will show you information about how R is treating the columns (`int` and `num` denote numerical values while `chr` and `fct` represent character strings and categorical variables respectively). You might also try `skim(mpg)`, which comes from the `skimr` package. The `skim()` function provides lots of high-level information about your dataset from just a single function call. Use the code block below to try each of these functions and use the output to answer the following questions:
+**Some Basic Exploratory Functions:** It is useful to know more about your dataset when you first start working with data. R has a few exploratory functions which you should know about: `mpg %>% names()` prints out a list of names of your data frame's columns, `mpg %>% head()` will show you the first six rows of the `mpg` dataset, `mpg %>% dim()` will show you the number of rows and columns in the dataset, and `mpg %>% glimpse()` will show you information about how R is treating the columns (`int` and `num` denote numerical values while `chr` and `fct` represent character strings and categorical variables respectively). You might also try `mpg %>% skim()`, which comes from the `{skimr}` package. The `skim()` function provides lots of high-level information about your dataset from just a single function call. Use the code block below to try each of these functions and use the output to answer the following questions:
 
 ```{r explore-mpg-dataframe, exercise = TRUE}
 
+```
+
+```{r explore-mpg-dataframe-hint-1}
+#Try some of the functions listed above.
+```
+
+```{r explore-mpg-dataframe-hint-2}
+#Fill in the blanks with the name of 
+#the data frame.
+
+___ %>%
+  names()
+
+___ %>%
+  head()
+
+___ %>%
+  dim()
+
+___ %>%
+  glimpse()
+  
+___ %>% 
+  skim()
+```
+
+```{r explore-mpg-dataframe-hint-3}
+mpg %>%
+  names()
+
+mpg %>%
+  head()
+
+mpg %>%
+  dim()
+
+mpg %>%
+  glimpse()
+  
+mpg %>% 
+  skim()
 ```
 
 ```{r mpg-basic-description, echo = FALSE}
@@ -172,6 +213,12 @@ The `diamonds` data frame is also available to you. See if you can get your basi
 
 ```{r explore-diamonds, exercise = TRUE}
 
+```
+
+```{r explore-diamonds-hint-1}
+#Use some of the same functions you used 
+#to explore the mpg data frame in the 
+#previous code chunk.
 ```
 
 Were you able to obtain the information you were looking for? Be sure to ask a question if not!
@@ -239,6 +286,28 @@ Use the code block below to make a scatterplot of average city miles per gallon 
 
 ```
 
+```{r plot-displ-cty-hint-1}
+#Start by copying and pasting the code from 
+#the plot at the start of this subsection.
+
+```
+
+```{r plot-displ-cty-hint-2}
+mpg %>% 
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+#What needs to be changed here?
+```
+
+```{r plot-displ-cty-hint-3}
+#Swap out the hwy variable for the cty 
+#variable and generate the new plot.
+mpg %>% 
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
 ```{r plot-displ-cty-solution}
 mpg %>%
   ggplot() + 
@@ -255,6 +324,28 @@ Now make a scatterplot of average highway miles per gallon (`hwy`) explained by 
 
 ```{r plot-hwy-cyl, exercise = TRUE}
 
+```
+
+```{r plot-hwy-cyl-hint-1}
+#Again, start by copying and pasting an 
+#earlier plot.
+
+```
+
+```{r plot-hwy-cyl-hint-2}
+mpg %>%
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = cty))
+
+#What needs to be changed now?
+```
+
+```{r plot-hwy-cyl-hint-3}
+#Put cylinders (cyl) on the x-axis and 
+#highway gas mileage (hwy) on the y-axis.
+mpg %>%
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = cty))
 ```
 
 ```{r plot-hwy-cyl-solution}
@@ -275,10 +366,66 @@ Notice that this plot isn't very useful because the cylinders variable takes on 
 
 ```
 
+```{r boxplot-hwy-cyl-hint-1}
+#Continue copying/pasting an earlier plot 
+#as a starting point for now. You'll be 
+#able to construct your own plots from 
+#scratch with practice.
+
+```
+
+```{r boxplot-hwy-cyl-hint-2}
+mpg %>%
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+#What needs to be changed here?
+```
+
+```{r boxplot-hwy-cyl-hint-3}
+#Swap geom_point() out with geom_boxplot()
+#and generate the plot.
+mpg %>%
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+```{r boxplot-hwy-cyl-hint-4}
+#Can you decode the warning message?
+mpg %>%
+  ggplot() + 
+  geom_boxplot(mapping = aes(x = displ, y = hwy))
+```
+
+```{r boxplot-hwy-cyl-hint-5}
+#R is considering both the x- and y-variables
+#to be numeric. The message suggests adding a 
+#group parameter inside of the aes() function.
+#Which variable should be mapped to group?
+mpg %>%
+  ggplot() + 
+  geom_boxplot(mapping = aes(x = displ, y = hwy))
+```
+
+```{r boxplot-hwy-cyl-hint-6}
+#We want a boxplot for each cylinder "group". 
+#Fill in the blank below to map cyl to group
+#and then generate the plot.
+mpg %>%
+  ggplot() + 
+  geom_boxplot(mapping = aes(
+    x = displ, 
+    y = hwy,
+    group = ___))
+```
+
 ```{r boxplot-hwy-cyl-solution}
 mpg %>%
   ggplot() + 
-  geom_boxplot(mapping = aes(x = cyl, y = hwy, group = cyl))
+  geom_boxplot(mapping = aes(
+    x = cyl, 
+    y = hwy, 
+    group = cyl))
 ```
 
 ```{r boxplot-hwy-cyl-check}
@@ -319,6 +466,40 @@ Use the code block below to make a useful plot of `class` using `geom_bar()` wit
 
 ```
 
+```{r barplot-class-drv-hint-1}
+#Starting from an earlier plot can take you 
+#a long way!
+
+```
+
+```{r barplot-class-drv-hint-2}
+#A relatively simple plot is the best starting point...
+
+```
+
+```{r barplot-class-drv-hint-3}
+mpg %>%
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+#Several things need to be changed now.
+#What are they?
+```
+
+```{r barplot-class-drv-hint-4}
+#1) Change the geometry layer to geom_bar()
+#2) Map the class variable to x
+#3) The heights of the bars in a barplot are 
+#determined by the frequencies (counts) of 
+#observations in each category. We can't 
+#prescribe a y value -- remove it.
+#4) Map the drive variable (drv) to the fill 
+#parameter.
+mpg %>%
+  ggplot() + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
 ```{r barplot-class-drv-solution}
 mpg %>%
   ggplot() + 
@@ -343,10 +524,29 @@ mpg %>%
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
+```{r hwy-displ-class-plot-hint-1}
+#Add color as a new aesthetic and map the 
+#class variable to it.
+```
+
+```{r hwy-displ-class-plot-hint-2}
+#Fill in the blank to map the class variable 
+#to the color aesthetic.
+mpg %>% 
+  ggplot() + 
+  geom_point(mapping = aes(
+    x = displ, 
+    y = hwy, 
+    color = ___))
+```
+
 ```{r hwy-displ-class-plot-solution}
 mpg %>% 
   ggplot() + 
-  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+  geom_point(mapping = aes(
+    x = displ, 
+    y = hwy, 
+    color = class))
 ```
 
 ```{r hwy-displ-class-plot-check}
@@ -360,13 +560,37 @@ There's a lot going on here, and it is hard to read. Try copying the above plott
 ```{r facet-wrapped-plot, exercise = TRUE}
 mpg %>% 
   ggplot() + 
-  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+  geom_point(mapping = aes(
+    x = displ, 
+    y = hwy, 
+    color = class))
+```
+
+```{r facet-wrapped-plot-hint-1}
+#You add new layers to ggplots with the 
+#plus (+) sign.
+```
+
+```{r facet-wrapped-plot-hint-2}
+#Fill in the blank with the facet_wrap() 
+#layer.
+mpg %>% 
+  ggplot() + 
+  geom_point(mapping = aes(
+    x = displ, 
+    y = hwy, 
+    color = class)) + 
+  ___
+
 ```
 
 ```{r facet-wrapped-plot-solution}
 mpg %>% 
   ggplot() + 
-  geom_point(mapping = aes(x = displ, y = hwy, color = class)) + 
+  geom_point(mapping = aes(
+    x = displ, 
+    y = hwy, 
+    color = class)) + 
   facet_wrap(~ class, nrow = 2)
 ```
 
@@ -397,7 +621,9 @@ mpg %>%
   count(trans)
 ```
 
-Unfortunately the `trans` variable contains more detailed transmission information than what we are after. Omitting the last four characters from levels in the `trans` column would leave us with the information we want. We can do that using the `str_sub()` function -- this function *subsets a string*. The first argument is the name of the column whose strings we want to subset, the second argument is the position of the first character we'd like to keep and the third argument is the position of the final character we'd like to keep. Using a negative number here is shorthand for "from the end". That is, we'd like to keep all of the characters starting with the first and stopping five characters from the end of the string.
+Unfortunately the `trans` variable contains more detailed transmission information than what we are after. Omitting the last four characters from levels in the `trans` column would leave us with the information we want. While this sort of data wrangling is beyond the scope of these notebooks (and you won't be asked to do it on your own), I'll still show you how we can remove those last four characters below.
+
+We can achieve our objective using the `str_sub()` function -- this function *subsets a string*. The first argument is the name of the column whose strings we want to subset, the second argument is the position of the first character we'd like to keep and the third argument is the position of the final character we'd like to keep. Using a negative number here is shorthand for "from the end". That is, we'd like to keep all of the characters starting with the first and stopping five characters from the end of the string.
 
 ```{r engineer-trans2, echo = TRUE, eval = TRUE}
 mpg %>%
@@ -417,6 +643,39 @@ From the plot above we can tell that there are about twice as many vehicles in o
 
 ```
 
+```{r trans2-fill-class-hint-1}
+#Copy and paste the plotting code above and 
+#use it as a starting point.
+
+```
+
+```{r trans2-fill-class-hint-2}
+mpg %>%
+  mutate(trans2 = str_sub(trans, 1, -5)) %>%
+  ggplot() + 
+  geom_bar(mapping = aes(x = trans2)) +
+  labs(x = "Transmission Type", 
+       y = "Count",
+       title = "Distribution of Transmission Types")
+
+#Do you remember how to add a fill aesthetic?
+```
+
+```{r trans2-fill-class-hint-3}
+#Fill in the blank to map the drive variable 
+#(drv) to the fill aesthetic.
+mpg %>%
+  mutate(trans2 = str_sub(trans, 1, -5)) %>%
+  ggplot() + 
+  geom_bar(mapping = aes(
+    x = trans2,
+    fill = ___)) +
+  labs(x = "Transmission Type", 
+       y = "Count",
+       title = "Distribution of Transmission Types")
+
+```
+
 ```{r trans2-fill-class-solution}
 mpg %>%
   mutate(trans2 = str_sub(trans, 1, -5)) %>%
@@ -431,10 +690,6 @@ mpg %>%
 grade_code()
 ```
 
-<div id="trans2-fill-class-hint">
-Start with the code above but add a `fill` argument to the `mapping` in the `geom_bar()` plot layer. Note that we need to re-engineer the `trans2` variable since we never saved a new copy of the data frame with this variable in it. That is, we temporarily created that variable just for the plot above. 
-</div>
-
 ###
 
 The problem now is the difficulty in comparing the proportions of drive types within each of these classes. We can fix this by using the position argument. Outside of `aes()` but still within `mapping()` add an argument `position = "fill"` to the pre-built plot -- you'll need to include a comma after `aes()` since commas separate arguments. Think about what is gained and lost in this new plot.
@@ -443,7 +698,30 @@ The problem now is the difficulty in comparing the proportions of drive types wi
 mpg %>%
   mutate(trans2 = str_sub(trans, 1, -5)) %>%
   ggplot() + 
-  geom_bar(mapping = aes(x = trans2, fill = drv)) +
+  geom_bar(mapping = aes(
+    x = trans2, 
+    fill = drv)) +
+  labs(x = "Transmission Type", 
+       y = "Count",
+       title = "Distribution of Transmission Types")
+```
+
+```{r trans-drv-plot-hint-1}
+#Since we aren't mapping a column of our 
+#data set to the position parameter, we add 
+#it outside of the aesthetics -- the aes() function.
+
+```
+
+```{r trans-drv-plot-hint-2}
+#Fill in the blank to set the position to "fill"
+mpg %>%
+  mutate(trans2 = str_sub(trans, 1, -5)) %>%
+  ggplot() + 
+  geom_bar(mapping = aes(
+    x = trans2, 
+    fill = drv),
+    position = ___) +
   labs(x = "Transmission Type", 
        y = "Count",
        title = "Distribution of Transmission Types")
@@ -453,7 +731,10 @@ mpg %>%
 mpg %>%
   mutate(trans2 = str_sub(trans, 1, -5)) %>%
   ggplot() + 
-  geom_bar(mapping = aes(x = trans2, fill = drv), position = "fill") +
+  geom_bar(mapping = aes(
+    x = trans2, 
+    fill = drv), 
+    position = "fill") +
   labs(x = "Transmission Type", 
        y = "Count",
        title = "Distribution of Transmission Types")
@@ -471,13 +752,15 @@ Great! But the problem now is that we've lost the idea that there are more autom
 mpg %>%
   mutate(trans2 = str_sub(trans, 1, -5)) %>%
   ggplot() + 
-  geom_mosaic(mapping = aes(x = product(trans2), fill = drv)) +
+  geom_mosaic(mapping = aes(
+    x = product(trans2), 
+    fill = drv)) +
   labs(x = "Transmission Type", 
        y = "Drive Type",
        title = "")
 ```
 
-The advantage to the mosaic plot is that it contains all of the information from the two separate plots above, but it is all combined into one plot! We've built a visualization that manages to convey that the proportion of manual vehicles in our dataset outweighs the proportion of automatics, and we can also compare the distribution of drive types within each of these two classes.
+The advantage to the mosaic plot is that it contains all of the information from the two separate plots above, but it is all combined into one plot! We've built a visualization that manages to convey that the proportion of manual vehicles in our data set outweighs the proportion of automatics, and we can also compare the distribution of drive types within each of these two classes.
 
 ## Submit
 
@@ -517,4 +800,4 @@ data_frame_name %>%
 
 ###
 
-**A final note:** These interactive workbooks allow me to hide some of the setup requirements from you so that we can focus on the task at hand -- in this workbook, plotting. When you make the switch to using a standalone R instance you'll need to install and load libraries to expand R's functionality. You can do this with the `install.packages()` and `library()` functions. You would need the `ggplot2` or `tidyverse` libraries as well as `skimr` and `ggmosaic` to run the code for this workbook in a local R session.
+**A final note:** These interactive workbooks allow me to hide some of the setup requirements from you so that we can focus on the task at hand -- in this workbook, plotting. When you make the switch to using a standalone R instance you'll need to install and load libraries to expand R's functionality. You can do this with the `install.packages()` and `library()` functions. You would need the `{tidyverse}` as well as `{skimr}` and `{ggmosaic}` to run the code for this workbook in a local R session.
