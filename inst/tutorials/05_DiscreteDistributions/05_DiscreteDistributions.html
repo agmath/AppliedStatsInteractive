@@ -247,6 +247,25 @@ data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="pAandB-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use the probabilities you identified above.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pAandB-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use the probabilities you identified above.
+#The flip of a coin and roll of a die are 
+#independent events.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pAandB-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Since the events are independent, we can 
+#multiply the probabilities of the individual 
+#outcomes together.</code></pre>
+</div>
 </div>
 <div id="section-section-6" class="section level3">
 <h3></h3>
@@ -375,6 +394,48 @@ data-lines="0" data-pipe="|&gt;">
 <pre><code>[1] 0.1640625</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="chem-quiz-binom-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The arguments to dbinom() are, in-order:
+#####number of successful outcomes
+#####total number of trials
+#####probability of a successful outcome on one trial</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chem-quiz-binom-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#You are interested in two successful outcomes,
+#so the first argument doesn&#39;t need changing. 
+#The other two will need to be changed though.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chem-quiz-binom-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#For the second argument, how many questions
+#are on the quiz?
+dbinom(2, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chem-quiz-binom-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#For the third argument, what is the probability 
+#of guessing correct on a single question?
+dbinom(2, 4, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chem-quiz-binom-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Since each question has five possible choices,
+#one of which is correct, the probability of 
+#a correct response one one question is 0.2
+dbinom(2, 4, 0.2)</code></pre>
+</div>
 </div>
 <div id="section-section-10" class="section level3">
 <h3></h3>
@@ -400,6 +461,37 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ol>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex1-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#If we had 100 randomly chosen students, how 
+#many might you expect failed to hand in 
+#at least one assignment?
+#How did you know that? What, mathematically, 
+#did you do?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex1-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We might expect about 34 students our of 
+#this random sample to have failed to hand 
+#in at least one assignment. 
+#This is because 34% of 100 is 34. The math
+#you likely did in your head was 100*0.34.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex1-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The 0.34 you used in your calculation is the 
+#probability of a single, randomly selected 
+#student having failed to hand in at least 
+#one assignment</code></pre>
+</div>
+<ol start="2" style="list-style-type: decimal">
 <li>Find the probability that exactly 7 of the 18 students have failed
 to hand in at least one assignment.
 <div class="tutorial-exercise" data-label="binom-assignments-ex2"
@@ -407,6 +499,84 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ol>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex2-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We don&#39;t know exactly which of the 18 students
+#are failing to hand in at least one 
+#assignment here. We&#39;ll need a special 
+#function to account for the different 
+#combinations of students.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex2-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Which function is more appropriate?
+### dbinom() or pbinom()?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex2-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We&#39;ll use dbinom() since we want the
+#probability of **exactly** two students 
+#failing to hand in an assignment.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex2-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks to calculate the desired 
+#probability
+dbinom(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex2-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The first argument is the number of successes. 
+#If a **success** is a student having failed 
+#to hand in at least one assignment, how many 
+#successes are you interested in?
+
+dbinom(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex2-hint-6" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We wanted exactly seven students to have failed 
+#to hand in at least one assignment. Now, the 
+#second argument is the total number of trials. 
+#How many trials are being &quot;run&quot; here?
+
+dbinom(7, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex2-hint-7" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#There are 18 students total in our random sample,
+#so there are 18 trials.
+#The final argument is the probability of a 
+#&quot;successful&quot; outcome. We labeled a &quot;success&quot;
+#as a student failing to hand in at least one
+#assignment. What is the probability of failing
+#to hand in at least one assignment for a 
+#single student?
+
+dbinom(7, 18, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex2-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>dbinom(7, 18, 0.34)</code></pre>
+</div>
+<ol start="3" style="list-style-type: decimal">
 <li>Find the probability that at most 9 of the 18 students have failed
 to hand in at least one assignment.
 <div class="tutorial-exercise" data-label="binom-assignments-ex3"
@@ -414,6 +584,69 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ol>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex3-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Similar to the previous question, we don&#39;t
+#know exactly which of the 7 students are 
+#failing to hand in at least one assignment 
+#here. We&#39;ll need a special function to account 
+#for the different combinations of students.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex3-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Which function is more appropriate?
+### dbinom() or pbinom()?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex3-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We&#39;ll use pbinom() since we want the
+#probability of **at most** two students 
+#failing to hand in an assignment.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex3-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks to calculate the desired 
+#probability
+pbinom(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex3-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The number of trials and the probability of 
+#a &quot;success&quot; haven&#39;t changed. Fill them in below.
+
+pbinom(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex3-hint-6" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#For the pbinom() function, the first argument 
+#is the maximum number of successes you are 
+#willing to consider observing. If a **success** 
+#is a student having failed to hand in at 
+#least one assignment, what is the maximum 
+#number of successes are you are interested in?
+
+pbinom(___, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex3-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>pbinom(9, 18, 0.34)</code></pre>
+</div>
+<ol start="4" style="list-style-type: decimal">
 <li>Find the probability that at least 11 of the 18 students have failed
 to hand in at least one assignment.
 <div class="tutorial-exercise" data-label="binom-assignments-ex4"
@@ -421,13 +654,236 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
-<li>Find the probability that between a minimum of 6 and a maximim of 12
+</ol>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Again, we&#39;ll need a special function because
+#we don&#39;t know which of the 18 students will 
+#have failed to hand in an assignment.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Unfortunately, neither the dbinom() or pbinom()
+#functions are a perfect fit for this scenario.
+#Is either one *better*-suited to this scenario?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The pbinom() function can handle multiple 
+#possible outcomes, while dbinom() is most useful 
+#when we are interested in exactly one outcome.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Is there are way that we could utilize the 
+#pbinom() function here?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The challenge is that pbinom() will find the 
+#probability of **at most** some number of successes, 
+#not the probability of **at least** some number
+#of successes.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-6" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Here&#39;s a start, but it&#39;s wrong...why?
+
+pbinom(11, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-7" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The function call below will calculate the 
+#probability of 0 successes, 1 success, ..., up
+#to 11 successes. That&#39;s not what we want.
+
+pbinom(11, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-8" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Could we maybe start will the probability of 
+#any (all) outcomes, and then just remove the 
+#probability of the events we don&#39;t want?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-9" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#What is the probability that somewhere between 
+#0 and 18 students (inclusive), out of 18 students 
+#fail to hand in at least one assignment?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-10" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Since we only have 18 students, it must be the 
+#case that somewhere between 0 and 18 students 
+#fail to hand in at least one assignment. 
+#Nothing else is possible. 
+#This probability is 1 (or 100%).</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-11" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks to answer the question.
+
+1 - pbinom(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-12" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Something is wrong with the attempt below.
+#What needs to be fixed?
+
+1 - pbinom(11, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-hint-13" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The call from the previous hint removes the 
+#probability of at most 11 students failing to 
+#hand in at least one assignment. This only 
+#leaves the probability of between 0 and 10 
+#students failing to hand in at least one 
+#assignment. Replace the first argument to find 
+#the correct probability.
+
+1 - pbinom(___, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex4-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>1 - pbinom(10, 18, 0.34)</code></pre>
+</div>
+<ol start="5" style="list-style-type: decimal">
+<li>Find the probability that between a minimum of 6 and a maximum of 12
 out of the 18 students have failed to hand in at least one assignment.
 <div class="tutorial-exercise" data-label="binom-assignments-ex5"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ol>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex5-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Similar to the previous question, neither the 
+#dbinom() or pbinom() functions are perfect fits
+#here. We should prefer the pbinom() function 
+#though, since we are interested in a collection
+#of outcomes rather than exactly a single outcome.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex5-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The trick we used in the previous question 
+#won&#39;t **exactly** work either. Maybe we can 
+#use a similar idea though!</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex5-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Which of the following corresponds to a probability
+#that is definitely too big?
+
+pbinom(6, 18, 0.34)
+pbinom(12, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex5-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The result of the function call below is a 
+#probability that is larger than the probability
+#we are looking for because it accounts for all
+#of the outcomes we are interested in as well as
+#some additional outcomes.
+#Can we subtract something from this to obtain 
+#the probability of only the events we are 
+#interested in?
+
+pbinom(12, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex5-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks to calculate the probability
+#we are interested in.
+
+pbinom(12, 18, 0.34) - ___(___, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex5-hint-6" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#How many events do we need to remove the probability of?
+#Is it **exactly one** event, or is it a collection
+#of events?
+
+pbinom(12, 18, 0.34) - ___(___, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex5-hint-7" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Think carefully about the events we need to 
+#remove the probability of. What number goes 
+#in the blank?
+
+pbinom(12, 18, 0.34) - pbinom(___, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex5-hint-8" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The code below is wrong, why?
+
+pbinom(12, 18, 0.34) - pbinom(6, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex5-hint-9" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#This leaves us with only the probability of 
+#7 students failing to hand in an assignment, 
+#8 students failing to hand in an assignment, ...
+#up to 12 students failing to hand in an assignment.
+#That&#39;s not quite what we wanted, is it?
+
+pbinom(12, 18, 0.34) - pbinom(6, 18, 0.34)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex5-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>pbinom(12, 18, 0.34) - pbinom(5, 18, 0.34)</code></pre>
+</div>
+<ol start="6" style="list-style-type: decimal">
 <li>The expected number of successes in a binomial experiment is
 sometimes denoted by <span
 class="math inline">\(\mathbb{E}\left[X\right]\)</span> and can be
@@ -443,6 +899,37 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ol>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex6-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Use the formula n*p from the problem statement 
+#to compute the expected value.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex6-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Note that n stands for the number of trials.
+#How many trials are there here?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex6-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Note that p stands for the probability of 
+#success on a single trial. Here &quot;success&quot; is 
+#a student failing to hand in at least one 
+#assignment. What is the value of p?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex6-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>18*0.34</code></pre>
+</div>
+<ol start="7" style="list-style-type: decimal">
 <li>The standard deviation in the number of successes for a binomial
 experiment can also be computed. The quantity <span
 class="math inline">\(\displaystyle{s_X = \sqrt{n\cdot p\left(1 -
@@ -459,6 +946,42 @@ data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
 </ol>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex7-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Again, use the formula from the statement of 
+#the question to compute the answer.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex7-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Recall that you can compute the square root in
+#R using the sqrt() function.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex7-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Remember that n is still the number of trials 
+#and p is still the probability of a student 
+#failing to hand in at least one assignment.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex7-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks
+
+sqrt(___*___*(___))</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="binom-assignments-ex7-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>sqrt(18*0.34*(1 - 0.34))</code></pre>
+</div>
 <p>Be sure to write down what questions you had as you worked through
 these problems and to have a teacher, colleague, or tutor help clarify
 things for you.</p>
@@ -605,26 +1128,26 @@ session$onSessionEnded(function() {
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "basic-probability-quiz-1", 
     question = structure("Given one fair, six-sided die, what is the probabilty of rolling a three?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_1af65ca", 
-        option = "0/6", value = "0/6", label = structure("0/6", html = TRUE, class = c("html", 
+    "character")), answers = list(structure(list(id = "lnr_ans_e611a9f", 
+        option = "0 / 6", value = "0 / 6", label = structure("0 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c97a4d0", 
-        option = "1/6", value = "1/6", label = structure("⅙", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7f9d1b5", 
+        option = "1 / 6", value = "1 / 6", label = structure("1 / 6", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_eec94a5", 
-        option = "2/6", value = "2/6", label = structure("2/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8527dcc", 
+        option = "2 / 6", value = "2 / 6", label = structure("2 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a9ef16b", 
-        option = "3/6", value = "3/6", label = structure("3/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2d04e3a", 
+        option = "3 / 6", value = "3 / 6", label = structure("3 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_32de470", 
-        option = "4/6", value = "4/6", label = structure("4/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ea1051a", 
+        option = "4 / 6", value = "4 / 6", label = structure("4 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ae0a0f2", 
-        option = "5/6", value = "5/6", label = structure("⅚", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d03ecf", 
+        option = "5 / 6", value = "5 / 6", label = structure("5 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4037cd3", 
-        option = "6/6", value = "6/6", label = structure("6/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f1a87c6", 
+        option = "6 / 6", value = "6 / 6", label = structure("6 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
@@ -634,7 +1157,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "basic-probability-quiz-1-answer", question = "basic-probability-quiz-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 2120229124.01269, options = list()), class = c("learnr_radio", 
+    seed = 1703950083.20654, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -642,26 +1165,26 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "basic-probability-quiz-2", 
     question = structure("Given one fair, six-sided die, what is the probability of rolling a two, four, or six?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_bdee7a1", 
-        option = "0/6", value = "0/6", label = structure("0/6", html = TRUE, class = c("html", 
+    "character")), answers = list(structure(list(id = "lnr_ans_943493c", 
+        option = "0 / 6", value = "0 / 6", label = structure("0 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_367879b", 
-        option = "1/6", value = "1/6", label = structure("⅙", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_255a21c", 
+        option = "1 / 6", value = "1 / 6", label = structure("1 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1980d3f", 
-        option = "2/6", value = "2/6", label = structure("2/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_273e501", 
+        option = "2 / 6", value = "2 / 6", label = structure("2 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_476628c", 
-        option = "3/6", value = "3/6", label = structure("3/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9e74858", 
+        option = "3 / 6", value = "3 / 6", label = structure("3 / 6", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ad483df", 
-        option = "4/6", value = "4/6", label = structure("4/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c6090f3", 
+        option = "4 / 6", value = "4 / 6", label = structure("4 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5260d3c", 
-        option = "5/6", value = "5/6", label = structure("⅚", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_607fa1e", 
+        option = "5 / 6", value = "5 / 6", label = structure("5 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c992403", 
-        option = "6/6", value = "6/6", label = structure("6/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8c562ac", 
+        option = "6 / 6", value = "6 / 6", label = structure("6 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
@@ -671,19 +1194,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "basic-probability-quiz-2-answer", question = "basic-probability-quiz-2"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 284650645.367449, options = list()), class = c("learnr_radio", 
+    seed = 1568844089.26945, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "basic-probability-quiz-3", 
     question = structure("Given two fair, six-sided die, which is larger?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_e37908b", 
+    "character")), answers = list(structure(list(id = "lnr_ans_58948fb", 
         option = "The probability of rolling a total of two", 
         value = "The probability of rolling a total of two", 
         label = structure("The probability of rolling a total of two", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9af250f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4e8b066", 
         option = "The probability of rolling a total of five", 
         value = "The probability of rolling a total of five", 
         label = structure("The probability of rolling a total of five", html = TRUE, class = c("html", 
@@ -696,7 +1219,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "basic-probability-quiz-3-answer", question = "basic-probability-quiz-3"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1578479990.76496, options = list()), class = c("learnr_radio", 
+    seed = 752771899.149463, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -704,26 +1227,26 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "build-probA-and-B-1", 
     question = structure("Given a single roll of a fair, six-sided die, what is the probability of rolling at least a two?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_5f3e84d", 
-        option = "0/6", value = "0/6", label = structure("0/6", html = TRUE, class = c("html", 
+    "character")), answers = list(structure(list(id = "lnr_ans_bda309c", 
+        option = "0 / 6", value = "0 / 6", label = structure("0 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e19eef", 
-        option = "1/6", value = "1/6", label = structure("⅙", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8116a5e", 
+        option = "1 / 6", value = "1 / 6", label = structure("1 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_49d73f2", 
-        option = "2/6", value = "2/6", label = structure("2/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_116a364", 
+        option = "2 / 6", value = "2 / 6", label = structure("2 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8bedab7", 
-        option = "3/6", value = "3/6", label = structure("3/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_78e207f", 
+        option = "3 / 6", value = "3 / 6", label = structure("3 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4561963", 
-        option = "4/6", value = "4/6", label = structure("4/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f50952c", 
+        option = "4 / 6", value = "4 / 6", label = structure("4 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5d9c91f", 
-        option = "5/6", value = "5/6", label = structure("⅚", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a612097", 
+        option = "5 / 6", value = "5 / 6", label = structure("5 / 6", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e8b87dd", 
-        option = "6/6", value = "6/6", label = structure("6/6", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3c0746c", 
+        option = "6 / 6", value = "6 / 6", label = structure("6 / 6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
@@ -733,21 +1256,21 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "build-probA-and-B-1-answer", question = "build-probA-and-B-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 633846784.204842, options = list()), class = c("learnr_radio", 
+    seed = 1502577185.30031, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "build-probA-and-B-2", 
     question = structure("Given a single flip of a fair coin, what is the probability of the coin landing with <em>tails<\u002fem> facing upwards?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_f93bcfb", 
-        option = "0/2", value = "0/2", label = structure("0/2", html = TRUE, class = c("html", 
+    "character")), answers = list(structure(list(id = "lnr_ans_e57b544", 
+        option = "0 / 2", value = "0 / 2", label = structure("0 / 2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_52cd1a1", 
-        option = "1/2", value = "1/2", label = structure("½", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c8d903b", 
+        option = "1 / 2", value = "1 / 2", label = structure("1 / 2", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_aa6665a", 
-        option = "2/2", value = "2/2", label = structure("2/2", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1ea1565", 
+        option = "2 / 2", value = "2 / 2", label = structure("2 / 2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
@@ -757,7 +1280,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "build-probA-and-B-2-answer", question = "build-probA-and-B-2"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1178822062.95107, options = list()), class = c("learnr_radio", 
+    seed = 512562482.76132, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -849,22 +1372,22 @@ learnr:::store_exercise_cache(structure(list(label = "calc-box", global_setup = 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "chem-quiz-probability-1", 
     question = structure("For a single question, what is the probability that you get that question correct?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_f645dec", 
+    "character")), answers = list(structure(list(id = "lnr_ans_554207d", 
         option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3451e0c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bb6579", 
         option = "0.10", value = "0.10", label = structure("0.10", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6d60add", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9f8ce6a", 
         option = "0.20", value = "0.20", label = structure("0.20", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9264eda", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_37c0bc4", 
         option = "0.25", value = "0.25", label = structure("0.25", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_98ff6bd", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b208795", 
         option = "0.5", value = "0.5", label = structure("0.5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_337ef7e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2711aef", 
         option = "0.8", value = "0.8", label = structure("0.8", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -875,35 +1398,35 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "chem-quiz-probability-1-answer", question = "chem-quiz-probability-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1641315309.2357, options = list()), class = c("learnr_radio", 
+    seed = 808587101.123472, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "chem-quiz-probability-2", 
     question = structure("What is the probability that you get every one of the questions correct?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_81579a9", 
+    "character")), answers = list(structure(list(id = "lnr_ans_5b7c626", 
         option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e0e4169", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f40eed8", 
         option = "0.0016", value = "0.0016", label = structure("0.0016", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2468736", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ce1a1e9", 
         option = "0.01", value = "0.01", label = structure("0.01", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8db63fb", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8b7c9e1", 
         option = "0.2", value = "0.2", label = structure("0.2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_89b8742", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_23cff06", 
         option = "0.4096", value = "0.4096", label = structure("0.4096", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d3be3d2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c9e3405", 
         option = "0.5555", value = "0.5555", label = structure("0.5555", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_39960f7", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_df1ff63", 
         option = "0.998", value = "0.998", label = structure("0.998", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e3bba04", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4bda742", 
         option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -914,7 +1437,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "chem-quiz-probability-2-answer", question = "chem-quiz-probability-2"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 279776571.369719, options = list()), class = c("learnr_radio", 
+    seed = 327794607.347359, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -922,28 +1445,28 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "chem-quiz-probability-3", 
     question = structure("What is the probability that you get every one of the questions wrong?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_72a0271", 
+    "character")), answers = list(structure(list(id = "lnr_ans_43c31ab", 
         option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a743bad", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e78638c", 
         option = "0.002", value = "0.002", label = structure("0.002", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e7d6e81", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c7570a9", 
         option = "0.01", value = "0.01", label = structure("0.01", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ba350e5", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3d2d59c", 
         option = "0.2", value = "0.2", label = structure("0.2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_95b677e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8f4d4ec", 
         option = "0.4096", value = "0.4096", label = structure("0.4096", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b76a03e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c4d161b", 
         option = "0.5555", value = "0.5555", label = structure("0.5555", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a2f85f1", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a54265c", 
         option = "0.998", value = "0.998", label = structure("0.998", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_63757a2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9ba2c62", 
         option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -954,29 +1477,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "chem-quiz-probability-3-answer", question = "chem-quiz-probability-3"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 975790901.545612, options = list()), class = c("learnr_radio", 
+    seed = 1876132264.12636, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "chem-quiz-probability-4", 
     question = structure("What is the probability that the first one you get wrong is question three?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_3fc347c", 
+    "character")), answers = list(structure(list(id = "lnr_ans_a05af72", 
         option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_dbeba2f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3dc7e04", 
         option = "0.015", value = "0.015", label = structure("0.015", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_14fb9a3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_98109e", 
         option = "0.032", value = "0.032", label = structure("0.032", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e8fa82a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8e9765d", 
         option = "0.0064", value = "0.0064", label = structure("0.0064", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a58ea1c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_81ca748", 
         option = "0.2", value = "0.2", label = structure("0.2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b852e79", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f8b9d62", 
         option = "1.2", value = "1.2", label = structure("1.2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -987,7 +1510,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "chem-quiz-probability-4-answer", question = "chem-quiz-probability-4"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 665713160.690003, options = list()), class = c("learnr_radio", 
+    seed = 940884630.061866, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -995,27 +1518,27 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "chem-quiz-probability-5", 
     question = structure("What is the probability that you get exactly two questions right?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_e7541cd", 
+    "character")), answers = list(structure(list(id = "lnr_ans_8949e91", 
         option = "0.04", value = "0.04", label = structure("0.04", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2429abf", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f01fd24", 
         option = "0.08", value = "0.08", label = structure("0.08", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_907bb78", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cac7905", 
         option = "0.256", value = "0.256", label = structure("0.256", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("You assumed something here – what was it?", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_221538e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fa83dda", 
         option = "0.2", value = "0.2", label = structure("0.2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6ae7d3f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_411a557", 
         option = "0.4", value = "0.4", label = structure("0.4", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5155f4c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fe4616d", 
         option = "0.64", value = "0.64", label = structure("0.64", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("Hmmm, what about the other two questions?", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_76aea03", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c06f6be", 
         option = "None of these", value = "None of these", label = structure("None of these", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1026,7 +1549,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "chem-quiz-probability-5-answer", question = "chem-quiz-probability-5"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 950874531.057214, options = list()), class = c("learnr_radio", 
+    seed = 1929812482.60136, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1050,11 +1573,14 @@ learnr:::store_exercise_cache(structure(list(label = "chem-quiz-binom", global_s
     error_check = NULL, check = structure(c("grade_result(", 
     "  pass_if(~ (abs(.result - dbinom(2, 4, 0.2)) < 0.001))", 
     ")"), chunk_opts = list(label = "chem-quiz-binom-check")), 
-    solution = NULL, tests = NULL, options = list(eval = TRUE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "05_DiscreteDistributions_cache/html/", 
+    solution = structure(c("#Since each question has five possible choices,", 
+    "#one of which is correct, the probability of ", "#a correct response one one question is 0.2", 
+    "dbinom(2, 4, 0.2)", ""), chunk_opts = list(label = "chem-quiz-binom-solution")), 
+    tests = NULL, options = list(eval = TRUE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "05_DiscreteDistributions_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
         fig.show = "asis", fig.align = "default", fig.path = "05_DiscreteDistributions_files/figure-html/", 
@@ -1138,11 +1664,13 @@ learnr:::store_exercise_cache(structure(list(label = "binom-assignments-ex2", gl
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure(c("grade_result(", "  pass_if(~ (abs(.result - dbinom(7, 18, 0.34)) < 0.001))", 
     ")"), chunk_opts = list(label = "binom-assignments-ex2-check")), 
-    solution = NULL, tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "05_DiscreteDistributions_cache/html/", 
+    solution = structure("dbinom(7, 18, 0.34)", chunk_opts = list(
+        label = "binom-assignments-ex2-solution")), tests = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "05_DiscreteDistributions_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
         fig.show = "asis", fig.align = "default", fig.path = "05_DiscreteDistributions_files/figure-html/", 
@@ -1181,11 +1709,13 @@ learnr:::store_exercise_cache(structure(list(label = "binom-assignments-ex3", gl
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure(c("grade_result(", "  pass_if(~ (abs(.result - pbinom(9, 18, 0.34)) < 0.001))", 
     ")"), chunk_opts = list(label = "binom-assignments-ex3-check")), 
-    solution = NULL, tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "05_DiscreteDistributions_cache/html/", 
+    solution = structure("pbinom(9, 18, 0.34)", chunk_opts = list(
+        label = "binom-assignments-ex3-solution")), tests = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "05_DiscreteDistributions_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
         fig.show = "asis", fig.align = "default", fig.path = "05_DiscreteDistributions_files/figure-html/", 
@@ -1224,11 +1754,13 @@ learnr:::store_exercise_cache(structure(list(label = "binom-assignments-ex4", gl
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure(c("grade_result(", "  pass_if(~ (abs(.result - (1 - pbinom(10, 18, 0.34))) < 0.001))", 
     ")"), chunk_opts = list(label = "binom-assignments-ex4-check")), 
-    solution = NULL, tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "05_DiscreteDistributions_cache/html/", 
+    solution = structure(c("1 - pbinom(10, 18, 0.34)", ""), chunk_opts = list(
+        label = "binom-assignments-ex4-solution")), tests = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "05_DiscreteDistributions_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
         fig.show = "asis", fig.align = "default", fig.path = "05_DiscreteDistributions_files/figure-html/", 
@@ -1267,11 +1799,13 @@ learnr:::store_exercise_cache(structure(list(label = "binom-assignments-ex5", gl
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure(c("grade_result(", "  pass_if(~ (abs(.result - (pbinom(12, 18, 0.34) - pbinom(5, 18, 0.34))) < 0.001))", 
     ")"), chunk_opts = list(label = "binom-assignments-ex5-check")), 
-    solution = NULL, tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "05_DiscreteDistributions_cache/html/", 
+    solution = structure("pbinom(12, 18, 0.34) - pbinom(5, 18, 0.34)", chunk_opts = list(
+        label = "binom-assignments-ex5-solution")), tests = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "05_DiscreteDistributions_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
         fig.show = "asis", fig.align = "default", fig.path = "05_DiscreteDistributions_files/figure-html/", 
@@ -1310,11 +1844,12 @@ learnr:::store_exercise_cache(structure(list(label = "binom-assignments-ex6", gl
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure(c("grade_result(", "  pass_if(~ (abs(.result - (18*0.34)) < 0.01))", 
     ")"), chunk_opts = list(label = "binom-assignments-ex6-check")), 
-    solution = NULL, tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "05_DiscreteDistributions_cache/html/", 
+    solution = structure("18*0.34", chunk_opts = list(label = "binom-assignments-ex6-solution")), 
+    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "05_DiscreteDistributions_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
         fig.show = "asis", fig.align = "default", fig.path = "05_DiscreteDistributions_files/figure-html/", 
@@ -1353,11 +1888,13 @@ learnr:::store_exercise_cache(structure(list(label = "binom-assignments-ex7", gl
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure(c("grade_result(", "  pass_if(~ (abs(.result - (sqrt(18*0.34*(1 - 0.34)))) < 0.01))", 
     ")"), chunk_opts = list(label = "binom-assignments-ex7-check")), 
-    solution = NULL, tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "05_DiscreteDistributions_cache/html/", 
+    solution = structure("sqrt(18*0.34*(1 - 0.34))", chunk_opts = list(
+        label = "binom-assignments-ex7-solution")), tests = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "05_DiscreteDistributions_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
         fig.show = "asis", fig.align = "default", fig.path = "05_DiscreteDistributions_files/figure-html/", 

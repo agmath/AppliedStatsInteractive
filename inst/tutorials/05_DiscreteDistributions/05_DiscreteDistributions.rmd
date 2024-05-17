@@ -58,24 +58,24 @@ Throughout this workbook you'll be introduced to the notion of probability and w
 quiz(
   question_radio(
     "Given one fair, six-sided die, what is the probabilty of rolling a three?",
-    answer("0/6"),
-    answer("1/6", correct = TRUE),
-    answer("2/6"),
-    answer("3/6"),
-    answer("4/6"),
-    answer("5/6"),
-    answer("6/6"),
+    answer("0 / 6"),
+    answer("1 / 6", correct = TRUE),
+    answer("2 / 6"),
+    answer("3 / 6"),
+    answer("4 / 6"),
+    answer("5 / 6"),
+    answer("6 / 6"),
     allow_retry = TRUE
   ),
   question_radio(
     "Given one fair, six-sided die, what is the probability of rolling a two, four, or six?",
-    answer("0/6"),
-    answer("1/6"),
-    answer("2/6"),
-    answer("3/6", correct = TRUE),
-    answer("4/6"),
-    answer("5/6"),
-    answer("6/6"),
+    answer("0 / 6"),
+    answer("1 / 6"),
+    answer("2 / 6"),
+    answer("3 / 6", correct = TRUE),
+    answer("4 / 6"),
+    answer("5 / 6"),
+    answer("6 / 6"),
     allow_retry = TRUE
   ),
   question_radio(
@@ -101,20 +101,20 @@ Good work on that last set of questions. In those problems you could find the pr
 quiz(
   question_radio(
     "Given a single roll of a fair, six-sided die, what is the probability of rolling at least a two?",
-    answer("0/6"),
-    answer("1/6"),
-    answer("2/6"),
-    answer("3/6"),
-    answer("4/6"),
-    answer("5/6", correct = TRUE),
-    answer("6/6"),
+    answer("0 / 6"),
+    answer("1 / 6"),
+    answer("2 / 6"),
+    answer("3 / 6"),
+    answer("4 / 6"),
+    answer("5 / 6", correct = TRUE),
+    answer("6 / 6"),
     allow_retry = TRUE
   ),
   question_radio(
     "Given a single flip of a fair coin, what is the probability of the coin landing with *tails* facing upwards?",
-    answer("0/2"),
-    answer("1/2", correct = TRUE),
-    answer("2/2"),
+    answer("0 / 2"),
+    answer("1 / 2", correct = TRUE),
+    answer("2 / 2"),
     allow_retry = TRUE
   )
 )
@@ -122,6 +122,25 @@ quiz(
 
 Use the code block below to compute the probability that in a single roll of a fair die and a flip of a coin we observe a roll of at least two and a flip of tails.
 ```{r pAandB, exercise = TRUE}
+
+```
+
+```{r pAandB-hint-1}
+#Use the probabilities you identified above.
+
+```
+
+```{r pAandB-hint-2}
+#Use the probabilities you identified above.
+#The flip of a coin and roll of a die are 
+#independent events.
+
+```
+
+```{r pAandB-hint-3}
+#Since the events are independent, we can 
+#multiply the probabilities of the individual 
+#outcomes together.
 
 ```
 
@@ -232,6 +251,43 @@ The code block below is set up to find the probability of exactly two flips of a
 dbinom(2, 7, 0.5)
 ```
 
+```{r chem-quiz-binom-hint-1}
+#The arguments to dbinom() are, in-order:
+#####number of successful outcomes
+#####total number of trials
+#####probability of a successful outcome on one trial
+
+```
+
+```{r chem-quiz-binom-hint-2}
+#You are interested in two successful outcomes,
+#so the first argument doesn't need changing. 
+#The other two will need to be changed though.
+
+```
+
+```{r chem-quiz-binom-hint-3}
+#For the second argument, how many questions
+#are on the quiz?
+dbinom(2, ___, ___)
+
+```
+
+```{r chem-quiz-binom-hint-4}
+#For the third argument, what is the probability 
+#of guessing correct on a single question?
+dbinom(2, 4, ___)
+
+```
+
+```{r chem-quiz-binom-solution}
+#Since each question has five possible choices,
+#one of which is correct, the probability of 
+#a correct response one one question is 0.2
+dbinom(2, 4, 0.2)
+
+```
+
 ```{r chem-quiz-binom-check}
 grade_result(
   pass_if(~ (abs(.result - dbinom(2, 4, 0.2)) < 0.001))
@@ -249,6 +305,32 @@ Good work. Now you'll get to try a few more problems! As you work through the ne
 
 ```
 
+```{r binom-assignments-ex1-hint-1}
+#If we had 100 randomly chosen students, how 
+#many might you expect failed to hand in 
+#at least one assignment?
+#How did you know that? What, mathematically, 
+#did you do?
+
+```
+
+```{r binom-assignments-ex1-hint-2}
+#We might expect about 34 students our of 
+#this random sample to have failed to hand 
+#in at least one assignment. 
+#This is because 34% of 100 is 34. The math
+#you likely did in your head was 100*0.34.
+
+```
+
+```{r binom-assignments-ex1-hint-3}
+#The 0.34 you used in your calculation is the 
+#probability of a single, randomly selected 
+#student having failed to hand in at least 
+#one assignment
+
+```
+
 ```{r binom-assignments-ex1-check}
 grade_result(
   pass_if(~ identical(.result, 0.34))
@@ -258,6 +340,73 @@ grade_result(
 2. Find the probability that exactly 7 of the 18 students have failed to hand in at least one assignment.
 ```{r binom-assignments-ex2, exercise = TRUE}
 
+```
+
+```{r binom-assignments-ex2-hint-1}
+#We don't know exactly which of the 18 students
+#are failing to hand in at least one 
+#assignment here. We'll need a special 
+#function to account for the different 
+#combinations of students.
+
+```
+
+```{r binom-assignments-ex2-hint-2}
+#Which function is more appropriate?
+### dbinom() or pbinom()?
+
+```
+
+```{r binom-assignments-ex2-hint-3}
+#We'll use dbinom() since we want the
+#probability of **exactly** two students 
+#failing to hand in an assignment.
+
+```
+
+```{r binom-assignments-ex2-hint-4}
+#Fill in the blanks to calculate the desired 
+#probability
+dbinom(___, ___, ___)
+
+```
+
+```{r binom-assignments-ex2-hint-5}
+#The first argument is the number of successes. 
+#If a **success** is a student having failed 
+#to hand in at least one assignment, how many 
+#successes are you interested in?
+
+dbinom(___, ___, ___)
+
+```
+
+```{r binom-assignments-ex2-hint-6}
+#We wanted exactly seven students to have failed 
+#to hand in at least one assignment. Now, the 
+#second argument is the total number of trials. 
+#How many trials are being "run" here?
+
+dbinom(7, ___, ___)
+
+```
+
+```{r binom-assignments-ex2-hint-7}
+#There are 18 students total in our random sample,
+#so there are 18 trials.
+#The final argument is the probability of a 
+#"successful" outcome. We labeled a "success"
+#as a student failing to hand in at least one
+#assignment. What is the probability of failing
+#to hand in at least one assignment for a 
+#single student?
+
+dbinom(7, 18, ___)
+
+```
+
+```{r binom-assignments-ex2-solution}
+dbinom(7, 18, 0.34)
 ```
 
 ```{r binom-assignments-ex2-check}
@@ -271,6 +420,59 @@ grade_result(
 
 ```
 
+```{r binom-assignments-ex3-hint-1}
+#Similar to the previous question, we don't
+#know exactly which of the 7 students are 
+#failing to hand in at least one assignment 
+#here. We'll need a special function to account 
+#for the different combinations of students.
+
+```
+
+```{r binom-assignments-ex3-hint-2}
+#Which function is more appropriate?
+### dbinom() or pbinom()?
+
+```
+
+```{r binom-assignments-ex3-hint-3}
+#We'll use pbinom() since we want the
+#probability of **at most** two students 
+#failing to hand in an assignment.
+
+```
+
+```{r binom-assignments-ex3-hint-4}
+#Fill in the blanks to calculate the desired 
+#probability
+pbinom(___, ___, ___)
+
+```
+
+```{r binom-assignments-ex3-hint-5}
+#The number of trials and the probability of 
+#a "success" haven't changed. Fill them in below.
+
+pbinom(___, ___, ___)
+
+```
+
+```{r binom-assignments-ex3-hint-6}
+#For the pbinom() function, the first argument 
+#is the maximum number of successes you are 
+#willing to consider observing. If a **success** 
+#is a student having failed to hand in at 
+#least one assignment, what is the maximum 
+#number of successes are you are interested in?
+
+pbinom(___, 18, 0.34)
+
+```
+
+```{r binom-assignments-ex3-solution}
+pbinom(9, 18, 0.34)
+```
+
 ```{r binom-assignments-ex3-check}
 grade_result(
   pass_if(~ (abs(.result - pbinom(9, 18, 0.34)) < 0.001))
@@ -282,15 +484,200 @@ grade_result(
 
 ```
 
+```{r binom-assignments-ex4-hint-1}
+#Again, we'll need a special function because
+#we don't know which of the 18 students will 
+#have failed to hand in an assignment.
+
+```
+
+```{r binom-assignments-ex4-hint-2}
+#Unfortunately, neither the dbinom() or pbinom()
+#functions are a perfect fit for this scenario.
+#Is either one *better*-suited to this scenario?
+
+```
+
+```{r binom-assignments-ex4-hint-3}
+#The pbinom() function can handle multiple 
+#possible outcomes, while dbinom() is most useful 
+#when we are interested in exactly one outcome.
+
+```
+
+```{r binom-assignments-ex4-hint-4}
+#Is there are way that we could utilize the 
+#pbinom() function here?
+
+```
+
+```{r binom-assignments-ex4-hint-5}
+#The challenge is that pbinom() will find the 
+#probability of **at most** some number of successes, 
+#not the probability of **at least** some number
+#of successes.
+
+```
+
+```{r binom-assignments-ex4-hint-6}
+#Here's a start, but it's wrong...why?
+
+pbinom(11, 18, 0.34)
+```
+
+```{r binom-assignments-ex4-hint-7}
+#The function call below will calculate the 
+#probability of 0 successes, 1 success, ..., up
+#to 11 successes. That's not what we want.
+
+pbinom(11, 18, 0.34)
+```
+
+```{r binom-assignments-ex4-hint-8}
+#Could we maybe start will the probability of 
+#any (all) outcomes, and then just remove the 
+#probability of the events we don't want?
+
+```
+
+```{r binom-assignments-ex4-hint-9}
+#What is the probability that somewhere between 
+#0 and 18 students (inclusive), out of 18 students 
+#fail to hand in at least one assignment?
+
+```
+
+```{r binom-assignments-ex4-hint-10}
+#Since we only have 18 students, it must be the 
+#case that somewhere between 0 and 18 students 
+#fail to hand in at least one assignment. 
+#Nothing else is possible. 
+#This probability is 1 (or 100%).
+
+```
+
+```{r binom-assignments-ex4-hint-11}
+#Fill in the blanks to answer the question.
+
+1 - pbinom(___, ___, ___)
+
+```
+
+```{r binom-assignments-ex4-hint-12}
+#Something is wrong with the attempt below.
+#What needs to be fixed?
+
+1 - pbinom(11, 18, 0.34)
+
+```
+
+```{r binom-assignments-ex4-hint-13}
+#The call from the previous hint removes the 
+#probability of at most 11 students failing to 
+#hand in at least one assignment. This only 
+#leaves the probability of between 0 and 10 
+#students failing to hand in at least one 
+#assignment. Replace the first argument to find 
+#the correct probability.
+
+1 - pbinom(___, 18, 0.34)
+
+```
+
+```{r binom-assignments-ex4-solution}
+1 - pbinom(10, 18, 0.34)
+
+```
+
 ```{r binom-assignments-ex4-check}
 grade_result(
   pass_if(~ (abs(.result - (1 - pbinom(10, 18, 0.34))) < 0.001))
 )
 ```
 
-5. Find the probability that between a minimum of 6 and a maximim of 12 out of the 18 students have failed to hand in at least one assignment.
+5. Find the probability that between a minimum of 6 and a maximum of 12 out of the 18 students have failed to hand in at least one assignment.
 ```{r binom-assignments-ex5, exercise = TRUE}
 
+```
+
+```{r binom-assignments-ex5-hint-1}
+#Similar to the previous question, neither the 
+#dbinom() or pbinom() functions are perfect fits
+#here. We should prefer the pbinom() function 
+#though, since we are interested in a collection
+#of outcomes rather than exactly a single outcome.
+
+```
+
+```{r binom-assignments-ex5-hint-2}
+#The trick we used in the previous question 
+#won't **exactly** work either. Maybe we can 
+#use a similar idea though!
+
+```
+
+```{r binom-assignments-ex5-hint-3}
+#Which of the following corresponds to a probability
+#that is definitely too big?
+
+pbinom(6, 18, 0.34)
+pbinom(12, 18, 0.34)
+```
+
+```{r binom-assignments-ex5-hint-4}
+#The result of the function call below is a 
+#probability that is larger than the probability
+#we are looking for because it accounts for all
+#of the outcomes we are interested in as well as
+#some additional outcomes.
+#Can we subtract something from this to obtain 
+#the probability of only the events we are 
+#interested in?
+
+pbinom(12, 18, 0.34)
+```
+
+```{r binom-assignments-ex5-hint-5}
+#Fill in the blanks to calculate the probability
+#we are interested in.
+
+pbinom(12, 18, 0.34) - ___(___, 18, 0.34)
+```
+
+```{r binom-assignments-ex5-hint-6}
+#How many events do we need to remove the probability of?
+#Is it **exactly one** event, or is it a collection
+#of events?
+
+pbinom(12, 18, 0.34) - ___(___, 18, 0.34)
+```
+
+```{r binom-assignments-ex5-hint-7}
+#Think carefully about the events we need to 
+#remove the probability of. What number goes 
+#in the blank?
+
+pbinom(12, 18, 0.34) - pbinom(___, 18, 0.34)
+```
+
+```{r binom-assignments-ex5-hint-8}
+#The code below is wrong, why?
+
+pbinom(12, 18, 0.34) - pbinom(6, 18, 0.34)
+```
+
+```{r binom-assignments-ex5-hint-9}
+#This leaves us with only the probability of 
+#7 students failing to hand in an assignment, 
+#8 students failing to hand in an assignment, ...
+#up to 12 students failing to hand in an assignment.
+#That's not quite what we wanted, is it?
+
+pbinom(12, 18, 0.34) - pbinom(6, 18, 0.34)
+```
+
+```{r binom-assignments-ex5-solution}
+pbinom(12, 18, 0.34) - pbinom(5, 18, 0.34)
 ```
 
 ```{r binom-assignments-ex5-check}
@@ -304,6 +691,30 @@ grade_result(
 
 ```
 
+```{r binom-assignments-ex6-hint-1}
+#Use the formula n*p from the problem statement 
+#to compute the expected value.
+
+```
+
+```{r binom-assignments-ex6-hint-2}
+#Note that n stands for the number of trials.
+#How many trials are there here?
+
+```
+
+```{r binom-assignments-ex6-hint-3}
+#Note that p stands for the probability of 
+#success on a single trial. Here "success" is 
+#a student failing to hand in at least one 
+#assignment. What is the value of p?
+
+```
+
+```{r binom-assignments-ex6-solution}
+18*0.34
+```
+
 ```{r binom-assignments-ex6-check}
 grade_result(
   pass_if(~ (abs(.result - (18*0.34)) < 0.01))
@@ -313,6 +724,32 @@ grade_result(
 7. The standard deviation in the number of successes for a binomial experiment can also be computed. The quantity $\displaystyle{s_X = \sqrt{n\cdot p\left(1 - p\right)}}$, where $n$ denotes the number of trials run and $p$ denotes the probability of success on a single trial is the standard deviation in number of successes. Use the code block below to compute the standard deviation in number of students who have failed to hand in at least one assignent from random samples of 18 students:
 ```{r binom-assignments-ex7, exercise = TRUE}
 
+```
+
+```{r binom-assignments-ex7-hint-1}
+#Again, use the formula from the statement of 
+#the question to compute the answer.
+```
+
+```{r binom-assignments-ex7-hint-2}
+#Recall that you can compute the square root in
+#R using the sqrt() function.
+```
+
+```{r binom-assignments-ex7-hint-3}
+#Remember that n is still the number of trials 
+#and p is still the probability of a student 
+#failing to hand in at least one assignment.
+```
+
+```{r binom-assignments-ex7-hint-4}
+#Fill in the blanks
+
+sqrt(___*___*(___))
+```
+
+```{r binom-assignments-ex7-solution}
+sqrt(18*0.34*(1 - 0.34))
 ```
 
 ```{r binom-assignments-ex7-check}
