@@ -118,7 +118,7 @@ class="section level2">
 distribution that is most central to our study of statistics: the normal
 distribution. If we are confident that our data are nearly normal, that
 opens the door to many powerful statistical methods. This workbook gives
-you practice in working with normally distributed data.</p>
+you practice with normally distributed data.</p>
 </div>
 </div>
 <div id="section-objectives" class="section level2">
@@ -312,6 +312,45 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="compute-z-scores-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Use the z-score formula, above.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="compute-z-scores-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks
+(___ - ___)/___</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="compute-z-scores-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#For Bob, we should have
+(1400 - ___)/___
+#Since Bob took the SAT, we need to use the 
+#mean and standard deviation from that test 
+#to find their z-score. Fill those in.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="compute-z-scores-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Bob&#39;s z-score is computed as follows:
+(1400 - 1068)/210</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="compute-z-scores-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Do the same for Sally, but use her ACT score, 
+#along with the mean and standard deviation for 
+#the ACT.
+(___ - ___)/___</code></pre>
+</div>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="SAT-ACT-z-scores-1" class="tutorial-question panel-body">
@@ -421,6 +460,34 @@ data-lines="0" data-pipe="|&gt;">
 <pre class="text"><code>pnorm(1400, 1068, 210)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="compute-percentiles-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Just run this code to compute Bob&#39;s percentile
+pnorm(1400, 1068, 210)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="compute-percentiles-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The arguments for pnorm() are, in order:
+####boundary value,
+####distribution mean
+####distribution standard deviation
+pnorm(1400, 1068, 210)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="compute-percentiles-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks with the following to find
+#Sally&#39;s percentile:
+####Sally&#39;s ACT score (the boundary value)
+####the mean ACT score
+####the standard deviation in ACT scores
+pnorm(___, ___, ___)</code></pre>
+</div>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="SAT-ACT-percentiles-1" class="tutorial-question panel-body">
@@ -489,6 +556,44 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex1-left-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#I&#39;ve drawn the picture for you below.
+#(Be sure you can answer: Why does this 
+#picture correspond to the probability 
+#requested?)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex1-left-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Use the pnorm() function with the boundary of
+#the shaded region as the first argument, the 
+#mean of the normal distribution as the second
+#argument, and the standard deviation of the 
+#normal distribution as the final argument.
+
+pnorm(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex1-left-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The notation Z ~ N(mu = 0, sigma = 1) indicates 
+#that the mean (mu) of this distribution is 0
+#and that the standard deviation (sigma) of the 
+#distribution is 1.
+
+pnorm(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex1-left-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>pnorm(1.49, 0, 1)</code></pre>
+</div>
 </div>
 <div class="col-md-5">
 <p><img src="06_NormalDistribution_files/figure-html/pnorm-ex1-left-plot-1.png" width="288" /></p>
@@ -507,6 +612,52 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex2-left-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Again, I&#39;ve drawn the picture for you here.
+#Would you be able to draw the picture if I 
+#hadn&#39;t provided it?
+#Try practicing this picture-drawing skill -- 
+#it will serve you well.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex2-left-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#If you haven&#39;t solved the question yet, how 
+#&quot;big&quot; do you expect this probability to be?
+#Should it be more than 0.5? Less than 0.5? Why?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex2-left-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Remembering that the entire area under this 
+#normal distribution is 1, and that the distribution 
+#is symmetric (the left and right half are identical),
+#we should expect our answer to be less than 0.5.
+#This is because our shaded area covers less than 
+#half of the entire distribution.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex2-left-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Answer this question exactly the way you answered 
+#the previous one. The boundary value here is 
+#negative, but pnorm() will always give you the 
+#area to the left of your provided boundary value.
+#That&#39;s what you want here anyway, right?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex2-left-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks to find the answer:
+pnorm(___, ___, ___)</code></pre>
+</div>
 </div>
 <div class="col-md-5">
 <p><img src="06_NormalDistribution_files/figure-html/pnorm-ex2-left-plot-1.png" width="288" /></p>
@@ -520,14 +671,119 @@ data-lines="0" data-pipe="|&gt;">
 <p><strong>Question 3:</strong> Find <span
 class="math inline">\(\mathbb{P}\left[Z &gt; \right.\)</span> -2.17
 <span class="math inline">\(\left.\right]\)</span>.</p>
-<div class="tutorial-exercise" data-label="pnorm-ex3-left"
+<div class="tutorial-exercise" data-label="pnorm-ex3-right"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#This one is similar to the previous two questions.
+#What is different about it, though?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The shaded area is to the right of the 
+#boundary value.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The pnorm() function gives us the area to the 
+#*left* of our boundary value, not the area 
+#to the right of it! Can we still find a way 
+#to use pnorm()?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#In a previous notebook, we started with a probability
+#that we knew was too big, and removed the 
+#probability associated with events we weren&#39;t 
+#interested in so that we were left with the 
+#probability of only the events we wanted.
+#Can we apply those same ideas here?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#If we start with the entire area under the normal 
+#curve and remove the unshaded area, then we 
+#should be left with just the shaded area.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-hint-6" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks to answer the question:
+
+___ - ___(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-hint-7" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#To fill in the leftmost blank, what is the area
+#under the entire normal distribution equal to?
+#That is, if we shaded in the entire distribution, 
+#what probability would that represent? 
+___ - ___(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-hint-8" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Shading the entire distribution amounts to 
+#considering all possible outcomes. The probability
+#of observing one of the possible outcomes is 1
+#(or 100%).
+1 - ___(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-hint-9" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We know that 1 (or 100%) is too large because we see 
+#unshaded area. The probability we are looking for is 
+#less than 100%. How do you subtract out the probability 
+#of observing an outcome to the left of -2.17?
+1 - ___(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-hint-10" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The distribution we are working with is still 
+#a normal distribution. 
+
+1 - ___(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-hint-11" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Apply what you&#39;ve done in the previous 
+#two questions to identify the area to the left 
+#of the boundary value -2.17 as what will be subtracted away.
+
+1 - pnorm(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex3-right-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>1 - pnorm(-2.17, 0, 1)</code></pre>
+</div>
 </div>
 <div class="col-md-5">
-<p><img src="06_NormalDistribution_files/figure-html/pnorm-ex3-left-plot-1.png" width="288" /></p>
+<p><img src="06_NormalDistribution_files/figure-html/pnorm-ex3-right-plot-1.png" width="288" /></p>
 </div>
 </div>
 </div>
@@ -538,14 +794,43 @@ data-lines="0" data-pipe="|&gt;">
 <p><strong>Question 4:</strong> Find <span
 class="math inline">\(\mathbb{P}\left[Z &gt; \right.\)</span> 2.12 <span
 class="math inline">\(\left.\right]\)</span>.</p>
-<div class="tutorial-exercise" data-label="pnorm-ex4-left"
+<div class="tutorial-exercise" data-label="pnorm-ex4-right"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex4-right-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Take the same approach as you used to answer
+#the previous question.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex4-right-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#How &quot;big&quot; should your answer be? More than 0.5?
+#Less than 0.5? How do you know?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex4-right-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#To compute the probability to the right of 
+#your boundary value, subtract the probability
+#to the left of the boundary value away from 1.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex4-right-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks
+___ - ___(___, ___, ___)</code></pre>
+</div>
 </div>
 <div class="col-md-5">
-<p><img src="06_NormalDistribution_files/figure-html/pnorm-ex4-left-plot-1.png" width="288" /></p>
+<p><img src="06_NormalDistribution_files/figure-html/pnorm-ex4-right-plot-1.png" width="288" /></p>
 </div>
 </div>
 </div>
@@ -557,14 +842,126 @@ data-lines="0" data-pipe="|&gt;">
 class="math inline">\(\mathbb{P}\left[\right.\)</span> -1.04 <span
 class="math inline">\(&lt; Z &lt;\)</span> 2.08 <span
 class="math inline">\(\left.\right]\)</span>.</p>
-<div class="tutorial-exercise" data-label="pnorm-ex5-left"
+<div class="tutorial-exercise" data-label="pnorm-ex5-mid"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex5-mid-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#What makes this one different from all of the 
+#previous questions?</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex5-mid-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Even our &quot;subtract-from-one&quot; trick won&#39;t work
+#here, because pnorm() computes the area into the tail 
+#of the distribution.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex5-mid-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Starting with 1 and subtracting out the area 
+#we don&#39;t want won&#39;t easily work here.
+#
+#Remember, we started with 1 and subtracted in the previous 
+#two questions because we knew that an area of 1 was
+#&quot;too big&quot;.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex5-mid-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Is there a way we could compute an area that 
+#is too big to start? We want the area we compute
+#to share a boundary with the shaded area we are
+#ultimately trying to find. See the picture for reference.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex5-mid-hint-5"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks to compute an area that&#39;s too big,
+#to start.
+
+___(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex5-mid-hint-6"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#One of the areas below is the one to start with...
+#which one is it, and why?
+
+pnorm(2.08, 0, 1)
+pnorm(-1.04, 0, 1)</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex5-mid-hint-7"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Starting with pnorm(2.08, 0, 1) gives us an 
+#area that is bigger than what we want. Take out a 
+#piece of paper and draw/shade the region corresponding 
+#to the value of pnorm(2.08, 0, 1)
+
+pnorm(2.08, 0, 1)</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex5-mid-hint-8"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#From your picture, you should be able to visually 
+#confirm that the area computed by pnorm(2.08, 0, 1)
+#is larger than the area you want to find. You should 
+#also be able to see that your picture and the 
+#picture I drew in this notebook share a boundary
+#though.
+
+pnorm(2.08, 0, 1)</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex5-mid-hint-9"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Can you remove some of the shaded area from your 
+#picture in order to obtain the shaded area we want?
+#Removing shaded area amounts to subtraction.
+
+pnorm(2.08, 0, 1) - ___</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex5-mid-hint-10" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Here&#39;s a slightly better hint. Fill in the blanks.
+
+pnorm(2.08, 0, 1) - ___(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex5-mid-hint-11" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The area you are subtracting still falls under a 
+#normal distribution with mean 0 and standard deviation 1.
+
+pnorm(2.08, 0, 1) - pnorm(___, 0, 1)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex5-mid-hint-12" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#What is the boundary value corresponding to the 
+#region you&#39;d like to &quot;unshade&quot; from your picture
+#in order to obtain the picture in this notebook?
+
+pnorm(2.08, 0, 1) - pnorm(___, 0, 1)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pnorm-ex5-mid-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>pnorm(2.08, 0, 1) - pnorm(-1.04, 0, 1)</code></pre>
+</div>
 </div>
 <div class="col-md-5">
-<p><img src="06_NormalDistribution_files/figure-html/pnorm-ex5-left-plot-1.png" width="288" /></p>
+<p><img src="06_NormalDistribution_files/figure-html/pnorm-ex5-mid-plot-1.png" width="288" /></p>
 </div>
 </div>
 </div>
@@ -576,14 +973,51 @@ data-lines="0" data-pipe="|&gt;">
 class="math inline">\(\mathbb{P}\left[Z &lt; \right.\)</span> -1 <span
 class="math inline">\(\text{ or } Z &gt;\)</span> 1.7 <span
 class="math inline">\(\left.\right]\)</span>.</p>
-<div class="tutorial-exercise" data-label="pnorm-ex6-left"
+<div class="tutorial-exercise" data-label="pnorm-ex6-out"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex6-out-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Again, something slightly different. How is this one
+#different than the questions you&#39;ve previously been
+#asked? How is it similar to those questions?</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex6-out-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#There are lots of way&#39;s to approach this one.
+#My favorite is to compute the two areas separately
+#and then add them together.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex6-out-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Calculate the area to the left of the left-most 
+#boundary value.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex6-out-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Calculate the area to the right of the right-most 
+#boundary value.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex6-out-hint-5"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#You&#39;ll need your &quot;subtract-from-one&quot; trick here.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex6-out-hint-6"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Now that you have both areas, add them together
+#to find the total shaded area.</code></pre>
+</div>
 </div>
 <div class="col-md-5">
-<p><img src="06_NormalDistribution_files/figure-html/pnorm-ex6-left-plot-1.png" width="288" /></p>
+<p><img src="06_NormalDistribution_files/figure-html/pnorm-ex6-out-plot-1.png" width="288" /></p>
 </div>
 </div>
 </div>
@@ -595,14 +1029,48 @@ data-lines="0" data-pipe="|&gt;">
 class="math inline">\(\mathbb{P}\left[\left|Z\right| &gt;
 \right.\)</span> 2.03 <span
 class="math inline">\(\left.\right]\)</span>.</p>
-<div class="tutorial-exercise" data-label="pnorm-ex7-left"
+<div class="tutorial-exercise" data-label="pnorm-ex7-out"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex7-out-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Justifying the picture:
+#Recall that |Z| denotes the &quot;absolute value&quot; of Z.
+#The absolute value measures distance away from 0.
+#Notice here, that we are interested in values of Z
+#whose distance from 0 exceeds 2.03.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex7-out-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#You can answer this question in the same way as you 
+#did for the previous question.
+#Use the picture to guide you.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex7-out-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#It is even a little bit easier than that question if 
+#you remember that our distribution is symmetric.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex7-out-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#What must be true about the area in the left tail 
+#and the area in the right tail?</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pnorm-ex7-out-hint-5"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Since they&#39;re the same, just calculate one of the areas
+#and double it.</code></pre>
+</div>
 </div>
 <div class="col-md-5">
-<p><img src="06_NormalDistribution_files/figure-html/pnorm-ex7-left-plot-1.png" width="288" /></p>
+<p><img src="06_NormalDistribution_files/figure-html/pnorm-ex7-out-plot-1.png" width="288" /></p>
 </div>
 </div>
 </div>
@@ -668,6 +1136,56 @@ data-lines="0" data-pipe="|&gt;">
 <pre class="text"><code>qnorm(0.95, 1068, 210)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="find-percentile-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#As mentioned, the arguments to the qnorm() function 
+#are, in order:
+####area to the LEFT of the desired cutoff (boundary)
+####the mean of the normal distribution
+####the standard deviation of the normal distribution
+
+qnorm(0.95, 1068, 210)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="find-percentile-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks in the second call to qnorm() to 
+#reflect the ACT exam.
+
+qnorm(0.95, 1068, 210)
+qnorm(___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="find-percentile-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks in the second call to qnorm() to 
+#reflect the ACT exam.
+
+qnorm(0.95, 1068, 210)
+qnorm(___, 20.8, 5.8)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="find-percentile-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The first argument is the area to the LEFT (the percentile) 
+#of the desired cutoff score. What should this 
+#area be if we want the *top* 10% of all scores?
+
+qnorm(0.95, 1068, 210)
+qnorm(___, 20.8, 5.8)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="find-percentile-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>qnorm(0.95, 1068, 210)
+qnorm(0.9, 20.8, 5.8)</code></pre>
+</div>
 </div>
 </div>
 <div id="section-practice-with-the-normal-and-binomial-distributions"
@@ -721,6 +1239,55 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ul>
+<div class="tutorial-exercise-support" data-label="chick-pox-exp-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Is this scenario best-modeled by a binomial distribution,
+#a normal distribution, or another distribution altogether?</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="chick-pox-exp-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Notice that there are 68 adults being surveyed, they 
+#are from a random sample (independent), and they are 
+#each being asked a &quot;yes or no&quot; question -- &quot;have you had 
+#chickenpox?&quot;.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="chick-pox-exp-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#This fits the assumptions of a binomial experiment 
+#with 68 trials</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="chick-pox-exp-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#At the end of the Topic 5 notebook, you were introduced 
+#to the expected value formula for binomial random variables.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="chick-pox-exp-hint-5"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The formula for the expected value was n*p, where 
+#n is the total number of trials, and p is the 
+#probability of &quot;success&quot; on any given trial.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="chick-pox-exp-hint-6"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#We know that there are 68 trials (n = 68), what is the 
+#probability that a randomly chosen adult has had chicken pox?
+
+68*___</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-exp-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>68*0.90</code></pre>
+</div>
+<ul>
 <li>Compute the standard deviation in number of adults in samples of
 size 68 who will have had chickenpox.
 <div class="tutorial-exercise" data-label="chick-pox-sd"
@@ -729,6 +1296,18 @@ data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
 </ul>
+<div class="tutorial-exercise-support" data-label="chick-pox-sd-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Similarly to the previous question, you were introduced
+#to the formula for the standard deviation of a binomial
+#random variable at the end of the Topic 5 notebook.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="chick-pox-sd-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The formula is: sqrt(n*p*(1 - p))</code></pre>
+</div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="surprised-if" class="tutorial-question panel-body">
 <div id="surprised-if-answer_container" class="shiny-html-output"></div>
@@ -745,6 +1324,47 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ul>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-exact1-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We&#39;ve accumulated four useful functions recently:
+####dbinom()
+####pbinom()
+####pnorm()
+####qnorm()
+
+#Are any of them useful here?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-exact1-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We can narrow it down to dbinom() or pbinom()
+#since we know that we&#39;re working with a binomial
+#random variable here.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-exact1-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#dbinom() is useful when we are interested in 
+#observing **exactly** some specific number of successes
+
+#pbinom() is most useful when we are interested in 
+#observing **at most** some number of successes.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-exact1-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The arguments to these functions are, in order:
+####number of successes
+####total number of trials
+####probability of success</code></pre>
+</div>
+<ul>
 <li>Find the probability that exactly 6 adults in your sample of size 68
 will <em>not</em> have had chickenpox.
 <div class="tutorial-exercise" data-label="chick-pox-prob-exact2"
@@ -752,6 +1372,27 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ul>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-exact2-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#This is a lot like the previous question.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-exact2-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#...but read carefully.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-exact2-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#What is the probability that a randomly selected adult
+#has **not** had chickenpox?</code></pre>
+</div>
+<ul>
 <li>Find the probability that at most 51 adults in your sample of size
 68 will have had chicken pox.
 <div class="tutorial-exercise" data-label="chick-pox-prob-atmost"
@@ -759,6 +1400,21 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ul>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-atmost-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Are you interested in **exactly** some number of 
+#successes here?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-atmost-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Use pbinom() instead of dbinom()</code></pre>
+</div>
+<ul>
 <li>Find the probability that at least 64 adults in your sample of size
 68 will have had chicken pox.
 <div class="tutorial-exercise" data-label="chick-pox-prob-atleast"
@@ -766,6 +1422,25 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ul>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-atleast-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We are interested in several possible outcomes 
+#here. The pbinom() function is better-suited to this 
+#scenario than dbinom() is.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-atleast-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The pbinom() function computes the probability of 
+# **at most** some number of successes, not at least some 
+#number of successes. Draw a picture to help you, and 
+#use the &quot;subtract-from-one&quot; approach.</code></pre>
+</div>
+<ul>
 <li>Find the probability that more than 54 but less than 61 adults in
 your sample of size 68 will have had chicken pox.
 <div class="tutorial-exercise" data-label="chick-pox-prob-between"
@@ -774,6 +1449,20 @@ data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
 </ul>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-between-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Since multiple outcomes are of interest here, we&#39;ll 
+#stick with the pbinom() function.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="chick-pox-prob-between-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Draw a picture to help you. You&#39;ll need to use 
+#the pbinom() function twice.</code></pre>
+</div>
 <p><strong>Practice Problem 2:</strong> Sophia took the Graduate Record
 Examination (GRE) and scored 160 on the Verbal Reasoning section and 157
 on the Quantitative Reasoning section. The mean score on the Verbal
@@ -790,6 +1479,20 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ul>
+<div class="tutorial-exercise-support" data-label="z-score-QR-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Remember the z-score formula is: 
+####(observation - mean)/(standard deviation)</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="z-score-QR-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Be sure to use the values from the Quantitative
+#Reasoning exam.</code></pre>
+</div>
+<ul>
 <li>Use the code block below to compute Sophia’s <span
 class="math inline">\(z\)</span>-score on the Verbal Reasoning exam.
 <div class="tutorial-exercise" data-label="z-score-VR"
@@ -798,6 +1501,12 @@ data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
 </ul>
+<div class="tutorial-exercise-support" data-label="z-score-VR-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use the same approach as above, but use the 
+#values for the Verbal Reasoning Exam instead.</code></pre>
+</div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="GRE-compare-zscore" class="tutorial-question panel-body">
 <div id="GRE-compare-zscore-answer_container" class="shiny-html-output"></div>
@@ -814,6 +1523,35 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
+</ul>
+<div class="tutorial-exercise-support"
+data-label="GRE-QR-percentile-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#What distribution are we using? Binomial? Normal?
+#Another distribution altogether?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="GRE-QR-percentile-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Since we know that scores are approximately normally 
+#distributed, we can use our normal distribution functions.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="GRE-QR-percentile-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Which one is appropriate here, pnorm() or qnorm()? Why?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="GRE-QR-percentile-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Draw your picture and shade it in. Use the picture to 
+#help you fill in the parameters of the function you use.</code></pre>
+</div>
+<ul>
 <li>Find the proportion of test takers doing <em>better than</em> Sophia
 on the Verbal Reasoning exam.
 <div class="tutorial-exercise" data-label="GRE-VR-percent-above"
@@ -822,6 +1560,12 @@ data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div></li>
 </ul>
+<div class="tutorial-exercise-support"
+data-label="GRE-VR-percent-above-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Again, draw a picture and use your picture to guide you.</code></pre>
+</div>
 </div>
 </div>
 <div id="section-submit" class="section level2">
@@ -1355,34 +2099,32 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex1-left", global_se
 "boundary6a <- round(runif(1, -1.5, -0.75), 2)", "boundary6b <- round(runif(1, 1.5, 2.5), 2)", 
 "boundary7 <- round(runif(1, 1, 2.5), 2)", "", "chickPoxSampSize <- sample(50:150, size = 1)", 
 "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(label = "setup", 
-    include = FALSE)), setup = "", chunks = list(list(label = "pnorm-ex1-left-setup", 
-    code = "", opts = list(label = "\"pnorm-ex1-left-setup\""), 
-    engine = "r"), list(label = "pnorm-ex1-left", code = "", 
-    opts = list(label = "\"pnorm-ex1-left\"", exercise = "TRUE"), 
+    include = FALSE)), setup = NULL, chunks = list(list(label = "pnorm-ex1-left", 
+    code = "", opts = list(label = "\"pnorm-ex1-left\"", exercise = "TRUE"), 
     engine = "r")), code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
 "  pass_if(~ (abs(.result - pnorm(boundary1, 0, 1)) < 0.001))", 
-")"), chunk_opts = list(label = "pnorm-ex1-left-check")), solution = NULL, 
-    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
-        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
-        comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "06_NormalDistribution_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "06_NormalDistribution_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 6.5, fig.height = 4, fig.env = "figure", 
-        fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 624, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "pnorm-ex1-left", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "pnorm-ex1-left, exercise = TRUE", 
-        fig.num = 0L, exercise.df_print = "paged"), engine = "r", 
+")"), chunk_opts = list(label = "pnorm-ex1-left-check")), solution = structure("pnorm(1.49, 0, 1)", chunk_opts = list(
+    label = "pnorm-ex1-left-solution")), tests = NULL, options = list(
+    eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+    tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+    highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+    strip.white = TRUE, cache = 0, cache.path = "06_NormalDistribution_cache/html/", 
+    cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+    cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+    fig.align = "default", fig.path = "06_NormalDistribution_files/figure-html/", 
+    dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+    fig.width = 6.5, fig.height = 4, fig.env = "figure", fig.cap = NULL, 
+    fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, fig.pos = "", 
+    out.width = 624, out.height = NULL, out.extra = NULL, fig.retina = 2, 
+    external = TRUE, sanitize = FALSE, interval = 1, aniopts = "controls,loop", 
+    warning = TRUE, error = FALSE, message = TRUE, render = NULL, 
+    ref.label = NULL, child = NULL, engine = "r", split = FALSE, 
+    include = TRUE, purl = TRUE, max.print = 1000, exercise.timelimit = 60, 
+    exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
+    exercise.error.check.code = "gradethis_error_checker()", 
+    label = "pnorm-ex1-left", exercise = TRUE, code = "", out.width.px = 624, 
+    out.height.px = 384, params.src = "pnorm-ex1-left, exercise = TRUE", 
+    fig.num = 0L, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
  
@@ -1435,15 +2177,15 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex2-left", global_se
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-pnorm-ex3-left-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pnorm-ex3-left-code-editor`)), session)
-output$`tutorial-exercise-pnorm-ex3-left-output` <- renderUI({
-  `tutorial-exercise-pnorm-ex3-left-result`()
+`tutorial-exercise-pnorm-ex3-right-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pnorm-ex3-right-code-editor`)), session)
+output$`tutorial-exercise-pnorm-ex3-right-output` <- renderUI({
+  `tutorial-exercise-pnorm-ex3-right-result`()
 })
 </script>
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "pnorm-ex3-left", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
+learnr:::store_exercise_cache(structure(list(label = "pnorm-ex3-right", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
 "library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#set.seed(round(as.numeric(Sys.time()), -2))", "set.seed(241)", 
@@ -1453,11 +2195,12 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex3-left", global_se
 "boundary6a <- round(runif(1, -1.5, -0.75), 2)", "boundary6b <- round(runif(1, 1.5, 2.5), 2)", 
 "boundary7 <- round(runif(1, 1, 2.5), 2)", "", "chickPoxSampSize <- sample(50:150, size = 1)", 
 "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(label = "setup", 
-    include = FALSE)), setup = NULL, chunks = list(list(label = "pnorm-ex3-left", 
-    code = "", opts = list(label = "\"pnorm-ex3-left\"", exercise = "TRUE"), 
+    include = FALSE)), setup = NULL, chunks = list(list(label = "pnorm-ex3-right", 
+    code = "", opts = list(label = "\"pnorm-ex3-right\"", exercise = "TRUE"), 
     engine = "r")), code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
 "  pass_if(~ (abs(.result - (1 - pnorm(boundary3, 0, 1))) < 0.001))", 
-")"), chunk_opts = list(label = "pnorm-ex3-left-check")), solution = NULL, 
+")"), chunk_opts = list(label = "pnorm-ex3-right-check")), solution = structure(c("1 - pnorm(-2.17, 0, 1)", 
+""), chunk_opts = list(label = "pnorm-ex3-right-solution")), 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
@@ -1476,22 +2219,22 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex3-left", global_se
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "pnorm-ex3-left", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "pnorm-ex3-left, exercise = TRUE", 
+        label = "pnorm-ex3-right", exercise = TRUE, code = "", 
+        out.width.px = 624, out.height.px = 384, params.src = "pnorm-ex3-right, exercise = TRUE", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-pnorm-ex4-left-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pnorm-ex4-left-code-editor`)), session)
-output$`tutorial-exercise-pnorm-ex4-left-output` <- renderUI({
-  `tutorial-exercise-pnorm-ex4-left-result`()
+`tutorial-exercise-pnorm-ex4-right-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pnorm-ex4-right-code-editor`)), session)
+output$`tutorial-exercise-pnorm-ex4-right-output` <- renderUI({
+  `tutorial-exercise-pnorm-ex4-right-result`()
 })
 </script>
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "pnorm-ex4-left", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
+learnr:::store_exercise_cache(structure(list(label = "pnorm-ex4-right", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
 "library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#set.seed(round(as.numeric(Sys.time()), -2))", "set.seed(241)", 
@@ -1501,11 +2244,11 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex4-left", global_se
 "boundary6a <- round(runif(1, -1.5, -0.75), 2)", "boundary6b <- round(runif(1, 1.5, 2.5), 2)", 
 "boundary7 <- round(runif(1, 1, 2.5), 2)", "", "chickPoxSampSize <- sample(50:150, size = 1)", 
 "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(label = "setup", 
-    include = FALSE)), setup = NULL, chunks = list(list(label = "pnorm-ex4-left", 
-    code = "", opts = list(label = "\"pnorm-ex4-left\"", exercise = "TRUE"), 
+    include = FALSE)), setup = NULL, chunks = list(list(label = "pnorm-ex4-right", 
+    code = "", opts = list(label = "\"pnorm-ex4-right\"", exercise = "TRUE"), 
     engine = "r")), code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
 "  pass_if(~ (abs(.result - (1 - pnorm(boundary4, 0, 1))) < 0.001))", 
-")"), chunk_opts = list(label = "pnorm-ex4-left-check")), solution = NULL, 
+")"), chunk_opts = list(label = "pnorm-ex4-right-check")), solution = NULL, 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
@@ -1524,22 +2267,22 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex4-left", global_se
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "pnorm-ex4-left", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "pnorm-ex4-left, exercise = TRUE", 
+        label = "pnorm-ex4-right", exercise = TRUE, code = "", 
+        out.width.px = 624, out.height.px = 384, params.src = "pnorm-ex4-right, exercise = TRUE", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-pnorm-ex5-left-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pnorm-ex5-left-code-editor`)), session)
-output$`tutorial-exercise-pnorm-ex5-left-output` <- renderUI({
-  `tutorial-exercise-pnorm-ex5-left-result`()
+`tutorial-exercise-pnorm-ex5-mid-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pnorm-ex5-mid-code-editor`)), session)
+output$`tutorial-exercise-pnorm-ex5-mid-output` <- renderUI({
+  `tutorial-exercise-pnorm-ex5-mid-result`()
 })
 </script>
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "pnorm-ex5-left", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
+learnr:::store_exercise_cache(structure(list(label = "pnorm-ex5-mid", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
 "library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#set.seed(round(as.numeric(Sys.time()), -2))", "set.seed(241)", 
@@ -1549,12 +2292,13 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex5-left", global_se
 "boundary6a <- round(runif(1, -1.5, -0.75), 2)", "boundary6b <- round(runif(1, 1.5, 2.5), 2)", 
 "boundary7 <- round(runif(1, 1, 2.5), 2)", "", "chickPoxSampSize <- sample(50:150, size = 1)", 
 "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(label = "setup", 
-    include = FALSE)), setup = NULL, chunks = list(list(label = "pnorm-ex5-left", 
-    code = "", opts = list(label = "\"pnorm-ex5-left\"", exercise = "TRUE"), 
+    include = FALSE)), setup = NULL, chunks = list(list(label = "pnorm-ex5-mid", 
+    code = "", opts = list(label = "\"pnorm-ex5-mid\"", exercise = "TRUE"), 
     engine = "r")), code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
 "  pass_if(~ (abs(.result - (pnorm(boundary5b, 0, 1) - pnorm(boundary5a, 0, 1))) < 0.001))", 
-")"), chunk_opts = list(label = "pnorm-ex5-left-check")), solution = NULL, 
-    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
+")"), chunk_opts = list(label = "pnorm-ex5-mid-check")), solution = structure(c("pnorm(2.08, 0, 1) - pnorm(-1.04, 0, 1)", 
+""), chunk_opts = list(label = "pnorm-ex5-mid-solution")), tests = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
@@ -1572,22 +2316,22 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex5-left", global_se
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "pnorm-ex5-left", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "pnorm-ex5-left, exercise = TRUE", 
+        label = "pnorm-ex5-mid", exercise = TRUE, code = "", 
+        out.width.px = 624, out.height.px = 384, params.src = "pnorm-ex5-mid, exercise = TRUE", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-pnorm-ex6-left-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pnorm-ex6-left-code-editor`)), session)
-output$`tutorial-exercise-pnorm-ex6-left-output` <- renderUI({
-  `tutorial-exercise-pnorm-ex6-left-result`()
+`tutorial-exercise-pnorm-ex6-out-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pnorm-ex6-out-code-editor`)), session)
+output$`tutorial-exercise-pnorm-ex6-out-output` <- renderUI({
+  `tutorial-exercise-pnorm-ex6-out-result`()
 })
 </script>
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "pnorm-ex6-left", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
+learnr:::store_exercise_cache(structure(list(label = "pnorm-ex6-out", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
 "library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#set.seed(round(as.numeric(Sys.time()), -2))", "set.seed(241)", 
@@ -1597,11 +2341,11 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex6-left", global_se
 "boundary6a <- round(runif(1, -1.5, -0.75), 2)", "boundary6b <- round(runif(1, 1.5, 2.5), 2)", 
 "boundary7 <- round(runif(1, 1, 2.5), 2)", "", "chickPoxSampSize <- sample(50:150, size = 1)", 
 "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(label = "setup", 
-    include = FALSE)), setup = NULL, chunks = list(list(label = "pnorm-ex6-left", 
-    code = "", opts = list(label = "\"pnorm-ex6-left\"", exercise = "TRUE"), 
+    include = FALSE)), setup = NULL, chunks = list(list(label = "pnorm-ex6-out", 
+    code = "", opts = list(label = "\"pnorm-ex6-out\"", exercise = "TRUE"), 
     engine = "r")), code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
 "  pass_if(~ (abs(.result - (pnorm(boundary6a, 0, 1) +(1 - pnorm(boundary6b, 0, 1)))) < 0.001))", 
-")"), chunk_opts = list(label = "pnorm-ex6-left-check")), solution = NULL, 
+")"), chunk_opts = list(label = "pnorm-ex6-out-check")), solution = NULL, 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
@@ -1620,22 +2364,22 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex6-left", global_se
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "pnorm-ex6-left", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "pnorm-ex6-left, exercise = TRUE", 
+        label = "pnorm-ex6-out", exercise = TRUE, code = "", 
+        out.width.px = 624, out.height.px = 384, params.src = "pnorm-ex6-out, exercise = TRUE", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-pnorm-ex7-left-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pnorm-ex7-left-code-editor`)), session)
-output$`tutorial-exercise-pnorm-ex7-left-output` <- renderUI({
-  `tutorial-exercise-pnorm-ex7-left-result`()
+`tutorial-exercise-pnorm-ex7-out-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pnorm-ex7-out-code-editor`)), session)
+output$`tutorial-exercise-pnorm-ex7-out-output` <- renderUI({
+  `tutorial-exercise-pnorm-ex7-out-result`()
 })
 </script>
 
 
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(label = "pnorm-ex7-left", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
+learnr:::store_exercise_cache(structure(list(label = "pnorm-ex7-out", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
 "library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#set.seed(round(as.numeric(Sys.time()), -2))", "set.seed(241)", 
@@ -1645,11 +2389,11 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex7-left", global_se
 "boundary6a <- round(runif(1, -1.5, -0.75), 2)", "boundary6b <- round(runif(1, 1.5, 2.5), 2)", 
 "boundary7 <- round(runif(1, 1, 2.5), 2)", "", "chickPoxSampSize <- sample(50:150, size = 1)", 
 "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(label = "setup", 
-    include = FALSE)), setup = NULL, chunks = list(list(label = "pnorm-ex7-left", 
-    code = "", opts = list(label = "\"pnorm-ex7-left\"", exercise = "TRUE"), 
+    include = FALSE)), setup = NULL, chunks = list(list(label = "pnorm-ex7-out", 
+    code = "", opts = list(label = "\"pnorm-ex7-out\"", exercise = "TRUE"), 
     engine = "r")), code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
 "  pass_if(~ (abs(.result - (pnorm(-boundary7, 0, 1) +(1 - pnorm(boundary7, 0, 1)))) < 0.001))", 
-")"), chunk_opts = list(label = "pnorm-ex7-left-check")), solution = NULL, 
+")"), chunk_opts = list(label = "pnorm-ex7-out-check")), solution = NULL, 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
@@ -1668,8 +2412,8 @@ learnr:::store_exercise_cache(structure(list(label = "pnorm-ex7-left", global_se
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "pnorm-ex7-left", exercise = TRUE, code = "", 
-        out.width.px = 624, out.height.px = 384, params.src = "pnorm-ex7-left, exercise = TRUE", 
+        label = "pnorm-ex7-out", exercise = TRUE, code = "", 
+        out.width.px = 624, out.height.px = 384, params.src = "pnorm-ex7-out, exercise = TRUE", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -1699,14 +2443,16 @@ learnr:::store_exercise_cache(structure(list(label = "find-percentile", global_s
     code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
     "  pass_if(~ (abs(.result - qnorm(0.9, 20.8, 5.8)) < 0.1))", 
     ")"), chunk_opts = list(label = "find-percentile-check")), 
-    solution = NULL, tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "06_NormalDistribution_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "06_NormalDistribution_files/figure-html/", 
+    solution = structure(c("qnorm(0.95, 1068, 210)", "qnorm(0.9, 20.8, 5.8)"
+    ), chunk_opts = list(label = "find-percentile-solution")), 
+    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "06_NormalDistribution_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "06_NormalDistribution_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1747,8 +2493,9 @@ learnr:::store_exercise_cache(structure(list(label = "chick-pox-exp", global_set
     code = "", opts = list(label = "\"chick-pox-exp\"", exercise = "TRUE"), 
     engine = "r")), code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
 "  pass_if(~ (abs(.result - (chickPoxSampSize*0.9)) < 0.1))", 
-")"), chunk_opts = list(label = "chick-pox-exp-check")), solution = NULL, 
-    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
+")"), chunk_opts = list(label = "chick-pox-exp-check")), solution = structure(c("68*0.90", 
+""), chunk_opts = list(label = "chick-pox-exp-solution")), tests = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 

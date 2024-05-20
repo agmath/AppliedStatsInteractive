@@ -46,7 +46,7 @@ chickPoxSampSize <- sample(50:150, size = 1)
 
 ###
 
-Throughout this workbook we'll investigate the probability distribution that is most central to our study of statistics: the normal distribution.  If we are confident that our data are nearly normal, that opens the door to many powerful statistical methods. This workbook gives you practice in working with normally distributed data.
+Throughout this workbook we'll investigate the probability distribution that is most central to our study of statistics: the normal distribution.  If we are confident that our data are nearly normal, that opens the door to many powerful statistical methods. This workbook gives you practice with normally distributed data.
 
 ## Objectives
 
@@ -193,6 +193,37 @@ Use the code block below to compute Bob and Sally's $z$-scores and answer the qu
 
 ```
 
+```{r compute-z-scores-hint-1}
+#Use the z-score formula, above.
+```
+
+```{r compute-z-scores-hint-2}
+#Fill in the blanks
+(___ - ___)/___
+```
+
+```{r compute-z-scores-hint-3}
+#For Bob, we should have
+(1400 - ___)/___
+#Since Bob took the SAT, we need to use the 
+#mean and standard deviation from that test 
+#to find their z-score. Fill those in.
+```
+
+```{r compute-z-scores-hint-4}
+#Bob's z-score is computed as follows:
+(1400 - 1068)/210
+
+```
+
+```{r compute-z-scores-hint-5}
+#Do the same for Sally, but use her ACT score, 
+#along with the mean and standard deviation for 
+#the ACT.
+(___ - ___)/___
+
+```
+
 ```{r SAT-ACT-z-scores, echo = FALSE}
 quiz(
   question_radio(
@@ -280,6 +311,31 @@ The block below is preset to compute the Bob's percentile. Execute the code cell
 pnorm(1400, 1068, 210)
 ```
 
+```{r compute-percentiles-hint-1}
+#Just run this code to compute Bob's percentile
+pnorm(1400, 1068, 210)
+
+```
+
+```{r compute-percentiles-hint-2}
+#The arguments for pnorm() are, in order:
+####boundary value,
+####distribution mean
+####distribution standard deviation
+pnorm(1400, 1068, 210)
+
+```
+
+```{r compute-percentiles-hint-3}
+#Fill in the blanks with the following to find
+#Sally's percentile:
+####Sally's ACT score (the boundary value)
+####the mean ACT score
+####the standard deviation in ACT scores
+pnorm(___, ___, ___)
+
+```
+
 ```{r SAT-ACT-percentiles, echo = FALSE}
 quiz(
   question_radio(
@@ -333,12 +389,40 @@ For these first few questions I'll draw pictures for you, but you should be prep
 
 **Question 1:** Use the code block below to find $\mathbb{P}\left[Z < \right.$ `r boundary1` $\left.\right]$ -- Remember that $Z\sim N\left(\mu = 0, \sigma = 1\right)$.
 
-```{r pnorm-ex1-left-setup}
+```{r pnorm-ex1-left, exercise = TRUE}
 
 ```
 
-```{r pnorm-ex1-left, exercise = TRUE}
+```{r pnorm-ex1-left-hint-1}
+#I've drawn the picture for you below.
+#(Be sure you can answer: Why does this 
+#picture correspond to the probability 
+#requested?)
+```
 
+```{r pnorm-ex1-left-hint-2}
+#Use the pnorm() function with the boundary of
+#the shaded region as the first argument, the 
+#mean of the normal distribution as the second
+#argument, and the standard deviation of the 
+#normal distribution as the final argument.
+
+pnorm(___, ___, ___)
+
+```
+
+```{r pnorm-ex1-left-hint-3}
+#The notation Z ~ N(mu = 0, sigma = 1) indicates 
+#that the mean (mu) of this distribution is 0
+#and that the standard deviation (sigma) of the 
+#distribution is 1.
+
+pnorm(___, ___, ___)
+
+```
+
+```{r pnorm-ex1-left-solution}
+pnorm(1.49, 0, 1)
 ```
 
 ```{r pnorm-ex1-left-check}
@@ -366,6 +450,47 @@ ggplot(NULL, aes(c(-3, 3))) +
 
 ```
 
+```{r pnorm-ex2-left-hint-1}
+#Again, I've drawn the picture for you here.
+#Would you be able to draw the picture if I 
+#hadn't provided it?
+#Try practicing this picture-drawing skill -- 
+#it will serve you well.
+
+```
+
+```{r pnorm-ex2-left-hint-2}
+#If you haven't solved the question yet, how 
+#"big" do you expect this probability to be?
+#Should it be more than 0.5? Less than 0.5? Why?
+
+```
+
+```{r pnorm-ex2-left-hint-3}
+#Remembering that the entire area under this 
+#normal distribution is 1, and that the distribution 
+#is symmetric (the left and right half are identical),
+#we should expect our answer to be less than 0.5.
+#This is because our shaded area covers less than 
+#half of the entire distribution.
+
+```
+
+```{r pnorm-ex2-left-hint-4}
+#Answer this question exactly the way you answered 
+#the previous one. The boundary value here is 
+#negative, but pnorm() will always give you the 
+#area to the left of your provided boundary value.
+#That's what you want here anyway, right?
+
+```
+
+```{r pnorm-ex2-left-hint-5}
+#Fill in the blanks to find the answer:
+pnorm(___, ___, ___)
+
+```
+
 ```{r pnorm-ex2-left-check}
 grade_result(
   pass_if(~ (abs(.result - pnorm(boundary2, 0, 1)) < 0.001))
@@ -387,18 +512,111 @@ ggplot(NULL, aes(c(-3, 3))) +
 
 **Question 3:** Find $\mathbb{P}\left[Z > \right.$ `r boundary3` $\left.\right]$.
 
-```{r pnorm-ex3-left, exercise = TRUE}
+```{r pnorm-ex3-right, exercise = TRUE}
 
 ```
 
-```{r pnorm-ex3-left-check}
+```{r pnorm-ex3-right-hint-1}
+#This one is similar to the previous two questions.
+#What is different about it, though?
+
+```
+
+```{r pnorm-ex3-right-hint-2}
+#The shaded area is to the right of the 
+#boundary value.
+
+```
+
+```{r pnorm-ex3-right-hint-3}
+#The pnorm() function gives us the area to the 
+#*left* of our boundary value, not the area 
+#to the right of it! Can we still find a way 
+#to use pnorm()?
+
+```
+
+```{r pnorm-ex3-right-hint-4}
+#In a previous notebook, we started with a probability
+#that we knew was too big, and removed the 
+#probability associated with events we weren't 
+#interested in so that we were left with the 
+#probability of only the events we wanted.
+#Can we apply those same ideas here?
+
+```
+
+```{r pnorm-ex3-right-hint-5}
+#If we start with the entire area under the normal 
+#curve and remove the unshaded area, then we 
+#should be left with just the shaded area.
+
+```
+
+```{r pnorm-ex3-right-hint-6}
+#Fill in the blanks to answer the question:
+
+___ - ___(___, ___, ___)
+
+```
+
+```{r pnorm-ex3-right-hint-7}
+#To fill in the leftmost blank, what is the area
+#under the entire normal distribution equal to?
+#That is, if we shaded in the entire distribution, 
+#what probability would that represent? 
+___ - ___(___, ___, ___)
+
+```
+
+```{r pnorm-ex3-right-hint-8}
+#Shading the entire distribution amounts to 
+#considering all possible outcomes. The probability
+#of observing one of the possible outcomes is 1
+#(or 100%).
+1 - ___(___, ___, ___)
+
+```
+
+```{r pnorm-ex3-right-hint-9}
+#We know that 1 (or 100%) is too large because we see 
+#unshaded area. The probability we are looking for is 
+#less than 100%. How do you subtract out the probability 
+#of observing an outcome to the left of -2.17?
+1 - ___(___, ___, ___)
+
+```
+
+```{r pnorm-ex3-right-hint-10}
+#The distribution we are working with is still 
+#a normal distribution. 
+
+1 - ___(___, ___, ___)
+
+```
+
+```{r pnorm-ex3-right-hint-11}
+#Apply what you've done in the previous 
+#two questions to identify the area to the left 
+#of the boundary value -2.17 as what will be subtracted away.
+
+1 - pnorm(___, ___, ___)
+
+```
+
+```{r pnorm-ex3-right-solution}
+1 - pnorm(-2.17, 0, 1)
+
+```
+
+```{r pnorm-ex3-right-check}
 grade_result(
   pass_if(~ (abs(.result - (1 - pnorm(boundary3, 0, 1))) < 0.001))
 )
 ```
 </div>
 <div class = "col-md-5">
-```{r pnorm-ex3-left-plot, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
+```{r pnorm-ex3-right-plot, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
 ggplot(NULL, aes(c(-3, 3))) +
   geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(boundary3, 3), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(-3, 3, length.out = 200), y = dnorm(seq(-3, 3, length.out = 200), 0, 1)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("") + xlim(c(-3, 3)) + scale_x_continuous(breaks = c(0, boundary3)) + theme(axis.text.x = element_text(size = 12, angle = 45))
 ```
@@ -412,18 +630,43 @@ ggplot(NULL, aes(c(-3, 3))) +
 
 **Question 4:** Find $\mathbb{P}\left[Z > \right.$ `r boundary4` $\left.\right]$.
 
-```{r pnorm-ex4-left, exercise = TRUE}
+```{r pnorm-ex4-right, exercise = TRUE}
 
 ```
 
-```{r pnorm-ex4-left-check}
+```{r pnorm-ex4-right-hint-1}
+#Take the same approach as you used to answer
+#the previous question.
+
+```
+
+```{r pnorm-ex4-right-hint-2}
+#How "big" should your answer be? More than 0.5?
+#Less than 0.5? How do you know?
+
+```
+
+```{r pnorm-ex4-right-hint-3}
+#To compute the probability to the right of 
+#your boundary value, subtract the probability
+#to the left of the boundary value away from 1.
+
+```
+
+```{r pnorm-ex4-right-hint-4}
+#Fill in the blanks
+___ - ___(___, ___, ___)
+
+```
+
+```{r pnorm-ex4-right-check}
 grade_result(
   pass_if(~ (abs(.result - (1 - pnorm(boundary4, 0, 1))) < 0.001))
 )
 ```
 </div>
 <div class = "col-md-5">
-```{r pnorm-ex4-left-plot, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
+```{r pnorm-ex4-right-plot, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
 ggplot(NULL, aes(c(-3, 3))) +
   geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(boundary4, 3), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(-3, 3, length.out = 200), y = dnorm(seq(-3, 3, length.out = 200), 0, 1)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("") + xlim(c(-3, 3)) + scale_x_continuous(breaks = c(0, boundary4)) + theme(axis.text.x = element_text(size = 12, angle = 45))
 ```
@@ -437,18 +680,126 @@ ggplot(NULL, aes(c(-3, 3))) +
 
 **Question 5:** Find $\mathbb{P}\left[\right.$ `r boundary5a` $< Z <$  `r boundary5b` $\left.\right]$.
 
-```{r pnorm-ex5-left, exercise = TRUE}
+```{r pnorm-ex5-mid, exercise = TRUE}
 
 ```
 
-```{r pnorm-ex5-left-check}
+```{r pnorm-ex5-mid-hint-1}
+#What makes this one different from all of the 
+#previous questions?
+
+```
+
+```{r pnorm-ex5-mid-hint-2}
+#Even our "subtract-from-one" trick won't work
+#here, because pnorm() computes the area into the tail 
+#of the distribution.
+
+```
+
+```{r pnorm-ex5-mid-hint-3}
+#Starting with 1 and subtracting out the area 
+#we don't want won't easily work here.
+#
+#Remember, we started with 1 and subtracted in the previous 
+#two questions because we knew that an area of 1 was
+#"too big".
+
+```
+
+```{r pnorm-ex5-mid-hint-4}
+#Is there a way we could compute an area that 
+#is too big to start? We want the area we compute
+#to share a boundary with the shaded area we are
+#ultimately trying to find. See the picture for reference.
+
+```
+
+```{r pnorm-ex5-mid-hint-5}
+#Fill in the blanks to compute an area that's too big,
+#to start.
+
+___(___, ___, ___)
+
+```
+
+```{r pnorm-ex5-mid-hint-6}
+#One of the areas below is the one to start with...
+#which one is it, and why?
+
+pnorm(2.08, 0, 1)
+pnorm(-1.04, 0, 1)
+
+```
+
+```{r pnorm-ex5-mid-hint-7}
+#Starting with pnorm(2.08, 0, 1) gives us an 
+#area that is bigger than what we want. Take out a 
+#piece of paper and draw/shade the region corresponding 
+#to the value of pnorm(2.08, 0, 1)
+
+pnorm(2.08, 0, 1)
+
+```
+
+```{r pnorm-ex5-mid-hint-8}
+#From your picture, you should be able to visually 
+#confirm that the area computed by pnorm(2.08, 0, 1)
+#is larger than the area you want to find. You should 
+#also be able to see that your picture and the 
+#picture I drew in this notebook share a boundary
+#though.
+
+pnorm(2.08, 0, 1)
+
+```
+
+```{r pnorm-ex5-mid-hint-9}
+#Can you remove some of the shaded area from your 
+#picture in order to obtain the shaded area we want?
+#Removing shaded area amounts to subtraction.
+
+pnorm(2.08, 0, 1) - ___
+
+```
+
+```{r pnorm-ex5-mid-hint-10}
+#Here's a slightly better hint. Fill in the blanks.
+
+pnorm(2.08, 0, 1) - ___(___, ___, ___)
+
+```
+
+```{r pnorm-ex5-mid-hint-11}
+#The area you are subtracting still falls under a 
+#normal distribution with mean 0 and standard deviation 1.
+
+pnorm(2.08, 0, 1) - pnorm(___, 0, 1)
+
+```
+
+```{r pnorm-ex5-mid-hint-12}
+#What is the boundary value corresponding to the 
+#region you'd like to "unshade" from your picture
+#in order to obtain the picture in this notebook?
+
+pnorm(2.08, 0, 1) - pnorm(___, 0, 1)
+
+```
+
+```{r pnorm-ex5-mid-solution}
+pnorm(2.08, 0, 1) - pnorm(-1.04, 0, 1)
+
+```
+
+```{r pnorm-ex5-mid-check}
 grade_result(
   pass_if(~ (abs(.result - (pnorm(boundary5b, 0, 1) - pnorm(boundary5a, 0, 1))) < 0.001))
 )
 ```
 </div>
 <div class = "col-md-5">
-```{r pnorm-ex5-left-plot, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
+```{r pnorm-ex5-mid-plot, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
 ggplot(NULL, aes(c(-3, 3))) +
   geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(boundary5a, boundary5b), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(-3, 3, length.out = 200), y = dnorm(seq(-3, 3, length.out = 200), 0, 1)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("") + xlim(c(-3, 3)) + scale_x_continuous(breaks = c(boundary5a, 0, boundary5b)) + theme(axis.text.x = element_text(size = 12, angle = 45))
 ```
@@ -462,18 +813,56 @@ ggplot(NULL, aes(c(-3, 3))) +
 
 **Question 6:** Find $\mathbb{P}\left[Z < \right.$ `r boundary6a` $\text{ or } Z >$ `r boundary6b` $\left.\right]$.
 
-```{r pnorm-ex6-left, exercise = TRUE}
+```{r pnorm-ex6-out, exercise = TRUE}
 
 ```
 
-```{r pnorm-ex6-left-check}
+```{r pnorm-ex6-out-hint-1}
+#Again, something slightly different. How is this one
+#different than the questions you've previously been
+#asked? How is it similar to those questions?
+
+```
+
+```{r pnorm-ex6-out-hint-2}
+#There are lots of way's to approach this one.
+#My favorite is to compute the two areas separately
+#and then add them together.
+
+```
+
+```{r pnorm-ex6-out-hint-3}
+#Calculate the area to the left of the left-most 
+#boundary value.
+
+```
+
+```{r pnorm-ex6-out-hint-4}
+#Calculate the area to the right of the right-most 
+#boundary value.
+
+
+```
+
+```{r pnorm-ex6-out-hint-5}
+#You'll need your "subtract-from-one" trick here.
+
+```
+
+```{r pnorm-ex6-out-hint-6}
+#Now that you have both areas, add them together
+#to find the total shaded area.
+
+```
+
+```{r pnorm-ex6-out-check}
 grade_result(
   pass_if(~ (abs(.result - (pnorm(boundary6a, 0, 1) +(1 - pnorm(boundary6b, 0, 1)))) < 0.001))
 )
 ```
 </div>
 <div class = "col-md-5">
-```{r pnorm-ex6-left-plot, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
+```{r pnorm-ex6-out-plot, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
 ggplot(NULL, aes(c(-3, 3))) +
   geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(-3, boundary6a), fill = "steelblue", alpha = 0.5) + geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(boundary6b, 3), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(-3, 3, length.out = 200), y = dnorm(seq(-3, 3, length.out = 200), 0, 1)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("") + xlim(c(-3, 3)) + scale_x_continuous(breaks = c(boundary6a, 0, boundary6b)) + theme(axis.text.x = element_text(size = 12, angle = 45))
 ```
@@ -487,18 +876,52 @@ ggplot(NULL, aes(c(-3, 3))) +
 
 **Question 7:** Find $\mathbb{P}\left[\left|Z\right| > \right.$ `r boundary7` $\left.\right]$.
 
-```{r pnorm-ex7-left, exercise = TRUE}
+```{r pnorm-ex7-out, exercise = TRUE}
 
 ```
 
-```{r pnorm-ex7-left-check}
+```{r pnorm-ex7-out-hint-1}
+#Justifying the picture:
+#Recall that |Z| denotes the "absolute value" of Z.
+#The absolute value measures distance away from 0.
+#Notice here, that we are interested in values of Z
+#whose distance from 0 exceeds 2.03.
+
+```
+
+```{r pnorm-ex7-out-hint-2}
+#You can answer this question in the same way as you 
+#did for the previous question.
+#Use the picture to guide you.
+
+```
+
+```{r pnorm-ex7-out-hint-3}
+#It is even a little bit easier than that question if 
+#you remember that our distribution is symmetric.
+
+```
+
+```{r pnorm-ex7-out-hint-4}
+#What must be true about the area in the left tail 
+#and the area in the right tail?
+
+```
+
+```{r pnorm-ex7-out-hint-5}
+#Since they're the same, just calculate one of the areas
+#and double it.
+
+```
+
+```{r pnorm-ex7-out-check}
 grade_result(
   pass_if(~ (abs(.result - (pnorm(-boundary7, 0, 1) +(1 - pnorm(boundary7, 0, 1)))) < 0.001))
 )
 ```
 </div>
 <div class = "col-md-5">
-```{r pnorm-ex7-left-plot, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
+```{r pnorm-ex7-out-plot, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
 ggplot(NULL, aes(c(-3, 3))) +
   geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(-3, -boundary7), fill = "steelblue", alpha = 0.5) + geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(boundary7, 3), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(-3, 3, length.out = 200), y = dnorm(seq(-3, 3, length.out = 200), 0, 1)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("") + xlim(c(-3, 3)) + scale_x_continuous(breaks = c(-boundary7, 0, boundary7)) + theme(axis.text.x = element_text(size = 12, angle = 45))
 ```
@@ -535,6 +958,46 @@ Recall from earlier that SAT scores followed $N\left(\mu = 1068, \sigma = 210\ri
 qnorm(0.95, 1068, 210)
 ```
 
+```{r find-percentile-hint-1}
+#As mentioned, the arguments to the qnorm() function 
+#are, in order:
+####area to the LEFT of the desired cutoff (boundary)
+####the mean of the normal distribution
+####the standard deviation of the normal distribution
+
+qnorm(0.95, 1068, 210)
+```
+
+```{r find-percentile-hint-2}
+#Fill in the blanks in the second call to qnorm() to 
+#reflect the ACT exam.
+
+qnorm(0.95, 1068, 210)
+qnorm(___, ___, ___)
+```
+
+```{r find-percentile-hint-3}
+#Fill in the blanks in the second call to qnorm() to 
+#reflect the ACT exam.
+
+qnorm(0.95, 1068, 210)
+qnorm(___, 20.8, 5.8)
+```
+
+```{r find-percentile-hint-4}
+#The first argument is the area to the LEFT (the percentile) 
+#of the desired cutoff score. What should this 
+#area be if we want the *top* 10% of all scores?
+
+qnorm(0.95, 1068, 210)
+qnorm(___, 20.8, 5.8)
+```
+
+```{r find-percentile-solution}
+qnorm(0.95, 1068, 210)
+qnorm(0.9, 20.8, 5.8)
+```
+
 ```{r find-percentile-check}
 grade_result(
   pass_if(~ (abs(.result - qnorm(0.9, 20.8, 5.8)) < 0.1))
@@ -564,6 +1027,51 @@ Through this last section you'll work through a set of problems, some of which u
 
 ```
 
+```{r chick-pox-exp-hint-1}
+#Is this scenario best-modeled by a binomial distribution,
+#a normal distribution, or another distribution altogether?
+
+```
+
+```{r chick-pox-exp-hint-2}
+#Notice that there are 68 adults being surveyed, they 
+#are from a random sample (independent), and they are 
+#each being asked a "yes or no" question -- "have you had 
+#chickenpox?".
+
+```
+
+```{r chick-pox-exp-hint-3}
+#This fits the assumptions of a binomial experiment 
+#with 68 trials
+
+```
+
+```{r chick-pox-exp-hint-4}
+#At the end of the Topic 5 notebook, you were introduced 
+#to the expected value formula for binomial random variables.
+
+```
+
+```{r chick-pox-exp-hint-5}
+#The formula for the expected value was n*p, where 
+#n is the total number of trials, and p is the 
+#probability of "success" on any given trial.
+
+```
+
+```{r chick-pox-exp-hint-6}
+#We know that there are 68 trials (n = 68), what is the 
+#probability that a randomly chosen adult has had chicken pox?
+
+68*___
+```
+
+```{r chick-pox-exp-solution}
+68*0.90
+
+```
+
 ```{r chick-pox-exp-check}
 grade_result(
   pass_if(~ (abs(.result - (chickPoxSampSize*0.9)) < 0.1))
@@ -572,6 +1080,18 @@ grade_result(
 
 + Compute the standard deviation in number of adults in samples of size `r chickPoxSampSize` who will have had chickenpox.
 ```{r chick-pox-sd, exercise = TRUE}
+
+```
+
+```{r chick-pox-sd-hint-1}
+#Similarly to the previous question, you were introduced
+#to the formula for the standard deviation of a binomial
+#random variable at the end of the Topic 5 notebook.
+
+```
+
+```{r chick-pox-sd-hint-2}
+#The formula is: sqrt(n*p*(1 - p))
 
 ```
 
@@ -599,6 +1119,40 @@ question_checkbox(
 
 ```
 
+```{r chick-pox-prob-exact1-hint-1}
+#We've accumulated four useful functions recently:
+####dbinom()
+####pbinom()
+####pnorm()
+####qnorm()
+
+#Are any of them useful here?
+```
+
+```{r chick-pox-prob-exact1-hint-2}
+#We can narrow it down to dbinom() or pbinom()
+#since we know that we're working with a binomial
+#random variable here.
+
+```
+
+```{r chick-pox-prob-exact1-hint-3}
+#dbinom() is useful when we are interested in 
+#observing **exactly** some specific number of successes
+
+#pbinom() is most useful when we are interested in 
+#observing **at most** some number of successes.
+
+```
+
+```{r chick-pox-prob-exact1-hint-4}
+#The arguments to these functions are, in order:
+####number of successes
+####total number of trials
+####probability of success
+
+```
+
 ```{r chick-pox-prob-exact1-check}
 grade_result(
   pass_if(~ (abs(.result - (dbinom(floor(0.9*chickPoxSampSize), chickPoxSampSize, 0.9))) < 0.001))
@@ -607,6 +1161,22 @@ grade_result(
 
 + Find the probability that exactly `r floor(0.1*chickPoxSampSize)` adults in your sample of size `r chickPoxSampSize` will *not* have had chickenpox.
 ```{r chick-pox-prob-exact2, exercise = TRUE}
+
+```
+
+```{r chick-pox-prob-exact2-hint-1}
+#This is a lot like the previous question.
+
+```
+
+```{r chick-pox-prob-exact2-hint-2}
+#...but read carefully.
+
+```
+
+```{r chick-pox-prob-exact2-hint-3}
+#What is the probability that a randomly selected adult
+#has **not** had chickenpox?
 
 ```
 
@@ -621,6 +1191,17 @@ grade_result(
 
 ```
 
+```{r chick-pox-prob-atmost-hint-1}
+#Are you interested in **exactly** some number of 
+#successes here?
+
+```
+
+```{r chick-pox-prob-atmost-hint-2}
+#Use pbinom() instead of dbinom()
+
+```
+
 ```{r chick-pox-prob-atmost-check}
 grade_result(
   pass_if(~ (abs(.result - (pbinom(floor(0.75*chickPoxSampSize), chickPoxSampSize, 0.9))) < 0.00005))
@@ -632,6 +1213,21 @@ grade_result(
 
 ```
 
+```{r chick-pox-prob-atleast-hint-1}
+#We are interested in several possible outcomes 
+#here. The pbinom() function is better-suited to this 
+#scenario than dbinom() is.
+
+```
+
+```{r chick-pox-prob-atleast-hint-2}
+#The pbinom() function computes the probability of 
+# **at most** some number of successes, not at least some 
+#number of successes. Draw a picture to help you, and 
+#use the "subtract-from-one" approach.
+
+```
+
 ```{r chick-pox-prob-atleast-check}
 grade_result(
   pass_if(~ (abs(.result - ( 1 - pbinom((floor(0.95*chickPoxSampSize) - 1), chickPoxSampSize, 0.9))) < 0.0001))
@@ -640,6 +1236,18 @@ grade_result(
 
 + Find the probability that more than `r floor(0.8*chickPoxSampSize)` but less than `r floor(0.9*chickPoxSampSize)` adults in your sample of size `r chickPoxSampSize` will have had chicken pox.
 ```{r chick-pox-prob-between, exercise = TRUE}
+
+```
+
+```{r chick-pox-prob-between-hint-1}
+#Since multiple outcomes are of interest here, we'll 
+#stick with the pbinom() function.
+
+```
+
+```{r chick-pox-prob-between-hint-2}
+#Draw a picture to help you. You'll need to use 
+#the pbinom() function twice.
 
 ```
 
@@ -656,6 +1264,18 @@ grade_result(
 
 ```
 
+```{r z-score-QR-hint-1}
+#Remember the z-score formula is: 
+####(observation - mean)/(standard deviation)
+
+```
+
+```{r z-score-QR-hint-2}
+#Be sure to use the values from the Quantitative
+#Reasoning exam.
+
+```
+
 ```{r z-score-QR-check}
 grade_result(
   pass_if(~ (abs(.result - ((157 - 153)/7.67)) < 0.01))
@@ -664,6 +1284,12 @@ grade_result(
 
 + Use the code block below to compute Sophia's $z$-score on the Verbal Reasoning exam.
 ```{r z-score-VR, exercise = TRUE}
+
+```
+
+```{r z-score-VR-hint-1}
+#Use the same approach as above, but use the 
+#values for the Verbal Reasoning Exam instead.
 
 ```
 
@@ -690,6 +1316,29 @@ question_radio(
 
 ```
 
+```{r GRE-QR-percentile-hint-1}
+#What distribution are we using? Binomial? Normal?
+#Another distribution altogether?
+
+```
+
+```{r GRE-QR-percentile-hint-2}
+#Since we know that scores are approximately normally 
+#distributed, we can use our normal distribution functions.
+
+```
+
+```{r GRE-QR-percentile-hint-3}
+#Which one is appropriate here, pnorm() or qnorm()? Why?
+
+```
+
+```{r GRE-QR-percentile-hint-4}
+#Draw your picture and shade it in. Use the picture to 
+#help you fill in the parameters of the function you use.
+
+```
+
 ```{r GRE-QR-percentile-check}
 grade_result(
   pass_if(~ (abs(.result - pnorm(157, 153, 7.67)) < 0.001))
@@ -698,6 +1347,11 @@ grade_result(
 
 + Find the proportion of test takers doing *better than* Sophia on the Verbal Reasoning exam.
 ```{r GRE-VR-percent-above, exercise = TRUE}
+
+```
+
+```{r GRE-VR-percent-above-hint-1}
+#Again, draw a picture and use your picture to guide you.
 
 ```
 
