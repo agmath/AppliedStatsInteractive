@@ -82,7 +82,7 @@ For example, in Game 1 Kobe had the following sequence of hits and misses from h
 
 \[ \textrm{H M | M | H H M | M | M | M} \]
 
-To verify this run the command `kobe$basket[1:9]` using the code block below. Remember that this accesses the `basket` column of the `kobe` data frame, and the `[1:9]` says that we want entry 1 through entry 9 of that column.
+To verify this run the command `kobe %>% pull(basket) %>% head(n = 9)` using the code block below. Remember that this accesses the `basket` column of the `kobe` data frame, and the `head(n = 9)` says that we want the first 9 entries of that column.
 
 ```{r first9, exercise = TRUE}
 
@@ -121,7 +121,7 @@ quiz(
 
 In this workbook you have access to a custom function `calc_streak`, which was loaded in with the data. This function can be used to calculate the lengths of all shooting streaks and then look at the distribution.
 
-Store the result of `calc_streak(kobe$basket)` to a new object called `kobe_streak`and then call `kobe_streak` if you want to see the streak lengths printed out.
+Store the result of `calc_streak(kobe %>% pull(basket))` to a new object called `kobe_streak`and then call `kobe_streak` if you want to see the streak lengths printed out.
 ```{r calc-streak-kobe, exercise = TRUE}
 
 ```
@@ -134,15 +134,55 @@ Now use `ggplot` to make a barplot of `kobe_streak`.
 
 ```
 
+```{r plot-streak-kobe-hint-1}
+#Remember that plots start with ggplot(), and we 
+#add layers with the plus sign (+).
+```
+
+```{r plot-streak-kobe-hint-2}
+#Since the kobe_streak object is a vector and not a 
+#data frame, we'll leave the data parameter out of
+#our plot.
+```
+
+```{r plot-streak-kobe-hint-3}
+#Fill in the blank to create a barplot.
+
+ggplot() + 
+  ___
+```
+
+```{r plot-streak-kobe-hint-4}
+#For a barplot, we'll use geom_bar()
+
+ggplot() + 
+  ___
+```
+
+```{r plot-streak-kobe-hint-5}
+#What aesthetics do we need? Fill in the blank.
+
+ggplot() + 
+  geom_bar(aes(___))
+```
+
+```{r plot-streak-kobe-hint-6}
+#Since the heights of our bars are determined by the 
+#frequency of each category, we'll only supply a
+#mapping for the x location of our data.
+
+ggplot() + 
+  geom_bar(aes(x = ___))
+```
+
 ```{r plot-streak-kobe-solution}
-ggplot() + geom_bar(mapping = aes(x = kobe_streak))
+ggplot() + 
+  geom_bar(aes(x = kobe_streak))
 ```
 
 ```{r plot-streak-kobe-check}
 grade_code()
 ```
-
-<div id = "plot-streak-kobe-hint"> Since `kobe_streak` is a vector rather than a data frame, we should leave the `data` argument out of the call to `ggplot()`. That is, your code should start with `ggplot() +` </div>
 
 ###
 
@@ -226,6 +266,11 @@ We'll come back to Kobe shortly, but for now let's think about how we might simu
 sample(c("heads", "tails"), size = 1, replace = TRUE)
 ```
 
+```{r head-tail-hint-1}
+#To increase the number of simulated flips, edit the 
+#size parameter.
+```
+
 The first argument `c("heads", "tails")` represents the *outcomes* and can be thought of as a hat with two slips of paper in it: one slip says `heads` and the other says `tails`. The function `sample` draws one slip from the hat and tells us if it was a head or a tail. 
 
 ###
@@ -233,6 +278,31 @@ The first argument `c("heads", "tails")` represents the *outcomes* and can be th
 As you've discovered, if you wanted to simulate flipping a fair coin 100 times, you could either run the `sample()` function 100 times or, more simply, adjust the `size` argument, which governs how many samples to draw (the `replace = TRUE` argument indicates we put the slip of paper back in the hat before drawing again). Use the code block below to simulate 100 flips of a fair coin, storing the results in an object called `sim_fair_coin`. Then use `table(sim_fair_coin)` to compute a frequency table for the outcomes -- what do you notice?
 
 ```{r sim-fair-coin, exercise = TRUE}
+
+```
+
+```{r sim-fair-coin-hint-1}
+#Start with the code provided earlier to simulate 
+#your coin flips.
+
+```
+
+```{r sim-fair-coin-hint-2}
+#Remember that you use the arrow operator (<-) to 
+#assign values to variable names in R.
+
+```
+
+```{r sim-fair-coin-hint-3}
+#Fill in the blank with the code to simulate flipping. 
+
+sim_fair_coin <- ___
+
+```
+
+```{r sim-fair-coin-hint-4}
+#Once you've simulated the flips, use table(sim_fair_coin)
+#to compute your frequency table.
 
 ```
 
@@ -247,7 +317,7 @@ table(sim_unfair_coin)
 
 ###
 
-`prob=c(0.2, 0.8)` indicates that for the two elements in the *outcomes* vector, we want to select the first one, `heads`, with probability 0.2 and the second one, `tails` with probability 0.8. Another way of thinking about this is to think of the outcome space as a bag of 10 chips, where 2 chips are labeled "head" and 8 chips "tail". Therefore at each draw, the probability of drawing a chip that says "head"" is 20%, and "tail" is 80%.
+The argument `prob = c(0.2, 0.8)` indicates that for the two elements in the *outcomes* vector, we want to select the first one, `heads`, with probability 0.2 and the second one, `tails` with probability 0.8. Another way of thinking about this is to think of the outcome space as a bag of 10 chips, where 2 chips are labeled "head" and 8 chips "tail". Therefore at each draw, the probability of drawing a chip that says "head" is 20%, and "tail" is 80%.
 
 ## Simulating the Independent Shooter
 
@@ -262,6 +332,26 @@ sim_basket <- sample(c("H", "M"), size = 1, replace = TRUE)
 To make a valid comparison between Kobe and our simulated independent shooter, we need to align both their shooting percentage and the number of attempted shots. Use the code block below to help you find the number of shots we need to simulate.
 
 ```{r find-num-shots, exercise = TRUE}
+
+```
+
+```{r find-num-shots-hint-1}
+#The simulated shooter should take the same number of 
+#shots as Kobe took in the series.
+
+```
+
+```{r find-num-shots-hint-2}
+#Every row of the kobe data frame correspons to 
+#a shot taken by Kobe Bryant in the series.
+
+```
+
+```{r find-num-shots-hint-3}
+#There are several ways to find the number of rows
+#in the data frame. You can use the name of the data frame
+#to print out the entire data frame. Other options 
+#are the nrow(), dim(), and glimpse() functions.
 
 ```
 
@@ -291,10 +381,50 @@ quiz(
 
 ###
 
-Use your answers from the previous questions, our discussion about simulated coin flipping, and the code block below to simulate an independent shooter which we can compare to Kobe Bryant. Store the resuts of your simulated shots in an object called `sim_basket`.
+Use your answers from the previous questions, our discussion about simulated coin flipping, and the code block below to simulate an independent shooter which we can compare to Kobe Bryant. Store the results of your simulated shots in an object called `sim_basket`.
 
 ```{r sim-independent, exercise = TRUE}
 
+```
+
+```{r sim-independent-hint-1}
+#Use the arrow operator (<-) to assign the outcome to sim_basket
+```
+
+```{r sim-independent-hint-2}
+#Use the sample() function to simulate the shooter.
+
+sim_basket <- ___
+```
+
+```{r sim-independent-hint-3}
+#Use the sample() function to simulate the shooter.
+
+sim_basket <- sample(c("H", "M"), ___, ___, ___)
+```
+
+```{r sim-independent-hint-4}
+#For Kobe Bryant, what is the probability that he hits
+#a shot, and what is the probability that he misses
+#one? Use this to fill in the prob argument of sample()
+
+sim_basket <- sample(c("H", "M"), ___, ___, ___)
+```
+
+```{r sim-independent-hint-5}
+#How many shots should we simulate? Use this to fill 
+#in the size argument of the sample() function.
+
+sim_basket <- sample(c("H", "M"), prob = c(0.45, 1 - 0.45), ___, ___)
+```
+
+```{r sim-independent-hint-6}
+#By default, the sample function doesn't replace 
+#items from the selection space. We would run out of 
+#items to select after two selections -- set the 
+#replace parameter to TRUE
+
+sim_basket <- sample(c("H", "M"), prob = c(0.45, 1 - 0.45), size = 133, ___)
 ```
 
 ```{r sim-independent-solution}
@@ -321,19 +451,31 @@ sim_streak <- calc_streak(sim_basket)
 ```
 
 ```{r compare-basket, exercise = TRUE}
-kobe$basket
+kobe %>%
+  pull(basket)
 sim_basket
 ```
 
 ###
 
-Both data sets represent the results of 133 shot attempts, each with the same shooting percentage of 45%. We know that our simulated data is from a shooter that has independent shots. That is, we know the simulated shooter does not have a hot hand.
+Both data sets represent the results of 133 shot attempts, each with the same shooting percentage of 45%. We know that our simulated data is from a shooter that has independent shots. That is, we know the simulated shooter does **not** have a hot hand.
 
 ###
 
 Use `calc_streak` function in the code block below to compute the streak lengths of `sim_basket` and store the result in an object called `sim_streak`.
 
 ```{r sim-streak, exercise = TRUE, exercise.setup = "compare-basket-setup"}
+
+```
+
+```{r sim-streak-hint-1}
+#Remember to use the calc_streak() function from earlier.
+
+```
+
+```{r sim-streak-hint-2}
+#Use calc_streak() on sim_basket and store the result
+#as sim_streak
 
 ```
 
@@ -355,15 +497,40 @@ Okay, now you've got everything you need in order to help you discover whether t
 
 ```
 
+```{r discuss-q1-hint-1}
+#There are lots of ways to approach this -- one is
+#to produce a barplot, like you did earlier, but 
+#for your sim_streak object and compare the results
+#to what you observed with kobe_streak.
+
+```
+
 2. If you were to run the simulation of the independent shooter a second time, how would you expect its streak distribution to compare to the distribution from the question above? Exactly the same? Somewhat similar? Totally different? Explain your reasoning.
 
 ```{r discuss-q2, exercise = TRUE}
 
 ```
 
+```{r discuss-q2-hint-1}
+#There's no correct "code" for this question.
+#The code block is here in case you want to actually 
+#try it out. Copy, paste, and execute the code to 
+#simulate a new independent shooter. What do you observe?
+
+```
+
 3. How does Kobe Bryant's distribution of streak lengths compare to the distribution of streak lengths for the simulated shooter? Using this comparison, do you have evidence that the hot hand model fits Kobe's shooting patterns? Explain.
 
 ```{r discuss-q3, exercise = TRUE, exercise.setup = "compare-basket-setup"}
+
+```
+
+```{r discuss-q3-hint-1}
+#Again, there's no correct "code" here, but you might 
+#use ggplot() to compare Kobe's actual streak length 
+#distribution to that of your simulated shooter.
+#As a reminder, your simulated shooter does NOT have 
+#a "hot hand".
 
 ```
 

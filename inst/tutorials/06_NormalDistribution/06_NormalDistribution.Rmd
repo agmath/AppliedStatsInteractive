@@ -1114,7 +1114,7 @@ question_checkbox(
 )
 ```
 
-While you answer the following questions, it might be useful to refer back to [the Game of Dreidel example and solution](www/BinomialExample.pdf){target="_blank"} from the Topic 5 notebook.
+While you answer the following questions, it might be useful to refer back to [the Game of Dreidel example and solution](www/BinomialExample.pdf){target="_blank"} from the Topic 5 notebook. To open the file, right-click (or `ctrl+click` on Mac) and choose to *open in a new tab*.
 
 + Find the probability that exactly `r floor(0.9*chickPoxSampSize)` adults in your sample of size `r chickPoxSampSize` will have had chickenpox. 
 ```{r chick-pox-prob-exact1, exercise = TRUE}

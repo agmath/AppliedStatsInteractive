@@ -194,11 +194,11 @@ made until a miss occurs</em>.</p>
 misses from his nine shot attempts in the first quarter:</p>
 <p><span class="math display">\[ \textrm{H M | M | H H M | M | M | M}
 \]</span></p>
-<p>To verify this run the command <code>kobe$basket[1:9]</code> using
-the code block below. Remember that this accesses the
-<code>basket</code> column of the <code>kobe</code> data frame, and the
-<code>[1:9]</code> says that we want entry 1 through entry 9 of that
-column.</p>
+<p>To verify this run the command
+<code>kobe %&gt;% pull(basket) %&gt;% head(n = 9)</code> using the code
+block below. Remember that this accesses the <code>basket</code> column
+of the <code>kobe</code> data frame, and the <code>head(n = 9)</code>
+says that we want the first 9 entries of that column.</p>
 <div class="tutorial-exercise" data-label="first9" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
@@ -234,8 +234,8 @@ zero (in order of occurrence).</p>
 <code>calc_streak</code>, which was loaded in with the data. This
 function can be used to calculate the lengths of all shooting streaks
 and then look at the distribution.</p>
-Store the result of <code>calc_streak(kobe$basket)</code> to a new
-object called <code>kobe_streak</code>and then call
+Store the result of <code>calc_streak(kobe %&gt;% pull(basket))</code>
+to a new object called <code>kobe_streak</code>and then call
 <code>kobe_streak</code> if you want to see the streak lengths printed
 out.
 <div class="tutorial-exercise" data-label="calc-streak-kobe"
@@ -254,16 +254,64 @@ data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 <div class="tutorial-exercise-support"
+data-label="plot-streak-kobe-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Remember that plots start with ggplot(), and we 
+#add layers with the plus sign (+).</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="plot-streak-kobe-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Since the kobe_streak object is a vector and not a 
+#data frame, we&#39;ll leave the data parameter out of
+#our plot.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="plot-streak-kobe-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blank to create a barplot.
+
+ggplot() + 
+  ___</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="plot-streak-kobe-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#For a barplot, we&#39;ll use geom_bar()
+
+ggplot() + 
+  ___</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="plot-streak-kobe-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#What aesthetics do we need? Fill in the blank.
+
+ggplot() + 
+  geom_bar(aes(___))</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="plot-streak-kobe-hint-6" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Since the heights of our bars are determined by the 
+#frequency of each category, we&#39;ll only supply a
+#mapping for the x location of our data.
+
+ggplot() + 
+  geom_bar(aes(x = ___))</code></pre>
+</div>
+<div class="tutorial-exercise-support"
 data-label="plot-streak-kobe-solution" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
-<pre class="text"><code>ggplot() + geom_bar(mapping = aes(x = kobe_streak))</code></pre>
-</div>
-<div id="section-plot-streak-kobe-hint">
-Since <code>kobe_streak</code> is a vector rather than a data frame, we
-should leave the <code>data</code> argument out of the call to
-<code>ggplot()</code>. That is, your code should start with
-<code>ggplot() +</code>
+<pre class="text"><code>ggplot() + 
+  geom_bar(aes(x = kobe_streak))</code></pre>
 </div>
 </div>
 <div id="section-section-8" class="section level3">
@@ -374,6 +422,12 @@ data-lines="0" data-pipe="|&gt;">
 <pre class="text"><code>sample(c(&quot;heads&quot;, &quot;tails&quot;), size = 1, replace = TRUE)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="head-tail-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#To increase the number of simulated flips, edit the 
+#size parameter.</code></pre>
+</div>
 <p>The first argument <code>c("heads", "tails")</code> represents the
 <em>outcomes</em> and can be thought of as a hat with two slips of paper
 in it: one slip says <code>heads</code> and the other says
@@ -396,6 +450,31 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="sim-fair-coin-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Start with the code provided earlier to simulate 
+#your coin flips.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="sim-fair-coin-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Remember that you use the arrow operator (&lt;-) to 
+#assign values to variable names in R.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="sim-fair-coin-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blank with the code to simulate flipping. 
+
+sim_fair_coin &lt;- ___</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="sim-fair-coin-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Once you&#39;ve simulated the flips, use table(sim_fair_coin)
+#to compute your frequency table.</code></pre>
+</div>
 </div>
 <div id="section-section-16" class="section level3">
 <h3></h3>
@@ -415,13 +494,13 @@ table(sim_unfair_coin)</code></pre>
 </div>
 <div id="section-section-17" class="section level3">
 <h3></h3>
-<p><code>prob=c(0.2, 0.8)</code> indicates that for the two elements in
-the <em>outcomes</em> vector, we want to select the first one,
-<code>heads</code>, with probability 0.2 and the second one,
+<p>The argument <code>prob = c(0.2, 0.8)</code> indicates that for the
+two elements in the <em>outcomes</em> vector, we want to select the
+first one, <code>heads</code>, with probability 0.2 and the second one,
 <code>tails</code> with probability 0.8. Another way of thinking about
 this is to think of the outcome space as a bag of 10 chips, where 2
 chips are labeled “head” and 8 chips “tail”. Therefore at each draw, the
-probability of drawing a chip that says “head”” is 20%, and “tail” is
+probability of drawing a chip that says “head” is 20%, and “tail” is
 80%.</p>
 </div>
 </div>
@@ -443,6 +522,29 @@ of shots we need to simulate.</p>
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="find-num-shots-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The simulated shooter should take the same number of 
+#shots as Kobe took in the series.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="find-num-shots-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Every row of the kobe data frame correspons to 
+#a shot taken by Kobe Bryant in the series.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="find-num-shots-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#There are several ways to find the number of rows
+#in the data frame. You can use the name of the data frame
+#to print out the entire data frame. Other options 
+#are the nrow(), dim(), and glimpse() functions.</code></pre>
 </div>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
@@ -467,12 +569,64 @@ data-lines="0" data-pipe="|&gt;">
 <p>Use your answers from the previous questions, our discussion about
 simulated coin flipping, and the code block below to simulate an
 independent shooter which we can compare to Kobe Bryant. Store the
-resuts of your simulated shots in an object called
+results of your simulated shots in an object called
 <code>sim_basket</code>.</p>
 <div class="tutorial-exercise" data-label="sim-independent"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sim-independent-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Use the arrow operator (&lt;-) to assign the outcome to sim_basket</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sim-independent-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Use the sample() function to simulate the shooter.
+
+sim_basket &lt;- ___</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sim-independent-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Use the sample() function to simulate the shooter.
+
+sim_basket &lt;- sample(c(&quot;H&quot;, &quot;M&quot;), ___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sim-independent-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#For Kobe Bryant, what is the probability that he hits
+#a shot, and what is the probability that he misses
+#one? Use this to fill in the prob argument of sample()
+
+sim_basket &lt;- sample(c(&quot;H&quot;, &quot;M&quot;), ___, ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sim-independent-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#How many shots should we simulate? Use this to fill 
+#in the size argument of the sample() function.
+
+sim_basket &lt;- sample(c(&quot;H&quot;, &quot;M&quot;), prob = c(0.45, 1 - 0.45), ___, ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sim-independent-hint-6" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#By default, the sample function doesn&#39;t replace 
+#items from the selection space. We would run out of 
+#items to select after two selections -- set the 
+#replace parameter to TRUE
+
+sim_basket &lt;- sample(c(&quot;H&quot;, &quot;M&quot;), prob = c(0.45, 1 - 0.45), size = 133, ___)</code></pre>
 </div>
 <div class="tutorial-exercise-support"
 data-label="sim-independent-solution" data-completion="1"
@@ -501,7 +655,8 @@ simulated data.</p>
 <div class="tutorial-exercise" data-label="compare-basket"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
-<pre class="text"><code>kobe$basket
+<pre class="text"><code>kobe %&gt;%
+  pull(basket)
 sim_basket</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
@@ -511,7 +666,7 @@ sim_basket</code></pre>
 <p>Both data sets represent the results of 133 shot attempts, each with
 the same shooting percentage of 45%. We know that our simulated data is
 from a shooter that has independent shots. That is, we know the
-simulated shooter does not have a hot hand.</p>
+simulated shooter does <strong>not</strong> have a hot hand.</p>
 </div>
 <div id="section-section-23" class="section level3">
 <h3></h3>
@@ -522,6 +677,17 @@ result in an object called <code>sim_streak</code>.</p>
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="sim-streak-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Remember to use the calc_streak() function from earlier.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="sim-streak-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use calc_streak() on sim_basket and store the result
+#as sim_streak</code></pre>
 </div>
 <div class="tutorial-exercise-support" data-label="sim-streak-solution"
 data-completion="1" data-diagnostics="1" data-startover="1"
@@ -546,6 +712,14 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="discuss-q1-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#There are lots of ways to approach this -- one is
+#to produce a barplot, like you did earlier, but 
+#for your sim_streak object and compare the results
+#to what you observed with kobe_streak.</code></pre>
+</div>
 <ol start="2" style="list-style-type: decimal">
 <li>If you were to run the simulation of the independent shooter a
 second time, how would you expect its streak distribution to compare to
@@ -557,6 +731,14 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="discuss-q2-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#There&#39;s no correct &quot;code&quot; for this question.
+#The code block is here in case you want to actually 
+#try it out. Copy, paste, and execute the code to 
+#simulate a new independent shooter. What do you observe?</code></pre>
+</div>
 <ol start="3" style="list-style-type: decimal">
 <li>How does Kobe Bryant’s distribution of streak lengths compare to the
 distribution of streak lengths for the simulated shooter? Using this
@@ -567,6 +749,15 @@ shooting patterns? Explain.</li>
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="discuss-q3-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Again, there&#39;s no correct &quot;code&quot; here, but you might 
+#use ggplot() to compare Kobe&#39;s actual streak length 
+#distribution to that of your simulated shooter.
+#As a reminder, your simulated shooter does NOT have 
+#a &quot;hot hand&quot;.</code></pre>
 </div>
 </div>
 </div>
@@ -683,22 +874,22 @@ session$onSessionEnded(function() {
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "hh-binomial-assumptions", 
     question = structure("Which of the following assumptions must be made if we are to simulate a set of basketball shots as a binomial experiment?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_81ec514", 
+    "character")), answers = list(structure(list(id = "lnr_ans_aca3f4d", 
         option = "Every shot has two possible outcomes -- a 'hit' or a 'miss'", 
         value = "Every shot has two possible outcomes -- a 'hit' or a 'miss'", 
         label = structure("Every shot has two possible outcomes – a ‘hit’ or a ‘miss’", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1a7a059", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2251042", 
         option = "If a player 'hits' a shot, then the likelihood that they make their next shot goes up", 
         value = "If a player 'hits' a shot, then the likelihood that they make their next shot goes up", 
         label = structure("If a player ‘hits’ a shot, then the likelihood that they make their next shot goes up", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e294d7c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8ddee41", 
         option = "Shots are independent -- that is, the hot hand phenomenon does not exist", 
         value = "Shots are independent -- that is, the hot hand phenomenon does not exist", 
         label = structure("Shots are independent – that is, the hot hand phenomenon does not exist", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bf6d757", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_327b774", 
         option = "We must simulate at least 50 shots", value = "We must simulate at least 50 shots", 
         label = structure("We must simulate at least 50 shots", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -710,7 +901,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "hh-binomial-assumptions-answer", question = "hh-binomial-assumptions"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1669522774.72257, options = list()), class = c("learnr_checkbox", 
+    seed = 1971865966.08178, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 
@@ -759,21 +950,21 @@ learnr:::store_exercise_cache(structure(list(label = "first9", global_setup = st
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "streak0-1", question = structure("What does a streak length of 1 mean, i.e. how many hits and misses are in a streak of 1?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_67dd007", 
+"character")), answers = list(structure(list(id = "lnr_ans_b5dd2fc", 
     option = "One hit", value = "One hit", label = structure("One hit", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_4bf7734", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6703785", 
     option = "One hit and one miss", value = "One hit and one miss", 
     label = structure("One hit and one miss", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_f3aff91", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1113a8e", 
     option = "One hit and any number of misses", value = "One hit and any number of misses", 
     label = structure("One hit and any number of misses", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_fa35a2c", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_8ce7728", 
     option = "Just a miss", value = "Just a miss", label = structure("Just a miss", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_427d512", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_95a0fc3", 
     option = "Any number of misses", value = "Any number of misses", 
     label = structure("Any number of misses", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -784,29 +975,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "streak0-1-answer", question = "streak0-1"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 56434338.4737207, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 52766839.9754285, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "streak0-2", question = structure("What does a streak of length 0 mean?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_91b1b25", 
+"character")), answers = list(structure(list(id = "lnr_ans_e7c831b", 
     option = "One hit", value = "One hit", label = structure("One hit", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_cadb40e", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_af83581", 
     option = "One hit and one miss", value = "One hit and one miss", 
     label = structure("One hit and one miss", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_dfc6578", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_57807dd", 
     option = "One hit and any number of misses", value = "One hit and any number of misses", 
     label = structure("One hit and any number of misses", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_8d18b88", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_bf276b3", 
     option = "Just a single miss", value = "Just a single miss", 
     label = structure("Just a single miss", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_9eeb93b", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_91828f4", 
     option = "Any number of misses", value = "Any number of misses", 
     label = structure("Any number of misses", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -817,7 +1008,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "streak0-2-answer", question = "streak0-2"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 483255438.774967, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 548101279.24477, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -882,9 +1073,9 @@ learnr:::store_exercise_cache(structure(list(label = "plot-streak-kobe", global_
     list(label = "plot-streak-kobe", code = "", opts = list(label = "\"plot-streak-kobe\"", 
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure("grade_code()", chunk_opts = list(
-        label = "plot-streak-kobe-check")), solution = structure("ggplot() + geom_bar(mapping = aes(x = kobe_streak))", chunk_opts = list(
-        label = "plot-streak-kobe-solution")), tests = NULL, 
-    options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        label = "plot-streak-kobe-check")), solution = structure(c("ggplot() + ", 
+    "  geom_bar(aes(x = kobe_streak))"), chunk_opts = list(label = "plot-streak-kobe-solution")), 
+    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
@@ -912,19 +1103,19 @@ learnr:::store_exercise_cache(structure(list(label = "plot-streak-kobe", global_
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "describe-streaks-1", 
     question = structure("Describe the distribution of Kobe’s streaks from the 2009 NBA finals", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_d03f089", 
+    "character")), answers = list(structure(list(id = "lnr_ans_91c34e4", 
         option = "The distribution is uniform", value = "The distribution is uniform", 
         label = structure("The distribution is uniform", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_712beb", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_716e8dd", 
         option = "The distribution is symmetric", value = "The distribution is symmetric", 
         label = structure("The distribution is symmetric", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cef5c63", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9f1b5c2", 
         option = "The distribution is skewed left", value = "The distribution is skewed left", 
         label = structure("The distribution is skewed left", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7a8948b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6bb381c", 
         option = "The distribution is skewed right", value = "The distribution is skewed right", 
         label = structure("The distribution is skewed right", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -936,29 +1127,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "describe-streaks-1-answer", question = "describe-streaks-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 957326865.55421, options = list()), class = c("learnr_radio", 
+    seed = 1312126550.88899, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "describe-streaks-2", 
     question = structure("What was Kobe’s typical streak length?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_58737c", 
+    "character")), answers = list(structure(list(id = "lnr_ans_45e8ca9", 
         option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_78ae0fe", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3842894", 
         option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f2f5c34", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cc7a40d", 
         option = "2", value = "2", label = structure("2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_540530", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4e9f3a4", 
         option = "3", value = "3", label = structure("3", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_dbd0694", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5c96678", 
         option = "4", value = "4", label = structure("4", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a9b8fe5", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3fc269", 
         option = "5", value = "5", label = structure("5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -969,7 +1160,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "describe-streaks-2-answer", question = "describe-streaks-2"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 2060014358.54073, options = list()), class = c("learnr_radio", 
+    seed = 356595609.833947, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -977,22 +1168,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "describe-streaks-3", 
     question = structure("How long was Kobe’s longest streak?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_a6037ef", 
+    "character")), answers = list(structure(list(id = "lnr_ans_c54deaf", 
         option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_882b50d", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2f8b2c1", 
         option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2a26586", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e11e3ae", 
         option = "2", value = "2", label = structure("2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2587a4b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2cca18e", 
         option = "3", value = "3", label = structure("3", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2ea2ed7", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5195ce6", 
         option = "4", value = "4", label = structure("4", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_42de108", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_88195d6", 
         option = "5", value = "5", label = structure("5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1003,7 +1194,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "describe-streaks-3-answer", question = "describe-streaks-3"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 806881967.124266, options = list()), class = c("learnr_radio", 
+    seed = 183185005.914698, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1183,19 +1374,19 @@ learnr:::store_exercise_cache(structure(list(label = "find-num-shots", global_se
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "changing-sample-sim-1", 
     question = structure("How many shots did Kobe Bryant take during the 2009 NBA finals?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_154a3a", 
+    "character")), answers = list(structure(list(id = "lnr_ans_82e8b17", 
         option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c0e8b4c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d920c32", 
         option = "133", value = "133", label = structure("133", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bae7568", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_201b645", 
         option = "76", value = "76", label = structure("76", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_45995f1", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8b7006c", 
         option = "6", value = "6", label = structure("6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6b3923a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6be4b6b", 
         option = "45", value = "45", label = structure("45", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1206,7 +1397,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "changing-sample-sim-1-answer", question = "changing-sample-sim-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 348929634.337517, options = list()), class = c("learnr_radio", 
+    seed = 212267065.901155, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1214,16 +1405,16 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "changing-sample-sim-2", 
     question = structure("What should the shooting percentage be for our simulated random independent shooter?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_2852516", 
+    "character")), answers = list(structure(list(id = "lnr_ans_3d8a805", 
         option = "50%", value = "50%", label = structure("50%", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_89a5def", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a5e77ce", 
         option = "45%", value = "45%", label = structure("45%", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b926b40", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3bb4f8d", 
         option = "60%", value = "60%", label = structure("60%", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_baa8bb1", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7c85b2e", 
         option = "40%", value = "40%", label = structure("40%", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1234,7 +1425,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "changing-sample-sim-2-answer", question = "changing-sample-sim-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1503028044.3001, options = list()), class = c("learnr_radio", 
+    seed = 1611199050.74973, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1298,7 +1489,7 @@ learnr:::store_exercise_cache(structure(list(label = "compare-basket", global_se
     label = "setup", include = FALSE)), setup = "set.seed(8)\nsim_basket <- sample(c(\"H\", \"M\"), size = 133, replace = TRUE)\nsim_streak <- calc_streak(sim_basket)", 
     chunks = list(list(label = "compare-basket-setup", code = "set.seed(8)\nsim_basket <- sample(c(\"H\", \"M\"), size = 133, replace = TRUE)\nsim_streak <- calc_streak(sim_basket)", 
         opts = list(label = "\"compare-basket-setup\""), engine = "r"), 
-        list(label = "compare-basket", code = "kobe$basket\nsim_basket", 
+        list(label = "compare-basket", code = "kobe %>%\n  pull(basket)\nsim_basket", 
             opts = list(label = "\"compare-basket\"", exercise = "TRUE"), 
             engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -1319,11 +1510,11 @@ learnr:::store_exercise_cache(structure(list(label = "compare-basket", global_se
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "compare-basket", exercise = TRUE, code = c("kobe$basket", 
-        "sim_basket"), out.width.px = 624, out.height.px = 384, 
-        params.src = "compare-basket, exercise = TRUE", fig.num = 0, 
-        exercise.df_print = "paged"), engine = "r", version = "4"), class = c("r", 
-"tutorial_exercise")))
+        label = "compare-basket", exercise = TRUE, code = c("kobe %>%", 
+        "  pull(basket)", "sim_basket"), out.width.px = 624, 
+        out.height.px = 384, params.src = "compare-basket, exercise = TRUE", 
+        fig.num = 0, exercise.df_print = "paged"), engine = "r", 
+    version = "4"), class = c("r", "tutorial_exercise")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
