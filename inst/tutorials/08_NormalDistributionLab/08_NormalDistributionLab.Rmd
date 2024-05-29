@@ -60,8 +60,14 @@ Use the `head()` function to take a quick peek at the first few rows of the data
 
 ```
 
+```{r head-data-hint-1}
+#You can pipe the name of the data frame into
+#the head() function.
+
+```
+
 ```{r head-data-solution}
-head(bdims)
+bdims %>% head()
 ```
 
 ```{r head-data-check}
@@ -84,6 +90,18 @@ mdims <- bdims %>% filter(sex == 1)
 
 ```
 
+```{r subset-mf-hint-1}
+#Use the arrow operator for assignment
+mdims <- bdims %>% filter(sex == 1)
+___
+```
+
+```{r subset-mf-hint-2}
+#How should you change the filter() to create fdims?
+mdims <- bdims %>% filter(sex == 1)
+fdims <- ___
+```
+
 ```{r subset-mf-solution}
 mdims <- bdims %>% filter(sex == 1)
 fdims <- bdims %>% filter(sex == 0)
@@ -99,6 +117,34 @@ Use the code block below to make a histogram of men's heights and a histogram of
 
 ```{r plot-hgt-hists, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4}
 
+```
+
+```{r plot-hgt-hists-hint-1}
+#Pipe your data into ggplot
+
+```
+
+```{r plot-hgt-hists-hint-2}
+#What type of geometry layer do we need to add?
+mdims %>%
+  ggplot() + 
+  ___
+```
+
+```{r plot-hgt-hists-hint-3}
+#We'll use geom_histogram() to create the histogram
+#What aesthetic mappings does a histogram require?
+mdims %>%
+  ggplot() + 
+  geom_histogram(aes(___))
+```
+
+```{r plot-hgt-hists-hint-4}
+#The heights of the bars are determine by the counts in each range
+#Because of this, we only need an x aesthetic.
+mdims %>%
+  ggplot() + 
+  geom_histogram(aes(x = ___))
 ```
 
 ```{r distribution-quests, echo = FALSE}
