@@ -452,7 +452,7 @@ number_tall <- fdims %>%
    pull(number_tall)
 
 total_women <- fdims %>%
-  pull(height) %>%
+  pull(hgt) %>%
   length()
 
 number_tall / total_women
@@ -512,7 +512,7 @@ number_tall <- fdims %>%
    pull(number_tall)
 
 total_women <- fdims %>%
-  pull(height) %>%
+  pull(hgt) %>%
   length()
 
 number_tall / total_women

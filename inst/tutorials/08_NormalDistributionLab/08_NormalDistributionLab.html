@@ -681,7 +681,7 @@ data-lines="0" data-pipe="|&gt;">
    pull(number_tall)
 
 total_women &lt;- fdims %&gt;%
-  pull(height) %&gt;%
+  pull(hgt) %&gt;%
   length()
 
 number_tall / total_women</code></pre>
@@ -755,7 +755,7 @@ number_tall &lt;- fdims %&gt;%
    pull(number_tall)
 
 total_women &lt;- fdims %&gt;%
-  pull(height) %&gt;%
+  pull(hgt) %&gt;%
   length()
 
 number_tall / total_women</code></pre>
@@ -1035,13 +1035,13 @@ learnr:::store_exercise_cache(structure(list(label = "plot-hgt-hists", global_se
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "distribution-quests-1", 
     question = structure("Which group is taller on average?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_3df1146", 
+    "character")), answers = list(structure(list(id = "lnr_ans_69f9490", 
         option = "Males", value = "Males", label = structure("Males", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9009233", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d85c0fe", 
         option = "Females", value = "Females", label = structure("Females", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_22c7da8", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_64c42b8", 
         option = "It is impossible to tell", value = "It is impossible to tell", 
         label = structure("It is impossible to tell", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("There are short and tall people in both distributions, but the average height of one group is larger than the average height of the other group", html = TRUE, class = c("html", 
@@ -1054,7 +1054,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "distribution-quests-1-answer", question = "distribution-quests-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1207891666.93753, options = list()), class = c("learnr_radio", 
+    seed = 480269086.776357, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1062,22 +1062,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "distribution-quests-2", 
     question = structure("Would it be fair to say that the distribution of male heights is approximately normal?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_b15b7fa", 
+    "character")), answers = list(structure(list(id = "lnr_ans_528d8d8", 
         option = "Yes. The distribution of male heights follows an approximate bell curve.", 
         value = "Yes. The distribution of male heights follows an approximate bell curve.", 
         label = structure("Yes. The distribution of male heights follows an approximate bell curve.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_28fff08", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c601415", 
         option = "No. The distribution is skewed left.", value = "No. The distribution is skewed left.", 
         label = structure("No. The distribution is skewed left.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("No real-world data is exactly normally distributed, but if the data is <em>close enough<\u002fem>, using the normal model is permissible.", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f6b7692", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_21dc36a", 
         option = "No. The distribution is skewed right.", value = "No. The distribution is skewed right.", 
         label = structure("No. The distribution is skewed right.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("No real-world data is exactly normally distributed, but if the data is <em>close enough<\u002fem>, using the normal model is permissible.", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b484523", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_28c199", 
         option = "No. The distribution is symmetric but is multimodal", 
         value = "No. The distribution is symmetric but is multimodal", 
         label = structure("No. The distribution is symmetric but is multimodal", html = TRUE, class = c("html", 
@@ -1091,29 +1091,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "distribution-quests-2-answer", question = "distribution-quests-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 325531287.348413, options = list()), class = c("learnr_radio", 
+    seed = 254634121.881427, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "distribution-quests-3", 
     question = structure("Would it be fair to say that the distribution of female heights is approximately normal?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_b350a57", 
+    "character")), answers = list(structure(list(id = "lnr_ans_b851bf6", 
         option = "Yes. The distribution of female heights follows an approximate bell curve.", 
         value = "Yes. The distribution of female heights follows an approximate bell curve.", 
         label = structure("Yes. The distribution of female heights follows an approximate bell curve.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ce16d93", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_14e86e", 
         option = "No. The distribution is skewed left.", value = "No. The distribution is skewed left.", 
         label = structure("No. The distribution is skewed left.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("No real-world data is exactly normally distributed, but if the data is <em>close enough<\u002fem>, using the normal model is permissible.", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8b57237", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7626b19", 
         option = "No. The distribution is skewed right.", value = "No. The distribution is skewed right.", 
         label = structure("No. The distribution is skewed right.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("No real-world data is exactly normally distributed, but if the data is <em>close enough<\u002fem>, using the normal model is permissible.", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c800491", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_55cbd19", 
         option = "No. The distribution is symmetric but is multimodal", 
         value = "No. The distribution is symmetric but is multimodal", 
         label = structure("No. The distribution is symmetric but is multimodal", html = TRUE, class = c("html", 
@@ -1127,7 +1127,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "distribution-quests-3-answer", question = "distribution-quests-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1594884771.25732, options = list()), class = c("learnr_radio", 
+    seed = 1939103968.09703, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1422,12 +1422,12 @@ learnr:::store_exercise_cache(structure(list(label = "fwght-normal", global_setu
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "weights-question", 
     question = structure("Does the distribution of female weights seem to be approximately normal?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_ca15006", 
+    "character")), answers = list(structure(list(id = "lnr_ans_1b8f3d5", 
         option = "Yes, the Q-Q plot for the weight data looks similar to the Q-Q plots for the simulated data from the known normal distribution.", 
         value = "Yes, the Q-Q plot for the weight data looks similar to the Q-Q plots for the simulated data from the known normal distribution.", 
         label = structure("Yes, the Q-Q plot for the weight data looks similar to the Q-Q plots for the simulated data from the known normal distribution.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_edfd601", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2ec377c", 
         option = "No, the Q-Q plot for the weight data differs from the Q-Q plots for the simulated data from the known normal distribution.", 
         value = "No, the Q-Q plot for the weight data differs from the Q-Q plots for the simulated data from the known normal distribution.", 
         label = structure("No, the Q-Q plot for the weight data differs from the Q-Q plots for the simulated data from the known normal distribution.", html = TRUE, class = c("html", 
@@ -1440,7 +1440,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "weights-question-answer", question = "weights-question"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 2090465322.52655, options = list()), class = c("learnr_radio", 
+    seed = 504461610.265092, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1509,7 +1509,7 @@ learnr:::store_exercise_cache(structure(list(label = "hgt-emp-probability", glob
 "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "hgt-emp-probability", code = "number_tall <- fdims %>% \n   summarize(number_tall = sum(hgt > 182)) %>% \n   pull(number_tall)\n\ntotal_women <- fdims %>%\n  pull(height) %>%\n  length()\n\nnumber_tall / total_women", 
+    list(label = "hgt-emp-probability", code = "number_tall <- fdims %>% \n   summarize(number_tall = sum(hgt > 182)) %>% \n   pull(number_tall)\n\ntotal_women <- fdims %>%\n  pull(hgt) %>%\n  length()\n\nnumber_tall / total_women", 
         opts = list(label = "\"hgt-emp-probability\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -1532,8 +1532,8 @@ learnr:::store_exercise_cache(structure(list(label = "hgt-emp-probability", glob
         exercise.error.check.code = "gradethis_error_checker()", 
         label = "hgt-emp-probability", exercise = TRUE, code = c("number_tall <- fdims %>% ", 
         "   summarize(number_tall = sum(hgt > 182)) %>% ", "   pull(number_tall)", 
-        "", "total_women <- fdims %>%", "  pull(height) %>%", 
-        "  length()", "", "number_tall / total_women"), out.width.px = 624, 
+        "", "total_women <- fdims %>%", "  pull(hgt) %>%", "  length()", 
+        "", "number_tall / total_women"), out.width.px = 624, 
         out.height.px = 384, params.src = "hgt-emp-probability, exercise = TRUE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
