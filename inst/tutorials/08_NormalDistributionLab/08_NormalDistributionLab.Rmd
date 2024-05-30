@@ -147,6 +147,27 @@ mdims %>%
   geom_histogram(aes(x = ___))
 ```
 
+```{r plot-hgt-hists-hint-5}
+#Since we want the histogram to display the distribution of heights
+#of the males in the dataset, we set the x aesthetic to the height
+#variable.
+#Now, create a second copy of this plot for the female heights.
+mdims %>%
+  ggplot() + 
+  geom_histogram(aes(x = height))
+```
+
+```{r plot-hgt-hists-hint-6}
+#Not a hint, but...don't forget to add labels to your plots.
+#Can you think of a way to construct a single ggplot() that 
+#shows the distribution of both male and female heights?
+#Perhaps using the bdims dataframe, mapping fill to the sex
+#variable, and using facet_wrap()?
+mdims %>%
+  ggplot() + 
+  geom_histogram(aes(x = height))
+```
+
 ```{r distribution-quests, echo = FALSE}
 quiz(
   question_radio(
@@ -203,16 +224,53 @@ To see how accurate that description is, we can plot a normal distribution curve
 
 Run the code below to see the normal curve laid on top of the male heights. Once you've done that, adapt the code to plot the distribution of female heights as well as the corresponding normal curve on top of the distribution. Don't forget to update the plot title!
 ```{r hist-hgt-plus-normal, exercise = TRUE, exercise.eval = FALSE, warning = FALSE, message = FALSE}
-mhgtmean <- mean(mdims$hgt)
-mhgtsd <- sd(mdims$hgt)
+mhgtmean <- mdims %>%
+  summarize(avg_height = mean(hgt)) %>%
+  pull(avg_height)
+
+mhgtsd <- mdims %>%
+  summarize(sd_height = sd(hgt)) %>%
+  pull(sd_height)
 
 ggplot() + 
-  geom_histogram(data = mdims, mapping = aes(x = hgt, y = ..density..)) + 
-  geom_line(mapping = aes(x = seq(140, 200, length.out = 200), 
+  geom_histogram(data = mdims,
+                 aes(x = hgt, y = ..density..)) + 
+  geom_line(aes(x = seq(140, 200, length.out = 200), 
                           y = dnorm(seq(140, 200, length.out = 200), 
                                     mean = mhgtmean, sd = mhgtsd)),
             color = "blue", lwd = 1.25) +
   labs(title = "Distribution of Male Heights", x = "Height (cm)", y = "Proportion")
+```
+
+```{r hist-hgt-plus-normal-hint-1}
+#Change the code to compute average and standard deviation
+#heights for women.
+fhgtmean <- ___
+
+fhgtsd <- ___
+
+```
+
+```{r hist-hgt-plus-normal-hint-2}
+#Now update the ggplot() to use the data from fdims
+#and to use these summary statistics.
+#Update the plot title too!
+fhgtmean <- fdims %>%
+  summarize(avg_height = mean(hgt)) %>%
+  pull(avg_height)
+
+fhgtsd <- fdims %>%
+  summarize(sd_height = sd(hgt)) %>%
+  pull(sd_height)
+
+ggplot() + 
+  geom_histogram(data = ___,
+                 aes(x = hgt, y = ..density..)) + 
+  geom_line(aes(x = seq(140, 200, length.out = 200), 
+                          y = dnorm(seq(140, 200, length.out = 200), 
+                                    mean = ___, sd = ___)),
+            color = "blue", lwd = 1.25) +
+  labs(title = "Distribution of ___ Heights", x = "Height (cm)", y = "Proportion")
 ```
 
 ###
@@ -227,8 +285,8 @@ Notice how convenient `ggplot`'s layered plotting syntax makes adding multiple o
 
 Eyeballing the shape of the histogram is one way to determine if the data appear to be nearly normally distributed, but it can be frustrating to decide just how close the histogram is to the curve. An alternative approach involves constructing a normal probability plot, also called a normal Q-Q plot for "quantile-quantile". Execute the code block below to produce a Q-Q plot for female heights.
 ```{r qq, exercise = TRUE, message = FALSE, results = FALSE}
-qqnorm(fdims$hgt)
-qqline(fdims$hgt)
+qqnorm(fdims %>% pull(hgt))
+qqline(fdims %>% pull(hgt))
 ```
 
 ###
@@ -239,9 +297,11 @@ A data set that is nearly normal will result in a normal probability plot where 
 
 A useful way to address this question is to rephrase it as: what do normal probability plots look like for data that I *know* came from a normal distribution?  We can answer this by simulating data from a normal distribution using `rnorm` (which will draw random values from a normal distribution). Execute the code below to draw a random sample of `r length(fdims$hgt)` random heights from the assumed normal distribution of female heights. A histogram will be plotted for convenience -- feel free to run the code block multiple times to see what happens.
 ```{r sim-norm, exercise = TRUE}
-sim_norm <- rnorm(n = length(fdims$hgt), mean = fhgtmean, sd = fhgtsd)
+sim_norm <- rnorm(n = length(fdims %>% pull(hgt)), 
+                  mean = fhgtmean, 
+                  sd = fhgtsd)
 
-ggplot() + geom_histogram(mapping = aes(x = sim_norm))
+ggplot() + geom_histogram(aes(x = sim_norm))
 ```
 
 ###
@@ -250,10 +310,48 @@ In the `rnorm()` function above, the first argument indicates how many numbers y
 
 ###
 
-Use the code block below to take a random sample of heights (you can copy and paste the `sim_norm` line from the code block above) and make a normal probability plot of the simulated data from the truely normal distribution.
+Use the code block below to take a random sample of heights (you can copy and paste the `sim_norm` line from the code block above) and make a normal probability plot of the simulated data from the truly normal distribution.
 
 ```{r sim-norm-qq-plot, exercise = TRUE}
 
+```
+
+```{r sim-norm-qq-plot-hint-1}
+#Start by copy/pasting the line to define sim_norm from above.
+
+___
+```
+
+```{r sim-norm-qq-plot-hint-2}
+#Now copy/paste the lines of code to make the quantile-quantile 
+#plot from earlier. These are the lines beginning with
+#qqnorm() and qqsim()
+
+sim_norm <- rnorm(n = length(fdims %>% pull(hgt)), 
+                  mean = fhgtmean, 
+                  sd = fhgtsd)
+
+___
+```
+
+```{r sim-norm-qq-plot-hint-3}
+#Pass the values in sim_norm to the qq functions.
+
+sim_norm <- rnorm(n = length(fdims %>% pull(hgt)), 
+                  mean = fhgtmean, 
+                  sd = fhgtsd)
+
+qqnorm(___)
+qqline(___)
+```
+
+```{r sim-norm-qq-plot-solution}
+sim_norm <- rnorm(n = length(fdims %>% pull(hgt)), 
+                  mean = fhgtmean, 
+                  sd = fhgtsd)
+
+qqnorm(sim_norm)
+qqline(sim_norm)
 ```
 
 Do all of the points fall exactly on the line?  How does this plot compare to the probability plot for the real data?
@@ -262,18 +360,30 @@ Do all of the points fall exactly on the line?  How does this plot compare to th
 
 Even better than comparing the original plot to a single plot generated from a normal distribution is to compare it to many more plots using the following function. The following code block is pre-populated with a custom-built function that will create eight different Q-Q plots from simulated normal data and will also produce the Q-Q plot corresponding to our true female heights data. Run the code block to see the result.
 ```{r qqnormsim, exercise = TRUE, fig.height = 8}
-qqnormsim(fdims$hgt)
+qqnormsim(fdims %>% pull(hgt))
 ```
 
 ###
 
-Does the normal probability plot for `fdims$hgt` look similar to the plots created for the simulated data?  That is, do plots "provide evidence" that the female heights are nearly normal?
+Does the normal probability plot for the observed female heights look similar to the plots created for the simulated data?  That is, do plots "provide evidence" that the distribution of female heights is nearly normal?
 
 ###
 
 Use the `qqnormsim()` function and the code block below to determine whether or not female weights (`wgt`) appear to come from a normal distribution.
 ```{r fwght-normal, exercise = TRUE, fig.height = 8}
 
+```
+
+```{r fwght-normal-hint-1}
+#Copy and paste the code from the previous code cell, but
+#plot the weight column (wgt) instead of the height (hgt)
+
+___
+```
+
+```{r fwght-normal-hint-2}
+#Replace hgt with wgt
+qqnormsim(fdims %>% pull(hgt))
 ```
 
 ```{r weights-question, echo = FALSE}
@@ -297,7 +407,32 @@ It turns out that statisticians know a lot about the normal distribution. Once w
 ###
 
 **Question 1:** What is the probability that a randomly chosen young adult female is taller than 6 feet (about 182 cm)? Use the code block below to answer this question assuming that female heights are normally distributed. That is, use the `pnorm()` function we were introduced to in the previous workbook. (The study that published this data set is clear to point out that the sample was not random and therefore inference to a general population is not suggested.  We do so here only as an exercise.)
+
 ```{r prob-height-norm, exercise = TRUE}
+
+```
+
+```{r prob-height-norm-hint-1}
+#Start by drawing a picture with paper and pencil.
+#Your picture should include a normal curve, the location
+#and value of the mean, and the boundary value you are 
+#interested in. You should also shade the region under 
+#the normal curve which corresponds to the probability
+#you are looking for. Is the answer more, or less, than 0.5?
+
+```
+
+```{r prob-height-norm-hint-2}
+#The arguments for pnorm() are, in order
+###the boundary value
+###the mean of the normal distribution
+###the standard deviation of the normal distribution
+
+```
+
+```{r prob-height-norm-hint-3}
+#Do you want the area to the left of your boundary value
+#or the area to the right?
 
 ```
 
@@ -310,8 +445,17 @@ grade_result(
 ###
 
 Assuming a normal distribution has allowed us to calculate a theoretical probability. If we want to calculate the probability empirically, we simply need to determine how many observations fall above 182 then divide this number by the total sample size. Execute the code block below to do this. Compare the theoretical probability estimate to the empirical probability -- are they similar?
+
 ```{r hgt-emp-probability, exercise = TRUE}
-sum(fdims$hgt > 182) / length(fdims$hgt)
+number_tall <- fdims %>% 
+   summarize(number_tall = sum(hgt > 182)) %>% 
+   pull(number_tall)
+
+total_women <- fdims %>%
+  pull(height) %>%
+  length()
+
+number_tall / total_women
 ```
 
 ###
@@ -320,16 +464,58 @@ Although the probabilities are not exactly the same, they are reasonably close. 
 
 ###
 
-**Question 2:** What is the probability that a randomly chosen young adult female weighs more than 80kg? Use the code block below to answer this question making the assumption that female weights are normally distributed (recall that we said this assumption was not a good one).
+**Question 2:** What is the probability that a randomly chosen young adult female weighs more than 80kg? Use the code block below to answer this question, making the assumption that female weights are normally distributed (recall that we said this assumption was not a good one).
+
 ```{r wgt-norm-prob, exercise = TRUE}
+
+```
+
+```{r wgt-norm-prob-hint-1}
+#Start by drawing a picture again.
+
+```
+
+```{r wgt-norm-prob-hint-2}
+#Take the same approach as you used for finding the 
+#probability of a randomly selected woman exceeding 182cm
+#in height.
+
+```
+
+```{r wgt-norm-prob-hint-3}
+#Make sure that you use the average and standard deviation 
+#of the weight (wgt) variable instead of height (hgt)
 
 ```
 
 ###
 
 Compute the empirical probability that a randomly chosen young adult female weighs more than 80kg. Model your approach after the way we did this for heights earlier. Compare the empirical and theoretical probabilities. What can you say?
+
 ```{r wgt-emp-prob, exercise = TRUE}
 
+```
+
+```{r wgt-emp-prob-hint-1}
+#Start with the code to compute the empirical 
+#probability that a randomly chosen young adult female 
+#is over 182cm tall.
+```
+
+```{r wgt-emp-prob-hint-2}
+#update to code below to reference weights (wgt) instead 
+#of heights, and change the numeric threshold of interest
+#from 182cm to 80kg
+
+number_tall <- fdims %>% 
+   summarize(number_tall = sum(hgt > 182)) %>% 
+   pull(number_tall)
+
+total_women <- fdims %>%
+  pull(height) %>%
+  length()
+
+number_tall / total_women
 ```
 
 ###
