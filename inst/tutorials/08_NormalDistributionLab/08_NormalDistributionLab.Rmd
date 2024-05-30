@@ -297,7 +297,7 @@ A data set that is nearly normal will result in a normal probability plot where 
 
 A useful way to address this question is to rephrase it as: what do normal probability plots look like for data that I *know* came from a normal distribution?  We can answer this by simulating data from a normal distribution using `rnorm` (which will draw random values from a normal distribution). Execute the code below to draw a random sample of `r length(fdims$hgt)` random heights from the assumed normal distribution of female heights. A histogram will be plotted for convenience -- feel free to run the code block multiple times to see what happens.
 ```{r sim-norm, exercise = TRUE}
-sim_norm <- rnorm(n = length(fdims %>% pull(hgt)), 
+sim_norm <- rnorm(n = fdims %>% pull(hgt) %>% length(),
                   mean = fhgtmean, 
                   sd = fhgtsd)
 
@@ -327,7 +327,7 @@ ___
 #plot from earlier. These are the lines beginning with
 #qqnorm() and qqsim()
 
-sim_norm <- rnorm(n = length(fdims %>% pull(hgt)), 
+sim_norm <- rnorm(n = fdims %>% pull(hgt) %>% length(),
                   mean = fhgtmean, 
                   sd = fhgtsd)
 
@@ -337,7 +337,7 @@ ___
 ```{r sim-norm-qq-plot-hint-3}
 #Pass the values in sim_norm to the qq functions.
 
-sim_norm <- rnorm(n = length(fdims %>% pull(hgt)), 
+sim_norm <- rnorm(n = fdims %>% pull(hgt) %>% length(),
                   mean = fhgtmean, 
                   sd = fhgtsd)
 
@@ -346,7 +346,7 @@ qqline(___)
 ```
 
 ```{r sim-norm-qq-plot-solution}
-sim_norm <- rnorm(n = length(fdims %>% pull(hgt)), 
+sim_norm <- rnorm(n = fdims %>% pull(hgt) %>% length(),
                   mean = fhgtmean, 
                   sd = fhgtsd)
 
