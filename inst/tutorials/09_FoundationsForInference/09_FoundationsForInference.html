@@ -206,6 +206,27 @@ ggplot() +
   ggtitle(&quot;Sampling Distribution Curve and \nHistogram of Sample Means&quot;)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="norm-pop-samp-dist-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Change the following one at a time and re-run the 
+#code.
+###the mean in line 2
+###the standard deviation in line 4
+###the sample size in line 6
+###the number of samples in line 8
+
+#What happens?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="norm-pop-samp-dist-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Do this several times. What changes do you notice about 
+#the population distribution? What changes do you notice
+#about the sampling distribution?</code></pre>
+</div>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="normal-pop-samp-dist-questions-1" class="tutorial-question panel-body">
@@ -267,12 +288,12 @@ observed when a random element of the population is observed.</p>
 </div>
 <div id="section-section-3" class="section level3">
 <h3></h3>
-<strong>Uniformly Distributed Population:</strong> Work with the
+<p><strong>Uniformly Distributed Population:</strong> Work with the
 following code block to explore the connection between the population
 distribution and sampling distribution when the population follows a
 uniform distribution. You’ll notice in the plot on the left, that
 assuming a normal distribution for the population is an extremely poor
-choice. Use your explorations to answer the questions that follow.
+choice. Use your explorations to answer the questions that follow.</p>
 <div class="tutorial-exercise" data-label="uniform-pop-samp-dist"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -328,6 +349,27 @@ ggplot() +
   ggtitle(&quot;Sampling Distribution Curve and \nHistogram of Sample Means&quot;)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="uniform-pop-samp-dist-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Change the following one at a time and re-run the 
+#code.
+###the minimum value in line 2
+###the maximum value in line 4
+###the sample size in line 6
+###the number of samples in line 8
+
+#What happens?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="uniform-pop-samp-dist-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Do this several times. What changes do you notice about 
+#the population distribution? What changes do you notice
+#about the sampling distribution?</code></pre>
+</div>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="uniform-pop-samp-dist-questions-1" class="tutorial-question panel-body">
@@ -377,10 +419,11 @@ certainly cannot apply in the face of skewed distributions, can it?</p>
 </div>
 <div id="section-section-6" class="section level3">
 <h3></h3>
-<strong>Strongly Skewed Population:</strong> Work with the following
+<p><strong>Strongly Skewed Population:</strong> Work with the following
 code block to explore the connection between the population distribution
 and sampling distribution when the population follows a strongly skewed
-distribution. Use your explorations to answer the questions that follow.
+distribution. Use your explorations to answer the questions that
+follow.</p>
 <div class="tutorial-exercise" data-label="skew-pop-samp-dist"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -435,6 +478,28 @@ ggplot() +
             lwd = 2, color = &quot;blue&quot;) + xlim(mean - (3*sd), mean + (3*sd)) + 
   ggtitle(&quot;Sampling Distribution Curve and \nHistogram of Sample Means&quot;)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="skew-pop-samp-dist-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Change the following one at a time and re-run the 
+#code. Can you guess what the parameters govern by inspecting 
+#the results as you change them?.
+###the shape in line 2
+###the rate deviation in line 4
+###the sample size in line 6
+###the number of samples in line 8
+
+#What happens?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="skew-pop-samp-dist-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Do this several times. What changes do you notice about 
+#the population distribution? What changes do you notice
+#about the population distribution?</code></pre>
 </div>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
@@ -567,16 +632,90 @@ N\left(\mu, S_E = \sigma/\sqrt{n}\right)}\)</span>.</p>
 <div id="section-section-13" class="section level3">
 <h3></h3>
 <p>Try the following problem.</p>
-<strong>Sample Problem:</strong> Suppose you have 46 square foot wall
+<p><strong>Sample Problem:</strong> Suppose you have 46 square foot wall
 which you want to cover with spray paint. The brand of spray paint you
 plan to use is known to have coverage which is approximately normal,
 with an average coverage of 10 square feet per can and a standard
 deviation of 1.5 square feet. Use the code block below to answer the
-questions that follow.
+questions that follow.</p>
 <div class="tutorial-exercise" data-label="spraypaint-sandbox"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="spraypaint-sandbox-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#In the first question, you have a 46 square foot wall
+#and plan to buy four cans of paint.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="spraypaint-sandbox-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#In the second question, we know that coverage from a 
+#single can of spray paint is approximately normal.
+#Start with a picture of a normal distribution and 
+#include the mean (average coverage) as well as the boundary
+#value of coverage you are interested in.
+#Shade the distribution to show the probability you are interested in.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="spraypaint-sandbox-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Still in that question, use pnorm() to find the probability
+#that you are interested in.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="spraypaint-sandbox-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#One last hint for the second question -- to what side of 
+#your boundary value are you interested in finding the 
+#probability (area)?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="spraypaint-sandbox-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#In the third question, draw another picture. Use what you
+#learned about the Central Limit Theorem in this notebook
+#to create your drawing.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="spraypaint-sandbox-hint-6" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Since the population is approximately normally distributed,
+#the sampling distribution will also be approximately 
+#normal.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="spraypaint-sandbox-hint-7" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The mean of the sampling distribution is the same as the 
+#mean of the population distribution.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="spraypaint-sandbox-hint-8" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The spread of the sampling distribution will be less than
+#the spread of the population distribution. The Central
+#Limit Theorem from this notebook suggests that the spread 
+#is the Standard Error, with is equal to the population
+#standard deviation divided by the square root of the 
+#sample size.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="spraypaint-sandbox-hint-9" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Update your picture and use pnorm() to find the 
+#probability you are interested in.</code></pre>
 </div>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
@@ -821,17 +960,17 @@ learnr:::store_exercise_cache(structure(list(label = "norm-pop-samp-dist", globa
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "normal-pop-samp-dist-questions-1", 
     question = structure("Which of the following regarding the population and sampling distributions is true?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_11d8e9", 
+    "character")), answers = list(structure(list(id = "lnr_ans_3e06f4d", 
         option = "The population distribution and sampling distribution are identical in the case where sample size is 1", 
         value = "The population distribution and sampling distribution are identical in the case where sample size is 1", 
         label = structure("The population distribution and sampling distribution are identical in the case where sample size is 1", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5e538b8", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fad866a", 
         option = "The population distribution and sampling distribution are always identical.", 
         value = "The population distribution and sampling distribution are always identical.", 
         label = structure("The population distribution and sampling distribution are always identical.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ba9f821", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7c55547", 
         option = "The population distribution and sampling distribution are never identical.", 
         value = "The population distribution and sampling distribution are never identical.", 
         label = structure("The population distribution and sampling distribution are never identical.", html = TRUE, class = c("html", 
@@ -844,7 +983,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "normal-pop-samp-dist-questions-1-answer", question = "normal-pop-samp-dist-questions-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1671453120.22167, options = list()), class = c("learnr_radio", 
+    seed = 1068059337.00265, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -852,22 +991,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "normal-pop-samp-dist-questions-2", 
     question = structure("Try various different values for sample <code>size<\u002fcode>. What is true about the mean of the sampling distribution?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_a64e15e", 
+    "character")), answers = list(structure(list(id = "lnr_ans_47940d5", 
         option = "The mean of the sampling distribution always falls near the mean of the population distribution.", 
         value = "The mean of the sampling distribution always falls near the mean of the population distribution.", 
         label = structure("The mean of the sampling distribution always falls near the mean of the population distribution.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6d5a174", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fe0fbd3", 
         option = "The larger the sample size, the smaller the mean of the sampling distribution.", 
         value = "The larger the sample size, the smaller the mean of the sampling distribution.", 
         label = structure("The larger the sample size, the smaller the mean of the sampling distribution.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_be3f254", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ec5e611", 
         option = "The larger the sample size, the larger the mean of the sampling distribution.", 
         value = "The larger the sample size, the larger the mean of the sampling distribution.", 
         label = structure("The larger the sample size, the larger the mean of the sampling distribution.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_df5ce65", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e5e381f", 
         option = "The mean of the population distribution and mean of the sampling distribution are independent of one another.", 
         value = "The mean of the population distribution and mean of the sampling distribution are independent of one another.", 
         label = structure("The mean of the population distribution and mean of the sampling distribution are independent of one another.", html = TRUE, class = c("html", 
@@ -880,29 +1019,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "normal-pop-samp-dist-questions-2-answer", question = "normal-pop-samp-dist-questions-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1830539630.14759, options = list()), class = c("learnr_radio", 
+    seed = 830243776.613388, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "normal-pop-samp-dist-questions-3", 
     question = structure("Try various values of the mean, standard deviation, and sample size. What can be said about the sampling distribution?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_f5b64db", 
+    "character")), answers = list(structure(list(id = "lnr_ans_38748bf", 
         option = "The sampling distribution is always nearly normal.", 
         value = "The sampling distribution is always nearly normal.", 
         label = structure("The sampling distribution is always nearly normal.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_87d8585", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_976d808", 
         option = "The sampling distribution is always the same as the population distribution.", 
         value = "The sampling distribution is always the same as the population distribution.", 
         label = structure("The sampling distribution is always the same as the population distribution.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9c6e413", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d9cb6ec", 
         option = "The sampling distribution is always uniform.", 
         value = "The sampling distribution is always uniform.", 
         label = structure("The sampling distribution is always uniform.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d5e92e2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f5fa45a", 
         option = "The sampling distribution is completely unpredictable.", 
         value = "The sampling distribution is completely unpredictable.", 
         label = structure("The sampling distribution is completely unpredictable.", html = TRUE, class = c("html", 
@@ -915,7 +1054,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "normal-pop-samp-dist-questions-3-answer", question = "normal-pop-samp-dist-questions-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 672668574.186764, options = list()), class = c("learnr_radio", 
+    seed = 1549125655.27863, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -923,22 +1062,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "normal-pop-samp-dist-questions-4", 
     question = structure("Now that you’ve tried various values for the parameters, what can be said about the connection between sample size and the spread of the sampling distribution?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_87ed0c4", 
+    "character")), answers = list(structure(list(id = "lnr_ans_5bb57a", 
         option = "The larger the sample size, the more narrow the sampling distribution becomes.", 
         value = "The larger the sample size, the more narrow the sampling distribution becomes.", 
         label = structure("The larger the sample size, the more narrow the sampling distribution becomes.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8dce7ca", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7984fe9", 
         option = "The larger the sample size, the wider the sampling distribution becomes.", 
         value = "The larger the sample size, the wider the sampling distribution becomes.", 
         label = structure("The larger the sample size, the wider the sampling distribution becomes.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_babcd64", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5297a8", 
         option = "The larger the sample size, the less normal the sampling distribution becomes.", 
         value = "The larger the sample size, the less normal the sampling distribution becomes.", 
         label = structure("The larger the sample size, the less normal the sampling distribution becomes.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1e72cd2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a20f770", 
         option = "The sample size and spread of the sampling distribution are independent of one another.", 
         value = "The sample size and spread of the sampling distribution are independent of one another.", 
         label = structure("The sample size and spread of the sampling distribution are independent of one another.", html = TRUE, class = c("html", 
@@ -951,7 +1090,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "normal-pop-samp-dist-questions-4-answer", question = "normal-pop-samp-dist-questions-4"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 673510334.186372, options = list()), class = c("learnr_radio", 
+    seed = 782334732.135697, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -969,7 +1108,7 @@ learnr:::store_exercise_cache(structure(list(label = "uniform-pop-samp-dist", gl
 "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "uniform-pop-samp-dist", code = "#Define the minimum value (feel free to change)\nmin <- 50\n#Define the maximum value (feel free to change)\nmax <- 100\n#Define the sample size (feel free to change)\nsize <- 1\n#Define the number of samples to be taken (feel free to change)\nnumSamps <- 10000\n\n#######################################\n##Function to take samples, compute\n##means and build sampling distribution\n##Please don't edit.\n#######################################\ndrawNunif <- function(n, times){\n  vals <- rep(NA, times)\n  for(i in 1:times){\n    draws <- runif(n, min = min, max = max)\n    vals[i] <- mean(draws)\n  }\n  vals\n}\n\nmean = (min + max)/2\nsd = sqrt((max - min)^2/12)\n#######################################\n##Use the function we defined to take the samples\ntrials <- drawNunif(size, numSamps)\n\n#Plot the population distribution and histogram of sample means\nggplot() + \n  geom_histogram(mapping = aes(x = trials, y = ..density..)) + \n  geom_line(mapping = aes(x = seq(mean - (3*sd), mean + (3*sd), length.out = 200), \n                          y = dnorm(seq(mean - (3*sd), mean + (3*sd), length.out = 200), \n                                    mean, sd)), \n            lwd = 2, color = \"blue\") + \n  ggtitle(\"Assumed Normal Population Distribution \\nCurve and Histogram of Sample Means\")\n\n#Plot the *sampling distribution* and histogram of sample means\nggplot() + \n  geom_histogram(mapping = aes(x = trials, y = ..density..)) + \n  geom_line(mapping = aes(x = seq(mean - (3*sd/sqrt(size)), \n                                  mean + (3*sd/sqrt(size)), \n                                  length.out = 200), \n                          y = dnorm(seq(mean - (3*sd/sqrt(size)), \n                                        mean + (3*sd/sqrt(size)), \n                                        length.out = 200), \n                                    mean, sd/sqrt(size))), \n            lwd = 2, color = \"blue\") + xlim(mean - (3*sd), mean + (3*sd)) + \n  ggtitle(\"Sampling Distribution Curve and \\nHistogram of Sample Means\")\n\n", 
+    list(label = "uniform-pop-samp-dist", code = "#Define the minimum value (feel free to change)\nmin <- 50\n#Define the maximum value (feel free to change)\nmax <- 100\n#Define the sample size (feel free to change)\nsize <- 1\n#Define the number of samples to be taken (feel free to change)\nnumSamps <- 10000\n\n#######################################\n##Function to take samples, compute\n##means and build sampling distribution\n##Please don't edit.\n#######################################\ndrawNunif <- function(n, times){\n  vals <- rep(NA, times)\n  for(i in 1:times){\n    draws <- runif(n, min = min, max = max)\n    vals[i] <- mean(draws)\n  }\n  vals\n}\n\nmean = (min + max)/2\nsd = sqrt((max - min)^2/12)\n#######################################\n##Use the function we defined to take the samples\ntrials <- drawNunif(size, numSamps)\n\n#Plot the population distribution and histogram of sample means\nggplot() + \n  geom_histogram(mapping = aes(x = trials, y = ..density..)) + \n  geom_line(mapping = aes(x = seq(mean - (3*sd), mean + (3*sd), length.out = 200), \n                          y = dnorm(seq(mean - (3*sd), mean + (3*sd), length.out = 200), \n                                    mean, sd)), \n            lwd = 2, color = \"blue\") + \n  ggtitle(\"Assumed Normal Population Distribution \\nCurve and Histogram of Sample Means\")\n\n#Plot the *sampling distribution* and histogram of sample means\nggplot() + \n  geom_histogram(mapping = aes(x = trials, y = ..density..)) + \n  geom_line(mapping = aes(x = seq(mean - (3*sd/sqrt(size)), \n                                  mean + (3*sd/sqrt(size)), \n                                  length.out = 200), \n                          y = dnorm(seq(mean - (3*sd/sqrt(size)), \n                                        mean + (3*sd/sqrt(size)), \n                                        length.out = 200), \n                                    mean, sd/sqrt(size))), \n            lwd = 2, color = \"blue\") + xlim(mean - (3*sd), mean + (3*sd)) + \n  ggtitle(\"Sampling Distribution Curve and \\nHistogram of Sample Means\")", 
         opts = list(label = "\"uniform-pop-samp-dist\"", exercise = "TRUE", 
             message = "FALSE", warning = "FALSE", fig.width = "4", 
             fig.height = "4"), engine = "r")), code_check = NULL, 
@@ -1020,8 +1159,8 @@ learnr:::store_exercise_cache(structure(list(label = "uniform-pop-samp-dist", gl
         "                                        length.out = 200), ", 
         "                                    mean, sd/sqrt(size))), ", 
         "            lwd = 2, color = \"blue\") + xlim(mean - (3*sd), mean + (3*sd)) + ", 
-        "  ggtitle(\"Sampling Distribution Curve and \\nHistogram of Sample Means\")", 
-        "", ""), out.width.px = 384, out.height.px = 384, params.src = "uniform-pop-samp-dist, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4", 
+        "  ggtitle(\"Sampling Distribution Curve and \\nHistogram of Sample Means\")"
+        ), out.width.px = 384, out.height.px = 384, params.src = "uniform-pop-samp-dist, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -1029,22 +1168,22 @@ learnr:::store_exercise_cache(structure(list(label = "uniform-pop-samp-dist", gl
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "uniform-pop-samp-dist-questions-1", 
     question = structure("Which of the following regarding the sampling distributions is true?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_fdb3740", 
+    "character")), answers = list(structure(list(id = "lnr_ans_a351044", 
         option = "The sampling distribution is nearly normal as long as the sample size is at least 2", 
         value = "The sampling distribution is nearly normal as long as the sample size is at least 2", 
         label = structure("The sampling distribution is nearly normal as long as the sample size is at least 2", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c4c6708", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c074a54", 
         option = "The sampling distribution is always normal.", 
         value = "The sampling distribution is always normal.", 
         label = structure("The sampling distribution is always normal.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_35883b9", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bfba7f7", 
         option = "The sampling distribution is never nearly normal.", 
         value = "The sampling distribution is never nearly normal.", 
         label = structure("The sampling distribution is never nearly normal.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f8c2003", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d0d618a", 
         option = "The sampling distribution always shares a common shape with the population distribution.", 
         value = "The sampling distribution always shares a common shape with the population distribution.", 
         label = structure("The sampling distribution always shares a common shape with the population distribution.", html = TRUE, class = c("html", 
@@ -1057,7 +1196,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "uniform-pop-samp-dist-questions-1-answer", 
         question = "uniform-pop-samp-dist-questions-1"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 365709775.829703, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 284179437.867669, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1066,22 +1205,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "uniform-pop-samp-dist-questions-2", 
     question = structure("Try various different values for sample <code>size<\u002fcode>. What is true about the mean of the sampling distribution?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_a536a6a", 
+    "character")), answers = list(structure(list(id = "lnr_ans_4a20d0c", 
         option = "The mean of the sampling distribution always falls near the mean of the population distribution.", 
         value = "The mean of the sampling distribution always falls near the mean of the population distribution.", 
         label = structure("The mean of the sampling distribution always falls near the mean of the population distribution.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c1e36d", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3e8f7d8", 
         option = "The larger the sample size, the smaller the mean of the sampling distribution.", 
         value = "The larger the sample size, the smaller the mean of the sampling distribution.", 
         label = structure("The larger the sample size, the smaller the mean of the sampling distribution.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c3a8eef", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9ee867b", 
         option = "The larger the sample size, the larger the mean of the sampling distribution.", 
         value = "The larger the sample size, the larger the mean of the sampling distribution.", 
         label = structure("The larger the sample size, the larger the mean of the sampling distribution.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8ad8399", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_342b125", 
         option = "The mean of the population distribution and mean of the sampling distribution are independent of one another.", 
         value = "The mean of the population distribution and mean of the sampling distribution are independent of one another.", 
         label = structure("The mean of the population distribution and mean of the sampling distribution are independent of one another.", html = TRUE, class = c("html", 
@@ -1094,7 +1233,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "uniform-pop-samp-dist-questions-2-answer", 
         question = "uniform-pop-samp-dist-questions-2"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1458961096.32062, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 830019346.113492, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1102,22 +1241,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "uniform-pop-samp-dist-questions-3", 
     question = structure("Try various values for the parameters, what can be said about the connection between sample size and the spread of the sampling distribution?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_210f657", 
+    "character")), answers = list(structure(list(id = "lnr_ans_d889e53", 
         option = "The larger the sample size, the more narrow the sampling distribution becomes.", 
         value = "The larger the sample size, the more narrow the sampling distribution becomes.", 
         label = structure("The larger the sample size, the more narrow the sampling distribution becomes.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fefb805", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_280b178", 
         option = "The larger the sample size, the wider the sampling distribution becomes.", 
         value = "The larger the sample size, the wider the sampling distribution becomes.", 
         label = structure("The larger the sample size, the wider the sampling distribution becomes.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5de6015", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d49469a", 
         option = "The larger the sample size, the less normal the sampling distribution becomes.", 
         value = "The larger the sample size, the less normal the sampling distribution becomes.", 
         label = structure("The larger the sample size, the less normal the sampling distribution becomes.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_94b9aec", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_96dfbcd", 
         option = "The sample size and spread of the sampling distribution are independent of one another.", 
         value = "The sample size and spread of the sampling distribution are independent of one another.", 
         label = structure("The sample size and spread of the sampling distribution are independent of one another.", html = TRUE, class = c("html", 
@@ -1130,7 +1269,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "uniform-pop-samp-dist-questions-3-answer", 
         question = "uniform-pop-samp-dist-questions-3"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 696963699.175451, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 1161874986.45896, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1210,17 +1349,17 @@ learnr:::store_exercise_cache(structure(list(label = "skew-pop-samp-dist", globa
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "skewed-pop-samp-dist-questions-1", 
     question = structure("Try running the code with samples of size 5, 10, and 20. Are the resulting sampling distributions nearly normal?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_6f56a4c", 
+    "character")), answers = list(structure(list(id = "lnr_ans_766347a", 
         option = "No, the distributions are getting closer to the assumed normal sampling distribution, but still exhibit some skew in the same direction as the population distribution.", 
         value = "No, the distributions are getting closer to the assumed normal sampling distribution, but still exhibit some skew in the same direction as the population distribution.", 
         label = structure("No, the distributions are getting closer to the assumed normal sampling distribution, but still exhibit some skew in the same direction as the population distribution.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4eeaba9", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ecce38", 
         option = "The sampling distribution is always normal.", 
         value = "The sampling distribution is always normal.", 
         label = structure("The sampling distribution is always normal.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5c03fef", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bbd4424", 
         option = "No, the distributions are getting closer to the assumed normal sampling distribution, but still exhibit some skew but in the opposite direction as the population distribution.", 
         value = "No, the distributions are getting closer to the assumed normal sampling distribution, but still exhibit some skew but in the opposite direction as the population distribution.", 
         label = structure("No, the distributions are getting closer to the assumed normal sampling distribution, but still exhibit some skew but in the opposite direction as the population distribution.", html = TRUE, class = c("html", 
@@ -1233,24 +1372,24 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "skewed-pop-samp-dist-questions-1-answer", question = "skewed-pop-samp-dist-questions-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 2053538806.04375, options = list()), class = c("learnr_radio", 
+    seed = 1129712062.47394, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "skewed-pop-samp-dist-questions-2", 
     question = structure("Try samples of size 30, 50, and 100. What can be said about the resulting sampling distributions?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_ffcb09f", 
+    "character")), answers = list(structure(list(id = "lnr_ans_be09538", 
         option = "The sampling distributions become closer to the assumed normal sampling distribution as sample size increases.", 
         value = "The sampling distributions become closer to the assumed normal sampling distribution as sample size increases.", 
         label = structure("The sampling distributions become closer to the assumed normal sampling distribution as sample size increases.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c35327b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e7e2423", 
         option = "There is no connection between the shape of the sampling distribution and the sample size.", 
         value = "There is no connection between the shape of the sampling distribution and the sample size.", 
         label = structure("There is no connection between the shape of the sampling distribution and the sample size.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_218d4a2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b227a3", 
         option = "The sampling distribution always maintains the same shape as the population distribution.", 
         value = "The sampling distribution always maintains the same shape as the population distribution.", 
         label = structure("The sampling distribution always maintains the same shape as the population distribution.", html = TRUE, class = c("html", 
@@ -1263,7 +1402,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "skewed-pop-samp-dist-questions-2-answer", question = "skewed-pop-samp-dist-questions-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1928358427.10204, options = list()), class = c("learnr_radio", 
+    seed = 1803610625.66013, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1271,22 +1410,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "skewed-pop-samp-dist-questions-3", 
     question = structure("Try various different values for the other parameters. What is true about the mean of the sampling distribution?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_7fa5062", 
+    "character")), answers = list(structure(list(id = "lnr_ans_79deb1d", 
         option = "The mean of the sampling distribution always falls near the mean of the population distribution.", 
         value = "The mean of the sampling distribution always falls near the mean of the population distribution.", 
         label = structure("The mean of the sampling distribution always falls near the mean of the population distribution.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c4afacb", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_550dda6", 
         option = "The larger the sample size, the smaller the mean of the sampling distribution.", 
         value = "The larger the sample size, the smaller the mean of the sampling distribution.", 
         label = structure("The larger the sample size, the smaller the mean of the sampling distribution.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_26e6c7b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_27ed897", 
         option = "The larger the sample size, the larger the mean of the sampling distribution.", 
         value = "The larger the sample size, the larger the mean of the sampling distribution.", 
         label = structure("The larger the sample size, the larger the mean of the sampling distribution.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_aff09e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f363b5", 
         option = "The mean of the population distribution and mean of the sampling distribution are independent of one another.", 
         value = "The mean of the population distribution and mean of the sampling distribution are independent of one another.", 
         label = structure("The mean of the population distribution and mean of the sampling distribution are independent of one another.", html = TRUE, class = c("html", 
@@ -1299,29 +1438,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "skewed-pop-samp-dist-questions-3-answer", question = "skewed-pop-samp-dist-questions-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 289049174.365401, options = list()), class = c("learnr_radio", 
+    seed = 1388165686.35359, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "skewed-pop-samp-dist-questions-4", 
     question = structure("Since you’ve tried various values for the parameters, what can be said about the connection between sample size and the spread of the sampling distribution?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_6e6225", 
+    "character")), answers = list(structure(list(id = "lnr_ans_71c7e65", 
         option = "The larger the sample size, the more narrow the sampling distribution becomes.", 
         value = "The larger the sample size, the more narrow the sampling distribution becomes.", 
         label = structure("The larger the sample size, the more narrow the sampling distribution becomes.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_df56227", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_91803f0", 
         option = "The larger the sample size, the wider the sampling distribution becomes.", 
         value = "The larger the sample size, the wider the sampling distribution becomes.", 
         label = structure("The larger the sample size, the wider the sampling distribution becomes.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9d1369b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8e7ade3", 
         option = "The larger the sample size, the less normal the sampling distribution becomes.", 
         value = "The larger the sample size, the less normal the sampling distribution becomes.", 
         label = structure("The larger the sample size, the less normal the sampling distribution becomes.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a76b52e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3a2e4f", 
         option = "The sample size and spread of the sampling distribution are independent of one another.", 
         value = "The sample size and spread of the sampling distribution are independent of one another.", 
         label = structure("The sample size and spread of the sampling distribution are independent of one another.", html = TRUE, class = c("html", 
@@ -1334,7 +1473,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "skewed-pop-samp-dist-questions-4-answer", question = "skewed-pop-samp-dist-questions-4"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 669247859.688357, options = list()), class = c("learnr_radio", 
+    seed = 1358283351.8675, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1342,22 +1481,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "generic-pop-samp-dist-questions-1", 
     question = structure("Consider a generic population distribution. What can be said about the shape of the sampling distribution?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_26f6302", 
+    "character")), answers = list(structure(list(id = "lnr_ans_94723", 
         option = "For large enough sample sizes, the sampling distribution is nearly normal.", 
         value = "For large enough sample sizes, the sampling distribution is nearly normal.", 
         label = structure("For large enough sample sizes, the sampling distribution is nearly normal.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5bb856a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_10d8d4e", 
         option = "The sampling distribution is always nearly normal.", 
         value = "The sampling distribution is always nearly normal.", 
         label = structure("The sampling distribution is always nearly normal.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c4ed392", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6098a39", 
         option = "Nothing can be said, since we don't know what the population distribution looks like.", 
         value = "Nothing can be said, since we don't know what the population distribution looks like.", 
         label = structure("Nothing can be said, since we don’t know what the population distribution looks like.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_207eac", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ccf6aad", 
         option = "The sampling distribution always retains the same general shape as the population distribution.", 
         value = "The sampling distribution always retains the same general shape as the population distribution.", 
         label = structure("The sampling distribution always retains the same general shape as the population distribution.", html = TRUE, class = c("html", 
@@ -1370,7 +1509,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "generic-pop-samp-dist-questions-1-answer", 
         question = "generic-pop-samp-dist-questions-1"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1330147407.3806, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 1724938284.19676, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1378,22 +1517,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "generic-pop-samp-dist-questions-2", 
     question = structure("For a generic population distribution, what can be said about the mean of the sampling distribution?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_1173a98", 
+    "character")), answers = list(structure(list(id = "lnr_ans_816703d", 
         option = "The mean of the sampling distribution is generally a close approximation to the mean of the population distribution.", 
         value = "The mean of the sampling distribution is generally a close approximation to the mean of the population distribution.", 
         label = structure("The mean of the sampling distribution is generally a close approximation to the mean of the population distribution.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f329492", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b64042", 
         option = "The mean of the sampling distribution is always less than the mean of the population distribution.", 
         value = "The mean of the sampling distribution is always less than the mean of the population distribution.", 
         label = structure("The mean of the sampling distribution is always less than the mean of the population distribution.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ef7113d", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7fce4ff", 
         option = "The mean of the sampling distribution is always greater than the mean of the population distribution.", 
         value = "The mean of the sampling distribution is always greater than the mean of the population distribution.", 
         label = structure("The mean of the sampling distribution is always greater than the mean of the population distribution.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_91b6874", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_93c3c92", 
         option = "The mean of the sampling distribution and mean of the population distribution are independent of one another.", 
         value = "The mean of the sampling distribution and mean of the population distribution are independent of one another.", 
         label = structure("The mean of the sampling distribution and mean of the population distribution are independent of one another.", html = TRUE, class = c("html", 
@@ -1406,7 +1545,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "generic-pop-samp-dist-questions-2-answer", 
         question = "generic-pop-samp-dist-questions-2"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1545541204.2803, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 440764859.294753, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1415,17 +1554,17 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "generic-pop-samp-dist-questions-3", 
     question = structure("For a generic population distribution, what can be said about the connection between sample size and the spread of the sampling distribution?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_e10bdb3", 
+    "character")), answers = list(structure(list(id = "lnr_ans_8cae32c", 
         option = "The larger the sample size, the more narrow the sampling distribution.", 
         value = "The larger the sample size, the more narrow the sampling distribution.", 
         label = structure("The larger the sample size, the more narrow the sampling distribution.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6a7a6db", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a3e3bc0", 
         option = "The larger the sample size, the wider the sampling distribution.", 
         value = "The larger the sample size, the wider the sampling distribution.", 
         label = structure("The larger the sample size, the wider the sampling distribution.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_844304", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b6d4c0d", 
         option = "The sample size and spread of the sampling distribution are independent of one another.", 
         value = "The sample size and spread of the sampling distribution are independent of one another.", 
         label = structure("The sample size and spread of the sampling distribution are independent of one another.", html = TRUE, class = c("html", 
@@ -1438,7 +1577,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "generic-pop-samp-dist-questions-3-answer", 
         question = "generic-pop-samp-dist-questions-3"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1724536389.19695, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 245004522.885911, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -1487,19 +1626,19 @@ learnr:::store_exercise_cache(structure(list(label = "spraypaint-sandbox", globa
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "spraypaint-questions-1", 
     question = structure("How many square feet would each can need to cover if you wanted to use only four cans to cover the entire wall?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_7ce85fc", 
+    "character")), answers = list(structure(list(id = "lnr_ans_1310b22", 
         option = "10", value = "10", label = structure("10", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5e3a9b6", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_25c4ebc", 
         option = "10.5", value = "10.5", label = structure("10.5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2e69f71", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2693906", 
         option = "11", value = "11", label = structure("11", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bee9fa4", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_20ef5ce", 
         option = "11.5", value = "11.5", label = structure("11.5", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4d55b8c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e0410e3", 
         option = "12", value = "12", label = structure("12", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1510,7 +1649,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "spraypaint-questions-1-answer", question = "spraypaint-questions-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1858919944.13437, options = list()), class = c("learnr_radio", 
+    seed = 2099029590.52256, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1518,19 +1657,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "spraypaint-questions-2", 
     question = structure("What is the probability that a single can of spray paint covers at least 11.5 square feet?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_5eb93e8", 
+    "character")), answers = list(structure(list(id = "lnr_ans_7ce102a", 
         option = "0.5", value = "0.5", label = structure("0.5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ddec227", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b345948", 
         option = "0.9772", value = "0.9772", label = structure("0.9772", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4e1ccab", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8f34b37", 
         option = "0.1587", value = "0.1587", label = structure("0.1587", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bc2a2de", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_47c289e", 
         option = "0.8413", value = "0.8413", label = structure("0.8413", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_19831c0", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cdc0344", 
         option = "0.0228", value = "0.0228", label = structure("0.0228", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1541,26 +1680,26 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "spraypaint-questions-2-answer", question = "spraypaint-questions-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1496013628.80336, options = list()), class = c("learnr_radio", 
+    seed = 613013144.714543, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "spraypaint-questions-3", 
     question = structure("What is the probability that a random sample of four cans of spray paint covering an average of at least 11.5 square feet?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_9aaf1d8", 
+    "character")), answers = list(structure(list(id = "lnr_ans_e0709d3", 
         option = "0.5", value = "0.5", label = structure("0.5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c43ddef", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7982a10", 
         option = "0.9772", value = "0.9772", label = structure("0.9772", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_81e8ea", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fe63c7b", 
         option = "0.1587", value = "0.1587", label = structure("0.1587", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e074ed3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c26f41e", 
         option = "0.8413", value = "0.8413", label = structure("0.8413", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_50bbb88", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bcd6db", 
         option = "0.0228", value = "0.0228", label = structure("0.0228", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1571,7 +1710,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "spraypaint-questions-3-answer", question = "spraypaint-questions-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 594466210.22318, options = list()), class = c("learnr_radio", 
+    seed = 1640344563.23616, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1579,22 +1718,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "spraypaint-questions-4", 
     question = structure("Should we expect to cover the entire wall with only four cans of spray paint, or should we plan to buy 5?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_50ca618", 
+    "character")), answers = list(structure(list(id = "lnr_ans_5fe038c", 
         option = "We should plan to buy five since it is unlikely (less than 5% chance) that four cans will suffice to cover the whole wall.", 
         value = "We should plan to buy five since it is unlikely (less than 5% chance) that four cans will suffice to cover the whole wall.", 
         label = structure("We should plan to buy five since it is unlikely (less than 5% chance) that four cans will suffice to cover the whole wall.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b68a694", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a1dd29c", 
         option = "We will probably be fine with four cans -- 11.5 square feet is not much more than the expected average of 10 square feet.", 
         value = "We will probably be fine with four cans -- 11.5 square feet is not much more than the expected average of 10 square feet.", 
         label = structure("We will probably be fine with four cans – 11.5 square feet is not much more than the expected average of 10 square feet.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_768afd0", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e3ae7c8", 
         option = "Since 11.5 square feet is within one standard deviation of the expected value, it is likely that four will be enough.", 
         value = "Since 11.5 square feet is within one standard deviation of the expected value, it is likely that four will be enough.", 
         label = structure("Since 11.5 square feet is within one standard deviation of the expected value, it is likely that four will be enough.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f8c659a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_27243ad", 
         option = "We should plan to buy five cans -- four cans will only cover 40 square feet.", 
         value = "We should plan to buy five cans -- four cans will only cover 40 square feet.", 
         label = structure("We should plan to buy five cans – four cans will only cover 40 square feet.", html = TRUE, class = c("html", 
@@ -1607,7 +1746,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "spraypaint-questions-4-answer", question = "spraypaint-questions-4"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1762667418.17919, options = list()), class = c("learnr_radio", 
+    seed = 1735108610.19203, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  

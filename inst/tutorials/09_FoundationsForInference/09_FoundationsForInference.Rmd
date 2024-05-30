@@ -93,6 +93,24 @@ ggplot() +
 
 ```
 
+```{r norm-pop-samp-dist-hint-1}
+#Change the following one at a time and re-run the 
+#code.
+###the mean in line 2
+###the standard deviation in line 4
+###the sample size in line 6
+###the number of samples in line 8
+
+#What happens?
+```
+
+```{r norm-pop-samp-dist-hint-2}
+#Do this several times. What changes do you notice about 
+#the population distribution? What changes do you notice
+#about the sampling distribution?
+
+```
+
 ```{r normal-pop-samp-dist-questions, echo = FALSE}
 quiz(
   question_radio(
@@ -144,6 +162,7 @@ A population is said to be uniformly distributed between some minimum value `A` 
 ###
 
 **Uniformly Distributed Population:** Work with the following code block to explore the connection between the population distribution and sampling distribution when the population follows a uniform distribution. You'll notice in the plot on the left, that assuming a normal distribution for the population is an extremely poor choice. Use your explorations to answer the questions that follow.
+
 ```{r uniform-pop-samp-dist, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4}
 #Define the minimum value (feel free to change)
 min <- 50
@@ -195,7 +214,23 @@ ggplot() +
                                     mean, sd/sqrt(size))), 
             lwd = 2, color = "blue") + xlim(mean - (3*sd), mean + (3*sd)) + 
   ggtitle("Sampling Distribution Curve and \nHistogram of Sample Means")
+```
 
+```{r uniform-pop-samp-dist-hint-1}
+#Change the following one at a time and re-run the 
+#code.
+###the minimum value in line 2
+###the maximum value in line 4
+###the sample size in line 6
+###the number of samples in line 8
+
+#What happens?
+```
+
+```{r uniform-pop-samp-dist-hint-2}
+#Do this several times. What changes do you notice about 
+#the population distribution? What changes do you notice
+#about the sampling distribution?
 
 ```
 
@@ -244,6 +279,7 @@ We've encountered *skew* in our course already, and we know that it has the effe
 ###
 
 **Strongly Skewed Population:** Work with the following code block to explore the connection between the population distribution and sampling distribution when the population follows a strongly skewed distribution. Use your explorations to answer the questions that follow.
+
 ```{r skew-pop-samp-dist, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4}
 #Define the first shape parameter (feel free to change)
 shape <- 0.5
@@ -296,6 +332,25 @@ ggplot() +
             lwd = 2, color = "blue") + xlim(mean - (3*sd), mean + (3*sd)) + 
   ggtitle("Sampling Distribution Curve and \nHistogram of Sample Means")
 
+
+```
+
+```{r skew-pop-samp-dist-hint-1}
+#Change the following one at a time and re-run the 
+#code. Can you guess what the parameters govern by inspecting 
+#the results as you change them?.
+###the shape in line 2
+###the rate deviation in line 4
+###the sample size in line 6
+###the number of samples in line 8
+
+#What happens?
+```
+
+```{r skew-pop-samp-dist-hint-2}
+#Do this several times. What changes do you notice about 
+#the population distribution? What changes do you notice
+#about the population distribution?
 
 ```
 
@@ -404,7 +459,73 @@ For now we'll focus on one particular application of the Central Limit Theorem t
 Try the following problem.
 
 **Sample Problem:** Suppose you have 46 square foot wall which you want to cover with spray paint. The brand of spray paint you plan to use is known to have coverage which is approximately normal, with an average coverage of 10 square feet per can and a standard deviation of 1.5 square feet. Use the code block below to answer the questions that follow.
+
 ```{r spraypaint-sandbox, exercise = TRUE}
+
+```
+
+```{r spraypaint-sandbox-hint-1}
+#In the first question, you have a 46 square foot wall
+#and plan to buy four cans of paint.
+
+```
+
+```{r spraypaint-sandbox-hint-2}
+#In the second question, we know that coverage from a 
+#single can of spray paint is approximately normal.
+#Start with a picture of a normal distribution and 
+#include the mean (average coverage) as well as the boundary
+#value of coverage you are interested in.
+#Shade the distribution to show the probability you are interested in.
+
+```
+
+```{r spraypaint-sandbox-hint-3}
+#Still in that question, use pnorm() to find the probability
+#that you are interested in.
+
+```
+
+```{r spraypaint-sandbox-hint-4}
+#One last hint for the second question -- to what side of 
+#your boundary value are you interested in finding the 
+#probability (area)?
+
+```
+
+```{r spraypaint-sandbox-hint-5}
+#In the third question, draw another picture. Use what you
+#learned about the Central Limit Theorem in this notebook
+#to create your drawing.
+
+```
+
+```{r spraypaint-sandbox-hint-6}
+#Since the population is approximately normally distributed,
+#the sampling distribution will also be approximately 
+#normal.
+
+```
+
+```{r spraypaint-sandbox-hint-7}
+#The mean of the sampling distribution is the same as the 
+#mean of the population distribution.
+
+```
+
+```{r spraypaint-sandbox-hint-8}
+#The spread of the sampling distribution will be less than
+#the spread of the population distribution. The Central
+#Limit Theorem from this notebook suggests that the spread 
+#is the Standard Error, with is equal to the population
+#standard deviation divided by the square root of the 
+#sample size.
+
+```
+
+```{r spraypaint-sandbox-hint-9}
+#Update your picture and use pnorm() to find the 
+#probability you are interested in.
 
 ```
 
