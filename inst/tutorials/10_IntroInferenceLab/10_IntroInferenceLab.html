@@ -157,12 +157,19 @@ loaded for you in a dataset called <code>ames</code>.</p>
 </div>
 <div id="section-section-5" class="section level3">
 <h3></h3>
-Use the code block below to answer some basic questions about the
-<code>ames</code> dataset.
+<p>Use the code block below to answer some basic questions about the
+<code>ames</code> dataset.</p>
 <div class="tutorial-exercise" data-label="explore-ames"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="explore-ames-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Remember that you can call a data frame by name to print
+#it out. You can also use functions like head(), dim(),
+#and glimpse() to gain information as well.</code></pre>
 </div>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
@@ -192,21 +199,44 @@ data-lines="0" data-pipe="|&gt;">
 </div>
 <div id="section-section-6" class="section level3">
 <h3></h3>
-We see that there are quite a few variables in the data set, enough to
-do a very in-depth analysis. For this lab, we’ll restrict our attention
-to just two of the variables: the above ground living area of the house
-in square feet (<code>Gr.Liv.Area</code>) and the sale price
+<p>We see that there are quite a few variables in the data set, enough
+to do a very in-depth analysis. For this lab, we’ll restrict our
+attention to just two of the variables: the above ground living area of
+the house in square feet (<code>Gr.Liv.Area</code>) and the sale price
 (<code>SalePrice</code>). To save some effort throughout the lab, we’ll
 create two variables with short names that represent these two
 variables. The code block below is pre-set to define the
 <code>area</code> vector – add a second line which creates the
-<code>price</code> vector.
+<code>price</code> vector.</p>
 <div class="tutorial-exercise" data-label="assign" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <pre class="text"><code>area &lt;- ames %&gt;%
   select(Gr.Liv.Area)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="assign-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Add a similar pair of lines to the code cell to define
+#the price object and put the SalePrice variable of the
+#ames data frame in it.
+
+area &lt;- ames %&gt;%
+  select(Gr.Liv.Area)
+
+___</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="assign-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Select the SalePrice variable
+
+area &lt;- ames %&gt;%
+  select(Gr.Liv.Area)
+
+price &lt;- ames %&gt;%
+  select(___)</code></pre>
 </div>
 <div class="tutorial-exercise-support" data-label="assign-solution"
 data-completion="1" data-diagnostics="1" data-startover="1"
@@ -229,6 +259,22 @@ answer the questions that follow.</p>
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="eda-sandbox-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The area and sale price objects are just lists of values.
+#Pass them, one at a time, to the mean() and median()
+#functions.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="eda-sandbox-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks
+mean(___)
+median(___)
+mean(___)
+median(___)</code></pre>
 </div>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
@@ -281,17 +327,53 @@ data-lines="0" data-pipe="|&gt;">
 </div>
 <div id="section-section-7" class="section level3">
 <h3></h3>
-Use the code block below to verify your answers about the shape of the
-distributions from the previous questions. The code to produce the
+<p>Use the code block below to verify your answers about the shape of
+the distributions from the previous questions. The code to produce the
 histogram and boxplot for <code>area</code> is already present. Add the
 code necessary to produce a histogram and boxplot for
-<code>price</code>. Are you able to see the skew in the distributions?
+<code>price</code>. Are you able to see the skew in the
+distributions?</p>
 <div class="tutorial-exercise" data-label="plot-area-price-dists"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
-<pre class="text"><code>ggplot() + geom_histogram(mapping = aes(x = area)) + ylab(&quot;Count&quot;) + xlab(&quot;Size (Sq ft)&quot;) + ggtitle(&quot;Histogram of Home Size&quot;)
-ggplot() + geom_boxplot(mapping = aes(y = area)) + ylab(&quot;Size (Sq ft)&quot;) + ggtitle(&quot;Boxplot of Home Sizes&quot;) + coord_flip()</code></pre>
+<pre class="text"><code>ggplot() + 
+  geom_histogram(mapping = aes(x = area)) + 
+  labs(
+    title = &quot;Histogram of Home Size&quot;,
+    x = &quot;Size (Sq ft)&quot;,
+    y = &quot;Count&quot;
+    )
+
+ggplot() + 
+  geom_boxplot(mapping = aes(x = area)) + 
+  labs(
+    title = &quot;Boxplot of Home Sizes&quot;,
+    x = &quot;Size (Sq ft)&quot;
+    )</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="plot-area-price-dists-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Copy and paste the code to generate the two plots below.
+#Change the variable being plotted from area to price.
+#Change your plot titles and axis labels accordingly.
+
+ggplot() + 
+  geom_histogram(aes(x = area)) + 
+  labs(
+    title = &quot;Histogram of Home Size&quot;,
+    x = &quot;Size (Sq ft)&quot;,
+    y = &quot;Count&quot;
+    )
+
+ggplot() + 
+  geom_boxplot(aes(x = area)) + 
+  labs(
+    title = &quot;Boxplot of Home Sizes&quot;,
+    x = &quot;Size (Sq ft)&quot;
+    )</code></pre>
 </div>
 </div>
 </div>
@@ -304,9 +386,10 @@ usually take a sample of the population and use that to understand the
 properties of the population.</p>
 <div id="section-section-8" class="section level3">
 <h3></h3>
-If we were interested in estimating the mean living area in Ames based
-on a sample, we can use the following command to survey the population.
-Try running the code in the cell below a few times. What happens?
+<p>If we were interested in estimating the mean living area in Ames
+based on a sample, we can use the following command to survey the
+population. Try running the code in the cell below a few times. What
+happens?</p>
 <div class="tutorial-exercise" data-label="samp1" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
@@ -322,11 +405,11 @@ vector <code>area</code>, which is assigned to <code>samp1</code>. This
 is like going into the City Assessor’s database and pulling up the files
 on 50 random home sales. Working with these 50 files would be
 considerably simpler than working with all 2,930 home sales.</p>
-Run the code block below to produce a plot of the <code>area</code>
+<p>Run the code block below to produce a plot of the <code>area</code>
 variable including all of the observations in the population (left) and
 a plot of only those houses contained in our sample (right). Describe
 the distribution of this sample. How does it compare to the distribution
-of the population?
+of the population?</p>
 <div class="tutorial-exercise" data-label="plot-dist-sampl"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -335,21 +418,30 @@ samp &lt;- sample(area, 50)
 
 #Plot a histogram of the entire population of home areas
 ggplot() + 
-  geom_histogram(mapping = aes(x = area)) + 
-  labs(x = &quot;Living Area (sqft)&quot;, y = &quot;Count&quot;, title = &quot;Population&quot;)
+  geom_histogram(aes(x = area)) + 
+  labs(
+    title = &quot;Population&quot;,
+    x = &quot;Living Area (sqft)&quot;, 
+    y = &quot;Count&quot;
+    )
 
 #Add the code to plot a histogram of the sample areas
 ggplot() + 
-  geom_histogram(mapping = aes(x = samp)) + 
-  labs(x = &quot;Living Area (sqft)&quot;, y = &quot;Count&quot;, title = &quot;Sample&quot;)</code></pre>
+  geom_histogram(aes(x = samp)) + 
+  labs(
+    title = &quot;Sample&quot;,
+    x = &quot;Living Area (sqft)&quot;, 
+    y = &quot;Count&quot;
+    )</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
 <div id="section-section-10" class="section level3">
 <h3></h3>
-If we’re interested in estimating the average living area of homes in
+<p>If we’re interested in estimating the average living area of homes in
 Ames using the sample, our best single guess is the sample mean. Run the
-code block below and use the result to answer the question that follows.
+code block below and use the result to answer the question that
+follows.</p>
 <div class="tutorial-exercise" data-label="mean-samp1"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -376,13 +468,18 @@ sampling less than 3% of the population.</p>
 </div>
 <div id="section-section-12" class="section level3">
 <h3></h3>
-Use the code block below to take a second sample, also of size 50, and
-call it <code>samp2</code>. How does the mean of <code>samp2</code>
-compare with the mean of <code>samp1</code>?
+<p>Use the code block below to take a second sample, also of size 50,
+and call it <code>samp2</code>. How does the mean of <code>samp2</code>
+compare with the mean of <code>samp1</code>?</p>
 <div class="tutorial-exercise" data-label="second-sample"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="second-sample-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Copy and paste the code from the previous code cell. </code></pre>
 </div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="size-of-samples" class="tutorial-question panel-body">
@@ -399,7 +496,7 @@ class="section level2">
 <h2>Constructing a sampling distribution</h2>
 <div id="section-section-13" class="section level3">
 <h3></h3>
-Not surprisingly, every time we take another random sample, we get a
+<p>Not surprisingly, every time we take another random sample, we get a
 different sample mean. It’s useful to get a sense of just how much
 variability we should expect when estimating the population mean this
 way. The distribution of sample means, called the <em>sampling
@@ -408,7 +505,7 @@ because we have access to the population, we can build up the sampling
 distribution for the sample mean by repeating the above steps many
 times. The code below generates 5,000 samples of size 50 and computes
 (and stores) the sample mean of each. Run the code to see the
-distribution of sample means.
+distribution of sample means.</p>
 <div class="tutorial-exercise" data-label="loop" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
@@ -420,10 +517,12 @@ for(i in 1:5000){
    }
 
 ggplot() + 
-  geom_histogram(mapping = aes(x = sample_means50)) + 
-  labs(x = &quot;Avg Living Area (sqft)&quot;, 
-       y = &quot;Count&quot;, 
-       title = &quot;Sampling Distribution of Sample Means (n = 50)&quot;)</code></pre>
+  geom_histogram(aes(x = sample_means50)) + 
+  labs(
+    title = &quot;Sampling Distribution of Sample Means (n = 50)&quot;,
+    x = &quot;Avg Living Area (sqft)&quot;,
+    y = &quot;Count&quot;
+    )</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
@@ -446,10 +545,12 @@ for(i in 1:5000){
    }
 
 ggplot() + 
-  geom_histogram(mapping = aes(x = sample_means50), bins = 8) + 
-  labs(x = &quot;Avg Living Area (sqft)&quot;, 
-       y = &quot;Count&quot;, 
-       title = &quot;Sampling Distribution of Sample Means (n = 50)&quot;)</code></pre>
+  geom_histogram(aes(x = sample_means50), bins = 8) + 
+  labs(
+    title = &quot;Sampling Distribution of Sample Means (n = 50)&quot;, 
+    x = &quot;Avg Living Area (sqft)&quot;,
+    y = &quot;Count&quot;
+    )</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
@@ -525,10 +626,10 @@ sample_means50[4] &lt;- mean(samp)</code></pre>
 </div>
 <div id="section-section-18" class="section level3">
 <h3></h3>
-With the for loop, these thousands of lines of code are compressed into
-a handful of lines. Here’s a simple loop – read the code and guess what
-will happen. Once you’ve made a guess, run the code and see if you were
-right.
+<p>With the for loop, these thousands of lines of code are compressed
+into a handful of lines. Here’s a simple loop – read the code and guess
+what will happen. Once you’ve made a guess, run the code and see if you
+were right.</p>
 <div class="tutorial-exercise" data-label="simple-loop"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -578,17 +679,65 @@ empty vector that we initialized at the outset.</p>
 </div>
 <div id="section-section-21" class="section level3">
 <h3></h3>
-To make sure you understand what you’ve done in this loop, try building
-and running a smaller version in the code block below. Initialize a
-vector of 100 zeros called <code>sample_means_small</code>. Run a loop
-that takes a sample of size 50 from <code>area</code> and stores the
-sample mean in <code>sample_means_small</code>, but only iterate from 1
-to 100. Print the output to your screen by including a line
-<code>sample_means_small</code> after the loop concludes.
+<p>To make sure you understand what you’ve done in this loop, try
+building and running a smaller version in the code block below.
+Initialize a vector of 100 zeros called <code>sample_means_small</code>.
+Run a loop that takes a sample of size 50 from <code>area</code> and
+stores the sample mean in <code>sample_means_small</code>, but only
+iterate from 1 to 100. Print the output to your screen by including a
+line <code>sample_means_small</code> after the loop concludes.</p>
 <div class="tutorial-exercise" data-label="small-loop"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="small-loop-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Start with the original &quot;for&quot; loop which creates 
+#sample_means_50</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="small-loop-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Change sample_means50 to sample_means_small and make update
+#how it is initialized to include a hundred zeros instead 
+#of five thousand missing values (NA&#39;s). 
+
+sample_means50 &lt;- rep(NA, 5000)
+
+for(i in 1:5000){
+   samp &lt;- sample(area, 50)
+   sample_means50[i] &lt;- mean(samp)
+   }</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="small-loop-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Update the &quot;for&quot; loop
+###You aren&#39;t taking 5000 samples anymore...how many 
+###are you taking?
+###You aren&#39;t filling in sample_means50 -- what object are 
+###you filling in?
+
+sample_means_small &lt;- rep(0, 100)
+
+for(i in 1:5000){
+   samp &lt;- sample(area, 50)
+   sample_means50[i] &lt;- mean(samp)
+   }</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="small-loop-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks
+
+sample_means_small &lt;- rep(0, 100)
+
+for(i in 1:___){
+   samp &lt;- sample(area, 50)
+   ___[i] &lt;- mean(samp)
+   }</code></pre>
 </div>
 <div class="tutorial-exercise-support" data-label="small-loop-solution"
 data-completion="1" data-diagnostics="1" data-startover="1"
@@ -635,11 +784,20 @@ this one.</p>
 <div class="tutorial-exercise" data-label="hist-sample-means-50"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
-<pre class="text"><code>ggplot() + geom_histogram(mapping = aes(x = sample_means50)) + 
-  labs(x = &quot;Avg Living Area (sqft)&quot;, 
-       y = &quot;Count&quot;, 
-       title = &quot;Sampling Distribution of Sample Means (n = 50)&quot;)</code></pre>
+<pre class="text"><code>ggplot() + 
+  geom_histogram(aes(x = sample_means50)) + 
+  labs(
+     title = &quot;Sampling Distribution of Sample Means (n = 50)&quot;,
+     x = &quot;Avg Living Area (sqft)&quot;,
+     y = &quot;Count&quot;
+     )</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="hist-sample-means-50-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Just run this code block.</code></pre>
 </div>
 <div id="section-section-23" class="section level3">
 <h3></h3>
@@ -652,24 +810,122 @@ only 50 home sales.</p>
 </div>
 <div id="section-section-24" class="section level3">
 <h3></h3>
-To get a sense of the effect that sample size has on our distribution,
-build up two more sampling distributions: one based on a sample size of
-10 and another based on a sample size of 100. Call them
+<p>To get a sense of the effect that sample size has on our
+distribution, build up two more sampling distributions: one based on a
+sample size of 10 and another based on a sample size of 100. Call them
 <code>sample_means10</code> and <code>sample_means100</code>
 respectively. Use the code block below to adapt the code used to create
 <code>sample_means50</code> to create these two new objects. The code to
-create <code>sample_means50</code> is commented out in the code block
-below for reference.
+create <code>sample_means50</code> is pre-populated in the code block
+below for reference.</p>
 <div class="tutorial-exercise" data-label="samp10-samp100"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
-<pre class="text"><code>#sample_means50 &lt;- rep(NA, 5000)
+<pre class="text"><code>sample_means50 &lt;- rep(NA, 5000)
 
-#for(i in 1:5000){
-#   samp &lt;- sample(area, 50)
-#   sample_means50[i] &lt;- mean(samp)
-#   }</code></pre>
+for(i in 1:5000){
+   samp &lt;- sample(area, 50)
+   sample_means50[i] &lt;- mean(samp)
+   }</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="samp10-samp100-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Copy and paste  all of the code to create sample_means50 
+#twice and updae it to create sample_means10 and 
+#sample_means100.
+
+sample_means50 &lt;- rep(NA, 5000)
+
+for(i in 1:5000){
+   samp &lt;- sample(area, 50)
+   sample_means50[i] &lt;- mean(samp)
+   }</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="samp10-samp100-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Update the blanks to build sample_means10 and 
+#sample_means100
+
+sample_means50 &lt;- rep(NA, 5000)
+
+for(i in 1:5000){
+   samp &lt;- sample(area, 50)
+   sample_means50[i] &lt;- mean(samp)
+}
+
+___ &lt;- rep(___, ___)
+
+for(i in 1:___){
+   samp &lt;- sample(area, ___)
+   ___[i] &lt;- mean(samp)
+}
+
+___ &lt;- rep(___, ___)
+
+for(i in 1:___){
+   samp &lt;- sample(area, ___)
+   ___[i] &lt;- mean(samp)
+   }</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="samp10-samp100-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks for sample_means100
+
+sample_means50 &lt;- rep(NA, 5000)
+
+for(i in 1:5000){
+   samp &lt;- sample(area, 50)
+   sample_means50[i] &lt;- mean(samp)
+}
+
+sample_means10 &lt;- rep(NA, 5000)
+
+for(i in 1:5000){
+   samp &lt;- sample(area, 10)
+   sample_means10[i] &lt;- mean(samp)
+}
+
+sample_means100 &lt;- rep(___, ___)
+
+for(i in 1:___){
+   samp &lt;- sample(area, ___)
+   ___[i] &lt;- mean(samp)
+   }</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="samp10-samp100-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Samples of 50 houses at a time
+sample_means50 &lt;- rep(NA, 5000)
+
+for(i in 1:5000){
+   samp &lt;- sample(area, 50)
+   sample_means50[i] &lt;- mean(samp)
+}
+
+#Samples of 10 houses at a time
+sample_means10 &lt;- rep(NA, 5000)
+
+for(i in 1:5000){
+   samp &lt;- sample(area, 10)
+   sample_means10[i] &lt;- mean(samp)
+}
+
+#Samples of 100 houses at a time
+sample_means100 &lt;- rep(NA, 5000)
+
+for(i in 1:5000){
+   samp &lt;- sample(area, 100)
+   sample_means100[i] &lt;- mean(samp)
+   }</code></pre>
 </div>
 </div>
 <div id="section-section-25" class="section level3">
@@ -684,10 +940,20 @@ plots.</p>
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <pre class="text"><code>ggplot(data = sample_means) + 
-  geom_histogram(mapping = aes(x = SampleMean)) + 
+  geom_histogram(aes(x = SampleMean)) + 
   facet_wrap(~ SampDist, nrow = 3) +
-  labs(x = &quot;Avg Living Area (sqft)&quot;, y = &quot;count&quot;, title = &quot;Sampling Distributions (n = 10, 50, 100)&quot;)</code></pre>
+  labs(
+    title = &quot;Sampling Distributions (n = 10, 50, 100)&quot;,
+    x = &quot;Avg Living Area (sqft)&quot;, 
+    y = &quot;count&quot;
+    )</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="plot-samp-dists-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Nothing tochange here, just run the code.</code></pre>
 </div>
 </div>
 <div id="section-section-26" class="section level3">
@@ -740,12 +1006,25 @@ the two tails of a normal distribution.</p>
 </div>
 <div id="section-section-29" class="section level3">
 <h3></h3>
-Use the code block below to take a single sample of size 60 of areas
-from houses in Ames. Call it <code>samp</code>.
+<p>Use the code block below to take a single sample of size 60 of areas
+from houses in Ames. Call it <code>samp</code>.</p>
 <div class="tutorial-exercise" data-label="samp60" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="samp60-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Look earlier in the notebook for where we took samples
+#of square footage areas for homes. Adapt that code here.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="samp60-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks
+
+___ &lt;- sample(___, ___)</code></pre>
 </div>
 <div class="tutorial-exercise-support" data-label="samp60-solution"
 data-completion="1" data-diagnostics="1" data-startover="1"
@@ -759,10 +1038,17 @@ data-lines="0" data-pipe="|&gt;">
 <div class="tutorial-exercise" data-label="ci" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
-<pre class="text"><code>sample_mean &lt;- mean(samp)
+<pre class="text"><code>#Calculate the sample mean
+sample_mean &lt;- mean(samp)
+
+#Calculate the standard error
 se &lt;- sd(samp) / sqrt(60)
+
+#Compute the limits of the confidence interval
 lower &lt;- sample_mean - 1.96 * se
 upper &lt;- sample_mean + 1.96 * se
+
+#Print out the bounds for the confidence interval
 c(lower, upper)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
@@ -830,11 +1116,11 @@ intervals.</li>
 </div>
 <div id="section-section-35" class="section level3">
 <h3></h3>
-Read the code below – does it make sense to you? What do you think the
-result will be? You’ve used everything in the code block below during
-this workbook, except for the custom <code>plot_ci()</code> function.
-Once you think you know what will result, run the code block and see if
-you were right.
+<p>Read the code below – does it make sense to you? What do you think
+the result will be? You’ve used everything in the code block below
+during this workbook, except for the custom <code>plot_ci()</code>
+function. Once you think you know what will result, run the code block
+and see if you were right.</p>
 <div class="tutorial-exercise" data-label="lots-of-ci"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -1487,7 +1773,7 @@ learnr:::store_exercise_cache(structure(list(label = "plot-area-price-dists", gl
 "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "plot-area-price-dists", code = "ggplot() + geom_histogram(mapping = aes(x = area)) + ylab(\"Count\") + xlab(\"Size (Sq ft)\") + ggtitle(\"Histogram of Home Size\")\nggplot() + geom_boxplot(mapping = aes(y = area)) + ylab(\"Size (Sq ft)\") + ggtitle(\"Boxplot of Home Sizes\") + coord_flip()", 
+    list(label = "plot-area-price-dists", code = "ggplot() + \n  geom_histogram(mapping = aes(x = area)) + \n  labs(\n    title = \"Histogram of Home Size\",\n    x = \"Size (Sq ft)\",\n    y = \"Count\"\n    )\n\nggplot() + \n  geom_boxplot(mapping = aes(x = area)) + \n  labs(\n    title = \"Boxplot of Home Sizes\",\n    x = \"Size (Sq ft)\"\n    )", 
         opts = list(label = "\"plot-area-price-dists\"", exercise = "TRUE", 
             message = "FALSE", warning = "FALSE", results = "FALSE", 
             fig.width = "4", fig.height = "4"), engine = "r")), 
@@ -1510,9 +1796,13 @@ learnr:::store_exercise_cache(structure(list(label = "plot-area-price-dists", gl
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "plot-area-price-dists", exercise = TRUE, code = c("ggplot() + geom_histogram(mapping = aes(x = area)) + ylab(\"Count\") + xlab(\"Size (Sq ft)\") + ggtitle(\"Histogram of Home Size\")", 
-        "ggplot() + geom_boxplot(mapping = aes(y = area)) + ylab(\"Size (Sq ft)\") + ggtitle(\"Boxplot of Home Sizes\") + coord_flip()"
-        ), out.width.px = 384, out.height.px = 384, params.src = "plot-area-price-dists, exercise = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width= 4, fig.height= 4", 
+        label = "plot-area-price-dists", exercise = TRUE, code = c("ggplot() + ", 
+        "  geom_histogram(mapping = aes(x = area)) + ", "  labs(", 
+        "    title = \"Histogram of Home Size\",", "    x = \"Size (Sq ft)\",", 
+        "    y = \"Count\"", "    )", "", "ggplot() + ", "  geom_boxplot(mapping = aes(x = area)) + ", 
+        "  labs(", "    title = \"Boxplot of Home Sizes\",", 
+        "    x = \"Size (Sq ft)\"", "    )"), out.width.px = 384, 
+        out.height.px = 384, params.src = "plot-area-price-dists, exercise = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width= 4, fig.height= 4", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -1601,7 +1891,7 @@ learnr:::store_exercise_cache(structure(list(label = "plot-dist-sampl", global_s
 "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "plot-dist-sampl", code = "#Take a sample\nsamp <- sample(area, 50)\n\n#Plot a histogram of the entire population of home areas\nggplot() + \n  geom_histogram(mapping = aes(x = area)) + \n  labs(x = \"Living Area (sqft)\", y = \"Count\", title = \"Population\")\n\n#Add the code to plot a histogram of the sample areas\nggplot() + \n  geom_histogram(mapping = aes(x = samp)) + \n  labs(x = \"Living Area (sqft)\", y = \"Count\", title = \"Sample\")", 
+    list(label = "plot-dist-sampl", code = "#Take a sample\nsamp <- sample(area, 50)\n\n#Plot a histogram of the entire population of home areas\nggplot() + \n  geom_histogram(aes(x = area)) + \n  labs(\n    title = \"Population\",\n    x = \"Living Area (sqft)\", \n    y = \"Count\"\n    )\n\n#Add the code to plot a histogram of the sample areas\nggplot() + \n  geom_histogram(aes(x = samp)) + \n  labs(\n    title = \"Sample\",\n    x = \"Living Area (sqft)\", \n    y = \"Count\"\n    )", 
         opts = list(label = "\"plot-dist-sampl\"", exercise = "TRUE", 
             message = "FALSE", warning = "FALSE", fig.width = "4", 
             fig.height = "4"), engine = "r")), code_check = NULL, 
@@ -1626,12 +1916,13 @@ learnr:::store_exercise_cache(structure(list(label = "plot-dist-sampl", global_s
         exercise.error.check.code = "gradethis_error_checker()", 
         label = "plot-dist-sampl", exercise = TRUE, code = c("#Take a sample", 
         "samp <- sample(area, 50)", "", "#Plot a histogram of the entire population of home areas", 
-        "ggplot() + ", "  geom_histogram(mapping = aes(x = area)) + ", 
-        "  labs(x = \"Living Area (sqft)\", y = \"Count\", title = \"Population\")", 
-        "", "#Add the code to plot a histogram of the sample areas", 
-        "ggplot() + ", "  geom_histogram(mapping = aes(x = samp)) + ", 
-        "  labs(x = \"Living Area (sqft)\", y = \"Count\", title = \"Sample\")"
-        ), out.width.px = 384, out.height.px = 384, params.src = "plot-dist-sampl, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4", 
+        "ggplot() + ", "  geom_histogram(aes(x = area)) + ", 
+        "  labs(", "    title = \"Population\",", "    x = \"Living Area (sqft)\", ", 
+        "    y = \"Count\"", "    )", "", "#Add the code to plot a histogram of the sample areas", 
+        "ggplot() + ", "  geom_histogram(aes(x = samp)) + ", 
+        "  labs(", "    title = \"Sample\",", "    x = \"Living Area (sqft)\", ", 
+        "    y = \"Count\"", "    )"), out.width.px = 384, out.height.px = 384, 
+        params.src = "plot-dist-sampl, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -1830,7 +2121,7 @@ learnr:::store_exercise_cache(structure(list(label = "loop", global_setup = stru
 "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "loop", code = "sample_means50 <- rep(NA, 5000)\n\nfor(i in 1:5000){\n   samp <- sample(area, 50)\n   sample_means50[i] <- mean(samp)\n   }\n\nggplot() + \n  geom_histogram(mapping = aes(x = sample_means50)) + \n  labs(x = \"Avg Living Area (sqft)\", \n       y = \"Count\", \n       title = \"Sampling Distribution of Sample Means (n = 50)\")", 
+    list(label = "loop", code = "sample_means50 <- rep(NA, 5000)\n\nfor(i in 1:5000){\n   samp <- sample(area, 50)\n   sample_means50[i] <- mean(samp)\n   }\n\nggplot() + \n  geom_histogram(aes(x = sample_means50)) + \n  labs(\n    title = \"Sampling Distribution of Sample Means (n = 50)\",\n    x = \"Avg Living Area (sqft)\",\n    y = \"Count\"\n    )", 
         opts = list(label = "\"loop\"", exercise = "TRUE"), engine = "r")), 
     code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
@@ -1854,10 +2145,10 @@ learnr:::store_exercise_cache(structure(list(label = "loop", global_setup = stru
         label = "loop", exercise = TRUE, code = c("sample_means50 <- rep(NA, 5000)", 
         "", "for(i in 1:5000){", "   samp <- sample(area, 50)", 
         "   sample_means50[i] <- mean(samp)", "   }", "", "ggplot() + ", 
-        "  geom_histogram(mapping = aes(x = sample_means50)) + ", 
-        "  labs(x = \"Avg Living Area (sqft)\", ", "       y = \"Count\", ", 
-        "       title = \"Sampling Distribution of Sample Means (n = 50)\")"
-        ), out.width.px = 624, out.height.px = 384, params.src = "loop, exercise = TRUE", 
+        "  geom_histogram(aes(x = sample_means50)) + ", "  labs(", 
+        "    title = \"Sampling Distribution of Sample Means (n = 50)\",", 
+        "    x = \"Avg Living Area (sqft)\",", "    y = \"Count\"", 
+        "    )"), out.width.px = 624, out.height.px = 384, params.src = "loop, exercise = TRUE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -1890,7 +2181,7 @@ learnr:::store_exercise_cache(structure(list(label = "hist-breaks", global_setup
 "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "hist-breaks", code = "sample_means50 <- rep(NA, 5000)\n\nfor(i in 1:5000){\n   samp <- sample(area, 50)\n   sample_means50[i] <- mean(samp)\n   }\n\nggplot() + \n  geom_histogram(mapping = aes(x = sample_means50), bins = 8) + \n  labs(x = \"Avg Living Area (sqft)\", \n       y = \"Count\", \n       title = \"Sampling Distribution of Sample Means (n = 50)\")", 
+    list(label = "hist-breaks", code = "sample_means50 <- rep(NA, 5000)\n\nfor(i in 1:5000){\n   samp <- sample(area, 50)\n   sample_means50[i] <- mean(samp)\n   }\n\nggplot() + \n  geom_histogram(aes(x = sample_means50), bins = 8) + \n  labs(\n    title = \"Sampling Distribution of Sample Means (n = 50)\", \n    x = \"Avg Living Area (sqft)\",\n    y = \"Count\"\n    )", 
         opts = list(label = "\"hist-breaks\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -1914,10 +2205,10 @@ learnr:::store_exercise_cache(structure(list(label = "hist-breaks", global_setup
         label = "hist-breaks", exercise = TRUE, code = c("sample_means50 <- rep(NA, 5000)", 
         "", "for(i in 1:5000){", "   samp <- sample(area, 50)", 
         "   sample_means50[i] <- mean(samp)", "   }", "", "ggplot() + ", 
-        "  geom_histogram(mapping = aes(x = sample_means50), bins = 8) + ", 
-        "  labs(x = \"Avg Living Area (sqft)\", ", "       y = \"Count\", ", 
-        "       title = \"Sampling Distribution of Sample Means (n = 50)\")"
-        ), out.width.px = 624, out.height.px = 384, params.src = "hist-breaks, exercise = TRUE", 
+        "  geom_histogram(aes(x = sample_means50), bins = 8) + ", 
+        "  labs(", "    title = \"Sampling Distribution of Sample Means (n = 50)\", ", 
+        "    x = \"Avg Living Area (sqft)\",", "    y = \"Count\"", 
+        "    )"), out.width.px = 624, out.height.px = 384, params.src = "hist-breaks, exercise = TRUE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -2225,7 +2516,7 @@ learnr:::store_exercise_cache(structure(list(label = "hist-sample-means-50", glo
     chunks = list(list(label = "hist-sample-means-50-setup", 
         code = "sample_means50 <- rep(NA, 5000)\n\nfor(i in 1:5000){\n  sample_means50[i] <- mean(sample(area, 50))\n}", 
         opts = list(label = "\"hist-sample-means-50-setup\""), 
-        engine = "r"), list(label = "hist-sample-means-50", code = "ggplot() + geom_histogram(mapping = aes(x = sample_means50)) + \n  labs(x = \"Avg Living Area (sqft)\", \n       y = \"Count\", \n       title = \"Sampling Distribution of Sample Means (n = 50)\")", 
+        engine = "r"), list(label = "hist-sample-means-50", code = "ggplot() + \n  geom_histogram(aes(x = sample_means50)) + \n  labs(\n     title = \"Sampling Distribution of Sample Means (n = 50)\",\n     x = \"Avg Living Area (sqft)\",\n     y = \"Count\"\n     )", 
         opts = list(label = "\"hist-sample-means-50\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -2246,10 +2537,11 @@ learnr:::store_exercise_cache(structure(list(label = "hist-sample-means-50", glo
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "hist-sample-means-50", exercise = TRUE, code = c("ggplot() + geom_histogram(mapping = aes(x = sample_means50)) + ", 
-        "  labs(x = \"Avg Living Area (sqft)\", ", "       y = \"Count\", ", 
-        "       title = \"Sampling Distribution of Sample Means (n = 50)\")"
-        ), out.width.px = 624, out.height.px = 384, params.src = "hist-sample-means-50, exercise = TRUE", 
+        label = "hist-sample-means-50", exercise = TRUE, code = c("ggplot() + ", 
+        "  geom_histogram(aes(x = sample_means50)) + ", "  labs(", 
+        "     title = \"Sampling Distribution of Sample Means (n = 50)\",", 
+        "     x = \"Avg Living Area (sqft)\",", "     y = \"Count\"", 
+        "     )"), out.width.px = 624, out.height.px = 384, params.src = "hist-sample-means-50, exercise = TRUE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -2282,10 +2574,18 @@ learnr:::store_exercise_cache(structure(list(label = "samp10-samp100", global_se
 "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "samp10-samp100", code = "#sample_means50 <- rep(NA, 5000)\n\n#for(i in 1:5000){\n#   samp <- sample(area, 50)\n#   sample_means50[i] <- mean(samp)\n#   }", 
+    list(label = "samp10-samp100", code = "sample_means50 <- rep(NA, 5000)\n\nfor(i in 1:5000){\n   samp <- sample(area, 50)\n   sample_means50[i] <- mean(samp)\n   }", 
         opts = list(label = "\"samp10-samp100\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
-    check = NULL, solution = NULL, tests = NULL, options = list(
+    check = NULL, solution = structure(c("#Samples of 50 houses at a time", 
+    "sample_means50 <- rep(NA, 5000)", "", "for(i in 1:5000){", 
+    "   samp <- sample(area, 50)", "   sample_means50[i] <- mean(samp)", 
+    "}", "", "#Samples of 10 houses at a time", "sample_means10 <- rep(NA, 5000)", 
+    "", "for(i in 1:5000){", "   samp <- sample(area, 10)", "   sample_means10[i] <- mean(samp)", 
+    "}", "", "#Samples of 100 houses at a time", "sample_means100 <- rep(NA, 5000)", 
+    "", "for(i in 1:5000){", "   samp <- sample(area, 100)", 
+    "   sample_means100[i] <- mean(samp)", "   }"), chunk_opts = list(
+        label = "samp10-samp100-solution")), tests = NULL, options = list(
         eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
         tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
         highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
@@ -2303,9 +2603,9 @@ learnr:::store_exercise_cache(structure(list(label = "samp10-samp100", global_se
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "samp10-samp100", exercise = TRUE, code = c("#sample_means50 <- rep(NA, 5000)", 
-        "", "#for(i in 1:5000){", "#   samp <- sample(area, 50)", 
-        "#   sample_means50[i] <- mean(samp)", "#   }"), out.width.px = 624, 
+        label = "samp10-samp100", exercise = TRUE, code = c("sample_means50 <- rep(NA, 5000)", 
+        "", "for(i in 1:5000){", "   samp <- sample(area, 50)", 
+        "   sample_means50[i] <- mean(samp)", "   }"), out.width.px = 624, 
         out.height.px = 384, params.src = "samp10-samp100, exercise = TRUE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
@@ -2341,7 +2641,7 @@ learnr:::store_exercise_cache(structure(list(label = "plot-samp-dists", global_s
     label = "setup", include = FALSE)), setup = "sample_means50 <- rep(NA, 5000)\nsample_means10 <- rep(NA, 5000)\nsample_means100 <- rep(NA, 5000)\n\nfor(i in 1:5000){\n   samp10 <- sample(area, 10)\n   sample_means10[i] <- mean(samp10)\n   samp50 <- sample(area, 50)\n   sample_means50[i] <- mean(samp50)\n   samp100 <- sample(area, 100)\n   sample_means100[i] <- mean(samp100)\n}\n\ndf10 <- data.frame(\"SampDist\" = rep(\"sample_means10\", length(sample_means10)), \"SampleMean\" = sample_means10)\ndf50 <- data.frame(\"SampDist\" = rep(\"sample_means50\", length(sample_means50)), \"SampleMean\" = sample_means50)\ndf100 <- data.frame(\"SampDist\" = rep(\"sample_means100\", length(sample_means100)), \"SampleMean\" = sample_means100)\n\nsample_means <- bind_rows(df10, df50, df100)\nsample_means$SampDist <- factor(sample_means$SampDist, levels = c(\"sample_means10\", \"sample_means50\", \"sample_means100\"), ordered = TRUE)", 
     chunks = list(list(label = "plot-samp-dists-setup", code = "sample_means50 <- rep(NA, 5000)\nsample_means10 <- rep(NA, 5000)\nsample_means100 <- rep(NA, 5000)\n\nfor(i in 1:5000){\n   samp10 <- sample(area, 10)\n   sample_means10[i] <- mean(samp10)\n   samp50 <- sample(area, 50)\n   sample_means50[i] <- mean(samp50)\n   samp100 <- sample(area, 100)\n   sample_means100[i] <- mean(samp100)\n}\n\ndf10 <- data.frame(\"SampDist\" = rep(\"sample_means10\", length(sample_means10)), \"SampleMean\" = sample_means10)\ndf50 <- data.frame(\"SampDist\" = rep(\"sample_means50\", length(sample_means50)), \"SampleMean\" = sample_means50)\ndf100 <- data.frame(\"SampDist\" = rep(\"sample_means100\", length(sample_means100)), \"SampleMean\" = sample_means100)\n\nsample_means <- bind_rows(df10, df50, df100)\nsample_means$SampDist <- factor(sample_means$SampDist, levels = c(\"sample_means10\", \"sample_means50\", \"sample_means100\"), ordered = TRUE)", 
         opts = list(label = "\"plot-samp-dists-setup\""), engine = "r"), 
-        list(label = "plot-samp-dists", code = "ggplot(data = sample_means) + \n  geom_histogram(mapping = aes(x = SampleMean)) + \n  facet_wrap(~ SampDist, nrow = 3) +\n  labs(x = \"Avg Living Area (sqft)\", y = \"count\", title = \"Sampling Distributions (n = 10, 50, 100)\")", 
+        list(label = "plot-samp-dists", code = "ggplot(data = sample_means) + \n  geom_histogram(aes(x = SampleMean)) + \n  facet_wrap(~ SampDist, nrow = 3) +\n  labs(\n    title = \"Sampling Distributions (n = 10, 50, 100)\",\n    x = \"Avg Living Area (sqft)\", \n    y = \"count\"\n    )", 
             opts = list(label = "\"plot-samp-dists\"", exercise = "TRUE"), 
             engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -2363,9 +2663,10 @@ learnr:::store_exercise_cache(structure(list(label = "plot-samp-dists", global_s
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
         label = "plot-samp-dists", exercise = TRUE, code = c("ggplot(data = sample_means) + ", 
-        "  geom_histogram(mapping = aes(x = SampleMean)) + ", 
-        "  facet_wrap(~ SampDist, nrow = 3) +", "  labs(x = \"Avg Living Area (sqft)\", y = \"count\", title = \"Sampling Distributions (n = 10, 50, 100)\")"
-        ), out.width.px = 624, out.height.px = 384, params.src = "plot-samp-dists, exercise = TRUE", 
+        "  geom_histogram(aes(x = SampleMean)) + ", "  facet_wrap(~ SampDist, nrow = 3) +", 
+        "  labs(", "    title = \"Sampling Distributions (n = 10, 50, 100)\",", 
+        "    x = \"Avg Living Area (sqft)\", ", "    y = \"count\"", 
+        "    )"), out.width.px = 624, out.height.px = 384, params.src = "plot-samp-dists, exercise = TRUE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -2522,7 +2823,7 @@ learnr:::store_exercise_cache(structure(list(label = "ci", global_setup = struct
     label = "setup", include = FALSE)), setup = "", chunks = list(
     list(label = "samp60", code = "", opts = list(label = "\"samp60\"", 
         exercise = "TRUE"), engine = "r"), list(label = "ci", 
-        code = "sample_mean <- mean(samp)\nse <- sd(samp) / sqrt(60)\nlower <- sample_mean - 1.96 * se\nupper <- sample_mean + 1.96 * se\nc(lower, upper)", 
+        code = "#Calculate the sample mean\nsample_mean <- mean(samp)\n\n#Calculate the standard error\nse <- sd(samp) / sqrt(60)\n\n#Compute the limits of the confidence interval\nlower <- sample_mean - 1.96 * se\nupper <- sample_mean + 1.96 * se\n\n#Print out the bounds for the confidence interval\nc(lower, upper)", 
         opts = list(label = "\"ci\"", exercise = "TRUE", exercise.setup = "\"samp60\""), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -2544,8 +2845,11 @@ learnr:::store_exercise_cache(structure(list(label = "ci", global_setup = struct
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
         label = "ci", exercise = TRUE, exercise.setup = "samp60", 
-        code = c("sample_mean <- mean(samp)", "se <- sd(samp) / sqrt(60)", 
+        code = c("#Calculate the sample mean", "sample_mean <- mean(samp)", 
+        "", "#Calculate the standard error", "se <- sd(samp) / sqrt(60)", 
+        "", "#Compute the limits of the confidence interval", 
         "lower <- sample_mean - 1.96 * se", "upper <- sample_mean + 1.96 * se", 
+        "", "#Print out the bounds for the confidence interval", 
         "c(lower, upper)"), out.width.px = 624, out.height.px = 384, 
         params.src = "ci, exercise = TRUE, exercise.setup = \"samp60\"", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
