@@ -114,6 +114,74 @@ Use the code block below to answer the questions that follow.
 
 ```
 
+```{r clt-prop-sandbox-hint-1}
+#In this scenario, we have 9,564 participants who are
+#being asked a yes/no question. The participants come 
+#from a random sample, so we can assume they are 
+#independent.
+
+##Does such a setup, with independent trials and only 
+##two possible outcomes for each trial possible seem
+##familiar to you?
+```
+
+```{r clt-prop-sandbox-hint-2}
+#This is a "binomial experiment", and the number of 
+#"yes" responses in support of a path to citizenship 
+#is a binomial random variable.
+
+```
+
+```{r clt-prop-sandbox-hint-3}
+#For the second question, do you remember how to find the 
+#expected value for a binomial random variable?
+```
+
+```{r clt-prop-sandbox-hint-4}
+#Use n*p to verify that there are at least 10 "yes" 
+#responses expected, and n*(1 - p) to verify that 
+#there are at least 10 "no" responses expected 
+#with 9,654 participants.
+
+```
+
+```{r clt-prop-sandbox-hint-5}
+#For the third question, are n*p and n*(1 - p) both
+#at least 10 when the sample size is only 35 
+#participants?
+
+```
+
+```{r clt-prop-sandbox-hint-6}
+#The success-failure condition is a way to assess 
+#near-normality of the sampling distribution. As 
+#long as the success-failure condition is satisfied
+#then we can proceed with the assumption that the 
+#sampling distribution will be nearly normal.
+
+```
+
+```{r clt-prop-sandbox-hint-7}
+#For the fifth question, use the Standard Error 
+#formula from the version of the Central Limit 
+#Theorem described above this code cell.
+
+```
+
+```{r clt-prop-sandbox-hint-8}
+#The standard error for the sampling distribution
+#is sqrt((p*(1 - p))/n).
+
+```
+
+```{r clt-prop-sandbox-hint-9}
+#The standard error for the sampling distribution
+#is sqrt((p*(1 - p))/n). Fill in the blanks with 
+#the values of p and n
+
+sqrt((___*(1 - ___))/___)
+```
+
 ```{r clt-prop, echo = FALSE}
 quiz(
   question_checkbox(
@@ -209,6 +277,38 @@ Use what you learned in the video and your knowledge of the Pew Research study t
 
 ```
 
+```{r build-ci-code-block-hint-1}
+#For the first three questions, re-read the 
+#paragraphs below Dr. Diez's video.
+```
+
+```{r build-ci-code-block-hint-2}
+#The "formula" to construct a confidence 
+#interval uses the three pieces of information
+#you've just identified.
+
+```
+
+```{r build-ci-code-block-hint-3}
+#Use (point estimate) + (standard error)*(critical value)
+#to find the upper bound.
+
+```
+
+```{r build-ci-code-block-hint-4}
+#Use (point estimate) - (standard error)*(critical value)
+#to find the lower bound.
+
+```
+
+```{r build-ci-code-block-hint-5}
+#For the last question, what would happen to the critical
+#value in the confidence interval formula if we use 90%
+#confidence instead of 95% confidence?
+#How would this impact the width of the confidence interval?
+
+```
+
 ```{r build-ci-questions, echo = FALSE}
 quiz(
   question_radio(
@@ -221,7 +321,7 @@ quiz(
     random_answer_order = TRUE
   ),
   question_radio(
-    "The standard error ($S_E$) is",
+    "The standard error ( $S_E$ ) is",
     answer("0.0045", correct = TRUE),
     answer("0.5"),
     answer("0.74"),
@@ -288,7 +388,79 @@ A [2018 poll and story from NPR](https://www.npr.org/2018/02/06/583402634/npr-po
 ###
 
 Use what you learned from Dr. McClintock in the video about hypothesis testing to answer the following questions and complete the hypothesis test. You can use the code block below for any calculations you need to make.
+
 ```{r ht-questions-sandbox, exercise = TRUE}
+
+```
+
+```{r ht-questions-sandbox-hint-1}
+#For the first question, the skeptical position would
+#be that nothing has changed since 2018 (null hypothesis). 
+#What claim are the researchers interested in testing as
+#an alternative hypothesis?
+
+```
+
+```{r ht-questions-sandbox-hint-2}
+#For the second question, re-read the paragraphs above
+#the code block.
+
+```
+
+```{r ht-questions-sandbox-hint-3}
+#For the third question, the point estimate is the 
+#sample statistic corresponding to your population 
+#parameter of interest.
+
+```
+
+```{r ht-questions-sandbox-hint-4}
+#The population parameter of interest is the population 
+#proportion of Americans in favor of a path to citizenship
+#for DREAMERS. What was this proportion in our sample?
+
+```
+
+```{r ht-questions-sandbox-hint-5}
+#For the fourth question, the null value is the value
+#of the population parameter assumed in our null 
+#hypothesis.
+
+```
+
+```{r ht-questions-sandbox-hint-6}
+#For the fifth question, use the assumed population 
+#parameter (the null value) in computing the standard
+#error.
+
+```
+
+```{r ht-questions-sandbox-hint-7}
+#In the sixth question, use the point estimate, 
+#null value, and standard error that you've 
+#identified to construct the test statistic.
+
+```
+
+```{r ht-questions-sandbox-hint-8}
+#Draw a picture of your sampling distribution. 
+#Label the center with a mean of 0 and include
+#your test statistic as your boundary value.
+
+```
+
+```{r ht-questions-sandbox-hint-9}
+#Use your alternative hypothesis to determine 
+#which side of your boundary value you should 
+#be shading on. 
+
+```
+
+```{r ht-questions-sandbox-hint-10}
+#For the sixth question, use pnorm() to 
+#compute the p-value. Pay special attention
+#to which side of your boundary value your 
+#area of interest is on.
 
 ```
 
