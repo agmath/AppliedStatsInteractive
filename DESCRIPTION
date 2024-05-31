@@ -14,7 +14,8 @@ Imports:
     stringr,
     tidyr,
     skimr,
-    ggmosaic
+    ggmosaic,
+    statsr
 Remotes:
     rstudio-education/gradethis,
     rstudio/learnr,
