@@ -19,11 +19,12 @@ library(ggplot2)
 library(dplyr)
 library(learnr)
 library(gradethis)
-
+library(statsr)
 
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
 
 load("www/atheism.RData")
+rm(inference)
 
 #knitr::opts_chunk$set(eval = FALSE)
 ```
@@ -32,12 +33,12 @@ load("www/atheism.RData")
 
 ###
 
-In August of 2012, news outlets ranging from the [Washington Post](http://www.washingtonpost.com/national/on-faith/poll-shows-atheism-on-the-rise-in-the-us/2012/08/13/90020fd6-e57d-11e1-9739-eef99c5fb285_story.html) to the [Huffington Post](http://www.huffingtonpost.com/2012/08/14/atheism-rise-religiosity-decline-in-america_n_1777031.html) ran a story about the rise of atheism in America. The source for the story was a poll that asked people, "Irrespective of whether you attend a place of worship or not, would you say you are a religious person, not a religious person or a convinced atheist?" This type of question, which asks people to classify themselves in one way or another, is common in polling and generates categorical data. In this workbook we take a look at the atheism survey and explore what's at play when making inference about population proportions using categorical data.
+In August of 2012, news outlets ranging from the [Washington Post](http://www.washingtonpost.com/national/on-faith/poll-shows-atheism-on-the-rise-in-the-us/2012/08/13/90020fd6-e57d-11e1-9739-eef99c5fb285_story.html){target="_blank"} to the [Huffington Post](http://www.huffingtonpost.com/2012/08/14/atheism-rise-religiosity-decline-in-america_n_1777031.html){target="_blank"} ran a story about the rise of atheism in America. The source for the story was a poll that asked people, "Irrespective of whether you attend a place of worship or not, would you say you are a religious person, not a religious person or a convinced atheist?" This type of question, which asks people to classify themselves in one way or another, is common in polling and generates categorical data. In this workbook we take a look at the atheism survey and explore what's at play when making inference about population proportions using categorical data.
 
 ###
 
 <div id="license">
-This is a derivative of a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). The oiginal lab was written for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel.</div>
+This is a derivative of a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0){target="_blank"}. The oiginal lab was written for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel.</div>
 
 ###
 
@@ -102,11 +103,12 @@ To investigate the link between these two ways of organizing this data, take a l
 
 ###
 
-Run the command in the code block below (be sure to understand what the code is doing since you'll be asked to do some similar things later in the workbook), create a new dataframe called `us12` that contains only the rows in `atheism` associated with respondents to the 2012 survey from the United States. Next, calculate the proportion of atheist responses. Does it agree with the percentage in Table 6? If not, why?
+Run the command in the code block below and be sure to understand what the code is doing since you'll be asked to do some similar things later in the workbook. In that code cell, we create a new dataframe called `us12` that contains only the rows in `atheism` associated with respondents to the 2012 survey from the United States. Next, we calculate the proportion of atheist responses. Does it agree with the percentage in Table 6? If not, why?
 
 ```{r us-atheism, exercise = TRUE}
 us12 <- atheism %>%
-  filter(nationality == "United States", year == 2012)
+  filter(nationality == "United States", 
+         year == 2012)
 
 us12 %>%
   count(response) %>%
@@ -117,38 +119,51 @@ us12 %>%
 
 ###
 
-As you noted previously, Table 6 provides *statistics*, that is, calculations made from the sample of 51,927 people. We'd like insight into the population *parameters* instead. You answer the question, "What proportion of people *in your sample* reported being atheists?" with a statistic; while the question "What proportion of people *on Earth* would report being atheists?" is answered with an estimate of the parameter.
+As you noted previously, Table 6 provides *statistics*, that is, calculations made from the sample of 51,927 people. We'd like insight into the population *parameters* instead. You answer the question, "What proportion of people *in your sample* reported being atheists?" with a sample statistic; while the question "What proportion of people *on Earth* would report being atheists?" is answered with an estimate of the parameter.
 
 ###
 
-You'll use what you've learned about inferential tools for estimating population proportions in the previous workbook to answer questions related to the WIN-Gallup poll. Additionally, you'll explore how the population proportion can impact the margin of error for a confidence interval.
+You'll use what you've learned about inferential tools for estimating population proportions in the previous workbook to answer questions related to the WIN-Gallup poll. Additionally, you'll explore how the value of the population proportion can impact the margin of error for a confidence interval.
 
 ###
 
-As long as the conditions for inference are reasonably well satisfied, we can either calculate the standard error and construct the confidence interval by hand or allow the `inference` function to do it for us. We note that the `inference()` function is part of the `statsr` package for R, which has been installed and loaded for you here.
+As long as the conditions for inference are reasonably well satisfied, we can either calculate the standard error and construct the confidence interval by hand or allow the `inference()` function from the `{statsr}` package to do it for us. We note that the `inference()` function is part of the `{statsr}` package for R, which has been installed and loaded for you here.
 
 Run the following code block to construct a confidence interval for the proportion of atheists in the US in 2012.
 
 ```{r us-atheism-ci-setup}
 us12 <- atheism %>%
-  filter(nationality == "United States", year == 2012)
+  filter(nationality == "United States", 
+         year == 2012)
 ```
 
 ```{r us-atheism-ci, exercise = TRUE}
-inference(y = us12$response, est = "proportion", type = "ci", method = "theoretical", 
+inference(y = response,
+          data = us12,
+          statistic = "proportion", 
+          type = "ci", 
+          method = "theoretical", 
           success = "atheist")
 ```
 
 ###
 
-Let's pause for a moment to go through the arguments of this function. The first argument is `y`, which is the response variable that we are interested in: `us12$response`. The next argument, `est`, is the parameter we're interested in: `"proportion"` (other options are `"mean"`, or `"median"`.) Next we decide on the `type` of inference we want: a hypothesis test (`"ht"`) or a confidence interval (`"ci"`). When performing a hypothesis test, we also need to supply the `null` value and `alternative` hypothesis but we're building a confidence interval here so we omit those values -- we can optionally set the `clevel` parameter but the default is a 95% confidence interval (`clevel = 0.95`). The `method` parameter chooses the method of inference: `"theoretical"` or `"simulation"` based -- our course is using a theoretical framework, so we will always use that option. Finally, since the goal is to construct an interval estimate for a proportion, it's necessary to specify which level constitutes a "success"; here that is a response of `"atheist"`.
+Let's pause for a moment to go through the arguments of this function. The first argument is `y`, which is the response variable that we are interested in: `response`. The next argument, `data` tells the function which data frame to look in and find the `response` column. The `statistic` argument, is the parameter we're interested in: `"proportion"` (other options are `"mean"`, or `"median"`.) Next we decide on the `type` of inference we want: a hypothesis test (`"ht"`) or a confidence interval (`"ci"`). When performing a hypothesis test, we also need to supply the `null` value and `alternative` hypothesis but we're building a confidence interval here so we omit those values -- we can optionally set the `conf_level` parameter but the default is a 95% confidence interval (`conf_level = 0.95`). The `method` parameter chooses the method of inference: `"theoretical"` or `"simulation"` based -- our course is using a theoretical framework, so we will always use that option. Finally, since the goal is to construct an interval estimate for a proportion, it's necessary to specify which level constitutes a "success"; here that is a response of `"atheist"`.
 
 ###
 
 Although formal confidence intervals and hypothesis tests don't show up in the WINN-Gallup report, suggestions of inference appear at the bottom of page 6: "In general, the error margin for surveys of this kind is $\pm$ 3-5% at 95% confidence". We will check the validity of this claim later on.
 
 Use the code block below to help you answer the question that follows.
+
 ```{r interp-inference-moe-code-block, exercise = TRUE}
+
+```
+
+```{r interp-inference-moe-code-block-hint-1}
+#The margin of error is half the width of the 
+#confidence interval. You might think of this 
+#as the "radius" of the confidence interval.
 
 ```
 
@@ -167,8 +182,28 @@ question_radio(
 
 ###
 
-Using the code block below and your `inference` function, calculate confidence intervals for the proportion of atheists in 2012 in two other countries of your choice, and report the associated margins of error. Be sure to note whether the conditions for inference are met. It may be helpful to create new data sets for each of the two countries first, and then use these data sets in the `inference` function to construct the confidence intervals.
+Using the code block below and your `inference()` function, calculate confidence intervals for the proportion of atheists in 2012 in two other countries of your choice, and report the associated margins of error. Be sure to note whether the conditions for inference are met. It will be helpful to create new data sets for each of the two countries first, and then use these data sets in the `inference()` function to construct the confidence intervals.
+
 ```{r use-inference, exercise = TRUE}
+
+```
+
+```{r use-inference-hint-1}
+#Revisit the code cell from earlier where we 
+#created the us12 data frame.
+
+```
+
+```{r use-inference-hint-2}
+#Use similar code to obtain data from a 
+#different country, year, or both!
+
+```
+
+```{r use-inference-hint-3}
+#Use inference() to build a confidence
+#interval for the proportion of atheists
+#in your new data frame.
 
 ```
 
@@ -188,7 +223,14 @@ The code block below is pre-populated with the code necessary to make a vector `
 n <- 1000
 p <- seq(0, 1, 0.01)
 me <- 2 * sqrt(p * (1 - p)/n)
-ggplot() + geom_point(mapping = aes(x = p, y = me)) + labs(title = "Margin of Error and Population Proportion", y = "Margin of Error", x = "Population Proportion")
+
+ggplot() + 
+  geom_point(aes(x = p, y = me)) + 
+  labs(
+    title = "Margin of Error and Population Proportion", 
+    y = "Margin of Error", 
+    x = "Population Proportion"
+    )
 ```
 
 ###
@@ -216,7 +258,7 @@ quiz(
 
 ###
 
-We now know that both sample size and the population parameter impact the margin of error. Often times pollsters will have requirements for the margin of error for an estimate (for example, we may be interested in estimating a President's net favorability rating to within plus or minus three percentage points), so they can use this information and any intuition they may have about an approximate value of the population proportion to estimate how much data they need to collect in order to satisfy their requirements on the margin of error. We can estimate required sample size using the formula below, which is just a rearrangement of the formula for margin of error ($M_E$):
+We now know that both sample size and the population parameter impact the margin of error. Often times pollsters will have requirements for the margin of error for an estimate (for example, we may be interested in estimating a President's net favorability rating to within plus or minus three percentage points). They can use these requirements, prior information, and any intuition they may have about an approximate value of the population proportion to estimate how much data they need to collect in order to satisfy their requirements on the margin of error. We can estimate required sample size using the formula below, which is just a rearrangement of the formula for margin of error ($M_E$):
 $$n \geq \left(\frac{Z_{\alpha/2}}{M_E}\right)^2\cdot p\left(1 - p\right)$$
 In the formula above:
 
@@ -239,17 +281,26 @@ The short answer is: nothing. You could argue that we would be fine with 9 or th
 We can investigate the interplay between $n$ and $p$ and the shape of the sampling distribution by using simulations. To start off, we simulate the process of drawing 5000 samples of size 1040 from a population with a true atheist proportion of 0.1. For each of the 5000 samples we compute $\hat{p}$ and then plot a histogram to visualize their distribution.
 
 Use the code block below to carry out this experiment.
+
 ```{r sim-np, exercise = TRUE, exercise.eval = FALSE}
 p <- 0.1
 n <- 1040
 p_hats <- rep(0, 5000)
 
 for(i in 1:5000){
-  samp <- sample(c("atheist", "non_atheist"), n, replace = TRUE, prob = c(p, 1-p))
+  samp <- sample(c("atheist", "non_atheist"), 
+                 n, 
+                 replace = TRUE, 
+                 prob = c(p, 1-p))
+  
   p_hats[i] <- sum(samp == "atheist")/n
 }
 
-ggplot() + geom_histogram(mapping = aes(x = p_hats)) + labs(title = "p = 0.1, n = 1040", x = "Estimates for p") + xlim(c(0, 0.18))
+ggplot() + 
+  geom_histogram(aes(x = p_hats)) + 
+  labs(title = "p = 0.1, n = 1040", 
+       x = "Estimates for p") + 
+  xlim(c(0, 0.18))
 ```
 
 ###
@@ -257,21 +308,45 @@ ggplot() + geom_histogram(mapping = aes(x = p_hats)) + labs(title = "p = 0.1, n 
 These commands build up the sampling distribution of $\hat{p}$ using the familiar `for` loop. You can read the sampling procedure for the first line of code inside the `for` loop as, "take a sample of size $n$ with replacement from the choices of atheist and non-atheist with probabilities $p$ and $1 - p$,respectively." The second line in the loop says, "calculate the proportion of atheists in this sample and record this value." The loop allows us to repeat this process 5,000 times to build an approximation of the sampling distribution.
 
 Use the code block below to repeat the simulation we just ran but with `n = 400` and `p = 0.1`. Be sure to plot your result and compare it to your original simulation. What impact did lowering the number of observations have?
+
 ```{r p-dist-400-10, exercise = TRUE}
+
+```
+
+```{r p-dist-400-10-hint-1}
+#Start with the code to run the original
+#simulation. Change the sample size (n) 
+#and the population proportion (p).
 
 ```
 
 ###
 
 Now re-run the experiment again, but with `n = 1040` and `p = 0.02`. Again, think about the impact that a smaller population proportion has on the distribution of estimates for the population proportion.
+
 ```{r p-dist-1040-02, exercise = TRUE}
+
+```
+
+```{r p-dist-1040-02-hint-1}
+#Again, start with the code to run the 
+#original simulation. Change the sample 
+#size (n) and the population proportion (p).
 
 ```
 
 ###
 
 Re-run the experiment one last time, but with `n = 400` and `p = 0.02`. Compare each of your resulting distributions. How does this connect back to the assumptions for inference with categorical data?
+
 ```{r p-dist-400-02, exercise = TRUE}
+
+```
+
+```{r p-dist-400-02-hint-1}
+#Same idea here. Update the sample size 
+#and population proportion from the 
+#original simulation.
 
 ```
 
@@ -292,21 +367,63 @@ question_radio(
 
 The question of atheism was asked by WIN-Gallup International in a similar survey that was conducted in 2005. (We assume here that sample sizes have remained the same.) Table 4 on page 12 of the report summarizes survey results from 2005 and 2012 for 39 countries. Try answering the following questions on your own. The code blocks are necessary for answering some of the questions, but are not needed for all.
 
-1. Answer the following two questions using the `inference` function. As always, write out the hypotheses for any tests you conduct and outline the status of the conditions for inference.
+1. Answer the following two questions using the `inference()` function from `{statsr}`. As always, write out the hypotheses for any tests you conduct and outline the status of the conditions for inference.
 
-  + Is there convincing evidence that Spain has seen a change in its atheism index between 2005 and 2012? *Hint:* Create new data sets for respondents from Spain in 2005 and 2012 (look back at how we created `us12` earlier in this workbook). Form confidence intervals for the true proportion of athiests in both years, and determine whether they overlap.
+  + Is there convincing evidence that Spain has seen a change in its atheism index between 2005 and 2012? *Hint:* Create new data sets for respondents from Spain in 2005 and 2012 (look back at how we created `us12` earlier in this workbook). Form confidence intervals for the true proportion of atheists in both years, and determine whether they overlap.
   + Is there convincing evidence that the United States has seen a change in its atheism index between 2005 and 2012?
+
 ```{r on-your-own-1, exercise = TRUE}
 
 ```
 
-2. If in fact there has been no change in the atheism index in the countries listed in Table 4, in how many of those countries would you expect to detect a change (at a significance level of 0.05) simply by chance? *Hint:* Look in the textbook index under Type 1 error.
+```{r on-your-own-1-hint-1}
+#Start by defining spain to be a data frame
+#containing only responses from Spain. You 
+#don't need to filter on the year, since 
+#2005 and 2012 are the only years with 
+#observed responses.
+
+```
+
+```{r on-your-own-1-hint-2}
+#Use the inference() function as earlier, but
+#pass the year variable to the optional x 
+#argument. This will create groups for year
+#and inference() will automatically build a 
+#confidence interval for the difference in 
+#proportions of atheists between 2005 and 2012.
+#You can ignore the warning about converting to 
+#a factor.
+
+```
+
+2. If in fact there has been no change in the atheism index in any of the countries listed in Table 4, in how many of those countries would you expect to detect a change (at a significance level of 0.05) simply by chance? *Hint:* Look in the textbook index under Type 1 error.
+
 ```{r on-your-own-2, exercise = TRUE}
 
 ```
 
 3. Suppose you're hired by the local government to estimate the proportion of residents that attend a religious service on a weekly basis. According to the guidelines, the estimate must have a margin of error no greater than 1% with 95% confidence. You have no idea what to expect for $p$. How many people would you have to sample to ensure that you are within the guidelines? *Hint:* Refer to your plot of the relationship between $p$ and margin of error. Do not use the data set to answer this question.
+
 ```{r on-your-own-3, exercise = TRUE}
+
+```
+
+```{r on-your-own-3-hint-1}
+#Use the sample size formula for inference on 
+#population proportions. That formula is on 
+#the Standard Error Decision Tree and was also 
+#included within this notebook.
+
+```
+
+```{r on-your-own-3-hint-2}
+#Since you have no idea what proportion of 
+#residents attend a religious service on a 
+#weekly basis, use p = 0.5 as a worst-case
+#estimate. This value of the population 
+#proportion results in the largest possible 
+#estimated sample size requirements.
 
 ```
 

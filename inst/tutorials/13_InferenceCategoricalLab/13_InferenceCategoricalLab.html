@@ -115,26 +115,27 @@ class="section level2">
 <div id="section-section" class="section level3">
 <h3></h3>
 <p>In August of 2012, news outlets ranging from the <a
-href="http://www.washingtonpost.com/national/on-faith/poll-shows-atheism-on-the-rise-in-the-us/2012/08/13/90020fd6-e57d-11e1-9739-eef99c5fb285_story.html">Washington
-Post</a> to the <a
-href="http://www.huffingtonpost.com/2012/08/14/atheism-rise-religiosity-decline-in-america_n_1777031.html">Huffington
-Post</a> ran a story about the rise of atheism in America. The source
-for the story was a poll that asked people, “Irrespective of whether you
-attend a place of worship or not, would you say you are a religious
-person, not a religious person or a convinced atheist?” This type of
-question, which asks people to classify themselves in one way or
-another, is common in polling and generates categorical data. In this
-workbook we take a look at the atheism survey and explore what’s at play
-when making inference about population proportions using categorical
-data.</p>
+href="http://www.washingtonpost.com/national/on-faith/poll-shows-atheism-on-the-rise-in-the-us/2012/08/13/90020fd6-e57d-11e1-9739-eef99c5fb285_story.html"
+target="_blank">Washington Post</a> to the <a
+href="http://www.huffingtonpost.com/2012/08/14/atheism-rise-religiosity-decline-in-america_n_1777031.html"
+target="_blank">Huffington Post</a> ran a story about the rise of
+atheism in America. The source for the story was a poll that asked
+people, “Irrespective of whether you attend a place of worship or not,
+would you say you are a religious person, not a religious person or a
+convinced atheist?” This type of question, which asks people to classify
+themselves in one way or another, is common in polling and generates
+categorical data. In this workbook we take a look at the atheism survey
+and explore what’s at play when making inference about population
+proportions using categorical data.</p>
 </div>
 <div id="section-section-1" class="section level3">
 <h3></h3>
 <div id="section-license">
 This is a derivative of a product of OpenIntro that is released under a
-<a href="http://creativecommons.org/licenses/by-sa/3.0">Creative Commons
-Attribution-ShareAlike 3.0 Unported</a>. The oiginal lab was written for
-OpenIntro by Andrew Bray and Mine Çetinkaya-Rundel.
+<a href="http://creativecommons.org/licenses/by-sa/3.0"
+target="_blank">Creative Commons Attribution-ShareAlike 3.0
+Unported</a>. The oiginal lab was written for OpenIntro by Andrew Bray
+and Mine Çetinkaya-Rundel.
 </div>
 </div>
 <div id="section-section-2" class="section level3">
@@ -206,18 +207,20 @@ data.</p>
 </div>
 <div id="section-section-5" class="section level3">
 <h3></h3>
-<p>Run the command in the code block below (be sure to understand what
-the code is doing since you’ll be asked to do some similar things later
-in the workbook), create a new dataframe called <code>us12</code> that
-contains only the rows in <code>atheism</code> associated with
-respondents to the 2012 survey from the United States. Next, calculate
-the proportion of atheist responses. Does it agree with the percentage
-in Table 6? If not, why?</p>
+<p>Run the command in the code block below and be sure to understand
+what the code is doing since you’ll be asked to do some similar things
+later in the workbook. In that code cell, we create a new dataframe
+called <code>us12</code> that contains only the rows in
+<code>atheism</code> associated with respondents to the 2012 survey from
+the United States. Next, we calculate the proportion of atheist
+responses. Does it agree with the percentage in Table 6? If not,
+why?</p>
 <div class="tutorial-exercise" data-label="us-atheism"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <pre class="text"><code>us12 &lt;- atheism %&gt;%
-  filter(nationality == &quot;United States&quot;, year == 2012)
+  filter(nationality == &quot;United States&quot;, 
+         year == 2012)
 
 us12 %&gt;%
   count(response) %&gt;%
@@ -234,32 +237,37 @@ us12 %&gt;%
 is, calculations made from the sample of 51,927 people. We’d like
 insight into the population <em>parameters</em> instead. You answer the
 question, “What proportion of people <em>in your sample</em> reported
-being atheists?” with a statistic; while the question “What proportion
-of people <em>on Earth</em> would report being atheists?” is answered
-with an estimate of the parameter.</p>
+being atheists?” with a sample statistic; while the question “What
+proportion of people <em>on Earth</em> would report being atheists?” is
+answered with an estimate of the parameter.</p>
 </div>
 <div id="section-section-7" class="section level3">
 <h3></h3>
 <p>You’ll use what you’ve learned about inferential tools for estimating
 population proportions in the previous workbook to answer questions
 related to the WIN-Gallup poll. Additionally, you’ll explore how the
-population proportion can impact the margin of error for a confidence
-interval.</p>
+value of the population proportion can impact the margin of error for a
+confidence interval.</p>
 </div>
 <div id="section-section-8" class="section level3">
 <h3></h3>
 <p>As long as the conditions for inference are reasonably well
 satisfied, we can either calculate the standard error and construct the
-confidence interval by hand or allow the <code>inference</code> function
-to do it for us. We note that the <code>inference()</code> function is
-part of the <code>statsr</code> package for R, which has been installed
-and loaded for you here.</p>
+confidence interval by hand or allow the <code>inference()</code>
+function from the <code>{statsr}</code> package to do it for us. We note
+that the <code>inference()</code> function is part of the
+<code>{statsr}</code> package for R, which has been installed and loaded
+for you here.</p>
 <p>Run the following code block to construct a confidence interval for
 the proportion of atheists in the US in 2012.</p>
 <div class="tutorial-exercise" data-label="us-atheism-ci"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
-<pre class="text"><code>inference(y = us12$response, est = &quot;proportion&quot;, type = &quot;ci&quot;, method = &quot;theoretical&quot;, 
+<pre class="text"><code>inference(y = response,
+          data = us12,
+          statistic = &quot;proportion&quot;, 
+          type = &quot;ci&quot;, 
+          method = &quot;theoretical&quot;, 
           success = &quot;atheist&quot;)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
@@ -268,18 +276,20 @@ data-lines="0" data-pipe="|&gt;">
 <h3></h3>
 <p>Let’s pause for a moment to go through the arguments of this
 function. The first argument is <code>y</code>, which is the response
-variable that we are interested in: <code>us12$response</code>. The next
-argument, <code>est</code>, is the parameter we’re interested in:
+variable that we are interested in: <code>response</code>. The next
+argument, <code>data</code> tells the function which data frame to look
+in and find the <code>response</code> column. The <code>statistic</code>
+argument, is the parameter we’re interested in:
 <code>"proportion"</code> (other options are <code>"mean"</code>, or
 <code>"median"</code>.) Next we decide on the <code>type</code> of
 inference we want: a hypothesis test (<code>"ht"</code>) or a confidence
 interval (<code>"ci"</code>). When performing a hypothesis test, we also
 need to supply the <code>null</code> value and <code>alternative</code>
 hypothesis but we’re building a confidence interval here so we omit
-those values – we can optionally set the <code>clevel</code> parameter
-but the default is a 95% confidence interval
-(<code>clevel = 0.95</code>). The <code>method</code> parameter chooses
-the method of inference: <code>"theoretical"</code> or
+those values – we can optionally set the <code>conf_level</code>
+parameter but the default is a 95% confidence interval
+(<code>conf_level = 0.95</code>). The <code>method</code> parameter
+chooses the method of inference: <code>"theoretical"</code> or
 <code>"simulation"</code> based – our course is using a theoretical
 framework, so we will always use that option. Finally, since the goal is
 to construct an interval estimate for a proportion, it’s necessary to
@@ -293,12 +303,21 @@ up in the WINN-Gallup report, suggestions of inference appear at the
 bottom of page 6: “In general, the error margin for surveys of this kind
 is <span class="math inline">\(\pm\)</span> 3-5% at 95% confidence”. We
 will check the validity of this claim later on.</p>
-Use the code block below to help you answer the question that follows.
+<p>Use the code block below to help you answer the question that
+follows.</p>
 <div class="tutorial-exercise"
 data-label="interp-inference-moe-code-block" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="interp-inference-moe-code-block-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The margin of error is half the width of the 
+#confidence interval. You might think of this 
+#as the &quot;radius&quot; of the confidence interval.</code></pre>
 </div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="interp-inference-moe" class="tutorial-question panel-body">
@@ -311,17 +330,37 @@ data-pipe="|&gt;">
 </div>
 <div id="section-section-11" class="section level3">
 <h3></h3>
-Using the code block below and your <code>inference</code> function,
-calculate confidence intervals for the proportion of atheists in 2012 in
-two other countries of your choice, and report the associated margins of
-error. Be sure to note whether the conditions for inference are met. It
-may be helpful to create new data sets for each of the two countries
-first, and then use these data sets in the <code>inference</code>
-function to construct the confidence intervals.
+<p>Using the code block below and your <code>inference()</code>
+function, calculate confidence intervals for the proportion of atheists
+in 2012 in two other countries of your choice, and report the associated
+margins of error. Be sure to note whether the conditions for inference
+are met. It will be helpful to create new data sets for each of the two
+countries first, and then use these data sets in the
+<code>inference()</code> function to construct the confidence
+intervals.</p>
 <div class="tutorial-exercise" data-label="use-inference"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="use-inference-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Revisit the code cell from earlier where we 
+#created the us12 data frame.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="use-inference-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use similar code to obtain data from a 
+#different country, year, or both!</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="use-inference-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use inference() to build a confidence
+#interval for the proportion of atheists
+#in your new data frame.</code></pre>
 </div>
 </div>
 </div>
@@ -365,7 +404,14 @@ data-pipe="|&gt;">
 <pre class="text"><code>n &lt;- 1000
 p &lt;- seq(0, 1, 0.01)
 me &lt;- 2 * sqrt(p * (1 - p)/n)
-ggplot() + geom_point(mapping = aes(x = p, y = me)) + labs(title = &quot;Margin of Error and Population Proportion&quot;, y = &quot;Margin of Error&quot;, x = &quot;Population Proportion&quot;)</code></pre>
+
+ggplot() + 
+  geom_point(aes(x = p, y = me)) + 
+  labs(
+    title = &quot;Margin of Error and Population Proportion&quot;, 
+    y = &quot;Margin of Error&quot;, 
+    x = &quot;Population Proportion&quot;
+    )</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
@@ -395,12 +441,12 @@ ggplot() + geom_point(mapping = aes(x = p, y = me)) + labs(title = &quot;Margin 
 the margin of error. Often times pollsters will have requirements for
 the margin of error for an estimate (for example, we may be interested
 in estimating a President’s net favorability rating to within plus or
-minus three percentage points), so they can use this information and any
-intuition they may have about an approximate value of the population
-proportion to estimate how much data they need to collect in order to
-satisfy their requirements on the margin of error. We can estimate
-required sample size using the formula below, which is just a
-rearrangement of the formula for margin of error (<span
+minus three percentage points). They can use these requirements, prior
+information, and any intuition they may have about an approximate value
+of the population proportion to estimate how much data they need to
+collect in order to satisfy their requirements on the margin of error.
+We can estimate required sample size using the formula below, which is
+just a rearrangement of the formula for margin of error (<span
 class="math inline">\(M_E\)</span>): <span class="math display">\[n \geq
 \left(\frac{Z_{\alpha/2}}{M_E}\right)^2\cdot p\left(1 -
 p\right)\]</span> In the formula above:</p>
@@ -448,7 +494,7 @@ of drawing 5000 samples of size 1040 from a population with a true
 atheist proportion of 0.1. For each of the 5000 samples we compute <span
 class="math inline">\(\hat{p}\)</span> and then plot a histogram to
 visualize their distribution.</p>
-Use the code block below to carry out this experiment.
+<p>Use the code block below to carry out this experiment.</p>
 <div class="tutorial-exercise" data-label="sim-np" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
@@ -457,11 +503,19 @@ n &lt;- 1040
 p_hats &lt;- rep(0, 5000)
 
 for(i in 1:5000){
-  samp &lt;- sample(c(&quot;atheist&quot;, &quot;non_atheist&quot;), n, replace = TRUE, prob = c(p, 1-p))
+  samp &lt;- sample(c(&quot;atheist&quot;, &quot;non_atheist&quot;), 
+                 n, 
+                 replace = TRUE, 
+                 prob = c(p, 1-p))
+  
   p_hats[i] &lt;- sum(samp == &quot;atheist&quot;)/n
 }
 
-ggplot() + geom_histogram(mapping = aes(x = p_hats)) + labs(title = &quot;p = 0.1, n = 1040&quot;, x = &quot;Estimates for p&quot;) + xlim(c(0, 0.18))</code></pre>
+ggplot() + 
+  geom_histogram(aes(x = p_hats)) + 
+  labs(title = &quot;p = 0.1, n = 1040&quot;, 
+       x = &quot;Estimates for p&quot;) + 
+  xlim(c(0, 0.18))</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
@@ -478,38 +532,60 @@ p\)</span>,respectively.” The second line in the loop says, “calculate
 the proportion of atheists in this sample and record this value.” The
 loop allows us to repeat this process 5,000 times to build an
 approximation of the sampling distribution.</p>
-Use the code block below to repeat the simulation we just ran but with
-<code>n = 400</code> and <code>p = 0.1</code>. Be sure to plot your
+<p>Use the code block below to repeat the simulation we just ran but
+with <code>n = 400</code> and <code>p = 0.1</code>. Be sure to plot your
 result and compare it to your original simulation. What impact did
-lowering the number of observations have?
+lowering the number of observations have?</p>
 <div class="tutorial-exercise" data-label="p-dist-400-10"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="p-dist-400-10-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Start with the code to run the original
+#simulation. Change the sample size (n) 
+#and the population proportion (p).</code></pre>
+</div>
 </div>
 <div id="section-section-19" class="section level3">
 <h3></h3>
-Now re-run the experiment again, but with <code>n = 1040</code> and
+<p>Now re-run the experiment again, but with <code>n = 1040</code> and
 <code>p = 0.02</code>. Again, think about the impact that a smaller
 population proportion has on the distribution of estimates for the
-population proportion.
+population proportion.</p>
 <div class="tutorial-exercise" data-label="p-dist-1040-02"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="p-dist-1040-02-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Again, start with the code to run the 
+#original simulation. Change the sample 
+#size (n) and the population proportion (p).</code></pre>
+</div>
 </div>
 <div id="section-section-20" class="section level3">
 <h3></h3>
-Re-run the experiment one last time, but with <code>n = 400</code> and
-<code>p = 0.02</code>. Compare each of your resulting distributions. How
-does this connect back to the assumptions for inference with categorical
-data?
+<p>Re-run the experiment one last time, but with <code>n = 400</code>
+and <code>p = 0.02</code>. Compare each of your resulting distributions.
+How does this connect back to the assumptions for inference with
+categorical data?</p>
 <div class="tutorial-exercise" data-label="p-dist-400-02"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="p-dist-400-02-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Same idea here. Update the sample size 
+#and population proportion from the 
+#original simulation.</code></pre>
 </div>
 </div>
 <div id="section-section-21" class="section level3">
@@ -534,35 +610,60 @@ answering the following questions on your own. The code blocks are
 necessary for answering some of the questions, but are not needed for
 all.</p>
 <ol style="list-style-type: decimal">
-<li>Answer the following two questions using the <code>inference</code>
-function. As always, write out the hypotheses for any tests you conduct
-and outline the status of the conditions for inference.</li>
+<li>Answer the following two questions using the
+<code>inference()</code> function from <code>{statsr}</code>. As always,
+write out the hypotheses for any tests you conduct and outline the
+status of the conditions for inference.</li>
 </ol>
 <ul>
 <li>Is there convincing evidence that Spain has seen a change in its
 atheism index between 2005 and 2012? <em>Hint:</em> Create new data sets
 for respondents from Spain in 2005 and 2012 (look back at how we created
 <code>us12</code> earlier in this workbook). Form confidence intervals
-for the true proportion of athiests in both years, and determine whether
+for the true proportion of atheists in both years, and determine whether
 they overlap.</li>
 <li>Is there convincing evidence that the United States has seen a
-change in its atheism index between 2005 and 2012?
+change in its atheism index between 2005 and 2012?</li>
+</ul>
 <div class="tutorial-exercise" data-label="on-your-own-1"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div></li>
-</ul>
+</div>
+<div class="tutorial-exercise-support" data-label="on-your-own-1-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Start by defining spain to be a data frame
+#containing only responses from Spain. You 
+#don&#39;t need to filter on the year, since 
+#2005 and 2012 are the only years with 
+#observed responses.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="on-your-own-1-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use the inference() function as earlier, but
+#pass the year variable to the optional x 
+#argument. This will create groups for year
+#and inference() will automatically build a 
+#confidence interval for the difference in 
+#proportions of atheists between 2005 and 2012.
+#You can ignore the warning about converting to 
+#a factor.</code></pre>
+</div>
 <ol start="2" style="list-style-type: decimal">
-<li>If in fact there has been no change in the atheism index in the
-countries listed in Table 4, in how many of those countries would you
-expect to detect a change (at a significance level of 0.05) simply by
-chance? <em>Hint:</em> Look in the textbook index under Type 1 error.
+<li>If in fact there has been no change in the atheism index in any of
+the countries listed in Table 4, in how many of those countries would
+you expect to detect a change (at a significance level of 0.05) simply
+by chance? <em>Hint:</em> Look in the textbook index under Type 1
+error.</li>
+</ol>
 <div class="tutorial-exercise" data-label="on-your-own-2"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div></li>
+</div>
+<ol start="3" style="list-style-type: decimal">
 <li>Suppose you’re hired by the local government to estimate the
 proportion of residents that attend a religious service on a weekly
 basis. According to the guidelines, the estimate must have a margin of
@@ -571,13 +672,31 @@ expect for <span class="math inline">\(p\)</span>. How many people would
 you have to sample to ensure that you are within the guidelines?
 <em>Hint:</em> Refer to your plot of the relationship between <span
 class="math inline">\(p\)</span> and margin of error. Do not use the
-data set to answer this question.
+data set to answer this question.</li>
+</ol>
 <div class="tutorial-exercise" data-label="on-your-own-3"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div></li>
-</ol>
+</div>
+<div class="tutorial-exercise-support" data-label="on-your-own-3-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use the sample size formula for inference on 
+#population proportions. That formula is on 
+#the Standard Error Decision Tree and was also 
+#included within this notebook.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="on-your-own-3-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Since you have no idea what proportion of 
+#residents attend a religious service on a 
+#weekly basis, use p = 0.5 as a worst-case
+#estimate. This value of the population 
+#proportion results in the largest possible 
+#estimated sample size requirements.</code></pre>
+</div>
 </div>
 <div id="section-submit" class="section level2">
 <h2>Submit</h2>
@@ -667,11 +786,12 @@ library(ggplot2)
 library(dplyr)
 library(learnr)
 library(gradethis)
-
+library(statsr)
 
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
 
 load("www/atheism.RData")
+rm(inference)
 
 #knitr::opts_chunk$set(eval = FALSE)
 </script>
@@ -699,15 +819,15 @@ session$onSessionEnded(function() {
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "questions-report-1", 
     question = structure("In the first paragraph, several key findings are reported. Do these percentages appear to be <em>sample statistics<\u002fem> (derived from the data sample) or <em>population parameters<\u002fem>?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_adb0a93", 
+    "character")), answers = list(structure(list(id = "lnr_ans_1ded68", 
         option = "sample statistics", value = "sample statistics", 
         label = structure("sample statistics", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3f185be", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b15b56", 
         option = "population parameters", value = "population parameters", 
         label = structure("population parameters", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1dfbc15", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6ff0eb0", 
         option = "There is a mix of both", value = "There is a mix of both", 
         label = structure("There is a mix of both", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -719,7 +839,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "questions-report-1-answer", question = "questions-report-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 724555187.662603, options = list()), class = c("learnr_radio", 
+    seed = 1804198024.65985, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -727,22 +847,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "questions-report-2", 
     question = structure("The title of the report is <em>Global Index of Religiosity and Atheism<\u002fem>. To generalize the report’s findings to the global human population, what must we assume about the sampling method?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_1544f5", 
+    "character")), answers = list(structure(list(id = "lnr_ans_b520a1a", 
         option = "The sample must be random and representative of the global community", 
         value = "The sample must be random and representative of the global community", 
         label = structure("The sample must be random and representative of the global community", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ccd6c42", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5689c6d", 
         option = "The sample must contain at least 10% of the global population", 
         value = "The sample must contain at least 10% of the global population", 
         label = structure("The sample must contain at least 10% of the global population", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_149c97f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5934236", 
         option = "The sample should include people of all religions, so samples should be taken near a diverse set of places of worship", 
         value = "The sample should include people of all religions, so samples should be taken near a diverse set of places of worship", 
         label = structure("The sample should include people of all religions, so samples should be taken near a diverse set of places of worship", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f47e052", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_384ddfa", 
         option = "The survey should be done on the phone to make sure that respondents understand the question being asked", 
         value = "The survey should be done on the phone to make sure that respondents understand the question being asked", 
         label = structure("The survey should be done on the phone to make sure that respondents understand the question being asked", html = TRUE, class = c("html", 
@@ -755,29 +875,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "questions-report-2-answer", question = "questions-report-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 316419596.352656, options = list()), class = c("learnr_radio", 
+    seed = 1773733057.17404, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "questions-report-3", 
     question = structure("Do you expect that the required assumption was satisfied? What are the implications of this?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_7420a94", 
+    "character")), answers = list(structure(list(id = "lnr_ans_6e2f863", 
         option = "No. The study results can only be extended to countries and regions for which the sample data is representative.", 
         value = "No. The study results can only be extended to countries and regions for which the sample data is representative.", 
         label = structure("No. The study results can only be extended to countries and regions for which the sample data is representative.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f3be79a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2b06ee9", 
         option = "Yes. The study included a very large number of respondents.", 
         value = "Yes. The study included a very large number of respondents.", 
         label = structure("Yes. The study included a very large number of respondents.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_358cf2b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_47eca98", 
         option = "Yes. Win-Gallup is a reputable polling organization.", 
         value = "Yes. Win-Gallup is a reputable polling organization.", 
         label = structure("Yes. Win-Gallup is a reputable polling organization.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_df93ed2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_712dc1", 
         option = "No. In order to apply results to the global community the pollsters would need to conduct a census.", 
         value = "No. In order to apply results to the global community the pollsters would need to conduct a census.", 
         label = structure("No. In order to apply results to the global community the pollsters would need to conduct a census.", html = TRUE, class = c("html", 
@@ -790,7 +910,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "questions-report-3-answer", question = "questions-report-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 2144046109.0016, options = list()), class = c("learnr_radio", 
+    seed = 413649475.307379, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -805,8 +925,9 @@ output$`tutorial-exercise-table-v-df-code-block-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "table-v-df-code-block", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
     chunks = list(list(label = "table-v-df-code-block", code = "", 
         opts = list(label = "\"table-v-df-code-block\"", exercise = "TRUE"), 
@@ -838,22 +959,22 @@ learnr:::store_exercise_cache(structure(list(label = "table-v-df-code-block", gl
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "table-v-df", question = structure("What does each row of Table 6 correspond to? What does each row of <code>atheism<\u002fcode> correspond to?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_ac94ab1", 
+"character")), answers = list(structure(list(id = "lnr_ans_62b11dd", 
     option = "Each row of Table 6 contains the summarized responses by country while each row of `atheism` contains the response of an individual respondent.", 
     value = "Each row of Table 6 contains the summarized responses by country while each row of `atheism` contains the response of an individual respondent.", 
     label = structure("Each row of Table 6 contains the summarized responses by country while each row of <code>atheism<\u002fcode> contains the response of an individual respondent.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_aca36d9", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_98d3542", 
     option = "Each row of both Table 6 and the `atheism` data frame contain the response of an individual respondent.", 
     value = "Each row of both Table 6 and the `atheism` data frame contain the response of an individual respondent.", 
     label = structure("Each row of both Table 6 and the <code>atheism<\u002fcode> data frame contain the response of an individual respondent.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b144b70", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_4c14ba2", 
     option = "Each row of both Table 6 and the `atheism` data frame contain the summarized responses by country.", 
     value = "Each row of both Table 6 and the `atheism` data frame contain the summarized responses by country.", 
     label = structure("Each row of both Table 6 and the <code>atheism<\u002fcode> data frame contain the summarized responses by country.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_8f6bdf6", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1b8bd71", 
     option = "Each row of Table 6 contains the response of an individual respondent while each row of `atheism` contains the summarized responses by country.", 
     value = "Each row of Table 6 contains the response of an individual respondent while each row of `atheism` contains the summarized responses by country.", 
     label = structure("Each row of Table 6 contains the response of an individual respondent while each row of <code>atheism<\u002fcode> contains the summarized responses by country.", html = TRUE, class = c("html", 
@@ -865,7 +986,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "table-v-df-answer", question = "table-v-df"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 123718895.442389, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 2011611506.06327, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -881,10 +1002,11 @@ output$`tutorial-exercise-us-atheism-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "us-atheism", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "us-atheism", code = "us12 <- atheism %>%\n  filter(nationality == \"United States\", year == 2012)\n\nus12 %>%\n  count(response) %>%\n  mutate(relative_frequency = n / sum(n))", 
+    chunks = list(list(label = "us-atheism", code = "us12 <- atheism %>%\n  filter(nationality == \"United States\", \n         year == 2012)\n\nus12 %>%\n  count(response) %>%\n  mutate(relative_frequency = n / sum(n))", 
         opts = list(label = "\"us-atheism\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -906,7 +1028,7 @@ learnr:::store_exercise_cache(structure(list(label = "us-atheism", global_setup 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
         label = "us-atheism", exercise = TRUE, code = c("us12 <- atheism %>%", 
-        "  filter(nationality == \"United States\", year == 2012)", 
+        "  filter(nationality == \"United States\", ", "         year == 2012)", 
         "", "us12 %>%", "  count(response) %>%", "  mutate(relative_frequency = n / sum(n))"
         ), out.width.px = 624, out.height.px = 384, params.src = "us-atheism, exercise = TRUE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
@@ -924,12 +1046,13 @@ output$`tutorial-exercise-us-atheism-ci-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "us-atheism-ci", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
-), chunk_opts = list(label = "setup", include = FALSE)), setup = "us12 <- atheism %>%\n  filter(nationality == \"United States\", year == 2012)", 
-    chunks = list(list(label = "us-atheism-ci-setup", code = "us12 <- atheism %>%\n  filter(nationality == \"United States\", year == 2012)", 
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
+), chunk_opts = list(label = "setup", include = FALSE)), setup = "us12 <- atheism %>%\n  filter(nationality == \"United States\", \n         year == 2012)", 
+    chunks = list(list(label = "us-atheism-ci-setup", code = "us12 <- atheism %>%\n  filter(nationality == \"United States\", \n         year == 2012)", 
         opts = list(label = "\"us-atheism-ci-setup\""), engine = "r"), 
-        list(label = "us-atheism-ci", code = "inference(y = us12$response, est = \"proportion\", type = \"ci\", method = \"theoretical\", \n          success = \"atheist\")", 
+        list(label = "us-atheism-ci", code = "inference(y = response,\n          data = us12,\n          statistic = \"proportion\", \n          type = \"ci\", \n          method = \"theoretical\", \n          success = \"atheist\")", 
             opts = list(label = "\"us-atheism-ci\"", exercise = "TRUE"), 
             engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -950,7 +1073,9 @@ learnr:::store_exercise_cache(structure(list(label = "us-atheism-ci", global_set
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "us-atheism-ci", exercise = TRUE, code = c("inference(y = us12$response, est = \"proportion\", type = \"ci\", method = \"theoretical\", ", 
+        label = "us-atheism-ci", exercise = TRUE, code = c("inference(y = response,", 
+        "          data = us12,", "          statistic = \"proportion\", ", 
+        "          type = \"ci\", ", "          method = \"theoretical\", ", 
         "          success = \"atheist\")"), out.width.px = 624, 
         out.height.px = 384, params.src = "us-atheism-ci, exercise = TRUE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
@@ -968,8 +1093,9 @@ output$`tutorial-exercise-interp-inference-moe-code-block-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "interp-inference-moe-code-block", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
     chunks = list(list(label = "interp-inference-moe-code-block", 
         code = "", opts = list(label = "\"interp-inference-moe-code-block\"", 
@@ -1002,20 +1128,20 @@ learnr:::store_exercise_cache(structure(list(label = "interp-inference-moe-code-
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "interp-inference-moe", 
     question = structure("Based on the R output, what is the margin of error for the estimate of the proportion of the proportion of atheists in US in 2012?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_b8056a9", 
+    "character")), answers = list(structure(list(id = "lnr_ans_fef37dd", 
         option = "0.0135", value = "0.0135", label = structure("0.0135", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_aaf293a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c0282c4", 
         option = "0.0499", value = "0.0499", label = structure("0.0499", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2a5cb29", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_65eba51", 
         option = "0.0069", value = "0.0069", label = structure("0.0069", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("Oops. The margin of error is the product of the standard error and critical value.", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_626062f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bbabfbd", 
         option = "0.0364", value = "0.0364", label = structure("0.0364", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_14542b6", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e5f1bf9", 
         option = "0.0634", value = "0.0634", label = structure("0.0634", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1026,7 +1152,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "interp-inference-moe-answer", question = "interp-inference-moe"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1147466116.96567, options = list()), class = c("learnr_radio", 
+    seed = 139470304.435054, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1041,8 +1167,9 @@ output$`tutorial-exercise-use-inference-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "use-inference", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
     chunks = list(list(label = "use-inference", code = "", opts = list(
         label = "\"use-inference\"", exercise = "TRUE"), engine = "r")), 
@@ -1082,10 +1209,11 @@ output$`tutorial-exercise-me-plot-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "me-plot", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "me-plot", code = "n <- 1000\np <- seq(0, 1, 0.01)\nme <- 2 * sqrt(p * (1 - p)/n)\nggplot() + geom_point(mapping = aes(x = p, y = me)) + labs(title = \"Margin of Error and Population Proportion\", y = \"Margin of Error\", x = \"Population Proportion\")", 
+    chunks = list(list(label = "me-plot", code = "n <- 1000\np <- seq(0, 1, 0.01)\nme <- 2 * sqrt(p * (1 - p)/n)\n\nggplot() + \n  geom_point(aes(x = p, y = me)) + \n  labs(\n    title = \"Margin of Error and Population Proportion\", \n    y = \"Margin of Error\", \n    x = \"Population Proportion\"\n    )", 
         opts = list(label = "\"me-plot\"", exercise = "TRUE", 
             exercise.eval = "FALSE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1109,8 +1237,10 @@ learnr:::store_exercise_cache(structure(list(label = "me-plot", global_setup = s
         exercise.error.check.code = "gradethis_error_checker()", 
         label = "me-plot", exercise = TRUE, exercise.eval = FALSE, 
         code = c("n <- 1000", "p <- seq(0, 1, 0.01)", "me <- 2 * sqrt(p * (1 - p)/n)", 
-        "ggplot() + geom_point(mapping = aes(x = p, y = me)) + labs(title = \"Margin of Error and Population Proportion\", y = \"Margin of Error\", x = \"Population Proportion\")"
-        ), out.width.px = 624, out.height.px = 384, params.src = "me-plot, exercise = TRUE, exercise.eval = FALSE", 
+        "", "ggplot() + ", "  geom_point(aes(x = p, y = me)) + ", 
+        "  labs(", "    title = \"Margin of Error and Population Proportion\", ", 
+        "    y = \"Margin of Error\", ", "    x = \"Population Proportion\"", 
+        "    )"), out.width.px = 624, out.height.px = 384, params.src = "me-plot, exercise = TRUE, exercise.eval = FALSE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -1119,22 +1249,22 @@ learnr:::store_exercise_cache(structure(list(label = "me-plot", global_setup = s
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "p-and-me-questions-1", 
     question = structure("Describe the relationship between the population proportion, \\(p\\), and margin of error.", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_937ffa4", 
+    "character")), answers = list(structure(list(id = "lnr_ans_9c561c9", 
         option = "The margin of error is small if the population proportion is near 0 or 1 but is largest for values near 0.5", 
         value = "The margin of error is small if the population proportion is near 0 or 1 but is largest for values near 0.5", 
         label = structure("The margin of error is small if the population proportion is near 0 or 1 but is largest for values near 0.5", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8bfb4db", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_783be97", 
         option = "The margin of error is larger for larger values of the population proportion.", 
         value = "The margin of error is larger for larger values of the population proportion.", 
         label = structure("The margin of error is larger for larger values of the population proportion.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ccf4a67", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5d85731", 
         option = "The margin of error is smaller for larger values of the population proportion.", 
         value = "The margin of error is smaller for larger values of the population proportion.", 
         label = structure("The margin of error is smaller for larger values of the population proportion.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3be0f59", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_267e816", 
         option = "There is no meaningful relationship between the population proportion and margin of error.", 
         value = "There is no meaningful relationship between the population proportion and margin of error.", 
         label = structure("There is no meaningful relationship between the population proportion and margin of error.", html = TRUE, class = c("html", 
@@ -1147,19 +1277,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "p-and-me-questions-1-answer", question = "p-and-me-questions-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1056498448.50803, options = list()), class = c("learnr_radio", 
+    seed = 1946731108.09348, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "p-and-me-questions-2", 
     question = structure("Which of the following are implications of your answer above?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_714acca", 
+    "character")), answers = list(structure(list(id = "lnr_ans_3ca2b6c", 
         option = "Margins of error, and therefore confidence intervals, will be widest when the population proportion to be captured is close to 0.5", 
         value = "Margins of error, and therefore confidence intervals, will be widest when the population proportion to be captured is close to 0.5", 
         label = structure("Margins of error, and therefore confidence intervals, will be widest when the population proportion to be captured is close to 0.5", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_31c3589", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_239bc17", 
         option = "In order to estimate a population proportion to within a desired margin of error, larger sample sizes will be needed if the true population proportion is near 0.5.", 
         value = "In order to estimate a population proportion to within a desired margin of error, larger sample sizes will be needed if the true population proportion is near 0.5.", 
         label = structure("In order to estimate a population proportion to within a desired margin of error, larger sample sizes will be needed if the true population proportion is near 0.5.", html = TRUE, class = c("html", 
@@ -1172,7 +1302,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "p-and-me-questions-2-answer", question = "p-and-me-questions-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 658258803.193474, options = list()), class = c("learnr_checkbox", 
+    seed = 1563314781.77202, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1187,10 +1317,11 @@ output$`tutorial-exercise-sim-np-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "sim-np", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "sim-np", code = "p <- 0.1\nn <- 1040\np_hats <- rep(0, 5000)\n\nfor(i in 1:5000){\n  samp <- sample(c(\"atheist\", \"non_atheist\"), n, replace = TRUE, prob = c(p, 1-p))\n  p_hats[i] <- sum(samp == \"atheist\")/n\n}\n\nggplot() + geom_histogram(mapping = aes(x = p_hats)) + labs(title = \"p = 0.1, n = 1040\", x = \"Estimates for p\") + xlim(c(0, 0.18))", 
+    chunks = list(list(label = "sim-np", code = "p <- 0.1\nn <- 1040\np_hats <- rep(0, 5000)\n\nfor(i in 1:5000){\n  samp <- sample(c(\"atheist\", \"non_atheist\"), \n                 n, \n                 replace = TRUE, \n                 prob = c(p, 1-p))\n  \n  p_hats[i] <- sum(samp == \"atheist\")/n\n}\n\nggplot() + \n  geom_histogram(aes(x = p_hats)) + \n  labs(title = \"p = 0.1, n = 1040\", \n       x = \"Estimates for p\") + \n  xlim(c(0, 0.18))", 
         opts = list(label = "\"sim-np\"", exercise = "TRUE", 
             exercise.eval = "FALSE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1214,10 +1345,13 @@ learnr:::store_exercise_cache(structure(list(label = "sim-np", global_setup = st
         exercise.error.check.code = "gradethis_error_checker()", 
         label = "sim-np", exercise = TRUE, exercise.eval = FALSE, 
         code = c("p <- 0.1", "n <- 1040", "p_hats <- rep(0, 5000)", 
-        "", "for(i in 1:5000){", "  samp <- sample(c(\"atheist\", \"non_atheist\"), n, replace = TRUE, prob = c(p, 1-p))", 
-        "  p_hats[i] <- sum(samp == \"atheist\")/n", "}", "", 
-        "ggplot() + geom_histogram(mapping = aes(x = p_hats)) + labs(title = \"p = 0.1, n = 1040\", x = \"Estimates for p\") + xlim(c(0, 0.18))"
-        ), out.width.px = 624, out.height.px = 384, params.src = "sim-np, exercise = TRUE, exercise.eval = FALSE", 
+        "", "for(i in 1:5000){", "  samp <- sample(c(\"atheist\", \"non_atheist\"), ", 
+        "                 n, ", "                 replace = TRUE, ", 
+        "                 prob = c(p, 1-p))", "  ", "  p_hats[i] <- sum(samp == \"atheist\")/n", 
+        "}", "", "ggplot() + ", "  geom_histogram(aes(x = p_hats)) + ", 
+        "  labs(title = \"p = 0.1, n = 1040\", ", "       x = \"Estimates for p\") + ", 
+        "  xlim(c(0, 0.18))"), out.width.px = 624, out.height.px = 384, 
+        params.src = "sim-np, exercise = TRUE, exercise.eval = FALSE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -1233,8 +1367,9 @@ output$`tutorial-exercise-p-dist-400-10-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "p-dist-400-10", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
     chunks = list(list(label = "p-dist-400-10", code = "", opts = list(
         label = "\"p-dist-400-10\"", exercise = "TRUE"), engine = "r")), 
@@ -1274,8 +1409,9 @@ output$`tutorial-exercise-p-dist-1040-02-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "p-dist-1040-02", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
     chunks = list(list(label = "p-dist-1040-02", code = "", opts = list(
         label = "\"p-dist-1040-02\"", exercise = "TRUE"), engine = "r")), 
@@ -1315,8 +1451,9 @@ output$`tutorial-exercise-p-dist-400-02-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "p-dist-400-02", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
     chunks = list(list(label = "p-dist-400-02", code = "", opts = list(
         label = "\"p-dist-400-02\"", exercise = "TRUE"), engine = "r")), 
@@ -1349,17 +1486,17 @@ learnr:::store_exercise_cache(structure(list(label = "p-dist-400-02", global_set
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "question-assumptions", 
     question = structure("If you refer to Table 6 again in the WIN-Gallup report, you’ll find that Australia has a sample proportion of 0.1 on a sample size of 1040, and that Ecuador has a sample proportion of 0.02 on 400 subjects. Let’s suppose for this exercise that these point estimates are actually the truth. Then given the shape of their respective sampling distributions, do you think it is sensible to proceed with inference and report margin of errors, as the reports does?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_dd944de", 
+    "character")), answers = list(structure(list(id = "lnr_ans_6d00cb", 
         option = "The report should not proceed with inference on Ecuador since the success-failure condition is not satisfied. The report can safely proceed with inference on Australia though.", 
         value = "The report should not proceed with inference on Ecuador since the success-failure condition is not satisfied. The report can safely proceed with inference on Australia though.", 
         label = structure("The report should not proceed with inference on Ecuador since the success-failure condition is not satisfied. The report can safely proceed with inference on Australia though.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f632ab0", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2e69fbb", 
         option = "The report can proceed with inference on all countries. Since there were over 50,000 responses, the success-failure condition is satisfied.", 
         value = "The report can proceed with inference on all countries. Since there were over 50,000 responses, the success-failure condition is satisfied.", 
         label = structure("The report can proceed with inference on all countries. Since there were over 50,000 responses, the success-failure condition is satisfied.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cc44859", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4561702", 
         option = "The report should not proceed with inference on either Ecuador or Australia, since the success-failure condition may not be satisfied for either country.", 
         value = "The report should not proceed with inference on either Ecuador or Australia, since the success-failure condition may not be satisfied for either country.", 
         label = structure("The report should not proceed with inference on either Ecuador or Australia, since the success-failure condition may not be satisfied for either country.", html = TRUE, class = c("html", 
@@ -1372,7 +1509,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "question-assumptions-answer", question = "question-assumptions"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 628155949.207492, options = list()), class = c("learnr_radio", 
+    seed = 1473005324.81408, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1387,8 +1524,9 @@ output$`tutorial-exercise-on-your-own-1-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "on-your-own-1", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
     chunks = list(list(label = "on-your-own-1", code = "", opts = list(
         label = "\"on-your-own-1\"", exercise = "TRUE"), engine = "r")), 
@@ -1428,8 +1566,9 @@ output$`tutorial-exercise-on-your-own-2-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "on-your-own-2", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
     chunks = list(list(label = "on-your-own-2", code = "", opts = list(
         label = "\"on-your-own-2\"", exercise = "TRUE"), engine = "r")), 
@@ -1469,8 +1608,9 @@ output$`tutorial-exercise-on-your-own-3-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "on-your-own-3", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(ggplot2)", "library(dplyr)", 
-"library(learnr)", "library(gradethis)", "", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
-"", "load(\"www/atheism.RData\")", "", "#knitr::opts_chunk$set(eval = FALSE)"
+"library(learnr)", "library(gradethis)", "library(statsr)", "", 
+"tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"", "load(\"www/atheism.RData\")", "rm(inference)", "", "#knitr::opts_chunk$set(eval = FALSE)"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
     chunks = list(list(label = "on-your-own-3", code = "", opts = list(
         label = "\"on-your-own-3\"", exercise = "TRUE"), engine = "r")), 
@@ -1510,7 +1650,7 @@ learnrhash::encoder_logic(strip_output = TRUE)
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bslib","cachem","checkmate","cli","colorspace","commonmark","compiler","datasets","digest","dplyr","evaluate","fansi","fastmap","fontawesome","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","learnrhash","lifecycle","magrittr","markdown","methods","mime","munsell","pillar","pkgconfig","promises","R6","Rcpp","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","stats","tibble","tidyselect","tools","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.3.1","0.7.0","1.0.8","2.3.1","3.6.1","2.1-0","1.9.1","4.3.1","4.3.1","0.6.35","1.1.3","0.23","1.0.6","1.1.1","0.5.2","0.1.3","3.4.4","1.7.0","0.2.14","4.3.1","4.3.1","4.3.1","0.3.4","0.5.8.1","1.6.4","1.6.15","0.1.4","1.8.8","1.46","1.3.2","0.11.5.9000","0.2.0","1.0.4","2.0.3","1.12","4.3.1","0.12","0.5.0","1.9.0","2.0.3","1.3.0","2.5.1","1.0.12","1.1.3","2.26","2.0.4","0.16.0","0.4.9","1.2.1","1.8.1.1","4.3.1","3.2.1","1.2.0","4.3.1","1.2.4","4.3.1","0.6.5","3.0.0","0.43","1.8-4","2.3.8"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74]}},"value":[{"type":"character","attributes":{},"value":["backports","base","BayesFactor","bslib","cachem","checkmate","cli","coda","colorspace","commonmark","compiler","datasets","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fontawesome","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","lattice","learnr","learnrhash","lifecycle","magrittr","markdown","Matrix","MatrixModels","methods","mime","munsell","mvtnorm","parallel","pbapply","pillar","pkgconfig","promises","R6","Rcpp","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","stats","statsr","stringi","stringr","tibble","tidyselect","tools","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.3.2","0.9.12-4.7","0.6.1","1.0.8","2.3.1","3.6.2","0.19-4.1","2.1-0","1.9.1","4.3.2","4.3.2","0.6.35","1.1.4","0.3.2","0.23","1.0.6","1.1.1","0.5.2","0.1.3","3.5.0","1.7.0","0.2.14","4.3.2","4.3.2","4.3.2","0.3.4","0.5.7","1.6.4","1.6.14","0.1.4","1.8.8","1.46","1.3.2","0.21-9","0.11.5.9000","0.2.0","1.0.4","2.0.3","1.12","1.6-1.1","0.5-3","4.3.2","0.12","0.5.0","1.2-4","4.3.2","1.7-2","1.9.0","2.0.3","1.2.1","2.5.1","1.0.12","1.1.3","2.26","2.0.4","0.15.0","0.4.8","1.3.0","1.8.0","4.3.2","0.3.0","1.8.3","1.5.1","3.2.1","1.2.1","4.3.2","1.2.4","4.3.2","0.6.5","3.0.0","0.43","1.8-4","2.3.8"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>
