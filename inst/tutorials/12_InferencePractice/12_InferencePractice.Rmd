@@ -43,15 +43,26 @@ From this point on you'll make heavy use of the [*Standard Error Decision Tree*]
 
 This section contains two practice problems. Be sure to mark down any questions you have or trouble that you run into. You might even check back with Workbook 11 to see the videos from Dr. Diez, Dr. &Ccedil;etinkaya-Rundell, and Dr. McClintock which contained discussions and approached problems similar to these. As a reminder, the links below will take you to detailed versions of the general strategies for inference tasks.
 
-  + [General Strategy for Conducting a Hypothesis Test](www/HTgeneral.pdf)
-  + [General Strategy for Computing a Confidence Interval](www/CIgeneral.pdf)
+  + [General Strategy for Conducting a Hypothesis Test](www/HTgeneral.pdf){target="_blank"}
+  + [General Strategy for Computing a Confidence Interval](www/CIgeneral.pdf){target="_blank"}
 
 ###
 
 **Try It 1a:** The result of a poll was that 48% of 331 randomly sampled Americans who decide not to go to college do so because they cannot afford it. Calculate a 90% confidence interval for the proportion of Americans who decide not to go to college because they cannot afford it, and interpret the result in context.
 
 Use the code block below to execute any necessary computation.
+
 ```{r try-it-1a-code-block, exercise = TRUE}
+
+```
+
+```{r try-it-1a-code-block-hint-1}
+#Once you've identified the type of inference 
+#being requested, open the corresponding 
+#general strategy document and follow the 
+#steps listed there.
+##You may need to right-click (or ctrl+click) 
+##and open it in a new tab.
 
 ```
 
@@ -118,9 +129,9 @@ question_radio(
 question_radio(
   "The distribution to be used is",
   answer("Normal", correct = TRUE),
-  answer("t-distribution with $df = n - 1$"),
-  answer("t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$"),
-  answer("t-distribution with $df = n_{\\text{diff}} - 1$"),
+  answer("t-distribution with $\\text{df} = n - 1$"),
+  answer("t-distribution with $\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}$"),
+  answer("t-distribution with $\\text{df} = n_{\\text{diff}} - 1$"),
   answer("We should not use either the normal- or t- distributions"),
   allow_retry = TRUE,
   random_answer_order = TRUE
@@ -218,8 +229,20 @@ question_radio(
 **Try It 1b:** Consider the same scenario. Suppose we wanted the margin of error for the 90% confidence level to be about 1.5%. How large of a sample would you recommend?
 
 Use the code block below to execute any necessary computation.
+
 ```{r try-it-1b-code-block, exercise = TRUE}
 
+```
+
+```{r try-it-1b-code-block-hint}
+#Open the Standard Error decision Tree document
+#and remember that "n" represents sample size.
+#Near the top-left and top-right of the document
+#should be two formulas -- each starting with 
+#n ≥ ...
+##These are sample size formulas. You have one for
+##inferences on means and one for inferences on 
+##proportions.
 ```
 
 ```{r try-it-1b-question-1, echo = FALSE}
@@ -268,7 +291,7 @@ question_radio(
 
 ```{r try-it-1b-question-4, echo = FALSE}
 question_radio(
-  "The value of the margin of error ($M_E$) is",
+  "The value of the margin of error ( $M_E$ ) is",
   answer("0.015", correct = TRUE),
   answer("1.5"),
   answer("0.9"),
@@ -315,7 +338,18 @@ question_radio(
 **Try It 2:** A USA Today/Gallup poll conducted between 2010 and 2011 asked a group of unemployed and underemployed Americans if they have had major problems in their relationships with their spouse or another close family member as a result of not having a job (if unemployed) or not having a full-time job (if underemployed). 27% of the 1,145 unemployed respondents and 25% of the 675 underemployed respondents said they had major problems in relationships as a result of their employment status. Conduct a test to determine whether an association exists between the presence of relationship problems and whether an individual is unemployed or underemployed. Use the $\alpha = 0.05$ level of significance.
 
 Use the code block below to carry out any necessary computations.
+
 ```{r try-it-2-questions-codeblock, exercise = TRUE}
+
+```
+
+```{r try-it-2-questions-codeblock-hint-1}
+#Once you've identified the type of inference 
+#being requested, open the corresponding 
+#general strategy document and follow the 
+#steps listed there.
+##You may need to right-click (or ctrl+click) 
+##and open it in a new tab.
 
 ```
 
@@ -436,9 +470,9 @@ grade_result(
 question_radio(
   "The distribution to be used is",
   answer("Normal", correct = TRUE),
-  answer("t-distribution with $df = n - 1$"),
-  answer("t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$"),
-  answer("t-distribution with $df = n_{\\text{diff}} - 1$"),
+  answer("t-distribution with $\\text{df} = n - 1$"),
+  answer("t-distribution with $\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}$"),
+  answer("t-distribution with $\\text{df} = n_{\\text{diff}} - 1$"),
   answer("We should not use either the normal- or t- distributions"),
   allow_retry = TRUE,
   random_answer_order = TRUE
@@ -448,8 +482,15 @@ question_radio(
 ###
 
 Use the code block below to compute the p-value associated with the test.
+
 ```{r try-it-2-question-10, exercise = TRUE}
 
+```
+
+```{r try-it-2-question-10-hint-1}
+#Make sure you've drawn the pictures in steps
+#III and IV of the General Strategy document.
+#Your pictures will tell you how to use pnorm().
 ```
 
 ```{r try-it-2-question-10-check}
@@ -489,7 +530,7 @@ question_radio(
 
 ###
 
-Good work through these first two problems -- remember to ask questions about any parts which you are still unsure of.
+Good work through these first few examples -- remember to ask questions about any parts which you are still unsure of. You should also print out, or at least download, copies of the [*Standard Error Decision Tree*](www/StdErrorDecisionTree.pdf){target="_blank"}, the [*General Strategy for Conducting a Hypothesis Test*](www/HTgeneral.pdf){target="_blank"}, and the [*General Strategy for Constructing a Confidence Interval*](www/CIgeneral.pdf){target="_blank"}. You'll refer back to these documents often as you gain familiarity and confidence with approaching statistical inference tasks.
 
 ## Submit
 

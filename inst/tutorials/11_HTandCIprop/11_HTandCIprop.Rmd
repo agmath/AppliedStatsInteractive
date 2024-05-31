@@ -290,13 +290,13 @@ Use what you learned in the video and your knowledge of the Pew Research study t
 ```
 
 ```{r build-ci-code-block-hint-3}
-#Use (point estimate) + (standard error)*(critical value)
+#Use (point estimate) + (critical value)*(standard error)
 #to find the upper bound.
 
 ```
 
 ```{r build-ci-code-block-hint-4}
-#Use (point estimate) - (standard error)*(critical value)
+#Use (point estimate) - (critical value)*(standard error)
 #to find the lower bound.
 
 ```

@@ -147,10 +147,10 @@ and approached problems similar to these. As a reminder, the links below
 will take you to detailed versions of the general strategies for
 inference tasks.</p>
 <ul>
-<li><a href="www/HTgeneral.pdf">General Strategy for Conducting a
-Hypothesis Test</a></li>
-<li><a href="www/CIgeneral.pdf">General Strategy for Computing a
-Confidence Interval</a></li>
+<li><a href="www/HTgeneral.pdf" target="_blank">General Strategy for
+Conducting a Hypothesis Test</a></li>
+<li><a href="www/CIgeneral.pdf" target="_blank">General Strategy for
+Computing a Confidence Interval</a></li>
 </ul>
 <div id="section-section-2" class="section level3">
 <h3></h3>
@@ -159,11 +159,22 @@ randomly sampled Americans who decide not to go to college do so because
 they cannot afford it. Calculate a 90% confidence interval for the
 proportion of Americans who decide not to go to college because they
 cannot afford it, and interpret the result in context.</p>
-Use the code block below to execute any necessary computation.
+<p>Use the code block below to execute any necessary computation.</p>
 <div class="tutorial-exercise" data-label="try-it-1a-code-block"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="try-it-1a-code-block-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Once you&#39;ve identified the type of inference 
+#being requested, open the corresponding 
+#general strategy document and follow the 
+#steps listed there.
+##You may need to right-click (or ctrl+click) 
+##and open it in a new tab.</code></pre>
 </div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="try-it-1a-question-1" class="tutorial-question panel-body">
@@ -286,11 +297,24 @@ data-lines="0" data-pipe="|&gt;">
 <p><strong>Try It 1b:</strong> Consider the same scenario. Suppose we
 wanted the margin of error for the 90% confidence level to be about
 1.5%. How large of a sample would you recommend?</p>
-Use the code block below to execute any necessary computation.
+<p>Use the code block below to execute any necessary computation.</p>
 <div class="tutorial-exercise" data-label="try-it-1b-code-block"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="try-it-1b-code-block-hint" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Open the Standard Error decision Tree document
+#and remember that &quot;n&quot; represents sample size.
+#Near the top-left and top-right of the document
+#should be two formulas -- each starting with 
+#n ≥ ...
+##These are sample size formulas. You have one for
+##inferences on means and one for inferences on 
+##proportions.</code></pre>
 </div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="try-it-1b-question-1" class="tutorial-question panel-body">
@@ -369,11 +393,22 @@ their employment status. Conduct a test to determine whether an
 association exists between the presence of relationship problems and
 whether an individual is unemployed or underemployed. Use the <span
 class="math inline">\(\alpha = 0.05\)</span> level of significance.</p>
-Use the code block below to carry out any necessary computations.
+<p>Use the code block below to carry out any necessary computations.</p>
 <div class="tutorial-exercise" data-label="try-it-2-questions-codeblock"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="try-it-2-questions-codeblock-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Once you&#39;ve identified the type of inference 
+#being requested, open the corresponding 
+#general strategy document and follow the 
+#steps listed there.
+##You may need to right-click (or ctrl+click) 
+##and open it in a new tab.</code></pre>
 </div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="try-it-2-question-1" class="tutorial-question panel-body">
@@ -472,12 +507,20 @@ data-lines="0" data-pipe="|&gt;">
 </div>
 <div id="section-section-27" class="section level3">
 <h3></h3>
-Use the code block below to compute the p-value associated with the
-test.
+<p>Use the code block below to compute the p-value associated with the
+test.</p>
 <div class="tutorial-exercise" data-label="try-it-2-question-10"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="try-it-2-question-10-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Make sure you&#39;ve drawn the pictures in steps
+#III and IV of the General Strategy document.
+#Your pictures will tell you how to use pnorm().</code></pre>
 </div>
 </div>
 <div id="section-section-28" class="section level3">
@@ -504,8 +547,17 @@ data-lines="0" data-pipe="|&gt;">
 </div>
 <div id="section-section-30" class="section level3">
 <h3></h3>
-<p>Good work through these first two problems – remember to ask
-questions about any parts which you are still unsure of.</p>
+<p>Good work through these first few examples – remember to ask
+questions about any parts which you are still unsure of. You should also
+print out, or at least download, copies of the <a
+href="www/StdErrorDecisionTree.pdf" target="_blank"><em>Standard Error
+Decision Tree</em></a>, the <a href="www/HTgeneral.pdf"
+target="_blank"><em>General Strategy for Conducting a Hypothesis
+Test</em></a>, and the <a href="www/CIgeneral.pdf"
+target="_blank"><em>General Strategy for Constructing a Confidence
+Interval</em></a>. You’ll refer back to these documents often as you
+gain familiarity and confidence with approaching statistical inference
+tasks.</p>
 </div>
 </div>
 <div id="section-submit" class="section level2">
@@ -650,19 +702,19 @@ learnr:::store_exercise_cache(structure(list(label = "try-it-1a-code-block", glo
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1a-question-1", 
     question = structure("To answer the question as asked, we should", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_a2de114", 
+    "character")), answers = list(structure(list(id = "lnr_ans_a2b5522", 
         option = "Compute a confidence interval", value = "Compute a confidence interval", 
         label = structure("Compute a confidence interval", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_266758", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f97a2cd", 
         option = "Conduct a hypothesis test", value = "Conduct a hypothesis test", 
         label = structure("Conduct a hypothesis test", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c61d6cc", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_71a06ce", 
         option = "Compute a probability", value = "Compute a probability", 
         label = structure("Compute a probability", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b261272", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_36635c9", 
         option = "Find a required sample size", value = "Find a required sample size", 
         label = structure("Find a required sample size", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -674,7 +726,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1a-question-1-answer", question = "try-it-1a-question-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1231006788.42677, options = list()), class = c("learnr_radio", 
+    seed = 480836337.776093, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -682,19 +734,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1a-question-2", 
     question = structure("The point estimate is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_415c85b", 
+    "character")), answers = list(structure(list(id = "lnr_ans_679a128", 
         option = "0.48", value = "0.48", label = structure("0.48", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4a92567", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5ee2a18", 
         option = "48", value = "48", label = structure("48", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2908083", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_210cd86", 
         option = "331", value = "331", label = structure("331", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_efd2c8", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1e2dc74", 
         option = "0.145", value = "0.145", label = structure("0.145", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f03de7a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_57bce80", 
         option = "159", value = "159", label = structure("159", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -705,33 +757,33 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1a-question-2-answer", question = "try-it-1a-question-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 376116710.324857, options = list()), class = c("learnr_radio", 
+    seed = 1067616122.50285, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1a-question-3", 
     question = structure("The standard error formula is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_a15702e", 
+    "character")), answers = list(structure(list(id = "lnr_ans_7bda30a", 
         option = "$\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1-p\\right)}{n}}}$", 
         value = "$\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1-p\\right)}{n}}}$", 
         label = structure("\\(\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1-p\\right)}{n}}}\\)", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3e035ad", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d25beea", 
         option = "$\\displaystyle{S_E = s/\\sqrt{n}}$", value = "$\\displaystyle{S_E = s/\\sqrt{n}}$", 
         label = structure("\\(\\displaystyle{S_E = s/\\sqrt{n}}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_118fe26", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_71594d6", 
         option = "$\\displaystyle{S_E = \\sigma/\\sqrt{n}}$", 
         value = "$\\displaystyle{S_E = \\sigma/\\sqrt{n}}$", 
         label = structure("\\(\\displaystyle{S_E = \\sigma/\\sqrt{n}}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1531507", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_549980a", 
         option = "$\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}$", 
         value = "$\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}$", 
         label = structure("\\(\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_56dd1df", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4310d57", 
         option = "$\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$", 
         value = "$\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$", 
         label = structure("\\(\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}\\)", html = TRUE, class = c("html", 
@@ -744,7 +796,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1a-question-3-answer", question = "try-it-1a-question-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 2073827469.5343, options = list()), class = c("learnr_radio", 
+    seed = 11384774.4946986, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -752,19 +804,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1a-question-4", 
     question = structure("The standard error (rounded to four decimal places) is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_e9bb8e9", 
+    "character")), answers = list(structure(list(id = "lnr_ans_8e104c2", 
         option = "0.0275", value = "0.0275", label = structure("0.0275", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_655ac49", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8dfe3a9", 
         option = "0.0008", value = "0.0008", label = structure("0.0008", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bd331d4", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3cbd626", 
         option = "0.0721", value = "0.0721", label = structure("0.0721", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_55b9528", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f8809e6", 
         option = "0.0052", value = "0.0052", label = structure("0.0052", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_91cdebd", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_134b236", 
         option = "undefined", value = "undefined", label = structure("undefined", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -775,31 +827,31 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1a-question-4-answer", question = "try-it-1a-question-4"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1054625826.0089, options = list()), class = c("learnr_radio", 
+    seed = 2021215886.0588, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1a-question-5", 
     question = structure("The distribution to be used is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_5207653", 
+    "character")), answers = list(structure(list(id = "lnr_ans_f70a524", 
         option = "Normal", value = "Normal", label = structure("Normal", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ccbcad1", 
-        option = "t-distribution with $df = n - 1$", value = "t-distribution with $df = n - 1$", 
-        label = structure("t-distribution with \\(df = n - 1\\)", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9337cca", 
+        option = "t-distribution with $\\text{df} = n - 1$", 
+        value = "t-distribution with $\\text{df} = n - 1$", label = structure("t-distribution with \\(\\text{df} = n - 1\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3234198", 
-        option = "t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$", 
-        value = "t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$", 
-        label = structure("t-distribution with \\(df = \\min\\{n_1 - 1, n_2 - 1\\}\\)", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c714941", 
+        option = "t-distribution with $\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}$", 
+        value = "t-distribution with $\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}$", 
+        label = structure("t-distribution with \\(\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_433d08e", 
-        option = "t-distribution with $df = n_{\\text{diff}} - 1$", 
-        value = "t-distribution with $df = n_{\\text{diff}} - 1$", 
-        label = structure("t-distribution with \\(df = n_{\\text{diff}} - 1\\)", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ec29e3", 
+        option = "t-distribution with $\\text{df} = n_{\\text{diff}} - 1$", 
+        value = "t-distribution with $\\text{df} = n_{\\text{diff}} - 1$", 
+        label = structure("t-distribution with \\(\\text{df} = n_{\\text{diff}} - 1\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7f38a39", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_dae8a74", 
         option = "We should not use either the normal- or t- distributions", 
         value = "We should not use either the normal- or t- distributions", 
         label = structure("We should not use either the normal- or t- distributions", html = TRUE, class = c("html", 
@@ -812,7 +864,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1a-question-5-answer", question = "try-it-1a-question-5"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1130941200.97336, options = list()), class = c("learnr_radio", 
+    seed = 632670210.70539, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -820,19 +872,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1a-question-6", 
     question = structure("The desired level of confidence is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_609cf37", 
+    "character")), answers = list(structure(list(id = "lnr_ans_d6673b4", 
         option = "90%", value = "90%", label = structure("90%", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_47fe3a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bc31ad7", 
         option = "0.90%", value = "0.90%", label = structure("0.90%", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e6a66c4", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7a94fc3", 
         option = "95%", value = "95%", label = structure("95%", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a5d2478", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4017dfa", 
         option = "98%", value = "98%", label = structure("98%", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8f4cf4c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_42f6607", 
         option = "99%", value = "99%", label = structure("99%", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -843,26 +895,26 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1a-question-6-answer", question = "try-it-1a-question-6"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1955003556.58963, options = list()), class = c("learnr_radio", 
+    seed = 777354396.138016, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1a-question-7", 
     question = structure("The critical value is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_d506e9c", 
+    "character")), answers = list(structure(list(id = "lnr_ans_b779b7d", 
         option = "1.65", value = "1.65", label = structure("1.65", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a309d60", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_738d521", 
         option = "1.96", value = "1.96", label = structure("1.96", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6cedec2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d5b4aba", 
         option = "2.33", value = "2.33", label = structure("2.33", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8c43df3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_59b5ff9", 
         option = "2.58", value = "2.58", label = structure("2.58", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b07b8a9", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ead457a", 
         option = "2", value = "2", label = structure("2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -873,7 +925,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1a-question-7-answer", question = "try-it-1a-question-7"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 531591397.252458, options = list()), class = c("learnr_radio", 
+    seed = 534547100.751082, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -881,27 +933,27 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1a-question-8", 
     question = structure("The correct expression for computing the confidence interval is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_309174", 
+    "character")), answers = list(structure(list(id = "lnr_ans_8a5700c", 
         option = "$0.48 \\pm \\left(1.65\\cdot 0.0275\\right)$", 
         value = "$0.48 \\pm \\left(1.65\\cdot 0.0275\\right)$", 
         label = structure("\\(0.48 \\pm \\left(1.65\\cdot 0.0275\\right)\\)", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7a12093", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f80dc97", 
         option = "$0.0275 \\pm \\left(1.65\\cdot 0.48\\right)$", 
         value = "$0.0275 \\pm \\left(1.65\\cdot 0.48\\right)$", 
         label = structure("\\(0.0275 \\pm \\left(1.65\\cdot 0.48\\right)\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_24eddf", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8f53878", 
         option = "$1.65 \\pm \\left(0.48\\cdot 0.0275\\right)$", 
         value = "$1.65 \\pm \\left(0.48\\cdot 0.0275\\right)$", 
         label = structure("\\(1.65 \\pm \\left(0.48\\cdot 0.0275\\right)\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_25f9b83", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bce8980", 
         option = "$48 \\pm \\left(1.65\\cdot 0.0275\\right)$", 
         value = "$48 \\pm \\left(1.65\\cdot 0.0275\\right)$", 
         label = structure("\\(48 \\pm \\left(1.65\\cdot 0.0275\\right)\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_83dd3b1", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_da51cd6", 
         option = "$48 \\pm \\left(1.65\\cdot 0.48\\right)$", 
         value = "$48 \\pm \\left(1.65\\cdot 0.48\\right)$", label = structure("\\(48 \\pm \\left(1.65\\cdot 0.48\\right)\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -913,29 +965,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1a-question-8-answer", question = "try-it-1a-question-8"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 31418923.9853694, options = list()), class = c("learnr_radio", 
+    seed = 450507214.290216, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1a-question-9", 
     question = structure("The correct lower and upper bounds for the confidence interval are:", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_35a00b3", 
+    "character")), answers = list(structure(list(id = "lnr_ans_3f1077a", 
         option = "0.4346 and 0.5254", value = "0.4346 and 0.5254", 
         label = structure("0.4346 and 0.5254", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_13de1ef", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b838e1e", 
         option = "-0.0322 and 0.0586", value = "-0.0322 and 0.0586", 
         label = structure("-0.0322 and 0.0586", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9fda36d", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_780b2f2", 
         option = "0.0322 and 0.0586", value = "0.0322 and 0.0586", 
         label = structure("0.0322 and 0.0586", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4059209", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f7d8331", 
         option = "0.38 and 0.58", value = "0.38 and 0.58", label = structure("0.38 and 0.58", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c6421a3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_98300e9", 
         option = "1.17 and 2.13", value = "1.17 and 2.13", label = structure("1.17 and 2.13", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -946,7 +998,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1a-question-9-answer", question = "try-it-1a-question-9"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1217121736.93323, options = list()), class = c("learnr_radio", 
+    seed = 1367534348.86319, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -954,22 +1006,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1a-question-10", 
     question = structure("The interpretations of the values you identified are:", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_b452b36", 
+    "character")), answers = list(structure(list(id = "lnr_ans_e485ee9", 
         option = "Of all Americans who choose not to attend college, we are 90% confident that the true proportion making that choice because they cannot afford it is between 43.46% and 52.54%", 
         value = "Of all Americans who choose not to attend college, we are 90% confident that the true proportion making that choice because they cannot afford it is between 43.46% and 52.54%", 
         label = structure("Of all Americans who choose not to attend college, we are 90% confident that the true proportion making that choice because they cannot afford it is between 43.46% and 52.54%", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c167ea6", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e77da71", 
         option = "We are 90% confident that between 43.46% and 52.54% of Americans choose not to go to college.", 
         value = "We are 90% confident that between 43.46% and 52.54% of Americans choose not to go to college.", 
         label = structure("We are 90% confident that between 43.46% and 52.54% of Americans choose not to go to college.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9961d0", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b90d3ea", 
         option = "We are 90% confident that the sample proportion of Americans choosing not to go to college because they cannot afford it is between 43.46% and 52.54%.", 
         value = "We are 90% confident that the sample proportion of Americans choosing not to go to college because they cannot afford it is between 43.46% and 52.54%.", 
         label = structure("We are 90% confident that the sample proportion of Americans choosing not to go to college because they cannot afford it is between 43.46% and 52.54%.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b8387b4", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_87bc5e4", 
         option = "There is a 90% chance that the proportion of Americans choosing not to go to college because they cannot afford it is between 43.46% and 52.54%.", 
         value = "There is a 90% chance that the proportion of Americans choosing not to go to college because they cannot afford it is between 43.46% and 52.54%.", 
         label = structure("There is a 90% chance that the proportion of Americans choosing not to go to college because they cannot afford it is between 43.46% and 52.54%.", html = TRUE, class = c("html", 
@@ -982,29 +1034,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1a-question-10-answer", question = "try-it-1a-question-10"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 793705162.130402, options = list()), class = c("learnr_radio", 
+    seed = 461697928.785005, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1a-question-11", 
     question = structure("Does this sample of 331 Americans provide evidence to suggest that a majority of Americans choosing not to go to college have made that choice because they cannot afford it?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_640d0d2", 
+    "character")), answers = list(structure(list(id = "lnr_ans_f652817", 
         option = "No. The confidence interval does contain proportions over 50% but it also contains proportions below 50%.", 
         value = "No. The confidence interval does contain proportions over 50% but it also contains proportions below 50%.", 
         label = structure("No. The confidence interval does contain proportions over 50% but it also contains proportions below 50%.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_258dd14", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b457749", 
         option = "Yes, the confidence interval results in proportions above 50%.", 
         value = "Yes, the confidence interval results in proportions above 50%.", 
         label = structure("Yes, the confidence interval results in proportions above 50%.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_baccc9f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8463c46", 
         option = "No It it actually shows that a minority making the choice are doing so for this reason because the confidence interval contains proportions below 50%.", 
         value = "No It it actually shows that a minority making the choice are doing so for this reason because the confidence interval contains proportions below 50%.", 
         label = structure("No It it actually shows that a minority making the choice are doing so for this reason because the confidence interval contains proportions below 50%.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9b98360", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_44c0633", 
         option = "It is impossible to say, since a different sample would result in a different confidence interval.", 
         value = "It is impossible to say, since a different sample would result in a different confidence interval.", 
         label = structure("It is impossible to say, since a different sample would result in a different confidence interval.", html = TRUE, class = c("html", 
@@ -1017,7 +1069,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1a-question-11-answer", question = "try-it-1a-question-11"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1664388975.72496, options = list()), class = c("learnr_radio", 
+    seed = 776499478.638414, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1066,19 +1118,19 @@ learnr:::store_exercise_cache(structure(list(label = "try-it-1b-code-block", glo
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1b-question-1", 
     question = structure("To answer the question as asked, we should", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_89acb", 
+    "character")), answers = list(structure(list(id = "lnr_ans_7816bc0", 
         option = "Compute a confidence interval", value = "Compute a confidence interval", 
         label = structure("Compute a confidence interval", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ce88728", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8059a25", 
         option = "Conduct a hypothesis test", value = "Conduct a hypothesis test", 
         label = structure("Conduct a hypothesis test", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_66fb89e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bbfece", 
         option = "Compute a probability", value = "Compute a probability", 
         label = structure("Compute a probability", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_dc1bf10", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_40f0842", 
         option = "Find a required sample size", value = "Find a required sample size", 
         label = structure("Find a required sample size", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -1090,34 +1142,34 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1b-question-1-answer", question = "try-it-1b-question-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 242580001.88704, options = list()), class = c("learnr_radio", 
+    seed = 1826974088.14925, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1b-question-2", 
     question = structure("The formula to be used is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_3e7d284", 
+    "character")), answers = list(structure(list(id = "lnr_ans_f86a247", 
         option = "$\\displaystyle{n \\geq \\left(\\frac{z_{\\alpha/2}}{M_E}\\right)^2p\\cdot\\left(1-p\\right)}$", 
         value = "$\\displaystyle{n \\geq \\left(\\frac{z_{\\alpha/2}}{M_E}\\right)^2p\\cdot\\left(1-p\\right)}$", 
         label = structure("\\(\\displaystyle{n \\geq \\left(\\frac{z_{\\alpha/2}}{M_E}\\right)^2p\\cdot\\left(1-p\\right)}\\)", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d71259", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e6bea4", 
         option = "$\\displaystyle{n\\geq \\left(\\frac{z_{\\alpha/2}\\cdot \\sigma}{M_E}\\right)^2}$", 
         value = "$\\displaystyle{n\\geq \\left(\\frac{z_{\\alpha/2}\\cdot \\sigma}{M_E}\\right)^2}$", 
         label = structure("\\(\\displaystyle{n\\geq \\left(\\frac{z_{\\alpha/2}\\cdot \\sigma}{M_E}\\right)^2}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4f2b37f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7c81805", 
         option = "$\\displaystyle{\\frac{\\left(\\text{point estimate}\\right) - \\left(\\text{null value}\\right)}{S_E}}$", 
         value = "$\\displaystyle{\\frac{\\left(\\text{point estimate}\\right) - \\left(\\text{null value}\\right)}{S_E}}$", 
         label = structure("\\(\\displaystyle{\\frac{\\left(\\text{point estimate}\\right) - \\left(\\text{null value}\\right)}{S_E}}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b296ef7", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e8c1971", 
         option = "$\\displaystyle{\\left(\\text{point estimate}\\right)\\pm\\left(\\text{critical value}\\right)\\cdot S_E}$", 
         value = "$\\displaystyle{\\left(\\text{point estimate}\\right)\\pm\\left(\\text{critical value}\\right)\\cdot S_E}$", 
         label = structure("\\(\\displaystyle{\\left(\\text{point estimate}\\right)\\pm\\left(\\text{critical value}\\right)\\cdot S_E}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f7fde13", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d6f41bf", 
         option = "All samples including at least 30 observations are usually large enough", 
         value = "All samples including at least 30 observations are usually large enough", 
         label = structure("All samples including at least 30 observations are usually large enough", html = TRUE, class = c("html", 
@@ -1130,7 +1182,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1b-question-2-answer", question = "try-it-1b-question-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1921843943.60507, options = list()), class = c("learnr_radio", 
+    seed = 1134734949.9716, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1138,19 +1190,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1b-question-3", 
     question = structure("The value of \\(z_{\\alpha/2}\\) is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_8843718", 
+    "character")), answers = list(structure(list(id = "lnr_ans_3497d3b", 
         option = "1.65", value = "1.65", label = structure("1.65", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3f08a43", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3925bd4", 
         option = "1.96", value = "1.96", label = structure("1.96", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bcbbdd3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2146f51", 
         option = "2.33", value = "2.33", label = structure("2.33", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c8ecb50", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f784e99", 
         option = "2.58", value = "2.58", label = structure("2.58", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_32342a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f24f835", 
         option = "90", value = "90", label = structure("90", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1161,26 +1213,26 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1b-question-3-answer", question = "try-it-1b-question-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 2075672009.53344, options = list()), class = c("learnr_radio", 
+    seed = 1211527404.43584, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1b-question-4", 
-    question = structure("The value of the margin of error ($M_E$) is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_660bb9e", 
+    question = structure("The value of the margin of error ( \\(M_E\\) ) is", html = TRUE, class = c("html", 
+    "character")), answers = list(structure(list(id = "lnr_ans_5c3130", 
         option = "0.015", value = "0.015", label = structure("0.015", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ca432bf", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f87d2b4", 
         option = "1.5", value = "1.5", label = structure("1.5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bf4b403", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_60fa878", 
         option = "0.9", value = "0.9", label = structure("0.9", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cc5747c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fbc7be7", 
         option = "90", value = "90", label = structure("90", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_580614b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_51d58ca", 
         option = "0.1", value = "0.1", label = structure("0.1", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1191,7 +1243,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1b-question-4-answer", question = "try-it-1b-question-4"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1942619574.5954, options = list()), class = c("learnr_radio", 
+    seed = 2098119190.02299, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1199,20 +1251,20 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1b-question-5", 
     question = structure("The value of p (the estimate for the porportion) should be", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_aa01566", 
+    "character")), answers = list(structure(list(id = "lnr_ans_a900e7b", 
         option = "0.48", value = "0.48", label = structure("0.48", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1c3b998", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_14d0827", 
         option = "0.5", value = "0.5", label = structure("0.5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("This is the value we should use if we have no intuition or prior knowledge about the proportion – we have an estimate from a sample which we could use.", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_13544f1", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_63699f5", 
         option = "331", value = "331", label = structure("331", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9ae9ede", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d90d8b8", 
         option = "50", value = "50", label = structure("50", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6a2e4b5", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_99f80e2", 
         option = "48", value = "48", label = structure("48", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1223,28 +1275,28 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1b-question-5-answer", question = "try-it-1b-question-5"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1362984305.36531, options = list()), class = c("learnr_radio", 
+    seed = 88583067.9587503, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-1b-question-6", 
     question = structure("The required sample size is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_b4fd2cd", 
+    "character")), answers = list(structure(list(id = "lnr_ans_2fd7472", 
         option = "3021", value = "3021", label = structure("3021", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_45596ff", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_89e4b66", 
         option = "3020", value = "3020", label = structure("3020", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("Remember that we <strong>must<\u002fstrong> round up.", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1ace469", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fd8e5a1", 
         option = "3020.16", value = "3020.16", label = structure("3020.16", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = structure("Can you sample 0.16 of a person?", html = TRUE, class = c("html", 
         "character")), type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2bceffd", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f092408", 
         option = "331", value = "331", label = structure("331", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ba60d74", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5d59480", 
         option = "28", value = "28", label = structure("28", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1255,7 +1307,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-1b-question-6-answer", question = "try-it-1b-question-6"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1095757189.98975, options = list()), class = c("learnr_radio", 
+    seed = 511740429.261702, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1304,19 +1356,19 @@ learnr:::store_exercise_cache(structure(list(label = "try-it-2-questions-codeblo
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-2-question-1", 
     question = structure("To answer the question as asked, we should", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_9dd34e5", 
+    "character")), answers = list(structure(list(id = "lnr_ans_7d686e6", 
         option = "Compute a confidence interval", value = "Compute a confidence interval", 
         label = structure("Compute a confidence interval", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b39a116", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f33a17c", 
         option = "Conduct a hypothesis test", value = "Conduct a hypothesis test", 
         label = structure("Conduct a hypothesis test", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7232fa1", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7f2cb15", 
         option = "Compute a probability", value = "Compute a probability", 
         label = structure("Compute a probability", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1b4e0e5", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_10f2624", 
         option = "Find a required sample size", value = "Find a required sample size", 
         label = structure("Find a required sample size", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -1328,29 +1380,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-2-question-1-answer", question = "try-it-2-question-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1362398750.36558, options = list()), class = c("learnr_radio", 
+    seed = 1627838096.74198, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-2-question-2", 
     question = structure("The hypotheses associated with this test are:", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_ed3ebc5", 
+    "character")), answers = list(structure(list(id = "lnr_ans_bc1cef5", 
         option = "$\\begin{array}{ll} H_0: & p_{\\text{unemployed}} - p_{\\text{underemployed}} = 0\\\\ H_a: & p_{\\text{unemployed}} - p_{\\text{underemployed}} \\neq 0\\end{array}$", 
         value = "$\\begin{array}{ll} H_0: & p_{\\text{unemployed}} - p_{\\text{underemployed}} = 0\\\\ H_a: & p_{\\text{unemployed}} - p_{\\text{underemployed}} \\neq 0\\end{array}$", 
         label = structure("\\(\\begin{array}{ll} H_0: &amp; p_{\\text{unemployed}} - p_{\\text{underemployed}} = 0\\\\ H_a: &amp; p_{\\text{unemployed}} - p_{\\text{underemployed}} \\neq 0\\end{array}\\)", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_abeef6f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ccda529", 
         option = "$\\begin{array}{ll} H_0: & p_{\\text{unemployed}} - p_{\\text{underemployed}} = 0\\\\ H_a: & p_{\\text{unemployed}} - p_{\\text{underemployed}} > 0\\end{array}$", 
         value = "$\\begin{array}{ll} H_0: & p_{\\text{unemployed}} - p_{\\text{underemployed}} = 0\\\\ H_a: & p_{\\text{unemployed}} - p_{\\text{underemployed}} > 0\\end{array}$", 
         label = structure("\\(\\begin{array}{ll} H_0: &amp; p_{\\text{unemployed}} - p_{\\text{underemployed}} = 0\\\\ H_a: &amp; p_{\\text{unemployed}} - p_{\\text{underemployed}} &gt; 0\\end{array}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5f3abe4", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_914ffbd", 
         option = "$\\begin{array}{ll} H_0: & p_{\\text{unemployed}} - p_{\\text{underemployed}} = 0\\\\ H_a: & p_{\\text{unemployed}} - p_{\\text{underemployed}} < 0\\end{array}$", 
         value = "$\\begin{array}{ll} H_0: & p_{\\text{unemployed}} - p_{\\text{underemployed}} = 0\\\\ H_a: & p_{\\text{unemployed}} - p_{\\text{underemployed}} < 0\\end{array}$", 
         label = structure("\\(\\begin{array}{ll} H_0: &amp; p_{\\text{unemployed}} - p_{\\text{underemployed}} = 0\\\\ H_a: &amp; p_{\\text{unemployed}} - p_{\\text{underemployed}} &lt; 0\\end{array}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cdc66cf", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5917359", 
         option = "$\\begin{array}{ll} H_0: & p_{\\text{unemployed}} = 0.27 \\text{ and } p_{\\text{underemployed}} = 0.25\\\\ H_a: & p_{\\text{unemployed}} \\neq 0.27 \\text{ or } p_{\\text{underemployed}} \\neq 0.25\\end{array}$", 
         value = "$\\begin{array}{ll} H_0: & p_{\\text{unemployed}} = 0.27 \\text{ and } p_{\\text{underemployed}} = 0.25\\\\ H_a: & p_{\\text{unemployed}} \\neq 0.27 \\text{ or } p_{\\text{underemployed}} \\neq 0.25\\end{array}$", 
         label = structure("\\(\\begin{array}{ll} H_0: &amp; p_{\\text{unemployed}} = 0.27 \\text{ and } p_{\\text{underemployed}} = 0.25\\\\ H_a: &amp; p_{\\text{unemployed}} \\neq 0.27 \\text{ or } p_{\\text{underemployed}} \\neq 0.25\\end{array}\\)", html = TRUE, class = c("html", 
@@ -1363,7 +1415,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-2-question-2-answer", question = "try-it-2-question-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 911188015.075695, options = list()), class = c("learnr_radio", 
+    seed = 1676991639.71909, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1371,19 +1423,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-2-question-3", 
     question = structure("The null value is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_5774908", 
+    "character")), answers = list(structure(list(id = "lnr_ans_473826a", 
         option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9bf6ca2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ff9ac1c", 
         option = "0.5", value = "0.5", label = structure("0.5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3cef758", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_52bf29b", 
         option = "0.25", value = "0.25", label = structure("0.25", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6b95802", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_67cfd3a", 
         option = "0.27", value = "0.27", label = structure("0.27", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e1e729f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a213f9c", 
         option = "0.02", value = "0.02", label = structure("0.02", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1394,26 +1446,26 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-2-question-3-answer", question = "try-it-2-question-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1604687548.25276, options = list()), class = c("learnr_radio", 
+    seed = 1677136607.21902, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-2-question-4", 
     question = structure("The point estimate is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_47eafe4", 
+    "character")), answers = list(structure(list(id = "lnr_ans_a0fc8e1", 
         option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_58b61f0", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_58aa5d8", 
         option = "0.5", value = "0.5", label = structure("0.5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a8c172c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_76ba40", 
         option = "0.25", value = "0.25", label = structure("0.25", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9e3c906", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4a1fb50", 
         option = "0.27", value = "0.27", label = structure("0.27", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7bf5eda", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_55ccb87", 
         option = "0.02", value = "0.02", label = structure("0.02", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1424,7 +1476,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-2-question-4-answer", question = "try-it-2-question-4"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1439685682.32959, options = list()), class = c("learnr_radio", 
+    seed = 810505795.122579, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1432,18 +1484,18 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-2-question-5", 
     question = structure("How many groups are being compared in this study?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_edd4634", 
+    "character")), answers = list(structure(list(id = "lnr_ans_ebeb9c6", 
         option = "Just one group", value = "Just one group", 
         label = structure("Just one group", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d3ccd1", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_957976b", 
         option = "Two groups", value = "Two groups", label = structure("Two groups", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fa98331", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_12b3642", 
         option = "Three or more groups", value = "Three or more groups", 
         label = structure("Three or more groups", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3095a56", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f107808", 
         option = "1,820 groups", value = "1,820 groups", label = structure("1,820 groups", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1454,33 +1506,33 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-2-question-5-answer", question = "try-it-2-question-5"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 92023771.9571481, options = list()), class = c("learnr_radio", 
+    seed = 1745324300.68727, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-2-question-6", 
     question = structure("The standard error formula is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_1dd4a08", 
+    "character")), answers = list(structure(list(id = "lnr_ans_8736814", 
         option = "$\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1-p\\right)}{n}}}$", 
         value = "$\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1-p\\right)}{n}}}$", 
         label = structure("\\(\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1-p\\right)}{n}}}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e44ad3e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_71cd04a", 
         option = "$\\displaystyle{S_E = s/\\sqrt{n}}$", value = "$\\displaystyle{S_E = s/\\sqrt{n}}$", 
         label = structure("\\(\\displaystyle{S_E = s/\\sqrt{n}}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_27cb3f1", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f708a19", 
         option = "$\\displaystyle{S_E = \\sigma/\\sqrt{n}}$", 
         value = "$\\displaystyle{S_E = \\sigma/\\sqrt{n}}$", 
         label = structure("\\(\\displaystyle{S_E = \\sigma/\\sqrt{n}}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4f17be7", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9997d16", 
         option = "$\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}$", 
         value = "$\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}$", 
         label = structure("\\(\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}\\)", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2cbb5aa", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6effffa", 
         option = "$\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$", 
         value = "$\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$", 
         label = structure("\\(\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}\\)", html = TRUE, class = c("html", 
@@ -1493,7 +1545,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-2-question-6-answer", question = "try-it-2-question-6"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 865241680.09709, options = list()), class = c("learnr_radio", 
+    seed = 2028509020.0554, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1587,24 +1639,24 @@ learnr:::store_exercise_cache(structure(list(label = "try-it-2-question-8", glob
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-2-question-9", 
     question = structure("The distribution to be used is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_3f38986", 
+    "character")), answers = list(structure(list(id = "lnr_ans_a537b4f", 
         option = "Normal", value = "Normal", label = structure("Normal", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_57c5410", 
-        option = "t-distribution with $df = n - 1$", value = "t-distribution with $df = n - 1$", 
-        label = structure("t-distribution with \\(df = n - 1\\)", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4d19873", 
+        option = "t-distribution with $\\text{df} = n - 1$", 
+        value = "t-distribution with $\\text{df} = n - 1$", label = structure("t-distribution with \\(\\text{df} = n - 1\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9941fec", 
-        option = "t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$", 
-        value = "t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$", 
-        label = structure("t-distribution with \\(df = \\min\\{n_1 - 1, n_2 - 1\\}\\)", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e9d4ae", 
+        option = "t-distribution with $\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}$", 
+        value = "t-distribution with $\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}$", 
+        label = structure("t-distribution with \\(\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c5d4aa4", 
-        option = "t-distribution with $df = n_{\\text{diff}} - 1$", 
-        value = "t-distribution with $df = n_{\\text{diff}} - 1$", 
-        label = structure("t-distribution with \\(df = n_{\\text{diff}} - 1\\)", html = TRUE, class = c("html", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4221d75", 
+        option = "t-distribution with $\\text{df} = n_{\\text{diff}} - 1$", 
+        value = "t-distribution with $\\text{df} = n_{\\text{diff}} - 1$", 
+        label = structure("t-distribution with \\(\\text{df} = n_{\\text{diff}} - 1\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_aa2c62d", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ab0e098", 
         option = "We should not use either the normal- or t- distributions", 
         value = "We should not use either the normal- or t- distributions", 
         label = structure("We should not use either the normal- or t- distributions", html = TRUE, class = c("html", 
@@ -1617,7 +1669,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-2-question-9-answer", question = "try-it-2-question-9"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 221329155.396936, options = list()), class = c("learnr_radio", 
+    seed = 1358602556.86735, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1667,27 +1719,27 @@ learnr:::store_exercise_cache(structure(list(label = "try-it-2-question-10", glo
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-2-question-11", 
     question = structure("The result of the test is", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_9783acf", 
+    "character")), answers = list(structure(list(id = "lnr_ans_e94c6f8", 
         option = "Since $p \\geq \\alpha$, we do not have enough evidence to reject the null hypothesis.", 
         value = "Since $p \\geq \\alpha$, we do not have enough evidence to reject the null hypothesis.", 
         label = structure("Since \\(p \\geq \\alpha\\), we do not have enough evidence to reject the null hypothesis.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_625b0ef", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7e07160", 
         option = "Since $p \\geq \\alpha$, we accept the null hypothesis.", 
         value = "Since $p \\geq \\alpha$, we accept the null hypothesis.", 
         label = structure("Since \\(p \\geq \\alpha\\), we accept the null hypothesis.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3a9dc8a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fdbe6a4", 
         option = "Since $p < \\alpha$, we reject the null hypothesis and accept the aternative hypothesis.", 
         value = "Since $p < \\alpha$, we reject the null hypothesis and accept the aternative hypothesis.", 
         label = structure("Since \\(p &lt; \\alpha\\), we reject the null hypothesis and accept the aternative hypothesis.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7325d2f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2d1174", 
         option = "Since $p < \\alpha$, we fail to reject the null hypothesis.", 
         value = "Since $p < \\alpha$, we fail to reject the null hypothesis.", 
         label = structure("Since \\(p &lt; \\alpha\\), we fail to reject the null hypothesis.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e0e2a69", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c1135d5", 
         option = "It is impossible to determine.", value = "It is impossible to determine.", 
         label = structure("It is impossible to determine.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -1699,7 +1751,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-2-question-11-answer", question = "try-it-2-question-11"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 349186062.837398, options = list()), class = c("learnr_radio", 
+    seed = 1996668814.57023, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1707,22 +1759,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "try-it-2-question-12", 
     question = structure("The result of the test means that", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_e97ef9f", 
+    "character")), answers = list(structure(list(id = "lnr_ans_9d22f9", 
         option = "The sample data did not provide significant evidence to suggest that there is an association between the presence of relationship problems and whether someone is underemployed or unemployed.", 
         value = "The sample data did not provide significant evidence to suggest that there is an association between the presence of relationship problems and whether someone is underemployed or unemployed.", 
         label = structure("The sample data did not provide significant evidence to suggest that there is an association between the presence of relationship problems and whether someone is underemployed or unemployed.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bed6593", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d653adb", 
         option = "The sample data proved that there is no association between the presence of relationship problems and whether someone is underemployed or unemployed.", 
         value = "The sample data proved that there is no association between the presence of relationship problems and whether someone is underemployed or unemployed.", 
         label = structure("The sample data proved that there is no association between the presence of relationship problems and whether someone is underemployed or unemployed.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ec8a9ed", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6728b19", 
         option = "The sample data provided significant evidence to suggest a greater frequency of relationship trouble when at least one party is unemployed.", 
         value = "The sample data provided significant evidence to suggest a greater frequency of relationship trouble when at least one party is unemployed.", 
         label = structure("The sample data provided significant evidence to suggest a greater frequency of relationship trouble when at least one party is unemployed.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6b8b806", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bbeb0ff", 
         option = "Sample data cannot be used to test a claim about a population -- different samples yeild different results and so any claim about a population is nonsensicle unless a census was conducted.", 
         value = "Sample data cannot be used to test a claim about a population -- different samples yeild different results and so any claim about a population is nonsensicle unless a census was conducted.", 
         label = structure("Sample data cannot be used to test a claim about a population – different samples yeild different results and so any claim about a population is nonsensicle unless a census was conducted.", html = TRUE, class = c("html", 
@@ -1735,7 +1787,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "try-it-2-question-12-answer", question = "try-it-2-question-12"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1713076291.20229, options = list()), class = c("learnr_radio", 
+    seed = 1104349182.48575, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1750,7 +1802,7 @@ learnrhash::encoder_logic(strip_output = TRUE)
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bslib","cachem","checkmate","cli","colorspace","commonmark","compiler","datasets","digest","dplyr","evaluate","fansi","fastmap","fontawesome","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","learnrhash","lifecycle","magrittr","markdown","methods","mime","munsell","pillar","pkgconfig","promises","R6","Rcpp","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","stats","tibble","tidyselect","tools","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.3.1","0.7.0","1.0.8","2.3.1","3.6.1","2.1-0","1.9.1","4.3.1","4.3.1","0.6.35","1.1.3","0.23","1.0.6","1.1.1","0.5.2","0.1.3","3.4.4","1.7.0","0.2.14","4.3.1","4.3.1","4.3.1","0.3.4","0.5.8.1","1.6.4","1.6.15","0.1.4","1.8.8","1.46","1.3.2","0.11.5.9000","0.2.0","1.0.4","2.0.3","1.12","4.3.1","0.12","0.5.0","1.9.0","2.0.3","1.3.0","2.5.1","1.0.12","1.1.3","2.26","2.0.4","0.16.0","0.4.9","1.2.1","1.8.1.1","4.3.1","3.2.1","1.2.0","4.3.1","1.2.4","4.3.1","0.6.5","3.0.0","0.43","1.8-4","2.3.8"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bslib","cachem","checkmate","cli","colorspace","commonmark","compiler","datasets","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fontawesome","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","learnrhash","lifecycle","magrittr","markdown","methods","mime","munsell","pillar","pkgconfig","promises","R6","Rcpp","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","stats","tibble","tidyselect","tools","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.3.2","0.6.1","1.0.8","2.3.1","3.6.2","2.1-0","1.9.1","4.3.2","4.3.2","0.6.35","1.1.4","0.3.2","0.23","1.0.6","1.1.1","0.5.2","0.1.3","3.5.0","1.7.0","0.2.14","4.3.2","4.3.2","4.3.2","0.3.4","0.5.7","1.6.4","1.6.14","0.1.4","1.8.8","1.46","1.3.2","0.11.5.9000","0.2.0","1.0.4","2.0.3","1.12","4.3.2","0.12","0.5.0","1.9.0","2.0.3","1.2.1","2.5.1","1.0.12","1.1.3","2.26","2.0.4","0.15.0","0.4.8","1.3.0","1.8.0","4.3.2","3.2.1","1.2.1","4.3.2","1.2.4","4.3.2","0.6.5","3.0.0","0.43","1.8-4","2.3.8"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>
