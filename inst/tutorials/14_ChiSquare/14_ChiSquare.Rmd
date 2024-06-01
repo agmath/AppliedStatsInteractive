@@ -142,7 +142,21 @@ question_checkbox(
 Use the following code blocks to input or calculate the expected counts for each race.
 
 Compute the number of prisoners out of the 300 who are expected to be *white*.
+
 ```{r exp-white, exercise = TRUE}
+
+```
+
+```{r exp-white-hint-1}
+#What proportion of New Hampshire's population is 
+#white?
+
+```
+
+```{r exp-white-hint-2}
+#The expected number of white prisoners will be the total
+#number of prisoners times the proportion of white 
+#residents in the State.
 
 ```
 
@@ -159,6 +173,19 @@ Compute the number of prisoners out of the 300 who are expected to be *black*.
 
 ```
 
+```{r exp-black-hint-1}
+#Use the same approach as for the previous question.
+#What proportion of New Hampshire residents are black?
+
+```
+
+```{r exp-black-hint-2}
+#The expected number of black prisoners will be the total
+#number of prisoners times the proportion of black 
+#residents in the State.
+
+```
+
 ```{r exp-black-check}
 grade_result(
   pass_if(~ .result == (300*0.018))
@@ -168,8 +195,14 @@ grade_result(
 ###
 
 Compute the number of prisoners out of the 300 who are expected to be *hispanic*.
+
 ```{r exp-hispanic, exercise = TRUE}
 
+```
+
+```{r exp-hispanic-hint-1}
+#Again, use the same approach. What proportion of residents
+#in New Hampshire are hispanic?
 ```
 
 ```{r exp-hispanic-check}
@@ -181,7 +214,16 @@ grade_result(
 ###
 
 Compute the number of prisoners out of the 300 who are expected to be of other races.
+
 ```{r exp-other, exercise = TRUE}
+
+```
+
+```{r exp-other-hint-1}
+#As with the previous questions, we'll take the product
+#of the number of prisoners with the proportion of residents
+#in the State of New Hampshire who identify as belonging 
+#to another race.
 
 ```
 
@@ -198,14 +240,39 @@ $$\displaystyle{\chi^2 = \sum_{i = 1}^{k}{\frac{\left(\text{observed} - \text{ex
 where $k$ denotes the number of groups.
 
 Use the code block below to enter or compute the $\chi^2$ test statistic. The code block has been pre-populated to get you started with computing the test statistic.
+
 ```{r test-stat, exercise = TRUE, exercise.eval = FALSE}
 #Define the observed values
 observed <- c(243, 24, 15, 18)
 #Define the expected values -- you should input these, be sure to use the same order as in the "observed" vector.
-expected <- c()
+expected <- c(___)
 
 #Now compute the chi-squared test statistic.
 
+```
+
+```{r test-stat-hint-1}
+#Store the four expected values in the same order as the
+#observed counts are stored.
+
+```
+
+```{r test-stat-hint-2}
+#The chi-squared statistic is the sum of the squared 
+#differences between the observed and expected counts
+#divided by the expected counts.
+
+```
+
+```{r test-stat-hint-3}
+#The chi-squared statistic is the sum of the squared 
+#differences between the observed and expected counts
+#divided by the expected counts.
+
+test_stat <- sum((___ - ___)^2/___)
+
+#Print out the test statistic
+test_stat
 ```
 
 ```{r test-stat-check}
@@ -220,7 +287,14 @@ grade_result(
 ### 
 
 Use the code block below to enter the degrees of freedom for the $\chi^2$-distribution associated with our test statistic.
+
 ```{r df, exercise = TRUE}
+
+```
+
+```{r df-hint-1}
+#The degrees of freedom for a Goodness of Fit test, like 
+#this one, is one less than the number of groups.
 
 ```
 
@@ -235,6 +309,21 @@ grade_result(
 Use the code block below to compute the $p$-value associated with this test. Remember that you can use the function `pchisq(q, df)` to compute the probability to the left of the boundary value `q` under a $\chi^2$ distribution with `df` degrees of freedom.
 
 ```{r compute-p, exercise = TRUE}
+
+```
+
+```{r compute-p-hint-1}
+#Use your test statistic and the degrees of freedom 
+#you've identified along with the pchisq() function
+#to find the p-value.
+
+```
+
+```{r compute-p-hint-2}
+#The p-value is the area to the *right* of the boundary
+#value. All of our p*() functions give us the area to 
+#the left.
+#How do you obtain the area to the right?
 
 ```
 
@@ -352,7 +441,50 @@ random_answer_order = TRUE
 ###
 
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the poverty and drug use group:
+
 ```{r poverty-drug-use, exercise = TRUE}
+
+```
+
+```{r poverty-drug-use-hint-1}
+#Use the same approach to finding the expected values 
+#that you used for the prison demographics problem you
+#just completed.
+
+```
+
+```{r poverty-drug-use-hint-2}
+#Remember that if two events, A and B, are independent
+#then P(A and B) = P(A)*P(B). That is, the probability 
+#of the events occuring simultaneously is the same as 
+#the product of the probability of the indivual events
+#occuring.
+
+```
+
+```{r poverty-drug-use-hint-3}
+#The probability of an adolescent coming from a 
+#household in poverty as 0.16 and the probability of
+#an adolescent having used an illicit drug in the last
+#year is 0.14. That is, if family income and drug use by
+#adolescents are independent, then the probability of 
+#a randomly selected adolescent coming from a household
+#in poverty *and* having used illicit drugs in the last
+#year is 0.16*0.14
+
+```
+
+```{r poverty-drug-use-hint-4}
+#To find the expected number of adolecents coming from 
+#households in poverty and having used an illicit drug
+#in the last year, multiply the total number of adolescents
+#by the probability of coming from a household in poverty
+#and having used an illicit drug in the last year.
+
+```
+
+```{r poverty-drug-use-solution}
+2500*0.16*0.14
 
 ```
 
@@ -365,7 +497,17 @@ grade_result(
 ###
 
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the low income and drug use group:
+
 ```{r lowInc-drug-use, exercise = TRUE}
+
+```
+
+```{r lowInc-drug-use-hint-1}
+#Follow the same hints as for computing the expected 
+#number of adolescents who came from households in poverty
+#and who have used illicit drugs in the last year. 
+#Update the probabilities to reflect this particular 
+#subgroup instead though.
 
 ```
 
@@ -378,7 +520,17 @@ grade_result(
 ###
 
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the middle income and drug use group:
+
 ```{r middleInc-drug-use, exercise = TRUE}
+
+```
+
+```{r middleInc-drug-use-hint-1}
+#Follow the same hints as for computing the expected 
+#number of adolescents who came from households in poverty
+#and who have used illicit drugs in the last year. 
+#Update the probabilities to reflect this particular 
+#subgroup instead though.
 
 ```
 
@@ -391,7 +543,17 @@ grade_result(
 ###
 
 Under the assumption of the null hypothesis, compute the expected number of the 2500 responses to fall in the high income and drug use group:
+
 ```{r highInc-drug-use, exercise = TRUE}
+
+```
+
+```{r highInc-drug-use-hint-1}
+#Follow the same hints as for computing the expected 
+#number of adolescents who came from households in poverty
+#and who have used illicit drugs in the last year. 
+#Update the probabilities to reflect this particular 
+#subgroup instead though.
 
 ```
 
@@ -403,7 +565,7 @@ grade_result(
 
 ### 
 
-Okay, you've completed half of the two-way table. I'll fill in the rest in the *Expected Results* table below. The second table you see holds the actual *Observed Results*:
+Okay, you've completed half of the two-way table. I'll fill in the rest of the *Expected Results* table below. The second table you see holds the actual *Observed Results*:
 <div class = "row">
 <div class = "md-col-5">
 <center>
@@ -455,8 +617,31 @@ where $k$ represents the number of cells in the variable-comparison tables. That
 ###
 
 Use the code block below to compute the $\chi^2$ test statistic. Look back to our earlier application if you need a refresher!
+
 ```{r chi-sq-ind, exercise = TRUE}
 
+```
+
+```{r chi-sq-ind-hint-1}
+#Start by defining the observed and expected counts.
+#Use the c() function to define the lists of values.
+#Make sure that the categories follow the same order 
+#in both lists.
+
+```
+
+```{r chi-sq-ind-hint-2}
+#Remember that the Chi-Squared test statistic is the 
+#sum of the squared differences between the observed
+#and expected counts, divided by the expected counts.
+
+```
+
+```{r chi-sq-ind-hint-3}
+#Fill in the blanks:
+
+test_stat <- sum((___ - ___)^2/___)
+test_stat
 ```
 
 ```{r chi-sq-ind-check}
@@ -473,7 +658,23 @@ grade_result(
 ###
 
 Compute or input the degrees of freedom associated with this test for independence.
+
 ```{r df-ind, exercise = TRUE}
+
+```
+
+```{r df-ind-hint-1}
+#The degrees of freedom for a test for Independence, like
+#this one, depends on the number of groups in each of the 
+#categorical variables of interest.
+
+```
+
+```{r df-ind-hint-2}
+#Identify one less than the number of groups corresponding
+#to the first categorical variable. Do the same for the
+#second categorical variable. Multiply these two numbers
+#together to find the degrees of freedom.
 
 ```
 
@@ -483,9 +684,6 @@ grade_result(
 )
 ```
 
-<div id="df-ind-hint">
-**Hint:** For a $\chi^2$ test of independence we take the product between one less than the number of levels of each variable. That is, if variable one has $M$ levels and variable two has $P$ levels then the degrees of freedom is $\left(M-1\right)\left(P-1\right)$.
-</div>
 
 ###
 
@@ -494,7 +692,26 @@ Now that we've computed the test statistic and degrees of freedom associated wit
 ###
 
 Use the code block below to compute the $p$-value associated with this test.
+
 ```{r compute-p-indep, exercise = TRUE}
+
+```
+
+```{r compute-p-indep-hint-1}
+#We are using the Chi-Squared distribution again.
+
+```
+
+```{r compute-p-indep-hint-2}
+#The pchisq() function requires a boundary value and 
+#the number of degrees of freedom.
+
+```
+
+```{r compute-p-indep-hint-3}
+#We are always interested in the area in the right tail
+#of the Chi-Squared distribution. How do we find the area
+#to the right of the boundary value?
 
 ```
 
@@ -511,6 +728,7 @@ grade_result(
 ###
 
 Assume the test was to be conducted at the $\alpha = 0.05$ level of significance. Answer the following to determine the results of the test.
+
 ```{r chisq-indep-conclusion, echo = FALSE}
 quiz(
   question_radio(

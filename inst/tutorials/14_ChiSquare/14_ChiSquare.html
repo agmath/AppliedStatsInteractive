@@ -260,12 +260,25 @@ New Hampshire does not reflect the racial demographics of the State.</p>
 <h3></h3>
 <p>Use the following code blocks to input or calculate the expected
 counts for each race.</p>
-Compute the number of prisoners out of the 300 who are expected to be
-<em>white</em>.
+<p>Compute the number of prisoners out of the 300 who are expected to be
+<em>white</em>.</p>
 <div class="tutorial-exercise" data-label="exp-white"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="exp-white-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#What proportion of New Hampshire&#39;s population is 
+#white?</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="exp-white-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The expected number of white prisoners will be the total
+#number of prisoners times the proportion of white 
+#residents in the State.</code></pre>
 </div>
 </div>
 <div id="section-section-11" class="section level3">
@@ -277,25 +290,52 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="exp-black-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use the same approach as for the previous question.
+#What proportion of New Hampshire residents are black?</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="exp-black-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The expected number of black prisoners will be the total
+#number of prisoners times the proportion of black 
+#residents in the State.</code></pre>
+</div>
 </div>
 <div id="section-section-12" class="section level3">
 <h3></h3>
-Compute the number of prisoners out of the 300 who are expected to be
-<em>hispanic</em>.
+<p>Compute the number of prisoners out of the 300 who are expected to be
+<em>hispanic</em>.</p>
 <div class="tutorial-exercise" data-label="exp-hispanic"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="exp-hispanic-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Again, use the same approach. What proportion of residents
+#in New Hampshire are hispanic?</code></pre>
+</div>
 </div>
 <div id="section-section-13" class="section level3">
 <h3></h3>
-Compute the number of prisoners out of the 300 who are expected to be of
-other races.
+<p>Compute the number of prisoners out of the 300 who are expected to be
+of other races.</p>
 <div class="tutorial-exercise" data-label="exp-other"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="exp-other-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#As with the previous questions, we&#39;ll take the product
+#of the number of prisoners with the proportion of residents
+#in the State of New Hampshire who identify as belonging 
+#to another race.</code></pre>
 </div>
 </div>
 <div id="section-section-14" class="section level3">
@@ -307,30 +347,62 @@ class="math display">\[\displaystyle{\chi^2 = \sum_{i =
 1}^{k}{\frac{\left(\text{observed} -
 \text{expected}\right)^2}{\text{expected}}}}\]</span> where <span
 class="math inline">\(k\)</span> denotes the number of groups.</p>
-Use the code block below to enter or compute the <span
+<p>Use the code block below to enter or compute the <span
 class="math inline">\(\chi^2\)</span> test statistic. The code block has
-been pre-populated to get you started with computing the test statistic.
+been pre-populated to get you started with computing the test
+statistic.</p>
 <div class="tutorial-exercise" data-label="test-stat"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <pre class="text"><code>#Define the observed values
 observed &lt;- c(243, 24, 15, 18)
 #Define the expected values -- you should input these, be sure to use the same order as in the &quot;observed&quot; vector.
-expected &lt;- c()
+expected &lt;- c(___)
 
 #Now compute the chi-squared test statistic.</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="test-stat-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Store the four expected values in the same order as the
+#observed counts are stored.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="test-stat-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The chi-squared statistic is the sum of the squared 
+#differences between the observed and expected counts
+#divided by the expected counts.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="test-stat-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The chi-squared statistic is the sum of the squared 
+#differences between the observed and expected counts
+#divided by the expected counts.
+
+test_stat &lt;- sum((___ - ___)^2/___)
+
+#Print out the test statistic
+test_stat</code></pre>
+</div>
 </div>
 <div id="section-section-15" class="section level3">
 <h3></h3>
-Use the code block below to enter the degrees of freedom for the <span
-class="math inline">\(\chi^2\)</span>-distribution associated with our
-test statistic.
+<p>Use the code block below to enter the degrees of freedom for the
+<span class="math inline">\(\chi^2\)</span>-distribution associated with
+our test statistic.</p>
 <div class="tutorial-exercise" data-label="df" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="df-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The degrees of freedom for a Goodness of Fit test, like 
+#this one, is one less than the number of groups.</code></pre>
 </div>
 </div>
 <div id="section-section-16" class="section level3">
@@ -345,6 +417,21 @@ under a <span class="math inline">\(\chi^2\)</span> distribution with
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="compute-p-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use your test statistic and the degrees of freedom 
+#you&#39;ve identified along with the pchisq() function
+#to find the p-value.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="compute-p-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The p-value is the area to the *right* of the boundary
+#value. All of our p*() functions give us the area to 
+#the left.
+#How do you obtain the area to the right?</code></pre>
 </div>
 </div>
 <div id="section-section-17" class="section level3">
@@ -474,48 +561,129 @@ use and household income are independent of one another.</p>
 </div>
 <div id="section-section-26" class="section level3">
 <h3></h3>
-Under the assumption of the null hypothesis, compute the expected number
-of the 2500 responses to fall in the poverty and drug use group:
+<p>Under the assumption of the null hypothesis, compute the expected
+number of the 2500 responses to fall in the poverty and drug use
+group:</p>
 <div class="tutorial-exercise" data-label="poverty-drug-use"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="poverty-drug-use-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Use the same approach to finding the expected values 
+#that you used for the prison demographics problem you
+#just completed.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="poverty-drug-use-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Remember that if two events, A and B, are independent
+#then P(A and B) = P(A)*P(B). That is, the probability 
+#of the events occuring simultaneously is the same as 
+#the product of the probability of the indivual events
+#occuring.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="poverty-drug-use-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The probability of an adolescent coming from a 
+#household in poverty as 0.16 and the probability of
+#an adolescent having used an illicit drug in the last
+#year is 0.14. That is, if family income and drug use by
+#adolescents are independent, then the probability of 
+#a randomly selected adolescent coming from a household
+#in poverty *and* having used illicit drugs in the last
+#year is 0.16*0.14</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="poverty-drug-use-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#To find the expected number of adolecents coming from 
+#households in poverty and having used an illicit drug
+#in the last year, multiply the total number of adolescents
+#by the probability of coming from a household in poverty
+#and having used an illicit drug in the last year.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="poverty-drug-use-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>2500*0.16*0.14</code></pre>
+</div>
 </div>
 <div id="section-section-27" class="section level3">
 <h3></h3>
-Under the assumption of the null hypothesis, compute the expected number
-of the 2500 responses to fall in the low income and drug use group:
+<p>Under the assumption of the null hypothesis, compute the expected
+number of the 2500 responses to fall in the low income and drug use
+group:</p>
 <div class="tutorial-exercise" data-label="lowInc-drug-use"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="lowInc-drug-use-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Follow the same hints as for computing the expected 
+#number of adolescents who came from households in poverty
+#and who have used illicit drugs in the last year. 
+#Update the probabilities to reflect this particular 
+#subgroup instead though.</code></pre>
+</div>
 </div>
 <div id="section-section-28" class="section level3">
 <h3></h3>
-Under the assumption of the null hypothesis, compute the expected number
-of the 2500 responses to fall in the middle income and drug use group:
+<p>Under the assumption of the null hypothesis, compute the expected
+number of the 2500 responses to fall in the middle income and drug use
+group:</p>
 <div class="tutorial-exercise" data-label="middleInc-drug-use"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="middleInc-drug-use-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Follow the same hints as for computing the expected 
+#number of adolescents who came from households in poverty
+#and who have used illicit drugs in the last year. 
+#Update the probabilities to reflect this particular 
+#subgroup instead though.</code></pre>
+</div>
 </div>
 <div id="section-section-29" class="section level3">
 <h3></h3>
-Under the assumption of the null hypothesis, compute the expected number
-of the 2500 responses to fall in the high income and drug use group:
+<p>Under the assumption of the null hypothesis, compute the expected
+number of the 2500 responses to fall in the high income and drug use
+group:</p>
 <div class="tutorial-exercise" data-label="highInc-drug-use"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="highInc-drug-use-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Follow the same hints as for computing the expected 
+#number of adolescents who came from households in poverty
+#and who have used illicit drugs in the last year. 
+#Update the probabilities to reflect this particular 
+#subgroup instead though.</code></pre>
+</div>
 </div>
 <div id="section-section-30" class="section level3">
 <h3></h3>
 Okay, you’ve completed half of the two-way table. I’ll fill in the rest
-in the <em>Expected Results</em> table below. The second table you see
+of the <em>Expected Results</em> table below. The second table you see
 holds the actual <em>Observed Results</em>:
 <div class="row">
 <div class="md-col-5">
@@ -678,32 +846,61 @@ of levels underneath each of the categorical variables, so here we have
 </div>
 <div id="section-section-32" class="section level3">
 <h3></h3>
-Use the code block below to compute the <span
+<p>Use the code block below to compute the <span
 class="math inline">\(\chi^2\)</span> test statistic. Look back to our
-earlier application if you need a refresher!
+earlier application if you need a refresher!</p>
 <div class="tutorial-exercise" data-label="chi-sq-ind"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="chi-sq-ind-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Start by defining the observed and expected counts.
+#Use the c() function to define the lists of values.
+#Make sure that the categories follow the same order 
+#in both lists.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="chi-sq-ind-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Remember that the Chi-Squared test statistic is the 
+#sum of the squared differences between the observed
+#and expected counts, divided by the expected counts.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="chi-sq-ind-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks:
+
+test_stat &lt;- sum((___ - ___)^2/___)
+test_stat</code></pre>
+</div>
 </div>
 <div id="section-section-33" class="section level3">
 <h3></h3>
-Compute or input the degrees of freedom associated with this test for
-independence.
+<p>Compute or input the degrees of freedom associated with this test for
+independence.</p>
 <div class="tutorial-exercise" data-label="df-ind" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-<div id="section-df-ind-hint">
-<p><strong>Hint:</strong> For a <span
-class="math inline">\(\chi^2\)</span> test of independence we take the
-product between one less than the number of levels of each variable.
-That is, if variable one has <span class="math inline">\(M\)</span>
-levels and variable two has <span class="math inline">\(P\)</span>
-levels then the degrees of freedom is <span
-class="math inline">\(\left(M-1\right)\left(P-1\right)\)</span>.</p>
+<div class="tutorial-exercise-support" data-label="df-ind-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The degrees of freedom for a test for Independence, like
+#this one, depends on the number of groups in each of the 
+#categorical variables of interest.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="df-ind-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Identify one less than the number of groups corresponding
+#to the first categorical variable. Do the same for the
+#second categorical variable. Multiply these two numbers
+#together to find the degrees of freedom.</code></pre>
 </div>
 </div>
 <div id="section-section-34" class="section level3">
@@ -718,12 +915,33 @@ before.</p>
 </div>
 <div id="section-section-35" class="section level3">
 <h3></h3>
-Use the code block below to compute the <span
-class="math inline">\(p\)</span>-value associated with this test.
+<p>Use the code block below to compute the <span
+class="math inline">\(p\)</span>-value associated with this test.</p>
 <div class="tutorial-exercise" data-label="compute-p-indep"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="compute-p-indep-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We are using the Chi-Squared distribution again.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="compute-p-indep-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The pchisq() function requires a boundary value and 
+#the number of degrees of freedom.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="compute-p-indep-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We are always interested in the area in the right tail
+#of the Chi-Squared distribution. How do we find the area
+#to the right of the boundary value?</code></pre>
 </div>
 </div>
 <div id="section-section-36" class="section level3">
@@ -1278,7 +1496,7 @@ learnr:::store_exercise_cache(structure(list(label = "test-stat", global_setup =
 "", "#observedInd <- c(tableSim[1, 4], tableSim[1,2], tableSim[1,3], tableSim[1,1], tableSim[2,4], tableSim[2,2], tableSim[2,3], tableSim[2,1])", 
 "", "observedInd <- c(341, 752, 796, 221, 78, 153, 116, 43)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "test-stat", code = "#Define the observed values\nobserved <- c(243, 24, 15, 18)\n#Define the expected values -- you should input these, be sure to use the same order as in the \"observed\" vector.\nexpected <- c()\n\n#Now compute the chi-squared test statistic.\n", 
+    list(label = "test-stat", code = "#Define the observed values\nobserved <- c(243, 24, 15, 18)\n#Define the expected values -- you should input these, be sure to use the same order as in the \"observed\" vector.\nexpected <- c(___)\n\n#Now compute the chi-squared test statistic.\n", 
         opts = list(label = "\"test-stat\"", exercise = "TRUE", 
             exercise.eval = "FALSE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("observed <- c(243, 24, 15, 18)", 
@@ -1306,7 +1524,7 @@ learnr:::store_exercise_cache(structure(list(label = "test-stat", global_setup =
         label = "test-stat", exercise = TRUE, exercise.eval = FALSE, 
         code = c("#Define the observed values", "observed <- c(243, 24, 15, 18)", 
         "#Define the expected values -- you should input these, be sure to use the same order as in the \"observed\" vector.", 
-        "expected <- c()", "", "#Now compute the chi-squared test statistic.", 
+        "expected <- c(___)", "", "#Now compute the chi-squared test statistic.", 
         ""), out.width.px = 624, out.height.px = 384, params.src = "test-stat, exercise = TRUE, exercise.eval = FALSE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
@@ -1653,7 +1871,8 @@ learnr:::store_exercise_cache(structure(list(label = "poverty-drug-use", global_
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure(c("grade_result(", 
     "  pass_if(~ abs(.result - 2500*0.16*0.14) < 0.5)", ")"), chunk_opts = list(
-        label = "poverty-drug-use-check")), solution = NULL, 
+        label = "poverty-drug-use-check")), solution = structure(c("2500*0.16*0.14", 
+    ""), chunk_opts = list(label = "poverty-drug-use-solution")), 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
