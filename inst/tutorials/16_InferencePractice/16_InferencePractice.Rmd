@@ -446,15 +446,13 @@ quiz(
 
 Use the code block below to input or compute the critical value which should be used in the construction of the confidence interval.
 
-```{r prob3-7-setup}
-Sys.sleep(1)
-```
-
 ```{r prob3-7, exercise = TRUE}
 
 ```
 
 ```{r prob3-7-check}
+Sys.sleep(1)
+
 grade_result(
   pass_if(~ (abs(abs(.result) - qt(0.95, df = 30 - 1)) < 0.005))
 )
@@ -464,15 +462,13 @@ grade_result(
 
 Use the code block below to input or compute the point estimate.
 
-```{r prob3-8-setup}
-Sys.sleep(1)
-```
-
 ```{r prob3-8, exercise = TRUE}
 
 ```
 
 ```{r prob3-8-check}
+Sys.sleep(1)
+
 grade_result(
   pass_if(~ (.result == 525))
 )
@@ -482,15 +478,13 @@ grade_result(
 
 Use the code block below to input or compute the standard error.
 
-```{r prob3-9-setup}
-Sys.sleep(1)
-```
-
 ```{r prob3-9, exercise = TRUE}
 
 ```
 
 ```{r prob3-9-check}
+Sys.sleep(1)
+
 grade_result(
   pass_if(~ (abs(.result - (40/sqrt(30))) < 0.01))
 )
@@ -500,15 +494,13 @@ grade_result(
 
 Use the code block below to compute the lower bound for our confidence interval.
 
-```{r prob3-10-setup}
-Sys.sleep(1)
-```
-
 ```{r prob3-10, exercise = TRUE}
 
 ```
 
 ```{r prob3-10-check}
+Sys.sleep(1)
+
 grade_result(
   pass_if(~ (abs(.result - (525 - (qt(0.95, df = 30 - 1)*40/sqrt(30)))) < 0.01))
 )
@@ -518,15 +510,13 @@ grade_result(
 
 Use the code block below to compute the upper bound for our confidence interval.
 
-```{r prob3-11-setup}
-Sys.sleep(1)
-```
-
 ```{r prob3-11, exercise = TRUE}
 
 ```
 
 ```{r prob3-11-check}
+Sys.sleep(1)
+
 grade_result(
   pass_if(~ (abs(.result - (525 + (qt(0.95, df = 30 - 1)*40/sqrt(30)))) < 0.01))
 )
@@ -635,15 +625,13 @@ quiz(
 
 Use the code block below to input or compute the critical value which should be used in the construction of the confidence interval.
 
-```{r prob4-6-setup}
-Sys.sleep(1.5)
-```
-
 ```{r prob4-6, exercise = TRUE}
 
 ```
 
 ```{r prob4-6-check}
+Sys.sleep(1)
+
 grade_result(
   pass_if(~ (abs(abs(.result) - qnorm(0.975)) < 0.005))
 )
@@ -653,15 +641,13 @@ grade_result(
 
 Use the code block below to input or compute the point estimate.
 
-```{r prob4-7-setup}
-Sys.sleep(1.5)
-```
-
 ```{r prob4-7, exercise = TRUE}
 
 ```
 
 ```{r prob4-7-check}
+Sys.sleep(1)
+
 grade_result(
   pass_if(~ abs(.result - (118/200)) < 0.0005)
 )
@@ -671,15 +657,13 @@ grade_result(
 
 Use the code block below to input or compute the standard error.
 
-```{r prob4-8-setup}
-Sys.sleep(1.5)
-```
-
 ```{r prob4-8, exercise = TRUE}
 
 ```
 
 ```{r prob4-8-check}
+Sys.sleep(1)
+
 grade_result(
   pass_if(~ (abs(.result - (sqrt(((118/200)*(1 - (118/200)))/200))) < 0.0005))
 )
@@ -689,15 +673,13 @@ grade_result(
 
 Use the code block below to compute the lower bound for our confidence interval.
 
-```{r prob4-9-setup}
-Sys.sleep(1.5)
-```
-
 ```{r prob4-9, exercise = TRUE}
 
 ```
 
 ```{r prob4-9-check}
+Sys.sleep(1)
+
 grade_result(
   pass_if(~ (abs(.result - ((118/200) - (qnorm(0.975)*sqrt(((118/200)*(1 - (118/200)))/200)))) < 0.0005))
 )
@@ -707,15 +689,13 @@ grade_result(
 
 Use the code block below to compute the upper bound for our confidence interval.
 
-```{r prob4-10-setup}
-Sys.sleep(1.5)
-```
-
 ```{r prob4-10, exercise = TRUE}
 
 ```
 
 ```{r prob4-10-check}
+Sys.sleep(1)
+
 grade_result(
   pass_if(~ (abs(.result - ((118/200) + (qnorm(0.975)*sqrt(((118/200)*(1 - (118/200)))/200)))) < 0.0005))
 )
@@ -771,15 +751,13 @@ question_radio(
 
 Use the code block below to either input or compute the desired margin of error.
 
-```{r prob5-3-setup}
-Sys.sleep(2)
-```
-
 ```{r prob5-3, exercise = TRUE}
 
 ```
 
 ```{r prob5-3-check}
+Sys.sleep(1.5)
+
 grade_result(
   pass_if(~ (.result == 0.01))
 )
@@ -789,15 +767,13 @@ grade_result(
 
 Use the code block below to either input or critical value ($z_{\alpha/2}$) which should be used to compute the required sample size.
 
-```{r prob5-4-setup}
-Sys.sleep(2)
-```
-
 ```{r prob5-4, exercise = TRUE}
 
 ```
 
 ```{r prob5-4-check}
+Sys.sleep(1.5)
+
 grade_result(
   pass_if(~ (abs(.result - qnorm(0.975)) < 0.01))
 )
@@ -807,15 +783,13 @@ grade_result(
 
 Use the code block below to either input or compute the value of $p$ which should be used in the calculation of required sample size.
 
-```{r prob5-5-setup}
-Sys.sleep(2)
-```
-
 ```{r prob5-5, exercise = TRUE}
 
 ```
 
 ```{r prob5-5-check}
+Sys.sleep(1.5)
+
 grade_result(
   pass_if(~ (.result == 0.42))
 )
@@ -825,15 +799,13 @@ grade_result(
 
 Use the code block below to compute the minimum size sample the pollster could take and be within his parameters.
 
-```{r prob5-6-setup}
-Sys.sleep(2)
-```
-
 ```{r prob5-6, exercise = TRUE}
 
 ```
 
 ```{r prob5-6-check}
+Sys.sleep(1.5)
+
 grade_result(
   pass_if(~ ((abs(.result - (ceiling((qnorm(0.975)/0.01)^2*0.42*(1 - 0.42)))) < 10) & (.result - ceiling(.result) == 0)))
   #pass_if(~ (.result == ceiling((qnorm(0.975)/0.01)^2*0.42*(1 - 0.42))))
@@ -933,15 +905,13 @@ quiz(
 
 Use the code block below to input or compute the critical value which should be used in the construction of the confidence interval.
 
-```{r prob6-6-setup}
-Sys.sleep(2.5)
-```
-
 ```{r prob6-6, exercise = TRUE}
 
 ```
 
 ```{r prob6-6-check}
+Sys.sleep(1.5)
+
 grade_result(
   pass_if(~ (abs(abs(.result) - qnorm(0.975)) < 0.01))
 )
@@ -951,15 +921,13 @@ grade_result(
 
 Use the code block below to input or compute the point estimate.
 
-```{r prob6-7-setup}
-Sys.sleep(2.5)
-```
-
 ```{r prob6-7, exercise = TRUE}
 
 ```
 
 ```{r prob6-7-check}
+Sys.sleep(1.5)
+
 grade_result(
   pass_if(~ (.result == 0.25))
 )
@@ -969,15 +937,13 @@ grade_result(
 
 Use the code block below to input or compute the standard error.
 
-```{r prob6-8-setup}
-Sys.sleep(2.5)
-```
-
 ```{r prob6-8, exercise = TRUE}
 
 ```
 
 ```{r prob6-8-check}
+Sys.sleep(1.5)
+
 grade_result(
   pass_if(~ (abs(.result - (sqrt(((0.25)*(1 - 0.25))/1000))) < 0.0005))
 )
@@ -987,15 +953,13 @@ grade_result(
 
 Use the code block below to compute the lower bound for our confidence interval.
 
-```{r prob6-9-setup}
-Sys.sleep(2.5)
-```
-
 ```{r prob6-9, exercise = TRUE}
 
 ```
 
 ```{r prob6-9-check}
+Sys.sleep(1.5)
+
 grade_result(
   pass_if(~ (abs(.result - (0.25 - (qnorm(0.975)*sqrt((0.25*(1 - 0.25))/1000)))) < 0.0005))
 )
@@ -1005,15 +969,13 @@ grade_result(
 
 Use the code block below to compute the upper bound for our confidence interval.
 
-```{r prob6-10-setup}
-Sys.sleep(2.5)
-```
-
 ```{r prob6-10, exercise = TRUE}
 
 ```
 
 ```{r prob6-10-check}
+Sys.sleep(1.5)
+
 grade_result(
   pass_if(~ (abs(.result - (0.25 + (qnorm(0.975)*sqrt((0.25*(1 - 0.25))/1000)))) < 0.0005))
 )
@@ -1146,15 +1108,13 @@ quiz(
 
 Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
 
-```{r prob7-7-setup}
-Sys.sleep(3)
-```
-
 ```{r prob7-7, exercise = TRUE}
 
 ```
 
 ```{r prob7-7-check}
+Sys.sleep(2)
+
 grade_result(
   pass_if(~ (abs(abs(.result) - abs((15/40) - (25/45))) < 0.005))
 )
@@ -1164,15 +1124,13 @@ grade_result(
 
 Use the code block below to input or compute the null value.
 
-```{r prob7-8-setup}
-Sys.sleep(3)
-```
-
 ```{r prob7-8, exercise = TRUE}
 
 ```
 
 ```{r prob7-8-check}
+Sys.sleep(2)
+
 grade_result(
   pass_if(~ (.result == 0))
 )
@@ -1182,15 +1140,13 @@ grade_result(
 
 Use the code block below to input or compute the standard error.
 
-```{r prob7-9-setup}
-Sys.sleep(3)
-```
-
 ```{r prob7-9, exercise = TRUE}
 
 ```
 
 ```{r prob7-9-check}
+Sys.sleep(2)
+
 grade_result(
   pass_if(~ (abs(.result - sqrt(((15/40)*(1 - (15/40))/40) + ((25/45)*(1 - (25/45))/45))) < 0.0005))
 )
@@ -1200,15 +1156,13 @@ grade_result(
 
 Use the code block below to input or compute the test statistic.
 
-```{r prob7-10-setup}
-Sys.sleep(3)
-```
-
 ```{r prob7-10, exercise = TRUE}
 
 ```
 
 ```{r prob7-10-check}
+Sys.sleep(2)
+
 grade_result(
   pass_if(~ (abs(abs(.result) - (abs((((15/40) - (25/45)) - 0)/sqrt(((15/40)*(1 - (15/40))/40) + ((25/45)*(1 - (25/45))/45))))) < 0.01))
 )
@@ -1218,15 +1172,13 @@ grade_result(
 
 Use the code block below to compute the $p$-value associated with this test.
 
-```{r prob7-11-setup}
-Sys.sleep(3)
-```
-
 ```{r prob7-11, exercise = TRUE}
 
 ```
 
 ```{r prob7-11-check}
+Sys.sleep(2)
+
 grade_result(
   pass_if(~ (abs(.result - (2*(1 - pnorm(abs((((15/40) - (25/45)) - 0)/sqrt(((15/40)*(1 - (15/40))/40) + ((25/45)*(1 - (25/45))/45))))))) < 0.001))
 )
@@ -1377,15 +1329,13 @@ quiz(
 
 Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
 
-```{r prob8-8-setup}
-Sys.sleep(3.5)
-```
-
 ```{r prob8-8, exercise = TRUE}
 
 ```
 
 ```{r prob8-8-check}
+Sys.sleep(2)
+
 grade_result(
   pass_if(~ (abs(.result) == 15.25))
 )
@@ -1395,15 +1345,13 @@ grade_result(
 
 Use the code block below to input or compute the null value.
 
-```{r prob8-9-setup}
-Sys.sleep(3.5)
-```
-
 ```{r prob8-9, exercise = TRUE}
 
 ```
 
 ```{r prob8-9-check}
+Sys.sleep(2)
+
 grade_result(
   pass_if(~ (.result == 15))
 )
@@ -1413,15 +1361,13 @@ grade_result(
 
 Use the code block below to input or compute the standard error.
 
-```{r prob8-10-setup}
-Sys.sleep(3.5)
-```
-
 ```{r prob8-10, exercise = TRUE}
 
 ```
 
 ```{r prob8-10-check}
+Sys.sleep(2)
+
 grade_result(
   pass_if(~ (abs(.result - (1/sqrt(12))) < 0.01))
 )
@@ -1431,15 +1377,13 @@ grade_result(
 
 Use the code block below to input or compute the test statistic.
 
-```{r prob8-11-setup}
-Sys.sleep(3.5)
-```
-
 ```{r prob8-11, exercise = TRUE}
 
 ```
 
 ```{r prob8-11-check}
+Sys.sleep(2)
+
 grade_result(
   pass_if(~ (abs(.result - ((15.25 - 15)/(1/sqrt(12)))) < 0.01))
 )
@@ -1449,15 +1393,13 @@ grade_result(
 
 Use the code block below to compute the $p$-value associated with this test.
 
-```{r prob8-12-setup}
-Sys.sleep(3.5)
-```
-
 ```{r prob8-12, exercise = TRUE}
 
 ```
 
 ```{r prob8-12-check}
+Sys.sleep(2)
+
 grade_result(
   pass_if(~ (abs(.result - (1 - pt((15.25 - 15)/(1/sqrt(12)), df = 12 - 1))) < 0.0015))
 )
@@ -1527,15 +1469,13 @@ question_radio(
 
 Use the code block below to either input or compute the desired margin of error (don't include the \$ sign in your answer).
 
-```{r prob9-3-setup}
-Sys.sleep(4)
-```
-
 ```{r prob9-3, exercise = TRUE}
 
 ```
 
 ```{r prob9-3-check}
+Sys.sleep(2.5)
+
 grade_result(
   pass_if(~ (.result == 10))
 )
@@ -1545,15 +1485,13 @@ grade_result(
 
 Use the code block below to either input or critical value ($z_{\alpha/2}$) which should be used to compute the required sample size.
 
-```{r prob9-4-setup}
-Sys.sleep(4)
-```
-
 ```{r prob9-4, exercise = TRUE}
 
 ```
 
 ```{r prob9-4-check}
+Sys.sleep(2.5)
+
 grade_result(
   pass_if(~ (abs(.result - qnorm(0.975)) < 0.01))
 )
@@ -1563,15 +1501,13 @@ grade_result(
 
 Use the code block below to either input or compute the estimate for $\sigma$ which should be used in the calculation of required sample size (don't include the \$ sign in your response).
 
-```{r prob9-5-setup}
-Sys.sleep(4)
-```
-
 ```{r prob9-5, exercise = TRUE}
 
 ```
 
 ```{r prob9-5-check}
+Sys.sleep(2.5)
+
 grade_result(
   pass_if(~ (.result == 100))
 )
@@ -1581,15 +1517,13 @@ grade_result(
 
 Use the code block below to compute the minimum size sample the pollster could take and be within his parameters.
 
-```{r prob9-6-setup}
-Sys.sleep(4)
-```
-
 ```{r prob9-6, exercise = TRUE}
 
 ```
 
 ```{r prob9-6-check}
+Sys.sleep(2.5)
+
 grade_result(
   pass_if(~ ((abs(.result - (ceiling((qnorm(0.975)*100/10)^2))) < 10) & (.result - ceiling(.result) == 0)))
 )
@@ -1700,15 +1634,13 @@ quiz(
 
 Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
 
-```{r prob10-7-setup}
-Sys.sleep(4)
-```
-
 ```{r prob10-7, exercise = TRUE}
 
 ```
 
 ```{r prob10-7-check}
+Sys.sleep(2.5)
+
 grade_result(
   pass_if(~ (abs(.result) == 0.52))
 )
@@ -1718,15 +1650,13 @@ grade_result(
 
 Use the code block below to input or compute the null value.
 
-```{r prob10-8-setup}
-Sys.sleep(4)
-```
-
 ```{r prob10-8, exercise = TRUE}
 
 ```
 
 ```{r prob10-8-check}
+Sys.sleep(2.5)
+
 grade_result(
   pass_if(~ (.result == 0.5))
 )
@@ -1736,15 +1666,13 @@ grade_result(
 
 Use the code block below to input or compute the standard error.
 
-```{r prob10-9-setup}
-Sys.sleep(4)
-```
-
 ```{r prob10-9, exercise = TRUE}
 
 ```
 
 ```{r prob10-9-check}
+Sys.sleep(2.5)
+
 grade_result(
   pass_if(~ (abs(.result - (sqrt(0.5*(1 - 0.5)/783))) < 0.0005))
 )
@@ -1754,15 +1682,13 @@ grade_result(
 
 Use the code block below to input or compute the test statistic.
 
-```{r prob10-10-setup}
-Sys.sleep(4)
-```
-
 ```{r prob10-10, exercise = TRUE}
 
 ```
 
 ```{r prob10-10-check}
+Sys.sleep(2.5)
+
 grade_result(
   pass_if(~ (abs(.result - ((0.52 - 0.5)/(sqrt(0.5*(1 - 0.5)/783)))) < 0.01))
 )
@@ -1772,15 +1698,13 @@ grade_result(
 
 Use the code block below to compute the $p$-value associated with this test.
 
-```{r prob10-11-setup}
-Sys.sleep(4)
-```
-
 ```{r prob10-11, exercise = TRUE}
 
 ```
 
 ```{r prob10-11-check}
+Sys.sleep(2.5)
+
 grade_result(
   pass_if(~ (abs(.result - (1 - pnorm((0.52 - 0.5)/(sqrt(0.5*(1 - 0.5)/783))))) < 0.0005))
 )
@@ -1943,15 +1867,13 @@ quiz(
 
 Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
 
-```{r prob11-9-setup}
-Sys.sleep(4.5)
-```
-
 ```{r prob11-9, exercise = TRUE}
 
 ```
 
 ```{r prob11-9-check}
+Sys.sleep(3)
+
 grade_result(
   pass_if(~ (abs(.result) == 1.1))
 )
@@ -1961,15 +1883,13 @@ grade_result(
 
 Use the code block below to input or compute the null value.
 
-```{r prob11-10-setup}
-Sys.sleep(4.5)
-```
-
 ```{r prob11-10, exercise = TRUE}
 
 ```
 
 ```{r prob11-10-check}
+Sys.sleep(3)
+
 grade_result(
   pass_if(~ (.result == 0))
 )
@@ -1979,15 +1899,13 @@ grade_result(
 
 Use the code block below to input or compute the standard error.
 
-```{r prob11-11-setup}
-Sys.sleep(4.5)
-```
-
 ```{r prob11-11, exercise = TRUE}
 
 ```
 
 ```{r prob11-11-check}
+Sys.sleep(3)
+
 grade_result(
   pass_if(~ (abs(.result - (4.9/sqrt(51))) < 0.01))
 )
@@ -1997,15 +1915,13 @@ grade_result(
 
 Use the code block below to input or compute the test statistic.
 
-```{r prob11-12-setup}
-Sys.sleep(4.5)
-```
-
 ```{r prob11-12, exercise = TRUE}
 
 ```
 
 ```{r prob11-12-check}
+Sys.sleep(3)
+
 grade_result(
   pass_if(~ (abs(.result - ((1.1 - 0)/(4.9/sqrt(51)))) < 0.01))
 )
@@ -2015,15 +1931,13 @@ grade_result(
 
 Use the code block below to compute the $p$-value associated with this test.
 
-```{r prob11-13-setup}
-Sys.sleep(4.5)
-```
-
 ```{r prob11-13, exercise = TRUE}
 
 ```
 
 ```{r prob11-13-check}
+Sys.sleep(3)
+
 grade_result(
   pass_if(~ (abs(.result - (1 - pt(((1.1 - 0)/(4.9/sqrt(51))), df = 51 -1))) < 0.0005))
 )
@@ -2158,15 +2072,13 @@ quiz(
 
 Use the code block below to input or compute the critical value which should be used in the construction of the confidence interval.
 
-```{r prob12-7-setup}
-Sys.sleep(5)
-```
-
 ```{r prob12-7, exercise = TRUE}
 
 ```
 
 ```{r prob12-7-check}
+Sys.sleep(3)
+
 grade_result(
   pass_if(~ (abs(abs(.result) - qt(0.95, df = 15 - 1)) < 0.01))
 )
@@ -2176,15 +2088,13 @@ grade_result(
 
 Use the code block below to input or compute the point estimate.
 
-```{r prob12-8-setup}
-Sys.sleep(5)
-```
-
 ```{r prob12-8, exercise = TRUE}
 
 ```
 
 ```{r prob12-8-check}
+Sys.sleep(3)
+
 grade_result(
   pass_if(~ (.result == 2.03))
 )
@@ -2194,15 +2104,13 @@ grade_result(
 
 Use the code block below to input or compute the standard error.
 
-```{r prob12-9-setup}
-Sys.sleep(5)
-```
-
 ```{r prob12-9, exercise = TRUE}
 
 ```
 
 ```{r prob12-9-check}
+Sys.sleep(3)
+
 grade_result(
   pass_if(~ (abs(.result - (0.025/sqrt(15))) < 0.005))
 )
@@ -2212,15 +2120,13 @@ grade_result(
 
 Use the code block below to compute the lower bound for our confidence interval.
 
-```{r prob12-10-setup}
-Sys.sleep(5)
-```
-
 ```{r prob12-10, exercise = TRUE}
 
 ```
 
 ```{r prob12-10-check}
+Sys.sleep(3)
+
 grade_result(
   pass_if(~ (abs(.result - (2.03 - (qt(0.95, df = 15 - 1)*(0.025/sqrt(15))))) < 0.005))
 )
@@ -2230,15 +2136,13 @@ grade_result(
 
 Use the code block below to compute the upper bound for our confidence interval.
 
-```{r prob12-11-setup}
-Sys.sleep(5)
-```
-
 ```{r prob12-11, exercise = TRUE}
 
 ```
 
 ```{r prob12-11-check}
+Sys.sleep(3)
+
 grade_result(
   pass_if(~ (abs(.result - (2.03 + (qt(0.95, df = 15 - 1)*(0.025/sqrt(15))))) < 0.005))
 )
