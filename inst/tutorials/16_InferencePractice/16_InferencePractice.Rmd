@@ -636,7 +636,7 @@ quiz(
 Use the code block below to input or compute the critical value which should be used in the construction of the confidence interval.
 
 ```{r prob4-6-setup}
-Sys.sleep(1)
+Sys.sleep(1.5)
 ```
 
 ```{r prob4-6, exercise = TRUE}
@@ -654,7 +654,7 @@ grade_result(
 Use the code block below to input or compute the point estimate.
 
 ```{r prob4-7-setup}
-Sys.sleep(1)
+Sys.sleep(1.5)
 ```
 
 ```{r prob4-7, exercise = TRUE}
@@ -672,7 +672,7 @@ grade_result(
 Use the code block below to input or compute the standard error.
 
 ```{r prob4-8-setup}
-Sys.sleep(1)
+Sys.sleep(1.5)
 ```
 
 ```{r prob4-8, exercise = TRUE}
@@ -690,7 +690,7 @@ grade_result(
 Use the code block below to compute the lower bound for our confidence interval.
 
 ```{r prob4-9-setup}
-Sys.sleep(1)
+Sys.sleep(1.5)
 ```
 
 ```{r prob4-9, exercise = TRUE}
@@ -708,7 +708,7 @@ grade_result(
 Use the code block below to compute the upper bound for our confidence interval.
 
 ```{r prob4-10-setup}
-Sys.sleep(1)
+Sys.sleep(1.5)
 ```
 
 ```{r prob4-10, exercise = TRUE}
@@ -772,7 +772,7 @@ question_radio(
 Use the code block below to either input or compute the desired margin of error.
 
 ```{r prob5-3-setup}
-Sys.sleep(1)
+Sys.sleep(2)
 ```
 
 ```{r prob5-3, exercise = TRUE}
@@ -790,7 +790,7 @@ grade_result(
 Use the code block below to either input or critical value ($z_{\alpha/2}$) which should be used to compute the required sample size.
 
 ```{r prob5-4-setup}
-Sys.sleep(1)
+Sys.sleep(2)
 ```
 
 ```{r prob5-4, exercise = TRUE}
@@ -808,7 +808,7 @@ grade_result(
 Use the code block below to either input or compute the value of $p$ which should be used in the calculation of required sample size.
 
 ```{r prob5-5-setup}
-Sys.sleep(1)
+Sys.sleep(2)
 ```
 
 ```{r prob5-5, exercise = TRUE}
@@ -826,7 +826,7 @@ grade_result(
 Use the code block below to compute the minimum size sample the pollster could take and be within his parameters.
 
 ```{r prob5-6-setup}
-Sys.sleep(1)
+Sys.sleep(2)
 ```
 
 ```{r prob5-6, exercise = TRUE}
@@ -934,7 +934,7 @@ quiz(
 Use the code block below to input or compute the critical value which should be used in the construction of the confidence interval.
 
 ```{r prob6-6-setup}
-Sys.sleep(1.5)
+Sys.sleep(2.5)
 ```
 
 ```{r prob6-6, exercise = TRUE}
@@ -952,7 +952,7 @@ grade_result(
 Use the code block below to input or compute the point estimate.
 
 ```{r prob6-7-setup}
-Sys.sleep(1.5)
+Sys.sleep(2.5)
 ```
 
 ```{r prob6-7, exercise = TRUE}
@@ -970,7 +970,7 @@ grade_result(
 Use the code block below to input or compute the standard error.
 
 ```{r prob6-8-setup}
-Sys.sleep(1.5)
+Sys.sleep(2.5)
 ```
 
 ```{r prob6-8, exercise = TRUE}
@@ -988,7 +988,7 @@ grade_result(
 Use the code block below to compute the lower bound for our confidence interval.
 
 ```{r prob6-9-setup}
-Sys.sleep(1.5)
+Sys.sleep(2.5)
 ```
 
 ```{r prob6-9, exercise = TRUE}
@@ -1006,7 +1006,7 @@ grade_result(
 Use the code block below to compute the upper bound for our confidence interval.
 
 ```{r prob6-10-setup}
-Sys.sleep(1.5)
+Sys.sleep(2.5)
 ```
 
 ```{r prob6-10, exercise = TRUE}
@@ -1147,7 +1147,7 @@ quiz(
 Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
 
 ```{r prob7-7-setup}
-Sys.sleep(1.5)
+Sys.sleep(3)
 ```
 
 ```{r prob7-7, exercise = TRUE}
@@ -1165,7 +1165,7 @@ grade_result(
 Use the code block below to input or compute the null value.
 
 ```{r prob7-8-setup}
-Sys.sleep(1.5)
+Sys.sleep(3)
 ```
 
 ```{r prob7-8, exercise = TRUE}
@@ -1183,7 +1183,7 @@ grade_result(
 Use the code block below to input or compute the standard error.
 
 ```{r prob7-9-setup}
-Sys.sleep(1.5)
+Sys.sleep(3)
 ```
 
 ```{r prob7-9, exercise = TRUE}
@@ -1201,7 +1201,7 @@ grade_result(
 Use the code block below to input or compute the test statistic.
 
 ```{r prob7-10-setup}
-Sys.sleep(1.5)
+Sys.sleep(3)
 ```
 
 ```{r prob7-10, exercise = TRUE}
@@ -1219,7 +1219,7 @@ grade_result(
 Use the code block below to compute the $p$-value associated with this test.
 
 ```{r prob7-11-setup}
-Sys.sleep(1.5)
+Sys.sleep(3)
 ```
 
 ```{r prob7-11, exercise = TRUE}
@@ -1378,7 +1378,7 @@ quiz(
 Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
 
 ```{r prob8-8-setup}
-Sys.sleep(2)
+Sys.sleep(3.5)
 ```
 
 ```{r prob8-8, exercise = TRUE}
@@ -1396,7 +1396,7 @@ grade_result(
 Use the code block below to input or compute the null value.
 
 ```{r prob8-9-setup}
-Sys.sleep(2)
+Sys.sleep(3.5)
 ```
 
 ```{r prob8-9, exercise = TRUE}
@@ -1414,7 +1414,7 @@ grade_result(
 Use the code block below to input or compute the standard error.
 
 ```{r prob8-10-setup}
-Sys.sleep(2)
+Sys.sleep(3.5)
 ```
 
 ```{r prob8-10, exercise = TRUE}
@@ -1432,7 +1432,7 @@ grade_result(
 Use the code block below to input or compute the test statistic.
 
 ```{r prob8-11-setup}
-Sys.sleep(2)
+Sys.sleep(3.5)
 ```
 
 ```{r prob8-11, exercise = TRUE}
@@ -1450,7 +1450,7 @@ grade_result(
 Use the code block below to compute the $p$-value associated with this test.
 
 ```{r prob8-12-setup}
-Sys.sleep(2)
+Sys.sleep(3.5)
 ```
 
 ```{r prob8-12, exercise = TRUE}
@@ -1528,7 +1528,7 @@ question_radio(
 Use the code block below to either input or compute the desired margin of error (don't include the \$ sign in your answer).
 
 ```{r prob9-3-setup}
-Sys.sleep(2)
+Sys.sleep(4)
 ```
 
 ```{r prob9-3, exercise = TRUE}
@@ -1546,7 +1546,7 @@ grade_result(
 Use the code block below to either input or critical value ($z_{\alpha/2}$) which should be used to compute the required sample size.
 
 ```{r prob9-4-setup}
-Sys.sleep(2)
+Sys.sleep(4)
 ```
 
 ```{r prob9-4, exercise = TRUE}
@@ -1564,7 +1564,7 @@ grade_result(
 Use the code block below to either input or compute the estimate for $\sigma$ which should be used in the calculation of required sample size (don't include the \$ sign in your response).
 
 ```{r prob9-5-setup}
-Sys.sleep(2)
+Sys.sleep(4)
 ```
 
 ```{r prob9-5, exercise = TRUE}
@@ -1582,7 +1582,7 @@ grade_result(
 Use the code block below to compute the minimum size sample the pollster could take and be within his parameters.
 
 ```{r prob9-6-setup}
-Sys.sleep(2)
+Sys.sleep(4)
 ```
 
 ```{r prob9-6, exercise = TRUE}
@@ -1701,7 +1701,7 @@ quiz(
 Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
 
 ```{r prob10-7-setup}
-Sys.sleep(2)
+Sys.sleep(4)
 ```
 
 ```{r prob10-7, exercise = TRUE}
@@ -1719,7 +1719,7 @@ grade_result(
 Use the code block below to input or compute the null value.
 
 ```{r prob10-8-setup}
-Sys.sleep(2)
+Sys.sleep(4)
 ```
 
 ```{r prob10-8, exercise = TRUE}
@@ -1737,7 +1737,7 @@ grade_result(
 Use the code block below to input or compute the standard error.
 
 ```{r prob10-9-setup}
-Sys.sleep(2)
+Sys.sleep(4)
 ```
 
 ```{r prob10-9, exercise = TRUE}
@@ -1755,7 +1755,7 @@ grade_result(
 Use the code block below to input or compute the test statistic.
 
 ```{r prob10-10-setup}
-Sys.sleep(2)
+Sys.sleep(4)
 ```
 
 ```{r prob10-10, exercise = TRUE}
@@ -1773,7 +1773,7 @@ grade_result(
 Use the code block below to compute the $p$-value associated with this test.
 
 ```{r prob10-11-setup}
-Sys.sleep(2)
+Sys.sleep(4)
 ```
 
 ```{r prob10-11, exercise = TRUE}
@@ -1944,7 +1944,7 @@ quiz(
 Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
 
 ```{r prob11-9-setup}
-Sys.sleep(2.5)
+Sys.sleep(4.5)
 ```
 
 ```{r prob11-9, exercise = TRUE}
@@ -1962,7 +1962,7 @@ grade_result(
 Use the code block below to input or compute the null value.
 
 ```{r prob11-10-setup}
-Sys.sleep(2.5)
+Sys.sleep(4.5)
 ```
 
 ```{r prob11-10, exercise = TRUE}
@@ -1980,7 +1980,7 @@ grade_result(
 Use the code block below to input or compute the standard error.
 
 ```{r prob11-11-setup}
-Sys.sleep(2.5)
+Sys.sleep(4.5)
 ```
 
 ```{r prob11-11, exercise = TRUE}
@@ -1998,7 +1998,7 @@ grade_result(
 Use the code block below to input or compute the test statistic.
 
 ```{r prob11-12-setup}
-Sys.sleep(2.5)
+Sys.sleep(4.5)
 ```
 
 ```{r prob11-12, exercise = TRUE}
@@ -2016,7 +2016,7 @@ grade_result(
 Use the code block below to compute the $p$-value associated with this test.
 
 ```{r prob11-13-setup}
-Sys.sleep(2.5)
+Sys.sleep(4.5)
 ```
 
 ```{r prob11-13, exercise = TRUE}
@@ -2159,7 +2159,7 @@ quiz(
 Use the code block below to input or compute the critical value which should be used in the construction of the confidence interval.
 
 ```{r prob12-7-setup}
-Sys.sleep(2.5)
+Sys.sleep(5)
 ```
 
 ```{r prob12-7, exercise = TRUE}
@@ -2177,7 +2177,7 @@ grade_result(
 Use the code block below to input or compute the point estimate.
 
 ```{r prob12-8-setup}
-Sys.sleep(2.5)
+Sys.sleep(5)
 ```
 
 ```{r prob12-8, exercise = TRUE}
@@ -2195,7 +2195,7 @@ grade_result(
 Use the code block below to input or compute the standard error.
 
 ```{r prob12-9-setup}
-Sys.sleep(2.5)
+Sys.sleep(5)
 ```
 
 ```{r prob12-9, exercise = TRUE}
@@ -2213,7 +2213,7 @@ grade_result(
 Use the code block below to compute the lower bound for our confidence interval.
 
 ```{r prob12-10-setup}
-Sys.sleep(2.5)
+Sys.sleep(5)
 ```
 
 ```{r prob12-10, exercise = TRUE}
@@ -2231,7 +2231,7 @@ grade_result(
 Use the code block below to compute the upper bound for our confidence interval.
 
 ```{r prob12-11-setup}
-Sys.sleep(2.5)
+Sys.sleep(5)
 ```
 
 ```{r prob12-11, exercise = TRUE}
