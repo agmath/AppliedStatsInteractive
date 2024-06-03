@@ -54,7 +54,8 @@ In this workbook, we continue our exploration of statistical inference. Through 
 
 ###
 
-As a reminder, we have the [*standard errror decision tree*](www/StdErrorDecisionTree.pdf){target="_blank"} which you'll continue to make use of. In case you need a refresher on the tree, you can find my walkthrough video below:
+As a reminder, we have the [*standard errror decision tree*](https://agmath.github.io/SiteFiles/StdErrorDecisionTree.pdf){target="_blank"}, [*general strategy for conducting hypothesis tests*](https://agmath.github.io/SiteFiles/HTgeneral.pdf), and [*general strategy for constructing confidence intervals*](https://agmath.github.io/SiteFiles/CIgeneral.pdf){target="_blank"} which you'll continue to make use of. In case you need a refresher on the tree, you can find my walkthrough video below:
+
 <center><iframe width="560" height="315" src="https://www.youtube.com/embed/5bAylfMIArg?start=16" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
 
 ###
@@ -85,7 +86,7 @@ There are several other rules of thumb which people follow -- such as, even if y
 
 ###
 
-Okay, so what does the $t$-distribution actually look like? As we've mentioned before and was cited in the video introductions, the $t$-distribution is a family of distributions identified by a parameter called *degrees of freedom*. Below you can see a standard normal distribution in **black**, a $t$-distribution with 3 degrees of freedom in **<span style = "color:red">red</span>**, and a $t$-distribution with 12 degrees of freedom in **<span style = "color:blue">blue</span>**.
+Okay, so what does the $t$-distribution actually look like? As we've mentioned before and was cited in the video introductions, the $t$-distributions are a family of distributions identified by a parameter called *degrees of freedom*. Below you can see a standard normal distribution in **black**, a $t$-distribution with 3 degrees of freedom in **<span style = "color:red">red</span>**, and a $t$-distribution with 12 degrees of freedom in **<span style = "color:blue">blue</span>**.
 
 ```{r normal-and-two-ts, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE}
 ggplot() + geom_line(mapping = aes(x = seq(-3.5, 3.5, length.out = 200), y = dnorm(seq(-3.5, 3.5, length.out = 200), 0, 1)), color = "black", lwd = 1.25) + geom_line(mapping = aes(x = seq(-3.5, 3.5, length.out = 200), y = dt(seq(-3.5, 3.5, length.out = 200), 3)), color = "red", lwd = 1.25) + geom_line(mapping = aes(x = seq(-3.5, 3.5, length.out = 200), y = dt(seq(-3.5, 3.5, length.out = 200), 12)), color = "blue", lwd = 1.25) + labs(title = "Normal and t-Distributions", x = "", y= "")
@@ -118,7 +119,7 @@ We have analogous functions for the $t$-distribution.
   
 ###
 
-Notice that our functions for the $t$-distribution do not have parameters for the mean or standard deviation. This means that we must always work with standardized variables (see the formula for the test statistic on the standard error decision tree) when working with the $t$-distributions.
+Notice that our functions for the $t$-distribution do not have parameters for the mean or standard deviation. This means that we must always work with standardized variables (see the formula for the test statistic in the lower-left corner of the standard error decision tree) when working with the $t$-distributions.
   
 ###
 
@@ -127,6 +128,54 @@ Let's start with some practice using the `pt()` and `qt()` functions. Don't forg
 **Question 1:** Use the code block below to find $\mathbb{P}\left[t < \right.$ `r boundary1` $\left.\right]$ in a $t$-distribution with `r df1` degrees of freedom.
 
 ```{r pt-ex1-left, exercise = TRUE}
+
+```
+
+```{r pt-ex1-left-hint-1}
+#Start with a drawing of a t-distribution
+
+```
+
+```{r pt-ex1-left-hint-2}
+#The t-distribution looks like a normal distribution, 
+#but must be centered at 0
+
+```
+
+```{r pt-ex1-left-hint-3}
+#Now add your boundary value to your picture. Make sure
+#you put it on the appropriate side of 0.
+
+```
+
+```{r pt-ex1-left-hint-4}
+#Shade to the appropriate side of your boundary value 
+#and underneath your t-distribution to visualize the 
+#probability you are looking for.
+
+```
+
+```{r pt-ex1-left-hint-5}
+#From your picture, should your answer be larger or 
+#smaller than 0.5?
+
+```
+
+```{r pt-ex1-left-hint-6}
+#Use the pt() function to find the probability.
+
+```
+
+```{r pt-ex1-left-hint-7}
+#As a reminder, the arguments for pt() are, inorder:
+###the boundary value, and
+###the degrees of freedom (df)
+
+#Clicking "Next Hint" will show the solution.
+```
+
+```{r pt-ex1-left-solution}
+pt(1.49, df = 20)
 
 ```
 
@@ -144,6 +193,42 @@ grade_result(
 
 ```
 
+```{r pt-ex2-right-hint-1}
+#Follow the same strategy as for the previous question.
+##1) Start by drawing the t-distribution with 0 in the 
+##center. As a reminder the t-distribution looks like
+##the normal distribution.
+##2) Add your boundary value to your picture and shade.
+##3) Use pt() to find the probability.
+
+```
+
+```{r pt-ex2-right-hint-2}
+#Pay close attention to whether you are looking for the
+#area to the left of your boundary value or the right
+#side.
+
+```
+
+```{r pt-ex2-right-hint-3}
+#Like pnorm(), our pt() function will return the area 
+#to the LEFT of the boundary value.
+
+```
+
+```{r pt-ex2-right-hint-4}
+#1) Use pt() to find the area to the left of the 
+#boundary value.
+#2) Subtract this area from 1 in order to obtain the 
+#area to the left.
+
+#Click "Next Hint" to see the solution.
+```
+
+```{r pt-ex2-right-solution}
+1 - pt(-1.9, df = 12)
+```
+
 ```{r pt-ex2-right-check}
 grade_result(
   pass_if(~ (abs(.result - (1 - pt(boundary2, df2))) < 0.001))
@@ -158,6 +243,59 @@ grade_result(
 
 ```
 
+```{r qt-ex3-hint-1}
+#We are looking for the cutoff (boundary) value now, 
+#rather than the probability.
+
+```
+
+```{r qt-ex3-hint-2}
+#Draw a picture including a t-distribution and the 
+#known area to match the description in the question.
+
+```
+
+```{r qt-ex3-hint-3}
+#Should your cutoff value be larger, or smaller, 
+#than 0?
+###Note: We are asking about 0 here rather than 0.5 
+###because 0 is the cutoff/boundary value corresponding
+###to the middle of our distribution.
+
+```
+
+```{r qt-ex3-hint-4}
+#The pt() function will take a boundary value and 
+#give us back a probability (area). We need a function
+#that will do the reverse.
+
+```
+
+```{r qt-ex3-hint-5}
+#You'll need the qt() function here instead of the 
+#pt() function.
+
+```
+
+```{r qt-ex3-hint-6}
+#The qt() function takes in the area to the LEFT of the
+#boundary value we are looking for, and also takes in 
+#the degrees of freedom for the distribution.
+
+```
+
+```{r qt-ex3-hint-7}
+#Fill in the blanks to find the answer:
+
+qt(___, df = ___)
+
+#Clicking "Next Hint" will show the solution.
+```
+
+```{r qt-ex3-solution}
+qt(0.67, df = 23)
+```
+
 ```{r qt-ex3-check}
 grade_result(
   pass_if(~ (abs(.result - qt(area3, df3)) < 0.01))
@@ -170,6 +308,85 @@ grade_result(
 
 ```{r qt-ex4, exercise = TRUE}
 
+```
+
+```{r qt-ex4-hint-1}
+#As usual, start with a picture of a t-distribution.
+```
+
+```{r qt-ex4-hint-2}
+#When constructing a confidence interval, there are two
+#ways our interval can miss the parameter we are trying
+#to capture. Our interval could contain only values too
+#large or only values too small.
+
+```
+
+```{r qt-ex4-hint-3}
+#Because there are two ways to miss the parameter, we
+#build two shaded regions -- one in the left tail and 
+#one in the right tail.
+
+```
+
+```{r qt-ex4-hint-4}
+#If we are to be 99% confident that we capture the 
+#population parameter, how much area is contained in 
+#each of these shaded tails?
+
+```
+
+```{r qt-ex4-hint-5}
+#The shaded tails represent us missing the population
+#parameter, so altogether the shaded area in the 
+#distribution is the remaining 1%.
+
+```
+
+```{r qt-ex4-hint-6}
+#This means that *each* shaded region holds an area 
+#of 0.005 (half of 1%).
+
+```
+
+```{r qt-ex4-hint-7}
+#The "critical value" is the boundary value corresponding
+#to that upper shaded tail. That is, the shaded area on
+#the right side of the distribution.
+
+```
+
+```{r qt-ex4-hint-8}
+#We'll need qt() to find the boundary value.
+###What is the area to the left of the boundary value 
+###in the right tail?
+###How many degrees of freedom do we have?
+
+```
+
+```{r qt-ex4-hint-9}
+#The area to the left of the boundary value in the right 
+#tail is 0.995 (the 0.005 we shaded in the lower-left 
+#tail, plus the 0.99 in the center of the distribution).
+
+```
+
+```{r qt-ex4-hint-10}
+#Knowing that the area to the left of the boundary 
+#value is 0.995 and we have 14 degrees of freedom.
+
+```
+
+```{r qt-ex4-hint-11}
+#Fill in the blanks to find the critical value.
+
+qt(___, df = ___)
+
+#Clicking "Next Hint" will show the solution.
+```
+
+```{r qt-ex4-solution}
+qt(0.995, df = 14)
 ```
 
 ```{r qt-ex4-check}
@@ -207,8 +424,48 @@ question_radio(
 ###
 
 Use the code block below to compute the point estimate for average sentence length (`SentenceMonths`).
+
 ```{r sentencing-ci-2, exercise = TRUE}
 
+```
+
+```{r sentencing-ci-2-hint-1}
+#Find the average (mean) of the SentenceMonths column
+#of the SDNYdrug data frame.
+
+```
+
+```{r sentencing-ci-2-hint-2}
+#Pipe the SDNYdrug data frame into summarize()
+
+```
+
+```{r sentencing-ci-2-hint-3}
+#Fill in the blank:
+
+SDNYdrug %>%
+  summarize(___)
+```
+
+```{r sentencing-ci-2-hint-4}
+#Fill in the blank:
+
+SDNYdrug %>%
+  summarize(avg_sentence_length = ___)
+```
+
+```{r sentencing-ci-2-hint-5}
+#Fill in the blank:
+
+SDNYdrug %>%
+  summarize(avg_sentence_length = mean(___))
+
+#Clicking "Next Hint" will show the solution.
+```
+
+```{r sentencing-ci-2-solution}
+SDNYdrug %>%
+  summarize(avg_sentence_length = mean(SentenceMonths))
 ```
 
 ```{r sentencing-ci-2-check}
@@ -216,10 +473,6 @@ grade_result(
   pass_if(~ (abs(.result - mean(SDNYdrug$SentenceMonths)) < 0.01))
 )
 ```
-
-<div id="sentencing-ci-2-hint">
-The variable `SentenceMonths` is a column within the `SDNYdrug` data frame. Remember that you can access columns in a data frame with the `$` operator or you can utilize the pipe operator (`%>%`) in conjunction with the `summarize()` function.
-</div>
 
 ###
 
@@ -239,8 +492,65 @@ question_radio(
 ###
 
 Use the code block below to compute the standard error
+
 ```{r sentencing-ci-4, exercise = TRUE}
 
+```
+
+```{r sentencing-ci-4-hint-1}
+#According to your answer above, you'll need the number
+#of prison sentences in the data set and also the 
+#standard deviation in the lengths of the prison
+#sentences.
+
+```
+
+```{r sentencing-ci-4-hint-2}
+#There are several ways to find these values. Remember
+#that piping your data frame into nrow() will show the
+#number of observations in the data frame.
+#Additionally, you can use your answer from the previous
+#code block and replace the mean() function with sd()
+#to compute the standard deviation instead of the mean.
+
+```
+
+```{r sentencing-ci-4-hint-3}
+#Fill in the blanks:
+SDNYdrug %>%
+  ___
+
+SDNYdrug %>%
+  summarize(sd_sentence_lengths = sd(___))
+```
+
+```{r sentencing-ci-4-hint-4}
+#Note: You could also find both of these values at once:
+
+SDNYdrug %>%
+  summarize(
+    num_sentences = n(),
+    sd_sentence_lengths = sd(SentenceMonths)
+    )
+```
+
+```{r sentencing-ci-4-hint-5}
+#Now that you have the number of observations and the
+#standard deviation in sentence lengths, you can use
+#them to evaluate the standard error formula.
+
+```
+
+```{r sentencing-ci-4-hint-6}
+#Fill in the blanks:
+
+___/sqrt(___)
+
+#Clicking "Next Hint" will show the solution.
+```
+
+```{r sententcing-ci-4-solution}
+53.91466/sqrt(280)
 ```
 
 ```{r sentencing-ci-4-check}
@@ -249,19 +559,15 @@ grade_result(
 )
 ```
 
-<div id = "sentencing-ci-4-hint">
-Remember that you can compute the standard deviation in R with the `sd()` function. Additionally, you can find the number of rows in a data frame by passing the name of the data frame to R's `nrow()` function. The `sqrt()` function will also be useful to you.
-</div>
-
 ###
 
 ```{r sentencing-ci-5, echo = FALSE}
 question_radio(
   "The distribution to be used is",
   answer("Normal"),
-  answer("t-distribution with $df = n - 1$", correct = TRUE),
-  answer("t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$"),
-  answer("t-distribution with $df = n_{\\text{diff}} - 1$"),
+  answer("t-distribution with $\\text{df} = n - 1$", correct = TRUE),
+  answer("t-distribution with $\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}$"),
+  answer("t-distribution with $\\text{df} = n_{\\text{diff}} - 1$"),
   answer("We should not use either the normal- or t- distributions"),
   allow_retry = TRUE,
   random_answer_order = TRUE
@@ -286,8 +592,17 @@ question_radio(
 ###
 
 Use the code block below to enter or compute the critical value associated with your confidence interval.
+
 ```{r sentencing-ci-7, exercise = TRUE}
 
+```
+
+```{r sentencing-ci-7-hint-1}
+#You completed a very similar problem earlier in this
+#notebook. Go back and find what you did in the 
+#Question asking you to find the critical value 
+#corresponding to a 99% confidence interval, just 
+#before you started working on the SDNY application.
 ```
 
 ```{r sentencing-ci-7-check}
@@ -296,19 +611,44 @@ grade_result(
 )
 ```
 
-<div id = "sentencing-ci-7-hint">
-Did you try using 1.96? Remember that we can't use the normal distribution here. You can find the critical value you need by making use of the `qt()` function.
-</div>
-
 ###
 
-Did you remember to use the `qt()` function to determine the critical value? With so many observations, the correct critical value differed very little from the 1.96 value used with the normal distribution. Remember that the critical values provided on the *standard error decision tree* are for use with the normal distribution only. Any time we use a sample standard deviation as a "stand-in" for the population standard deviation while computing standard error, we should be using critical values from a $t$-distribution. We can get the critical value using R's `qt()` function -- this will make a real difference if sample sizes are smaller.
+Did you remember to use the `qt()` function to determine the critical value? With so many observations, the correct critical value differed very little from the 1.96 value used with the normal distribution. Remember that the critical values provided on the *standard error decision tree* are for use with the normal distribution only. Any time we use a sample standard deviation as a "stand-in" for the population standard deviation while computing standard error, we should be using critical values from a $t$-distribution. We can get the critical value using R's `qt()` function. This will make a real difference if sample sizes are smaller.
 
 ###
 
 Use the code block below to compute the lower bound for the 95% confidence interval.
+
 ```{r sentencing-ci-8, exercise = TRUE}
 
+```
+
+```{r sentencing-ci-8-hint-1}
+#Remember that the formula for a confidence interval is:
+##(point estimate) +/- (critical value)*(standard error)
+```
+
+```{r sentencing-ci-8-hint-2}
+#You have the point estimate: average sentence length
+#You have the critical value
+#You have the standard error
+```
+
+```{r sentencing-ci-8-hint-3}
+#You obtain the lower bound by evaluating the confidence
+#interval formula with the subtraction operation.
+```
+
+```{r sentencing-ci-8-hint-4}
+#Fill in the blanks to find the lower bound:
+
+(___) - ((___)*(___))
+
+#Clicking "Next Hint" will show the solution.
+```
+
+```{r sentencing-ci-8-solution}
+42.7465 - (1.9685*3.222)
 ```
 
 ```{r sentencing-ci-8-check}
@@ -320,8 +660,15 @@ grade_result(
 ###
 
 And use the code block below to compute the upper bound for the 95% confidence interval.
+
 ```{r sentencing-ci-9, exercise = TRUE}
 
+```
+
+```{r sentencing-ci-9-hint-1}
+#This is done the same way as finding the lower bound.
+#You'll just swap the subtraction operation for 
+#addition.
 ```
 
 ```{r sentencing-ci-9-check}
@@ -394,7 +741,7 @@ question_radio(
 
 ```{r sentencing-ht-3, echo = FALSE}
 question_radio(
-  "Does this hypothesis test involve testing a statement about the mean ($\\mu$), a proportion ($p$), or something else?",
+  "Does this hypothesis test involve testing a statement about the mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
   answer("One or more means", correct = TRUE),
   answer("One or more proportions"),
   answer("Something else altogether"),
@@ -485,8 +832,27 @@ quiz(
 I've stored the sentence lengths (in months) handed down to white offenders in an object called `whiteSentences` and the sentence lengths for non-white offenders in an object called `nonWhiteSentences`. Use the code blocks below to answer the corresponding questions.
 
 Find the number of white offenders sentenced in our dataset.
+
 ```{r sentencing-ht-9, exercise = TRUE}
 
+```
+
+```{r sentencing-ht-9-hint-1}
+#Since the whiteSentences object is just a list of 
+#values and not a data frame, we'll need to use the
+#length() function instead of nrow()
+```
+
+```{r sentencing-ht-9-hint-2}
+#Fill in the blank to find the number of white offenders.
+
+length(___)
+
+#Clicking "Next Hint" will show the solution.
+```
+
+```{r sentencing-ht-9-solution}
+length(whiteSentences)
 ```
 
 ```{r sentencing-ht-9-check}
@@ -495,13 +861,17 @@ grade_result(
 )
 ```
 
-<div id = "sentencing-ht-9-hint"> Since `whiteSentences` and `nonWhiteSentences` are vectors of sentence lengths rather than full data frames, the `nrow()` function won't work on them. Try using the `length()` function instead.</div>
-
 ###
 
 Find the number of non-white offenders sentenced in our dataset.
+
 ```{r sentencing-ht-10, exercise = TRUE}
 
+```
+
+```{r sentencing-ht-10-hint-1}
+#Do the same thing you just did, but for the list of
+#nonWhiteSentences instead.
 ```
 
 ```{r sentencing-ht-10-check}
@@ -510,9 +880,28 @@ grade_result(
 )
 ```
 
+###
+
 Compute the average sentence length in months for the white offenders.
+
 ```{r sentencing-ht-11, exercise = TRUE}
 
+```
+
+```{r sentencing-ht-11-hint-1}
+#Use the mean() function on the list of whiteSentences
+```
+
+```{r sentencing-ht-11-hint-2}
+#Fill in the blank:
+
+mean(___)
+
+#Clicking "Next Hint" will show the solution.
+```
+
+```{r sentencing-ht-11-solution}
+mean(whiteSentences)
 ```
 
 ```{r sentencing-ht-11-check}
@@ -522,8 +911,13 @@ grade_result(
 ```
 
 Compute the average sentence length in months for the non-white offenders.
+
 ```{r sentencing-ht-12, exercise = TRUE}
 
+```
+
+```{r sentencing-ht-12-hint-1}
+#Again, use the same approach here.
 ```
 
 ```{r sentencing-ht-12-check}
@@ -535,8 +929,13 @@ grade_result(
 ###
 
 Compute the standard deviation in sentence lengths for the white offenders.
+
 ```{r sentencing-ht-13, exercise = TRUE}
 
+```
+
+```{r sentencing-ht-13-hint-1}
+#Use the sd() function to find the standard deviation
 ```
 
 ```{r sentencing-ht-13-check}
@@ -558,7 +957,7 @@ grade_result(
 
 ###
 
-Okay, we've answered lots of questions that give us pieces of our analysis. Now, let's think about putting to pieces together to compute the test statistic, $p$-value, and complete the hypothesis test.
+Okay, we've answered lots of questions that give us important components for our analysis. Now, let's think about putting to pieces together to compute the test statistic, $p$-value, and complete the hypothesis test.
 
 ```{r sentencing-ht-15, echo = FALSE}
 quiz(
@@ -587,7 +986,25 @@ quiz(
 ###
 
 Compute the point estimate
+
 ```{r sentencing-ht-16, exercise = TRUE}
+
+```
+
+```{r sentencing-ht-16-hint-1}
+#The form of the population parameter tells you how
+#to compute your point estimate.
+```
+
+```{r sentencing-ht-16-hint-2}
+#The population parameter is the difference between 
+#the two population means.
+```
+
+```{r sentencing-ht-16-hint-3}
+#Subtract the average sentence length for non-white
+#offenders from the average sentence length for white
+#offenders.
 
 ```
 
@@ -600,8 +1017,26 @@ grade_result(
 ###
 
 Compute the standard error
+
 ```{r sentencing-ht-17, exercise = TRUE}
 
+```
+
+```{r sentencing-ht-17-hint-1}
+#You identified the appropriate formula for the 
+#standard error earlier. Go back and find it.
+```
+
+```{r sentencing-ht-17-hint-2}
+#The standard error formula involves both sample sizes
+#and both sample standard deviations. You found those
+#earlier, too!
+```
+
+```{r sentencing-ht-17-hint-3}
+#Fill in the blanks to find the standard error:
+
+sqrt((___^2/___) + (___^2)/___)
 ```
 
 ```{r sentencing-ht-17-check}
@@ -613,8 +1048,16 @@ grade_result(
 ###
 
 Compute the test statistic
+
 ```{r sentencing-ht-18, exercise = TRUE}
 
+```
+
+```{r sentencing-ht-18-hint-1}
+#The formula for the point estimate is:
+##((point estimate) - (null value))/(standard error)
+
+#You have all the components you need!
 ```
 
 ```{r sentencing-ht-18-check}
@@ -626,8 +1069,36 @@ grade_result(
 ###
 
 Compute the degrees of freedom for this test.
+
 ```{r sentencing-ht-18_5, exercise = TRUE}
 
+```
+
+```{r sentencing-ht-18_5-hint-1}
+#You identified the formula for the degrees of freedom
+#earlier. As a reminder, you can find how to compute
+#the degrees of freedom associated with a t-distribution
+#from the Standard Error Decision Tree.
+```
+
+```{r sentencing-ht-18_5-hint-2}
+#The degrees of freedom for this "two-sample" test 
+#depends on the size of the smaller of the two samples.
+```
+
+```{r sentencing-ht-18_5-hint-3}
+#The degrees of freedom is one less than the size of 
+#the smaller sample.
+```
+
+```{r sentencing-ht-18_5-hint-4}
+#There were fewer non-white sentences than white 
+#sentences.
+```
+
+```{r sentencing-ht-18_5-hint-5}
+#There were 243 non-white sentences in the data set. 
+#The degrees of freedom is one less than that.
 ```
 
 ```{r sentencing-ht-18_5-check}
@@ -639,8 +1110,58 @@ grade_result(
 ###
 
 Compute the p-value
+
 ```{r sentencing-ht-19, exercise = TRUE}
 
+```
+
+```{r sentencing-ht-19-hint-1}
+#If you've been following the general strategy for 
+#conducting a hypothesis, you should have a picture 
+#of the samples which would lead you to believe the
+#alternative hypothesis instead of the null hypothesis.
+
+#If you haven't done this yet, do it now. 
+```
+
+```{r sentencing-ht-19-hint-2}
+#Our test asks about a "difference" in average sentence
+#lengths. There are two ways for the sentences lengths
+#to differ. White offenders could receive longer 
+#sentences on average (a positive difference), or 
+#non-white offenders could receive longer sentences 
+#on average (a negative difference).
+```
+
+```{r sentencing-ht-19-hint-3}
+#Because of this, the picture of your alternative 
+#hypothesis should have both tails shaded.
+```
+
+```{r sentencing-ht-19-hint-4}
+#Since your picture has two shaded areas, your p-value
+#will come in two parts. Both shaded areas are the same
+#size, so we can just find one area and double it.
+```
+
+```{r sentencing-ht-19-hint-5}
+#Draw another picture of a t-distribution and include
+#your test statistic as a boundary value. Shade from
+#your test statistic into the tail of the distribution.
+```
+
+```{r sentencing-ht-19-hint-6}
+#Find the area of that shaded region by using pt()
+#with your boundary value and the appropriate number
+#of degrees of freedom.
+
+#Remember that pt() will always give you the area to 
+#the LEFT of your boundary value.
+```
+
+```{r sentencing-ht-19-hint-7}
+#Now that you have that tail area, double it in order
+#to find the p-value for this test.
 ```
 
 ```{r sentencing-ht-19-check}

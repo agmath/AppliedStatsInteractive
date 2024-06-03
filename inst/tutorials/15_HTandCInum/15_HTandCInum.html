@@ -126,10 +126,16 @@ the Southern District of the State of New York.</p>
 </div>
 <div id="section-section-1" class="section level3">
 <h3></h3>
-As a reminder, we have the <a href="www/StdErrorDecisionTree.pdf"
-target="_blank"><em>standard errror decision tree</em></a> which you’ll
-continue to make use of. In case you need a refresher on the tree, you
-can find my walkthrough video below:
+<p>As a reminder, we have the <a
+href="https://agmath.github.io/SiteFiles/StdErrorDecisionTree.pdf"
+target="_blank"><em>standard errror decision tree</em></a>, <a
+href="https://agmath.github.io/SiteFiles/HTgeneral.pdf"><em>general
+strategy for conducting hypothesis tests</em></a>, and <a
+href="https://agmath.github.io/SiteFiles/CIgeneral.pdf"
+target="_blank"><em>general strategy for constructing confidence
+intervals</em></a> which you’ll continue to make use of. In case you
+need a refresher on the tree, you can find my walkthrough video
+below:</p>
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5bAylfMIArg?start=16" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
@@ -195,7 +201,7 @@ standard deviation in place of the population distribution.</p>
 <p>Okay, so what does the <span
 class="math inline">\(t\)</span>-distribution actually look like? As
 we’ve mentioned before and was cited in the video introductions, the
-<span class="math inline">\(t\)</span>-distribution is a family of
+<span class="math inline">\(t\)</span>-distributions are a family of
 distributions identified by a parameter called <em>degrees of
 freedom</em>. Below you can see a standard normal distribution in
 <strong>black</strong>, a <span
@@ -270,9 +276,9 @@ degrees of freedom, is <code>p</code>.</li>
 <p>Notice that our functions for the <span
 class="math inline">\(t\)</span>-distribution do not have parameters for
 the mean or standard deviation. This means that we must always work with
-standardized variables (see the formula for the test statistic on the
-standard error decision tree) when working with the <span
-class="math inline">\(t\)</span>-distributions.</p>
+standardized variables (see the formula for the test statistic in the
+lower-left corner of the standard error decision tree) when working with
+the <span class="math inline">\(t\)</span>-distributions.</p>
 </div>
 <div id="section-section-10" class="section level3">
 <h3></h3>
@@ -289,6 +295,55 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="pt-ex1-left-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Start with a drawing of a t-distribution</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pt-ex1-left-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The t-distribution looks like a normal distribution, 
+#but must be centered at 0</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pt-ex1-left-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Now add your boundary value to your picture. Make sure
+#you put it on the appropriate side of 0.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pt-ex1-left-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Shade to the appropriate side of your boundary value 
+#and underneath your t-distribution to visualize the 
+#probability you are looking for.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pt-ex1-left-hint-5"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#From your picture, should your answer be larger or 
+#smaller than 0.5?</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pt-ex1-left-hint-6"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use the pt() function to find the probability.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pt-ex1-left-hint-7"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#As a reminder, the arguments for pt() are, inorder:
+###the boundary value, and
+###the degrees of freedom (df)
+
+#Clicking &quot;Next Hint&quot; will show the solution.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pt-ex1-left-solution"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>pt(1.49, df = 20)</code></pre>
+</div>
 </div>
 <div id="section-section-11" class="section level3">
 <h3></h3>
@@ -302,6 +357,45 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="pt-ex2-right-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Follow the same strategy as for the previous question.
+##1) Start by drawing the t-distribution with 0 in the 
+##center. As a reminder the t-distribution looks like
+##the normal distribution.
+##2) Add your boundary value to your picture and shade.
+##3) Use pt() to find the probability.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pt-ex2-right-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Pay close attention to whether you are looking for the
+#area to the left of your boundary value or the right
+#side.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pt-ex2-right-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Like pnorm(), our pt() function will return the area 
+#to the LEFT of the boundary value.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="pt-ex2-right-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#1) Use pt() to find the area to the left of the 
+#boundary value.
+#2) Subtract this area from 1 in order to obtain the 
+#area to the left.
+
+#Click &quot;Next Hint&quot; to see the solution.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="pt-ex2-right-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>1 - pt(-1.9, df = 12)</code></pre>
+</div>
 </div>
 <div id="section-section-12" class="section level3">
 <h3></h3>
@@ -312,6 +406,61 @@ for which the area to the left of the cutoff value is 0.67.</p>
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex3-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#We are looking for the cutoff (boundary) value now, 
+#rather than the probability.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex3-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Draw a picture including a t-distribution and the 
+#known area to match the description in the question.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex3-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Should your cutoff value be larger, or smaller, 
+#than 0?
+###Note: We are asking about 0 here rather than 0.5 
+###because 0 is the cutoff/boundary value corresponding
+###to the middle of our distribution.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex3-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The pt() function will take a boundary value and 
+#give us back a probability (area). We need a function
+#that will do the reverse.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex3-hint-5"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#You&#39;ll need the qt() function here instead of the 
+#pt() function.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex3-hint-6"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The qt() function takes in the area to the LEFT of the
+#boundary value we are looking for, and also takes in 
+#the degrees of freedom for the distribution.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex3-hint-7"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks to find the answer:
+
+qt(___, df = ___)
+
+#Clicking &quot;Next Hint&quot; will show the solution.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex3-solution"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>qt(0.67, df = 23)</code></pre>
 </div>
 </div>
 <div id="section-section-13" class="section level3">
@@ -324,6 +473,88 @@ freedom.</p>
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#As usual, start with a picture of a t-distribution.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#When constructing a confidence interval, there are two
+#ways our interval can miss the parameter we are trying
+#to capture. Our interval could contain only values too
+#large or only values too small.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Because there are two ways to miss the parameter, we
+#build two shaded regions -- one in the left tail and 
+#one in the right tail.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#If we are to be 99% confident that we capture the 
+#population parameter, how much area is contained in 
+#each of these shaded tails?</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-hint-5"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The shaded tails represent us missing the population
+#parameter, so altogether the shaded area in the 
+#distribution is the remaining 1%.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-hint-6"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#This means that *each* shaded region holds an area 
+#of 0.005 (half of 1%).</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-hint-7"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The &quot;critical value&quot; is the boundary value corresponding
+#to that upper shaded tail. That is, the shaded area on
+#the right side of the distribution.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-hint-8"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#We&#39;ll need qt() to find the boundary value.
+###What is the area to the left of the boundary value 
+###in the right tail?
+###How many degrees of freedom do we have?</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-hint-9"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The area to the left of the boundary value in the right 
+#tail is 0.995 (the 0.005 we shaded in the lower-left 
+#tail, plus the 0.99 in the center of the distribution).</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-hint-10"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Knowing that the area to the left of the boundary 
+#value is 0.995 and we have 14 degrees of freedom.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-hint-11"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks to find the critical value.
+
+qt(___, df = ___)
+
+#Clicking &quot;Next Hint&quot; will show the solution.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="qt-ex4-solution"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>qt(0.995, df = 14)</code></pre>
 </div>
 </div>
 <div id="section-section-14" class="section level3">
@@ -360,19 +591,61 @@ District of New York State.</p>
 </div>
 <div id="section-section-17" class="section level3">
 <h3></h3>
-Use the code block below to compute the point estimate for average
-sentence length (<code>SentenceMonths</code>).
+<p>Use the code block below to compute the point estimate for average
+sentence length (<code>SentenceMonths</code>).</p>
 <div class="tutorial-exercise" data-label="sentencing-ci-2"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-<div id="section-sentencing-ci-2-hint">
-<p>The variable <code>SentenceMonths</code> is a column within the
-<code>SDNYdrug</code> data frame. Remember that you can access columns
-in a data frame with the <code>$</code> operator or you can utilize the
-pipe operator (<code>%&gt;%</code>) in conjunction with the
-<code>summarize()</code> function.</p>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-2-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Find the average (mean) of the SentenceMonths column
+#of the SDNYdrug data frame.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-2-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Pipe the SDNYdrug data frame into summarize()</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-2-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blank:
+
+SDNYdrug %&gt;%
+  summarize(___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-2-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blank:
+
+SDNYdrug %&gt;%
+  summarize(avg_sentence_length = ___)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-2-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blank:
+
+SDNYdrug %&gt;%
+  summarize(avg_sentence_length = mean(___))
+
+#Clicking &quot;Next Hint&quot; will show the solution.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-2-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>SDNYdrug %&gt;%
+  summarize(avg_sentence_length = mean(SentenceMonths))</code></pre>
 </div>
 </div>
 <div id="section-section-18" class="section level3">
@@ -388,19 +661,75 @@ pipe operator (<code>%&gt;%</code>) in conjunction with the
 </div>
 <div id="section-section-19" class="section level3">
 <h3></h3>
-Use the code block below to compute the standard error
+<p>Use the code block below to compute the standard error</p>
 <div class="tutorial-exercise" data-label="sentencing-ci-4"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-<div id="section-sentencing-ci-4-hint">
-<p>Remember that you can compute the standard deviation in R with the
-<code>sd()</code> function. Additionally, you can find the number of
-rows in a data frame by passing the name of the data frame to R’s
-<code>nrow()</code> function. The <code>sqrt()</code> function will also
-be useful to you.</p>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-4-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#According to your answer above, you&#39;ll need the number
+#of prison sentences in the data set and also the 
+#standard deviation in the lengths of the prison
+#sentences.</code></pre>
 </div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-4-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#There are several ways to find these values. Remember
+#that piping your data frame into nrow() will show the
+#number of observations in the data frame.
+#Additionally, you can use your answer from the previous
+#code block and replace the mean() function with sd()
+#to compute the standard deviation instead of the mean.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-4-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks:
+SDNYdrug %&gt;%
+  ___
+
+SDNYdrug %&gt;%
+  summarize(sd_sentence_lengths = sd(___))</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-4-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Note: You could also find both of these values at once:
+
+SDNYdrug %&gt;%
+  summarize(
+    num_sentences = n(),
+    sd_sentence_lengths = sd(SentenceMonths)
+    )</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-4-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Now that you have the number of observations and the
+#standard deviation in sentence lengths, you can use
+#them to evaluate the standard error formula.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-4-hint-6" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks:
+
+___/sqrt(___)
+
+#Clicking &quot;Next Hint&quot; will show the solution.</code></pre>
+</div>
+<pre class="r"><code>53.91466/sqrt(280)</code></pre>
+<pre><code>## [1] 3.222017</code></pre>
 </div>
 <div id="section-section-20" class="section level3">
 <h3></h3>
@@ -426,17 +755,22 @@ be useful to you.</p>
 </div>
 <div id="section-section-22" class="section level3">
 <h3></h3>
-Use the code block below to enter or compute the critical value
-associated with your confidence interval.
+<p>Use the code block below to enter or compute the critical value
+associated with your confidence interval.</p>
 <div class="tutorial-exercise" data-label="sentencing-ci-7"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-<div id="section-sentencing-ci-7-hint">
-<p>Did you try using 1.96? Remember that we can’t use the normal
-distribution here. You can find the critical value you need by making
-use of the <code>qt()</code> function.</p>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-7-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#You completed a very similar problem earlier in this
+#notebook. Go back and find what you did in the 
+#Question asking you to find the critical value 
+#corresponding to a 99% confidence interval, just 
+#before you started working on the SDNY application.</code></pre>
 </div>
 </div>
 <div id="section-section-23" class="section level3">
@@ -450,27 +784,73 @@ distribution only. Any time we use a sample standard deviation as a
 “stand-in” for the population standard deviation while computing
 standard error, we should be using critical values from a <span
 class="math inline">\(t\)</span>-distribution. We can get the critical
-value using R’s <code>qt()</code> function – this will make a real
+value using R’s <code>qt()</code> function. This will make a real
 difference if sample sizes are smaller.</p>
 </div>
 <div id="section-section-24" class="section level3">
 <h3></h3>
-Use the code block below to compute the lower bound for the 95%
-confidence interval.
+<p>Use the code block below to compute the lower bound for the 95%
+confidence interval.</p>
 <div class="tutorial-exercise" data-label="sentencing-ci-8"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-8-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Remember that the formula for a confidence interval is:
+##(point estimate) +/- (critical value)*(standard error)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-8-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#You have the point estimate: average sentence length
+#You have the critical value
+#You have the standard error</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-8-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#You obtain the lower bound by evaluating the confidence
+#interval formula with the subtraction operation.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-8-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks to find the lower bound:
+
+(___) - ((___)*(___))
+
+#Clicking &quot;Next Hint&quot; will show the solution.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-8-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>42.7465 - (1.9685*3.222)</code></pre>
+</div>
 </div>
 <div id="section-section-25" class="section level3">
 <h3></h3>
-And use the code block below to compute the upper bound for the 95%
-confidence interval.
+<p>And use the code block below to compute the upper bound for the 95%
+confidence interval.</p>
 <div class="tutorial-exercise" data-label="sentencing-ci-9"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ci-9-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#This is done the same way as finding the lower bound.
+#You&#39;ll just swap the subtraction operation for 
+#addition.</code></pre>
 </div>
 </div>
 <div id="section-section-26" class="section level3">
@@ -608,49 +988,112 @@ offenders in an object called <code>whiteSentences</code> and the
 sentence lengths for non-white offenders in an object called
 <code>nonWhiteSentences</code>. Use the code blocks below to answer the
 corresponding questions.</p>
-Find the number of white offenders sentenced in our dataset.
+<p>Find the number of white offenders sentenced in our dataset.</p>
 <div class="tutorial-exercise" data-label="sentencing-ht-9"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-<div id="section-sentencing-ht-9-hint">
-Since <code>whiteSentences</code> and <code>nonWhiteSentences</code> are
-vectors of sentence lengths rather than full data frames, the
-<code>nrow()</code> function won’t work on them. Try using the
-<code>length()</code> function instead.
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-9-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Since the whiteSentences object is just a list of 
+#values and not a data frame, we&#39;ll need to use the
+#length() function instead of nrow()</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-9-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blank to find the number of white offenders.
+
+length(___)
+
+#Clicking &quot;Next Hint&quot; will show the solution.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-9-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>length(whiteSentences)</code></pre>
 </div>
 </div>
 <div id="section-section-38" class="section level3">
 <h3></h3>
-Find the number of non-white offenders sentenced in our dataset.
+<p>Find the number of non-white offenders sentenced in our dataset.</p>
 <div class="tutorial-exercise" data-label="sentencing-ht-10"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-Compute the average sentence length in months for the white offenders.
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-10-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Do the same thing you just did, but for the list of
+#nonWhiteSentences instead.</code></pre>
+</div>
+</div>
+<div id="section-section-39" class="section level3">
+<h3></h3>
+<p>Compute the average sentence length in months for the white
+offenders.</p>
 <div class="tutorial-exercise" data-label="sentencing-ht-11"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-Compute the average sentence length in months for the non-white
-offenders.
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-11-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Use the mean() function on the list of whiteSentences</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-11-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blank:
+
+mean(___)
+
+#Clicking &quot;Next Hint&quot; will show the solution.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-11-solution" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>mean(whiteSentences)</code></pre>
+</div>
+<p>Compute the average sentence length in months for the non-white
+offenders.</p>
 <div class="tutorial-exercise" data-label="sentencing-ht-12"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-12-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Again, use the same approach here.</code></pre>
 </div>
-<div id="section-section-39" class="section level3">
+</div>
+<div id="section-section-40" class="section level3">
 <h3></h3>
-Compute the standard deviation in sentence lengths for the white
-offenders.
+<p>Compute the standard deviation in sentence lengths for the white
+offenders.</p>
 <div class="tutorial-exercise" data-label="sentencing-ht-13"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-13-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Use the sd() function to find the standard deviation</code></pre>
 </div>
 Compute the standard deviation in sentence lengths for the non-white
 offenders.
@@ -660,12 +1103,13 @@ data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
-<div id="section-section-40" class="section level3">
+<div id="section-section-41" class="section level3">
 <h3></h3>
-<p>Okay, we’ve answered lots of questions that give us pieces of our
-analysis. Now, let’s think about putting to pieces together to compute
-the test statistic, <span class="math inline">\(p\)</span>-value, and
-complete the hypothesis test.</p>
+<p>Okay, we’ve answered lots of questions that give us important
+components for our analysis. Now, let’s think about putting to pieces
+together to compute the test statistic, <span
+class="math inline">\(p\)</span>-value, and complete the hypothesis
+test.</p>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="sentencing-ht-15-1" class="tutorial-question panel-body">
@@ -684,52 +1128,206 @@ complete the hypothesis test.</p>
 </div>
 </div>
 </div>
-<div id="section-section-41" class="section level3">
+<div id="section-section-42" class="section level3">
 <h3></h3>
-Compute the point estimate
+<p>Compute the point estimate</p>
 <div class="tutorial-exercise" data-label="sentencing-ht-16"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-16-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The form of the population parameter tells you how
+#to compute your point estimate.</code></pre>
 </div>
-<div id="section-section-42" class="section level3">
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-16-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The population parameter is the difference between 
+#the two population means.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-16-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Subtract the average sentence length for non-white
+#offenders from the average sentence length for white
+#offenders.</code></pre>
+</div>
+</div>
+<div id="section-section-43" class="section level3">
 <h3></h3>
-Compute the standard error
+<p>Compute the standard error</p>
 <div class="tutorial-exercise" data-label="sentencing-ht-17"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-17-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#You identified the appropriate formula for the 
+#standard error earlier. Go back and find it.</code></pre>
 </div>
-<div id="section-section-43" class="section level3">
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-17-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The standard error formula involves both sample sizes
+#and both sample standard deviations. You found those
+#earlier, too!</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-17-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blanks to find the standard error:
+
+sqrt((___^2/___) + (___^2)/___)</code></pre>
+</div>
+</div>
+<div id="section-section-44" class="section level3">
 <h3></h3>
-Compute the test statistic
+<p>Compute the test statistic</p>
 <div class="tutorial-exercise" data-label="sentencing-ht-18"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-18-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The formula for the point estimate is:
+##((point estimate) - (null value))/(standard error)
+
+#You have all the components you need!</code></pre>
 </div>
-<div id="section-section-44" class="section level3">
+</div>
+<div id="section-section-45" class="section level3">
 <h3></h3>
-Compute the degrees of freedom for this test.
+<p>Compute the degrees of freedom for this test.</p>
 <div class="tutorial-exercise" data-label="sentencing-ht-18_5"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-18_5-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#You identified the formula for the degrees of freedom
+#earlier. As a reminder, you can find how to compute
+#the degrees of freedom associated with a t-distribution
+#from the Standard Error Decision Tree.</code></pre>
 </div>
-<div id="section-section-45" class="section level3">
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-18_5-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The degrees of freedom for this &quot;two-sample&quot; test 
+#depends on the size of the smaller of the two samples.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-18_5-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#The degrees of freedom is one less than the size of 
+#the smaller sample.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-18_5-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#There were fewer non-white sentences than white 
+#sentences.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-18_5-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#There were 243 non-white sentences in the data set. 
+#The degrees of freedom is one less than that.</code></pre>
+</div>
+</div>
+<div id="section-section-46" class="section level3">
 <h3></h3>
-Compute the p-value
+<p>Compute the p-value</p>
 <div class="tutorial-exercise" data-label="sentencing-ht-19"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-19-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#If you&#39;ve been following the general strategy for 
+#conducting a hypothesis, you should have a picture 
+#of the samples which would lead you to believe the
+#alternative hypothesis instead of the null hypothesis.
+
+#If you haven&#39;t done this yet, do it now. </code></pre>
 </div>
-<div id="section-section-46" class="section level3">
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-19-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Our test asks about a &quot;difference&quot; in average sentence
+#lengths. There are two ways for the sentences lengths
+#to differ. White offenders could receive longer 
+#sentences on average (a positive difference), or 
+#non-white offenders could receive longer sentences 
+#on average (a negative difference).</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-19-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Because of this, the picture of your alternative 
+#hypothesis should have both tails shaded.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-19-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Since your picture has two shaded areas, your p-value
+#will come in two parts. Both shaded areas are the same
+#size, so we can just find one area and double it.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-19-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Draw another picture of a t-distribution and include
+#your test statistic as a boundary value. Shade from
+#your test statistic into the tail of the distribution.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-19-hint-6" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Find the area of that shaded region by using pt()
+#with your boundary value and the appropriate number
+#of degrees of freedom.
+
+#Remember that pt() will always give you the area to 
+#the LEFT of your boundary value.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="sentencing-ht-19-hint-7" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Now that you have that tail area, double it in order
+#to find the p-value for this test.</code></pre>
+</div>
+</div>
+<div id="section-section-47" class="section level3">
 <h3></h3>
 <p>Answer the following to complete the hypothesis test.</p>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
@@ -918,7 +1516,8 @@ learnr:::store_exercise_cache(structure(list(label = "pt-ex1-left", global_setup
         label = "\"pt-ex1-left\"", exercise = "TRUE"), engine = "r")), 
     code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
     "  pass_if(~ (abs(.result - pt(boundary1, df1)) < 0.001))", 
-    ")"), chunk_opts = list(label = "pt-ex1-left-check")), solution = NULL, 
+    ")"), chunk_opts = list(label = "pt-ex1-left-check")), solution = structure(c("pt(1.49, df = 20)", 
+    ""), chunk_opts = list(label = "pt-ex1-left-solution")), 
     tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
@@ -969,15 +1568,15 @@ learnr:::store_exercise_cache(structure(list(label = "pt-ex2-right", global_setu
         label = "\"pt-ex2-right\"", exercise = "TRUE"), engine = "r")), 
     code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
     "  pass_if(~ (abs(.result - (1 - pt(boundary2, df2))) < 0.001))", 
-    ")"), chunk_opts = list(label = "pt-ex2-right-check")), solution = NULL, 
-    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
-        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
-        comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "15_HTandCInum_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
+    ")"), chunk_opts = list(label = "pt-ex2-right-check")), solution = structure("1 - pt(-1.9, df = 12)", chunk_opts = list(
+        label = "pt-ex2-right-solution")), tests = NULL, options = list(
+        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "15_HTandCInum_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1020,15 +1619,15 @@ learnr:::store_exercise_cache(structure(list(label = "qt-ex3", global_setup = st
         label = "\"qt-ex3\"", exercise = "TRUE"), engine = "r")), 
     code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
     "  pass_if(~ (abs(.result - qt(area3, df3)) < 0.01))", ")"
-    ), chunk_opts = list(label = "qt-ex3-check")), solution = NULL, 
-    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
-        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
-        comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "15_HTandCInum_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
+    ), chunk_opts = list(label = "qt-ex3-check")), solution = structure("qt(0.67, df = 23)", chunk_opts = list(
+        label = "qt-ex3-solution")), tests = NULL, options = list(
+        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "15_HTandCInum_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1071,15 +1670,15 @@ learnr:::store_exercise_cache(structure(list(label = "qt-ex4", global_setup = st
         label = "\"qt-ex4\"", exercise = "TRUE"), engine = "r")), 
     code_check = NULL, error_check = NULL, check = structure(c("grade_result(", 
     "  pass_if(~ (abs(.result - qt((1 - 0.01*(100 - clevel4)/2), df4)) < 0.01))", 
-    ")"), chunk_opts = list(label = "qt-ex4-check")), solution = NULL, 
-    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
-        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
-        comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "15_HTandCInum_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
+    ")"), chunk_opts = list(label = "qt-ex4-check")), solution = structure("qt(0.995, df = 14)", chunk_opts = list(
+        label = "qt-ex4-solution")), tests = NULL, options = list(
+        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "15_HTandCInum_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1154,14 +1753,16 @@ learnr:::store_exercise_cache(structure(list(label = "sentencing-ci-2", global_s
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure(c("grade_result(", "  pass_if(~ (abs(.result - mean(SDNYdrug$SentenceMonths)) < 0.01))", 
     ")"), chunk_opts = list(label = "sentencing-ci-2-check")), 
-    solution = NULL, tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "15_HTandCInum_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
+    solution = structure(c("SDNYdrug %>%", "  summarize(avg_sentence_length = mean(SentenceMonths))"
+    ), chunk_opts = list(label = "sentencing-ci-2-solution")), 
+    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "15_HTandCInum_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1277,18 +1878,18 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
         option = "Normal", value = "Normal", label = structure("Normal", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e894aa9", 
-        option = "t-distribution with $df = n - 1$", value = "t-distribution with $df = n - 1$", 
-        label = structure("t-distribution with \\(df = n - 1\\)", html = TRUE, class = c("html", 
+        option = "t-distribution with $\\text{df} = n - 1$", 
+        value = "t-distribution with $\\text{df} = n - 1$", label = structure("t-distribution with \\(\\text{df} = n - 1\\)", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_19ddfd2", 
-        option = "t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$", 
-        value = "t-distribution with $df = \\min\\{n_1 - 1, n_2 - 1\\}$", 
-        label = structure("t-distribution with \\(df = \\min\\{n_1 - 1, n_2 - 1\\}\\)", html = TRUE, class = c("html", 
+        option = "t-distribution with $\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}$", 
+        value = "t-distribution with $\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}$", 
+        label = structure("t-distribution with \\(\\text{df} = \\min\\{n_1 - 1, n_2 - 1\\}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b997f02", 
-        option = "t-distribution with $df = n_{\\text{diff}} - 1$", 
-        value = "t-distribution with $df = n_{\\text{diff}} - 1$", 
-        label = structure("t-distribution with \\(df = n_{\\text{diff}} - 1\\)", html = TRUE, class = c("html", 
+        option = "t-distribution with $\\text{df} = n_{\\text{diff}} - 1$", 
+        value = "t-distribution with $\\text{df} = n_{\\text{diff}} - 1$", 
+        label = structure("t-distribution with \\(\\text{df} = n_{\\text{diff}} - 1\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3ed18e8", 
         option = "We should not use either the normal- or t- distributions", 
@@ -1416,11 +2017,12 @@ learnr:::store_exercise_cache(structure(list(label = "sentencing-ci-8", global_s
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure(c("grade_result(", "  pass_if(~ (abs(.result - (mean(SDNYdrug$SentenceMonths) - ((qt(0.975, nrow(SDNYdrug) - 1))*(sd(SDNYdrug$SentenceMonths)/sqrt(nrow(SDNYdrug)))))) < 0.01))", 
     ")"), chunk_opts = list(label = "sentencing-ci-8-check")), 
-    solution = NULL, tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "15_HTandCInum_cache/html/", 
+    solution = structure("42.7465 - (1.9685*3.222)", chunk_opts = list(
+        label = "sentencing-ci-8-solution")), tests = NULL, options = list(
+        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "15_HTandCInum_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
         fig.show = "asis", fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
@@ -1626,7 +2228,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "sentencing-ht-3", 
-    question = structure("Does this hypothesis test involve testing a statement about the mean ($\\mu$), a proportion ($p$), or something else?", html = TRUE, class = c("html", 
+    question = structure("Does this hypothesis test involve testing a statement about the mean ( \\(\\mu\\) ), a proportion ( \\(p\\) ), or something else?", html = TRUE, class = c("html", 
     "character")), answers = list(structure(list(id = "lnr_ans_5b2f2cc", 
         option = "One or more means", value = "One or more means", 
         label = structure("One or more means", html = TRUE, class = c("html", 
@@ -1866,11 +2468,12 @@ learnr:::store_exercise_cache(structure(list(label = "sentencing-ht-9", global_s
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure(c("grade_result(", "  pass_if(~ (.result == length(whiteSentences)))", 
     ")"), chunk_opts = list(label = "sentencing-ht-9-check")), 
-    solution = NULL, tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "15_HTandCInum_cache/html/", 
+    solution = structure("length(whiteSentences)", chunk_opts = list(
+        label = "sentencing-ht-9-solution")), tests = NULL, options = list(
+        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "15_HTandCInum_cache/html/", 
         cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
         autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
         fig.show = "asis", fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
@@ -1968,14 +2571,16 @@ learnr:::store_exercise_cache(structure(list(label = "sentencing-ht-11", global_
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure(c("grade_result(", "  pass_if(~ (abs(.result - mean(whiteSentences)) < 0.01))", 
     ")"), chunk_opts = list(label = "sentencing-ht-11-check")), 
-    solution = NULL, tests = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "15_HTandCInum_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
+    solution = structure("mean(whiteSentences)", chunk_opts = list(
+        label = "sentencing-ht-11-solution")), tests = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "15_HTandCInum_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "15_HTandCInum_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
