@@ -6,6 +6,7 @@ tutorial:
 output: 
   learnr::tutorial:
     progressive: TRUE
+    allow_skip: TRUE
     
 runtime: shiny_prerendered
 description: "This lab looks at data on 1,000 pregnancies in North Carolina from 2004. This lab was also adapted from a lab written by Andrew Bray and Mine Cetinkaya-Rundel for OpenIntro.org. The notebook brings back the `inference()` function from the `{statsr}` package that was first introduced in the Topic 13 notebook."
@@ -19,8 +20,10 @@ library(ggplot2)
 library(learnr)
 library(gradethis)
 library(skimr)
+library(statsr)
 
 load("www/nc.RData")
+rm(inference)
 
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
 
@@ -61,8 +64,26 @@ variable         | description
 ###
 
 Use the code block below to answer the questions that follow.
+
 ```{r nc-cases-questions, exercise = TRUE}
 
+```
+
+```{r nc-cases-questions-hint-1}
+#Use some of your basic exploratory functions from 
+#earlier notebooks to gain top-level insights into
+#the nc data frame.
+```
+
+```{r nc-cases-questions-hint-2}
+#Running nc on its own will print out the first few
+#rows of the data frame and provide information about
+#the total number of rows in the data frame.
+```
+
+```{r nc-cases-questions-hint-3}
+#You could also pipe nc into other functions like
+#dim() or glimpse() to obtain different insights.
 ```
 
 ```{r nc-cases, echo = FALSE}
@@ -91,7 +112,7 @@ quiz(
 
 ###
 
-As a first step in the analysis, we should consider summaries of the data. This can be done using base-R's `summary()` command or using `skim()` from the `skimr` package. Call one of these functions on the `nc` data set below and use the output to help you answer the questions that follow.
+As a first step in the analysis, we should consider summaries of the data. This can be done using base-R's `summary()` command or using `skim()` from the `skimr` package. Pipe the `nc` data frame to one of these functions below and use the output to help you answer the questions that follow.
 
 ```{r nc-summary, exercise = TRUE}
 
@@ -100,6 +121,7 @@ As a first step in the analysis, we should consider summaries of the data. This 
 ###
 
 As you review the variable summaries, consider which variables are categorical and which are numerical. For numerical variables, are there outliers? If you aren't sure or want to take a closer look at the data, make a graph. You can use the code block below to experiment.
+
 ```{r nc-explore-num-cat-out, exercise = TRUE}
 
 ```
@@ -129,12 +151,67 @@ question_checkbox(
 Consider the possible relationship between a mother's smoking habit and the weight of her baby. Plotting the data is a useful first step because it helps us quickly visualize trends, identify strong associations, and develop research questions.
 
 Make a side-by-side boxplot of `habit` and `weight`. What does the plot highlight about the relationship between these two variables?
+
 ```{r plot-habit-weight, exercise = TRUE}
 
 ```
 
+```{r plot-habit-weight-hint-1}
+#Start by piping the nc data frame into ggplot()
+```
+
+```{r plot-habit-weight-hint-2}
+#Add a boxplot layer to your ggplot(). Remember that
+#you add layers to a plot with the plus sign (+)
+#operator.
+
+nc %>% 
+  ggplot()
+```
+
+```{r plot-habit-weight-hint-3}
+#We can create boxplots with the geom_boxplot() layer
+
+nc %>%
+  ggplot() +
+  ___
+```
+
+```{r plot-habit-weight-hint-4}
+#You'll want at least two aesthetic mappings here, 
+#they'll be x and y. Where you put your numeric variable
+#will determine whether your boxplots will be vertical
+#or horizontal. Either direction is okay!
+
+nc %>%
+  ggplot() +
+  geom_boxplot(aes(x = ___, y = ___))
+```
+
+```{r plot-habit-weight-hint-5}
+#Now add labels to your plot.
+
+nc %>%
+  ggplot() +
+  geom_boxplot(aes(x = habit, y = weight)) + 
+  labs(
+    title = "___",
+    x = "",
+    y = "___"
+  )
+
+#Clicking "Next Hint" will show a full solution.
+```
+
 ```{r plot-habit-weight-solution}
-ggplot(data = nc) + geom_boxplot(mapping = aes(x = habit, y = weight))
+nc %>%
+  ggplot() + 
+  geom_boxplot(aes(x = habit, y = weight)) + 
+  labs(
+    title = "Birthweight by Smoking Status",
+    x = "",
+    y = "Birthweight (lbs)"
+  )
 ```
 
 ```{r plot-habit-weight-check}
@@ -144,6 +221,7 @@ grade_code()
 ###
 
 The box plots show how the medians of the two distributions compare, but we can also compare the means of the distributions. We can use `dplyr`'s `group_by()` to group our data according to the `habit` variable, and then `summarize()` the `weight` variable using the `mean()`. Consider the following code, guess what the result will look like, then run the code to see if you were right. What does the output tell you?
+
 ```{r by-means, exercise = TRUE}
 nc %>%
   group_by(habit) %>%
@@ -156,10 +234,28 @@ There is an observed difference in average birth weights, but is this difference
 
 ## Inference
 
-Check if the conditions necessary for inference are satisfied. Note that you will need to obtain sample sizes to check the conditions. You can compute the group size by simply using the `count()` function.
+Check if the conditions necessary for inference are satisfied. Note that you will need to obtain sample sizes to check the conditions. You can compute the group size by piping `nc` into the `count()` function and passing the column of interest as an argument to the `count()` function.
 
 ```{r check-inference-conditions-habit, exercise = TRUE}
 
+```
+
+```{r check-inference-conditions-habit-hint-1}
+#Fill in the blank to count the number of observations
+#in each smoking (habit) group.
+
+nc %>%
+  ___
+```
+
+```{r check-inference-conditions-habit-hint-2}
+#Fill in the blank to count the number of observations
+#in each smoking (habit) group.
+
+nc %>%
+  count(___)
+
+#Clicking "Next Hint" will show the solution.
 ```
 
 ```{r check-inference-conditions-habit-solution}
@@ -221,14 +317,22 @@ question(
 
 ###
 
-Next, we remind ourselves of the `inference()`, that we will use for conducting hypothesis tests and constructing confidence intervals. 
+Next, we remind ourselves of the `inference()` function from `{statsr}, that we will use for conducting hypothesis tests and constructing confidence intervals. 
 
 ```{r inf-weight-habit-ht, eval=FALSE, tidy=FALSE}
-inference(y = nc$weight, x = nc$habit, est = "mean", type = "ht", null = 0, 
-          alternative = "twosided", method = "theoretical")
+inference(
+  y = weight, 
+  x = habit,
+  data = nc, 
+  statistic = "mean", 
+  type = "ht", 
+  null = 0,
+  alternative = "twosided", 
+  method = "theoretical"
+  )
 ```
 
-As a reminder, we'll go through the arguments of this custom function. The first argument is `y`, which is the response variable that we are interested in: `nc$weight`. The second argument is the explanatory variable, `x`, which is the variable that splits the data into two groups, smokers and non-smokers: `nc$habit`. The third argument, `est`, is the parameter we're interested in: `"mean"` (other options are `"median"`, or `"proportion"`.) Next we decide on the `type` of inference we want: a hypothesis test (`"ht"`) or a confidence interval (`"ci"`). When performing a hypothesis test, we also need to supply the `null` value, which in this case is `0`, since the null hypothesis sets the two population means equal to each other. The `alternative` hypothesis can be `"less"`, `"greater"`, or `"twosided"`. Lastly, the `method` of inference can be `"theoretical"` or `"simulation"` based.
+As a reminder, we'll go through the arguments of this custom function. The first argument is `y`, which is the response variable that we are interested in: `weight`. The second argument is the explanatory variable, `x`, which is the variable that splits the data into two groups, smokers and non-smokers: `habit`. The third argument, `data`, is the data frame where both the `weight` and `habit` columns can be found. Next comes `statistic`, the parameter we're interested in: `"mean"` (other options are `"median"`, or `"proportion"`.) Then we decide on the `type` of inference we want: a hypothesis test (`"ht"`) or a confidence interval (`"ci"`). When performing a hypothesis test, we also need to supply the `null` value, which in this case is `0`, since the null hypothesis sets the two population means equal to each other. The `alternative` hypothesis can be `"less"`, `"greater"`, or `"twosided"`. Lastly, the `method` of inference can be `"theoretical"` or `"simulation"` based.
 
 ###
 
@@ -237,12 +341,54 @@ You should feel comfortable using your knowledge of inference to describe what t
 ###
 
 The initial `inference()` example code appears below. Think about the code and what you expect the output should look like. Run the code and check your expectations of the output. Once you understand the output, change the `type` argument to `"ci"` to construct and record a confidence interval for the difference between the weights of babies born to smoking and non-smoking mothers. Be sure to get rid of any additional unnecessary arguments as well.
+
 ```{r first-inference-run, exercise = TRUE}
-inference(y = nc$weight, x = nc$habit, est = "mean", type = "ht", null = 0, alternative = "twosided", method = "theoretical")
+inference(
+  y = weight, 
+  x = habit, 
+  data = nc,
+  statistic = "mean", 
+  type = "ht", 
+  null = 0, 
+  alternative = "twosided", 
+  method = "theoretical"
+  )
+```
+
+```{r first-inference-run-hint-1}
+#First, just run the code "as-is" to conduct the 
+#hypothesis test. What are the results? How do 
+#you know?
+```
+
+```{r first-inference-run-hint-2}
+#Next, edit the arguments to inference() so that a 
+#confidence interval for the difference in average 
+#birth weights is constructed.
+```
+
+```{r first-inference-run-hint-3}
+#Change the type from "ht" (hypothesis test) to "ci"
+#(confidence interval).
+```
+
+```{r first-inference-run-hint-4}
+#Confidence intervals don't have hypotheses...
+```
+
+```{r first-inference-run-hint-5}
+#Remove the null and alternative arguments and re-run
+#the code cell.
 ```
 
 ```{r first-inference-run-solution}
-inference(y = nc$weight, x = nc$habit, est = "mean", type = "ci", method = "theoretical")
+inference(
+  y = weight, 
+  x = habit, 
+  data = nc,
+  statistic = "mean", 
+  type = "ci", 
+  method = "theoretical")
 ```
 
 ```{r first-inference-run-check}
@@ -254,7 +400,15 @@ grade_code()
 The results you see show that by default the function reports an interval for ($\mu_{nonsmoker} - \mu_{smoker}$) because $\tt{R}$ orders levels by alphabetical order. We can easily change this order by using the `order` argument. Inspect the code below to identify what has been added and then run it to see the result.
 
 ```{r inference-ci-ordered, exercise = TRUE}
-inference(y = nc$weight, x = nc$habit, est = "mean", type = "ci", method = "theoretical", order = c("smoker","nonsmoker"))
+inference(
+  y = weight, 
+  x = habit, 
+  data = nc,
+  est = "mean", 
+  type = "ci", 
+  method = "theoretical", 
+  order = c("smoker","nonsmoker")
+  )
 ```
 
 ## On your own
@@ -262,26 +416,70 @@ inference(y = nc$weight, x = nc$habit, est = "mean", type = "ci", method = "theo
 Since you've worked through this workbook, you should now feel prepared to answer the following. Use the code blocks to check your understanding.
 
 1. Calculate a 95% confidence interval for the average length of pregnancies (`weeks`) and interpret it in context. Note that since you're doing inference on a single population parameter, there is no explanatory variable, so you can omit the `x` variable from the function.
+
 ```{r own-prob-1, exercise = TRUE}
 
 ```
 
-2. Calculate a new confidence interval for the same parameter at the 90% confidence level. You can change the confidence level by adding a new argument to the function: `conflevel = 0.90`.
+```{r own-prob-1-hint-1}
+#Use the inference() function
+```
+
+```{r own-prob-1-hint-2}
+#Since we are not comparing groups, you'll use the y
+#parameter but omit the x parameter.
+```
+
+2. Calculate a new confidence interval for the same parameter at the 90% confidence level. You can change the confidence level by adding a new argument to the function: `conf_level = 0.90`.
+
 ```{r own-prob-2, exercise = TRUE}
 
 ```
 
+```{r own-prob-2-hint-1}
+#As mentioned, just add a new argument, conf_level = 0.90
+#inside of the inference() function. As a reminder, 
+#arguments are separated by commas and we've been 
+#placing each argument on a new line for improved
+#readability.
+```
+
 3. Conduct a hypothesis test evaluating whether the average weight gained by younger mothers is different than the average weight gained by mature mothers.
+
 ```{r own-prob-3, exercise = TRUE}
 
 ```
 
+```{r own-prob-3-hint-1}
+#Use the inference() function again, but be sure to 
+#set the type to "ht" (hypothesis test). You'll also
+#need a null and alternative hypothesis, and you 
+#shouldn't include a confidence level since those only
+#apply to confidence intervals.
+```
+
 4. Now, a non-inference task: Determine the age cutoff for younger and mature mothers. Use a method of your choice, and explain how your method works.
+
 ```{r own-prob-4, exercise = TRUE}
 
 ```
 
-5. Pick a pair of numerical and categorical variables and come up with a research question evaluating the relationship between these variables. Formulate the question in a way that it can be answered using a hypothesis test and/or a confidence interval. Answer your question using the `inference` function, report the statistical results, and also provide an explanation in plain language.
+```{r own-prob-4-hint-1}
+#You need some way to find the "oldest young mother" 
+#and the "youngest mature mother".
+```
+
+```{r own-prob-4-hint-2}
+#One way to do this is with group_by() and summarize()
+```
+
+```{r own-prob-4-hint-3}
+#"Oldest" sounds like the maximum age, and "youngest"
+#seems like the minimum age
+```
+
+5. Pick a pair of numerical and categorical variables and come up with a research question evaluating the relationship between these variables. Formulate the question in a way that it can be answered using a hypothesis test and/or a confidence interval. Answer your question using the `inference()` function, report the statistical results, and also provide an explanation in plain language.
+
 ```{r own-prob-5, exercise = TRUE}
 
 ```

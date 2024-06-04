@@ -11,7 +11,7 @@
 
 
 <meta name="progressive" content="true" />
-<meta name="allow-skip" content="false" />
+<meta name="allow-skip" content="true" />
 <meta name="learnr-version-prerender" content="0.11.5.9000" />
 
 <title>Topic 17: Inference for Numerical Data Lab</title>
@@ -208,11 +208,34 @@ not (<code>not low</code>).</td>
 </div>
 <div id="section-section-2" class="section level3">
 <h3></h3>
-Use the code block below to answer the questions that follow.
+<p>Use the code block below to answer the questions that follow.</p>
 <div class="tutorial-exercise" data-label="nc-cases-questions"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="nc-cases-questions-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Use some of your basic exploratory functions from 
+#earlier notebooks to gain top-level insights into
+#the nc data frame.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="nc-cases-questions-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Running nc on its own will print out the first few
+#rows of the data frame and provide information about
+#the total number of rows in the data frame.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="nc-cases-questions-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#You could also pipe nc into other functions like
+#dim() or glimpse() to obtain different insights.</code></pre>
 </div>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
@@ -236,8 +259,8 @@ data-lines="0" data-pipe="|&gt;">
 <h3></h3>
 <p>As a first step in the analysis, we should consider summaries of the
 data. This can be done using base-R’s <code>summary()</code> command or
-using <code>skim()</code> from the <code>skimr</code> package. Call one
-of these functions on the <code>nc</code> data set below and use the
+using <code>skim()</code> from the <code>skimr</code> package. Pipe the
+<code>nc</code> data frame to one of these functions below and use the
 output to help you answer the questions that follow.</p>
 <div class="tutorial-exercise" data-label="nc-summary"
 data-completion="1" data-diagnostics="1" data-startover="1"
@@ -247,10 +270,10 @@ data-lines="0" data-pipe="|&gt;">
 </div>
 <div id="section-section-4" class="section level3">
 <h3></h3>
-As you review the variable summaries, consider which variables are
+<p>As you review the variable summaries, consider which variables are
 categorical and which are numerical. For numerical variables, are there
 outliers? If you aren’t sure or want to take a closer look at the data,
-make a graph. You can use the code block below to experiment.
+make a graph. You can use the code block below to experiment.</p>
 <div class="tutorial-exercise" data-label="nc-explore-num-cat-out"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -271,30 +294,94 @@ data-lines="0" data-pipe="|&gt;">
 and the weight of her baby. Plotting the data is a useful first step
 because it helps us quickly visualize trends, identify strong
 associations, and develop research questions.</p>
-Make a side-by-side boxplot of <code>habit</code> and
+<p>Make a side-by-side boxplot of <code>habit</code> and
 <code>weight</code>. What does the plot highlight about the relationship
-between these two variables?
+between these two variables?</p>
 <div class="tutorial-exercise" data-label="plot-habit-weight"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 <div class="tutorial-exercise-support"
+data-label="plot-habit-weight-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Start by piping the nc data frame into ggplot()</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="plot-habit-weight-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Add a boxplot layer to your ggplot(). Remember that
+#you add layers to a plot with the plus sign (+)
+#operator.
+
+nc %&gt;% 
+  ggplot()</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="plot-habit-weight-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#We can create boxplots with the geom_boxplot() layer
+
+nc %&gt;%
+  ggplot() +
+  ___</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="plot-habit-weight-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#You&#39;ll want at least two aesthetic mappings here, 
+#they&#39;ll be x and y. Where you put your numeric variable
+#will determine whether your boxplots will be vertical
+#or horizontal. Either direction is okay!
+
+nc %&gt;%
+  ggplot() +
+  geom_boxplot(aes(x = ___, y = ___))</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="plot-habit-weight-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Now add labels to your plot.
+
+nc %&gt;%
+  ggplot() +
+  geom_boxplot(aes(x = habit, y = weight)) + 
+  labs(
+    title = &quot;___&quot;,
+    x = &quot;&quot;,
+    y = &quot;___&quot;
+  )
+
+#Clicking &quot;Next Hint&quot; will show a full solution.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
 data-label="plot-habit-weight-solution" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
-<pre class="text"><code>ggplot(data = nc) + geom_boxplot(mapping = aes(x = habit, y = weight))</code></pre>
+<pre class="text"><code>nc %&gt;%
+  ggplot() + 
+  geom_boxplot(aes(x = habit, y = weight)) + 
+  labs(
+    title = &quot;Birthweight by Smoking Status&quot;,
+    x = &quot;&quot;,
+    y = &quot;Birthweight (lbs)&quot;
+  )</code></pre>
 </div>
 </div>
 <div id="section-section-6" class="section level3">
 <h3></h3>
-The box plots show how the medians of the two distributions compare, but
-we can also compare the means of the distributions. We can use
+<p>The box plots show how the medians of the two distributions compare,
+but we can also compare the means of the distributions. We can use
 <code>dplyr</code>’s <code>group_by()</code> to group our data according
 to the <code>habit</code> variable, and then <code>summarize()</code>
 the <code>weight</code> variable using the <code>mean()</code>. Consider
 the following code, guess what the result will look like, then run the
-code to see if you were right. What does the output tell you?
+code to see if you were right. What does the output tell you?</p>
 <div class="tutorial-exercise" data-label="by-means" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
@@ -315,13 +402,36 @@ we will conduct a hypothesis test.</p>
 <h2>Inference</h2>
 <p>Check if the conditions necessary for inference are satisfied. Note
 that you will need to obtain sample sizes to check the conditions. You
-can compute the group size by simply using the <code>count()</code>
-function.</p>
+can compute the group size by piping <code>nc</code> into the
+<code>count()</code> function and passing the column of interest as an
+argument to the <code>count()</code> function.</p>
 <div class="tutorial-exercise"
 data-label="check-inference-conditions-habit" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="check-inference-conditions-habit-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blank to count the number of observations
+#in each smoking (habit) group.
+
+nc %&gt;%
+  ___</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="check-inference-conditions-habit-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Fill in the blank to count the number of observations
+#in each smoking (habit) group.
+
+nc %&gt;%
+  count(___)
+
+#Clicking &quot;Next Hint&quot; will show the solution.</code></pre>
 </div>
 <div class="tutorial-exercise-support"
 data-label="check-inference-conditions-habit-solution"
@@ -370,19 +480,29 @@ born to smoking and non-smoking mothers are different.</p>
 </div>
 <div id="section-section-9" class="section level3">
 <h3></h3>
-<p>Next, we remind ourselves of the <code>inference()</code>, that we
-will use for conducting hypothesis tests and constructing confidence
-intervals.</p>
-<pre class="r"><code>inference(y = nc$weight, x = nc$habit, est = &quot;mean&quot;, type = &quot;ht&quot;, null = 0, 
-          alternative = &quot;twosided&quot;, method = &quot;theoretical&quot;)</code></pre>
+<p>Next, we remind ourselves of the <code>inference()</code> function
+from `{statsr}, that we will use for conducting hypothesis tests and
+constructing confidence intervals.</p>
+<pre class="r"><code>inference(
+  y = weight, 
+  x = habit,
+  data = nc, 
+  statistic = &quot;mean&quot;, 
+  type = &quot;ht&quot;, 
+  null = 0,
+  alternative = &quot;twosided&quot;, 
+  method = &quot;theoretical&quot;
+  )</code></pre>
 <p>As a reminder, we’ll go through the arguments of this custom
 function. The first argument is <code>y</code>, which is the response
-variable that we are interested in: <code>nc$weight</code>. The second
+variable that we are interested in: <code>weight</code>. The second
 argument is the explanatory variable, <code>x</code>, which is the
 variable that splits the data into two groups, smokers and non-smokers:
-<code>nc$habit</code>. The third argument, <code>est</code>, is the
-parameter we’re interested in: <code>"mean"</code> (other options are
-<code>"median"</code>, or <code>"proportion"</code>.) Next we decide on
+<code>habit</code>. The third argument, <code>data</code>, is the data
+frame where both the <code>weight</code> and <code>habit</code> columns
+can be found. Next comes <code>statistic</code>, the parameter we’re
+interested in: <code>"mean"</code> (other options are
+<code>"median"</code>, or <code>"proportion"</code>.) Then we decide on
 the <code>type</code> of inference we want: a hypothesis test
 (<code>"ht"</code>) or a confidence interval (<code>"ci"</code>). When
 performing a hypothesis test, we also need to supply the
@@ -401,24 +521,76 @@ describe what this function must do for the parameter selections
 </div>
 <div id="section-section-11" class="section level3">
 <h3></h3>
-The initial <code>inference()</code> example code appears below. Think
-about the code and what you expect the output should look like. Run the
-code and check your expectations of the output. Once you understand the
-output, change the <code>type</code> argument to <code>"ci"</code> to
-construct and record a confidence interval for the difference between
-the weights of babies born to smoking and non-smoking mothers. Be sure
-to get rid of any additional unnecessary arguments as well.
+<p>The initial <code>inference()</code> example code appears below.
+Think about the code and what you expect the output should look like.
+Run the code and check your expectations of the output. Once you
+understand the output, change the <code>type</code> argument to
+<code>"ci"</code> to construct and record a confidence interval for the
+difference between the weights of babies born to smoking and non-smoking
+mothers. Be sure to get rid of any additional unnecessary arguments as
+well.</p>
 <div class="tutorial-exercise" data-label="first-inference-run"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
-<pre class="text"><code>inference(y = nc$weight, x = nc$habit, est = &quot;mean&quot;, type = &quot;ht&quot;, null = 0, alternative = &quot;twosided&quot;, method = &quot;theoretical&quot;)</code></pre>
+<pre class="text"><code>inference(
+  y = weight, 
+  x = habit, 
+  data = nc,
+  statistic = &quot;mean&quot;, 
+  type = &quot;ht&quot;, 
+  null = 0, 
+  alternative = &quot;twosided&quot;, 
+  method = &quot;theoretical&quot;
+  )</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support"
+data-label="first-inference-run-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#First, just run the code &quot;as-is&quot; to conduct the 
+#hypothesis test. What are the results? How do 
+#you know?</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="first-inference-run-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Next, edit the arguments to inference() so that a 
+#confidence interval for the difference in average 
+#birth weights is constructed.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="first-inference-run-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Change the type from &quot;ht&quot; (hypothesis test) to &quot;ci&quot;
+#(confidence interval).</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="first-inference-run-hint-4" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Confidence intervals don&#39;t have hypotheses...</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="first-inference-run-hint-5" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Remove the null and alternative arguments and re-run
+#the code cell.</code></pre>
 </div>
 <div class="tutorial-exercise-support"
 data-label="first-inference-run-solution" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
-<pre class="text"><code>inference(y = nc$weight, x = nc$habit, est = &quot;mean&quot;, type = &quot;ci&quot;, method = &quot;theoretical&quot;)</code></pre>
+<pre class="text"><code>inference(
+  y = weight, 
+  x = habit, 
+  data = nc,
+  statistic = &quot;mean&quot;, 
+  type = &quot;ci&quot;, 
+  method = &quot;theoretical&quot;)</code></pre>
 </div>
 </div>
 <div id="section-section-12" class="section level3">
@@ -433,7 +605,15 @@ then run it to see the result.</p>
 <div class="tutorial-exercise" data-label="inference-ci-ordered"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
-<pre class="text"><code>inference(y = nc$weight, x = nc$habit, est = &quot;mean&quot;, type = &quot;ci&quot;, method = &quot;theoretical&quot;, order = c(&quot;smoker&quot;,&quot;nonsmoker&quot;))</code></pre>
+<pre class="text"><code>inference(
+  y = weight, 
+  x = habit, 
+  data = nc,
+  est = &quot;mean&quot;, 
+  type = &quot;ci&quot;, 
+  method = &quot;theoretical&quot;, 
+  order = c(&quot;smoker&quot;,&quot;nonsmoker&quot;)
+  )</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
@@ -448,48 +628,102 @@ understanding.</p>
 pregnancies (<code>weeks</code>) and interpret it in context. Note that
 since you’re doing inference on a single population parameter, there is
 no explanatory variable, so you can omit the <code>x</code> variable
-from the function.
+from the function.</li>
+</ol>
 <div class="tutorial-exercise" data-label="own-prob-1"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div></li>
+</div>
+<div class="tutorial-exercise-support" data-label="own-prob-1-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use the inference() function</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="own-prob-1-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Since we are not comparing groups, you&#39;ll use the y
+#parameter but omit the x parameter.</code></pre>
+</div>
+<ol start="2" style="list-style-type: decimal">
 <li>Calculate a new confidence interval for the same parameter at the
 90% confidence level. You can change the confidence level by adding a
-new argument to the function: <code>conflevel = 0.90</code>.
+new argument to the function: <code>conf_level = 0.90</code>.</li>
+</ol>
 <div class="tutorial-exercise" data-label="own-prob-2"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div></li>
+</div>
+<div class="tutorial-exercise-support" data-label="own-prob-2-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#As mentioned, just add a new argument, conf_level = 0.90
+#inside of the inference() function. As a reminder, 
+#arguments are separated by commas and we&#39;ve been 
+#placing each argument on a new line for improved
+#readability.</code></pre>
+</div>
+<ol start="3" style="list-style-type: decimal">
 <li>Conduct a hypothesis test evaluating whether the average weight
 gained by younger mothers is different than the average weight gained by
-mature mothers.
+mature mothers.</li>
+</ol>
 <div class="tutorial-exercise" data-label="own-prob-3"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div></li>
+</div>
+<div class="tutorial-exercise-support" data-label="own-prob-3-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use the inference() function again, but be sure to 
+#set the type to &quot;ht&quot; (hypothesis test). You&#39;ll also
+#need a null and alternative hypothesis, and you 
+#shouldn&#39;t include a confidence level since those only
+#apply to confidence intervals.</code></pre>
+</div>
+<ol start="4" style="list-style-type: decimal">
 <li>Now, a non-inference task: Determine the age cutoff for younger and
 mature mothers. Use a method of your choice, and explain how your method
-works.
+works.</li>
+</ol>
 <div class="tutorial-exercise" data-label="own-prob-4"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div></li>
+</div>
+<div class="tutorial-exercise-support" data-label="own-prob-4-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#You need some way to find the &quot;oldest young mother&quot; 
+#and the &quot;youngest mature mother&quot;.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="own-prob-4-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#One way to do this is with group_by() and summarize()</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="own-prob-4-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#&quot;Oldest&quot; sounds like the maximum age, and &quot;youngest&quot;
+#seems like the minimum age</code></pre>
+</div>
+<ol start="5" style="list-style-type: decimal">
 <li>Pick a pair of numerical and categorical variables and come up with
 a research question evaluating the relationship between these variables.
 Formulate the question in a way that it can be answered using a
 hypothesis test and/or a confidence interval. Answer your question using
-the <code>inference</code> function, report the statistical results, and
-also provide an explanation in plain language.
+the <code>inference()</code> function, report the statistical results,
+and also provide an explanation in plain language.</li>
+</ol>
 <div class="tutorial-exercise" data-label="own-prob-5"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div></li>
-</ol>
+</div>
 </div>
 <div id="section-submit" class="section level2">
 <h2>Submit</h2>
@@ -572,8 +806,10 @@ library(ggplot2)
 library(learnr)
 library(gradethis)
 library(skimr)
+library(statsr)
 
 load("www/nc.RData")
+rm(inference)
 
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
 
@@ -611,8 +847,8 @@ output$`tutorial-exercise-nc-cases-questions-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nc-cases-questions", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "nc-cases-questions", code = "", opts = list(
@@ -644,19 +880,19 @@ learnr:::store_exercise_cache(structure(list(label = "nc-cases-questions", globa
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "nc-cases-1", question = structure("What are the cases in this data set?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_94aa359", 
+"character")), answers = list(structure(list(id = "lnr_ans_1557043", 
     option = "Each case corresponds to a pregnancy.", value = "Each case corresponds to a pregnancy.", 
     label = structure("Each case corresponds to a pregnancy.", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_efe0623", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7f9c430", 
     option = "Each case corresponds to a woman.", value = "Each case corresponds to a woman.", 
     label = structure("Each case corresponds to a woman.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6d5b2ea", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_40fbed8", 
     option = "Each case corresponds to a doctor visit.", value = "Each case corresponds to a doctor visit.", 
     label = structure("Each case corresponds to a doctor visit.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a04c4f2", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_8b05c3f", 
     option = "Each case corresponds to a baby.", value = "Each case corresponds to a baby.", 
     label = structure("Each case corresponds to a baby.", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -667,7 +903,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "nc-cases-1-answer", question = "nc-cases-1"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 1929340063.10158, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 573474703.732955, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -675,19 +911,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "nc-cases-2", question = structure("How many cases are there in our sample?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_43a0dda", 
+"character")), answers = list(structure(list(id = "lnr_ans_21f1148", 
     option = "963", value = "963", label = structure("963", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_a1db08d", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_8d15875", 
     option = "13", value = "13", label = structure("13", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_75fdf40", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_31f42a8", 
     option = "246", value = "246", label = structure("246", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_cd5e732", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_4c84760", 
     option = "1,000", value = "1,000", label = structure("1,000", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2d3fc59", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_ba97f3c", 
     option = "1,387", value = "1,387", label = structure("1,387", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -697,7 +933,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "nc-cases-2-answer", question = "nc-cases-2"), loading = NULL, 
-    random_answer_order = TRUE, allow_retry = TRUE, seed = 137960212.935757, 
+    random_answer_order = TRUE, allow_retry = TRUE, seed = 2054050704.54351, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -713,8 +949,8 @@ output$`tutorial-exercise-nc-summary-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nc-summary", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "nc-summary", code = "", opts = list(label = "\"nc-summary\"", 
@@ -755,8 +991,8 @@ output$`tutorial-exercise-nc-explore-num-cat-out-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "nc-explore-num-cat-out", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "nc-explore-num-cat-out", code = "", opts = list(
@@ -789,44 +1025,44 @@ learnr:::store_exercise_cache(structure(list(label = "nc-explore-num-cat-out", g
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "nc-explore-num-cat-out-questions", 
     question = structure("Which of the variables in the <code>nc<\u002fcode> dataset are numerical? Check all that apply.", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_505b89b", 
+    "character")), answers = list(structure(list(id = "lnr_ans_312a0fe", 
         option = "`fage`", value = "`fage`", label = structure("<code>fage<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ae29073", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_56b676e", 
         option = "`mage`", value = "`mage`", label = structure("<code>mage<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e8b6b76", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_74cc5cf", 
         option = "`mature`", value = "`mature`", label = structure("<code>mature<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1f1d18c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_eeec8e9", 
         option = "`weeks`", value = "`weeks`", label = structure("<code>weeks<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9df09a3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b387e64", 
         option = "`premie`", value = "`premie`", label = structure("<code>premie<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_66423f7", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f74d1ae", 
         option = "`visits`", value = "`visits`", label = structure("<code>visits<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bbe4ca2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b0abaa9", 
         option = "`marital`", value = "`marital`", label = structure("<code>marital<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6f40dff", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3cecd87", 
         option = "`gained`", value = "`gained`", label = structure("<code>gained<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_369e945", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6e0cd2f", 
         option = "`weight`", value = "`weight`", label = structure("<code>weight<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6ba77bc", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ac31f38", 
         option = "`lowbirthweight`", value = "`lowbirthweight`", 
         label = structure("<code>lowbirthweight<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d2de6eb", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2e08cec", 
         option = "`gender`", value = "`gender`", label = structure("<code>gender<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_da87cf2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7f31e98", 
         option = "`habit`", value = "`habit`", label = structure("<code>habit<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_dc141bd", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_83a3575", 
         option = "`whitemom`", value = "`whitemom`", label = structure("<code>whitemom<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -837,7 +1073,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "nc-explore-num-cat-out-questions-answer", question = "nc-explore-num-cat-out-questions"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1366228581.3638, options = list()), class = c("learnr_checkbox", 
+    seed = 775648673.63881, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 
@@ -852,15 +1088,17 @@ output$`tutorial-exercise-plot-habit-weight-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "plot-habit-weight", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "plot-habit-weight", code = "", opts = list(
         label = "\"plot-habit-weight\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure("grade_code()", chunk_opts = list(label = "plot-habit-weight-check")), 
-    solution = structure("ggplot(data = nc) + geom_boxplot(mapping = aes(x = habit, y = weight))", chunk_opts = list(
+    solution = structure(c("nc %>%", "  ggplot() + ", "  geom_boxplot(aes(x = habit, y = weight)) + ", 
+    "  labs(", "    title = \"Birthweight by Smoking Status\",", 
+    "    x = \"\",", "    y = \"Birthweight (lbs)\"", "  )"), chunk_opts = list(
         label = "plot-habit-weight-solution")), tests = NULL, 
     options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
@@ -897,8 +1135,8 @@ output$`tutorial-exercise-by-means-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "by-means", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "by-means", code = "nc %>%\n  group_by(habit) %>%\n  summarize(avg_birth_weight = mean(weight))", 
@@ -940,8 +1178,8 @@ output$`tutorial-exercise-check-inference-conditions-habit-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "check-inference-conditions-habit", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "check-inference-conditions-habit", code = "", 
@@ -978,13 +1216,13 @@ learnr:::store_exercise_cache(structure(list(label = "check-inference-conditions
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "inference-habit-conditions-questions-1", 
     question = structure("How many groups are being considered?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_52d4fc9", 
+    "character")), answers = list(structure(list(id = "lnr_ans_fc2b0b7", 
         option = "one", value = "one", label = structure("one", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2062910", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d894d7f", 
         option = "two", value = "two", label = structure("two", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2c815c9", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a20bdcb", 
         option = "more than two", value = "more than two", label = structure("more than two", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -996,38 +1234,38 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
         answer = "inference-habit-conditions-questions-1-answer", 
         question = "inference-habit-conditions-questions-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1885679739.12191, options = list()), class = c("learnr_radio", 
+    seed = 1222742223.43062, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "inference-habit-conditions-questions-2", 
     question = structure("Which of the following are the groups?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_eb01f6c", 
+    "character")), answers = list(structure(list(id = "lnr_ans_a74bea7", 
         option = "Pregnancies with mothers who are smokers", 
         value = "Pregnancies with mothers who are smokers", label = structure("Pregnancies with mothers who are smokers", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ac1f0a4", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_db1bfcb", 
         option = "Pregnancies with mothers who are non-smokers", 
         value = "Pregnancies with mothers who are non-smokers", 
         label = structure("Pregnancies with mothers who are non-smokers", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ca9e051", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9364096", 
         option = "Pregnancies resulting in premature births", 
         value = "Pregnancies resulting in premature births", 
         label = structure("Pregnancies resulting in premature births", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1f51ae", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d9766cc", 
         option = "Pregnancies not resulting in premature births", 
         value = "Pregnancies not resulting in premature births", 
         label = structure("Pregnancies not resulting in premature births", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e092298", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7e942ed", 
         option = "Pregnancies resulting in babies of low birthweight", 
         value = "Pregnancies resulting in babies of low birthweight", 
         label = structure("Pregnancies resulting in babies of low birthweight", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6ac5430", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_44c6086", 
         option = "Pregnancies resulting in babies not having low birthweight", 
         value = "Pregnancies resulting in babies not having low birthweight", 
         label = structure("Pregnancies resulting in babies not having low birthweight", html = TRUE, class = c("html", 
@@ -1041,7 +1279,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
         answer = "inference-habit-conditions-questions-2-answer", 
         question = "inference-habit-conditions-questions-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 710769071.669022, options = list()), class = c("learnr_checkbox", 
+    seed = 343525017.340034, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1049,20 +1287,20 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "inference-habit-conditions-questions-3", 
     question = structure("Are the conditions for inference satisfied?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_42fb70f", 
+    "character")), answers = list(structure(list(id = "lnr_ans_5a1e9d0", 
         option = "Yes, the group sizes are large enough to overcome any skew in the population distributions.", 
         value = "Yes, the group sizes are large enough to overcome any skew in the population distributions.", 
         label = structure("Yes, the group sizes are large enough to overcome any skew in the population distributions.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_397bbb5", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b7c15c0", 
         option = "No, the groups are too small.", value = "No, the groups are too small.", 
         label = structure("No, the groups are too small.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c56f7c3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4c21250", 
         option = "No, the group sizes are imbalanced.", value = "No, the group sizes are imbalanced.", 
         label = structure("No, the group sizes are imbalanced.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bb1afa3", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bdbf935", 
         option = "No, there is skew in the data.", value = "No, there is skew in the data.", 
         label = structure("No, there is skew in the data.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -1075,34 +1313,34 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
         answer = "inference-habit-conditions-questions-3-answer", 
         question = "inference-habit-conditions-questions-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1304708037.39245, options = list()), class = c("learnr_radio", 
+    seed = 1392463479.85158, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "hypotheses-sVns", 
     question = structure("The hypotheses for the test are:", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_74a8490", 
+    "character")), answers = list(structure(list(id = "lnr_ans_71ca1eb", 
         option = "$\\begin{array}{ll} H_0: & \\mu_{\\text{smoker}} = \\mu_{\\text{non-smoker}}\\\\ H_a: & \\mu_{\\text{smoker}} \\neq \\mu_{\\text{non-smoker}}\\end{array}$", 
         value = "$\\begin{array}{ll} H_0: & \\mu_{\\text{smoker}} = \\mu_{\\text{non-smoker}}\\\\ H_a: & \\mu_{\\text{smoker}} \\neq \\mu_{\\text{non-smoker}}\\end{array}$", 
         label = structure("\\(\\begin{array}{ll} H_0: &amp; \\mu_{\\text{smoker}} = \\mu_{\\text{non-smoker}}\\\\ H_a: &amp; \\mu_{\\text{smoker}} \\neq \\mu_{\\text{non-smoker}}\\end{array}\\)", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f850f1f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c436abe", 
         option = "$\\begin{array}{ll} H_0: & \\mu_{\\text{smoker}} = \\mu_{\\text{non-smoker}}\\\\ H_a: & \\mu_{\\text{smoker}} > \\mu_{\\text{non-smoker}}\\end{array}$", 
         value = "$\\begin{array}{ll} H_0: & \\mu_{\\text{smoker}} = \\mu_{\\text{non-smoker}}\\\\ H_a: & \\mu_{\\text{smoker}} > \\mu_{\\text{non-smoker}}\\end{array}$", 
         label = structure("\\(\\begin{array}{ll} H_0: &amp; \\mu_{\\text{smoker}} = \\mu_{\\text{non-smoker}}\\\\ H_a: &amp; \\mu_{\\text{smoker}} &gt; \\mu_{\\text{non-smoker}}\\end{array}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_333a81d", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3ef2187", 
         option = "$\\begin{array}{ll} H_0: & \\mu_{\\text{smoker}} = \\mu_{\\text{non-smoker}}\\\\ H_a: & \\mu_{\\text{smoker}} < \\mu_{\\text{non-smoker}}\\end{array}$", 
         value = "$\\begin{array}{ll} H_0: & \\mu_{\\text{smoker}} = \\mu_{\\text{non-smoker}}\\\\ H_a: & \\mu_{\\text{smoker}} < \\mu_{\\text{non-smoker}}\\end{array}$", 
         label = structure("\\(\\begin{array}{ll} H_0: &amp; \\mu_{\\text{smoker}} = \\mu_{\\text{non-smoker}}\\\\ H_a: &amp; \\mu_{\\text{smoker}} &lt; \\mu_{\\text{non-smoker}}\\end{array}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f101b4c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2832bd6", 
         option = "$\\begin{array}{ll} H_0: & p_{\\text{smoker}} = p_{\\text{non-smoker}}\\\\ H_a: & p_{\\text{smoker}} = p_{\\text{non-smoker}}\\end{array}$", 
         value = "$\\begin{array}{ll} H_0: & p_{\\text{smoker}} = p_{\\text{non-smoker}}\\\\ H_a: & p_{\\text{smoker}} = p_{\\text{non-smoker}}\\end{array}$", 
         label = structure("\\(\\begin{array}{ll} H_0: &amp; p_{\\text{smoker}} = p_{\\text{non-smoker}}\\\\ H_a: &amp; p_{\\text{smoker}} = p_{\\text{non-smoker}}\\end{array}\\)", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1f47b88", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6c51988", 
         option = "$\\begin{array}{ll} H_0: & p_{\\text{smoker}} = p_{\\text{non-smoker}}\\\\ H_a: & p_{\\text{smoker}} < p_{\\text{non-smoker}}\\end{array}$", 
         value = "$\\begin{array}{ll} H_0: & p_{\\text{smoker}} = p_{\\text{non-smoker}}\\\\ H_a: & p_{\\text{smoker}} < p_{\\text{non-smoker}}\\end{array}$", 
         label = structure("\\(\\begin{array}{ll} H_0: &amp; p_{\\text{smoker}} = p_{\\text{non-smoker}}\\\\ H_a: &amp; p_{\\text{smoker}} &lt; p_{\\text{non-smoker}}\\end{array}\\)", html = TRUE, class = c("html", 
@@ -1115,7 +1353,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "hypotheses-sVns-answer", question = "hypotheses-sVns"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 84753938.9605334, options = list()), class = c("learnr_radio", 
+    seed = 1703801278.70661, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1130,17 +1368,18 @@ output$`tutorial-exercise-first-inference-run-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "first-inference-run", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "first-inference-run", code = "inference(y = nc$weight, x = nc$habit, est = \"mean\", type = \"ht\", null = 0, alternative = \"twosided\", method = \"theoretical\")", 
+    list(label = "first-inference-run", code = "inference(\n  y = weight, \n  x = habit, \n  data = nc,\n  statistic = \"mean\", \n  type = \"ht\", \n  null = 0, \n  alternative = \"twosided\", \n  method = \"theoretical\"\n  )", 
         opts = list(label = "\"first-inference-run\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = structure("grade_code()", chunk_opts = list(label = "first-inference-run-check")), 
-    solution = structure("inference(y = nc$weight, x = nc$habit, est = \"mean\", type = \"ci\", method = \"theoretical\")", chunk_opts = list(
-        label = "first-inference-run-solution")), tests = NULL, 
-    options = list(eval = FALSE, echo = TRUE, results = "markup", 
+    solution = structure(c("inference(", "  y = weight, ", "  x = habit, ", 
+    "  data = nc,", "  statistic = \"mean\", ", "  type = \"ci\", ", 
+    "  method = \"theoretical\")"), chunk_opts = list(label = "first-inference-run-solution")), 
+    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
         tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
         comment = NA, highlight = FALSE, size = "normalsize", 
         background = "#F7F7F7", strip.white = TRUE, cache = 0, 
@@ -1158,8 +1397,11 @@ learnr:::store_exercise_cache(structure(list(label = "first-inference-run", glob
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "first-inference-run", exercise = TRUE, code = "inference(y = nc$weight, x = nc$habit, est = \"mean\", type = \"ht\", null = 0, alternative = \"twosided\", method = \"theoretical\")", 
-        out.width.px = 624, out.height.px = 384, params.src = "first-inference-run, exercise = TRUE", 
+        label = "first-inference-run", exercise = TRUE, code = c("inference(", 
+        "  y = weight, ", "  x = habit, ", "  data = nc,", "  statistic = \"mean\", ", 
+        "  type = \"ht\", ", "  null = 0, ", "  alternative = \"twosided\", ", 
+        "  method = \"theoretical\"", "  )"), out.width.px = 624, 
+        out.height.px = 384, params.src = "first-inference-run, exercise = TRUE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -1175,11 +1417,11 @@ output$`tutorial-exercise-inference-ci-ordered-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "inference-ci-ordered", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "inference-ci-ordered", code = "inference(y = nc$weight, x = nc$habit, est = \"mean\", type = \"ci\", method = \"theoretical\", order = c(\"smoker\",\"nonsmoker\"))", 
+    list(label = "inference-ci-ordered", code = "inference(\n  y = weight, \n  x = habit, \n  data = nc,\n  est = \"mean\", \n  type = \"ci\", \n  method = \"theoretical\", \n  order = c(\"smoker\",\"nonsmoker\")\n  )", 
         opts = list(label = "\"inference-ci-ordered\"", exercise = "TRUE"), 
         engine = "r")), code_check = NULL, error_check = NULL, 
     check = NULL, solution = NULL, tests = NULL, options = list(
@@ -1200,8 +1442,11 @@ learnr:::store_exercise_cache(structure(list(label = "inference-ci-ordered", glo
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (...) \n{\n    lifecycle::deprecate_soft(\"0.2.2\", \"grade_learnr()\", \"gradethis_exercise_checker()\")\n    gradethis_exercise_checker(...)\n}", 
         exercise.error.check.code = "gradethis_error_checker()", 
-        label = "inference-ci-ordered", exercise = TRUE, code = "inference(y = nc$weight, x = nc$habit, est = \"mean\", type = \"ci\", method = \"theoretical\", order = c(\"smoker\",\"nonsmoker\"))", 
-        out.width.px = 624, out.height.px = 384, params.src = "inference-ci-ordered, exercise = TRUE", 
+        label = "inference-ci-ordered", exercise = TRUE, code = c("inference(", 
+        "  y = weight, ", "  x = habit, ", "  data = nc,", "  est = \"mean\", ", 
+        "  type = \"ci\", ", "  method = \"theoretical\", ", 
+        "  order = c(\"smoker\",\"nonsmoker\")", "  )"), out.width.px = 624, 
+        out.height.px = 384, params.src = "inference-ci-ordered, exercise = TRUE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
@@ -1217,8 +1462,8 @@ output$`tutorial-exercise-own-prob-1-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "own-prob-1", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "own-prob-1", code = "", opts = list(label = "\"own-prob-1\"", 
@@ -1259,8 +1504,8 @@ output$`tutorial-exercise-own-prob-2-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "own-prob-2", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "own-prob-2", code = "", opts = list(label = "\"own-prob-2\"", 
@@ -1301,8 +1546,8 @@ output$`tutorial-exercise-own-prob-3-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "own-prob-3", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "own-prob-3", code = "", opts = list(label = "\"own-prob-3\"", 
@@ -1343,8 +1588,8 @@ output$`tutorial-exercise-own-prob-4-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "own-prob-4", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "own-prob-4", code = "", opts = list(label = "\"own-prob-4\"", 
@@ -1385,8 +1630,8 @@ output$`tutorial-exercise-own-prob-5-output` <- renderUI({
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "own-prob-5", global_setup = structure(c("#knitr::opts_chunk$set(eval = FALSE)", 
 "#library(tidyverse)", "library(dplyr)", "library(ggplot2)", 
-"library(learnr)", "library(gradethis)", "library(skimr)", "", 
-"load(\"www/nc.RData\")", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
+"library(learnr)", "library(gradethis)", "library(skimr)", "library(statsr)", 
+"", "load(\"www/nc.RData\")", "rm(inference)", "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "own-prob-5", code = "", opts = list(label = "\"own-prob-5\"", 
@@ -1428,7 +1673,7 @@ learnrhash::encoder_logic(strip_output = TRUE)
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65]}},"value":[{"type":"character","attributes":{},"value":["backports","base","base64enc","bslib","cachem","checkmate","cli","colorspace","commonmark","compiler","datasets","digest","dplyr","evaluate","fansi","fastmap","fontawesome","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","learnrhash","lifecycle","magrittr","markdown","methods","mime","munsell","pillar","pkgconfig","promises","R6","Rcpp","repr","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","skimr","stats","tibble","tidyselect","tools","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.3.1","0.1-3","0.7.0","1.0.8","2.3.1","3.6.1","2.1-0","1.9.1","4.3.1","4.3.1","0.6.35","1.1.3","0.23","1.0.6","1.1.1","0.5.2","0.1.3","3.4.4","1.7.0","0.2.14","4.3.1","4.3.1","4.3.1","0.3.4","0.5.8.1","1.6.4","1.6.15","0.1.4","1.8.8","1.46","1.3.2","0.11.5.9000","0.2.0","1.0.4","2.0.3","1.12","4.3.1","0.12","0.5.0","1.9.0","2.0.3","1.3.0","2.5.1","1.0.12","1.1.7","1.1.3","2.26","2.0.4","0.16.0","0.4.9","1.2.1","1.8.1.1","2.1.5","4.3.1","3.2.1","1.2.0","4.3.1","1.2.4","4.3.1","0.6.5","3.0.0","0.43","1.8-4","2.3.8"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76]}},"value":[{"type":"character","attributes":{},"value":["backports","base","base64enc","BayesFactor","bslib","cachem","checkmate","cli","coda","colorspace","commonmark","compiler","datasets","digest","dplyr","evaluate","fansi","fastmap","fontawesome","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","lattice","learnr","learnrhash","lifecycle","magrittr","markdown","Matrix","MatrixModels","methods","mime","munsell","mvtnorm","parallel","pbapply","pillar","pkgconfig","promises","R6","Rcpp","repr","rlang","rmarkdown","rprojroot","rstudioapi","sass","scales","shiny","skimr","stats","statsr","stringi","stringr","tibble","tidyselect","tools","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.3.1","0.1-3","0.9.12-4.7","0.7.0","1.0.8","2.3.1","3.6.1","0.19-4","2.1-0","1.9.1","4.3.1","4.3.1","0.6.35","1.1.3","0.23","1.0.6","1.1.1","0.5.2","0.1.3","3.4.4","1.7.0","0.2.14","4.3.1","4.3.1","4.3.1","0.3.4","0.5.8.1","1.6.4","1.6.15","0.1.4","1.8.8","1.46","1.3.2","0.21-8","0.11.5.9000","0.2.0","1.0.4","2.0.3","1.12","1.6-1.1","0.5-2","4.3.1","0.12","0.5.0","1.2-3","4.3.1","1.7-2","1.9.0","2.0.3","1.3.0","2.5.1","1.0.12","1.1.7","1.1.3","2.26","2.0.4","0.16.0","0.4.9","1.2.1","1.8.1.1","2.1.5","4.3.1","0.3.0","1.7.12","1.5.0","3.2.1","1.2.0","4.3.1","1.2.4","4.3.1","0.6.5","3.0.0","0.43","1.8-4","2.3.8"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>
