@@ -130,15 +130,6 @@ class="math inline">\(Y\)</span>?</p>
 </div>
 <div id="section-section-1" class="section level3">
 <h3></h3>
-<div id="section-license">
-<p>This is a product of OpenIntro that is released under a <a
-href="http://creativecommons.org/licenses/by-sa/3.0">Creative Commons
-Attribution-ShareAlike 3.0 Unported</a>. This lab was adapted from a lab
-written by Mine Çetinkaya-Rundel and Andrew Bray.</p>
-</div>
-</div>
-<div id="section-section-2" class="section level3">
-<h3></h3>
 <p>Another way of phrasing this is that our inference applications seek
 to answer the question, “<em>within our population of interest, is there
 an association between the variable <span
@@ -147,6 +138,15 @@ class="math inline">\(Y\)</span>?</em>”. If both variables <span
 class="math inline">\(X\)</span> and <span
 class="math inline">\(Y\)</span> are numerical, then we develop a new
 statistical inference technique called linear regression.</p>
+</div>
+<div id="section-section-2" class="section level3">
+<h3></h3>
+<div id="section-license">
+<p>This is a product of OpenIntro that is released under a <a
+href="http://creativecommons.org/licenses/by-sa/3.0">Creative Commons
+Attribution-ShareAlike 3.0 Unported</a>. This lab was adapted from a lab
+written by Mine Çetinkaya-Rundel and Andrew Bray.</p>
+</div>
 </div>
 </div>
 <div id="section-an-introduction-to-linear-regression"
@@ -386,13 +386,78 @@ highest.</td>
 </div>
 <div id="section-section-12" class="section level3">
 <h3></h3>
-Use the code block below to draw a histogram of the distribution of the
-<code>score</code> variable in the <code>evals</code> data frame. Use
-your histogram to answer the questions that follow.
+<p>Use the code block below to draw a histogram of the distribution of
+the <code>score</code> variable in the <code>evals</code> data frame.
+Use your histogram to answer the questions that follow.</p>
 <div class="tutorial-exercise" data-label="hist-scores"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="hist-scores-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Pipe the evals data frame into ggplot()</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="hist-scores-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Add a histogram layer to your plot
+
+evals %&gt;%
+  ggplot()</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="hist-scores-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Remember, we add layers to a ggplot with the plus sign (+) 
+#operator. Also, the geometry layer for a histogram
+#is geom_histogram()
+
+evals %&gt;%
+  ggplot() + 
+  ___</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="hist-scores-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#The heights of the bars of a histogram are determined
+#by the frequency of observations in the corresponding
+#bins. For this reason, we cannot pass a y aesthetic
+#and should only pass an x aesthetic. What variable
+#are you drawing the distribution for?
+
+evals %&gt;%
+  ggplot() + 
+  geom_histogram(aes(x = ___))</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="hist-scores-hint-5"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Now add a title and axis labels to your plot
+
+evals %&gt;%
+  ggplot() + 
+  geom_histogram(aes(x = score)) + 
+  labs(
+    title = &quot;___&quot;,
+    x = &quot;___&quot;,
+    y = &quot;&quot;
+  )
+
+#Clicking &quot;Next Hint&quot; will show a possible solution.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="hist-scores-solution"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>evals %&gt;%
+  ggplot() + 
+  geom_histogram(aes(x = score)) + 
+  labs(
+    title = &quot;Distribution of Course Evaluation Scores&quot;,
+    x = &quot;Score&quot;,
+    y = &quot;&quot;
+  )</code></pre>
 </div>
 <div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
 <div class="panel panel-default tutorial-question-container">
@@ -414,13 +479,22 @@ data-lines="0" data-pipe="|&gt;">
 </div>
 <div id="section-section-13" class="section level3">
 <h3></h3>
-Use the code block below to explore relationships between the other
+<p>Use the code block below to explore relationships between the other
 variables in the <code>evals</code> data frame. Consider your variables
-and their types as you construct appropriate visualizations.
+and their types as you construct appropriate visualizations.</p>
 <div class="tutorial-exercise" data-label="data-viz" data-completion="1"
 data-diagnostics="1" data-startover="1" data-lines="0"
 data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="data-viz-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Explore the data by calculating summary statistics --
+#you might use group_by() and summarize() -- or also 
+#by constructing additional plots with ggplot().
+#Use this as an opportunity to practice skills that you
+#haven&#39;t utilized recently.</code></pre>
 </div>
 </div>
 </div>
@@ -428,20 +502,82 @@ data-pipe="|&gt;">
 <h2>Simple Linear Regression:</h2>
 <div id="section-section-14" class="section level3">
 <h3></h3>
-The fundamental phenomenon suggested by the Gelman and Hill study is
+<p>The fundamental phenomenon suggested by the Gelman and Hill study is
 that better looking teachers are evaluated more favorably. Use the code
 block below to create a scatterplot to see if this appears to be the
 case. Put <code>bty_avg</code> along the horizontal axis and
-<code>score</code> along the vertical axis.
+<code>score</code> along the vertical axis.</p>
 <div class="tutorial-exercise" data-label="bty-score"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support" data-label="bty-score-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Start in the same way as you constructed the histogram
+#earlier. Pipe the evals data into ggplot(), but then 
+#create a scatterplot with geom_point() rather than
+#using geom_histogram() to create a histogram.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="bty-score-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#What aesthetic mappings do you need to make in order 
+#to define the location of a point in a scatterplot?
+
+evals %&gt;%
+  ggplot() + 
+  geom_point(aes(___))</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="bty-score-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Each point must have a horizontal (x) location and a 
+#vertical (y) location.
+
+evals %&gt;%
+  ggplot() + 
+  geom_point(aes(x = ___, y = ___))</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="bty-score-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Since the researchers suspect that attractiveness (bty_avg)
+#impacts evaluation score, we should use bty_avg as x
+#and score as y.
+
+evals %&gt;%
+  ggplot() + 
+  geom_point(aes(x = ___, y = ___))</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="bty-score-hint-5"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Now add a title and axis labels to your plot.
+
+evals %&gt;%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  labs(
+    title = &quot;___&quot;,
+    x = &quot;___&quot;,
+    y = &quot;___&quot;
+  )
+
+#Clicking &quot;Next Hint&quot; will show a possible solution.</code></pre>
+</div>
 <div class="tutorial-exercise-support" data-label="bty-score-solution"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
-<pre class="text"><code>ggplot(data = evals) + geom_point(mapping = aes(x = bty_avg, y = score))</code></pre>
+<pre class="text"><code>evals %&gt;%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  labs(
+    title = &quot;Association between Attractiveness and Evaluation Score&quot;,
+    x = &quot;Average Beauty Rating&quot;,
+    y = &quot;Course Evaluation Score&quot;
+  )</code></pre>
 </div>
 </div>
 <div id="section-section-15" class="section level3">
@@ -449,23 +585,33 @@ data-lines="0" data-pipe="|&gt;">
 <p>Before we draw conclusions about the trend, compare the number of
 observations in the data frame with the approximate number of points on
 the scatterplot. Is anything awry?</p>
-Use the code block below to replot the scatterplot, but this time use
+<p>Use the code block below to replot the scatterplot, but this time use
 <code>geom_jitter()</code> instead of <code>geom_point()</code>. What
-was misleading about the initial scatterplot?
+was misleading about the initial scatterplot?</p>
 <div class="tutorial-exercise" data-label="bty-score-jitter"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
+<div class="tutorial-exercise-support"
+data-label="bty-score-jitter-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Take the code from the previous plot and replace 
+#geom_point() with geom_jitter(). The geom_jitter() 
+#layer still produces a scatterplot, but it adds a
+#small amount of random noise to each x and y location
+#to avoid points being plotted on top of one another.</code></pre>
+</div>
 </div>
 <div id="section-section-16" class="section level3">
 <h3></h3>
-Let’s see if the apparent trend in the plot is something more than
+<p>Let’s see if the apparent trend in the plot is something more than
 natural variation. Use the code block below to fit a linear model called
 <code>m_bty</code> to predict average professor score by average beauty
 rating. In R, we use the <code>lm()</code> function to build a linear
 regression model and then the <code>summary()</code> function to view
-it. The code is provided – you can just run it.
+it. The code is provided – you can just run it.</p>
 <div class="tutorial-exercise" data-label="simple-reg-model"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -504,14 +650,87 @@ summary(m_bty)</code></pre>
 </div>
 <div id="section-section-18" class="section level3">
 <h3></h3>
-Use the code block below to add the line to your plot by adding a layer
-with <code>geom_abline()</code> using the appropriate <code>slope</code>
-and <code>intercept</code> arguments. Write out the equation for the
-linear model and interpret the slope.
+<p>Use the code block below to add the line to your plot by adding a
+layer with <code>geom_abline()</code> using the appropriate
+<code>slope</code> and <code>intercept</code> arguments. Write out the
+equation for the linear model and interpret the slope.</p>
 <div class="tutorial-exercise" data-label="add-abline"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="add-abline-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Start with the scatterplot you produced earlier 
+#with geom_jitter()</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="add-abline-hint-2"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Now add a second geometry layer, using geom_abline(),
+#to your plot.
+
+evals %&gt;%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  labs(
+    title = &quot;Association between Attractiveness and Evaluation Score&quot;,
+    x = &quot;Average Beauty Rating&quot;,
+    y = &quot;Course Evaluation Score&quot;
+  )</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="add-abline-hint-3"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Since the slope and intercept are not mapped from 
+#columns of our data frame, the should be defined 
+#outside of any aes() brackets. In fact, for our use 
+#of this layer, we don&#39;t even need aes() at all.
+
+evals %&gt;%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  geom_abline(slope = ___, intercept = ___) +
+  labs(
+    title = &quot;Association between Attractiveness and Evaluation Score&quot;,
+    x = &quot;Average Beauty Rating&quot;,
+    y = &quot;Course Evaluation Score&quot;
+  )</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="add-abline-hint-4"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use the slope and intercept from the regression output
+#to fill in the blanks below and generate the plot.
+
+evals %&gt;%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  geom_abline(slope = ___, intercept = ___) +
+  labs(
+    title = &quot;Association between Attractiveness and Evaluation Score&quot;,
+    x = &quot;Average Beauty Rating&quot;,
+    y = &quot;Course Evaluation Score&quot;
+  )
+
+#Clicking &quot;Next Hint&quot; will show the solution.</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="add-abline-hint-5"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Use the slope and intercept from the regression output
+#to fill in the blanks below and generate the plot.
+
+evals %&gt;%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  geom_abline(slope = 0.06664, intercept = 3.88034) +
+  labs(
+    title = &quot;Association between Attractiveness and Evaluation Score&quot;,
+    x = &quot;Average Beauty Rating&quot;,
+    y = &quot;Course Evaluation Score&quot;
+  )</code></pre>
 </div>
 </div>
 <div id="section-section-19" class="section level3">
@@ -647,10 +866,10 @@ summary(m_full)</code></pre>
 </div>
 <div id="section-section-29" class="section level3">
 <h3></h3>
-Use the code block below to remove the predictor corresponding to the
+<p>Use the code block below to remove the predictor corresponding to the
 highest <span class="math inline">\(p\)</span>-value (just delete it
 from the code which constructs the model). Re-run the model and print
-the summary.
+the summary.</p>
 <div class="tutorial-exercise" data-label="model-second-it"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
@@ -677,12 +896,44 @@ data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
-Use the code block below to build the final model as
-<code>m_final</code> and print the model summary.
+<div class="tutorial-exercise-support"
+data-label="model-reducing-hint-1" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Start with the code from the previous code block.</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="model-reducing-hint-2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Compute the model and view the summary. Drop the 
+#predictor corresponding to the highest p-value, rerun
+#the model and inspect the summary output.
+
+m_reduced &lt;- lm(score ~ ethnicity + gender + language + age + cls_perc_eval + cls_students + cls_level + cls_credits + bty_avg + pic_color + pic_outfit, data = evals)
+
+summary(m_reduced)</code></pre>
+</div>
+<div class="tutorial-exercise-support"
+data-label="model-reducing-hint-3" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0"
+data-pipe="|&gt;">
+<pre class="text"><code>#Continue dropping one predictor at a time, rerunning
+#the model construction, and inspecting the summary
+#until all remaining predictors are statistically significant.</code></pre>
+</div>
+<p>Use the code block below to build the final model as
+<code>m_final</code> and print the model summary.</p>
 <div class="tutorial-exercise" data-label="model-final"
 data-completion="1" data-diagnostics="1" data-startover="1"
 data-lines="0" data-pipe="|&gt;">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="model-final-hint-1"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>#Just copy, paste, and submit the code you ended up 
+#with in the previous code cell here.</code></pre>
 </div>
 <div class="tutorial-exercise-support" data-label="model-final-solution"
 data-completion="1" data-diagnostics="1" data-startover="1"
@@ -840,21 +1091,21 @@ session$onSessionEnded(function() {
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "understand-study-1", 
     question = structure("What is the difference between an observational study and an experiment?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_9b124aa", 
+    "character")), answers = list(structure(list(id = "lnr_ans_55851a9", 
         option = "An experiment includes randomization and a manipulated condition to be tested while an observational study lacks manipulation.", 
         value = "An experiment includes randomization and a manipulated condition to be tested while an observational study lacks manipulation.", 
         label = structure("An experiment includes randomization and a manipulated condition to be tested while an observational study lacks manipulation.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a438d95", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6b17675", 
         option = "An experiment must be conducted in a lab", 
         value = "An experiment must be conducted in a lab", label = structure("An experiment must be conducted in a lab", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3a89876", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8ef3ab2", 
         option = "Participants in an experiment must sign a waiver", 
         value = "Participants in an experiment must sign a waiver", 
         label = structure("Participants in an experiment must sign a waiver", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8c21a23", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_68740c8", 
         option = "An experiment includes much more data", value = "An experiment includes much more data", 
         label = structure("An experiment includes much more data", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -866,7 +1117,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "understand-study-1-answer", question = "understand-study-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1394104614.85082, options = list()), class = c("learnr_radio", 
+    seed = 1109805411.48321, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -874,11 +1125,11 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "understand-study-2", 
     question = structure("Is this an observational study or an experiment?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_ab3c4d8", 
+    "character")), answers = list(structure(list(id = "lnr_ans_9eb7ad6", 
         option = "an observational study", value = "an observational study", 
         label = structure("an observational study", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_33b3887", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4515ed4", 
         option = "an experiment", value = "an experiment", label = structure("an experiment", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -889,29 +1140,29 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "understand-study-2-answer", question = "understand-study-2"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 1522716786.29093, options = list()), class = c("learnr_radio", 
+    seed = 1973163288.08117, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "understand-study-3", 
     question = structure("The original research question posed in the paper is whether beauty leads directly to the differences in course evaluations. Given the study design, is it possible to answer this question as it is phrased?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_6fd37aa", 
+    "character")), answers = list(structure(list(id = "lnr_ans_120cd2f", 
         option = "Yes, it is possible to answer the question as phrased.", 
         value = "Yes, it is possible to answer the question as phrased.", 
         label = structure("Yes, it is possible to answer the question as phrased.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5362c78", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e7e3e91", 
         option = "No. The original question invokes a causal relationship -- answering the question as it was originally phrased requires data collected via an experiment.", 
         value = "No. The original question invokes a causal relationship -- answering the question as it was originally phrased requires data collected via an experiment.", 
         label = structure("No. The original question invokes a causal relationship – answering the question as it was originally phrased requires data collected via an experiment.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f394704", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1b5fb86", 
         option = "No, the study did not include enough data in order to answer the question as it was originally phrased.", 
         value = "No, the study did not include enough data in order to answer the question as it was originally phrased.", 
         label = structure("No, the study did not include enough data in order to answer the question as it was originally phrased.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8e9a488", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8a6f771", 
         option = "No. The question posed is not a *data* question.", 
         value = "No. The question posed is not a *data* question.", 
         label = structure("No. The question posed is not a <em>data<\u002fem> question.", html = TRUE, class = c("html", 
@@ -924,7 +1175,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "understand-study-3-answer", question = "understand-study-3"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1442043210.3285, options = list()), class = c("learnr_radio", 
+    seed = 2056527776.04235, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -945,15 +1196,18 @@ learnr:::store_exercise_cache(structure(list(label = "hist-scores", global_setup
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
     list(label = "hist-scores", code = "", opts = list(label = "\"hist-scores\"", 
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
-    error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
-    options = list(eval = FALSE, echo = TRUE, results = "markup", 
-        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
-        comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "19_LinearRegressionLab_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "19_LinearRegressionLab_files/figure-html/", 
+    error_check = NULL, check = NULL, solution = structure(c("evals %>%", 
+    "  ggplot() + ", "  geom_histogram(aes(x = score)) + ", "  labs(", 
+    "    title = \"Distribution of Course Evaluation Scores\",", 
+    "    x = \"Score\",", "    y = \"\"", "  )"), chunk_opts = list(
+        label = "hist-scores-solution")), tests = NULL, options = list(
+        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "19_LinearRegressionLab_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "19_LinearRegressionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -974,25 +1228,25 @@ learnr:::store_exercise_cache(structure(list(label = "hist-scores", global_setup
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "describe-scores-1", 
     question = structure("Describe the distribution of <code>score<\u002fcode>.", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_af970ad", 
+    "character")), answers = list(structure(list(id = "lnr_ans_f016a4b", 
         option = "The distribution is approximately normal.", 
         value = "The distribution is approximately normal.", 
         label = structure("The distribution is approximately normal.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_adafa5", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2c5d689", 
         option = "The distribution is approximately uniform.", 
         value = "The distribution is approximately uniform.", 
         label = structure("The distribution is approximately uniform.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f8cb9e9", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d4f2bd1", 
         option = "The distribution is bimodal.", value = "The distribution is bimodal.", 
         label = structure("The distribution is bimodal.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_26bb48a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cfa67eb", 
         option = "The distribution is skewed left.", value = "The distribution is skewed left.", 
         label = structure("The distribution is skewed left.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8888ce9", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6598880", 
         option = "The distribution is skewed right.", value = "The distribution is skewed right.", 
         label = structure("The distribution is skewed right.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -1004,24 +1258,24 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "describe-scores-1-answer", question = "describe-scores-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1514475119.79477, options = list()), class = c("learnr_radio", 
+    seed = 651159059.69678, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "describe-scores-2", 
     question = structure("What does this tell you about how students typically rate courses?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_683f26c", 
+    "character")), answers = list(structure(list(id = "lnr_ans_747a2e2", 
         option = "Students give high scores more often than low scores.", 
         value = "Students give high scores more often than low scores.", 
         label = structure("Students give high scores more often than low scores.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_23e087e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_22cfa5e", 
         option = "Students give low scores more often than high scores.", 
         value = "Students give low scores more often than high scores.", 
         label = structure("Students give low scores more often than high scores.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_123f447", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_662bade", 
         option = "Students typically give moderate scores with fewer students giving very high or very low scores.", 
         value = "Students typically give moderate scores with fewer students giving very high or very low scores.", 
         label = structure("Students typically give moderate scores with fewer students giving very high or very low scores.", html = TRUE, class = c("html", 
@@ -1034,7 +1288,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "describe-scores-2-answer", question = "describe-scores-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 287507462.866119, options = list()), class = c("learnr_radio", 
+    seed = 587171084.226577, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1098,15 +1352,19 @@ learnr:::store_exercise_cache(structure(list(label = "bty-score", global_setup =
     list(label = "bty-score", code = "", opts = list(label = "\"bty-score\"", 
         exercise = "TRUE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = structure("grade_code()", chunk_opts = list(
-        label = "bty-score-check")), solution = structure("ggplot(data = evals) + geom_point(mapping = aes(x = bty_avg, y = score))", chunk_opts = list(
-        label = "bty-score-solution")), tests = NULL, options = list(
-        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
-        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
-        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "19_LinearRegressionLab_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "19_LinearRegressionLab_files/figure-html/", 
+        label = "bty-score-check")), solution = structure(c("evals %>%", 
+    "  ggplot() + ", "  geom_point(aes(x = bty_avg, y = score)) + ", 
+    "  labs(", "    title = \"Association between Attractiveness and Evaluation Score\",", 
+    "    x = \"Average Beauty Rating\",", "    y = \"Course Evaluation Score\"", 
+    "  )"), chunk_opts = list(label = "bty-score-solution")), 
+    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "19_LinearRegressionLab_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "19_LinearRegressionLab_files/figure-html/", 
         dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
         fig.width = 6.5, fig.height = 4, fig.env = "figure", 
         fig.cap = NULL, fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
@@ -1214,26 +1472,26 @@ learnr:::store_exercise_cache(structure(list(label = "simple-reg-model", global_
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "interp-reg-1", 
     question = structure("Is average beauty score a <em>statistically<\u002fem> significant predictor of overall instructor evaluation score?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_a16f04e", 
+    "character")), answers = list(structure(list(id = "lnr_ans_ab14b9a", 
         option = "Yes, the $p$-value associated with `bty_avg` is below 0.05.", 
         value = "Yes, the $p$-value associated with `bty_avg` is below 0.05.", 
         label = structure("Yes, the \\(p\\)-value associated with <code>bty_avg<\u002fcode> is below 0.05.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2dc1915", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e6e5e42", 
         option = "Yes, the coefficient estimate is not 0.", value = "Yes, the coefficient estimate is not 0.", 
         label = structure("Yes, the coefficient estimate is not 0.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_58f33b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c7626d6", 
         option = "No, the R-squared values are quite small.", 
         value = "No, the R-squared values are quite small.", 
         label = structure("No, the R-squared values are quite small.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cf52f0b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fc6735c", 
         option = "No, the $p$-value associated with the intercept is smaller than the $p$-value associated with `bty_avg`.", 
         value = "No, the $p$-value associated with the intercept is smaller than the $p$-value associated with `bty_avg`.", 
         label = structure("No, the \\(p\\)-value associated with the intercept is smaller than the \\(p\\)-value associated with <code>bty_avg<\u002fcode>.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2ec37b5", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7ba0de6", 
         option = "No, the $p$-value associated with `bty_avg` is above 0.05.", 
         value = "No, the $p$-value associated with `bty_avg` is above 0.05.", 
         label = structure("No, the \\(p\\)-value associated with <code>bty_avg<\u002fcode> is above 0.05.", html = TRUE, class = c("html", 
@@ -1246,26 +1504,26 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "interp-reg-1-answer", question = "interp-reg-1"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 423716639.302692, options = list()), class = c("learnr_radio", 
+    seed = 663318818.691118, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "interp-reg-2", 
     question = structure("What is the approximate value of the <code>intercept<\u002fcode> associated with the linear model we created?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_559a2af", 
+    "character")), answers = list(structure(list(id = "lnr_ans_96b48c5", 
         option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b17e49c", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_cc84696", 
         option = "0.067", value = "0.067", label = structure("0.067", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d7104b2", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ebc58e6", 
         option = "3.88", value = "3.88", label = structure("3.88", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_26a568e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b6942d6", 
         option = "2e-16", value = "2e-16", label = structure("2e-16", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6ce561", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3637a18", 
         option = "0.076", value = "0.076", label = structure("0.076", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1276,7 +1534,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "interp-reg-2-answer", question = "interp-reg-2"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 867641793.095973, options = list()), class = c("learnr_radio", 
+    seed = 1007352916.53091, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1284,19 +1542,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "interp-reg-3", 
     question = structure("What is the <em>slope<\u002fem> of the regression model with respect to average beauty rating?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_a305821", 
+    "character")), answers = list(structure(list(id = "lnr_ans_233d701", 
         option = "0.067", value = "0.067", label = structure("0.067", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_feb8b34", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b1eb2a0", 
         option = "3.88", value = "3.88", label = structure("3.88", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9dfb6ee", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_15993ba", 
         option = "5.05e-05", value = "5.05e-05", label = structure("5.05e-05", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c6a31d6", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4917c60", 
         option = "2e-16", value = "2e-16", label = structure("2e-16", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_db9a3e0", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b380e05", 
         option = "0.5348", value = "0.5348", label = structure("0.5348", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1307,7 +1565,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "interp-reg-3-answer", question = "interp-reg-3"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 788464286.632843, options = list()), class = c("learnr_radio", 
+    seed = 942195483.561256, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1356,22 +1614,22 @@ learnr:::store_exercise_cache(structure(list(label = "add-abline", global_setup 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "practical-predictor", 
     question = structure("From the plot, does it seem that average beauty score is a <em>practically<\u002fem> significant predictor of overall instructor evaluation score?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_2c05993", 
+    "character")), answers = list(structure(list(id = "lnr_ans_206cba9", 
         option = "No. We should not expect that the model using `bty_avg` to predict overall evaluation score will yield accurate pedictions of these scores.", 
         value = "No. We should not expect that the model using `bty_avg` to predict overall evaluation score will yield accurate pedictions of these scores.", 
         label = structure("No. We should not expect that the model using <code>bty_avg<\u002fcode> to predict overall evaluation score will yield accurate pedictions of these scores.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3094e08", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_708477e", 
         option = "Yes. There is no difference between statistical and practical significance.", 
         value = "Yes. There is no difference between statistical and practical significance.", 
         label = structure("Yes. There is no difference between statistical and practical significance.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_afc0507", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_5924144", 
         option = "Yes. Students give better scores to instructors who are better looking.", 
         value = "Yes. Students give better scores to instructors who are better looking.", 
         label = structure("Yes. Students give better scores to instructors who are better looking.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_98d0b18", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4db87f6", 
         option = "Yes. Students give worse scores to instructors who are better looking.", 
         value = "Yes. Students give worse scores to instructors who are better looking.", 
         label = structure("Yes. Students give worse scores to instructors who are better looking.", html = TRUE, class = c("html", 
@@ -1384,7 +1642,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "practical-predictor-answer", question = "practical-predictor"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1953360728.5904, options = list()), class = c("learnr_radio", 
+    seed = 411429356.808413, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1392,22 +1650,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "sig-not-pract", 
     question = structure("What does it mean that average beauty rating is a significant predictor of overall course rating score but not a practical predictor?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_1206a1a", 
+    "character")), answers = list(structure(list(id = "lnr_ans_fe55238", 
         option = "The regression model suggests that there is implicit bias in the course evaluation scores depending on the attractiveness of the instructor.", 
         value = "The regression model suggests that there is implicit bias in the course evaluation scores depending on the attractiveness of the instructor.", 
         label = structure("The regression model suggests that there is implicit bias in the course evaluation scores depending on the attractiveness of the instructor.", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8f1bd52", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_868332c", 
         option = "The regression model resulted in a Type I error, claiming a significant relationship where there was none.", 
         value = "The regression model resulted in a Type I error, claiming a significant relationship where there was none.", 
         label = structure("The regression model resulted in a Type I error, claiming a significant relationship where there was none.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_794abd7", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f948298", 
         option = "The significant relationship between beauty rating and overall evaluation score is a result of noise in the sample data.", 
         value = "The significant relationship between beauty rating and overall evaluation score is a result of noise in the sample data.", 
         label = structure("The significant relationship between beauty rating and overall evaluation score is a result of noise in the sample data.", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4a4aba", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_821d8b0", 
         option = "The attractiveness of an instructor is a driving force in the way students rate their courses.", 
         value = "The attractiveness of an instructor is a driving force in the way students rate their courses.", 
         label = structure("The attractiveness of an instructor is a driving force in the way students rate their courses.", html = TRUE, class = c("html", 
@@ -1420,7 +1678,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "sig-not-pract-answer", question = "sig-not-pract"), 
     loading = NULL, random_answer_order = TRUE, allow_retry = TRUE, 
-    seed = 1625322379.74315, options = list()), class = c("learnr_radio", 
+    seed = 646172626.199102, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1471,42 +1729,42 @@ learnr:::store_exercise_cache(structure(list(label = "full-model", global_setup 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "interp-summary-full-1", 
     question = structure("Using \\(\\alpha = 0.05\\), which of the following predictor variables in the model are <strong>not<\u002fstrong> statistically significant?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_8feb707", 
+    "character")), answers = list(structure(list(id = "lnr_ans_ab57b7c", 
         option = "`ethnicity`", value = "`ethnicity`", label = structure("<code>ethnicity<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7c0c759", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f6ef04b", 
         option = "`gender`", value = "`gender`", label = structure("<code>gender<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9efdf26", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b2433bd", 
         option = "`language`", value = "`language`", label = structure("<code>language<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c508aac", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_156ec50", 
         option = "`age`", value = "`age`", label = structure("<code>age<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c5834e8", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b02be69", 
         option = "`cls_perc_eval`", value = "`cls_perc_eval`", 
         label = structure("<code>cls_perc_eval<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d0074cc", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e5de52c", 
         option = "`cls_students`", value = "`cls_students`", 
         label = structure("<code>cls_students<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f3f0d27", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e50110b", 
         option = "`cls_level`", value = "`cls_level`", label = structure("<code>cls_level<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_177d7db", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8bcbb05", 
         option = "`cls_profs`", value = "`cls_profs`", label = structure("<code>cls_profs<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_730707f", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8050b3c", 
         option = "`cls_credits`", value = "`cls_credits`", label = structure("<code>cls_credits<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_389ef3a", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d919d0d", 
         option = "`bty_avg`", value = "`bty_avg`", label = structure("<code>bty_avg<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d7c1749", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_d50b568", 
         option = "`pic_color`", value = "`pic_color`", label = structure("<code>pic_color<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e1a3914", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4d12766", 
         option = "`pic_outfit`", value = "`pic_outfit`", label = structure("<code>pic_outfit<\u002fcode>", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
@@ -1517,7 +1775,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "interp-summary-full-1-answer", question = "interp-summary-full-1"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 812677709.621567, options = list()), class = c("learnr_checkbox", 
+    seed = 1575616470.7663, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 
@@ -1525,24 +1783,30 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "interp-summary-full-2", 
     question = structure("How many of the predictor variables should be removed from consideration before re-running the regression model?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_468af82", 
+    "character")), answers = list(structure(list(id = "lnr_ans_fa7c0fd", 
         option = "0", value = "0", label = structure("0", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6d2681b", 
+        "character")), correct = FALSE, message = structure("Some predictors are not statistically significant; we should remove something.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9938d56", 
         option = "1", value = "1", label = structure("1", html = TRUE, class = c("html", 
-        "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_99f9dc4", 
+        "character")), correct = TRUE, message = structure("That’s right! Because all of the metrics will change when we remove a predictor, some formerly insignificant predictors may become statistically significant after dropping a model term.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a6b4cc", 
         option = "2", value = "2", label = structure("2", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e39be5f", 
+        "character")), correct = FALSE, message = structure("When we remove a predictor, all of the corresponding metrics (including p-values) will change.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7c4a53b", 
         option = "3", value = "3", label = structure("3", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6dda354", 
+        "character")), correct = FALSE, message = structure("When we remove a predictor, all of the corresponding metrics (including p-values) will change.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a736f85", 
         option = "4", value = "4", label = structure("4", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_439e335", 
+        "character")), correct = FALSE, message = structure("When we remove a predictor, all of the corresponding metrics (including p-values) will change.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_49e44e1", 
         option = "5", value = "5", label = structure("5", html = TRUE, class = c("html", 
-        "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+        "character")), correct = FALSE, message = structure("When we remove a predictor, all of the corresponding metrics (including p-values) will change.", html = TRUE, class = c("html", 
+        "character")), type = "literal"), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
     "character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
@@ -1551,7 +1815,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "interp-summary-full-2-answer", question = "interp-summary-full-2"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 101231484.45286, options = list()), class = c("learnr_radio", 
+    seed = 690070422.178661, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
  
@@ -1690,37 +1954,37 @@ learnr:::store_exercise_cache(structure(list(label = "model-final", global_setup
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "select-characteristics", 
     question = structure("Select the characteristics of an instructor and course which is predicted to score well on the course evaluations.", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_fdd44d9", 
+    "character")), answers = list(structure(list(id = "lnr_ans_8e219b3", 
         option = "A non-minority instructor", value = "A non-minority instructor", 
         label = structure("A non-minority instructor", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ce60b06", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_19ee043", 
         option = "A male instructor", value = "A male instructor", 
         label = structure("A male instructor", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9703751", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c518c18", 
         option = "An instructor whose education background was taught in English", 
         value = "An instructor whose education background was taught in English", 
         label = structure("An instructor whose education background was taught in English", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ac8762b", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_aeec132", 
         option = "An older instructor", value = "An older instructor", 
         label = structure("An older instructor", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_853266e", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_869918e", 
         option = "A class which has a high percentage of students completing course evaluations", 
         value = "A class which has a high percentage of students completing course evaluations", 
         label = structure("A class which has a high percentage of students completing course evaluations", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1a8b594", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_912d378", 
         option = "A single-credit course", value = "A single-credit course", 
         label = structure("A single-credit course", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_22fc8f1", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_68ccb84", 
         option = "An *attractive* instructor", value = "An *attractive* instructor", 
         label = structure("An <em>attractive<\u002fem> instructor", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_287a690", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_bb9296d", 
         option = "An instructor whose picture on the evaluation is printed in color", 
         value = "An instructor whose picture on the evaluation is printed in color", 
         label = structure("An instructor whose picture on the evaluation is printed in color", html = TRUE, class = c("html", 
@@ -1733,7 +1997,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", lab
     "character")), message = NULL, post_message = NULL), ids = list(
         answer = "select-characteristics-answer", question = "select-characteristics"), 
     loading = NULL, random_answer_order = FALSE, allow_retry = TRUE, 
-    seed = 265257251.87648, options = list()), class = c("learnr_checkbox", 
+    seed = 913776197.07449, options = list()), class = c("learnr_checkbox", 
 "tutorial_question")), session = session)
 </script>
 

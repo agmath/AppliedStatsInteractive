@@ -36,13 +36,13 @@ In this workbook, we consider an advanced technique for building a statistical m
 
 ###
 
-<div id="license">
-This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted from a lab written by Mine &Ccedil;etinkaya-Rundel and Andrew Bray.
-</div>
+Another way of phrasing this is that our inference applications seek to answer the question, "*within our population of interest, is there an association between the variable $X$ and the variable $Y$?*". If both variables $X$ and $Y$ are numerical, then we develop a new statistical inference technique called linear regression.
 
 ###
 
-Another way of phrasing this is that our inference applications seek to answer the question, "*within our population of interest, is there an association between the variable $X$ and the variable $Y$?*". If both variables $X$ and $Y$ are numerical, then we develop a new statistical inference technique called linear regression.
+<div id="license">
+This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted from a lab written by Mine &Ccedil;etinkaya-Rundel and Andrew Bray.
+</div>
 
 ## An Introduction to Linear Regression
 
@@ -147,8 +147,68 @@ quiz(
 ###
 
 Use the code block below to draw a histogram of the distribution of the `score` variable in the `evals` data frame. Use your histogram to answer the questions that follow.
+
 ```{r hist-scores, exercise = TRUE}
 
+```
+
+```{r hist-scores-hint-1}
+#Pipe the evals data frame into ggplot()
+```
+
+```{r hist-scores-hint-2}
+#Add a histogram layer to your plot
+
+evals %>%
+  ggplot()
+```
+
+```{r hist-scores-hint-3}
+#Remember, we add layers to a ggplot with the plus sign (+) 
+#operator. Also, the geometry layer for a histogram
+#is geom_histogram()
+
+evals %>%
+  ggplot() + 
+  ___
+```
+
+```{r hist-scores-hint-4}
+#The heights of the bars of a histogram are determined
+#by the frequency of observations in the corresponding
+#bins. For this reason, we cannot pass a y aesthetic
+#and should only pass an x aesthetic. What variable
+#are you drawing the distribution for?
+
+evals %>%
+  ggplot() + 
+  geom_histogram(aes(x = ___))
+```
+
+```{r hist-scores-hint-5}
+#Now add a title and axis labels to your plot
+
+evals %>%
+  ggplot() + 
+  geom_histogram(aes(x = score)) + 
+  labs(
+    title = "___",
+    x = "___",
+    y = ""
+  )
+
+#Clicking "Next Hint" will show a possible solution.
+```
+
+```{r hist-scores-solution}
+evals %>%
+  ggplot() + 
+  geom_histogram(aes(x = score)) + 
+  labs(
+    title = "Distribution of Course Evaluation Scores",
+    x = "Score",
+    y = ""
+  )
 ```
 
 ```{r describe-scores, echo = FALSE}
@@ -177,8 +237,17 @@ quiz(
 ###
 
 Use the code block below to explore relationships between the other variables in the `evals` data frame. Consider your variables and their types as you construct appropriate visualizations.
+
 ```{r data-viz, exercise = TRUE}
 
+```
+
+```{r data-viz-hint-1}
+#Explore the data by calculating summary statistics --
+#you might use group_by() and summarize() -- or also 
+#by constructing additional plots with ggplot().
+#Use this as an opportunity to practice skills that you
+#haven't utilized recently.
 ```
 
 ## Simple Linear Regression: 
@@ -186,12 +255,71 @@ Use the code block below to explore relationships between the other variables in
 ###
 
 The fundamental phenomenon suggested by the Gelman and Hill study is that better looking teachers are evaluated more favorably. Use the code block below to create a scatterplot to see if this appears to be the case. Put `bty_avg` along the horizontal axis and `score` along the vertical axis.
+
 ```{r bty-score, exercise = TRUE}
 
 ```
 
+```{r bty-score-hint-1}
+#Start in the same way as you constructed the histogram
+#earlier. Pipe the evals data into ggplot(), but then 
+#create a scatterplot with geom_point() rather than
+#using geom_histogram() to create a histogram.
+
+```
+
+```{r bty-score-hint-2}
+#What aesthetic mappings do you need to make in order 
+#to define the location of a point in a scatterplot?
+
+evals %>%
+  ggplot() + 
+  geom_point(aes(___))
+```
+
+```{r bty-score-hint-3}
+#Each point must have a horizontal (x) location and a 
+#vertical (y) location.
+
+evals %>%
+  ggplot() + 
+  geom_point(aes(x = ___, y = ___))
+```
+
+```{r bty-score-hint-4}
+#Since the researchers suspect that attractiveness (bty_avg)
+#impacts evaluation score, we should use bty_avg as x
+#and score as y.
+
+evals %>%
+  ggplot() + 
+  geom_point(aes(x = ___, y = ___))
+```
+
+```{r bty-score-hint-5}
+#Now add a title and axis labels to your plot.
+
+evals %>%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  labs(
+    title = "___",
+    x = "___",
+    y = "___"
+  )
+
+#Clicking "Next Hint" will show a possible solution.
+```
+
 ```{r bty-score-solution}
-ggplot(data = evals) + geom_point(mapping = aes(x = bty_avg, y = score))
+evals %>%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  labs(
+    title = "Association between Attractiveness and Evaluation Score",
+    x = "Average Beauty Rating",
+    y = "Course Evaluation Score"
+  )
 ```
 
 ```{r bty-score-check}
@@ -203,13 +331,22 @@ grade_code()
 Before we draw conclusions about the trend, compare the number of observations in the data frame with the approximate number of points on the scatterplot. Is anything awry?
 
 Use the code block below to replot the scatterplot, but this time use `geom_jitter()` instead of `geom_point()`. What was misleading about the initial scatterplot?
+
 ```{r bty-score-jitter, exercise = TRUE}
 
 ```
 
+```{r bty-score-jitter-hint-1}
+#Take the code from the previous plot and replace 
+#geom_point() with geom_jitter(). The geom_jitter() 
+#layer still produces a scatterplot, but it adds a
+#small amount of random noise to each x and y location
+#to avoid points being plotted on top of one another.
+```
 ###
 
 Let's see if the apparent trend in the plot is something more than natural variation. Use the code block below to fit a linear model called `m_bty` to predict average professor score by average beauty rating. In R, we use the `lm()` function to build a linear regression model and then the `summary()` function to view it. The code is provided -- you can just run it.
+
 ```{r simple-reg-model, exercise = TRUE, exercise.eval = FALSE}
 m_bty <- lm(score ~ bty_avg, data = evals)
 summary(m_bty)
@@ -254,8 +391,77 @@ quiz(
 ###
 
 Use the code block below to add the line to your plot by adding a layer with `geom_abline()` using the appropriate `slope` and `intercept` arguments. Write out the equation for the linear model and interpret the slope. 
+
 ```{r add-abline, exercise = TRUE}
 
+```
+
+```{r add-abline-hint-1}
+#Start with the scatterplot you produced earlier 
+#with geom_jitter()
+```
+
+```{r add-abline-hint-2}
+#Now add a second geometry layer, using geom_abline(),
+#to your plot.
+
+evals %>%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  labs(
+    title = "Association between Attractiveness and Evaluation Score",
+    x = "Average Beauty Rating",
+    y = "Course Evaluation Score"
+  )
+```
+
+```{r add-abline-hint-3}
+#Since the slope and intercept are not mapped from 
+#columns of our data frame, the should be defined 
+#outside of any aes() brackets. In fact, for our use 
+#of this layer, we don't even need aes() at all.
+
+evals %>%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  geom_abline(slope = ___, intercept = ___) +
+  labs(
+    title = "Association between Attractiveness and Evaluation Score",
+    x = "Average Beauty Rating",
+    y = "Course Evaluation Score"
+  )
+```
+
+```{r add-abline-hint-4}
+#Use the slope and intercept from the regression output
+#to fill in the blanks below and generate the plot.
+
+evals %>%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  geom_abline(slope = ___, intercept = ___) +
+  labs(
+    title = "Association between Attractiveness and Evaluation Score",
+    x = "Average Beauty Rating",
+    y = "Course Evaluation Score"
+  )
+
+#Clicking "Next Hint" will show the solution.
+```
+
+```{r add-abline-hint-5}
+#Use the slope and intercept from the regression output
+#to fill in the blanks below and generate the plot.
+
+evals %>%
+  ggplot() + 
+  geom_point(aes(x = bty_avg, y = score)) + 
+  geom_abline(slope = 0.06664, intercept = 3.88034) +
+  labs(
+    title = "Association between Attractiveness and Evaluation Score",
+    x = "Average Beauty Rating",
+    y = "Course Evaluation Score"
+  )
 ```
 
 ###
@@ -354,12 +560,12 @@ quiz(
   ),
   question_radio(
     "How many of the predictor variables should be removed from consideration before re-running the regression model?",
-    answer("0"),
-    answer("1", correct = TRUE),
-    answer("2"),
-    answer("3"),
-    answer("4"),
-    answer("5"),
+    answer("0", message = "Some predictors are not statistically significant; we should remove something."),
+    answer("1", correct = TRUE, message = "That's right! Because all of the metrics will change when we remove a predictor, some formerly insignificant predictors may become statistically significant after dropping a model term."),
+    answer("2", message = "When we remove a predictor, all of the corresponding metrics (including p-values) will change."),
+    answer("3", message = "When we remove a predictor, all of the corresponding metrics (including p-values) will change."),
+    answer("4", message = "When we remove a predictor, all of the corresponding metrics (including p-values) will change."),
+    answer("5", message = "When we remove a predictor, all of the corresponding metrics (including p-values) will change."),
     allow_retry = TRUE
   )
 )
@@ -368,6 +574,7 @@ quiz(
 ###
 
 Use the code block below to remove the predictor corresponding to the highest $p$-value (just delete it from the code which constructs the model). Re-run the model and print the summary.
+
 ```{r model-second-it, exercise = TRUE}
 m_reduce1 <- lm(score ~ ethnicity + gender + language + age + cls_perc_eval + cls_students + cls_level + cls_profs + cls_credits + bty_avg + pic_color + pic_outfit, data = evals)
 
@@ -391,9 +598,35 @@ Use the code block below to continue reducing the model, removing one predictor 
 
 ```
 
+```{r model-reducing-hint-1}
+#Start with the code from the previous code block.
+```
+
+```{r model-reducing-hint-2}
+#Compute the model and view the summary. Drop the 
+#predictor corresponding to the highest p-value, rerun
+#the model and inspect the summary output.
+
+m_reduced <- lm(score ~ ethnicity + gender + language + age + cls_perc_eval + cls_students + cls_level + cls_credits + bty_avg + pic_color + pic_outfit, data = evals)
+
+summary(m_reduced)
+```
+
+```{r model-reducing-hint-3}
+#Continue dropping one predictor at a time, rerunning
+#the model construction, and inspecting the summary
+#until all remaining predictors are statistically significant.
+```
+
 Use the code block below to build the final model as `m_final` and print the model summary.
+
 ```{r model-final, exercise = TRUE}
 
+```
+
+```{r model-final-hint-1}
+#Just copy, paste, and submit the code you ended up 
+#with in the previous code cell here.
 ```
 
 ```{r model-final-solution}
