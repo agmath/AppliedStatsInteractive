@@ -4,7 +4,27 @@ This is an R package which deploys interactive notebooks to accompany an introdu
 
 You can install this package by running the following command in R (which requires the `devtools` package as a prereqisite): `remotes::install_github("agmath/AppliedStatsInteractive")`. You can also simply *use* the tutorials by creating a free [Posit.cloud](https://posit.cloud/) account and copying [this workspace](https://posit.cloud/content/6328402) with the notebooks and required packages pre-loaded. Copying the Posit.cloud workspace is the way I have my students access these notebooks in my own classes. Once logged in, click on the `Tutorial` tab in the top-right pane of RStudio and then click the `Start Tutorial` button next to the notebook you'd like to run.
 
+## Branches Available
+
+Because of the changes I've made over the last several years, I've decided to leave several branches of the `{AppliedStatsInteractive}` package available for installation. I'll eventually rename the `old` branch to something more descriptive.
+
++ `main`: This branch will undergo continued development. It makes heavy use of the pipe operator (`%>%`) and `{tidyverse}`-aligned syntax. It also includes robust, guided-hint infrastructure for interactive code cell questions.
+
+  + Install with: `remotes::install_github("agmath/AppliedStatsInteractive")`
++ `old`: This branch does not inlcude the use of the pipe operator (`%>%`) and uses very little `{tidyverse}` syntax.
+
+  + Install with: `remotes::install_github("agmath/AppliedStatsInteractive@old")`
++ `nohints`: This banch is not yet available, but it will include the notebooks on from the `main` branch but will suppress the hints so that they are unavailable to learners. 
+
+  + Install with: This branch not yet available
+
 ## Most-Recent Updates
+
+**Hint Infrastructure Added:** I've gone through all of the interactive notebooks and added significant hint infrastructure to code block questions. The hints are meant to guide the learner, as if they were being prompted by an instructor. I imagine that some instructors will prefer that their students not see the hints, so I'll create a separate branch on this repository which sets the notebooks to hide hints from users. I'll include an update to the **Available Branches** section above once the hint-free notebooks are available.
+
+**Conversion to `inference()` from `{statsr}`:** The original versions of the notebooks used a custom `inference()` function that was loaded when `atheism.RData` and when `nc.RData` were loaded. I've switched the notebooks so that they now utilize the more common version of `inference()` from the `{statsr}` package. This change impacts the Topic 13 and Topic 17 notebooks.
+
+**Greater leaning into the `{tidyverse}`:** I've removed all (I think) occurrences of the dollar sign ($) for column selection in favor of syntax that is more aligned with the `{tidyverse}`. While this approach is often more verbose, I find it much more readable and intuitive for students at the introductory level.
 
 **Notebook Grading Update/Resources:** I've developed a few resources useful for grading students on these notebooks. You should be able to copy all of the files to your own Google Drive and use them for your classes. There are three files in this [Google Drive Folder](https://drive.google.com/drive/folders/1zj2yvJyRFgXmwaqWGkUkbIRXTwj3Jpip?usp=sharing), described as follows:
 
