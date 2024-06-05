@@ -9,7 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
-description: "This notebook introduces Analysis of Variance (ANOVA) for comparisons of multiple group means."
+description: "This notebook introduces Analysis of Variance (ANOVA) for comparisons of multiple group means. Students will test whether average petal width differs across three varieties of iris, using the famous `iris` data set collected by Anderson and published by Fisher."
 ---
 
 ```{r setup, include=FALSE}
@@ -18,6 +18,7 @@ library(dplyr)
 library(ggplot2)
 library(learnr)
 library(gradethis)
+library(broom)
 
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
 
@@ -49,7 +50,7 @@ Watch the video below from Dr. Mine &Ccedil;etinkaya-Rundel introducing ANOVA.
 Dr. &Ccedil;etinkaya-Rundel's explanation in the video went through all of the nitty gritty details of ANOVA. You'll answer a few questions to help you think about what Dr. &Ccedil;etinkaya-Rundel was discussing and hopefully better understand the mechanics of ANOVA. What you really need to remember, however, is that 
 
 + ANOVA can be used to test whether there is evidence of a significant difference in means across multiple (three or more) populations. 
-+ Test statistics resulting from ANOVA do not follow the normal or $T$-distribution, they follow an $F$-distribution instead.
++ Test statistics resulting from ANOVA do not follow the normal or $t$-distribution, they follow an $F$-distribution instead.
 + The $p$-value resulting from an $F$-distribution is the area from our computed $F$-statistic and into the upper tail of the $F$-distribution. 
   
   + The interpretation of the $p$-value is exactly as it was for our earlier hypothesis tests -- the probability of observing a sample at least as extreme as ours under the assumption that the null hypothesis is true.
@@ -60,6 +61,13 @@ Let's answer a few questions. You can use the code block below to explore the `i
 
 ```{r quiz-anova-playground, exercise = TRUE}
 
+```
+
+```{r quiz-anova-playground-hint-1}
+#As we've done with previous datasets, you can just 
+#call the name of the data frame or pipe the data frame
+#into functions like head(), dim(), or glimpse() to 
+#gain insight into the dataset.
 ```
 
 ```{r quiz-anova, echo = FALSE}
@@ -107,16 +115,36 @@ quiz(
 
 ###
 
-Good work so far. Were you confident about your responses on the previous questions? If not, be sure to ask a question!
+Good work so far. Were you confident about your responses on the previous questions? If not, be sure to find a teacher, mentor, or friend to have a discussion with!
 
 In her video, Dr. &Ccedil;etinkaya-Rundel mentions that the computations associated with an ANOVA test are tedious and prone to errors. For this reason, we typically utilize software to run ANOVA tests -- this is exactly what you'll do now.
 
 ###
 
-We can run an ANOVA test to compare multiple group means using R's `aov()` function. We'll pass the function a single argument in the form of a formula. Store the result of running `aov(iris$Petal.Width ~ iris$Species)` in an object called `ANOVAtable` and then view the results of the ANOVA test by running `summary()` on this object. Use the results to answer the questions that follow.
+We can run an ANOVA test to compare multiple group means using R's `aov()` function. We'll pass the function a single argument in the form of a formula. Store the result of running `aov(Petal.Width ~ Species, data = iris)` in an object called `ANOVAtable` and then view the results of the ANOVA test by running `summary()` on this object. Use the results to answer the questions that follow.
 
 ```{r run-anova, exercise = TRUE}
 
+```
+
+```{r run-anova-hint-1}
+#Remember that you can store results into variables by
+#using the arrow operator.
+```
+
+```{r run-anova-hint-2}
+#Fill in the blank with the call to `aov()` listed in 
+#the paragraph above.
+
+ANOVAtable <- ___
+```
+
+```{r run-anova-hint-3}
+#Now call summary() on ANOVAtable to view the results
+#of the ANOVA test.
+
+ANOVAtable <- aov(Petal.Width ~ Species, data = iris)
+summary(___)
 ```
 
 ```{r anova-test-interp, echo = FALSE}
@@ -173,15 +201,77 @@ quiz(
 
 ###
 
-Notice that the result of the ANOVA test suggested that *at least one of the varieties has a different population mean than the other two varieties*. Unfortunately ANOVA doesn't tell us which one. There are methods which can be used to determine which groups have means that differ from one another but those are beyond the scope of this workbook. Interested individuals should look up the *Tukey Test* and *Bonferroni Correction*.
+Notice that the result of the ANOVA test suggested that *at least one of the varieties has a different population mean than the other two varieties*. Unfortunately ANOVA doesn't tell us which one. There are methods which can be used to determine which groups have means that differ from one another, though. 
+
+If you observe statistically significant evidence for a difference in group means from an ANOVA test, you can continue with a *Tukey Test*. The Tukey Test is sometimes referred to as the *Tukey Honest Significant Differences Test* and will run a collection of pairwise tests for differences in group means, with an adjusted $p$-value.
+
+Since our test resulted in the claim that at least one of the species of iris has a different average petal width than the others, we'll continue with a Tukey Test below.
 
 ###
 
-Use the code block below to construct side-by-side boxplots of petal width across each of the varieties of iris. Can you identify from the boxplot which of the varieties have different average petal widths? Note that you will not be able to do this in general.
+In R, we can use the `TukeyHSD()` function to conduct the Tukey Test. We simply pass `TukeyHSD()` the ANOVA table resulting from the `aov()` function and the pairwise tests for differences are conducted. Run the code cell below to conduct the Tukey Test and view the results.
 
-```{r boxplot, exercise = TRUE}
-
+```{r tukey, exercise = TRUE}
+ANOVAtable <- aov(Petal.Width ~ Species, data = iris)
+TukeyHSD(ANOVAtable)
 ```
+
+```{r tukey-test-interp, echo = FALSE}
+quiz(
+  question_checkbox(
+    "Use the output from the code cell above to identify all of the pairs of species of iris which have significantly different average petal widths.",
+    answer("Versicolor and Setosa", correct = TRUE),
+    answer("Virginica and Setosa", correct = TRUE),
+    answer("Virginica and Versicolor", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = FALSE
+  )
+)
+```
+
+###
+
+You likely looked at the adjusted $p$-value column in the output from running the Tukey Test in order to make your decisions. You could also compare the confidence intervals for the differences -- since none of the confidence intervals include a plausible difference of 0, we have evidence to suggest that all pairs of group means differ.
+
+Run the code in the cell below to produce a visual that shows the confidence intervals for the pairwise differences in group means. 
+
+```{r tukey-plot, exercise = TRUE}
+ANOVAtable <- aov(Petal.Width ~ Species, data = iris)
+
+TukeyHSD(ANOVAtable) %>%
+  tidy() %>%
+  ggplot() +
+  geom_point(aes(
+    x = estimate, 
+    y = contrast,
+    color = contrast)) + 
+  geom_errorbarh(aes(
+    xmin = conf.low,
+    xmax = conf.high,
+    y = contrast,
+    color = contrast
+  )) + 
+  geom_vline(
+    xintercept = 0,
+    linetype = "dashed",
+    linewidth = 1.5) + 
+  labs(
+    title = "Confidence Intervals for Pairwise Petal Width Differences",
+    x = "Estimated Difference in Average Petal Widths (cm)",
+    y = ""
+  ) + 
+  theme_bw() +
+  theme(legend.position = "none")
+```
+
+```{r tukey-plot-hint-1}
+#You could generate a plot containing the same information
+#by running the following code, it just doesn't look as
+#nice.
+plot(TukeyHSD(ANOVAtable))
+```
+
+Which way do you prefer to view, interpret, and communicate the results -- the table, the visual, or a combination of the two?
 
 ## Submit
 
@@ -204,4 +294,4 @@ Good work. Through this workbook you developed the ability to conduct a hypothes
 + ANOVA tests can be used to determine whether significant evidence exists to suggest that at least one group has a mean which differs from another group. 
 + We saw that ANOVA tests use the F-distribution and are typically conducted via software but that the mechanics of hypothesis testing remain the same. 
 + We also saw that we can conduct ANOVA tests in R using the `aov()` function.
-+ Remember that ANOVA can indicate that at least one group mean significantly differs from another, but we need further analysis to determine which group means differ significantly.
++ Remember that ANOVA can only indicate that at least one group mean significantly differs from another. We need further analysis, such as a Tukey Test, to determine which pair(s) of group means differ significantly from one another.
