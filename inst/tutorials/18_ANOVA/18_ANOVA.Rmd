@@ -289,7 +289,7 @@ learnrhash::encoder_ui(
 
 ## Summary
 
-Good work. Through this workbook you developed the ability to conduct a hypothesis test which compares many group means (more than two). 
+Good work. Through this workbook you developed the ability to conduct a hypothesis test which compares many (more than two) group means. 
 
 + ANOVA tests can be used to determine whether significant evidence exists to suggest that at least one group has a mean which differs from another group. 
 + We saw that ANOVA tests use the F-distribution and are typically conducted via software but that the mechanics of hypothesis testing remain the same. 
