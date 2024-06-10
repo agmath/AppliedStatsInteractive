@@ -16,7 +16,8 @@ Imports:
     skimr,
     ggmosaic,
     statsr,
-    broom
+    broom,
+    magrittr
 Remotes:
     rstudio-education/gradethis,
     rstudio/learnr,
