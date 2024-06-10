@@ -9,7 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
-description: "This notebook introduces Analysis of Variance (ANOVA) for comparisons of multiple group means. Students will test whether average petal width differs across three varieties of iris, using the famous `iris` data set collected by Anderson and published by Fisher."
+description: "This notebook introduces Analysis of Variance (ANOVA) for comparisons of multiple group means. Students will test whether average petal width differs across three varieties of iris, using the famous `iris` data set collected by Anderson and published by Fisher. The notebook also introduces the Tukey Honest Significant Difference method via `TukeyHSD()` to compare pairwise group means as a follow-up to ANOVA."
 ---
 
 ```{r setup, include=FALSE}
