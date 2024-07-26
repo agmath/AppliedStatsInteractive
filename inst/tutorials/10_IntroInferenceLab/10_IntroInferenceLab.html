@@ -423,7 +423,8 @@ ggplot() +
     title = &quot;Population&quot;,
     x = &quot;Living Area (sqft)&quot;, 
     y = &quot;Count&quot;
-    )
+    ) + 
+  xlim(c(0, 6000))
 
 #Add the code to plot a histogram of the sample areas
 ggplot() + 
@@ -432,7 +433,8 @@ ggplot() +
     title = &quot;Sample&quot;,
     x = &quot;Living Area (sqft)&quot;, 
     y = &quot;Count&quot;
-    )</code></pre>
+    ) + 
+  xlim(c(0, 6000))</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 </div>
@@ -1891,7 +1893,7 @@ learnr:::store_exercise_cache(structure(list(label = "plot-dist-sampl", global_s
 "", "tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)", 
 "", "#knitr::opts_chunk$set(eval = FALSE)"), chunk_opts = list(
     label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "plot-dist-sampl", code = "#Take a sample\nsamp <- sample(area, 50)\n\n#Plot a histogram of the entire population of home areas\nggplot() + \n  geom_histogram(aes(x = area)) + \n  labs(\n    title = \"Population\",\n    x = \"Living Area (sqft)\", \n    y = \"Count\"\n    )\n\n#Add the code to plot a histogram of the sample areas\nggplot() + \n  geom_histogram(aes(x = samp)) + \n  labs(\n    title = \"Sample\",\n    x = \"Living Area (sqft)\", \n    y = \"Count\"\n    )", 
+    list(label = "plot-dist-sampl", code = "#Take a sample\nsamp <- sample(area, 50)\n\n#Plot a histogram of the entire population of home areas\nggplot() + \n  geom_histogram(aes(x = area)) + \n  labs(\n    title = \"Population\",\n    x = \"Living Area (sqft)\", \n    y = \"Count\"\n    ) + \n  xlim(c(0, 6000))\n\n#Add the code to plot a histogram of the sample areas\nggplot() + \n  geom_histogram(aes(x = samp)) + \n  labs(\n    title = \"Sample\",\n    x = \"Living Area (sqft)\", \n    y = \"Count\"\n    ) + \n  xlim(c(0, 6000))", 
         opts = list(label = "\"plot-dist-sampl\"", exercise = "TRUE", 
             message = "FALSE", warning = "FALSE", fig.width = "4", 
             fig.height = "4"), engine = "r")), code_check = NULL, 
@@ -1918,11 +1920,12 @@ learnr:::store_exercise_cache(structure(list(label = "plot-dist-sampl", global_s
         "samp <- sample(area, 50)", "", "#Plot a histogram of the entire population of home areas", 
         "ggplot() + ", "  geom_histogram(aes(x = area)) + ", 
         "  labs(", "    title = \"Population\",", "    x = \"Living Area (sqft)\", ", 
-        "    y = \"Count\"", "    )", "", "#Add the code to plot a histogram of the sample areas", 
+        "    y = \"Count\"", "    ) + ", "  xlim(c(0, 6000))", 
+        "", "#Add the code to plot a histogram of the sample areas", 
         "ggplot() + ", "  geom_histogram(aes(x = samp)) + ", 
         "  labs(", "    title = \"Sample\",", "    x = \"Living Area (sqft)\", ", 
-        "    y = \"Count\"", "    )"), out.width.px = 384, out.height.px = 384, 
-        params.src = "plot-dist-sampl, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4", 
+        "    y = \"Count\"", "    ) + ", "  xlim(c(0, 6000))"
+        ), out.width.px = 384, out.height.px = 384, params.src = "plot-dist-sampl, exercise = TRUE, message = FALSE, warning = FALSE, fig.width = 4, fig.height = 4", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>

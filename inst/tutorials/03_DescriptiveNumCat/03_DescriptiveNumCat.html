@@ -541,7 +541,7 @@ print(&quot;Quartile I (25th Percentile):&quot;)
 samples %&gt;%
   summarize_all(quantile, probs = 0.25)
 
-print(&quot;Quartile II (75th Percentile):&quot;)
+print(&quot;Quartile III (75th Percentile):&quot;)
 samples %&gt;%
   summarize_all(quantile, probs = 0.75)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
@@ -1262,7 +1262,7 @@ learnr:::store_exercise_cache(structure(list(label = "computeSdIqr", global_setu
 "diamonds$region <- as.factor(diamonds$region)", "", "samples <- data.frame(Sample_One = diamonds$carat[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Two = diamonds$carat[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Three = c(diamonds$carat[sample(1:nrow(diamonds), 7, replace = FALSE)], 10))", 
 "", "cutSamples <- data.frame(Sample_One = diamonds$cut[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Two = diamonds$cut[sample(1:nrow(diamonds), 8, replace = FALSE)], Sample_Three = diamonds$cut[sample(1:nrow(diamonds), 8, replace = FALSE)])"
 ), chunk_opts = list(label = "setup", include = FALSE)), setup = NULL, 
-    chunks = list(list(label = "computeSdIqr", code = "print(\"Standard Deviations:\")\nsamples %>%\n  summarize_all(sd)\n\nprint(\"IQRs:\")\nsamples %>%\n  summarize_all(IQR)\n\nprint(\"Quartile I (25th Percentile):\")\nsamples %>%\n  summarize_all(quantile, probs = 0.25)\n\nprint(\"Quartile II (75th Percentile):\")\nsamples %>%\n  summarize_all(quantile, probs = 0.75)", 
+    chunks = list(list(label = "computeSdIqr", code = "print(\"Standard Deviations:\")\nsamples %>%\n  summarize_all(sd)\n\nprint(\"IQRs:\")\nsamples %>%\n  summarize_all(IQR)\n\nprint(\"Quartile I (25th Percentile):\")\nsamples %>%\n  summarize_all(quantile, probs = 0.25)\n\nprint(\"Quartile III (75th Percentile):\")\nsamples %>%\n  summarize_all(quantile, probs = 0.75)", 
         opts = list(label = "\"computeSdIqr\"", exercise = "TRUE", 
             exercise.eval = "FALSE"), engine = "r")), code_check = NULL, 
     error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
@@ -1289,7 +1289,7 @@ learnr:::store_exercise_cache(structure(list(label = "computeSdIqr", global_setu
         "  summarize_all(sd)", "", "print(\"IQRs:\")", "samples %>%", 
         "  summarize_all(IQR)", "", "print(\"Quartile I (25th Percentile):\")", 
         "samples %>%", "  summarize_all(quantile, probs = 0.25)", 
-        "", "print(\"Quartile II (75th Percentile):\")", "samples %>%", 
+        "", "print(\"Quartile III (75th Percentile):\")", "samples %>%", 
         "  summarize_all(quantile, probs = 0.75)"), out.width.px = 624, 
         out.height.px = 384, params.src = "computeSdIqr, exercise = TRUE, exercise.eval = FALSE", 
         fig.num = 0, exercise.df_print = "paged"), engine = "r", 

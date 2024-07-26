@@ -336,7 +336,7 @@ print("Quartile I (25th Percentile):")
 samples %>%
   summarize_all(quantile, probs = 0.25)
 
-print("Quartile II (75th Percentile):")
+print("Quartile III (75th Percentile):")
 samples %>%
   summarize_all(quantile, probs = 0.75)
 ```

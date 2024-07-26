@@ -491,7 +491,7 @@ question_radio(
 
 ###
 
-Use the code block below to compute the standard error
+Use the code block below to compute the standard error.
 
 ```{r sentencing-ci-4, exercise = TRUE}
 
@@ -549,7 +549,7 @@ ___/sqrt(___)
 #Clicking "Next Hint" will show the solution.
 ```
 
-```{r sententcing-ci-4-solution}
+```{r sentencing-ci-4-solution}
 53.91466/sqrt(280)
 ```
 

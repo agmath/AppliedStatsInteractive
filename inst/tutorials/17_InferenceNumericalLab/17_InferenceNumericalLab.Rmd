@@ -9,7 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
-description: "This lab looks at data on 1,000 pregnancies in North Carolina from 2004. This lab was also adapted from a lab written by Andrew Bray and Mine Cetinkaya-Rundel for OpenIntro.org. The notebook brings back the `inference()` function from the `{statsr}` package that was first introduced in the Topic 13 notebook."
+description: "This lab looks at data on 1,000 pregnancies in North Carolina from 2004. This lab was also adapted from a lab written by Andrew Bray and Mine Cetinkaya-Rundel for OpenIntro.org. The notebook brings back the `inference()` function from the `{statsr}` package that was first introduced in the Topic 13 notebook.  If you are using this notebook on a free-tiered Posit.Cloud account, stopping and restarting this notebook results in a crash due to RAM overflow. I am working on a fix. If you are on a student-tiered account, increasing your available RAM one level above the default will allow re-rendering to occur."
 ---
 
 ```{r setup, include=FALSE}
@@ -404,7 +404,7 @@ inference(
   y = weight, 
   x = habit, 
   data = nc,
-  est = "mean", 
+  statistic = "mean", 
   type = "ci", 
   method = "theoretical", 
   order = c("smoker","nonsmoker")

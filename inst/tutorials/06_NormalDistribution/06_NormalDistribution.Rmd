@@ -948,7 +948,7 @@ ggplot(NULL, aes(c(-3, 3))) +
 
 ###
 
-If $X\sim N\left(\mu, \sigma\right)$, then to find the cutoff $x^*$ for which $\mathbb{P}\left[X < x^*\right] = p$, we can use R's `qnorm()` function. Similar to `pnorm()`, this function takes three arguments. The first is the $\tt{area~to~the~\underline{LEFT}}$ of the desired cutoff, the second is the $\tt{mean}$ of the distribution, and the third is the $\tt{standard~deviation}$ of the distribution.
+If $X\sim N\left(\mu, \sigma\right)$, then to find the cutoff $x^*$ for which $\mathbb{P}\left[X < x^*\right] = p$, we can use R's `qnorm()` function. Similar to `pnorm()`, this function takes three arguments. The first is the $\tt{area~to~the~\underline{LEFT}~}$ of the desired cutoff, the second is the $\tt{mean}$ of the distribution, and the third is the $\tt{standard~deviation}$ of the distribution.
 
 ###
 

@@ -163,7 +163,7 @@ question_radio(
 
 ```{r prob2-3, echo = FALSE}
 question_radio(
-  "Does this hypothesis test involve testing a statement about the mean ($\\mu$), a proportion ($p$), or something else?",
+  "Does this hypothesis test involve testing a statement about the mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
   answer("One or more means", correct = TRUE),
   answer("One or more proportions"),
   answer("Something else altogether"),
@@ -381,7 +381,7 @@ question_radio(
 
 ```{r prob3-3, echo = FALSE}
 question_radio(
-  "Is your confidence interval being build to capture a mean ($\\mu$), a proportion ($p$), or something else?",
+  "Is your confidence interval being build to capture a mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
   answer("A mean or difference in means", correct = TRUE),
   answer("A proportion or difference in proportions"),
   answer("Something else altogether"),
@@ -405,7 +405,7 @@ question_radio(
 
 ```{r prob3-5, echo = FALSE}
 question_radio(
-  "Do we know the population standard deviation ($\\sigma$) for dollars saved?",
+  "Do we know the population standard deviation ( $\\sigma$ ) for dollars saved?",
   answer("Yes, the population standard deviation is known.", message = "Oops. We are presented with a standard deviation in savings but that standard deviation belongs only to the observations in the sample, not the entire population."),
   answer("No, the population standard deviation is not known.", correct = TRUE),
   allow_retry = TRUE,
@@ -562,7 +562,7 @@ question_radio(
 
 ```{r prob4-3, echo = FALSE}
 question_radio(
-  "Is your confidence interval being build to capture a mean ($\\mu$), a proportion ($p$), or something else?",
+  "Is your confidence interval being build to capture a mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
   answer("A mean or difference in means"),
   answer("A proportion or difference in proportions", correct = TRUE),
   answer("Something else altogether"),
@@ -824,7 +824,7 @@ question_radio(
 
 ```{r prob6-3, echo = FALSE}
 question_radio(
-  "Is your confidence interval being build to capture a mean ($\\mu$), a proportion ($p$), or something else?",
+  "Is your confidence interval being build to capture a mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
   answer("A mean or difference in means"),
   answer("A proportion or difference in proportions", correct = TRUE),
   answer("Something else altogether"),
@@ -1001,7 +1001,7 @@ question_radio(
 
 ```{r prob7-3, echo = FALSE}
 question_radio(
-  "Does this hypothesis test involve testing a statement about the mean ($\\mu$), a proportion ($p$), or something else?",
+  "Does this hypothesis test involve testing a statement about the mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
   answer("One or more means"),
   answer("One or more proportions", correct = TRUE),
   answer("Something else altogether"),
@@ -1200,7 +1200,7 @@ question_radio(
 
 ```{r prob8-3, echo = FALSE}
 question_radio(
-  "Does this hypothesis test involve testing a statement about the mean ($\\mu$), a proportion ($p$), or something else?",
+  "Does this hypothesis test involve testing a statement about the mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
   answer("One or more means", correct = TRUE),
   answer("One or more proportions"),
   answer("Something else altogether"),
@@ -1499,7 +1499,7 @@ question_radio(
 
 ```{r prob10-3, echo = FALSE}
 question_radio(
-  "Does this hypothesis test involve testing a statement about the mean ($\\mu$), a proportion ($p$), or something else?",
+  "Does this hypothesis test involve testing a statement about the mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
   answer("One or more means"),
   answer("One or more proportions", correct = TRUE),
   answer("Something else altogether"),
@@ -1698,7 +1698,7 @@ question_radio(
 
 ```{r prob11-3, echo = FALSE}
 question_radio(
-  "Does this hypothesis test involve testing a statement about the mean ($\\mu$), a proportion ($p$), or something else?",
+  "Does this hypothesis test involve testing a statement about the mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
   answer("One or more means", correct = TRUE),
   answer("One or more proportions"),
   answer("Something else altogether"),
@@ -1921,7 +1921,7 @@ question_radio(
 
 ```{r prob12-3, echo = FALSE}
 question_radio(
-  "Is your confidence interval being build to capture a mean ($\\mu$), a proportion ($p$), or something else?",
+  "Is your confidence interval being build to capture a mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
   answer("A mean or difference in means", correct = TRUE),
   answer("A proportion or difference in proportions"),
   answer("Something else altogether"),
