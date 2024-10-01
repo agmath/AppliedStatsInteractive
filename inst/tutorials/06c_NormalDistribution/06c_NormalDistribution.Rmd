@@ -1,0 +1,454 @@
+---
+title: "Topic 6: The Normal Distribution (Part C)"
+tutorial:
+  id: "NormalDist.Topic6c.AppliedStats"
+  version: 1.0
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    allow_skip: TRUE
+    
+runtime: shiny_prerendered
+description: "The final part of the full Topic 6 notebook only. This notebook provides an opportunity to practice with both the binomial and normal distributions.This notebook and its counterparts (Part A and Part B) are an alternative to the full Topic 6 notebook, for students who are working on a free-tiered Posit Cloud Account. These split notebooks are a way to get around exceeding available RAM on relaunch after partial completion of the longer notebook."
+---
+
+```{r setup, include=FALSE}
+#knitr::opts_chunk$set(eval = FALSE)
+#library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(learnr)
+library(gradethis)
+
+
+tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+
+#set.seed(round(as.numeric(Sys.time()), -2))
+set.seed(241)
+
+boundary1 <- round(runif(1, 0.75, 2), 2)
+boundary2 <- round(runif(1, -2, -1.5), 2)
+boundary3 <- round(runif(1, -2.5, -0.75), 2)
+boundary4 <- round(runif(1, 0.75, 2.5), 2)
+boundary5a <- round(runif(1, -1.5, -0.75), 2)
+boundary5b <- round(runif(1, 1, 2.5), 2)
+boundary6a <- round(runif(1, -1.5, -0.75), 2)
+boundary6b <- round(runif(1, 1.5, 2.5), 2)
+boundary7 <- round(runif(1, 1, 2.5), 2)
+
+chickPoxSampSize <- sample(50:150, size = 1)
+#knitr::opts_chunk$set(eval = FALSE)
+```
+
+
+
+## Topic 6: The Normal Distribution
+
+###
+
+This is the final part of the full `Topic 6` notebook. As a reminder, our main goal is to investigate and work with the normal distribution. In the first two parts of the `Topic 6` notebook, you encountered the definition of the normal distribution, the *Empirical Rule* for estimation with normally distributed data, the notion of the $z$-score, calculating probabilities using `pnorm()`, and calculating percentiles using `qnorm()`. You had practice applying these to context-free problems and you also saw a few examples allowing us to compare the performance of students who took two different standardized exams. In this notebook, you'll encounter two more scenarios in which you'll apply what you've learned about the *binomial distribution* (from the `Topic 5` notebook) and the *normal distribution*. You'll need to determine which model (binomial or normal) best fits each scenario and then to apply the appropriate functionality to answer the questions.
+
+## Objectives
+
+The following is a reminder of the objectives outlined for the full `Topic 6` notebook.
+
+**Workbook Objectives:** After completing this workbook you should be able to:
+
++ Compute probabilities of events well-modeled by a normal distribution.
++ Given a variable $X$ which follows an assumed normal distribution, compute and interpret various percentile thresholds for $X$.
++ Identify scenarios to which the normal or binomial distributions can be applied, and use them to answer various probability-related questions.
+
+###
+
+## Practice with the normal and binomial distributions
+
+Through this last section you'll work through a set of problems, some of which use the normal distribution while others use the binomial distribution. It is up to you to determine which distribution should be applied in each problem. Below are a few helpful reminders:
+
++ The binomial distribution can be applied to scenarios of repeated trials, where each trial has two possible outcomes, and the probability of "success" on each trial remains constant (that is, trials are independent of one another). If we let $X$ be the number of successes observed in a binomial experiment with $n$ trials and a probability of success equal to $p$, then we have the following:
+  
+  + $\mathbb{P}\left[X = k\right] = \tt{dbinom(k, n, p)}$
+  + $\mathbb{P}\left[X \leq k\right] = \tt{pbinom(k, n, p)}$
+
++ The normal distribution can be applied to scenarios where we know data follows at least a nearly-normal distribution. If $X\sim N\left(\mu, \sigma\right)$, then
+
+  + $\mathbb{P}\left[X \leq k\right] = \tt{pnorm(k, mean = \mu, sd = \sigma)}$
+  + If we wish to find the $p^{th}$ percentile of $X$ -- that is, we want to find the $\tt{boundary}$ value for which the probability of lying to the left is $p$, then we utilize $\tt{boundary = qnorm(p, mean = \mu, sd = \sigma)}$
+  
+###
+
+**Practice Problem 1:** The National Vaccine Information Center estimates that 90% of Americans have had chickenpox by the time they reach adulthood. Suppose we take a random sample of `r chickPoxSampSize` American adults. Answer each of the following:
+
++ Compute the expected number of adults in our sample who will have had chickenpox.
+```{r chick-pox-exp, exercise = TRUE}
+
+```
+
+```{r chick-pox-exp-hint-1}
+#Is this scenario best-modeled by a binomial distribution,
+#a normal distribution, or another distribution altogether?
+
+```
+
+```{r chick-pox-exp-hint-2}
+#Notice that there are 68 adults being surveyed, they 
+#are from a random sample (independent), and they are 
+#each being asked a "yes or no" question -- "have you had 
+#chickenpox?".
+
+```
+
+```{r chick-pox-exp-hint-3}
+#This fits the assumptions of a binomial experiment 
+#with 68 trials
+
+```
+
+```{r chick-pox-exp-hint-4}
+#At the end of the Topic 5 notebook, you were introduced 
+#to the expected value formula for binomial random variables.
+
+```
+
+```{r chick-pox-exp-hint-5}
+#The formula for the expected value was n*p, where 
+#n is the total number of trials, and p is the 
+#probability of "success" on any given trial.
+
+```
+
+```{r chick-pox-exp-hint-6}
+#We know that there are 68 trials (n = 68), what is the 
+#probability that a randomly chosen adult has had chicken pox?
+
+68*___
+```
+
+```{r chick-pox-exp-solution}
+68*0.90
+
+```
+
+```{r chick-pox-exp-check}
+grade_result(
+  pass_if(~ (abs(.result - (chickPoxSampSize*0.9)) < 0.1))
+)
+```
+
++ Compute the standard deviation in number of adults in samples of size `r chickPoxSampSize` who will have had chickenpox.
+```{r chick-pox-sd, exercise = TRUE}
+
+```
+
+```{r chick-pox-sd-hint-1}
+#Similarly to the previous question, you were introduced
+#to the formula for the standard deviation of a binomial
+#random variable at the end of the Topic 5 notebook.
+
+```
+
+```{r chick-pox-sd-hint-2}
+#The formula is: sqrt(n*p*(1 - p))
+
+```
+
+```{r chick-pox-sd-check}
+grade_result(
+  pass_if(~ (abs(.result - (sqrt(chickPoxSampSize*0.9*0.1))) < 0.1))
+)
+```
+
+```{r surprised-if, echo = FALSE}
+question_checkbox(
+  paste0("Would you be surprised if your sample contained at most ", floor((chickPoxSampSize*0.9) - (3.5*sqrt(chickPoxSampSize*0.9*0.1))), " adults who have had chicken pox? Why? (select all that are appropriate)"),
+  answer("Yes. This result would fall more than two standard deviations away from the expected value.", correct = TRUE),
+  answer("Yes. If our assumptions are correct, the probability of this occurring would be less than 5%.", correct = TRUE),
+  answer("Yes. We should be surprised by any result at all -- we can't know what will happen ahead of time."),
+  answer("No. A result like this one is certainly possible."),
+  answer("No. This result does not fall more than two standard deviations from the expected value."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+While you answer the following questions, it might be useful to refer back to [the Game of Dreidel example and solution](www/BinomialExample.pdf){target="_blank"} from the Topic 5 notebook. To open the file, right-click (or `ctrl+click` on Mac) and choose to *open in a new tab*.
+
++ Find the probability that exactly `r floor(0.9*chickPoxSampSize)` adults in your sample of size `r chickPoxSampSize` will have had chickenpox. 
+```{r chick-pox-prob-exact1, exercise = TRUE}
+
+```
+
+```{r chick-pox-prob-exact1-hint-1}
+#We've accumulated four useful functions recently:
+####dbinom()
+####pbinom()
+####pnorm()
+####qnorm()
+
+#Are any of them useful here?
+```
+
+```{r chick-pox-prob-exact1-hint-2}
+#We can narrow it down to dbinom() or pbinom()
+#since we know that we're working with a binomial
+#random variable here.
+
+```
+
+```{r chick-pox-prob-exact1-hint-3}
+#dbinom() is useful when we are interested in 
+#observing **exactly** some specific number of successes
+
+#pbinom() is most useful when we are interested in 
+#observing **at most** some number of successes.
+
+```
+
+```{r chick-pox-prob-exact1-hint-4}
+#The arguments to these functions are, in order:
+####number of successes
+####total number of trials
+####probability of success
+
+```
+
+```{r chick-pox-prob-exact1-check}
+grade_result(
+  pass_if(~ (abs(.result - (dbinom(floor(0.9*chickPoxSampSize), chickPoxSampSize, 0.9))) < 0.001))
+)
+```
+
++ Find the probability that exactly `r floor(0.1*chickPoxSampSize)` adults in your sample of size `r chickPoxSampSize` will *not* have had chickenpox.
+```{r chick-pox-prob-exact2, exercise = TRUE}
+
+```
+
+```{r chick-pox-prob-exact2-hint-1}
+#This is a lot like the previous question.
+
+```
+
+```{r chick-pox-prob-exact2-hint-2}
+#...but read carefully.
+
+```
+
+```{r chick-pox-prob-exact2-hint-3}
+#What is the probability that a randomly selected adult
+#has **not** had chickenpox?
+
+```
+
+```{r chick-pox-prob-exact2-check}
+grade_result(
+  pass_if(~ (abs(.result - (dbinom(floor(0.1*chickPoxSampSize), chickPoxSampSize, 0.1))) < 0.001))
+)
+```
+
++ Find the probability that at most `r floor(0.75*chickPoxSampSize)` adults in your sample of size `r chickPoxSampSize` will have had chicken pox.
+```{r chick-pox-prob-atmost, exercise = TRUE}
+
+```
+
+```{r chick-pox-prob-atmost-hint-1}
+#Are you interested in **exactly** some number of 
+#successes here?
+
+```
+
+```{r chick-pox-prob-atmost-hint-2}
+#Use pbinom() instead of dbinom()
+
+```
+
+```{r chick-pox-prob-atmost-check}
+grade_result(
+  pass_if(~ (abs(.result - (pbinom(floor(0.75*chickPoxSampSize), chickPoxSampSize, 0.9))) < 0.00005))
+)
+```
+
++ Find the probability that at least `r floor(0.95*chickPoxSampSize)` adults in your sample of size `r chickPoxSampSize` will have had chicken pox.
+```{r chick-pox-prob-atleast, exercise = TRUE}
+
+```
+
+```{r chick-pox-prob-atleast-hint-1}
+#We are interested in several possible outcomes 
+#here. The pbinom() function is better-suited to this 
+#scenario than dbinom() is.
+
+```
+
+```{r chick-pox-prob-atleast-hint-2}
+#The pbinom() function computes the probability of 
+# **at most** some number of successes, not at least some 
+#number of successes. Draw a picture to help you, and 
+#use the "subtract-from-one" approach.
+
+```
+
+```{r chick-pox-prob-atleast-check}
+grade_result(
+  pass_if(~ (abs(.result - ( 1 - pbinom((floor(0.95*chickPoxSampSize) - 1), chickPoxSampSize, 0.9))) < 0.0001))
+)
+```
+
++ Find the probability that more than `r floor(0.8*chickPoxSampSize)` but less than `r floor(0.9*chickPoxSampSize)` adults in your sample of size `r chickPoxSampSize` will have had chicken pox.
+```{r chick-pox-prob-between, exercise = TRUE}
+
+```
+
+```{r chick-pox-prob-between-hint-1}
+#Since multiple outcomes are of interest here, we'll 
+#stick with the pbinom() function.
+
+```
+
+```{r chick-pox-prob-between-hint-2}
+#Draw a picture to help you. You'll need to use 
+#the pbinom() function twice.
+
+```
+
+```{r chick-pox-prob-between-check}
+grade_result(
+  pass_if(~ (abs(.result - ( pbinom((floor(0.9*chickPoxSampSize) - 1), chickPoxSampSize, 0.9) - pbinom(floor(0.8*chickPoxSampSize), chickPoxSampSize, 0.9))) < 0.0001))
+)
+```
+
+**Practice Problem 2:** Sophia took the Graduate Record Examination (GRE) and scored 160 on the Verbal Reasoning section and 157 on the Quantitative Reasoning section. The mean score on the Verbal Reasoning section for all test takers was 151 with a standard deviation of 7, and the mean score for the Quantitative Reasoning section for all test takers was 153 with a standard deviation of 7.67. Suppose we can assume that both score distributions are nearly normal.
+
++ Use the code block below to compute Sophia's $z$-score on the Quantitative Reasoning exam.
+```{r z-score-QR, exercise = TRUE}
+
+```
+
+```{r z-score-QR-hint-1}
+#Remember the z-score formula is: 
+####(observation - mean)/(standard deviation)
+
+```
+
+```{r z-score-QR-hint-2}
+#Be sure to use the values from the Quantitative
+#Reasoning exam.
+
+```
+
+```{r z-score-QR-check}
+grade_result(
+  pass_if(~ (abs(.result - ((157 - 153)/7.67)) < 0.01))
+)
+```
+
++ Use the code block below to compute Sophia's $z$-score on the Verbal Reasoning exam.
+```{r z-score-VR, exercise = TRUE}
+
+```
+
+```{r z-score-VR-hint-1}
+#Use the same approach as above, but use the 
+#values for the Verbal Reasoning Exam instead.
+
+```
+
+```{r z-score-VR-check}
+grade_result(
+  pass_if(~ (abs(.result - ((160 - 151)/7)) < 0.01))
+)
+```
+
+```{r GRE-compare-zscore, echo = FALSE}
+question_radio(
+  "What do these z-scores tell you?",
+  answer("Sophia scored relatively higher on the Verbal Reasoning exam since her  Verbal Reasoning z-score was larger.", correct = TRUE),
+  answer("Sophia scored relatively higher on the Quantitative Reasoning exam since her Quantitative Reasoning z-score was larger."),
+  answer("Sophia scored relatively higher on the Quantitative Reasoning exam since her Quantitative Reasoning z-score was closer to 0."),
+  answer("It is impossible to tell which exam Sophia performed better on since the means and standard deviations of the score distributions are different."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
++ Find the proportion of test takers Sophia scored higher than on the Quantitative Reasoning exam (that is, find her percentile).
+```{r GRE-QR-percentile, exercise = TRUE}
+
+```
+
+```{r GRE-QR-percentile-hint-1}
+#What distribution are we using? Binomial? Normal?
+#Another distribution altogether?
+
+```
+
+```{r GRE-QR-percentile-hint-2}
+#Since we know that scores are approximately normally 
+#distributed, we can use our normal distribution functions.
+
+```
+
+```{r GRE-QR-percentile-hint-3}
+#Which one is appropriate here, pnorm() or qnorm()? Why?
+
+```
+
+```{r GRE-QR-percentile-hint-4}
+#Draw your picture and shade it in. Use the picture to 
+#help you fill in the parameters of the function you use.
+
+```
+
+```{r GRE-QR-percentile-check}
+grade_result(
+  pass_if(~ (abs(.result - pnorm(157, 153, 7.67)) < 0.001))
+)
+```
+
++ Find the proportion of test takers doing *better than* Sophia on the Verbal Reasoning exam.
+```{r GRE-VR-percent-above, exercise = TRUE}
+
+```
+
+```{r GRE-VR-percent-above-hint-1}
+#Again, draw a picture and use your picture to guide you.
+
+```
+
+```{r GRE-VR-percent-above-check}
+grade_result(
+  pass_if(~ (abs(.result - (1 - pnorm(160, 151, 7))) < 0.001))
+)
+```
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If your instructor is asking you to submit evidence of your completed notebook using a hash code, you may generate that code below. Use the clipboard icon to ensure that you are copying the entire hash."
+    )
+  )
+```
+
+## Summary
+
+Nice job getting through this workbook. Your hard work here will pay off as we move through much of the remainder of our course. Here are the major points we touched on.
+
++ A normal distribution is approximately bell-shaped and can be described by its mean $\mu$ and standard deviation $\sigma$. 
++ As a shorthand, we often write $N\left(\mu, \sigma\right)$ to mean the normal distribution with mean $\mu$ and standard deviation $\sigma$.
++ The *Empirical Rule* is a "rule of thumb" that states that, if data is normally distributed we expect:
+
+  + Approximately 67% of observations fall within one standard deviation of the mean.
+  + Approximately 95% of observations fall within two standard deviations of the mean.
+  + Approximately 99.7% of observations fall within three standard deviations of the mean.
+
++ We can interpret areas underneath the normal distribution to be probabilities.
++ If $X\sim N\left(\mu, \sigma\right)$, then $\mathbb{P}\left[X\leq k\right] = \tt{pnorm(k, mean = \mu, sd = \sigma)}$
+
+  + Remember that $\tt{pnorm()}$ always returns the area to the <u>left</u> of the boundary value $k$.
++ If $X\sim N\left(\mu, \sigma\right)$, then the $p^{th}$ percentile of $X$ (the cutoff for which the proportion of the population falling below is $p$), is given by $\tt{qnorm(p, mean = \mu, sd = \sigma)}$
+
+  + Remember that $p$ must be the area to the <u>left</u> of the desired cutoff value.

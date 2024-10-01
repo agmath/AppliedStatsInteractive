@@ -1,0 +1,415 @@
+---
+title: "Topic 6: The Normal Distribution (Part A)"
+tutorial:
+  id: "NormalDist.Topic6a.AppliedStats"
+  version: 1.0
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    allow_skip: TRUE
+    
+runtime: shiny_prerendered
+description: "The first part of the full Topic 6 notebook only. This notebook covers an introduction to normal distributions, z-scores, probabilities, and percentiles. This notebook and its counterparts (Part B and Part C) are an alternative to the full Topic 6 notebook, for students who are working on a free-tiered Posit Cloud Account. These split notebooks are a way to get around exceeding available RAM on relaunch after partial completion of the longer notebook."
+---
+
+```{r setup, include=FALSE}
+#knitr::opts_chunk$set(eval = FALSE)
+#library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(learnr)
+library(gradethis)
+
+
+tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+
+#set.seed(round(as.numeric(Sys.time()), -2))
+set.seed(241)
+
+boundary1 <- round(runif(1, 0.75, 2), 2)
+boundary2 <- round(runif(1, -2, -1.5), 2)
+boundary3 <- round(runif(1, -2.5, -0.75), 2)
+boundary4 <- round(runif(1, 0.75, 2.5), 2)
+boundary5a <- round(runif(1, -1.5, -0.75), 2)
+boundary5b <- round(runif(1, 1, 2.5), 2)
+boundary6a <- round(runif(1, -1.5, -0.75), 2)
+boundary6b <- round(runif(1, 1.5, 2.5), 2)
+boundary7 <- round(runif(1, 1, 2.5), 2)
+
+chickPoxSampSize <- sample(50:150, size = 1)
+#knitr::opts_chunk$set(eval = FALSE)
+```
+
+
+
+## Topic 6: The Normal Distribution
+
+###
+
+Throughout this workbook we'll investigate the probability distribution that is most central to our study of statistics: the normal distribution.  If we are confident that our data are nearly normal, that opens the door to many powerful statistical methods. This workbook gives you practice with normally distributed data.
+
+## Objectives
+
+**Workbook Objectives:** After completing this workbook you should be able to:
+
++ Compute probabilities of events well-modeled by a normal distribution.
++ Given a variable $X$ which follows an assumed normal distribution, compute and interpret various percentile thresholds for $X$.
++ Identify scenarios to which the normal or binomial distributions can be applied, and use them to answer various probability-related questions.
+
+###
+
+## The Normal Distribution
+
+**Definition:** If a random variable $X$ is normally distributed with mean $\mu$ and standard deviation $\sigma$, we often write $X\sim N\left(\mu, \sigma\right)$. Three different normal distributions appear below.
+
++ In **<span style = "color:blue">blue</span>** is a normal distribution with $\mu = 0$ and $\sigma = 5$
++ In **<span style = "color:red">red</span>** is a normal distribution with $\mu = 0$ and $\sigma = 0.5$
++ In **black** is a normal distribution with $\mu = 0$ and $\sigma = 1$ (the so-called *Standard Normal Distribution*)
+
+```{r three-normals, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE}
+ggplot() + geom_line(mapping = aes(x = seq(-15, 15, length.out = 200), y = dnorm(seq(-15, 15, length.out = 200), 0, 5)), color = "blue", lwd = 1.25) + geom_line(mapping = aes(x = seq(-15, 15, length.out = 200), y = dnorm(seq(-15, 15, length.out = 200), 0, 0.5)), color = "red", lwd = 1.25) + geom_line(mapping = aes(x = seq(-15, 15, length.out = 200), y = dnorm(seq(-15, 15, length.out = 200), 0, 1)), color = "black", lwd = 1.25) + labs(title = "Three Normal Distributions", x = "", y= "")
+```
+
+###
+
+Notice that all three distributions are bell-shaped and are centered at their mean ($\mu = 0$). The larger the standard deviation, the shorter and wider the curve, while the smaller the standard deviation, the taller and more narrow the curve.
+
+###
+
+Given that $X\sim N\left(\mu, \sigma\right)$, we can compute probabilities associated with observed values of $X$ by finding the corresponding area beneath the normal curve with mean $\mu$ and standard deviation $\sigma$.
+
+###
+
+**Properties of the Normal Distribution:** We have the following properties associated with the normal distribution. Consider $X\sim N\left(\mu, \sigma\right)$.
+
++ The area beneath the entire distribution is 1 (since this is equivalent to the probability that $X$ takes on any of its possible values).
+
+<center>
+```{r shade-norm, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width = 3, fig.height = 3}
+ggplot(NULL, aes(c(-3, 3))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(-3, 3), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(-3, 3, length.out = 200), y = dnorm(seq(-3, 3, length.out = 200), 0, 1)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("The shaded area is 1") + scale_x_continuous(breaks = c(0), labels = c(expression(mu)))  + theme(axis.text.x = element_text(size = 14))
+```
+</center>
+
+###
+
++ $\displaystyle{\mathbb{P}\left[X\leq \mu\right] = \mathbb{P}\left[X\geq \mu\right] = 0.5}$ (the area underneath a full half of the distribution is 0.5)
+
+<center>
+```{r shade-norm-half, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width = 3, fig.height = 3}
+ggplot(NULL, aes(c(-3, 3))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(-3, 0), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(-3, 3, length.out = 200), y = dnorm(seq(-3, 3, length.out = 200), 0, 1)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("The shaded area is 0.5") + scale_x_continuous(breaks = c(0), labels = c(expression(mu))) + theme(axis.text.x = element_text(size = 14))
+
+ggplot(NULL, aes(c(-3, 3))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(0, 3), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(-3, 3, length.out = 200), y = dnorm(seq(-3, 3, length.out = 200), 0, 1)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("The shaded area is also 0.5") + scale_x_continuous(breaks = c(0), labels = c(expression(mu))) + theme(axis.text.x = element_text(size = 14))
+```
+</center>
+
+###
+
++ The distribution is symmetric. In symbols, $\mathbb{P}\left[X\leq \mu - k\right] = \mathbb{P}\left[X \geq \mu + k\right]$ for any $k$.
+
+<center>
+```{r shade-norm-symmetric, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width = 3, fig.height = 3}
+ggplot(NULL, aes(c(-3, 3))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(-3, -1.25), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(-3, 3, length.out = 200), y = dnorm(seq(-3, 3, length.out = 200), 0, 1)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("A shaded area in the left \ntail") + scale_x_continuous(breaks = c(0, -1.25), labels = c(expression(mu), expression(mu - k))) + theme(axis.text.x = element_text(size = 14))
+
+ggplot(NULL, aes(c(-3, 3))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(1.25, 3), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(-3, 3, length.out = 200), y = dnorm(seq(-3, 3, length.out = 200), 0, 1)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("The same shaded area in the \nright tail") + scale_x_continuous(breaks = c(0, 1.25), labels = c(expression(mu), expression(mu + k))) + theme(axis.text.x = element_text(size = 14))
+```
+</center>
+
+###
+
++ $\displaystyle{\mathbb{P}\left[X = k\right] = 0}$ (the probability that $X$ takes on any prescribed value exactly is $0$)
+
+<center>
+```{r shade-norm-exact, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width = 3, fig.height = 3}
+ggplot(NULL, aes(c(-3, 3))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 0, sd = 1), xlim = c(0.98, 1.02), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(-3, 3, length.out = 200), y = dnorm(seq(-3, 3, length.out = 200), 0, 1)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("The area is 0") + ylim(c(0, 0.42)) + scale_x_continuous(breaks = c(0, 1), labels = c(expression(mu), "k")) + theme(axis.text.x = element_text(size = 14))
+```
+</center>
+
+###
+
+Sometimes it is useful to be able to estimate probabilities or to estimate the proportion of a population that falls into a range as long as the population is nearly normal. A convenient rule of thumb is the *Empirical Rule*.
+
+**The Empirical Rule:** If $X\sim N\left(\mu, \sigma\right)$, then
+
++ $\mathbb{P}\left[\mu - \sigma \leq X\leq \mu + \sigma\right] \approx 0.67$ -- that is, about 67% of observations lie within one standard deviation of the mean.
++ $\mathbb{P}\left[\mu - 2\sigma \leq X\leq \mu + 2\sigma\right] \approx 0.95$ -- that is, about 95% of observations lie within two standard deviations of the mean.
++ $\mathbb{P}\left[\mu - 3\sigma \leq X\leq \mu + 3\sigma\right] \approx 0.997$ -- that is, about 99.7% of observations lie within three standard deviations of the mean.
+
+###
+
+For each of the following, assume that $X\sim N\left(\mu = 85, \sigma = 5\right)$
+
+```{r empirical-rule-questions, echo = FALSE}
+quiz(
+  question_radio(
+    "Use the *Empirical Rule* to approximate $\\mathbb{P}\\left[80\\leq X\\leq 90\\right]$",
+    answer("50%"),
+    answer("67%", correct = TRUE),
+    answer("95%"),
+    answer("Nearly 100%"),
+    answer("It is impossible to tell"),
+    allow_retry = TRUE
+  ),
+  question_checkbox(
+    "According to the *Empirical Rule* which of the following are boundary values for which we expect about 95% of observed values of X will fall between?",
+    answer("0"),
+    answer("50"),
+    answer("75", correct = TRUE),
+    answer("80"),
+    answer("90"),
+    answer("95", correct = TRUE),
+    answer("100"),
+    allow_retry = TRUE
+  )
+)
+```
+
+## Standardization and $z$-scores
+
+**Scenario:** Two students, Bob and Sally, are trying to compare how well they did on a college entrance exam. The difficulty comes in that Bob took the SAT which is known to follow an approximate normal distribution with a mean score of 1068 and a standard deviation of 210 while Sally took the ACT which also follows an approximately normal distribution but with a mean score of 20.8 and a standard deviation of 5.8. If Bob scored a 1400 on the SAT and Sally scored a 31 on the ACT, who scored relatively higher?
+
+How do we answer this question? We'll see two methods.
+
+### 
+
+**Method 1:** We can standardize the test scores so that they have comparable units. 
+
++ **Definition:** If an observation $x$ comes from a nearly normal population with mean $\mu$ and standard deviation $\sigma$ then we compute $z$-score associated with $x$ as follows: 
+
+$$\displaystyle{z = \frac{x - \mu}{\sigma}}$$
+
+An observation's $z$-score is simply the number of standard deviations it falls above or below the mean. 
+
+###
+
+Use the code block below to compute Bob and Sally's $z$-scores and answer the questions that follow.
+
+```{r compute-z-scores, exercise = TRUE}
+
+```
+
+```{r compute-z-scores-hint-1}
+#Use the z-score formula, above.
+```
+
+```{r compute-z-scores-hint-2}
+#Fill in the blanks
+(___ - ___)/___
+```
+
+```{r compute-z-scores-hint-3}
+#For Bob, we should have
+(1400 - ___)/___
+#Since Bob took the SAT, we need to use the 
+#mean and standard deviation from that test 
+#to find their z-score. Fill those in.
+```
+
+```{r compute-z-scores-hint-4}
+#Bob's z-score is computed as follows:
+(1400 - 1068)/210
+
+```
+
+```{r compute-z-scores-hint-5}
+#Do the same for Sally, but use her ACT score, 
+#along with the mean and standard deviation for 
+#the ACT.
+(___ - ___)/___
+
+```
+
+```{r SAT-ACT-z-scores, echo = FALSE}
+quiz(
+  question_radio(
+    "Which of the following is the $z$-score corresponding to Bob? (round to two decimal places)",
+    answer("1.58", correct = TRUE),
+    answer("1394.91"),
+    answer("-1.58"),
+    answer("1.76"),
+    answer("-1.76"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Which of the following is the $z$-score corresponding to Sally? (round to two decimal places)",
+    answer("1.58"),
+    answer("27.41"),
+    answer("-1.58"),
+    answer("1.76", correct = TRUE),
+    answer("-1.76"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Who did relatively better on their standardized exam, Bob or Sally? Why?",
+    answer("Sally, since her score is 1.76 standard deviations above the mean, while Bob's was only 1.58 standard deviations above the mean.", correct = TRUE),
+    answer("Bob, since his $z$-score was 1.58 which is closer to the mean than Sally's $z$-score of 1.76."),
+    answer("Bob, since his score was 1400 and Sally's score was only 31."),
+    answer("Bob, since the SAT had a larger standard deviation it is a harder exam."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+**A recap on $z$-scores:** We can use $z$-scores as a common unit for comparing observations from completely different populations (such as SAT scores and ACT scores). Here's a recap of the most important information so far:
+
++ If an observation $x$ comes from a nearly normal population with mean $\mu$ and standard deviation $\sigma$, we can compute it's $z$-score using the formula: $\displaystyle{z = \frac{x - \mu}{\sigma}}$.
++ A $z$-score measures the number of standard deviations which an observation falls above or below the mean.
+
+  + A positive $z$-score means that an observation was above the mean.
+  + A negative $z$-score means that an observation was below the mean.
+  + The larger a $z$-score is in absolute value, the further the corresponding observation falls from the mean. That is, the larger the magnitude of a $z$-score, the further into the tail of the distribution the corresponding observation falls.
+  
+###
+
+**Method 2:** We can compute the *percentile* corresponding to Bob's SAT score and the *percentile* corresponding to Sally's ACT score.
+  
+  + **Definition:** Given an observation $x$ from a population -- the *percentile* corresponding to $x$ is the proportion of the population which falls below $x$.
+  
+###
+
+<div class = "row">
+<div class = "col-md-6">
+Bob's percentile corresponds to the shaded area in the distribution below.
+
+```{r bob-SAT-percentile, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
+ggplot(NULL, aes(c(500, 1600))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 1068, sd = 210), xlim = c(500, 1400), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(500, 1600, length.out = 200), y = dnorm(seq(500, 1600, length.out = 200), 1068, 210)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("SAT Distribution") + xlim(c(500, 1600)) + scale_x_continuous(breaks = c(1068, 1400), labels = c(expression(mu = 1068), "Bob")) + theme(axis.text.x = element_text(size = 14))
+```
+</div>
+<div class = "col-md-6">
+Sally's percentile corresponds to the shaded area in the distribution below.
+
+```{r sally-SAT-percentile, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
+ggplot(NULL, aes(c(0, 36))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 20.8, sd = 5.8), xlim = c(0, 31), fill = "steelblue", alpha = 0.5) + geom_line(mapping = aes(x = seq(0, 36, length.out = 200), y = dnorm(seq(0, 36, length.out = 200), 20.8, 5.8)), color = "blue", lwd = 1.25) + xlab("") + ylab("") + ggtitle("ACT Distribution") + xlim(c(0, 36)) + scale_x_continuous(breaks = c(20.8, 31), labels = c(expression(mu = 20.8), "Sally")) + theme(axis.text.x = element_text(size = 14))
+```
+</div>
+</div>
+
+### 
+
+There are many ways to compute percentiles. Before the widespread availability of statistical software, people converted observed values to $z$-scores and then looked up the percentile in a table. Luckily R provides nice functionality for computing percentiles.
+
+**Computing Percentiles in R:** If $X\sim N\left(\mu, \sigma\right)$, then 
+$$\mathbb{P}\left[X\leq q\right] \approx \tt{pnorm(q, mean = \mu, sd = \sigma)}$$
+
+###
+
+The block below is preset to compute the Bob's percentile. Execute the code cell and then adapt the code to find Sally's percentile. Use your results to answer the questions below.
+
+```{r compute-percentiles, exercise = TRUE}
+pnorm(1400, 1068, 210)
+```
+
+```{r compute-percentiles-hint-1}
+#Just run this code to compute Bob's percentile
+pnorm(1400, 1068, 210)
+
+```
+
+```{r compute-percentiles-hint-2}
+#The arguments for pnorm() are, in order:
+####boundary value,
+####distribution mean
+####distribution standard deviation
+pnorm(1400, 1068, 210)
+
+```
+
+```{r compute-percentiles-hint-3}
+#Fill in the blanks with the following to find
+#Sally's percentile:
+####Sally's ACT score (the boundary value)
+####the mean ACT score
+####the standard deviation in ACT scores
+pnorm(___, ___, ___)
+
+```
+
+```{r SAT-ACT-percentiles, echo = FALSE}
+quiz(
+  question_radio(
+    "Which of the following is the percentile corresponding to Bob? (round to four decimal places)",
+    answer("0.9431", correct = TRUE),
+    answer("0.0569"),
+    answer("0.4431"),
+    answer("0.9608"),
+    answer("0.0392"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Which of the following is the percentile corresponding to Sally? (round to two decimal places)",
+    answer("0.9431"),
+    answer("0.0569"),
+    answer("0.4431"),
+    answer("0.9607", correct = TRUE),
+    answer("0.0392"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Who did relatively better on their standardized exam, Bob or Sally? Why?",
+    answer("Sally, since she scored in a higher percentile than Bob", correct = TRUE),
+    answer("Bob, since he scored in a lower percentile than Sally"),
+    answer("Bob, since he scored closer to the mean"),
+    answer("Bob, since his percentile score was so high even though the standard deviation on the SAT was so large."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+We'll make good use of this second method for a while, but don't forget about standardization and $z$-scores. We'll need that strategy quite often later in our course! For now, let's move on to practicing with finding probabilities from a normal distribution using R's `pnorm()` function.
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If your instructor is asking you to submit evidence of your completed notebook using a hash code, you may generate that code below. Use the clipboard icon to ensure that you are copying the entire hash."
+    )
+  )
+```
+
+## Continuing On...
+
+Once you close this notebook, launch the `Topic 6b: The Normal Distribution` notebook to continue working through more of the content from the full `Topic 6` notebook.
+
+**Partial Summary:** In this notebook you've encountered the following points.
+
++ A normal distribution is approximately bell-shaped and can be described by its mean $\mu$ and standard deviation $\sigma$. 
++ As a shorthand, we often write $N\left(\mu, \sigma\right)$ to mean the normal distribution with mean $\mu$ and standard deviation $\sigma$.
++ The *Empirical Rule* is a "rule of thumb" that states that, if data is normally distributed we expect:
+
+  + Approximately 67% of observations fall within one standard deviation of the mean.
+  + Approximately 95% of observations fall within two standard deviations of the mean.
+  + Approximately 99.7% of observations fall within three standard deviations of the mean.
+
++ A $z$-score measures the number of standard deviations an observed value falls away from the mean. 
+
+  + We can calculate the $z$-score for an observed value $x$ using the formula $\displaystyle{z = \frac{x - \mu}{\sigma}}$
+
++ We can interpret areas underneath the normal distribution to be probabilities.
++ If $X\sim N\left(\mu, \sigma\right)$, then $\mathbb{P}\left[X\leq k\right] = \tt{pnorm(k, mean = \mu, sd = \sigma)}$
+
+  + Remember that $\tt{pnorm()}$ always returns the area to the <u>left</u> of the boundary value $k$.
++ If $X\sim N\left(\mu, \sigma\right)$, then the $p^{th}$ percentile of $X$ (the cutoff for which the proportion of the population falling below is $p$), is given by $\tt{qnorm(p, mean = \mu, sd = \sigma)}$
+
+  + Remember that $p$ must be the area to the <u>left</u> of the desired cutoff value.
