@@ -1,0 +1,732 @@
+---
+title: "Topic 16: Inference Practice (Part B)"
+tutorial:
+  id: "InferencePractice.Topic16b.AppliedStats"
+  version: 1.0
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    allow_skip: TRUE
+    
+runtime: shiny_prerendered
+description: "This notebook only contains problems 5 - 8 of the original Topic 16 notebook so that the RAM overflow on rebuild problem is bypassed."
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(learnr)
+library(gradethis)
+
+
+tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+
+```
+
+## Inference Practice
+
+###
+
+This notebook is a continuation of the `Topic 16 (Part A)` notebook. This contains problems 5 - 8 from the original `Topic 16` notebook.
+
+###
+
+For convenience, here is the [*standard errror decision tree*](https://agmath.github.io/SiteFiles/StdErrorDecisionTree.pdf){target="_blank"}, the general [*strategy for confidence intervals*](https://agmath.github.io/SiteFiles/CIgeneral.pdf){target="_blank"}, and the general [*strategy for hypothesis tests*](https://agmath.github.io/SiteFiles/HTgeneral.pdf){target="_blank"}. For any problems involving hypothesis tests, assume the $\alpha = 0.05$ level of significance unless otherwise stated.
+
+### 
+
+> **Note:** There are no hints included in this notebook. You should use the resources linked above and your previous notebooks to help you.
+
+## Problem 5
+
+**Problem 5:** A pollster working for Pete Buttigieg is interested in identifying the proportion of registered democrats planning to vote in the NH primary for whom Mayor Pete is their first OR second choice candidate. If the pollster wants to estimate this proportion to within one percentage-point and at 95% confidence, how many voters should the pollster include in a sample if data from a focus group suggests that the proportion is near 42%?
+
+###
+
+```{r prob5-1, echo = FALSE}
+question_radio(
+  "To answer the question as asked, we should",
+  answer("Construct a confidence interval"),
+  answer("Conduct a hypothesis test"),
+  answer("Compute a probability"),
+  answer("Find a required sample size", correct = TRUE),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob5-2, echo = FALSE}
+question_radio(
+  "The parameter the pollster is attempting to measure is a...",
+  answer("population mean"),
+  answer("population proportion", correct = TRUE),
+  answer("sample mean"),
+  answer("sample proportion"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+Use the code block below to either input or compute the desired margin of error.
+
+```{r prob5-3, exercise = TRUE}
+
+```
+
+```{r prob5-3-check}
+grade_result(
+  pass_if(~ (.result == 0.01))
+)
+```
+
+###
+
+Use the code block below to either input or critical value ($z_{\alpha/2}$) which should be used to compute the required sample size.
+
+```{r prob5-4, exercise = TRUE}
+
+```
+
+```{r prob5-4-check}
+grade_result(
+  pass_if(~ (abs(.result - qnorm(0.975)) < 0.01))
+)
+```
+
+###
+
+Use the code block below to either input or compute the value of $p$ which should be used in the calculation of required sample size.
+
+```{r prob5-5, exercise = TRUE}
+
+```
+
+```{r prob5-5-check}
+grade_result(
+  pass_if(~ (.result == 0.42))
+)
+```
+
+###
+
+Use the code block below to compute the minimum size sample the pollster could take and be within his parameters.
+
+```{r prob5-6, exercise = TRUE}
+
+```
+
+```{r prob5-6-check}
+grade_result(
+  pass_if(~ ((abs(.result - (ceiling((qnorm(0.975)/0.01)^2*0.42*(1 - 0.42)))) < 10) & (.result - ceiling(.result) == 0)))
+  #pass_if(~ (.result == ceiling((qnorm(0.975)/0.01)^2*0.42*(1 - 0.42))))
+)
+```
+
+###
+
+In the last problem, did you remember to round your answer up? Rounding the required sample size down results in either a loss of confidence or an increased margin of error, violating the requirements for the estimate.
+
+## Problem 6
+
+**Problem 6:** Greece has faced a severe economic crisis since the end of 2009. A Gallup poll surveyed 1,000 randomly sampled Greeks in 2011 and found that 25% of them said they would rate their lives poorly enough to be considered suffering. Construct a 95% confidence interval for the true proportion of Greeks who are suffering.
+
+###
+
+```{r prob6-1, echo = FALSE}
+question_radio(
+  "To answer the question as asked, we should",
+  answer("Construct a confidence interval", correct = TRUE),
+  answer("Conduct a hypothesis test"),
+  answer("Compute a probability"),
+  answer("Find a required sample size"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob6-2, echo = FALSE}
+question_radio(
+  "What is the desired level of confidence for this confidence interval?",
+  answer("90%"),
+  answer("95%", correct = TRUE),
+  answer("98%"),
+  answer("99%"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob6-3, echo = FALSE}
+question_radio(
+  "Is your confidence interval being build to capture a mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
+  answer("A mean or difference in means"),
+  answer("A proportion or difference in proportions", correct = TRUE),
+  answer("Something else altogether"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob6-4, echo = FALSE}
+question_radio(
+  "Does the population parameter to be captured belong to a single group or is it a comparison of multiple groups?",
+  answer("The population parameter belongs to a single group.", correct = TRUE),
+  answer("The population parameter involves a comparison of two groups."),
+  answer("The population parameter involves a comparison of more than two groups."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+```{r prob6-5, echo = FALSE}
+quiz(
+  question_radio(
+    "Which standard error formula should be used in the construction of the confidence interval?",
+    answer("$\\displaystyle{S_E = \\sigma/\\sqrt{n}}$"),
+    answer("$\\displaystyle{S_E = s/\\sqrt{n}}$"),
+    answer("$\\displaystyle{S_E = \\sigma_{\\text{diff}}/n_{\\text{diff}}}$"),
+    answer("$\\displaystyle{S_E = s_{\\text{diff}}/\\sqrt{n_{\\text{diff}}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1 - p\\right)}{n}}}$", correct = TRUE),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Which distribution should be used to identify the critical value?",
+    answer("The normal distribution", correct = TRUE),
+    answer("The $t$-distribution with $n - 1$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
+    answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+Use the code block below to input or compute the critical value which should be used in the construction of the confidence interval.
+
+```{r prob6-6, exercise = TRUE}
+
+```
+
+```{r prob6-6-check}
+grade_result(
+  pass_if(~ (abs(abs(.result) - qnorm(0.975)) < 0.01))
+)
+```
+
+###
+
+Use the code block below to input or compute the point estimate.
+
+```{r prob6-7, exercise = TRUE}
+
+```
+
+```{r prob6-7-check}
+grade_result(
+  pass_if(~ (.result == 0.25))
+)
+```
+
+###
+
+Use the code block below to input or compute the standard error.
+
+```{r prob6-8, exercise = TRUE}
+
+```
+
+```{r prob6-8-check}
+grade_result(
+  pass_if(~ (abs(.result - (sqrt(((0.25)*(1 - 0.25))/1000))) < 0.0005))
+)
+```
+
+###
+
+Use the code block below to compute the lower bound for our confidence interval.
+
+```{r prob6-9, exercise = TRUE}
+
+```
+
+```{r prob6-9-check}
+grade_result(
+  pass_if(~ (abs(.result - (0.25 - (qnorm(0.975)*sqrt((0.25*(1 - 0.25))/1000)))) < 0.0005))
+)
+```
+
+###
+
+Use the code block below to compute the upper bound for our confidence interval.
+
+```{r prob6-10, exercise = TRUE}
+
+```
+
+```{r prob6-10-check}
+grade_result(
+  pass_if(~ (abs(.result - (0.25 + (qnorm(0.975)*sqrt((0.25*(1 - 0.25))/1000)))) < 0.0005))
+)
+```
+
+###
+
+```{r prob6-11, echo = FALSE}
+question_radio(
+  "The interpretations of the values you identified are:",
+  answer("We are 95% confident that the true proportion of Greeks who would describe their quality of life poor enough to be considered 'suffering' is between the lower bound and upper bounds calculated.", correct = TRUE),
+  answer("95% of proportion of Greeks would describe their quality of life poor enough to be considered 'suffering'."),
+  answer("We are 95% confident that the sample proportion of Greeks who would describe their quality of life poor enough to be considered 'suffering' fall between the lower and upper bounds calculated"),
+  answer("There is a 95% chance true proportion of Greeks who would describe their quality of life poor enough to be considered 'suffering' falls between the lower and upper bounds calculated."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+## Problem 7
+
+**Problem 7:** A "social experiment" conducted by a TV program questioned what people do when they see a very angry father upset with his child about their poor athletic performance. On two different occasions at the same restaurant, a father and child were depicted. In one scenario the man was upset with a son and in the other scenario he was angry with a daughter. The table below shows how many restaurant diners were present under each scenario, and whether or not they intervened.
+
+<center>$\begin{array}{|c|c|c|c|} \hline \text{Scenario} & \text{Son} & \text{Daughter} & \text{Total} \\ \hline
+\text{Intervened} & 15 & 25 & 40 \\ \hline
+\text{No Action} & 25 & 20 & 45\\ \hline
+\text{Total} & 40 & 45 & 85\\ \hline\end{array}$
+</center>
+
+Conduct a hypothesis test to determine whether there is evidence to suggest that the proportion of individuals willing to intervene in a "bad-parenting" scenario is dependent on the gender of the child?
+
+###
+
+```{r prob7-1, echo = FALSE}
+question_radio(
+  "To answer the question as asked, we should",
+  answer("Construct a confidence interval"),
+  answer("Conduct a hypothesis test", correct = TRUE),
+  answer("Compute a probability"),
+  answer("Find a required sample size"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob7-2, echo = FALSE}
+question_radio(
+  "What is the level of significance associated with this test?",
+  answer("$\\alpha = 0.01$"),
+  answer("$\\alpha = 0.10$"),
+  answer("$\\alpha = 0.05$", correct = TRUE),
+  answer("The $p$-value"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob7-3, echo = FALSE}
+question_radio(
+  "Does this hypothesis test involve testing a statement about the mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
+  answer("One or more means"),
+  answer("One or more proportions", correct = TRUE),
+  answer("Something else altogether"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob7-4, echo = FALSE}
+question_radio(
+  "How many groups are being compared in this test?",
+  answer("The test involves only a single group"),
+  answer("The test compares two groups", correct = TRUE),
+  answer("The test compares more than two groups"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob7-5, echo = FALSE}
+question_radio(
+  "Which of the following are the hypotheses associated with this test?",
+  answer("$\\begin{array}{ll} H_0: & p_{\\text{son}} - p_{\\text{daughter}} = 0\\\\ H_a: & p_{\\text{son}} - p_{\\text{daughter}} \\neq 0\\end{array}$", correct = TRUE),
+  answer("$\\begin{array}{ll} H_0: & p_{\\text{son}} - p_{\\text{daughter}} = 0\\\\ H_a: & p_{\\text{son}} - p_{\\text{daughter}} > 0\\end{array}$"),
+  answer("$\\begin{array}{ll} H_0: & p_{\\text{son}} - p_{\\text{daughter}} = 0\\\\ H_a: & p_{\\text{son}} - p_{\\text{daughter}} < 0\\end{array}$"),
+  answer("$\\begin{array}{ll} H_0: & p_{\\text{son}} \\neq p_{\\text{daughter}}\\\\ H_a: & p_{\\text{son}} = p_{\\text{daughter}}\\end{array}$"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob7-6, echo = FALSE}
+quiz(
+  question_radio(
+    "Which standard error formula should be used in the computation of the test statistic?",
+    answer("$\\displaystyle{S_E = \\sigma/\\sqrt{n}}$"),
+    answer("$\\displaystyle{S_E = s/\\sqrt{n}}$"),
+    answer("$\\displaystyle{S_E = \\sigma_{\\text{diff}}/n_{\\text{diff}}}$"),
+    answer("$\\displaystyle{S_E = s_{\\text{diff}}/\\sqrt{n_{\\text{diff}}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1 - p\\right)}{n}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}$", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Which distribution does the test statistic follow for this hypothesis test?",
+    answer("The normal distribution", correct = TRUE),
+    answer("The $t$-distribution with $n - 1$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
+    answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
+
+```{r prob7-7, exercise = TRUE}
+
+```
+
+```{r prob7-7-check}
+grade_result(
+  pass_if(~ (abs(abs(.result) - abs((15/40) - (25/45))) < 0.005))
+)
+```
+
+###
+
+Use the code block below to input or compute the null value.
+
+```{r prob7-8, exercise = TRUE}
+
+```
+
+```{r prob7-8-check}
+grade_result(
+  pass_if(~ (.result == 0))
+)
+```
+
+###
+
+Use the code block below to input or compute the standard error.
+
+```{r prob7-9, exercise = TRUE}
+
+```
+
+```{r prob7-9-check}
+grade_result(
+  pass_if(~ (abs(.result - sqrt(((15/40)*(1 - (15/40))/40) + ((25/45)*(1 - (25/45))/45))) < 0.0005))
+)
+```
+
+###
+
+Use the code block below to input or compute the test statistic.
+
+```{r prob7-10, exercise = TRUE}
+
+```
+
+```{r prob7-10-check}
+grade_result(
+  pass_if(~ (abs(abs(.result) - (abs((((15/40) - (25/45)) - 0)/sqrt(((15/40)*(1 - (15/40))/40) + ((25/45)*(1 - (25/45))/45))))) < 0.01))
+)
+```
+
+###
+
+Use the code block below to compute the $p$-value associated with this test.
+
+```{r prob7-11, exercise = TRUE}
+
+```
+
+```{r prob7-11-check}
+grade_result(
+  pass_if(~ (abs(.result - (2*(1 - pnorm(abs((((15/40) - (25/45)) - 0)/sqrt(((15/40)*(1 - (15/40))/40) + ((25/45)*(1 - (25/45))/45))))))) < 0.001))
+)
+```
+
+###
+
+Answer the following to complete the hypothesis test.
+
+```{r prob7-12, echo = FALSE}
+quiz(
+  question_radio(
+    "What is the result of the test?",
+    answer("Since $p \\geq \\alpha$, we do not have enough evidence to reject the null hypothesis.", correct = TRUE),
+  answer("Since $p \\geq \\alpha$, we accept the null hypothesis."),
+  answer("Since $p < \\alpha$, we reject the null hypothesis and accept the alternative hypothesis."),
+  answer("Since $p < \\alpha$, we fail to reject the null hypothesis."),
+  answer("It is impossible to determine."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  ),
+  question_radio(
+  "The result of the test means that",
+  answer("The sample data did not provide significant evidence to suggest that there is a difference in the proportion of diners willing to intervene in a 'bad-parenting' scenario based on the gender of the child.", correct = TRUE),
+  answer("The sample data proved that there is no difference in the proportion of diners willing to intervene in a 'bad-parenting' scenario based on the gender of the child."),
+  answer("The sample data provided significant evidence to suggest a difference in the proportion of diners willing to intervene in a 'bad-parenting' scenario based on the gender of the child"),
+  answer("The sample data provided significant evidence to suggest a difference in the sample proportion of diners willing to intervene in a 'bad-parenting' scenario based on the gender of the child."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  )
+)
+```
+
+## Problem 8
+
+**Problem 8:** A University has a policy that its sports teams require no more than 15 hours per week of time commitment from players during off-season. A random survey of 12 players from the University's Quidditch team during the Fall Semester (Quidditch is a Spring Sport) resulted in a mean of 15.25 hours per week of Quidditch-related activity on average, with a standard deviation of 1 hour. Is there evidence to suggest that the University Quidditch Coach is not following University Policy? Use $\alpha = 0.10$.
+
+###
+
+```{r prob8-1, echo = FALSE}
+question_radio(
+  "To answer the question as asked, we should",
+  answer("Construct a confidence interval"),
+  answer("Conduct a hypothesis test", correct = TRUE),
+  answer("Compute a probability"),
+  answer("Find a required sample size"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob8-2, echo = FALSE}
+question_radio(
+  "What is the level of significance associated with this test?",
+  answer("$\\alpha = 0.01$"),
+  answer("$\\alpha = 0.10$", correct = TRUE),
+  answer("$\\alpha = 0.05$"),
+  answer("The $p$-value"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob8-3, echo = FALSE}
+question_radio(
+  "Does this hypothesis test involve testing a statement about the mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
+  answer("One or more means", correct = TRUE),
+  answer("One or more proportions"),
+  answer("Something else altogether"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob8-4, echo = FALSE}
+question_radio(
+  "How many groups are being compared in this test?",
+  answer("The test involves only a single group", correct = TRUE),
+  answer("The test compares two groups"),
+  answer("The test compares more than two groups"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob8-5, echo = FALSE}
+question_radio(
+  "Which of the following are the hypotheses associated with this test?",
+  answer("$\\begin{array}{ll} H_0: & \\mu = 15\\\\ H_a: & \\mu > 15\\end{array}$", correct = TRUE),
+  answer("$\\begin{array}{ll} H_0: & \\mu = 15\\\\ H_a: & \\mu \\neq 15\\end{array}$"),
+  answer("$\\begin{array}{ll} H_0: & \\mu = 15\\\\ H_a: & \\mu < 15\\end{array}$"),
+  answer("$\\begin{array}{ll} H_0: & \\mu = 15.25\\\\ H_a: & \\mu < 15.25\\end{array}$"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob8-6, echo = FALSE}
+question_radio(
+  "Do we know the population standard deviation(s), $\\sigma$, for hours spent on Quiddich?",
+  answer("Yes, the population standard deviations are known.", message = "Oops. We are presented with a standard deviation in hours spent but that belongs to only those players included in the sample, not the entire population."),
+  answer("No, the population standard deviation is not known.", correct = TRUE),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob8-7, echo = FALSE}
+quiz(
+  question_radio(
+    "Which standard error formula should be used in the computation of the test statistic?",
+    answer("$\\displaystyle{S_E = \\sigma/\\sqrt{n}}$"),
+    answer("$\\displaystyle{S_E = s/\\sqrt{n}}$", correct = TRUE),
+    answer("$\\displaystyle{S_E = \\sigma_{\\text{diff}}/n_{\\text{diff}}}$"),
+    answer("$\\displaystyle{S_E = s_{\\text{diff}}/\\sqrt{n_{\\text{diff}}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1 - p\\right)}{n}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Which distribution does the test statistic follow for this hypothesis test?",
+    answer("The normal distribution"),
+    answer("The $t$-distribution with $n - 1$ degrees of freedom.", correct = TRUE),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
+    answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
+
+```{r prob8-8, exercise = TRUE}
+
+```
+
+```{r prob8-8-check}
+grade_result(
+  pass_if(~ (abs(.result) == 15.25))
+)
+```
+
+###
+
+Use the code block below to input or compute the null value.
+
+```{r prob8-9, exercise = TRUE}
+
+```
+
+```{r prob8-9-check}
+grade_result(
+  pass_if(~ (.result == 15))
+)
+```
+
+###
+
+Use the code block below to input or compute the standard error.
+
+```{r prob8-10, exercise = TRUE}
+
+```
+
+```{r prob8-10-check}
+grade_result(
+  pass_if(~ (abs(.result - (1/sqrt(12))) < 0.01))
+)
+```
+
+###
+
+Use the code block below to input or compute the test statistic.
+
+```{r prob8-11, exercise = TRUE}
+
+```
+
+```{r prob8-11-check}
+grade_result(
+  pass_if(~ (abs(.result - ((15.25 - 15)/(1/sqrt(12)))) < 0.01))
+)
+```
+
+###
+
+Use the code block below to compute the $p$-value associated with this test.
+
+```{r prob8-12, exercise = TRUE}
+
+```
+
+```{r prob8-12-check}
+grade_result(
+  pass_if(~ (abs(.result - (1 - pt((15.25 - 15)/(1/sqrt(12)), df = 12 - 1))) < 0.0015))
+)
+```
+
+###
+
+Answer the following to complete the hypothesis test.
+
+```{r prob8-13, echo = FALSE}
+quiz(
+  question_radio(
+    "What is the result of the test?",
+    answer("Since $p \\geq \\alpha$, we do not have enough evidence to reject the null hypothesis.", correct = TRUE),
+  answer("Since $p \\geq \\alpha$, we accept the null hypothesis."),
+  answer("Since $p < \\alpha$, we reject the null hypothesis and accept the alternative hypothesis."),
+  answer("Since $p < \\alpha$, we fail to reject the null hypothesis."),
+  answer("It is impossible to determine."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  ),
+  question_radio(
+  "The result of the test means that",
+  answer("The sample data did not provide significant evidence to suggest that the University Quiddich coach is violating the off-season time committment policy.", correct = TRUE),
+  answer("The sample data proved that the University Quiddich coach is not violating the off-season time committment policy."),
+  answer("The sample data provided significant evidence to suggest that the University Quiddich coach is violating the off-season time committment policy"),
+  answer("The sample data proved that the University Quiddich coach is violating the off-season time committment policy."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  )
+)
+```
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If your instructor is asking you to submit evidence of your completed notebook using a hash code, you may generate that code below. Use the clipboard icon to ensure that you are copying the entire hash."
+    )
+  )
+```

@@ -1,0 +1,743 @@
+---
+title: "Topic 16: Inference Practice (Part C)"
+tutorial:
+  id: "InferencePractice.Topic16c.AppliedStats"
+  version: 1.0
+output: 
+  learnr::tutorial:
+    progressive: TRUE
+    allow_skip: TRUE
+    
+runtime: shiny_prerendered
+description: "This notebook only contains the final four practice problems from the original Topic 16 notebook so that the RAM overflow on rebuild problem is bypassed."
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(learnr)
+library(gradethis)
+
+
+tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+
+```
+
+## Inference Practice
+
+###
+
+This notebook is a continuation of the `Topic 16 (Part A)` and `Topic 16 (Part B)` notebooks. This notebook contains the final four problems (problems 9 - 12) from the original `Topic 16` notebook.
+
+###
+
+For convenience, here is the [*standard errror decision tree*](https://agmath.github.io/SiteFiles/StdErrorDecisionTree.pdf){target="_blank"}, the general [*strategy for confidence intervals*](https://agmath.github.io/SiteFiles/CIgeneral.pdf){target="_blank"}, and the general [*strategy for hypothesis tests*](https://agmath.github.io/SiteFiles/HTgeneral.pdf){target="_blank"}. For any problems involving hypothesis tests, assume the $\alpha = 0.05$ level of significance unless otherwise stated.
+
+### 
+
+> **Note:** There are no hints included in this notebook. You should use the resources linked above and your previous notebooks to help you.
+
+## Problem 9
+
+**Problem 9:** A market researcher wants to evaluate car insurance savings at a competing company. Based on past studies he is assuming that the standard deviation of savings is \$100. He wants to collect data such that he can get a margin of error of no more than \$10 at a 95% confidence level. How large of a sample should he collect?
+
+###
+
+```{r prob9-1, echo = FALSE}
+question_radio(
+  "To answer the question as asked, we should",
+  answer("Construct a confidence interval"),
+  answer("Conduct a hypothesis test"),
+  answer("Compute a probability"),
+  answer("Find a required sample size", correct = TRUE),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob9-2, echo = FALSE}
+question_radio(
+  "The parameter the market researcher is attempting to measure is a...",
+  answer("population mean", correct = TRUE),
+  answer("population proportion"),
+  answer("sample mean"),
+  answer("sample proportion"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+Use the code block below to either input or compute the desired margin of error (don't include the \$ sign in your answer).
+
+```{r prob9-3, exercise = TRUE}
+
+```
+
+```{r prob9-3-check}
+grade_result(
+  pass_if(~ (.result == 10))
+)
+```
+
+###
+
+Use the code block below to either input or critical value ($z_{\alpha/2}$) which should be used to compute the required sample size.
+
+```{r prob9-4, exercise = TRUE}
+
+```
+
+```{r prob9-4-check}
+grade_result(
+  pass_if(~ (abs(.result - qnorm(0.975)) < 0.01))
+)
+```
+
+###
+
+Use the code block below to either input or compute the estimate for $\sigma$ which should be used in the calculation of required sample size (don't include the \$ sign in your response).
+
+```{r prob9-5, exercise = TRUE}
+
+```
+
+```{r prob9-5-check}
+grade_result(
+  pass_if(~ (.result == 100))
+)
+```
+
+###
+
+Use the code block below to compute the minimum size sample the pollster could take and be within his parameters.
+
+```{r prob9-6, exercise = TRUE}
+
+```
+
+```{r prob9-6-check}
+grade_result(
+  pass_if(~ ((abs(.result - (ceiling((qnorm(0.975)*100/10)^2))) < 10) & (.result - ceiling(.result) == 0)))
+)
+```
+
+## Problem 10
+
+**Problem 10:** A Washington Post article from 2009 reported that "support for a government-run health-care plan to compete with private insurers has rebounded from its summertime lows and wins clear majority support from the public." More specifically, the article says "seven in 10 Democrats back the plan, while almost nine in 10 Republicans oppose it. Independents divide 52 percent against, 42 percent in favor of the legislation." (6% responded with "other".) There were 819 Democrats, 566 Republicans and 783 Independents surveyed. A political pundit on TV claims that a majority of Independents oppose the health care public option plan. Do these data provide significant evidence to support this statement?
+
+###
+
+```{r prob10-1, echo = FALSE}
+question_radio(
+  "To answer the question as asked, we should",
+  answer("Construct a confidence interval"),
+  answer("Conduct a hypothesis test", correct = TRUE),
+  answer("Compute a probability"),
+  answer("Find a required sample size"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob10-2, echo = FALSE}
+question_radio(
+  "What is the level of significance associated with this test?",
+  answer("$\\alpha = 0.01$"),
+  answer("$\\alpha = 0.10$"),
+  answer("$\\alpha = 0.05$", correct = TRUE),
+  answer("The $p$-value"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob10-3, echo = FALSE}
+question_radio(
+  "Does this hypothesis test involve testing a statement about the mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
+  answer("One or more means"),
+  answer("One or more proportions", correct = TRUE),
+  answer("Something else altogether"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob10-4, echo = FALSE}
+question_radio(
+  "How many groups are being compared in this test?",
+  answer("The test involves only a single group", correct = TRUE),
+  answer("The test compares two groups", message = "Oops. The article provides information about democrats, republicans, and independents but the test only considers the independents."),
+  answer("The test compares more than two groups", message = "Oops. The article provides information about democrats, republicans, and independents but the test only considers the independents."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob10-5, echo = FALSE}
+question_radio(
+  "Let $p$ denote the proportion of independents against the *public option*. Which of the following are the hypotheses associated with this test?",
+  answer("$\\begin{array}{ll} H_0: & p = 0.5\\\\ H_a: & p > 0.5\\end{array}$", correct = TRUE),
+  answer("$\\begin{array}{ll} H_0: & p = 0.52\\\\ H_a: & p > 0.52\\end{array}$"),
+  answer("$\\begin{array}{ll} H_0: & p = 0.5\\\\ H_a: & p \\neq 0.5\\end{array}$"),
+  answer("$\\begin{array}{ll} H_0: & p = 0.52\\\\ H_a: & p \\neq 0.52\\end{array}$"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob10-6, echo = FALSE}
+quiz(
+  question_radio(
+    "Which standard error formula should be used in the computation of the test statistic?",
+    answer("$\\displaystyle{S_E = \\sigma/\\sqrt{n}}$"),
+    answer("$\\displaystyle{S_E = s/\\sqrt{n}}$"),
+    answer("$\\displaystyle{S_E = \\sigma_{\\text{diff}}/n_{\\text{diff}}}$"),
+    answer("$\\displaystyle{S_E = s_{\\text{diff}}/\\sqrt{n_{\\text{diff}}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1 - p\\right)}{n}}}$", correct = TRUE),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Which distribution does the test statistic follow for this hypothesis test?",
+    answer("The normal distribution", correct = TRUE),
+    answer("The $t$-distribution with $n - 1$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
+    answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
+
+```{r prob10-7, exercise = TRUE}
+
+```
+
+```{r prob10-7-check}
+grade_result(
+  pass_if(~ (abs(.result) == 0.52))
+)
+```
+
+###
+
+Use the code block below to input or compute the null value.
+
+```{r prob10-8, exercise = TRUE}
+
+```
+
+```{r prob10-8-check}
+grade_result(
+  pass_if(~ (.result == 0.5))
+)
+```
+
+###
+
+Use the code block below to input or compute the standard error.
+
+```{r prob10-9, exercise = TRUE}
+
+```
+
+```{r prob10-9-check}
+grade_result(
+  pass_if(~ (abs(.result - (sqrt(0.5*(1 - 0.5)/783))) < 0.0005))
+)
+```
+
+###
+
+Use the code block below to input or compute the test statistic.
+
+```{r prob10-10, exercise = TRUE}
+
+```
+
+```{r prob10-10-check}
+grade_result(
+  pass_if(~ (abs(.result - ((0.52 - 0.5)/(sqrt(0.5*(1 - 0.5)/783)))) < 0.01))
+)
+```
+
+###
+
+Use the code block below to compute the $p$-value associated with this test.
+
+```{r prob10-11, exercise = TRUE}
+
+```
+
+```{r prob10-11-check}
+grade_result(
+  pass_if(~ (abs(.result - (1 - pnorm((0.52 - 0.5)/(sqrt(0.5*(1 - 0.5)/783))))) < 0.0005))
+)
+```
+
+###
+
+Answer the following to complete the hypothesis test.
+
+```{r prob10-12, echo = FALSE}
+quiz(
+  question_radio(
+    "What is the result of the test?",
+    answer("Since $p \\geq \\alpha$, we do not have enough evidence to reject the null hypothesis.", correct = TRUE),
+  answer("Since $p \\geq \\alpha$, we accept the null hypothesis."),
+  answer("Since $p < \\alpha$, we reject the null hypothesis and accept the alternative hypothesis."),
+  answer("Since $p < \\alpha$, we fail to reject the null hypothesis."),
+  answer("It is impossible to determine."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  ),
+  question_radio(
+  "The result of the test means that",
+  answer("The sample data did not provide significant evidence to suggest that a majority of independents oppose the health care public option.", correct = TRUE),
+  answer("The sample data proved that a majority of independents oppose the health care public option."),
+  answer("The sample data provided significant evidence to suggest that a majority of independents oppose the health care public option."),
+  answer("The sample data proved that a majority of independents do not oppose the health care public option."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  )
+)
+```
+
+## Problem 11
+
+**Problem 11:** Is there strong evidence of global warming? Let's consider a small scale example on just a single metric, comparing how temperatures have changed in the US from 1968 to 2008. The daily high temperature reading on January 1 was collected in 1968 and 2008 for 51 randomly selected locations in the continental US. Then the difference between the two readings (temperature in 2008 - temperature in 1968) was calculated for each of the 51 different locations. The average of these 51 values was 1.1 degrees with a standard deviation of 4.9 degrees. We are interested in determining whether these data provide strong evidence of temperature warming in the continental US. Conduct a hypothesis test to determine whether there is significant evidence for an increase in average temperature between 1968 and 2008.
+
+###
+
+```{r prob11-1, echo = FALSE}
+question_radio(
+  "To answer the question as asked, we should",
+  answer("Construct a confidence interval"),
+  answer("Conduct a hypothesis test", correct = TRUE),
+  answer("Compute a probability"),
+  answer("Find a required sample size"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob11-2, echo = FALSE}
+question_radio(
+  "What is the level of significance associated with this test?",
+  answer("$\\alpha = 0.01$"),
+  answer("$\\alpha = 0.10$"),
+  answer("$\\alpha = 0.05$", correct = TRUE),
+  answer("The $p$-value"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob11-3, echo = FALSE}
+question_radio(
+  "Does this hypothesis test involve testing a statement about the mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
+  answer("One or more means", correct = TRUE),
+  answer("One or more proportions"),
+  answer("Something else altogether"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob11-4, echo = FALSE}
+question_radio(
+  "How many groups are being compared in this test?",
+  answer("The test involves only a single group", correct = TRUE, message = "Good work -- technically this is true because rather than looking at temperatures in 1968 and 2008 independently of one another, we are actually looking at the differences in temperature in each individual location. That is, once we compute the differences in temperature, we have a single observation for each location."),
+  answer("The test compares two groups", correct = TRUE),
+  answer("The test compares more than two groups"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob11-5, echo = FALSE}
+question_radio(
+  "Which of the following are the hypotheses associated with this test?",
+  answer("$\\begin{array}{ll} H_0: & \\mu_{\\text{2008}} - \\mu_{\\text{1968}} = 0\\\\ H_a: & \\mu_{\\text{2008}} - \\mu_{\\text{1968}} \\neq 0\\end{array}$"),
+  answer("$\\begin{array}{ll} H_0: & \\mu_{\\text{2008}} - \\mu_{\\text{1968}} = 0\\\\ H_a: & \\mu_{\\text{2008}} - \\mu_{\\text{1968}} > 0\\end{array}$", correct = TRUE),
+  answer("$\\begin{array}{ll} H_0: & \\mu_{\\text{2008}} - \\mu_{\\text{1968}} = 0\\\\ H_a: & \\mu_{\\text{2008}} - \\mu_{\\text{1968}} < 0\\end{array}$"),
+  answer("$\\begin{array}{ll} H_0: & \\mu_{\\text{2008}} \\neq \\mu_{\\text{1968}}\\\\ H_a: & \\mu_{\\text{2008}} = \\mu_{\\text{1968}}\\end{array}$"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob11-6, echo = FALSE}
+question_radio(
+  "Do we know the population standard deviation(s), $\\sigma$, for difference in temperature?",
+  answer("Yes, the population standard deviations are known.", message = "Oops. We are presented with a standard deviation in temperature differences but that standard deviation belongs only to the sample temperatures measured, not the population."),
+  answer("No, the population standard deviations are not known.", correct = TRUE),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob11-7, echo = FALSE}
+question_radio(
+  "Are the observations in the two groups (males on Death Row and females on Death Row) paired?",
+  answer("No. There is no reason to suggest that the individual 1968 and 2008 temperature readings correspond to one another."),
+  answer("Yes. Every temperature reading from 1968 can be naturally paired with the 2008 reading from the same location.", correct = TRUE),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob11-8, echo = FALSE}
+quiz(
+  question_radio(
+    "Which standard error formula should be used in the computation of the test statistic?",
+    answer("$\\displaystyle{S_E = \\sigma/\\sqrt{n}}$"),
+    answer("$\\displaystyle{S_E = s/\\sqrt{n}}$"),
+    answer("$\\displaystyle{S_E = \\sigma_{\\text{diff}}/n_{\\text{diff}}}$"),
+    answer("$\\displaystyle{S_E = s_{\\text{diff}}/\\sqrt{n_{\\text{diff}}}}$", correct = TRUE),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1 - p\\right)}{n}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Which distribution does the test statistic follow for this hypothesis test?",
+    answer("The normal distribution"),
+    answer("The $t$-distribution with $n - 1$ degrees of freedom."),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
+    answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom.", correct = TRUE),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+Now we'll begin building the test statistic. Use the code block below to input or compute the point estimate for our population parameter.
+
+```{r prob11-9, exercise = TRUE}
+
+```
+
+```{r prob11-9-check}
+grade_result(
+  pass_if(~ (abs(.result) == 1.1))
+)
+```
+
+###
+
+Use the code block below to input or compute the null value.
+
+```{r prob11-10, exercise = TRUE}
+
+```
+
+```{r prob11-10-check}
+grade_result(
+  pass_if(~ (.result == 0))
+)
+```
+
+###
+
+Use the code block below to input or compute the standard error.
+
+```{r prob11-11, exercise = TRUE}
+
+```
+
+```{r prob11-11-check}
+grade_result(
+  pass_if(~ (abs(.result - (4.9/sqrt(51))) < 0.01))
+)
+```
+
+###
+
+Use the code block below to input or compute the test statistic.
+
+```{r prob11-12, exercise = TRUE}
+
+```
+
+```{r prob11-12-check}
+grade_result(
+  pass_if(~ (abs(.result - ((1.1 - 0)/(4.9/sqrt(51)))) < 0.01))
+)
+```
+
+###
+
+Use the code block below to compute the $p$-value associated with this test.
+
+```{r prob11-13, exercise = TRUE}
+
+```
+
+```{r prob11-13-check}
+grade_result(
+  pass_if(~ (abs(.result - (1 - pt(((1.1 - 0)/(4.9/sqrt(51))), df = 51 -1))) < 0.0005))
+)
+```
+
+###
+
+Answer the following to complete the hypothesis test.
+
+```{r prob11-14, echo = FALSE}
+quiz(
+  question_radio(
+    "What is the result of the test?",
+    answer("Since $p \\geq \\alpha$, we do not have enough evidence to reject the null hypothesis.", correct = TRUE),
+  answer("Since $p \\geq \\alpha$, we accept the null hypothesis."),
+  answer("Since $p < \\alpha$, we reject the null hypothesis and accept the alternative hypothesis."),
+  answer("Since $p < \\alpha$, we fail to reject the null hypothesis."),
+  answer("It is impossible to determine."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  ),
+  question_radio(
+  "The result of the test means that",
+  answer("The sample data did not provide significant evidence to suggest that temperatures in the US have increased from January 1, 1968 to January 1, 2008.", correct = TRUE),
+  answer("The sample data proved that temperatures in the US have increased from January 1, 1968 to January 1, 2008."),
+  answer("The sample data provided significant evidence to suggest that temperatures in the US have increased from January 1, 1968 to January 1, 2008."),
+  answer("The sample data provided significant evidence to suggest that temperatures in the US have increased from January 1, 1968 to January 1, 2008 within our sample data."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+  )
+)
+```
+
+## Problem 12
+
+**Problem 12:** A recent claim from Irving states that their average gasoline prices across the nation are \$2.10 per gallon. A random sample of 15 Irving stations throughout Manchester, NH reveals an average price per gallon of \$2.03 with a standard deviation of \$0.025. construct a 90% confidence interval for the average price per gallon of gas in Manchester, NH. Comment on your result.
+
+###
+
+```{r prob12-1, echo = FALSE}
+question_radio(
+  "To answer the question as asked, we should",
+  answer("Construct a confidence interval", correct = TRUE),
+  answer("Conduct a hypothesis test"),
+  answer("Compute a probability"),
+  answer("Find a required sample size"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob12-2, echo = FALSE}
+question_radio(
+  "What is the desired level of confidence for this confidence interval?",
+  answer("90%", correct = TRUE),
+  answer("95%"),
+  answer("98%"),
+  answer("99%"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob12-3, echo = FALSE}
+question_radio(
+  "Is your confidence interval being build to capture a mean ( $\\mu$ ), a proportion ( $p$ ), or something else?",
+  answer("A mean or difference in means", correct = TRUE),
+  answer("A proportion or difference in proportions"),
+  answer("Something else altogether"),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob12-4, echo = FALSE}
+question_radio(
+  "Does the population parameter to be captured belong to a single group or is it a comparison of multiple groups?",
+  answer("The population parameter belongs to a single group.", correct = TRUE),
+  answer("The population parameter involves a comparison of two groups."),
+  answer("The population parameter involves a comparison of more than two groups."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+###
+
+```{r prob12-5, echo = FALSE}
+question_radio(
+  "Is the population standard deviation, $\\sigma$, for gas prices known?",
+  answer("Yes, the population standard deviation in gas prices is known."),
+  answer("No, the population standard deviation in gas prices is not known.", correct = TRUE),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+```{r prob12-6, echo = FALSE}
+quiz(
+  question_radio(
+    "Which standard error formula should be used in the construction of the confidence interval?",
+    answer("$\\displaystyle{S_E = \\sigma/\\sqrt{n}}$"),
+    answer("$\\displaystyle{S_E = s/\\sqrt{n}}$", correct = TRUE),
+    answer("$\\displaystyle{S_E = \\sigma_{\\text{diff}}/n_{\\text{diff}}}$"),
+    answer("$\\displaystyle{S_E = s_{\\text{diff}}/\\sqrt{n_{\\text{diff}}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p\\left(1 - p\\right)}{n}}}$"),
+    answer("$\\displaystyle{S_E = \\sqrt{\\frac{p_1\\left(1 - p_1\\right)}{n_1} + \\frac{p_2\\left(1 - p_2\\right)}{n_2}}}$"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  ),
+  question_radio(
+    "Which distribution should be used to identify the critical value?",
+    answer("The normal distribution"),
+    answer("The $t$-distribution with $n - 1$ degrees of freedom.", correct = TRUE),
+    answer("The $t$-distribution with $\\min\\{n_1 - 1, n_2 - 1\\}$ degrees of freedom."),
+    answer("The $t$-distribution with $n_{\\text{diff}} - 1$ degrees of freedom."),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+)
+```
+
+###
+
+Use the code block below to input or compute the critical value which should be used in the construction of the confidence interval.
+
+```{r prob12-7, exercise = TRUE}
+
+```
+
+```{r prob12-7-check}
+grade_result(
+  pass_if(~ (abs(abs(.result) - qt(0.95, df = 15 - 1)) < 0.01))
+)
+```
+
+###
+
+Use the code block below to input or compute the point estimate.
+
+```{r prob12-8, exercise = TRUE}
+
+```
+
+```{r prob12-8-check}
+grade_result(
+  pass_if(~ (.result == 2.03))
+)
+```
+
+###
+
+Use the code block below to input or compute the standard error.
+
+```{r prob12-9, exercise = TRUE}
+
+```
+
+```{r prob12-9-check}
+grade_result(
+  pass_if(~ (abs(.result - (0.025/sqrt(15))) < 0.005))
+)
+```
+
+###
+
+Use the code block below to compute the lower bound for our confidence interval.
+
+```{r prob12-10, exercise = TRUE}
+
+```
+
+```{r prob12-10-check}
+grade_result(
+  pass_if(~ (abs(.result - (2.03 - (qt(0.95, df = 15 - 1)*(0.025/sqrt(15))))) < 0.005))
+)
+```
+
+###
+
+Use the code block below to compute the upper bound for our confidence interval.
+
+```{r prob12-11, exercise = TRUE}
+
+```
+
+```{r prob12-11-check}
+grade_result(
+  pass_if(~ (abs(.result - (2.03 + (qt(0.95, df = 15 - 1)*(0.025/sqrt(15))))) < 0.005))
+)
+```
+
+###
+
+```{r prob12-12, echo = FALSE}
+question_radio(
+  "The interpretations of the values you identified are:",
+  answer("We are 90% confident that the true average gas price at Irving stations in Manchester, NH is between the lower bound and upper bound calculated.", correct = TRUE),
+  answer("90% of gas stations in Manchester, NH have gas prices between the lower and upper bound computed."),
+  answer("We are 90% confident that the average gas price at Irving stations in NH falls between the lower and upper bound calculated", message = "Remember that results from a sample may only be generalized to a population for which that sample is representative."),
+  answer("There is a 90% chance that the true average gas price at Irving stations in Manchester, NH falls between the lower and upper bound calculated."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
+)
+```
+
+## Submit
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(
+  ui_before = shiny::div(
+    "If your instructor is asking you to submit evidence of your completed notebook using a hash code, you may generate that code below. Use the clipboard icon to ensure that you are copying the entire hash."
+    )
+  )
+```
