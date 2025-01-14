@@ -9,7 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
-description: "An introduction to working with normally distributed data. This notebook covers the calculation of probabilities and percentiles. It also introduces the notion of the z-score."
+description: "An introduction to working with normally distributed data. This notebook covers the calculation of probabilities and percentiles. It also introduces the notion of the z-score. If you are working on a free-tiered Posit Cloud account, consider completing the part A, B, and C versions of this notebook instead of this single, larger notebook to avoid RAM overflow on relaunch."
 ---
 
 ```{r setup, include=FALSE}
