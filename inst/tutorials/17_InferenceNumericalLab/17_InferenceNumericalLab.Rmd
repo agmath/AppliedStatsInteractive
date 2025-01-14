@@ -112,7 +112,7 @@ quiz(
 
 ###
 
-As a first step in the analysis, we should consider summaries of the data. This can be done using base-R's `summary()` command or using `skim()` from the `skimr` package. Pipe the `nc` data frame to one of these functions below and use the output to help you answer the questions that follow.
+As a first step in the analysis, we should consider summaries of the data. This can be done using base-R's `summary()` command or using `skim()` from the `{skimr}` package. Pipe the `nc` data frame to one of these functions below and use the output to help you answer the questions that follow.
 
 ```{r nc-summary, exercise = TRUE}
 
@@ -413,76 +413,56 @@ inference(
 
 ## On your own
 
-Since you've worked through this workbook, you should now feel prepared to answer the following. Use the code blocks to check your understanding.
+Since you've worked through this workbook, you should now feel prepared to answer the following. Use the code block below to address the tasks and check your understanding.
+
+```{r own-probs, exercise = TRUE}
+
+```
 
 1. Calculate a 95% confidence interval for the average length of pregnancies (`weeks`) and interpret it in context. Note that since you're doing inference on a single population parameter, there is no explanatory variable, so you can omit the `x` variable from the function.
 
-```{r own-prob-1, exercise = TRUE}
-
-```
-
-```{r own-prob-1-hint-1}
-#Use the inference() function
-```
-
-```{r own-prob-1-hint-2}
-#Since we are not comparing groups, you'll use the y
-#parameter but omit the x parameter.
-```
+> <details>
+>   <summary>💡Click for Hint 1💡</summary>
+>    <p> Use the `inference()` function. </p>
+> </details> 
+>
+> <details>
+>   <summary>💡Click for Hint 2💡</summary>
+>    <p> You aren't comparing groups, so you'll use the `y` parameter for the `weeks` variable and leave out the `x` parameter. </p>
+> </details> 
 
 2. Calculate a new confidence interval for the same parameter at the 90% confidence level. You can change the confidence level by adding a new argument to the function: `conf_level = 0.90`.
 
-```{r own-prob-2, exercise = TRUE}
-
-```
-
-```{r own-prob-2-hint-1}
-#As mentioned, just add a new argument, conf_level = 0.90
-#inside of the inference() function. As a reminder, 
-#arguments are separated by commas and we've been 
-#placing each argument on a new line for improved
-#readability.
-```
+> <details>
+>   <summary>💡Click for a Hint💡</summary>
+>    <p> As mentioned, just add a new argument, `conf_level = 0.90` inside of the `inference()` function. As a reminder, arguments are separated by commas and we've been placing each argument on a new line for improved readability. </p>
+> </details> 
 
 3. Conduct a hypothesis test evaluating whether the average weight gained by younger mothers is different than the average weight gained by mature mothers.
 
-```{r own-prob-3, exercise = TRUE}
-
-```
-
-```{r own-prob-3-hint-1}
-#Use the inference() function again, but be sure to 
-#set the type to "ht" (hypothesis test). You'll also
-#need a null and alternative hypothesis, and you 
-#shouldn't include a confidence level since those only
-#apply to confidence intervals.
-```
+> <details>
+>   <summary>💡Click for a Hint💡</summary>
+>    <p> Use the `inference()` function again, but be sure to set the type to `"ht"` (hypothesis test). You'll also need a `null` and `alternative` hypothesis, and you shouldn't include a confidence level since those only apply to confidence intervals. </p>
+> </details> 
 
 4. Now, a non-inference task: Determine the age cutoff for younger and mature mothers. Use a method of your choice, and explain how your method works.
 
-```{r own-prob-4, exercise = TRUE}
-
-```
-
-```{r own-prob-4-hint-1}
-#You need some way to find the "oldest young mother" 
-#and the "youngest mature mother".
-```
-
-```{r own-prob-4-hint-2}
-#One way to do this is with group_by() and summarize()
-```
-
-```{r own-prob-4-hint-3}
-#"Oldest" sounds like the maximum age, and "youngest"
-#seems like the minimum age
-```
+> <details>
+>   <summary>💡Click for Hint 1💡</summary>
+>    <p> You'll need some way to find the *oldest young mother* and the *youngest mature mother*. </p>
+> </details> 
+>
+> <details>
+>   <summary>💡Click for Hint 2💡</summary>
+>    <p> One way to do this is with `group_by()` and `summarize()`. </p>
+> </details> 
+>
+> <details>
+>   <summary>💡Click for Hint 3💡</summary>
+>    <p> *Oldest* sounds like the `max`imum `age`, and *youngest* sounds like the `min`imum `age`. </p>
+> </details> 
 
 5. Pick a pair of numerical and categorical variables and come up with a research question evaluating the relationship between these variables. Formulate the question in a way that it can be answered using a hypothesis test and/or a confidence interval. Answer your question using the `inference()` function, report the statistical results, and also provide an explanation in plain language.
-
-```{r own-prob-5, exercise = TRUE}
-
-```
 
 ## Submit
 
