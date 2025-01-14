@@ -9,7 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
-description: "In this lab, we work with survey data from a 2012 WIN-Gallup poll on the global rise of atheism. The `inference()` function from the `{statsr}` package is introduced. If you are using this notebook on a free-tiered Posit.Cloud account, stopping and restarting this notebook results in a crash due to RAM overflow. I am working on a fix. If you are on a student-tiered account, increasing your available RAM one level above the default will allow re-rendering to occur."
+description: "In this lab, we work with survey data from a 2012 WIN-Gallup poll on the global rise of atheism. The `inference()` function from the `{statsr}` package is introduced. If you are working on a free-tiered Posit Cloud account, consider completing the part A and B versions of this notebook instead of this single, larger notebook to avoid RAM overflow on relaunch."
 ---
 
 ```{r setup, include=FALSE}
