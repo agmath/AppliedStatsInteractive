@@ -9,7 +9,7 @@ output:
     allow_skip: TRUE
     
 runtime: shiny_prerendered
-description: "In this lab, we work with survey data from a 2012 WIN-Gallup poll on the global rise of atheism. The `inference()` function from the `{statsr}` package is introduced. If you are working on a free-tiered Posit Cloud account, consider completing the part A and B versions of this notebook instead of this single, larger notebook to avoid RAM overflow on relaunch."
+description: "In this lab, we work with survey data from a 2012 WIN-Gallup poll on the global rise of atheism. The `inference()` function from the `{statsr}` package is introduced. If you are working on a free-tiered Posit Cloud account, you are likely to experience crashing on relaunch of this notebook. Consider completing [this web-based version](https://agmath.github.io/OpenIntroCompanions/13_InferenceCategoricalLab.html) of the notebook instead. Unfortunately, hash code generation is not available for this version of the notebook."
 ---
 
 ```{r setup, include=FALSE}
