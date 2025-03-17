@@ -1200,7 +1200,9 @@ quiz(
     answer("We have proved that racial bias exists in sentencing for drug-related cases in the Southern District of New York State"),
     answer("We have found evidence to support the hypothesis that racial bias exists in sentencing for drug-related cases in the Southern District of New York State. Our result suggests that a more formal audit of sentencing recommendations should be undertaken.", correct = TRUE),
     answer("We have found evidence to support the hypothesis that racial bias exists in the courts across all case types."),
-    answer("We have found evidence to suggest that racial minorities receive more lengthy sentences in drug-related cases in the Southern District of New York State.")
+    answer("We have found evidence to suggest that racial minorities receive more lengthy sentences in drug-related cases in the Southern District of New York State."),
+  allow_retry = TRUE,
+  random_answer_order = TRUE
   )
 )
 ```
