@@ -190,8 +190,8 @@ question_checkbox(
   "Which of the following would result in improved estimates for the true mean carat weight of diamonds in our population?",
   answer("Take the mean of the sample means", correct = TRUE),
   answer("Combine the three samples into a single sample of 24 diamonds (rather than three separate samples of 8), and take its mean", correct = TRUE),
-  answer("Take samples of larger sizes", correct = TRUE),
-  answer("Take samples of smaller sizes"),
+  answer("Take samples using larger sample sizes", correct = TRUE),
+  answer("Take samples using smaller sample sizes"),
   answer("Stratify the diamonds according to price (low, medium, and high) and take a random sample of diamonds of each price category"),
   allow_retry = TRUE,
   random_answer_order = TRUE
