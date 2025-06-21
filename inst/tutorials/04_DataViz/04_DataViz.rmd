@@ -760,7 +760,7 @@ mpg %>%
        title = "")
 ```
 
-The advantage to the mosaic plot is that it contains all of the information from the two separate plots above, but it is all combined into one plot! We've built a visualization that manages to convey that the proportion of manual vehicles in our data set outweighs the proportion of automatics, and we can also compare the distribution of drive types within each of these two classes.
+The advantage to the mosaic plot is that it contains all of the information from the two separate plots above, but it is all combined into one plot! We've built a visualization that manages to convey that the proportion of automatic vehicles in our data set outweighs the proportion of manuals, and we can also easily compare the distribution of drive types within each of these two classes.
 
 ## Submit
 
