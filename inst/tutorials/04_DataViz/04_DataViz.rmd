@@ -796,7 +796,7 @@ data_frame_name %>%
 
   + Note that the `MAPPINGS` you need are determined by the geometry `TYPE` you are using.
 
-+ There are entire courses devoted to data visualization. You've had a crash course here but there is much more to be learned. Check out the two Wickham books, use the `ggplot2` [documentation](https://ggplot2.tidyverse.org/reference/), or check out [this cheatsheet](https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf) for more inspiration!
++ There are entire courses devoted to data visualization. You've had a crash course here but there is much more to be learned. Check out the two Wickham books, use the `ggplot2` [documentation](https://ggplot2.tidyverse.org/reference/), or check out [this cheatsheet](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf) for more inspiration!
 
 ###
 
