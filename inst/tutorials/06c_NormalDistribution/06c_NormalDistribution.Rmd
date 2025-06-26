@@ -309,6 +309,13 @@ grade_result(
 
 ```
 
+```{r chick-pox-prob-between-hint-3}
+#See part e) of the dreidel examples PDF.
+#If you're on Posit Cloud, you may need to right-click 
+#(or ctrl+click) and open it in a new tab.
+
+```
+
 ```{r chick-pox-prob-between-check}
 grade_result(
   pass_if(~ (abs(.result - ( pbinom((floor(0.9*chickPoxSampSize) - 1), chickPoxSampSize, 0.9) - pbinom(floor(0.8*chickPoxSampSize), chickPoxSampSize, 0.9))) < 0.0001))
