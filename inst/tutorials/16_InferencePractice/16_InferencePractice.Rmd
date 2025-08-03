@@ -1750,7 +1750,7 @@ question_radio(
 
 ```{r prob11-7, echo = FALSE}
 question_radio(
-  "Are the observations in the two groups (males on Death Row and females on Death Row) paired?",
+  "Are the observations in the two groups (temperatures is 1968 and in 2008) paired?",
   answer("No. There is no reason to suggest that the individual 1968 and 2008 temperature readings correspond to one another."),
   answer("Yes. Every temperature reading from 1968 can be naturally paired with the 2008 reading from the same location.", correct = TRUE),
   allow_retry = TRUE,
