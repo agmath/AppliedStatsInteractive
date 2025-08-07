@@ -256,6 +256,12 @@ Use the code block below to explore relationships between the other variables in
 
 The fundamental phenomenon suggested by the Gelman and Hill study is that better looking teachers are evaluated more favorably. Use the code block below to create a scatterplot to see if this appears to be the case. Put `bty_avg` along the horizontal axis and `score` along the vertical axis.
 
+As a reminder, we should always label our plots. In creating the plot below, include the following items.
+
++ `title`: *Association between Attractiveness and Evaluation Score*
++ `x axis label`: *Average Beauty Rating*
++ `y axis label`: *Course Evaluation Score*
+
 ```{r bty-score, exercise = TRUE}
 
 ```
@@ -265,7 +271,6 @@ The fundamental phenomenon suggested by the Gelman and Hill study is that better
 #earlier. Pipe the evals data into ggplot(), but then 
 #create a scatterplot with geom_point() rather than
 #using geom_histogram() to create a histogram.
-
 ```
 
 ```{r bty-score-hint-2}
@@ -390,7 +395,7 @@ quiz(
 
 ###
 
-Use the code block below to add the line to your plot by adding a layer with `geom_abline()` using the appropriate `slope` and `intercept` arguments. Write out the equation for the linear model and interpret the slope. 
+Use the code block below to add the line to your plot by adding a layer with `geom_abline()` using the appropriate `slope` and `intercept` arguments. Use the same title and axis labels as your previous plots. 
 
 ```{r add-abline, exercise = TRUE}
 
@@ -407,7 +412,7 @@ Use the code block below to add the line to your plot by adding a layer with `ge
 
 evals %>%
   ggplot() + 
-  geom_point(aes(x = bty_avg, y = score)) + 
+  geom_jitter(aes(x = bty_avg, y = score)) + 
   labs(
     title = "Association between Attractiveness and Evaluation Score",
     x = "Average Beauty Rating",
@@ -423,7 +428,7 @@ evals %>%
 
 evals %>%
   ggplot() + 
-  geom_point(aes(x = bty_avg, y = score)) + 
+  geom_jitter(aes(x = bty_avg, y = score)) + 
   geom_abline(slope = ___, intercept = ___) +
   labs(
     title = "Association between Attractiveness and Evaluation Score",
@@ -438,7 +443,7 @@ evals %>%
 
 evals %>%
   ggplot() + 
-  geom_point(aes(x = bty_avg, y = score)) + 
+  geom_jitter(aes(x = bty_avg, y = score)) + 
   geom_abline(slope = ___, intercept = ___) +
   labs(
     title = "Association between Attractiveness and Evaluation Score",
@@ -455,7 +460,7 @@ evals %>%
 
 evals %>%
   ggplot() + 
-  geom_point(aes(x = bty_avg, y = score)) + 
+  geom_jitter(aes(x = bty_avg, y = score)) + 
   geom_abline(slope = 0.06664, intercept = 3.88034) +
   labs(
     title = "Association between Attractiveness and Evaluation Score",
@@ -463,6 +468,8 @@ evals %>%
     y = "Course Evaluation Score"
   )
 ```
+
+Write out the equation for the linear model and interpret the slope. 
 
 ###
 
