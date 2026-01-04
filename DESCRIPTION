@@ -14,13 +14,13 @@ Imports:
     stringr,
     tidyr,
     skimr,
-    ggmosaic,
     statsr,
     broom,
     magrittr
 Remotes:
     rstudio-education/gradethis,
     rstudio/learnr,
+    haleyjeppson/ggmosaic,
     rundel/learnrhash
 License: GPL-3
 Encoding: UTF-8
