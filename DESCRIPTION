@@ -8,8 +8,10 @@ Description: This package deploys interactive tutorials for a first course in ap
 Imports:
     gradethis,
     learnr,
+    learnrhash,
     openintro,
     ggplot2,
+    ggmosaic,
     dplyr,
     stringr,
     tidyr,
